@@ -1,0 +1,784 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>PPHPaymentProcessor Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PayPalHereSDK </a></h1>
+				<a id="developerHome" href="../index.html">PayPal</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">PPHPaymentProcessor Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</option>
+	
+	<option value="//api/name/beginCardPresentChargeAttempt:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginCardPresentChargeAttempt:forInvoice:completionHandler:</option>
+	
+	<option value="//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginChipAndPinAuthorization:forInvoice:completionHandler:</option>
+	
+	<option value="//api/name/beginTabPayment:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginTabPayment:forInvoice:completionHandler:</option>
+	
+	<option value="//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizeChipAndPin:withAuth:forInvoice:completionHandler:</option>
+	
+	<option value="//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</option>
+	
+	<option value="//api/name/provideSignature:forTransaction:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- provideSignature:forTransaction:completionHandler:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginCardPresentChargeAttempt:forInvoice:completionHandler:">beginCardPresentChargeAttempt:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">beginChipAndPinAuthorization:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginTabPayment:forInvoice:completionHandler:">beginTabPayment:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">finalizeChipAndPin:withAuth:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/provideSignature:forTransaction:completionHandler:">provideSignature:forTransaction:completionHandler:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="PPHPaymentProcessor Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">PPHPaymentProcessor Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">PPHPaymentProcessor.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The PPHPaymentProcessor is your one stop shop for turning various events into real money movement for your merchants.
+It supports card swipes, manually entered card data, chip and pin, and checkin/tab based transactions.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginTabPayment:forInvoice:completionHandler:">&ndash;&nbsp;beginTabPayment:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Capture funds against an open tab from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">&ndash;&nbsp;beginChipAndPinAuthorization:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Authorize a chip and pin card after pin has been validated</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginCardPresentChargeAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardPresentChargeAttempt:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Collect funds against a card that has been passed through a reader and for which magstripe data is available.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Collect funds against a card that has been manually entered.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/provideSignature:forTransaction:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:completionHandler:</a></code>
+		<span class="tooltip"><p>Provide a signature record for a previously successful charge. TODO &ndash; currently we expect this to be gathered before the card present attempt, which is unpleasant.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">&ndash;&nbsp;finalizeChipAndPin:withAuth:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Capture funds against a chip&amp;pin or chip card</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">&ndash;&nbsp;finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Capture funds against a chip&amp;pin&amp;signature or chip&amp;signature card</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:" title="beginCardNotPresentChargeAttempt:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Collect funds against a card that has been manually entered.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentChargeAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>card</em></dt>
+			<dd><p>Filled out manually or via a Card Scan</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Collect funds against a card that has been manually entered.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginCardPresentChargeAttempt:forInvoice:completionHandler:" title="beginCardPresentChargeAttempt:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginCardPresentChargeAttempt:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Collect funds against a card that has been passed through a reader and for which magstripe data is available.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentChargeAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>card</em></dt>
+			<dd><p>from PPCardReaderManager swipe event</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Collect funds against a card that has been passed through a reader and for which magstripe data is available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:" title="beginChipAndPinAuthorization:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginChipAndPinAuthorization:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Authorize a chip and pin card after pin has been validated</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent *)<em>auth</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHChipAndPinAuthResponse *response ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>auth</em></dt>
+			<dd><p>from <a href="../Classes/PPHCardReaderManager.html">PPHCardReaderManager</a> auth event.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Authorize a chip and pin card after pin has been validated</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginTabPayment:forInvoice:completionHandler:" title="beginTabPayment:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginTabPayment:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Capture funds against an open tab from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginTabPayment:(PPHLocationTab *)<em>tab</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tab</em></dt>
+			<dd><p>information about the tab (only id is needed)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Capture funds against an open tab from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:" title="finalizeChipAndPin:withAuth:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">finalizeChipAndPin:withAuth:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Capture funds against a chip&amp;pin or chip card</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)finalizeChipAndPin:(PPHChipAndPinEventWithEmv *)<em>approvalFromTerminalOrNil</em> withAuth:(PPHChipAndPinAuthResponse *)<em>auth</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>approvalFromTerminalOrNil</em></dt>
+			<dd><p>for chip&amp;pin card, this is passed to you by <a href="../Classes/PPHCardReaderManager.html">PPHCardReaderManager</a> event</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>auth</em></dt>
+			<dd><p>for chip&amp;pin card, this is passed to you by <a href="../Classes/PPHCardReaderManager.html">PPHCardReaderManager</a> event</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Capture funds against a chip&amp;pin or chip card</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:" title="finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Capture funds against a chip&amp;pin&amp;signature or chip&amp;signature card</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)finalizeChipAndPin:(PPHChipAndPinEventWithEmv *)<em>approvalFromTerminalOrNil</em> withSignature:(PPHSignatureView *)<em>signature</em> andAuth:(PPHChipAndPinAuthResponse *)<em>auth</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>approvalFromTerminalOrNil</em></dt>
+			<dd><p>for chip&amp;pin card, this is passed to you by <a href="../Classes/PPHCardReaderManager.html">PPHCardReaderManager</a> event</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>signature</em></dt>
+			<dd><p>the buyer-generated signature</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>auth</em></dt>
+			<dd><p>for chip&amp;pin card, this is passed to you by <a href="../Classes/PPHCardReaderManager.html">PPHCardReaderManager</a> event</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Capture funds against a chip&amp;pin&amp;signature or chip&amp;signature card</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/provideSignature:forTransaction:completionHandler:" title="provideSignature:forTransaction:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">provideSignature:forTransaction:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide a signature record for a previously successful charge. TODO &ndash; currently we expect this to be gathered before the card present attempt, which is unpleasant.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(PPHSignatureView *)<em>signature</em> forTransaction:(PPHCardChargeResponse *)<em>response</em> completionHandler:(void ( ^ ) ( PPHError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>signature</em></dt>
+			<dd><p>the buyer-generated signature</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>the result of beginCardPresentChargeAttempt</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Provide a signature record for a previously successful charge. TODO &ndash; currently we expect this to be gathered before the card present attempt, which is unpleasant.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-02-25)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
