@@ -1,0 +1,31 @@
+#amount {
+    top: 30px;
+    width: 90%;
+    -mobile-halign: center;
+    height: 100px;
+    background-color: white;
+    border-radius: 15;
+    border-width: 1;
+    border-color: gray;
+    -mobile-content-valign: middle;
+    -mobile-title-insets: 0px 15px;
+    font: 34 Helvetica;
+    text-align: right;
+}
+
+#charge {
+    -mobile-relative: #amount;
+    margin-top: 10px;
+    width: 90%;
+    -mobile-halign: center;
+    -mobile-text-key: "Charge";
+}
+
+#badge {
+    -mobile-relative: #charge;
+    margin-bottom: -20px;
+    margin-right: -105%;
+    background-color: clear;
+    width: auto;
+    height: auto;
+}

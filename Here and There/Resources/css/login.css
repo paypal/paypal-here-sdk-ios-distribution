@@ -1,0 +1,65 @@
+#container
+{
+    background-color: white;
+    border-radius: 15;
+    border-width: 1;
+    border-color: gray;
+    width: 80%;
+    -mobile-halign: center;
+    top: 20px;
+    height: 200px;
+}
+
+UITextField
+{
+    width: 90%;
+    height: 90px;
+    font: 34 Helvetica;
+    -mobile-halign: center;
+    -mobile-content-valign: middle;
+}
+
+@media iphone {
+#container {
+  width: -20px;
+  height: 150px;
+}
+UITextField {
+  font: 24 Helvetica;
+  height: 60px;
+}
+}
+
+#username {
+    top: 5px;
+}
+
+#password {
+    bottom: 5px;
+}
+
+#divider {
+    width: 100%;
+    background-color: gray;
+    height: 1px;
+    top: 50%;
+}
+
+#username:empty
+{
+    -mobile-text-key: "Username";
+}
+
+#password:empty
+{
+    -mobile-text-key: "Password";
+}
+
+#login
+{
+    -mobile-relative: #container;
+    margin-top: 15px;
+    -mobile-halign: center;
+    width: 80%;
+    -mobile-text-key: "Login";
+}

@@ -1,0 +1,1644 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>PPHAmount Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PayPalHereSDK </a></h1>
+				<a id="developerHome" href="../index.html">PayPal</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">PPHAmount Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/amount">&nbsp;&nbsp;&nbsp;&nbsp;amount</option>
+	
+	<option value="//api/name/currencyCode">&nbsp;&nbsp;&nbsp;&nbsp;currencyCode</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/amountWithDecimal:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;+ amountWithDecimal:inCurrency:</option>
+	
+	<option value="//api/name/amountWithString:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;+ amountWithString:inCurrency:</option>
+	
+	<option value="//api/name/defaultCurrencyCodeInCountry:">&nbsp;&nbsp;&nbsp;&nbsp;+ defaultCurrencyCodeInCountry:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/add:">&nbsp;&nbsp;&nbsp;&nbsp;- add:</option>
+	
+	<option value="//api/name/addAmount:">&nbsp;&nbsp;&nbsp;&nbsp;- addAmount:</option>
+	
+	<option value="//api/name/amountInCents">&nbsp;&nbsp;&nbsp;&nbsp;- amountInCents</option>
+	
+	<option value="//api/name/currencySymbol">&nbsp;&nbsp;&nbsp;&nbsp;- currencySymbol</option>
+	
+	<option value="//api/name/divideBy:">&nbsp;&nbsp;&nbsp;&nbsp;- divideBy:</option>
+	
+	<option value="//api/name/divideByAmount:">&nbsp;&nbsp;&nbsp;&nbsp;- divideByAmount:</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/initWithPadding:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithPadding:inCurrency:</option>
+	
+	<option value="//api/name/initWithRounding:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithRounding:inCurrency:</option>
+	
+	<option value="//api/name/isValid">&nbsp;&nbsp;&nbsp;&nbsp;- isValid</option>
+	
+	<option value="//api/name/isoCurrencyNumber">&nbsp;&nbsp;&nbsp;&nbsp;- isoCurrencyNumber</option>
+	
+	<option value="//api/name/multiply:">&nbsp;&nbsp;&nbsp;&nbsp;- multiply:</option>
+	
+	<option value="//api/name/multiplyByAmount:">&nbsp;&nbsp;&nbsp;&nbsp;- multiplyByAmount:</option>
+	
+	<option value="//api/name/stringValue">&nbsp;&nbsp;&nbsp;&nbsp;- stringValue</option>
+	
+	<option value="//api/name/stringValueForPayment">&nbsp;&nbsp;&nbsp;&nbsp;- stringValueForPayment</option>
+	
+	<option value="//api/name/stringValueWithoutCurrencySymbol">&nbsp;&nbsp;&nbsp;&nbsp;- stringValueWithoutCurrencySymbol</option>
+	
+	<option value="//api/name/subtract:">&nbsp;&nbsp;&nbsp;&nbsp;- subtract:</option>
+	
+	<option value="//api/name/subtractAmount:">&nbsp;&nbsp;&nbsp;&nbsp;- subtractAmount:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/amount">amount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currencyCode">currencyCode</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/amountWithDecimal:inCurrency:">amountWithDecimal:inCurrency:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/amountWithString:inCurrency:">amountWithString:inCurrency:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultCurrencyCodeInCountry:">defaultCurrencyCodeInCountry:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/add:">add:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addAmount:">addAmount:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/amountInCents">amountInCents</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currencySymbol">currencySymbol</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/divideBy:">divideBy:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/divideByAmount:">divideByAmount:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithPadding:inCurrency:">initWithPadding:inCurrency:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithRounding:inCurrency:">initWithRounding:inCurrency:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isValid">isValid</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isoCurrencyNumber">isoCurrencyNumber</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/multiply:">multiply:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/multiplyByAmount:">multiplyByAmount:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringValue">stringValue</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringValueForPayment">stringValueForPayment</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringValueWithoutCurrencySymbol">stringValueWithoutCurrencySymbol</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subtract:">subtract:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subtractAmount:">subtractAmount:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="PPHAmount Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">PPHAmount Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">PPHAmount.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>All money amounts in PayPal Here should use PPHAmount, as it encapsulates a currency and an appropriately precise <a href="#//api/name/amount">amount</a>.</p>
+
+<p>Helper methods perform common operations like rounding, formatting for display, etc.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/defaultCurrencyCodeInCountry:">+&nbsp;defaultCurrencyCodeInCountry:</a></code>
+		<span class="tooltip"><p>Get the default currency code given an ISO country code</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/amountWithDecimal:inCurrency:">+&nbsp;amountWithDecimal:inCurrency:</a></code>
+		<span class="tooltip"><p>Create a PPHAmount given a decimal and a currency</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/amountWithString:inCurrency:">+&nbsp;amountWithString:inCurrency:</a></code>
+		<span class="tooltip"><p>Create a PPHAmount given a decimal in a string and a currency</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>Don&rsquo;t init PPHAmounts without data, consider them immutable</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithPadding:inCurrency:">&ndash;&nbsp;initWithPadding:inCurrency:</a></code>
+		<span class="tooltip"><p>Initialize an <a href="#//api/name/amount">amount</a> with the appropriate padding for a currency. For example,
+in USD which is a 2 digit currency, passing 12345 will return 123.45</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithRounding:inCurrency:">&ndash;&nbsp;initWithRounding:inCurrency:</a></code>
+		<span class="tooltip"><p>Initialize an <a href="#//api/name/amount">amount</a> and round to the appropriate precision for the currency.
+For example in USD passing 1.232 would return 1.23</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currencyCode">&nbsp;&nbsp;currencyCode</a></code>
+		<span class="tooltip"><p>The ISO currency code such as USD</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/amount">&nbsp;&nbsp;amount</a></code>
+		<span class="tooltip"><p>The amount, with potentially higher precision than the currency supports
+so that we don&rsquo;t break intermediate values.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isValid">&ndash;&nbsp;isValid</a></code>
+		<span class="tooltip"><p>YES if the <a href="#//api/name/amount">amount</a> is valid (i.e. if <a href="#//api/name/amount">amount</a> is not NSDecimalNumber::notANumber</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/amountInCents">&ndash;&nbsp;amountInCents</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/amount">amount</a> in the minimal unit of the currency (e.g. penny in the US)</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isoCurrencyNumber">&ndash;&nbsp;isoCurrencyNumber</a></code>
+		<span class="tooltip"><p>The ISO currency NUMBER for the currency code</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currencySymbol">&ndash;&nbsp;currencySymbol</a></code>
+		<span class="tooltip"><p>The currency symbol, such as $ for USD</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stringValue">&ndash;&nbsp;stringValue</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/amount">amount</a> as a string with a currency symbol included</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stringValueWithoutCurrencySymbol">&ndash;&nbsp;stringValueWithoutCurrencySymbol</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/amount">amount</a> as a string with no currency symbol</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stringValueForPayment">&ndash;&nbsp;stringValueForPayment</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/amount">amount</a> as a string with no currency symbol or thousands separators, and with the decimal
+separator always set to &ldquo;.&rdquo;</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/multiply:">&ndash;&nbsp;multiply:</a></code>
+		<span class="tooltip"><p>Multiply a PPHAmount by a decimal</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/subtract:">&ndash;&nbsp;subtract:</a></code>
+		<span class="tooltip"><p>Subtract a decimal from a PPHAmount</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/add:">&ndash;&nbsp;add:</a></code>
+		<span class="tooltip"><p>Add a PPHAmount to a decimal</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/divideBy:">&ndash;&nbsp;divideBy:</a></code>
+		<span class="tooltip"><p>Divide a PPHAmount by a decimal</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/multiplyByAmount:">&ndash;&nbsp;multiplyByAmount:</a></code>
+		<span class="tooltip"><p>Multiply two PPHAmounts</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/subtractAmount:">&ndash;&nbsp;subtractAmount:</a></code>
+		<span class="tooltip"><p>Subtract a PPHAmount from a PPHAmount</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addAmount:">&ndash;&nbsp;addAmount:</a></code>
+		<span class="tooltip"><p>Add two PPHAmounts</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/divideByAmount:">&ndash;&nbsp;divideByAmount:</a></code>
+		<span class="tooltip"><p>Divid a PPHAmount by a PPHAmount</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/amount" title="amount"></a>
+	<h3 class="subsubtitle method-title">amount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The amount, with potentially higher precision than the currency supports
+so that we don&rsquo;t break intermediate values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSDecimalNumber *amount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The amount, with potentially higher precision than the currency supports
+so that we don&rsquo;t break intermediate values.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currencyCode" title="currencyCode"></a>
+	<h3 class="subsubtitle method-title">currencyCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The ISO currency code such as USD</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *currencyCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The ISO currency code such as USD</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/amountWithDecimal:inCurrency:" title="amountWithDecimal:inCurrency:"></a>
+	<h3 class="subsubtitle method-title">amountWithDecimal:inCurrency:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a PPHAmount given a decimal and a currency</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(NSDecimalNumber *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amount</em></dt>
+			<dd><p>The <a href="#//api/name/amount">amount</a> in currency</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currency</em></dt>
+			<dd><p>The currency for the <a href="#//api/name/amount">amount</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a PPHAmount given a decimal and a currency</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/amountWithString:inCurrency:" title="amountWithString:inCurrency:"></a>
+	<h3 class="subsubtitle method-title">amountWithString:inCurrency:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a PPHAmount given a decimal in a string and a currency</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(NSString *)<em>stringValue</em> inCurrency:(NSString *)<em>currency</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>stringValue</em></dt>
+			<dd><p>The <a href="#//api/name/amount">amount</a>, as a string and not including currency symbol</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currency</em></dt>
+			<dd><p>The currency for the <a href="#//api/name/amount">amount</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a PPHAmount given a decimal in a string and a currency</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/defaultCurrencyCodeInCountry:" title="defaultCurrencyCodeInCountry:"></a>
+	<h3 class="subsubtitle method-title">defaultCurrencyCodeInCountry:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the default currency code given an ISO country code</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)defaultCurrencyCodeInCountry:(NSString *)<em>countryCode</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>countryCode</em></dt>
+			<dd><p>two letter ISO country code</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the default currency code given an ISO country code</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/add:" title="add:"></a>
+	<h3 class="subsubtitle method-title">add:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a PPHAmount to a decimal</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)add:(NSDecimalNumber *)<em>operand</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operand</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to add</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Add a PPHAmount to a decimal</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addAmount:" title="addAmount:"></a>
+	<h3 class="subsubtitle method-title">addAmount:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add two PPHAmounts</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)addAmount:(PPHAmount *)<em>operand</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operand</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to add</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Add two PPHAmounts</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/amountInCents" title="amountInCents"></a>
+	<h3 class="subsubtitle method-title">amountInCents</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/amount">amount</a> in the minimal unit of the currency (e.g. penny in the US)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSInteger)amountInCents</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/amount">amount</a> in the minimal unit of the currency (e.g. penny in the US)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currencySymbol" title="currencySymbol"></a>
+	<h3 class="subsubtitle method-title">currencySymbol</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The currency symbol, such as $ for USD</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)currencySymbol</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The currency symbol, such as $ for USD</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/divideBy:" title="divideBy:"></a>
+	<h3 class="subsubtitle method-title">divideBy:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Divide a PPHAmount by a decimal</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideBy:(NSDecimalNumber *)<em>divisor</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>divisor</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to divide by</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Divide a PPHAmount by a decimal</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/divideByAmount:" title="divideByAmount:"></a>
+	<h3 class="subsubtitle method-title">divideByAmount:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Divid a PPHAmount by a PPHAmount</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideByAmount:(PPHAmount *)<em>divisor</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>divisor</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to divide by</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Divid a PPHAmount by a PPHAmount</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Don&rsquo;t init PPHAmounts without data, consider them immutable</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Don&rsquo;t init PPHAmounts without data, consider them immutable</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithPadding:inCurrency:" title="initWithPadding:inCurrency:"></a>
+	<h3 class="subsubtitle method-title">initWithPadding:inCurrency:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize an <a href="#//api/name/amount">amount</a> with the appropriate padding for a currency. For example,
+in USD which is a 2 digit currency, passing 12345 will return 123.45</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithPadding:(NSString *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amount</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> with no decimal point</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currency</em></dt>
+			<dd><p>the currency for the <a href="#//api/name/amount">amount</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialize an <a href="#//api/name/amount">amount</a> with the appropriate padding for a currency. For example,
+in USD which is a 2 digit currency, passing 12345 will return 123.45</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithRounding:inCurrency:" title="initWithRounding:inCurrency:"></a>
+	<h3 class="subsubtitle method-title">initWithRounding:inCurrency:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize an <a href="#//api/name/amount">amount</a> and round to the appropriate precision for the currency.
+For example in USD passing 1.232 would return 1.23</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithRounding:(NSDecimalNumber *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amount</em></dt>
+			<dd><p>The <a href="#//api/name/amount">amount</a>, potentially with higher precision than the currency supports</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currency</em></dt>
+			<dd><p>the currency for the <a href="#//api/name/amount">amount</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialize an <a href="#//api/name/amount">amount</a> and round to the appropriate precision for the currency.
+For example in USD passing 1.232 would return 1.23</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isValid" title="isValid"></a>
+	<h3 class="subsubtitle method-title">isValid</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES if the <a href="#//api/name/amount">amount</a> is valid (i.e. if <a href="#//api/name/amount">amount</a> is not NSDecimalNumber::notANumber</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isValid</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>YES if the <a href="#//api/name/amount">amount</a> is valid (i.e. if <a href="#//api/name/amount">amount</a> is not NSDecimalNumber::notANumber</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isoCurrencyNumber" title="isoCurrencyNumber"></a>
+	<h3 class="subsubtitle method-title">isoCurrencyNumber</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The ISO currency NUMBER for the currency code</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSInteger)isoCurrencyNumber</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The ISO currency NUMBER for the currency code</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/multiply:" title="multiply:"></a>
+	<h3 class="subsubtitle method-title">multiply:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Multiply a PPHAmount by a decimal</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiply:(NSDecimalNumber *)<em>multiple</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>multiple</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to multiply by</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Multiply a PPHAmount by a decimal</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/multiplyByAmount:" title="multiplyByAmount:"></a>
+	<h3 class="subsubtitle method-title">multiplyByAmount:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Multiply two PPHAmounts</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiplyByAmount:(PPHAmount *)<em>multiple</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>multiple</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to multiply by</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Multiply two PPHAmounts</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stringValue" title="stringValue"></a>
+	<h3 class="subsubtitle method-title">stringValue</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/amount">amount</a> as a string with a currency symbol included</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)stringValue</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/amount">amount</a> as a string with a currency symbol included</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stringValueForPayment" title="stringValueForPayment"></a>
+	<h3 class="subsubtitle method-title">stringValueForPayment</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/amount">amount</a> as a string with no currency symbol or thousands separators, and with the decimal
+separator always set to &ldquo;.&rdquo;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)stringValueForPayment</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/amount">amount</a> as a string with no currency symbol or thousands separators, and with the decimal
+separator always set to &ldquo;.&rdquo;</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stringValueWithoutCurrencySymbol" title="stringValueWithoutCurrencySymbol"></a>
+	<h3 class="subsubtitle method-title">stringValueWithoutCurrencySymbol</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/amount">amount</a> as a string with no currency symbol</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)stringValueWithoutCurrencySymbol</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/amount">amount</a> as a string with no currency symbol</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/subtract:" title="subtract:"></a>
+	<h3 class="subsubtitle method-title">subtract:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Subtract a decimal from a PPHAmount</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtract:(NSDecimalNumber *)<em>operand</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operand</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to subtract from this PPHAmount</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Subtract a decimal from a PPHAmount</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/subtractAmount:" title="subtractAmount:"></a>
+	<h3 class="subsubtitle method-title">subtractAmount:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Subtract a PPHAmount from a PPHAmount</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtractAmount:(PPHAmount *)<em>operand</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operand</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to subtract from this PPHAmount</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Subtract a PPHAmount from a PPHAmount</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-03-05)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
