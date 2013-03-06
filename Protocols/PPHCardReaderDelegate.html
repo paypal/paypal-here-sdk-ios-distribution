@@ -44,25 +44,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/didCompleteCardSwipe:">&nbsp;&nbsp;&nbsp;&nbsp;- didCompleteCardSwipe:</option>
-	
-	<option value="//api/name/didDetectCardSwipeAttempt">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectCardSwipeAttempt</option>
-	
-	<option value="//api/name/didDetectReaderDevice:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectReaderDevice:</option>
-	
 	<option value="//api/name/didDetectUpgradeableReader:withMessage:isRequired:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectUpgradeableReader:withMessage:isRequired:</option>
-	
-	<option value="//api/name/didFailToReadCard">&nbsp;&nbsp;&nbsp;&nbsp;- didFailToReadCard</option>
-	
-	<option value="//api/name/didReceiveCardReaderMetadata:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveCardReaderMetadata:</option>
 	
 	<option value="//api/name/didReceiveChipAndPinEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveChipAndPinEvent:</option>
 	
 	<option value="//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</option>
-	
-	<option value="//api/name/didRemoveReader:">&nbsp;&nbsp;&nbsp;&nbsp;- didRemoveReader:</option>
-	
-	<option value="//api/name/didStartReaderDetection:">&nbsp;&nbsp;&nbsp;&nbsp;- didStartReaderDetection:</option>
 	
 	<option value="//api/name/didUpgradeReader:withMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- didUpgradeReader:withMessage:</option>
 	
@@ -94,25 +80,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didCompleteCardSwipe:">didCompleteCardSwipe:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectCardSwipeAttempt">didDetectCardSwipeAttempt</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectReaderDevice:">didDetectReaderDevice:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:">didDetectUpgradeableReader:withMessage:isRequired:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFailToReadCard">didFailToReadCard</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveCardReaderMetadata:">didReceiveCardReaderMetadata:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveChipAndPinEvent:">didReceiveChipAndPinEvent:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didRemoveReader:">didRemoveReader:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didStartReaderDetection:">didStartReaderDetection:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didUpgradeReader:withMessage:">didUpgradeReader:withMessage:</a></span></li>
 	
@@ -140,7 +112,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-value"><a href="../Protocols/PPHSimpleCardReaderDelegate.html">PPHSimpleCardReaderDelegate</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">PPHCardReaderDelegate.h</td>
@@ -153,7 +125,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>All events related to the card reader &ndash; audio, chip &amp; pin bluetooth, etc.</p>
+						<p>Additional events for EMV aka Chip &amp; Pin readers</p>
 					</div>
 					
 					
@@ -170,13 +142,6 @@
 
 						<ul class="task-list">
 							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didDetectReaderDevice:">&ndash;&nbsp;didDetectReaderDevice:</a></code>
-		<span class="tooltip"><p>A fully working reader was detected and is available</p></span>
-	</span>
-	
-	
-</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:">&ndash;&nbsp;didDetectUpgradeableReader:withMessage:isRequired:</a></code>
 		<span class="tooltip"><p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
@@ -195,51 +160,6 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">&ndash;&nbsp;didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</a></code>
 		<span class="tooltip"><p>There is a status update to the current ongoing reader upgrade</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didRemoveReader:">&ndash;&nbsp;didRemoveReader:</a></code>
-		<span class="tooltip"><p>A reader device has been removed from the system</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didStartReaderDetection:">&ndash;&nbsp;didStartReaderDetection:</a></code>
-		<span class="tooltip"><p>This event will be triggered in cases where reader detection takes a while, such as for
-the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didDetectCardSwipeAttempt">&ndash;&nbsp;didDetectCardSwipeAttempt</a></code>
-		<span class="tooltip"><p>Something has occurred in the read head of the reader. Since processing can take a second or so,
-this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
-will hurt success rate.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didCompleteCardSwipe:">&ndash;&nbsp;didCompleteCardSwipe:</a></code>
-		<span class="tooltip"><p>A card swipe has succeeded</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didFailToReadCard">&ndash;&nbsp;didFailToReadCard</a></code>
-		<span class="tooltip"><p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didReceiveCardReaderMetadata:">&ndash;&nbsp;didReceiveCardReaderMetadata:</a></code>
-		<span class="tooltip"><p>Serial number and other related information is available for the card reader.</p></span>
 	</span>
 	
 	
@@ -266,153 +186,6 @@ will hurt success rate.</p></span>
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/didCompleteCardSwipe:" title="didCompleteCardSwipe:"></a>
-	<h3 class="subsubtitle method-title">didCompleteCardSwipe:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A card swipe has succeeded</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didCompleteCardSwipe:(PPHCardSwipeData *)<em>card</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>card</em></dt>
-			<dd><p>Encrypted and masked data about the card</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A card swipe has succeeded</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didDetectCardSwipeAttempt" title="didDetectCardSwipeAttempt"></a>
-	<h3 class="subsubtitle method-title">didDetectCardSwipeAttempt</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Something has occurred in the read head of the reader. Since processing can take a second or so,
-this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
-will hurt success rate.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didDetectCardSwipeAttempt</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Something has occurred in the read head of the reader. Since processing can take a second or so,
-this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
-will hurt success rate.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didDetectReaderDevice:" title="didDetectReaderDevice:"></a>
-	<h3 class="subsubtitle method-title">didDetectReaderDevice:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A fully working reader was detected and is available</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)<em>reader</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>reader</em></dt>
-			<dd><p>the reader that was detected</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A fully working reader was detected and is available</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
 						
 						<div class="section-method">
 	<a name="//api/name/didDetectUpgradeableReader:withMessage:isRequired:" title="didDetectUpgradeableReader:withMessage:isRequired:"></a>
@@ -461,98 +234,6 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
 NOT receive didDetectReaderDevice until the condition is resolved.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didFailToReadCard" title="didFailToReadCard"></a>
-	<h3 class="subsubtitle method-title">didFailToReadCard</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didFailToReadCard</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didReceiveCardReaderMetadata:" title="didReceiveCardReaderMetadata:"></a>
-	<h3 class="subsubtitle method-title">didReceiveCardReaderMetadata:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Serial number and other related information is available for the card reader.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)<em>metadata</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>metadata</em></dt>
-			<dd><p>the available data about the reader</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Serial number and other related information is available for the card reader.</p>
 	</div>
 	
 	
@@ -687,110 +368,6 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didRemoveReader:" title="didRemoveReader:"></a>
-	<h3 class="subsubtitle method-title">didRemoveReader:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A reader device has been removed from the system</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didRemoveReader:(PPHReaderType)<em>readerType</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>readerType</em></dt>
-			<dd><p>the type of reader that was removed</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A reader device has been removed from the system</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didStartReaderDetection:" title="didStartReaderDetection:"></a>
-	<h3 class="subsubtitle method-title">didStartReaderDetection:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>This event will be triggered in cases where reader detection takes a while, such as for
-the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didStartReaderDetection:(PPHReaderType)<em>readerType</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>readerType</em></dt>
-			<dd><p>the type of reader that is actively being &ldquo;verified&rdquo;</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>This event will be triggered in cases where reader detection takes a while, such as for
-the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/didUpgradeReader:withMessage:" title="didUpgradeReader:withMessage:"></a>
 	<h3 class="subsubtitle method-title">didUpgradeReader:withMessage:</h3>
 	
@@ -859,7 +436,7 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-02-25)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-03-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

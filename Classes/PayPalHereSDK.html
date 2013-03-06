@@ -52,6 +52,8 @@
 	
 	<option value="//api/name/networkDelegate">&nbsp;&nbsp;&nbsp;&nbsp;+ networkDelegate</option>
 	
+	<option value="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">&nbsp;&nbsp;&nbsp;&nbsp;+ reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</option>
+	
 	<option value="//api/name/setActiveMerchant:asDefaultMerchant:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:asDefaultMerchant:</option>
 	
 	<option value="//api/name/setAnalyticsDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAnalyticsDelegate:</option>
@@ -105,6 +107,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasLocationAccess">hasLocationAccess</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/networkDelegate">networkDelegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:asDefaultMerchant:">setActiveMerchant:asDefaultMerchant:</a></span></li>
 	
@@ -218,6 +222,20 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 	<span class="tooltip">
 		<code><a href="#//api/name/networkDelegate">+&nbsp;networkDelegate</a></code>
 		<span class="tooltip"><p>The current network request delegate.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">+&nbsp;reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></code>
+		<span class="tooltip"><p>If you handle your own network requests, you should update the progress of those requests
+via this method so that various SDK features (such as reader software updates) can report
+overall progress back to you. This method is meant to allow you to get more precise about
+progress than is likely possible &ndash; so for example you could say a network request consists
+of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
+estimated relative durations of each of those to be used in computing the total step units.
+But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
+the percentage of the download that&rsquo;s completed.</p></span>
 	</span>
 	
 	
@@ -497,6 +515,97 @@ or for general location updates if the device does not support significant updat
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The current network request delegate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:" title="reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:"></a>
+	<h3 class="subsubtitle method-title">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If you handle your own network requests, you should update the progress of those requests
+via this method so that various SDK features (such as reader software updates) can report
+overall progress back to you. This method is meant to allow you to get more precise about
+progress than is likely possible &ndash; so for example you could say a network request consists
+of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
+estimated relative durations of each of those to be used in computing the total step units.
+But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
+the percentage of the download that&rsquo;s completed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)reportNetworkRequestProgress:(NSURLRequest *)<em>originalRequest</em> currentStep:(NSInteger)<em>currentStep</em> totalSteps:(NSInteger)<em>totalSteps</em> currentStepPercentage:(NSInteger)<em>wholeNumberCurrentPercentage</em> totalStepPercentageEstimate:(NSInteger)<em>wholeNumberTotalPercentage</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>originalRequest</em></dt>
+			<dd><p>The request as originally passed to your network delegate. If you
+&ldquo;rewrite&rdquo; the request, you need to keep the old one around to properly inform us of
+progress.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currentStep</em></dt>
+			<dd><p>The 1-based index of the step currently executing (e.g. it doesn&rsquo;t make
+sense to be on the 0th step.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>totalSteps</em></dt>
+			<dd><p>The count of the total number of steps required to execute the request.
+Must be at least 1.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>wholeNumberCurrentPercentage</em></dt>
+			<dd><p>a number between 0 and 100 expressing how much of the
+current step is completed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>wholeNumberTotalPercentage</em></dt>
+			<dd><p>a number between 0 and 100 expressing how much of the
+total process is completed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If you handle your own network requests, you should update the progress of those requests
+via this method so that various SDK features (such as reader software updates) can report
+overall progress back to you. This method is meant to allow you to get more precise about
+progress than is likely possible &ndash; so for example you could say a network request consists
+of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
+estimated relative durations of each of those to be used in computing the total step units.
+But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
+the percentage of the download that&rsquo;s completed.</p>
 	</div>
 	
 	
@@ -916,7 +1025,7 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-02-25)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-03-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
