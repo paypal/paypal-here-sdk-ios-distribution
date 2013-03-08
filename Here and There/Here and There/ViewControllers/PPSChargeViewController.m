@@ -12,18 +12,22 @@
 #import "NimbusModels.h"
 #import "PPSStyledView.h"
 #import "PPSSignatureViewController.h"
+#import "PPSProgressView.h"
 
 @interface PPSChargeViewController () <
     UITableViewDelegate,
     PPHSimpleCardReaderDelegate,
-    PPHLocationWatcherDelegate
+    PPHLocationWatcherDelegate,
+    UIActionSheetDelegate
 >
 @property (nonatomic,strong) PPHInvoice *invoice;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NITableViewModel *model;
-@property (nonatomic,strong) UIView *header;
 @property (nonatomic,strong) PPHLocationWatcher *watcher;
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
+@property (nonatomic,strong) UILabel *readerStatus;
+@property (nonatomic,strong) NSDictionary *cellToTabMap;
+@property (nonatomic,strong) PPHLocationTab *candidateTab;
 
 @property (nonatomic,strong) NITableViewActions* actions;
 @end
@@ -36,7 +40,8 @@
         self.invoice = invoice;
         self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:watcher.locationId withDelegate:self];
         self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
-        [[PayPalHereSDK sharedCardReaderManager] beginTransaction:invoice];
+        [self.navigationController setNavigationBarHidden:NO];
+        [[PayPalHereSDK sharedCardReaderManager] activateReader:nil];
         
         self.tableView = [[UITableView alloc] init];
         self.actions = [[NITableViewActions alloc] initWithTarget:self];
@@ -49,16 +54,17 @@
         self.tableView.tableFooterView = [[UIView alloc] init];
         NIStylesheet *stylesheet = [[PPSAppDelegate appDelegate].stylesheetCache stylesheetWithPath:@"css/chargePage.css"];
         self.tableView.tableHeaderView = [[PPSStyledView alloc] initWithJsonResource:@"views/chargePageHeader" andStylesheet: stylesheet
-                                                                        withCssClass: [PayPalHereSDK sharedCardReaderManager].availableDevices.count > 0 ? @".connected" : @".notconnected"
+                                                                        withCssClass: nil
                                                                                andId:@"#tableHeader" withDOMTarget:self];
         self.model = [[NITableViewModel alloc] initWithSectionedArray:sectionedObjects delegate:(id) [NICellFactory class]];
+        self.readerStatus.text = ([[PayPalHereSDK sharedCardReaderManager].availableDevices count] > 0) ? @"Reader connected" : @"Reader not connected";
     }
     return self;
 }
 
 -(void)dealloc
 {
-    [[PayPalHereSDK sharedCardReaderManager] endTransaction];
+    [[PayPalHereSDK sharedCardReaderManager] deactivateReader:nil];
 }
 
 #pragma mark -
@@ -71,32 +77,38 @@
 
 -(void)didStartReaderDetection:(PPHReaderType)readerType
 {
-    
+    self.readerStatus.text = @"Detecting Device";
+    [[(id)self.tableView.tableHeaderView dom] refreshView:self.readerStatus];
 }
 
 -(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader
 {
-    
+    self.readerStatus.text = [NSString stringWithFormat:@"Detected %@", reader.friendlyName];
+    [[(id)self.tableView.tableHeaderView dom] refreshView:self.readerStatus];    
 }
 
 -(void)didFailToReadCard
 {
-    
+    self.readerStatus.text = @"Failed to read card.";
+    [[(id)self.tableView.tableHeaderView dom] refreshView:self.readerStatus];    
 }
 
 -(void)didDetectCardSwipeAttempt
 {
-    
+    self.readerStatus.text = @"Reading Swipe";
+    [[(id)self.tableView.tableHeaderView dom] refreshView:self.readerStatus];
 }
 
 -(void)didRemoveReader:(PPHReaderType)readerType
 {
-    
+    self.readerStatus.text = @"Reader Removed";
+    [[(id)self.tableView.tableHeaderView dom] refreshView:self.readerStatus];
 }
 
 -(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
 {
-    
+    self.readerStatus.text = [NSString stringWithFormat:@"Reader Serial %@", metadata.serialNumber];
+    [[(id)self.tableView.tableHeaderView dom] refreshView:self.readerStatus];    
 }
 
 #pragma mark -
@@ -109,12 +121,38 @@
          @"People Here"
          ] mutableCopy];
         
+        NSMutableDictionary *cellToTab = [[NSMutableDictionary alloc] init];
         for (PPHLocationTab *tab in openTabs) {
-            [sectionedObjects addObject: [NISubtitleCellObject objectWithTitle: tab.customerName subtitle:tab.photoUrl.absoluteString]];
+            NISubtitleCellObject *c = [NISubtitleCellObject objectWithTitle: tab.customerName subtitle:tab.tabId];
+            // There must be a better way to do this.
+            [cellToTab setObject:tab forKey: tab.tabId];
+            [sectionedObjects addObject: [_actions attachToObject:c navigationSelector:@selector(confirm:)]];
         }
         
+        self.cellToTabMap = cellToTab;
         self.tableView.dataSource = self.model = [[NITableViewModel alloc] initWithSectionedArray:sectionedObjects delegate:(id) [NICellFactory class]];
         [self.tableView reloadData];
+    }
+}
+
+-(void)confirm: (NISubtitleCellObject*) row {
+    PPHLocationTab *lt = [self.cellToTabMap objectForKey: row.subtitle];
+    self.candidateTab = lt;
+    UIActionSheet *uia = [[UIActionSheet alloc]
+                          initWithTitle: [NSString stringWithFormat:@"Really bill %@ %@?", lt.customerName, [self.invoice.totalAmount stringValue]]
+                          delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"OK" otherButtonTitles: nil];
+    [uia showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        PPSProgressView *pg = [PPSProgressView progressViewWithTitle:@"Processing Payment" andMessage:nil withCancelHandler:^(PPSProgressView *progressView) {
+            
+        }];
+        [[PayPalHereSDK sharedPaymentProcessor] beginTabPayment:self.candidateTab forInvoice:self.invoice completionHandler:^(PPHPaymentResponse *response) {
+            [pg dismiss:YES];
+        }];
     }
 }
 
@@ -143,6 +181,9 @@
 {
     [super viewWillLayoutSubviews];
     self.tableView.frame = self.view.frame;
+    self.tableView.tableHeaderView.frame = self.tableView.bounds;
+    [self.dom refresh];
+    [[(id)self.tableView.tableHeaderView dom] refresh];
 }
 
 @end

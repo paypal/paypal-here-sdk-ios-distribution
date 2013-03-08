@@ -30,6 +30,7 @@
 {
     [super loadView];
     [self.view addSubview:self.mainController.view];
+    [self addChildViewController:self.mainController];
 }
 
 -(void)viewWillLayoutSubviews

@@ -13,6 +13,8 @@
 @interface PPSBaseViewController : UIViewController
 @property (nonatomic,strong) NIDOM *dom;
 
+-(id)init;
+
 /**
  * The id of the view controller for CSS purposes - the default is to string ViewController off the end
  */

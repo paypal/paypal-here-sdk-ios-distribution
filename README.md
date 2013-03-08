@@ -13,7 +13,8 @@ Clone to repository and then pull down the submodules (Nimbus and AFNetworking):
 
     git submodule update --init --recursive
 
-This should be all that's required to get a clean build.
+This should be all that's required to get a clean build. Please note you will need to have an SSH key setup with
+github to make this command work, otherwise you will see "Permission Denied" when trying to pull down the submodules.
 
 Code Worth Looking At
 =====================

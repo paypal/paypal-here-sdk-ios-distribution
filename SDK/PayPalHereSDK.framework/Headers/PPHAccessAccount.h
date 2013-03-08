@@ -11,6 +11,12 @@ typedef NS_ENUM(NSInteger, PPHAccountStatus) {
     ePPHAccountStatusReady
 };
 
+typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
+    ePPHAvailablePaymentTypeNone = 0,
+    ePPHAvailablePaymentTypeCard = 1,
+    ePPHAvailablePaymentTypeTab = 1 << 1
+};
+
 /*!
  * The PPHAccessUser class stores information about a successfully
  * authenticated PayPal Access account. Via the NSCoding protocol,
@@ -75,7 +81,14 @@ typedef NS_ENUM(NSInteger, PPHAccountStatus) {
  * The primary email for this account
  */
 @property (nonatomic, strong, readonly) NSString *email;
-
+/*!
+ * All known emails for the account
+ */
+@property (nonatomic, strong, readonly) NSArray *emails;
+/*!
+ * The type of payments this merchant account is allowed to accept using the SDK
+ */
+@property (nonatomic, readonly) PPHAvailablePaymentTypes availablePaymentTypes;
 /*!
  * Any extra info provided by the OAuth process
  */
