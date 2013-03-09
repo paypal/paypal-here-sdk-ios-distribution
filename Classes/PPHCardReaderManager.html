@@ -44,6 +44,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/activateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- activateReader:</option>
+	
 	<option value="//api/name/availableDevices">&nbsp;&nbsp;&nbsp;&nbsp;- availableDevices</option>
 	
 	<option value="//api/name/beginMonitoring">&nbsp;&nbsp;&nbsp;&nbsp;- beginMonitoring</option>
@@ -56,11 +58,11 @@
 	
 	<option value="//api/name/continueTransaction:">&nbsp;&nbsp;&nbsp;&nbsp;- continueTransaction:</option>
 	
+	<option value="//api/name/deactivateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- deactivateReader:</option>
+	
 	<option value="//api/name/endMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- endMonitoring:</option>
 	
 	<option value="//api/name/endTransaction">&nbsp;&nbsp;&nbsp;&nbsp;- endTransaction</option>
-	
-	<option value="//api/name/queryEMVChipWithInvoice:">&nbsp;&nbsp;&nbsp;&nbsp;- queryEMVChipWithInvoice:</option>
 	
 	<option value="//api/name/selectApplication:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- selectApplication:atIndex:</option>
 	
@@ -94,6 +96,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activateReader:">activateReader:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableDevices">availableDevices</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginMonitoring">beginMonitoring</a></span></li>
@@ -106,11 +110,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/continueTransaction:">continueTransaction:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deactivateReader:">deactivateReader:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endMonitoring:">endMonitoring:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endTransaction">endTransaction</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queryEMVChipWithInvoice:">queryEMVChipWithInvoice:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectApplication:atIndex:">selectApplication:atIndex:</a></span></li>
 	
@@ -193,19 +197,27 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/beginTransaction:">&ndash;&nbsp;beginTransaction:</a></code>
-		<span class="tooltip"><p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
-readers, the invoice isn&rsquo;t used, but if you want to support those readers,
-you must pass this information.</p></span>
+		<code><a href="#//api/name/activateReader:">&ndash;&nbsp;activateReader:</a></code>
+		<span class="tooltip"><p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
+in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/queryEMVChipWithInvoice:">&ndash;&nbsp;queryEMVChipWithInvoice:</a></code>
-		<span class="tooltip"><p>Kick off the actual EMV transaction for chip cards which will cause the terminal to start reporting
-it&rsquo;s required next steps such as requiring a signature or PIN entry.
-No effect on non-EMV transactions.</p></span>
+		<code><a href="#//api/name/deactivateReader:">&ndash;&nbsp;deactivateReader:</a></code>
+		<span class="tooltip"><p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
+or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
+disconnect the reader.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginTransaction:">&ndash;&nbsp;beginTransaction:</a></code>
+		<span class="tooltip"><p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
+readers this isn&rsquo;t necessary, but if you want to support those readers,
+you must call this method when you know the final amount that will be charged.</p></span>
 	</span>
 	
 	
@@ -281,6 +293,59 @@ for the target reader. The error will be nil if it worked, else will tell you wh
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/activateReader:" title="activateReader:"></a>
+	<h3 class="subsubtitle method-title">activateReader:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
+in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)<em>readerOrNil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>readerOrNil</em></dt>
+			<dd><p>The reader to activate or nil for the default/only reader.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
+in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/availableDevices" title="availableDevices"></a>
@@ -437,8 +502,8 @@ just call <a href="#//api/name/beginMonitoring">beginMonitoring</a> once and be 
 	
 	<div class="method-subsection brief-description">
 		<p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
-readers, the invoice isn&rsquo;t used, but if you want to support those readers,
-you must pass this information.</p>
+readers this isn&rsquo;t necessary, but if you want to support those readers,
+you must call this method when you know the final amount that will be charged.</p>
 	</div>		
 	
     
@@ -466,8 +531,8 @@ you must pass this information.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
-readers, the invoice isn&rsquo;t used, but if you want to support those readers,
-you must pass this information.</p>
+readers this isn&rsquo;t necessary, but if you want to support those readers,
+you must call this method when you know the final amount that will be charged.</p>
 	</div>
 	
 	
@@ -600,6 +665,61 @@ finalizeChipAndPinTransaction.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/deactivateReader:" title="deactivateReader:"></a>
+	<h3 class="subsubtitle method-title">deactivateReader:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
+or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
+disconnect the reader.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)deactivateReader:(PPHCardReaderBasicInformation *)<em>readerOrNil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>readerOrNil</em></dt>
+			<dd><p>The reader to deactivate or nil for the default/only reader.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
+or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
+disconnect the reader.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/endMonitoring:" title="endMonitoring:"></a>
 	<h3 class="subsubtitle method-title">endMonitoring:</h3>
 	
@@ -681,61 +801,6 @@ automatically take care of this when your app is suspended or interrupted.</p>
 such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
 some readers are battery powered, you should call this as soon as reasonable. The SDK will
 automatically take care of this when your app is suspended or interrupted.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queryEMVChipWithInvoice:" title="queryEMVChipWithInvoice:"></a>
-	<h3 class="subsubtitle method-title">queryEMVChipWithInvoice:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Kick off the actual EMV transaction for chip cards which will cause the terminal to start reporting
-it&rsquo;s required next steps such as requiring a signature or PIN entry.
-No effect on non-EMV transactions.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BOOL)queryEMVChipWithInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>transaction</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>transaction</em></dt>
-			<dd><p>the invoice containing the updated amount and currency information that will be charged</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Kick off the actual EMV transaction for chip cards which will cause the terminal to start reporting
-it&rsquo;s required next steps such as requiring a signature or PIN entry.
-No effect on non-EMV transactions.</p>
 	</div>
 	
 	
@@ -886,7 +951,7 @@ but to each their own.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-03-05)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-03-08)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
