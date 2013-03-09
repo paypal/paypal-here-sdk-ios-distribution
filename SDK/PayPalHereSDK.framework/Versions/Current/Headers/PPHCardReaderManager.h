@@ -59,17 +59,17 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
 /*!
  * Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
  * in other cases this will connect to the bluetooth or feature port accessory or do similar activities.
- * @param reader The reader to activate.
+ * @param readerOrNil The reader to activate or nil for the default/only reader.
  */
--(PPHReaderError)activateReader: (PPHCardReaderBasicInformation*) reader;
+-(PPHReaderError)activateReader: (PPHCardReaderBasicInformation*) readerOrNil;
 
 /*!
  * Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
  * or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
  * disconnect the reader.
- * @param reader The reader to deactivate.
+ * @param readerOrNil The reader to deactivate or nil for the default/only reader.
  */
--(void)deactivateReader: (PPHCardReaderBasicInformation*) reader;
+-(void)deactivateReader: (PPHCardReaderBasicInformation*) readerOrNil;
 
 /*!
  * Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin

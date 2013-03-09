@@ -63,8 +63,8 @@ exports.ensureToken = function (nstore, userDoc, cb) {
             if (error) {
                 cb(error,null);
             } else {
-                if (!info.access_token) {
-                    cb(info,null);
+                if (!info || !info.access_token) {
+                    cb(info||"Empty response from token service",null);
                     return;
                 }
                 console.log("New access token", info.access_token);

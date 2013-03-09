@@ -307,7 +307,7 @@ in other cases this will connect to the bluetooth or feature port accessory or d
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)<em>reader</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)<em>readerOrNil</em></code></div>
 
     
 	
@@ -315,8 +315,8 @@ in other cases this will connect to the bluetooth or feature port accessory or d
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>reader</em></dt>
-			<dd><p>The reader to activate.</p></dd>
+			<dt><em>readerOrNil</em></dt>
+			<dd><p>The reader to activate or nil for the default/only reader.</p></dd>
 		</dl>
 		
 	</div>
@@ -678,7 +678,7 @@ disconnect the reader.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deactivateReader:(PPHCardReaderBasicInformation *)<em>reader</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)deactivateReader:(PPHCardReaderBasicInformation *)<em>readerOrNil</em></code></div>
 
     
 	
@@ -686,8 +686,8 @@ disconnect the reader.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>reader</em></dt>
-			<dd><p>The reader to deactivate.</p></dd>
+			<dt><em>readerOrNil</em></dt>
+			<dd><p>The reader to deactivate or nil for the default/only reader.</p></dd>
 		</dl>
 		
 	</div>

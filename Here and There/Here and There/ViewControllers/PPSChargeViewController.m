@@ -13,6 +13,7 @@
 #import "PPSStyledView.h"
 #import "PPSSignatureViewController.h"
 #import "PPSProgressView.h"
+#import "PPSAlertView.h"
 
 @interface PPSChargeViewController () <
     UITableViewDelegate,
@@ -152,6 +153,13 @@
         }];
         [[PayPalHereSDK sharedPaymentProcessor] beginTabPayment:self.candidateTab forInvoice:self.invoice completionHandler:^(PPHPaymentResponse *response) {
             [pg dismiss:YES];
+            if (response.error != nil) {
+                [PPSAlertView showAlertViewWithTitle:@"Error" message:response.error.localizedDescription buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:nil];
+            } else {
+                [self.watcher stopPeriodicUpdates];
+                self.watcher = nil;
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
         }];
     }
 }

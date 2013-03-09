@@ -64,11 +64,11 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
 			
-			<Declaration>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)reader</Declaration>
+			<Declaration>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)readerOrNil</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">The reader to activate.</Abstract>
+					<Name>readerOrNil</Name>
+					<Abstract type="html">The reader to activate or nil for the default/only reader.</Abstract>
 				</Parameter>
 			</Parameters>
 			
@@ -83,11 +83,11 @@ or stop feeding power via the audio jack. In the case of bluetooth or feature po
 disconnect the reader.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
 			
-			<Declaration>- (void)deactivateReader:(PPHCardReaderBasicInformation *)reader</Declaration>
+			<Declaration>- (void)deactivateReader:(PPHCardReaderBasicInformation *)readerOrNil</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">The reader to deactivate.</Abstract>
+					<Name>readerOrNil</Name>
+					<Abstract type="html">The reader to deactivate or nil for the default/only reader.</Abstract>
 				</Parameter>
 			</Parameters>
 			

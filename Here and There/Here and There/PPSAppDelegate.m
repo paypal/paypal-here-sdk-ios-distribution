@@ -26,7 +26,7 @@
 {
 #ifdef DEBUG
     // If you're in staging... use this.
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph03.qa.paypal.com/webapps/"]];
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph03.stage.paypal.com/webapps/"]];
 #endif
     [self setupNimbusCss];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
