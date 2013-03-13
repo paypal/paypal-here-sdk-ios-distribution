@@ -29,6 +29,9 @@ typedef NS_ENUM(NSInteger, PPHAnalyticsEventName) {
     
     ePPHAnalyticsEvent_AudioSwiperError,
     ePPHAnalyticsEvent_AudioSwipeSuccessful,
+    
+    ePPHAnalyticsEvent_DockPortSwiperError,
+    ePPHAnalyticsEvent_DockPortSwipeSuccessful
 };
 
 /*!

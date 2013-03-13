@@ -34,6 +34,14 @@
 
 -(void)viewDidLoad
 {
+    // If you are using a custom accessory swiper that we support (such as a Magtek custom branded one),
+    // set it up before calling beginMonitoring like so:
+    PPHCardReaderBasicInformation *basic = [[PPHCardReaderBasicInformation alloc] init];
+    basic.readerType = ePPHReaderTypeDockPort;
+    basic.protocolName = @"com.youare.socool";
+    [[PayPalHereSDK sharedCardReaderManager] setPreferenceOrder:@[basic,[PPHCardReaderBasicInformation anyReader]]];
+    // ALSO DO NOT FORGET - add this same protocol string to your plist supported accessories
+    
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     [super viewDidLoad];
   

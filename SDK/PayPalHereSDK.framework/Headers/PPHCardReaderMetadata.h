@@ -28,6 +28,12 @@
 @property (nonatomic,strong) NSString *friendlyName;
 
 /*!
+ * In the case of accessory readers (bluetooth, dock port), this is the protocol used
+ * by the device
+ */
+@property (nonatomic,strong) NSString *protocolName;
+
+/*!
  * When specifying a preference order for readers, use the anyReader value at the
  * end of the list to allow a reader outside of the preference set to be chosen.
  */

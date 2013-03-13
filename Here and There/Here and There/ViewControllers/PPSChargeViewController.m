@@ -176,7 +176,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.watcher updatePeriodically:2 withMaximumInterval:8];
+    // Comment this out if you want to reduce log messages to help debug something in particular
+    //[self.watcher updatePeriodically:2 withMaximumInterval:8];
 }
 
 -(void)viewDidDisappear:(BOOL)animated

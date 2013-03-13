@@ -110,7 +110,10 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
  * be connected to the phone at the same time. In this case, specifying a preference
  * order can be useful to manage multiple devices with multiple phones. Generally, 
  * you're probably better off using the inherent iOS pairing screens to manage this,
- * but to each their own.
+ * but to each their own. In addition, if you have custom bluetooth or dock port readers
+ * that we support, you can pass the custom protocol string in this list and we'll look for
+ * that. IMPORTANT: You still need to add the protocol to your application's plist
+ * (under supported accessories) in order for this to work.
  *
  * @param arrayOfCardReaderBasicInfo The array argument should be a set of card reader 
  * information with as much information as relevant
