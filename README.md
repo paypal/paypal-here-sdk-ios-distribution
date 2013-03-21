@@ -208,7 +208,7 @@ To checkin consumers to merchants, use the checkin.js script in the scripts dire
 
 ```
 npm install
-node checking.js --help
+node checkin.js --help
 node checkin.js -m selleraccount@paypal.com -c buyeraccount@paypal.com -i tombrady.png
 ```
 
