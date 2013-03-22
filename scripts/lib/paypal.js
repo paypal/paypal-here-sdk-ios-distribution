@@ -8,7 +8,9 @@ var curl_request = {};
 
 // This is nasty but you, the reader, shouldn't care. This is to simulate consumer login.
 // In case you do care, we do two things here: register the device and then call login with user/pass
-exports.login = function (APPID, deviceId, pp_host, pp_port, id, pass, callback) {
+exports.login = function (APPID, deviceId, pp_host, pp_port, id, pass, callback, retryCount) {
+
+    retryCount = retryCount || 0;
 
 	function callAuth(deviceToken,appNonce,devNonce) {
 
@@ -74,7 +76,12 @@ exports.login = function (APPID, deviceId, pp_host, pp_port, id, pass, callback)
 		},
 		function (e, r, b) {
 			if (e) {
-			    callback(e, null);
+                // Try again, sometimes it's flaky
+                if (retryCount < 2) {
+                    exports.login(APPID, deviceId, pp_host, pp_port, id, pass, callback, retryCount+1);
+                } else {
+			        callback(e, null);
+                }
 			    return;
 			}
 			var parser = new xml2js.Parser();
