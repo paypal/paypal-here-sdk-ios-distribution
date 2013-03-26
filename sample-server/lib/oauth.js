@@ -115,8 +115,7 @@ exports.buildAppURL = function (nstore, userDoc, info, cb) {
     // every device to go through the OAuth setup, then use the below. By doing both here, we
     // are letting the mobile device decide which approach to take.
     //
-    // Encrypt the access and refresh tokens using the guid, which only the client
-    // should have.
+    // Encrypt the access and refresh tokens using the guid, to avoid someone intercepting them on the mobile device
     ppCrypto.encryptToken(info.access_token, userDoc.client_key, function (err1, access_token) {
         ppCrypto.encryptToken(info.refresh_token, userDoc.server_secret, function (err2, refresh_token) {
             if (err1 || err2) {
