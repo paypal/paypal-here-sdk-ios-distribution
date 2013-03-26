@@ -1,3 +1,4 @@
+#!/usr/local/bin/node
 var fs = require('fs'),
     program = require('commander'),
     nstore = require('nstore'),

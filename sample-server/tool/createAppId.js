@@ -1,3 +1,4 @@
+#!/usr/local/bin/node
 var needle = require('needle');
 var program = require('commander');
 
@@ -15,7 +16,7 @@ if (!program.returnUrl || !program.name || !program.client) {
 needle.post("https://www.stage2pph03.qa.paypal.com/webapps/auth/protocol/openidconnect/v1/clientregistrationservice",
     {
         required_permissions: "firstname lastname fullname street city state country emailID dateofbirth https://uri.paypal.com/services/paypalhere payerID emailVerified phoneNumber language accountType accountCreationDate businessname",
-        supported_protocols: "openid_connect",
+        supported_protocols: "openid_connect oauth",
         type: "client_associate",
         client_id: program.client,
         client_secret: "A8VERY8SECRET8VALUE0",
@@ -29,7 +30,11 @@ needle.post("https://www.stage2pph03.qa.paypal.com/webapps/auth/protocol/openidc
         display_new_ui: "true",
         security_namespace: "SSO",
         group_id: "test_group_id",
-        merchant_tier: "merchant_tier_0"
+        merchant_tier: "merchant_tier_0",
+        preferred_rp: "false",
+        share_account_number: "false",
+        allow_unconfirmed_email: "false",
+        allow_webscr_session: "false"
     }, {
         rejectUnauthorized: false
     }, function (err, response, body) {

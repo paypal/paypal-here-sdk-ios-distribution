@@ -1,3 +1,4 @@
+#!/usr/local/bin/node
 /**
  * Should you have the painful task of doing encryption between node and objective-c
  * or any other language pair, this may be helpful for verifying your result. It's a
