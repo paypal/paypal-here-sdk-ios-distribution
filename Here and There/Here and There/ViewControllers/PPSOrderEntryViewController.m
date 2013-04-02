@@ -86,6 +86,10 @@
         self.gotValidLocation = YES;
         // Make sure location is setup for checkin
         [[PayPalHereSDK sharedLocalManager] beginGetLocations:^(PPHError *error, NSArray *locations) {
+            if (error) {
+                // Error handling would be nice.
+                return;
+            }
             if (locations == nil || [locations count] == 0) {
                 // Make a location
                 PPHLocation *loc = [[PPHLocation alloc] init];
@@ -95,8 +99,11 @@
                 loc.isMobile = YES;
                 loc.isAvailable = YES;
                 [loc save:^(PPHError *error) {
-                    self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:loc.locationId withDelegate:self];
-                    [self.watcher updatePeriodically:2 withMaximumInterval:20];
+                    // Error handling would be a good thing.
+                    if (error == nil) {
+                        self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:loc.locationId withDelegate:self];
+                        [self.watcher updatePeriodically:2 withMaximumInterval:20];
+                    }
                 }];
             } else {
                 // Here, you may have multiple locations, so you'd need to employ some logic to pick the one you want.
@@ -180,6 +187,7 @@
                   quantity:[NSDecimalNumber one]
                  unitPrice:[PPHAmount amountWithString:self.amount.text inCurrency:currency].amount
                    taxRate:nil taxRateName:nil];
+
     // TODO support cancellation
     __block PPSProgressView *progress = [PPSProgressView progressViewWithTitle:@"Saving Order" andMessage:nil withCancelHandler:nil];
     [invoice save:^(PPHError *error) {

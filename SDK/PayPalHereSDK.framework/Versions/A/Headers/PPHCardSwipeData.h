@@ -12,6 +12,17 @@
 @interface PPHCardSwipeData : NSObject
 
 /*!
+ * Initialize card swipe data from a non-PayPalHere compatible card reader.
+ * @param track1 The data from track1, if any
+ * @param track2 The data from track2, if any
+ * @param serial The serial number of the reader
+ * @param readerType the type of reader, such as MAGTEK, ROAM or MIURA_(SWIPE|FB_SWIPE)
+ * @param extraInfo Any extra information necessary to interpret and process the track data, such as
+ * ksn (key serial number)
+ */
+-(id)initWithTrack1: (NSString*) track1 track2: (NSString*) track2 readerSerial: (NSString*) serial withType: (NSString*) readerType andExtraInfo: (NSDictionary*) extraInfo;
+
+/*!
  * The masked card number, if available. Usually includes first four and last four
  */
 @property (nonatomic,strong) NSString *maskedCardNumber;

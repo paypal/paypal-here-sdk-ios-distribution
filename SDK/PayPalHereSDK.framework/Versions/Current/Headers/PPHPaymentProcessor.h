@@ -84,6 +84,14 @@
  */
 @interface PPHPaymentProcessor : NSObject
 
+/*!
+ * Issue a refund against a previously successful PayPal transaction.
+ * @param transactionId The transaction identifier for the original payment transaction
+ * @param amountOrNil Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
+ * @param completionHandler called when the action has completed
+ */
+-(void)beginRefund: (NSString*) transactionId forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
+
 #pragma mark - Local/Tab payment
 /*!
  * Capture funds against an open tab from PPHLocalManager and PPHLocationWatcher

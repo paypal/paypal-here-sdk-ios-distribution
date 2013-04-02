@@ -39,7 +39,9 @@
 {
     if ((self = [super init])) {
         self.invoice = invoice;
-        self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:watcher.locationId withDelegate:self];
+        if (watcher) {
+            self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:watcher.locationId withDelegate:self];
+        }
         self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
         [self.navigationController setNavigationBarHidden:NO];
         [[PayPalHereSDK sharedCardReaderManager] activateReader:nil];

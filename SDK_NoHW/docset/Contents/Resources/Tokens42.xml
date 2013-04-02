@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHNetworkRequestDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHNetworkRequestDelegate</TokenIdentifier>
+			<Abstract type="html">A protocol for objects wishing to manage network requests for the PayPal Here SDK</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			
+			<NodeRef refid="42"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/addRequest:withID:withHandler:</TokenIdentifier>
+			<Abstract type="html">Add a request to be sent over the network.</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)addRequest:(NSURLRequest *)inRequest withID:(NSString *)identifier withHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error , NSData *data ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inRequest</Name>
+					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+				</Parameter><Parameter>
+					<Name>identifier</Name>
+					<Abstract type="html">an identifier which is used to cancel a request or group of requests sharing the same identifier</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">called when the request completes with success or failure</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addRequest:withID:withHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/cancelOperationsForID:</TokenIdentifier>
+			<Abstract type="html">Cancel all active operations with the given identifier</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)cancelOperationsForID:(NSString *)identifier</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>identifier</Name>
+					<Abstract type="html">the value passed to addRequest</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/cancelOperationsForID:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+	</File>
+</Tokens>
