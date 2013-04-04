@@ -10,6 +10,7 @@ program.
 	option('-cp, --consumerPass [consumer_pass]', 'Set consumer account password', '11111111').
 	option('-m, --merchant [merchant_email]', 'Set merchant account', 'sp-us-b2@paypal.com').
 	option('-mp, --merchantPass [merchant_pass]', 'Set merchant account password', '11111111').
+    option('-l, --location [location_id]', 'Set merchant location id.').
 	option('-h, --host [host]', 'Set stage hostname [stage2pph03]', 'stage2pph03').
 	option('-g, --gmapi [port]', 'Set GMAPI port [10521]', '10521').
 	option('-i, --image [url]', 'Set customer profile image. (optional)').
@@ -54,13 +55,13 @@ function rq(token, url, body, cb) {
 	});
 }
 
-function runCheckin(consumerToken, payerId)
+function runCheckin(consumerToken, payerId, locationId)
 {
-	rq(consumerToken, macqUrl + "CustomerCheckin",{location:{latitude:"37.377336", longitude:"-121.922761"},merchantId:payerId}, function (cb) {
+	rq(consumerToken, macqUrl + "CustomerCheckin",{location:{latitude:"37.377336", longitude:"-121.922761"},merchantId:payerId, locationId: locationId}, function (cb) {
 		console.log("Checkin Id:", cb.checkinId||JSON.stringify(cb));
 		program.confirm("Checkin Again (Y/N)? Press enter/return twice after answering...", function (ok) {
 			if (ok) {
-				runCheckin(consumerToken, payerId);
+				runCheckin(consumerToken, payerId, locationId);
 			} else {
 				process.exit(0);
 			}
@@ -116,11 +117,11 @@ async.parallel([
 
 					rq(consumerToken, macqUrl + "CustomerSetProfileImage", { profileImage: ir.imageId }, function (ir) {
 						console.log(ir);
-						runCheckin(consumerToken, rz.userDetails.payerId);
+						runCheckin(consumerToken, rz.userDetails.payerId, program.locationId);
 					});
 				});
 			} else {
-				runCheckin(consumerToken, rz.userDetails.payerId);
+				runCheckin(consumerToken, rz.userDetails.payerId, program.locationId);
 			}
 
 		});
