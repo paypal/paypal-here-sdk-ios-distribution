@@ -75,9 +75,9 @@ exports.login = function (APPID, deviceId, pp_host, pp_port, id, pass, callback,
             }
 		},
 		function (e, r, b) {
-			if (e) {
+			if (e || b.indexOf("<message>Internal Error</message></error>") > 0) {
                 // Try again, sometimes it's flaky
-                if (retryCount < 2) {
+                if (retryCount < 3) {
                     exports.login(APPID, deviceId, pp_host, pp_port, id, pass, callback, retryCount+1);
                 } else {
 			        callback(e, null);
