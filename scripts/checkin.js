@@ -117,11 +117,11 @@ async.parallel([
 
 					rq(consumerToken, macqUrl + "CustomerSetProfileImage", { profileImage: ir.imageId }, function (ir) {
 						console.log(ir);
-						runCheckin(consumerToken, rz.userDetails.payerId, program.locationId);
+						runCheckin(consumerToken, rz.userDetails.payerId, program.location);
 					});
 				});
 			} else {
-				runCheckin(consumerToken, rz.userDetails.payerId, program.locationId);
+				runCheckin(consumerToken, rz.userDetails.payerId, program.location);
 			}
 
 		});
