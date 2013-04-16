@@ -43,7 +43,8 @@
 /*!
  * The tax rate for this item. Note that at the moment tax rules are not flexible on
  * the PayPal backend so our rounding and computation rules are also not flexibile.
- * One alternative is to use a line item for tax.
+ * One alternative is to use a line item for tax. As an example, a 6% tax rate should
+ * be .06 for this property.
  */
 @property (strong,nonatomic,readonly) NSDecimalNumber* taxRate;
 /*!
