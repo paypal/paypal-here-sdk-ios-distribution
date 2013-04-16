@@ -32,6 +32,11 @@
 
 @implementation PPSOrderEntryViewController
 
+-(void)dealloc
+{
+    [self.tracker stopUpdatingLocation];
+}
+
 -(void)viewDidLoad
 {
     // If you are using a custom accessory swiper that we support (such as a Magtek custom branded one),
@@ -67,6 +72,12 @@
     [self.tracker startUpdatingLocation];
     
     self.badge.hidden = YES;
+}
+
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    [self.tracker stopUpdatingLocation];
 }
 
 -(void)viewDidAppear:(BOOL)animated
