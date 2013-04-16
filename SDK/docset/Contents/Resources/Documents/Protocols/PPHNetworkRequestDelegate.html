@@ -48,6 +48,8 @@
 	
 	<option value="//api/name/cancelOperationsForID:">&nbsp;&nbsp;&nbsp;&nbsp;- cancelOperationsForID:</option>
 	
+	<option value="//api/name/modifyRequest:">&nbsp;&nbsp;&nbsp;&nbsp;- modifyRequest:</option>
+	
 	
 	
 </select>
@@ -79,6 +81,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addRequest:withID:withHandler:">addRequest:withID:withHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelOperationsForID:">cancelOperationsForID:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/modifyRequest:">modifyRequest:</a></span></li>
 	
 </ul></li>
 
@@ -139,14 +143,21 @@
 		<span class="tooltip"><p>Add a request to be sent over the network.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancelOperationsForID:">&ndash;&nbsp;cancelOperationsForID:</a></code>
 		<span class="tooltip"><p>Cancel all active operations with the given identifier</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/modifyRequest:">&ndash;&nbsp;modifyRequest:</a></code>
+		<span class="tooltip"><p>If you just need to modify a request but not &ldquo;handle&rdquo; it, you can implement this selector.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -263,6 +274,57 @@ in order for things like software update progress to be reported properly. Use t
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Cancel all active operations with the given identifier</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHNetworkRequestDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/modifyRequest:" title="modifyRequest:"></a>
+	<h3 class="subsubtitle method-title">modifyRequest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If you just need to modify a request but not &ldquo;handle&rdquo; it, you can implement this selector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)modifyRequest:(NSMutableURLRequest *)<em>inRequest</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inRequest</em></dt>
+			<dd><p>the request, with headers and body and URL and such &ndash; ready to go</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If you just need to modify a request but not &ldquo;handle&rdquo; it, you can implement this selector.</p>
 	</div>
 	
 	

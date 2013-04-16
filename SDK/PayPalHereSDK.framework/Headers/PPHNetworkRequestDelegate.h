@@ -9,6 +9,7 @@
  */
 @protocol PPHNetworkRequestDelegate <NSObject>
 
+@optional
 /*!
  * Add a request to be sent over the network.
  *
@@ -25,5 +26,11 @@
  * @param identifier the value passed to addRequest
  */
 -(void)cancelOperationsForID:(NSString*)identifier;
+
+/*!
+ * If you just need to modify a request but not "handle" it, you can implement this selector.
+ * @param inRequest the request, with headers and body and URL and such - ready to go
+ */
+-(void)modifyRequest:(NSMutableURLRequest*) inRequest;
 
 @end

@@ -51,5 +51,22 @@
             <NodeRef refid="42"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/modifyRequest:</TokenIdentifier>
+			<Abstract type="html">If you just need to modify a request but not &quot;handle&quot; it, you can implement this selector.</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)modifyRequest:(NSMutableURLRequest *)inRequest</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inRequest</Name>
+					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/modifyRequest:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
 	</File>
 </Tokens>
