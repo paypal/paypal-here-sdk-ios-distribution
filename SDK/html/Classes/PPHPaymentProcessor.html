@@ -54,9 +54,9 @@
 	
 	<option value="//api/name/beginTabPayment:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginTabPayment:forInvoice:completionHandler:</option>
 	
-	<option value="//api/name/checkRefundEligibilityForChip:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- checkRefundEligibilityForChip:andInvoice:completionHandler:</option>
+	<option value="//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</option>
 	
-	<option value="//api/name/checkRefundEligibilityForSwipe:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- checkRefundEligibilityForSwipe:andInvoice:completionHandler:</option>
+	<option value="//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</option>
 	
 	<option value="//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizeChipAndPin:withAuth:forInvoice:completionHandler:</option>
 	
@@ -102,9 +102,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginTabPayment:forInvoice:completionHandler:">beginTabPayment:forInvoice:completionHandler:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForChip:andInvoice:completionHandler:">checkRefundEligibilityForChip:andInvoice:completionHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:">checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForSwipe:andInvoice:completionHandler:">checkRefundEligibilityForSwipe:andInvoice:completionHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">finalizeChipAndPin:withAuth:forInvoice:completionHandler:</a></span></li>
 	
@@ -224,14 +224,14 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/checkRefundEligibilityForSwipe:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForSwipe:andInvoice:completionHandler:</a></code>
+		<code><a href="#//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</a></code>
 		<span class="tooltip"><p>Check if the given swipe data is for the same card that the invoice was paid with</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/checkRefundEligibilityForChip:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForChip:andInvoice:completionHandler:</a></code>
+		<code><a href="#//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</a></code>
 		<span class="tooltip"><p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p></span>
 	</span>
 	
@@ -568,69 +568,8 @@ attempting to collect payment.</p></dd>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/checkRefundEligibilityForChip:andInvoice:completionHandler:" title="checkRefundEligibilityForChip:andInvoice:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">checkRefundEligibilityForChip:andInvoice:completionHandler:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForChip:(PPHChipAndPinAuthEvent *)<em>auth</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>auth</em></dt>
-			<dd><p>the chip+pin card data to be checked</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>invoice</em></dt>
-			<dd><p>the invoice against which to check the card</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>called when the action has completed</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/checkRefundEligibilityForSwipe:andInvoice:completionHandler:" title="checkRefundEligibilityForSwipe:andInvoice:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">checkRefundEligibilityForSwipe:andInvoice:completionHandler:</h3>
+	<a name="//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:" title="checkRefundEligibilityForCardPresent:andInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</h3>
 	
 	
 	
@@ -640,7 +579,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForSwipe:(PPHCardSwipeData *)<em>card</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)<em>card</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
 
     
 	
@@ -673,6 +612,67 @@ attempting to collect payment.</p></dd>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Check if the given swipe data is for the same card that the invoice was paid with</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:" title="checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent *)<em>auth</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>auth</em></dt>
+			<dd><p>the chip+pin card data to be checked</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice against which to check the card</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p>
 	</div>
 	
 	
@@ -902,7 +902,7 @@ attempting to collect payment.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-04-17)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-04-18)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

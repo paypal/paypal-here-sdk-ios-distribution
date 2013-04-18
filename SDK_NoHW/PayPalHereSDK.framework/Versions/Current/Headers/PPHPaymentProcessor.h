@@ -167,7 +167,7 @@
  * @param invoice the invoice against which to check the card
  * @param completionHandler called when the action has completed
  */
--(void)checkRefundEligibilityForSwipe:(PPHCardSwipeData*)card andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
+-(void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData*)card andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
 
 /*!
@@ -176,7 +176,7 @@
  * @param invoice the invoice against which to check the card
  * @param completionHandler called when the action has completed
  */
--(void)checkRefundEligibilityForChip:(PPHChipAndPinAuthEvent*)auth andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
+-(void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent*)auth andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
 
 @end

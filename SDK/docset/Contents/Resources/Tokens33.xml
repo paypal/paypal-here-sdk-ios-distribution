@@ -215,11 +215,11 @@ attempting to collect payment.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/checkRefundEligibilityForSwipe:andInvoice:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Check if the given swipe data is for the same card that the invoice was paid with</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>			
 			
-			<Declaration>- (void)checkRefundEligibilityForSwipe:(PPHCardSwipeData *)card andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Declaration>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)card andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -233,16 +233,16 @@ attempting to collect payment.</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/checkRefundEligibilityForSwipe:andInvoice:completionHandler:</Anchor>
+			<Anchor>//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/checkRefundEligibilityForChip:andInvoice:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Check if the given chip+pin card data is for the same card that the invoice was paid with</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>			
 			
-			<Declaration>- (void)checkRefundEligibilityForChip:(PPHChipAndPinAuthEvent *)auth andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Declaration>- (void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent *)auth andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>auth</Name>
@@ -256,7 +256,7 @@ attempting to collect payment.</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/checkRefundEligibilityForChip:andInvoice:completionHandler:</Anchor>
+			<Anchor>//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
