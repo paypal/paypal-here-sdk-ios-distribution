@@ -75,8 +75,15 @@
  * @param reader the reader that has an available upgrade
  * @param message the reason or explanation for the upgrade
  * @param required whether the reader can proceed without an upgrade
+ * @param initial whether this is the initial upgrade to the reader
  */
--(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required;
+-(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial;
+
+/*!
+ * The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
+ * to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.
+ */
+-(void)didFinishUpgradePreparations;
 
 /*!
  * A reader upgrade was successful

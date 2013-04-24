@@ -51,7 +51,7 @@ typedef enum {
 /*!
  * Total of discounts on the order
  */
-@property (nonatomic,strong,readonly) NSDecimalNumber *discountsTotal;
+//@property (nonatomic,strong,readonly) NSDecimalNumber *discountsTotal;
 /*!
  * Tip added to the order
  */
