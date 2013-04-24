@@ -122,8 +122,12 @@
  */
 -(PPHAmount*) addAmount: (PPHAmount*) operand;
 /*!
- * Divid a PPHAmount by a PPHAmount
+ * Divide a PPHAmount by a PPHAmount
  * @param divisor the amount to divide by
  */
 -(PPHAmount*) divideByAmount: (PPHAmount*) divisor;
+/*!
+ * Return a rounded amount
+ */
+-(PPHAmount*) roundedAmount;
 @end

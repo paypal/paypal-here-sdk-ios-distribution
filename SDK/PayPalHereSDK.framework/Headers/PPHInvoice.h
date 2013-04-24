@@ -85,9 +85,9 @@
 #pragma mark
 #pragma mark Monitored Fields Any changes cause the invoice to be out of sync with the server
 /*! Discount applied to the subtotal (amount applied first, then percentage) */
-@property (strong,nonatomic) NSDecimalNumber *discountAmount;
+//@property (strong,nonatomic) NSDecimalNumber *discountAmount;
 /*! Discount percentage applied to the subtotal (amount applied first, then percentage) */
-@property (strong,nonatomic) NSDecimalNumber *discountPercentage;
+//@property (strong,nonatomic) NSDecimalNumber *discountPercentage;
 /*! The amount the payer decided to tip (or the default tip) */
 @property (strong,nonatomic) NSDecimalNumber *gratuity;
 /*! e.g. DueOnReceipt,Net30 */
@@ -167,9 +167,9 @@
 /*! Convenience method for accessing PPHInvoiceTotals data */
 @property (nonatomic,readonly) NSDecimalNumber *tax;
 /*! Convenience method for accessing PPHInvoiceTotals data */
-@property (nonatomic,readonly) NSDecimalNumber *subTotalWithDiscounts;
+//@property (nonatomic,readonly) NSDecimalNumber *subTotalWithDiscounts;
 /*! Convenience method for accessing PPHInvoiceTotals data */
-@property (nonatomic,readonly) NSDecimalNumber *totalDiscount;
+//@property (nonatomic,readonly) NSDecimalNumber *totalDiscount;
 /*! Convenience method for accessing PPHInvoiceTotals data */
 @property (nonatomic,readonly) NSDecimalNumber *refundTotal;
 /*! Convenience method for accessing PPHInvoiceTotals data */
@@ -201,7 +201,7 @@
 #pragma mark -
 #pragma mark Invoice Manipulation
 /*! Is the discount to be subtracted before tax? */
-@property (nonatomic) BOOL subtractDiscountPreTax;
+//@property (nonatomic) BOOL subtractDiscountPreTax;
 
 /*! A note that can be used when marking as paid if no other is specified. */
 @property (strong,nonatomic) NSString *note;

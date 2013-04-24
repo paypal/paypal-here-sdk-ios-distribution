@@ -12,12 +12,12 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:isInitial:</TokenIdentifier>
 			<Abstract type="html">Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
 NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required</Declaration>
+			<Declaration>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required isInitial:(BOOL)initial</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
@@ -28,10 +28,26 @@ NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
 				</Parameter><Parameter>
 					<Name>required</Name>
 					<Abstract type="html">whether the reader can proceed without an upgrade</Abstract>
+				</Parameter><Parameter>
+					<Name>initial</Name>
+					<Abstract type="html">whether this is the initial upgrade to the reader</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:</Anchor>
+			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didFinishUpgradePreparations</TokenIdentifier>
+			<Abstract type="html">The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
+to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)didFinishUpgradePreparations</Declaration>
+			
+			
+			<Anchor>//api/name/didFinishUpgradePreparations</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		

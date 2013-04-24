@@ -44,7 +44,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/didDetectUpgradeableReader:withMessage:isRequired:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectUpgradeableReader:withMessage:isRequired:</option>
+	<option value="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectUpgradeableReader:withMessage:isRequired:isInitial:</option>
+	
+	<option value="//api/name/didFinishUpgradePreparations">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishUpgradePreparations</option>
 	
 	<option value="//api/name/didReceiveChipAndPinEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveChipAndPinEvent:</option>
 	
@@ -80,7 +82,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:">didDetectUpgradeableReader:withMessage:isRequired:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:">didDetectUpgradeableReader:withMessage:isRequired:isInitial:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishUpgradePreparations">didFinishUpgradePreparations</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveChipAndPinEvent:">didReceiveChipAndPinEvent:</a></span></li>
 	
@@ -143,9 +147,17 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:">&ndash;&nbsp;didDetectUpgradeableReader:withMessage:isRequired:</a></code>
+		<code><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:">&ndash;&nbsp;didDetectUpgradeableReader:withMessage:isRequired:isInitial:</a></code>
 		<span class="tooltip"><p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
 NOT receive didDetectReaderDevice until the condition is resolved.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didFinishUpgradePreparations">&ndash;&nbsp;didFinishUpgradePreparations</a></code>
+		<span class="tooltip"><p>The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
+to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</p></span>
 	</span>
 	
 	
@@ -188,8 +200,8 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didDetectUpgradeableReader:withMessage:isRequired:" title="didDetectUpgradeableReader:withMessage:isRequired:"></a>
-	<h3 class="subsubtitle method-title">didDetectUpgradeableReader:withMessage:isRequired:</h3>
+	<a name="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:" title="didDetectUpgradeableReader:withMessage:isRequired:isInitial:"></a>
+	<h3 class="subsubtitle method-title">didDetectUpgradeableReader:withMessage:isRequired:isInitial:</h3>
 	
 	
 	
@@ -200,7 +212,7 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)<em>reader</em> withMessage:(NSString *)<em>message</em> isRequired:(BOOL)<em>required</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)<em>reader</em> withMessage:(NSString *)<em>message</em> isRequired:(BOOL)<em>required</em> isInitial:(BOOL)<em>initial</em></code></div>
 
     
 	
@@ -222,6 +234,11 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 			<dd><p>whether the reader can proceed without an upgrade</p></dd>
 		</dl>
 		
+		<dl class="argument-def parameter-def">
+			<dt><em>initial</em></dt>
+			<dd><p>whether this is the initial upgrade to the reader</p></dd>
+		</dl>
+		
 	</div>
 	
 	
@@ -234,6 +251,49 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
 NOT receive didDetectReaderDevice until the condition is resolved.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didFinishUpgradePreparations" title="didFinishUpgradePreparations"></a>
+	<h3 class="subsubtitle method-title">didFinishUpgradePreparations</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
+to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didFinishUpgradePreparations</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
+to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</p>
 	</div>
 	
 	
@@ -436,7 +496,7 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-04-19)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-04-24)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
