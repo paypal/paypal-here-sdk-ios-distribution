@@ -14,13 +14,20 @@
  * Add a request to be sent over the network.
  *
  * PLEASE NOTE: You should give periodic request status updates back to the SDK if you write your own network request delegate
- * in order for things like software update progress to be reported properly. Use the 
+ * in order for things like software update progress to be reported properly. Use the PayPalHereSDK reportNetworkRequestProgress
+ * method to do so.
+ *
+ * ALSO NOTE: Although you're passed an NSMutableURLRequest, because of the way retries work if you return NO from beginRequest
+ * and have modified the request, we will not use your modifications. If you want to modify the request WE will send out, use
+ * the modifyRequest delegate.
  *
  * @param inRequest the request, with headers and body and URL and such - ready to go
  * @param identifier an identifier which is used to cancel a request or group of requests sharing the same identifier
  * @param handler called when the request completes with success or failure
+ *
+ * @return YES if you handled the request, NO if you did not and we should process it ourselves.
  */
--(void)addRequest:(NSURLRequest*)inRequest withID:(NSString*)identifier withHandler:(void (^)(NSHTTPURLResponse* response, NSError *error, NSData *data))handler;
+-(BOOL)beginRequest:(NSMutableURLRequest*)inRequest withID:(NSString*)identifier withHandler:(void (^)(NSHTTPURLResponse* response, NSError *error, NSData *data))handler;
 /*!
  * Cancel all active operations with the given identifier
  * @param identifier the value passed to addRequest
