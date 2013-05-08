@@ -45,6 +45,7 @@
         self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
         [self.navigationController setNavigationBarHidden:NO];
         [[PayPalHereSDK sharedCardReaderManager] activateReader:nil];
+        [[PayPalHereSDK sharedCardReaderManager] beginTransaction:invoice];
         
         self.tableView = [[UITableView alloc] init];
         self.actions = [[NITableViewActions alloc] initWithTarget:self];
@@ -156,7 +157,30 @@
         [[PayPalHereSDK sharedPaymentProcessor] beginTabPayment:self.candidateTab forInvoice:self.invoice completionHandler:^(PPHPaymentResponse *response) {
             [pg dismiss:YES];
             if (response.error != nil) {
-                [PPSAlertView showAlertViewWithTitle:@"Error" message:response.error.localizedDescription buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:nil];
+                NSString *msg = response.error.localizedDescription;
+                // These message are crap, just an example.
+                switch (response.error.errorCategory) {
+                    case ePPHErrorCategoryRetry:
+                        msg = [NSString stringWithFormat: @"Your transaction failed, please try again. Reference code %@.", response.error.correlationId?:@"unavailable"];
+                        break;
+                    case ePPHErrorCategoryAmbiguous:
+                    case ePPHErrorCategoryUnknown:
+                    case ePPHErrorCategoryData:
+                        msg = [NSString stringWithFormat: @"An unknown error has occurred. Reference code %@.", response.error.correlationId?:@"unavailable"];
+                        break;
+                    case ePPHErrorCategoryBuyerDeclined:
+                        msg = [NSString stringWithFormat: @"The payment has been declined. Reference code %@.", response.error.correlationId?:@"unavailable"];
+                        break;
+                    case ePPHErrorCategorySellerDeclined:
+                        msg = [NSString stringWithFormat: @"There is a problem with your merchant account. Reference code %@.", response.error.correlationId?:@"unavailable"];
+                        break;
+                    case ePPHErrorCategoryOutage:
+                        msg = [NSString stringWithFormat: @"We were unable to contact the server to complete payment. Reference code %@.", response.error.correlationId?:@"unavailable"];
+                        break;
+                    default:
+                        break;
+                }
+                [PPSAlertView showAlertViewWithTitle:@"Error" message:msg buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:nil];
             } else {
                 [self.watcher stopPeriodicUpdates];
                 self.watcher = nil;
