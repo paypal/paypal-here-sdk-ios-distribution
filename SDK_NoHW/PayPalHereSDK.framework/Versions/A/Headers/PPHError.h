@@ -7,6 +7,44 @@
 #import <Foundation/Foundation.h>
 
 /*!
+ * The error category is useful for understanding what action should be taken in response to a particular
+ * domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
+ * on paypal.com and updated periodically.
+ */
+typedef NS_ENUM(NSInteger, PPHErrorCategory) {
+    /*!
+     * No additional information is available about the error.
+     */
+    ePPHErrorCategoryUnknown,
+    /*!
+     * The error indicates a PayPal or dependent system outage of some variety.
+     */
+    ePPHErrorCategoryOutage,
+    /*!
+     * The error is likely transient and a retry may be successful.
+     */
+    ePPHErrorCategoryRetry,
+    /*!
+     * The error indicates the buyer's request to pay was declined and retry is unlikely to succeed without some
+     * external change such as the credit card company releasing a hold or PayPal funding sources changing (just as examples)
+     */
+    ePPHErrorCategoryBuyerDeclined,
+    /*!
+     * The error indicates there is a problem with the merchant account such as a restriction or account capability error.
+     */
+    ePPHErrorCategorySellerDeclined,
+    /*!
+     * The error is known to have multiple causes from the category list and we can't be sure which one caused this occurrence.
+     */
+    ePPHErrorCategoryAmbiguous,
+    /*!
+     * The error indicates there was a problem with the data submitted such as an invalid tab or card number/expiration, etc.
+     */
+    ePPHErrorCategoryData
+};
+
+
+/*!
  * A customized error class for additional PayPal information such as a correlation id
  */
 @interface PPHError : NSError
@@ -31,6 +69,13 @@
 
 /*! YES if this error is the result of the user pressing cancel (e.g. on a network request) */
 - (BOOL) isCancelError;
+
+/*!
+ * The error category is useful for understanding what action should be taken in response to a particular
+ * domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
+ * on paypal.com and updated periodically.
+ */
+- (PPHErrorCategory) errorCategory;
 
 /*! Stores the last five error objects created, for easier debugging and reporting when problems occur */
 +(NSArray*)recentErrors;

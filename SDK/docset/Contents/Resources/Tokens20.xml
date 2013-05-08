@@ -222,6 +222,20 @@ code.</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/errorCategory</TokenIdentifier>
+			<Abstract type="html">The error category is useful for understanding what action should be taken in response to a particular
+domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
+on paypal.com and updated periodically.</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>			
+			
+			<Declaration>- (PPHErrorCategory)errorCategory</Declaration>
+			
+			
+			<Anchor>//api/name/errorCategory</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHError/recentErrors</TokenIdentifier>
 			<Abstract type="html">Stores the last five error objects created, for easier debugging and reporting when problems occur</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>			

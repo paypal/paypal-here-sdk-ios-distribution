@@ -68,5 +68,31 @@
             <NodeRef refid="42"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/requestCompleted:withResponse:data:andError:</TokenIdentifier>
+			<Abstract type="html">We&apos;ll call you when a response is received. This is most useful for logging.</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)requestCompleted:(NSURLRequest *)inRequest withResponse:(NSHTTPURLResponse *)inResponse data:(NSData *)data andError:(NSError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inRequest</Name>
+					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+				</Parameter><Parameter>
+					<Name>inResponse</Name>
+					<Abstract type="html">the response received from the server</Abstract>
+				</Parameter><Parameter>
+					<Name>data</Name>
+					<Abstract type="html">the data received with the response</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">the raw error received, if any</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/requestCompleted:withResponse:data:andError:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
 	</File>
 </Tokens>

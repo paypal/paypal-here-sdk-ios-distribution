@@ -12,6 +12,10 @@
 typedef NS_OPTIONS(NSInteger, PPHReaderError) {
     ePPHReaderErrorNone = 0,
     ePPHReaderErrorAudioAccessDenied = 1,
+    /*
+     * The system does not have updated GPS location. Your application must obtain permission to monitor the user's
+     * GPS location in order to transact with PayPal Here.
+     */
     ePPHReaderErrorLocationNotAvailable = 2,
     ePPHReaderErrorConnectFailed = 3,
     /*!

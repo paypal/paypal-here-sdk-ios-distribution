@@ -16,7 +16,9 @@
 #import "PPSProgressView.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
-@interface PPSAppDelegate ()
+@interface PPSAppDelegate () <
+    PPHNetworkRequestDelegate
+>
 @property (nonatomic,strong) NIChameleonObserver *chameleonObserver;
 @end
 
@@ -26,7 +28,11 @@
 {
 #ifdef DEBUG
     // If you're in staging... use this.
+    // IMPORTANT: you may need to install the intermediate certificate on your device by visiting:
+    // https://www.digicert.com/CACerts/DigiCertHighAssuranceCA-3.crt
+    // which I've shortened to http://tiny.cc/pphstageca
     [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph03.stage.paypal.com/webapps/"]];
+    [PayPalHereSDK setNetworkDelegate:self];
 #endif
     [self setupNimbusCss];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -40,6 +46,20 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+#ifdef DEBUG
+-(BOOL)beginRequest:(NSMutableURLRequest *)inRequest withID:(NSString *)identifier withHandler:(void (^)(NSHTTPURLResponse *, NSError *, NSData *))handler
+{
+    // In debug mode, print network requests
+    NSLog(@"%@ Request to %@\n%@", inRequest.HTTPMethod, inRequest.URL, inRequest.HTTPBody ? [[NSString alloc] initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] : @"");
+    return NO;
+}
+
+-(void)requestCompleted:(NSURLRequest *)inRequest withResponse:(NSHTTPURLResponse *)inResponse data:(NSData *)data andError:(NSError *)error
+{
+    NSLog(@"%@ Response from %@\nError: %@\n%@", inRequest.HTTPMethod, inRequest.URL, error, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+}
+#endif
 
 -(void)setupNimbusCss
 {

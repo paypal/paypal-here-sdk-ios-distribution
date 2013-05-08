@@ -40,4 +40,13 @@
  */
 -(void)modifyRequest:(NSMutableURLRequest*) inRequest;
 
+/*!
+ * We'll call you when a response is received. This is most useful for logging.
+ *
+ * @param inRequest the request, with headers and body and URL and such - ready to go
+ * @param inResponse the response received from the server
+ * @param data the data received with the response
+ * @param error the raw error received, if any
+ */
+-(void)requestCompleted: (NSURLRequest*) inRequest withResponse: (NSHTTPURLResponse*) inResponse data: (NSData*) data andError: (NSError*) error;
 @end
