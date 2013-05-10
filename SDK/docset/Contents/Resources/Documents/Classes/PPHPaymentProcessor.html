@@ -58,6 +58,8 @@
 	
 	<option value="//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</option>
 	
+	<option value="//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</option>
+	
 	<option value="//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizeChipAndPin:withAuth:forInvoice:completionHandler:</option>
 	
 	<option value="//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</option>
@@ -105,6 +107,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:">checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:">checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">finalizeChipAndPin:withAuth:forInvoice:completionHandler:</a></span></li>
 	
@@ -233,6 +237,13 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	<span class="tooltip">
 		<code><a href="#//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</a></code>
 		<span class="tooltip"><p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Check if the given event contains the same EMV data as the card that the invoice was paid with</p></span>
 	</span>
 	
 	
@@ -690,6 +701,67 @@ attempting to collect payment.</p></dd>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:" title="checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if the given event contains the same EMV data as the card that the invoice was paid with</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv *)<em>event</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>event</em></dt>
+			<dd><p>the terminal decline event that contains EMV data</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice against which to check the card</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Check if the given event contains the same EMV data as the card that the invoice was paid with</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:" title="finalizeChipAndPin:withAuth:forInvoice:completionHandler:"></a>
 	<h3 class="subsubtitle method-title">finalizeChipAndPin:withAuth:forInvoice:completionHandler:</h3>
 	
@@ -902,7 +974,7 @@ attempting to collect payment.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-05-08)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-05-10)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

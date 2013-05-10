@@ -20,9 +20,9 @@
 /*!
  * This event will be triggered in cases where reader detection takes a while, such as for
  * the audio readers. It presents an opportunity to show UI indicating that you are "working on it"
- * @param readerType the type of reader that is actively being "verified"
+ * @param reader the basic information about reader that is actively being "verified"
  */
--(void)didStartReaderDetection: (PPHReaderType) readerType;
+-(void)didStartReaderDetection: (PPHCardReaderBasicInformation*) reader;
 
 /*!
  * A fully working reader was detected and is available

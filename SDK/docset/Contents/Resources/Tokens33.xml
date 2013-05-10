@@ -260,5 +260,28 @@ attempting to collect payment.</Abstract>
             <NodeRef refid="33"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Check if the given event contains the same EMV data as the card that the invoice was paid with</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>			
+			
+			<Declaration>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv *)event andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>event</Name>
+					<Abstract type="html">the terminal decline event that contains EMV data</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice against which to check the card</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
 	</File>
 </Tokens>

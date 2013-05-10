@@ -17,11 +17,11 @@
 the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didStartReaderDetection:(PPHReaderType)readerType</Declaration>
+			<Declaration>- (void)didStartReaderDetection:(PPHCardReaderBasicInformation *)reader</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>readerType</Name>
-					<Abstract type="html">the type of reader that is actively being &quot;verified&quot;</Abstract>
+					<Name>reader</Name>
+					<Abstract type="html">the basic information about reader that is actively being &quot;verified&quot;</Abstract>
 				</Parameter>
 			</Parameters>
 			

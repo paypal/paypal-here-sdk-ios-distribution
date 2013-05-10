@@ -38,6 +38,10 @@
  * The invoiceId of the invoice this payment was made against.
  */
 @property (nonatomic,strong) NSString* paypalInvoiceId;
+/*!
+ * The correlation ID of the transaction attempt.
+ */
+@property (nonatomic,strong) NSString* correlationId;
 @end
 
 /*!
@@ -178,5 +182,12 @@
  */
 -(void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent*)auth andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
+/*!
+ * Check if the given event contains the same EMV data as the card that the invoice was paid with
+ * @param event the terminal decline event that contains EMV data
+ * @param invoice the invoice against which to check the card
+ * @param completionHandler called when the action has completed
+ */
+-(void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv*)event andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
 @end

@@ -201,7 +201,7 @@
 #pragma mark -
 #pragma mark Invoice Manipulation
 /*! Is the discount to be subtracted before tax? */
-//@property (nonatomic) BOOL subtractDiscountPreTax;
+//@property (nonatomic) BOOL taxCalculatedAfterDiscount;
 
 /*! A note that can be used when marking as paid if no other is specified. */
 @property (strong,nonatomic) NSString *note;
