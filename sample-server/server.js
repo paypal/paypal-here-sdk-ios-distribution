@@ -262,22 +262,6 @@ app.get('/refresh/:user/*', function (req, res, next) {
                 console.log("Invalid refresh token presented.");
                 res.json({error:"Invalid token"}, 401);
             }
-            request.post({
-                url:config.PAYPAL_ACCESS_BASEURL + "auth/protocol/openidconnect/v1/tokenservice",
-                auth:{
-                    user:config.PAYPAL_APP_ID,
-                    pass:config.PAYPAL_SECRET,
-                    sendImmediately:true
-                },
-                form:{
-                    grant_type:"refresh_token",
-                    refresh_token:plainText
-                }
-            }, function (error, response, body) {
-                if (error) {
-                    res.json(error, 500);
-                }
-            });
         });
     });
 });

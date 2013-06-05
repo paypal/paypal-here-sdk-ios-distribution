@@ -44,8 +44,15 @@
         }
         self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
         [self.navigationController setNavigationBarHidden:NO];
-        [[PayPalHereSDK sharedCardReaderManager] activateReader:nil];
-        [[PayPalHereSDK sharedCardReaderManager] beginTransaction:invoice];
+        PPHReaderError err = [[PayPalHereSDK sharedCardReaderManager] activateReader:nil];
+        if (err != ePPHReaderErrorNone) {
+            [PPSAlertView showAlertViewWithTitle:@"Reader Error" message:[NSString stringWithFormat:@"Couldn't open reader (%d)", err] buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:^(PPSAlertView *alertView, UIButton *button, NSInteger index) {
+                [alertView dismiss:NO];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } else {
+            [[PayPalHereSDK sharedCardReaderManager] beginTransaction:invoice];
+        }
         
         self.tableView = [[UITableView alloc] init];
         self.actions = [[NITableViewActions alloc] initWithTarget:self];

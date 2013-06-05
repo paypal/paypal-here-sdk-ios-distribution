@@ -17,12 +17,23 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface PPSAppDelegate () <
-    PPHNetworkRequestDelegate
+    PPHNetworkRequestDelegate,
+    PPHLoggingDelegate
 >
 @property (nonatomic,strong) NIChameleonObserver *chameleonObserver;
 @end
 
 @implementation PPSAppDelegate
+
+-(void)logPayPalHereInfo:(NSString *)message {
+    NSLog(@"%@", message);
+}
+-(void)logPayPalHereError:(NSString *)message {
+    NSLog(@"%@", message);
+}
+-(void)logPayPalHereWarning:(NSString *)message {
+    NSLog(@"%@", message);   
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,6 +44,7 @@
     // which I've shortened to http://tiny.cc/pphstageca
     [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph03.stage.paypal.com/webapps/"]];
     [PayPalHereSDK setNetworkDelegate:self];
+    [PayPalHereSDK setLoggingDelegate:self];
 #endif
     [self setupNimbusCss];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -98,7 +110,7 @@
                 PPSProgressView *progress = [PPSProgressView progressViewWithTitle:@"Linking Accounts" andMessage:nil withCancelHandler:nil];
                 [c setupMerchant:account completionHandler:^(PPHAccessResultType status, PPHAccessAccount *transaction, NSDictionary *extraInfo) {
                     [progress dismiss:YES];
-                                        
+                    
                     [PayPalHereSDK setActiveMerchant:merchant asDefaultMerchant:YES];
                     UINavigationController *nc = (UINavigationController*) self.masterViewController.mainController;
                     nc.viewControllers = @[[PPSOrderEntryViewController new]];
