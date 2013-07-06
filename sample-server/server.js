@@ -168,6 +168,7 @@ app.get('/goApp', function (req, res, next) {
     console.log("Back from PayPal", req.url);
     users.get(req.query.u, function (err, userDoc) {
         request.post({
+            strictSSL: config.USE_STRICT_SSL,
             url:config.PAYPAL_ACCESS_BASEURL + "auth/protocol/openidconnect/v1/tokenservice",
             auth:{
                 user:config.PAYPAL_APP_ID,

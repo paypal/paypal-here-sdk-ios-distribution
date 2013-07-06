@@ -43,12 +43,13 @@ exports.ensureToken = function (nstore, userDoc, cb) {
            expires_in: Math.floor(userDoc.expires - now)
         });
     } else {
-        console.log("Refreshing token for",userDoc.username);
+        console.log("Refreshing token for",userDoc.username,"using",userDoc.refresh);
         // Need to refresh the token
         // TODO multicaller safety during an attempt to refresh. In a real scenario you can use a db for this,
         // but we just have this little old flat file in the sample. While recovery from an overlapped refresh
         // isn't horrible, it's not great either.
         request.post({
+            strictSSL: config.USE_STRICT_SSL,
             url:config.PAYPAL_ACCESS_BASEURL + "auth/protocol/openidconnect/v1/tokenservice",
             auth:{
                 user:config.PAYPAL_APP_ID,
