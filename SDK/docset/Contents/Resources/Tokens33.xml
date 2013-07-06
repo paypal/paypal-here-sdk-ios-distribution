@@ -99,7 +99,8 @@ attempting to collect payment.</Abstract>
 attempting to collect payment.</Abstract>
 				</Parameter><Parameter>
 					<Name>signature</Name>
-					<Abstract type="html">Currently, the signature must be captured before the transaction attempt. We will be fixing this bug over the coming months.</Abstract>
+					<Abstract type="html">the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
 				</Parameter><Parameter>
 					<Name>completionHandler</Name>
 					<Abstract type="html">called when the action has completed</Abstract>
@@ -135,11 +136,11 @@ attempting to collect payment.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/provideSignature:forTransaction:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Provide a signature record for a previously successful charge. TODO - currently we expect this to be gathered before the card present attempt, which is unpleasant.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/provideSignature:forTransaction:andInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Provide a signature record for a previously successful charge.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>			
 			
-			<Declaration>- (void)provideSignature:(UIImage *)signature forTransaction:(PPHCardChargeResponse *)response completionHandler:(void ( ^ ) ( PPHError *error ))completionHandler</Declaration>
+			<Declaration>- (void)provideSignature:(UIImage *)signature forTransaction:(PPHCardChargeResponse *)response andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>signature</Name>
@@ -148,12 +149,15 @@ attempting to collect payment.</Abstract>
 					<Name>response</Name>
 					<Abstract type="html">the result of beginCardPresentChargeAttempt</Abstract>
 				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice of the transaction that&apos;s being signed for</Abstract>
+				</Parameter><Parameter>
 					<Name>completionHandler</Name>
 					<Abstract type="html">called when the action has completed</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/provideSignature:forTransaction:completionHandler:</Anchor>
+			<Anchor>//api/name/provideSignature:forTransaction:andInvoice:completionHandler:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		

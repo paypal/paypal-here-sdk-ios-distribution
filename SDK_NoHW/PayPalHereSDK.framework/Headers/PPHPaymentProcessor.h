@@ -123,7 +123,8 @@
  * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
  * attempting to collect payment.
  * @param completionHandler called when the action has completed
- * @param signature Currently, the signature must be captured before the transaction attempt. We will be fixing this bug over the coming months.
+ * @param signature the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+ * with provideSignature:forTransaction:andInvoice:completionHandler:
  */
 -(void)beginCardPresentChargeAttempt: (PPHCardSwipeData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice withSignature: (UIImage*) signature completionHandler: (void (^)(PPHCardChargeResponse *response)) completionHandler;
 
@@ -137,12 +138,13 @@
 -(void)beginCardNotPresentChargeAttempt: (PPHCardNotPresentData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
 
 /*!
- * Provide a signature record for a previously successful charge. TODO - currently we expect this to be gathered before the card present attempt, which is unpleasant.
+ * Provide a signature record for a previously successful charge.
  * @param signature the buyer-generated signature
  * @param response the result of beginCardPresentChargeAttempt
+ * @param invoice the invoice of the transaction that's being signed for
  * @param completionHandler called when the action has completed
  */
--(void)provideSignature: (UIImage*) signature forTransaction: (PPHCardChargeResponse*) response completionHandler: (void (^)(PPHError *error)) completionHandler;
+-(void)provideSignature: (UIImage *)signature forTransaction: (PPHCardChargeResponse *)response andInvoice: (id<PPHInvoiceProtocol>)invoice completionHandler: (void (^)(PPHError *))completionHandler;
 
 /*!
  * Capture funds against a chip&pin or chip card

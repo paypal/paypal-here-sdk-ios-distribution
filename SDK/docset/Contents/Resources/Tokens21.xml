@@ -112,6 +112,26 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/initWithItem:forAmount:</TokenIdentifier>
+			<Abstract type="html">Initialize a simple invoice with one item and an amount.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithItem:(NSString *)item forAmount:(PPHAmount *)amount</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>item</Name>
+					<Abstract type="html">Item name or description</Abstract>
+				</Parameter><Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">The amount of the item</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithItem:forAmount:</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/asDictionary</TokenIdentifier>
 			<Abstract type="html">Compile the invoice&apos;s data to a format that is ready to save as an InvoiceType parameter to an API call.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>			

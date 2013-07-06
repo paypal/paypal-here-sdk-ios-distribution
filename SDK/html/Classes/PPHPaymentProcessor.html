@@ -64,7 +64,7 @@
 	
 	<option value="//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</option>
 	
-	<option value="//api/name/provideSignature:forTransaction:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- provideSignature:forTransaction:completionHandler:</option>
+	<option value="//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- provideSignature:forTransaction:andInvoice:completionHandler:</option>
 	
 	
 	
@@ -114,7 +114,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/provideSignature:forTransaction:completionHandler:">provideSignature:forTransaction:completionHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">provideSignature:forTransaction:andInvoice:completionHandler:</a></span></li>
 	
 </ul></li>
 
@@ -207,8 +207,8 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/provideSignature:forTransaction:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:completionHandler:</a></code>
-		<span class="tooltip"><p>Provide a signature record for a previously successful charge. TODO &ndash; currently we expect this to be gathered before the card present attempt, which is unpleasant.</p></span>
+		<code><a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:andInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Provide a signature record for a previously successful charge.</p></span>
 	</span>
 	
 	
@@ -358,7 +358,8 @@ attempting to collect payment.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>signature</em></dt>
-			<dd><p>Currently, the signature must be captured before the transaction attempt. We will be fixing this bug over the coming months.</p></dd>
+			<dd><p>the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">provideSignature:forTransaction:andInvoice:completionHandler:</a></p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -901,18 +902,18 @@ attempting to collect payment.</p></dd>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/provideSignature:forTransaction:completionHandler:" title="provideSignature:forTransaction:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">provideSignature:forTransaction:completionHandler:</h3>
+	<a name="//api/name/provideSignature:forTransaction:andInvoice:completionHandler:" title="provideSignature:forTransaction:andInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">provideSignature:forTransaction:andInvoice:completionHandler:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Provide a signature record for a previously successful charge. TODO &ndash; currently we expect this to be gathered before the card present attempt, which is unpleasant.</p>
+		<p>Provide a signature record for a previously successful charge.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHCardChargeResponse *)<em>response</em> completionHandler:(void ( ^ ) ( PPHError *error ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHCardChargeResponse *)<em>response</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
 
     
 	
@@ -930,6 +931,11 @@ attempting to collect payment.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice of the transaction that&rsquo;s being signed for</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
 			<dd><p>called when the action has completed</p></dd>
 		</dl>
@@ -944,7 +950,7 @@ attempting to collect payment.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Provide a signature record for a previously successful charge. TODO &ndash; currently we expect this to be gathered before the card present attempt, which is unpleasant.</p>
+		<p>Provide a signature record for a previously successful charge.</p>
 	</div>
 	
 	
@@ -974,7 +980,7 @@ attempting to collect payment.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-06-04)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-07-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

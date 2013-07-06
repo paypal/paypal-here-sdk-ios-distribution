@@ -14,6 +14,11 @@
 #define kPPHAnalyticsSwipeTypeRoam   @"kPPHAnalyticsSwipeTypeRoam"
 #define kPPHAnalyticsSwipeTypeMagtek @"kPPHAnalyticsSwipeTypeMagtek"
 
+#define kPPHAnalyticsSoftwareUpdateErrorTypeKey @"kPPHSoftwareUpdateErrorTypeKey"
+#define kPPHAnalyticsSoftwareUpdateErrorKey     @"kPPHSoftwareUpdateErrorKey"
+#define kPPHAnalyticsSoftwareUpdateErrorTypeNetwork  @"kPPHSoftwareUpdateErrorNetwork"
+#define kPPHAnalyticsSoftwareUpdateErrorTypeDownload @"kPPHSoftwareUpdateErrorDownload"
+
 typedef NS_ENUM(NSInteger, PPHAnalyticsEventType) {
     ePPHAnalyticsEventTypeNone = 0,
     /*! A "normal" event meant to help discern what features are being used in you're app, what situations are being encountered, etc. */
@@ -31,7 +36,10 @@ typedef NS_ENUM(NSInteger, PPHAnalyticsEventName) {
     ePPHAnalyticsEvent_AudioSwipeSuccessful,
     
     ePPHAnalyticsEvent_DockPortSwiperError,
-    ePPHAnalyticsEvent_DockPortSwipeSuccessful
+    ePPHAnalyticsEvent_DockPortSwipeSuccessful,
+    
+    ePPHAnalyticsEvent_SoftwareUpdateError,
+    ePPHAnalyticsEvent_SoftwareUpdateRestartReader
 };
 
 /*!

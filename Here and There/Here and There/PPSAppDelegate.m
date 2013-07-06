@@ -21,15 +21,16 @@
     PPHLoggingDelegate
 >
 @property (nonatomic,strong) NIChameleonObserver *chameleonObserver;
+@property (nonatomic,strong) id<PPHLoggingDelegate> sdkLogger;
 @end
 
 @implementation PPSAppDelegate
-
 -(void)logPayPalHereInfo:(NSString *)message {
     NSLog(@"%@", message);
 }
 -(void)logPayPalHereError:(NSString *)message {
     NSLog(@"%@", message);
+    [self.sdkLogger logPayPalHereError: message];
 }
 -(void)logPayPalHereWarning:(NSString *)message {
     NSLog(@"%@", message);   
@@ -42,8 +43,14 @@
     // IMPORTANT: you may need to install the intermediate certificate on your device by visiting:
     // https://www.digicert.com/CACerts/DigiCertHighAssuranceCA-3.crt
     // which I've shortened to http://tiny.cc/pphstageca
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph03.stage.paypal.com/webapps/"]];
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2md030.stage.paypal.com/webapps/"]];
     [PayPalHereSDK setNetworkDelegate:self];
+    
+    // By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
+    // diagnosing issues, but is obviously up to you as to whether you want to do remote logging, or perhaps you
+    // have your own logging infrastructure. This sample app intercepts log messages and writes errors to the
+    // remote logger but not warnings.
+    self.sdkLogger = [PayPalHereSDK loggingDelegate];
     [PayPalHereSDK setLoggingDelegate:self];
 #endif
     [self setupNimbusCss];

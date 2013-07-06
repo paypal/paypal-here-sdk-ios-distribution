@@ -70,6 +70,13 @@
 - (id)initWithDictionary:(NSDictionary *)representation invoiceId:(NSString*)invoiceId context:(PPHInvoiceItemContext*)context;
 
 /*!
+ Initialize a simple invoice with one item and an amount.
+ @param item Item name or description
+ @param amount The amount of the item
+ */
+- (id)initWithItem: (NSString*) item forAmount: (PPHAmount*) amount;
+
+/*!
  Compile the invoice's data to a format that is ready to save as an InvoiceType parameter to an API call.
  @return id The created invoice
  */

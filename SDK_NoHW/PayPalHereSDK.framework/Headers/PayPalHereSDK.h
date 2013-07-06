@@ -15,6 +15,7 @@
 #import <PayPalHereSDK/PPHInvoice.h>
 #import <PayPalHereSDK/PPHMerchantInfo.h>
 #import <PayPalHereSDK/PPHLocalManager.h>
+#import <PayPalHereSDK/PPHLoggingDelegate.h>
 
 @protocol PPHAnalyticsDelegate;
 
@@ -94,6 +95,18 @@
  * The current analytics delegate.
  */
 +(id<PPHAnalyticsDelegate>)analyticsDelegate;
+
+/*!
+ * Should you wish to receive internal log messages, set this delegate. See
+ * PPHLogingDelegate for a warning about performance impact.
+ * @param delegate an object implementing one or more methods of
+ * the PPHLoggingDelegate
+ */
++(void)setLoggingDelegate: (id<PPHLoggingDelegate>) delegate;
+/*!
+ * The current logging delegate or nil.
+ */
++(id<PPHLoggingDelegate>)loggingDelegate;
 
 /*!
  * The currently active merchant account
