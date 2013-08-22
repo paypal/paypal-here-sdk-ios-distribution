@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C76019FE17876E0300DFAE57 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76019FD17876E0300DFAE57 /* CFNetwork.framework */; };
+		C7A78D0F17A8694B00E22B1A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A78D0E17A8694B00E22B1A /* Icon.png */; };
+		C7A78D1117A8694F00E22B1A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A78D1017A8694F00E22B1A /* Icon@2x.png */; };
 		C7A8782B16D6D28F00A0C23F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A8782A16D6D28F00A0C23F /* UIKit.framework */; };
 		C7A8782D16D6D28F00A0C23F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A8782C16D6D28F00A0C23F /* Foundation.framework */; };
 		C7A8782F16D6D28F00A0C23F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A8782E16D6D28F00A0C23F /* CoreGraphics.framework */; };
@@ -116,6 +118,8 @@
 
 /* Begin PBXFileReference section */
 		C76019FD17876E0300DFAE57 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C7A78D0E17A8694B00E22B1A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		C7A78D1017A8694F00E22B1A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		C7A8782716D6D28F00A0C23F /* Here and There.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Here and There.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A8782A16D6D28F00A0C23F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7A8782C16D6D28F00A0C23F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -583,6 +587,8 @@
 		C7AE3AB816D9480D00CC94A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C7A78D1017A8694F00E22B1A /* Icon@2x.png */,
+				C7A78D0E17A8694B00E22B1A /* Icon.png */,
 				C7AE3AFE16DACBB800CC94A2 /* json */,
 				C7AE3ABF16D9486A00CC94A2 /* ico */,
 				C7AE3ABD16D9485D00CC94A2 /* btn */,
@@ -748,6 +754,8 @@
 				C7AE3ABC16D9483C00CC94A2 /* bg in Resources */,
 				C7AE3ABE16D9485D00CC94A2 /* btn in Resources */,
 				C7AE3AFF16DACBB800CC94A2 /* json in Resources */,
+				C7A78D0F17A8694B00E22B1A /* Icon.png in Resources */,
+				C7A78D1117A8694F00E22B1A /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,6 +940,8 @@
 		C7A8784516D6D28F00A0C23F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SDK\"",
@@ -945,7 +955,10 @@
 				);
 				INFOPLIST_FILE = "Here and There/Here and There-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -953,6 +966,8 @@
 		C7A8784616D6D28F00A0C23F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SDK\"",
@@ -962,7 +977,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = NI_DYNAMIC_VIEWS;
 				INFOPLIST_FILE = "Here and There/Here and There-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
