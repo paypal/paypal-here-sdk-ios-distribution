@@ -118,6 +118,9 @@
                 [c setupMerchant:account completionHandler:^(PPHAccessResultType status, PPHAccessAccount *transaction, NSDictionary *extraInfo) {
                     [progress dismiss:YES];
                     
+                    // This comes from setupMerchant, so you can either trust our setting or yours, though non-default currency (of the account)
+                    // is not currently supported.
+                    merchant.currencyCode = transaction.currencyCode;
                     [PayPalHereSDK setActiveMerchant:merchant asDefaultMerchant:YES];
                     UINavigationController *nc = (UINavigationController*) self.masterViewController.mainController;
                     nc.viewControllers = @[[PPSOrderEntryViewController new]];
