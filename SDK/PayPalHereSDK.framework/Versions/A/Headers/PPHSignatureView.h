@@ -28,7 +28,7 @@
  * A UIView subclass that will record user touches into a signature image.
  * Generally should be used "full-ish" screen.
  */
-@interface PPHSignatureView : UIImageView
+@interface PPHSignatureView : UIView
 
 /*! A receiver of events on the signature view */
 @property (unsafe_unretained) id<PPHSignatureViewDelegate> delegate;

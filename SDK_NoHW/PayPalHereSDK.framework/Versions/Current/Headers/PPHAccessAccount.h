@@ -93,4 +93,8 @@ typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
  * Any extra info provided by the OAuth process
  */
 @property (nonatomic, strong, readonly) NSDictionary *extraInfo;
+/*!
+ * The default currency on the account, as specified in the /status method of the HereAPI.
+ */
+@property (nonatomic, strong, readonly) NSString *currencyCode;
 @end

@@ -6,6 +6,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, PPHCreditCardType) {
+    PPHCreditCardTypeUnknown = 0,
+    PPHCreditCardTypeVisa = 1,
+    PPHCreditCardTypeMastercard = 2,
+    PPHCreditCardTypeDiscover = 3,
+    PPHCreditCardTypeAmEx = 4,
+    PPHCreditCardTypeJCB = 5,
+    PPHCreditCardTypeMaestro = 6,
+    PPHCreditCardTypePayPal = 7
+};
+
+
 /*!
  * A container for manually entered (or scanned) card data
  */
@@ -28,8 +40,19 @@
  */
 @property (nonatomic,strong) NSString *postalCode;
 
-/*! Set to YES if this information was acquired via card scanning. There is no 
+/*! Set to YES if this information was acquired via card scanning. There is no
  * change in fees compared to manual entry as of this writing.
  */
 @property (nonatomic) BOOL scanned;
+
+/*!
+ * @returns YES for valid card number
+ */
+@property (nonatomic, readonly) BOOL isValid;
+
+/*!
+ * @returns PPHCardType of entered card
+ */
+@property (nonatomic, readonly) PPHCreditCardType cardType;
+
 @end

@@ -8,6 +8,7 @@
 #import "PPHInvoiceContactInfo.h"
 
 @class PPHAccessAccount;
+@class PPHPaymentLimits;
 
 /*!
  * Information about the merchant's preferences such as currency and invoice header information.
@@ -33,4 +34,9 @@
  * Access credentials from PayPal Access
  */
 @property (nonatomic,strong) PPHAccessAccount* payPalAccount;
+
+/*!
+ * Information re payment limits
+ */
+@property (nonatomic, strong) PPHPaymentLimits *paymentLimits;
 @end

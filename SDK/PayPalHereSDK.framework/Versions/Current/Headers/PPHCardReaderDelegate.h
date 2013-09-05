@@ -13,9 +13,13 @@
 @class PPHCardReaderBasicInformation;
 
 /*!
- * Basic events for audio, feature port, and EMV readers
+ * Basic events for audio, feature port, and EMV readers. While methods are marked optional for cases where you
+ * just want to see certain events (like reader software upgrade), the delegate that's actually looking to complete
+ * a payment is going to need all of these.
  */
 @protocol PPHSimpleCardReaderDelegate <NSObject>
+
+@optional
 
 /*!
  * This event will be triggered in cases where reader detection takes a while, such as for
