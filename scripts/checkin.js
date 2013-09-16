@@ -43,6 +43,7 @@ function rq(token, url, body, cb) {
 	// only in stage
 	rh["CLIENT-AUTH"] = "No cert";
 	request.post({
+		strictSSL: false,
 		url:url,
 		headers:rh,
 		body:JSON.stringify(body)

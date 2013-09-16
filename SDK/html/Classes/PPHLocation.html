@@ -40,6 +40,14 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/checkinDurationInMinutes">&nbsp;&nbsp;&nbsp;&nbsp;checkinDurationInMinutes</option>
+	
+	<option value="//api/name/checkinExtensionType">&nbsp;&nbsp;&nbsp;&nbsp;checkinExtensionType</option>
+	
+	<option value="//api/name/checkinExtensionUrl">&nbsp;&nbsp;&nbsp;&nbsp;checkinExtensionUrl</option>
+	
+	<option value="//api/name/checkinType">&nbsp;&nbsp;&nbsp;&nbsp;checkinType</option>
+	
 	<option value="//api/name/contactInfo">&nbsp;&nbsp;&nbsp;&nbsp;contactInfo</option>
 	
 	<option value="//api/name/createDate">&nbsp;&nbsp;&nbsp;&nbsp;createDate</option>
@@ -59,14 +67,6 @@
 	<option value="//api/name/logoUrl">&nbsp;&nbsp;&nbsp;&nbsp;logoUrl</option>
 	
 	<option value="//api/name/status">&nbsp;&nbsp;&nbsp;&nbsp;status</option>
-	
-	<option value="//api/name/tabDurationInMinutes">&nbsp;&nbsp;&nbsp;&nbsp;tabDurationInMinutes</option>
-	
-	<option value="//api/name/tabExtensionType">&nbsp;&nbsp;&nbsp;&nbsp;tabExtensionType</option>
-	
-	<option value="//api/name/tabExtensionUrl">&nbsp;&nbsp;&nbsp;&nbsp;tabExtensionUrl</option>
-	
-	<option value="//api/name/tabType">&nbsp;&nbsp;&nbsp;&nbsp;tabType</option>
 	
 	<option value="//api/name/updateDate">&nbsp;&nbsp;&nbsp;&nbsp;updateDate</option>
 	
@@ -105,6 +105,14 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkinDurationInMinutes">checkinDurationInMinutes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkinExtensionType">checkinExtensionType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkinExtensionUrl">checkinExtensionUrl</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkinType">checkinType</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contactInfo">contactInfo</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createDate">createDate</a></span></li>
@@ -124,14 +132,6 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logoUrl">logoUrl</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/status">status</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tabDurationInMinutes">tabDurationInMinutes</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tabExtensionType">tabExtensionType</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tabExtensionUrl">tabExtensionUrl</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tabType">tabType</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateDate">updateDate</a></span></li>
 	
@@ -187,8 +187,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A <a href="#//api/name/location">location</a> represents a compartmentalized set of tabs for a merchant. A merchant may have
-many locations, some of which are open at a particular time and able to accept new customer tabs.</p>
+						<p>A <a href="#//api/name/location">location</a> represents a compartmentalized set of checkins for a merchant. A merchant may have
+many locations, some of which are open at a particular time and able to accept new customer checkin.</p>
 					</div>
 					
 					
@@ -251,7 +251,7 @@ PostalCode, Country, Phone Number and Business Name are used</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isAvailable">&nbsp;&nbsp;isAvailable</a></code>
-		<span class="tooltip"><p>Whether or not the <a href="#//api/name/location">location</a> is open for tabs at the moment</p></span>
+		<span class="tooltip"><p>Whether or not the <a href="#//api/name/location">location</a> is open for checkins at the moment</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -264,14 +264,14 @@ PostalCode, Country, Phone Number and Business Name are used</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/tabType">&nbsp;&nbsp;tabType</a></code>
-		<span class="tooltip"><p>Whether tabs are supported at this <a href="#//api/name/location">location</a></p></span>
+		<code><a href="#//api/name/checkinType">&nbsp;&nbsp;checkinType</a></code>
+		<span class="tooltip"><p>Whether checkins are supported at this <a href="#//api/name/location">location</a></p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/tabExtensionUrl">&nbsp;&nbsp;tabExtensionUrl</a></code>
+		<code><a href="#//api/name/checkinExtensionUrl">&nbsp;&nbsp;checkinExtensionUrl</a></code>
 		<span class="tooltip"><ul>
 <li>The URL to use in conjunction with extension type
 ￼￼￼</li>
@@ -282,8 +282,8 @@ PostalCode, Country, Phone Number and Business Name are used</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/tabExtensionType">&nbsp;&nbsp;tabExtensionType</a></code>
-		<span class="tooltip"><p>Tab extensions allow the PayPal consumer application to do things after
+		<code><a href="#//api/name/checkinExtensionType">&nbsp;&nbsp;checkinExtensionType</a></code>
+		<span class="tooltip"><p>Checkin extensions allow the PayPal consumer application to do things after
 a buyer checks in. As of this writing, the only extension available is
 &ldquo;postOpen&rdquo; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
@@ -300,9 +300,9 @@ loyalty program integration</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/tabDurationInMinutes">&nbsp;&nbsp;tabDurationInMinutes</a></code>
-		<span class="tooltip"><p>Length of time, in minutes, that an unused tab lasts. A tab expires after this duration,
-or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</p></span>
+		<code><a href="#//api/name/checkinDurationInMinutes">&nbsp;&nbsp;checkinDurationInMinutes</a></code>
+		<span class="tooltip"><p>Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -346,6 +346,188 @@ or when the tab is used in a payment—whichever occurs first. Minimum of 15. Th
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/checkinDurationInMinutes" title="checkinDurationInMinutes"></a>
+	<h3 class="subsubtitle method-title">checkinDurationInMinutes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLocation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/checkinExtensionType" title="checkinExtensionType"></a>
+	<h3 class="subsubtitle method-title">checkinExtensionType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checkin extensions allow the PayPal consumer application to do things after
+a buyer checks in. As of this writing, the only extension available is
+&ldquo;postOpen&rdquo; which basically means open a URL in a webview after checkin.
+This enables a wide variety of features such as online ordering or
+loyalty program integration</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Checkin extensions allow the PayPal consumer application to do things after
+a buyer checks in. As of this writing, the only extension available is
+&ldquo;postOpen&rdquo; which basically means open a URL in a webview after checkin.
+This enables a wide variety of features such as online ordering or
+loyalty program integration</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLocation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/checkinExtensionUrl" title="checkinExtensionUrl"></a>
+	<h3 class="subsubtitle method-title">checkinExtensionUrl</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<ul>
+<li>The URL to use in conjunction with extension type
+￼￼￼</li>
+</ul>
+
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *checkinExtensionUrl</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li>The URL to use in conjunction with extension type
+￼￼￼</li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLocation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/checkinType" title="checkinType"></a>
+	<h3 class="subsubtitle method-title">checkinType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether checkins are supported at this <a href="#//api/name/location">location</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPHLocationCheckinType checkinType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Whether checkins are supported at this <a href="#//api/name/location">location</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLocation.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/contactInfo" title="contactInfo"></a>
@@ -520,7 +702,7 @@ PostalCode, Country, Phone Number and Business Name are used</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Whether or not the <a href="#//api/name/location">location</a> is open for tabs at the moment</p>
+		<p>Whether or not the <a href="#//api/name/location">location</a> is open for checkins at the moment</p>
 	</div>		
 	
     
@@ -537,7 +719,7 @@ PostalCode, Country, Phone Number and Business Name are used</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Whether or not the <a href="#//api/name/location">location</a> is open for tabs at the moment</p>
+		<p>Whether or not the <a href="#//api/name/location">location</a> is open for checkins at the moment</p>
 	</div>
 	
 	
@@ -760,188 +942,6 @@ PostalCode, Country, Phone Number and Business Name are used</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/tabDurationInMinutes" title="tabDurationInMinutes"></a>
-	<h3 class="subsubtitle method-title">tabDurationInMinutes</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Length of time, in minutes, that an unused tab lasts. A tab expires after this duration,
-or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger tabDurationInMinutes</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Length of time, in minutes, that an unused tab lasts. A tab expires after this duration,
-or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHLocation.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/tabExtensionType" title="tabExtensionType"></a>
-	<h3 class="subsubtitle method-title">tabExtensionType</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Tab extensions allow the PayPal consumer application to do things after
-a buyer checks in. As of this writing, the only extension available is
-&ldquo;postOpen&rdquo; which basically means open a URL in a webview after checkin.
-This enables a wide variety of features such as online ordering or
-loyalty program integration</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPHLocationTabExtensionType tabExtensionType</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Tab extensions allow the PayPal consumer application to do things after
-a buyer checks in. As of this writing, the only extension available is
-&ldquo;postOpen&rdquo; which basically means open a URL in a webview after checkin.
-This enables a wide variety of features such as online ordering or
-loyalty program integration</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHLocation.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/tabExtensionUrl" title="tabExtensionUrl"></a>
-	<h3 class="subsubtitle method-title">tabExtensionUrl</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<ul>
-<li>The URL to use in conjunction with extension type
-￼￼￼</li>
-</ul>
-
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *tabExtensionUrl</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li>The URL to use in conjunction with extension type
-￼￼￼</li>
-</ul>
-
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHLocation.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/tabType" title="tabType"></a>
-	<h3 class="subsubtitle method-title">tabType</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Whether tabs are supported at this <a href="#//api/name/location">location</a></p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPHLocationTabType tabType</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Whether tabs are supported at this <a href="#//api/name/location">location</a></p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHLocation.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/updateDate" title="updateDate"></a>
 	<h3 class="subsubtitle method-title">updateDate</h3>
 	
@@ -1109,7 +1109,7 @@ otherwise it will update an existing <a href="#//api/name/location">location</a>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-05)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-16)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

@@ -4,7 +4,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/PPHLocalManager</TokenIdentifier>
-			<Abstract type="html">PPHLocalManager provides a &quot;jumping off point&quot; for manipulating merchant locations and watching open and closed tabs</Abstract>
+			<Abstract type="html">PPHLocalManager provides a &quot;jumping off point&quot; for manipulating merchant locations and watching open and closed checkins</Abstract>
 			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
 			
 			<NodeRef refid="28"/>
@@ -13,7 +13,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocalManager/watcherForLocationId:withDelegate:</TokenIdentifier>
-			<Abstract type="html">Get an object that will notify delegate of new and removed tabs from customers</Abstract>
+			<Abstract type="html">Get an object that will notify delegate of new and removed checkins from customers</Abstract>
 			<DeclaredIn>PPHLocalManager.h</DeclaredIn>			
 			
 			<Declaration>- (PPHLocationWatcher *)watcherForLocationId:(NSString *)locationId withDelegate:(id&lt;PPHLocationWatcherDelegate&gt;)delegate</Declaration>
@@ -24,7 +24,7 @@
 some preference based on a previous return of beginGetLocations)</Abstract>
 				</Parameter><Parameter>
 					<Name>delegate</Name>
-					<Abstract type="html">the object that will be notified when tabs are opened or closed. Note that at the moment you have
+					<Abstract type="html">the object that will be notified when checkins are opened or closed. Note that at the moment you have
 to call update: manually</Abstract>
 				</Parameter>
 			</Parameters>

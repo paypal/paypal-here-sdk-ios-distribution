@@ -1,70 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHLoggingDelegate.html">
+	<File path="Protocols/PPHLocationWatcherDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHLoggingDelegate</TokenIdentifier>
-			<Abstract type="html">For debugging purposes it can be helpful to see our internal logs.
-Implement this protocol and set the logging delegate on PayPalHereSDK.
-You should generally not set this delegate in production code as it will
-have a theoretical performance impact (we&apos;ll call respondsToSelector a lot).
-If you respond to a given selector, we&apos;ll put the message together, which will
-cause a bunch of string munging to happen. So basically, use this when you
-mean it, not just on a whim.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHLocationWatcherDelegate</TokenIdentifier>
+			<Abstract type="html">A PPHLocationWatcherDelegate receives events when new tabs are created, old tabs are removed,
+and errors occur.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
 			<NodeRef refid="43"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereError:</TokenIdentifier>
-			<Abstract type="html">Log a message considered to be indicative of an error.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectNewTab:</TokenIdentifier>
+			<Abstract type="html">A new checkin has been opened since the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)logPayPalHereError:(NSString *)message</Declaration>
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectNewTab:(PPHLocationCheckin *)checkin</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
+					<Name>watcher</Name>
+					<Abstract type="html">information about the location on which the checkin has been opened</Abstract>
+				</Parameter><Parameter>
+					<Name>checkin</Name>
+					<Abstract type="html">information about the checkin and customer</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/logPayPalHereError:</Anchor>
+			<Anchor>//api/name/locationWatcher:didDetectNewTab:</Anchor>
             <NodeRef refid="43"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereWarning:</TokenIdentifier>
-			<Abstract type="html">Log a message considered to be a potential issue affecting proper function.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectRemovedTab:</TokenIdentifier>
+			<Abstract type="html">A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)logPayPalHereWarning:(NSString *)message</Declaration>
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectRemovedTab:(PPHLocationCheckin *)checkin</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
+					<Name>watcher</Name>
+					<Abstract type="html">information about the location on which the checkin has been closed</Abstract>
+				</Parameter><Parameter>
+					<Name>checkin</Name>
+					<Abstract type="html">last known information about the checkin and customer</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/logPayPalHereWarning:</Anchor>
+			<Anchor>//api/name/locationWatcher:didDetectRemovedTab:</Anchor>
             <NodeRef refid="43"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereInfo:</TokenIdentifier>
-			<Abstract type="html">Log informational events.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didReceiveError:</TokenIdentifier>
+			<Abstract type="html">An error has occurred trying to update checkin information</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)logPayPalHereInfo:(NSString *)message</Declaration>
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didReceiveError:(PPHError *)error</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
+					<Name>watcher</Name>
+					<Abstract type="html">the watcher that tried to update</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">the error</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/logPayPalHereInfo:</Anchor>
+			<Anchor>//api/name/locationWatcher:didReceiveError:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didCompleteUpdate:wasModified:</TokenIdentifier>
+			<Abstract type="html">A request for updated checkin information has completed successfully.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>watcher</Name>
+					<Abstract type="html">the watcher that tried to update</Abstract>
+				</Parameter><Parameter>
+					<Name>openTabs</Name>
+					<Abstract type="html">Known open tabs as of the last update</Abstract>
+				</Parameter><Parameter>
+					<Name>wasModified</Name>
+					<Abstract type="html">Whether any checkin information was updated</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/locationWatcher:didCompleteUpdate:wasModified:</Anchor>
             <NodeRef refid="43"/>
 		</Token>
 		

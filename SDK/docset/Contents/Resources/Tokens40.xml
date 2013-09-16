@@ -1,116 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHCardReaderDelegate.html">
+	<File path="Protocols/PPHAnalyticsDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHCardReaderDelegate</TokenIdentifier>
-			<Abstract type="html">Additional events for EMV aka Chip &amp;amp; Pin readers</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHAnalyticsDelegate</TokenIdentifier>
+			<Abstract type="html">PPHAnalyticsDelegate is in charge of delivering analytics events to a server</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
 			<NodeRef refid="40"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:isInitial:</TokenIdentifier>
-			<Abstract type="html">Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
-NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/beginSession:</TokenIdentifier>
+			<Abstract type="html">Start an analytics session - create any sort of visitor/device identifiers etc.</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required isInitial:(BOOL)initial</Declaration>
+			<Declaration>- (void)beginSession:(NSDictionary *)properties</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">the reader that has an available upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>message</Name>
-					<Abstract type="html">the reason or explanation for the upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>required</Name>
-					<Abstract type="html">whether the reader can proceed without an upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>initial</Name>
-					<Abstract type="html">whether this is the initial upgrade to the reader</Abstract>
+					<Name>properties</Name>
+					<Abstract type="html">session-wide information about the session</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:</Anchor>
+			<Anchor>//api/name/beginSession:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didFinishUpgradePreparations</TokenIdentifier>
-			<Abstract type="html">The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
-to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/amendSession:</TokenIdentifier>
+			<Abstract type="html">Update session information of an in progress session</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didFinishUpgradePreparations</Declaration>
-			
-			
-			<Anchor>//api/name/didFinishUpgradePreparations</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didUpgradeReader:withMessage:</TokenIdentifier>
-			<Abstract type="html">A reader upgrade was successful</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didUpgradeReader:(BOOL)successful withMessage:(NSString *)message</Declaration>
+			<Declaration>- (void)amendSession:(NSDictionary *)properties</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>successful</Name>
-					<Abstract type="html">whether the upgrade succeeded</Abstract>
-				</Parameter><Parameter>
-					<Name>message</Name>
-					<Abstract type="html">Additional details about the upgrade (if it failed)</Abstract>
+					<Name>properties</Name>
+					<Abstract type="html">session-wide information about the session</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didUpgradeReader:withMessage:</Anchor>
+			<Anchor>//api/name/amendSession:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</TokenIdentifier>
-			<Abstract type="html">There is a status update to the current ongoing reader upgrade</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/endSession</TokenIdentifier>
+			<Abstract type="html">End an analytics session - clear any identifiers</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didReceiveReaderUpgradeStatusWithMessage:(NSString *)message currentStep:(NSInteger)currentStep totalSteps:(NSInteger)totalSteps completion:(float)completion</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">Details about the current upgrade status</Abstract>
-				</Parameter><Parameter>
-					<Name>currentStep</Name>
-					<Abstract type="html">The number of the current upgrade step from 1 to totalSteps</Abstract>
-				</Parameter><Parameter>
-					<Name>totalSteps</Name>
-					<Abstract type="html">The total number of steps in the upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>completion</Name>
-					<Abstract type="html">The progress of the upgrade from 0.0 to 1.0</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)endSession</Declaration>
 			
-			<Anchor>//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</Anchor>
+			
+			<Anchor>//api/name/endSession</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveChipAndPinEvent:</TokenIdentifier>
-			<Abstract type="html">Called when an event related to chip &amp;amp; pin transactions has occurred on the reader</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/queueEvent:withType:andInfo:</TokenIdentifier>
+			<Abstract type="html">Log an analytics event</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didReceiveChipAndPinEvent:(PPHChipAndPinEvent *)event</Declaration>
+			<Declaration>- (void)queueEvent:(PPHAnalyticsEventName)event withType:(PPHAnalyticsEventType)type andInfo:(NSDictionary *)info</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>event</Name>
-					<Abstract type="html">the event that has occurred</Abstract>
+					<Abstract type="html">the name of the event that has occurred</Abstract>
+				</Parameter><Parameter>
+					<Name>type</Name>
+					<Abstract type="html">the type of event that has occurred</Abstract>
+				</Parameter><Parameter>
+					<Name>info</Name>
+					<Abstract type="html">additional information about the event</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didReceiveChipAndPinEvent:</Anchor>
+			<Anchor>//api/name/queueEvent:withType:andInfo:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		

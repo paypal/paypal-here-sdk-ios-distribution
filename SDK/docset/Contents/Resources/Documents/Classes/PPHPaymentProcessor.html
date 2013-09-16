@@ -50,6 +50,8 @@
 	
 	<option value="//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginChipAndPinAuthorization:forInvoice:completionHandler:</option>
 	
+	<option value="//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</option>
+	
 	<option value="//api/name/beginRefund:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefund:forAmount:completionHandler:</option>
 	
 	<option value="//api/name/beginTabPayment:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginTabPayment:forInvoice:completionHandler:</option>
@@ -99,6 +101,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:">beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">beginChipAndPinAuthorization:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefund:forAmount:completionHandler:">beginRefund:forAmount:completionHandler:</a></span></li>
 	
@@ -180,7 +184,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginTabPayment:forInvoice:completionHandler:">&ndash;&nbsp;beginTabPayment:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Capture funds against an open tab from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p></span>
+		<span class="tooltip"><p>Capture funds against an open checkin from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p></span>
 	</span>
 	
 	
@@ -202,6 +206,13 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	<span class="tooltip">
 		<code><a href="#//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</a></code>
 		<span class="tooltip"><p>Collect funds against a card that has been manually entered.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">&ndash;&nbsp;beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</a></code>
+		<span class="tooltip"><p>Mark an invoice as having been paid by an external payment type such as Cash or Check.</p></span>
 	</span>
 	
 	
@@ -457,6 +468,73 @@ attempting to collect payment.</p></dd>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:" title="beginRecordingExternalPayment:withNote:forInvoice:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Mark an invoice as having been paid by an external payment type such as Cash or Check.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginRecordingExternalPayment:(PPHPaymentMethod)<em>paymentType</em> withNote:(NSString *)<em>note</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *response ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>must be cash or check currently for this method to succeed</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>note</em></dt>
+			<dd><p>a short note, such as the amount tendered or check number</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Mark an invoice as having been paid by an external payment type such as Cash or Check.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/beginRefund:forAmount:completionHandler:" title="beginRefund:forAmount:completionHandler:"></a>
 	<h3 class="subsubtitle method-title">beginRefund:forAmount:completionHandler:</h3>
 	
@@ -524,12 +602,12 @@ attempting to collect payment.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Capture funds against an open tab from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
+		<p>Capture funds against an open checkin from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginTabPayment:(PPHLocationTab *)<em>tab</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginTabPayment:(PPHLocationCheckin *)<em>checkin</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
 
     
 	
@@ -537,8 +615,8 @@ attempting to collect payment.</p></dd>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>tab</em></dt>
-			<dd><p>information about the tab (only id is needed)</p></dd>
+			<dt><em>checkin</em></dt>
+			<dd><p>information about the checkin (only id is needed)</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -562,7 +640,7 @@ attempting to collect payment.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Capture funds against an open tab from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
+		<p>Capture funds against an open checkin from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
 	</div>
 	
 	
@@ -980,7 +1058,7 @@ attempting to collect payment.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-05)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-16)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

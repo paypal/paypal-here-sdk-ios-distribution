@@ -19,12 +19,13 @@
 #pragma mark -
 #pragma mark Private members and methods
 
-@interface PPSLoginViewController () <
+@interface PPSLoginViewController ()
 #ifdef DEBUG
+<
     NSNetServiceDelegate,
     NSNetServiceBrowserDelegate
-#endif
 >
+#endif
 @property (nonatomic,strong) UITextField *username;
 @property (nonatomic,strong) UITextField *password;
 @property (nonatomic,strong) UIButton *loginButton;
@@ -38,6 +39,7 @@
 
 #ifdef DEBUG
 NSString *sServiceHost = nil;
+//NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
 #endif
 
 /**
@@ -56,11 +58,13 @@ NSString *sServiceHost = nil;
 {
     
 #ifdef DEBUG
-    // In development, it's a little easier to test with devices if you don't have to configure a hostname/port
-    // explicitly for every dev. So we'll use bonjour to find the service configured in the sample server.
-    self.browser = [[NSNetServiceBrowser alloc] init];
-    self.browser.delegate = self;
-    [self.browser searchForServicesOfType: @"_hereandthere._tcp" inDomain:@""];
+    if (!sServiceHost) {
+        // In development, it's a little easier to test with devices if you don't have to configure a hostname/port
+        // explicitly for every dev. So we'll use bonjour to find the service configured in the sample server.
+        self.browser = [[NSNetServiceBrowser alloc] init];
+        self.browser.delegate = self;
+        [self.browser searchForServicesOfType: @"_hereandthere._tcp" inDomain:@""];
+    }
 #endif
     
     [super loadView];
@@ -150,6 +154,9 @@ NSString *sServiceHost = nil;
             {                
                 if (![PayPalHereSDK activeMerchant].payPalAccount.email) {
                     [[PayPalHereSDK sharedAccessController] setupMerchant:[PayPalHereSDK activeMerchant].payPalAccount completionHandler:^(PPHAccessResultType status, PPHAccessAccount *transaction, NSDictionary *extraInfo) {
+                        
+                        // Take this from the server for simplicity
+                        [PayPalHereSDK activeMerchant].currencyCode = transaction.currencyCode;
                         // Go to order entry view
                         [progress dismiss:YES];
                         PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];

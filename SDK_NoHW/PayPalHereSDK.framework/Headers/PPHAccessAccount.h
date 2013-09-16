@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, PPHAccountStatus) {
 typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
     ePPHAvailablePaymentTypeNone = 0,
     ePPHAvailablePaymentTypeCard = 1,
-    ePPHAvailablePaymentTypeTab = 1 << 1
+    ePPHAvailablePaymentTypeCheckin = 1 << 1
 };
 
 /*!

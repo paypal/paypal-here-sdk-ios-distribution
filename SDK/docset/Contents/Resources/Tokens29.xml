@@ -4,8 +4,8 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/PPHLocation</TokenIdentifier>
-			<Abstract type="html">A location represents a compartmentalized set of tabs for a merchant. A merchant may have
-many locations, some of which are open at a particular time and able to accept new customer tabs.</Abstract>
+			<Abstract type="html">A location represents a compartmentalized set of checkins for a merchant. A merchant may have
+many locations, some of which are open at a particular time and able to accept new customer checkin.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<NodeRef refid="29"/>
@@ -196,7 +196,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setIsAvailable:</TokenIdentifier>
-			<Abstract type="html">Whether or not the location is open for tabs at the moment</Abstract>
+			<Abstract type="html">Whether or not the location is open for checkins at the moment</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) BOOL isAvailable</Declaration>
@@ -208,7 +208,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/isAvailable</TokenIdentifier>
-			<Abstract type="html">Whether or not the location is open for tabs at the moment</Abstract>
+			<Abstract type="html">Whether or not the location is open for checkins at the moment</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) BOOL isAvailable</Declaration>
@@ -220,7 +220,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/isAvailable</TokenIdentifier>
-			<Abstract type="html">Whether or not the location is open for tabs at the moment</Abstract>
+			<Abstract type="html">Whether or not the location is open for checkins at the moment</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) BOOL isAvailable</Declaration>
@@ -267,125 +267,125 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setTabType:</TokenIdentifier>
-			<Abstract type="html">Whether tabs are supported at this location</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinType:</TokenIdentifier>
+			<Abstract type="html">Whether checkins are supported at this location</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) PPHLocationTabType tabType</Declaration>
+			<Declaration>@property (nonatomic, assign) PPHLocationCheckinType checkinType</Declaration>
 			
 			
-			<Anchor>//api/name/tabType</Anchor>
+			<Anchor>//api/name/checkinType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/tabType</TokenIdentifier>
-			<Abstract type="html">Whether tabs are supported at this location</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinType</TokenIdentifier>
+			<Abstract type="html">Whether checkins are supported at this location</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) PPHLocationTabType tabType</Declaration>
+			<Declaration>@property (nonatomic, assign) PPHLocationCheckinType checkinType</Declaration>
 			
 			
-			<Anchor>//api/name/tabType</Anchor>
+			<Anchor>//api/name/checkinType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/tabType</TokenIdentifier>
-			<Abstract type="html">Whether tabs are supported at this location</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinType</TokenIdentifier>
+			<Abstract type="html">Whether checkins are supported at this location</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) PPHLocationTabType tabType</Declaration>
+			<Declaration>@property (nonatomic, assign) PPHLocationCheckinType checkinType</Declaration>
 			
 			
-			<Anchor>//api/name/tabType</Anchor>
+			<Anchor>//api/name/checkinType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setTabExtensionUrl:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinExtensionUrl:</TokenIdentifier>
 			<Abstract type="html">* The URL to use in conjunction with extension type
 ￼￼￼</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSURL *tabExtensionUrl</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *checkinExtensionUrl</Declaration>
 			
 			
-			<Anchor>//api/name/tabExtensionUrl</Anchor>
+			<Anchor>//api/name/checkinExtensionUrl</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/tabExtensionUrl</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinExtensionUrl</TokenIdentifier>
 			<Abstract type="html">* The URL to use in conjunction with extension type
 ￼￼￼</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSURL *tabExtensionUrl</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *checkinExtensionUrl</Declaration>
 			
 			
-			<Anchor>//api/name/tabExtensionUrl</Anchor>
+			<Anchor>//api/name/checkinExtensionUrl</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/tabExtensionUrl</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinExtensionUrl</TokenIdentifier>
 			<Abstract type="html">* The URL to use in conjunction with extension type
 ￼￼￼</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSURL *tabExtensionUrl</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *checkinExtensionUrl</Declaration>
 			
 			
-			<Anchor>//api/name/tabExtensionUrl</Anchor>
+			<Anchor>//api/name/checkinExtensionUrl</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setTabExtensionType:</TokenIdentifier>
-			<Abstract type="html">Tab extensions allow the PayPal consumer application to do things after
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinExtensionType:</TokenIdentifier>
+			<Abstract type="html">Checkin extensions allow the PayPal consumer application to do things after
 a buyer checks in. As of this writing, the only extension available is
 &quot;postOpen&quot; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
 loyalty program integration</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) PPHLocationTabExtensionType tabExtensionType</Declaration>
+			<Declaration>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</Declaration>
 			
 			
-			<Anchor>//api/name/tabExtensionType</Anchor>
+			<Anchor>//api/name/checkinExtensionType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/tabExtensionType</TokenIdentifier>
-			<Abstract type="html">Tab extensions allow the PayPal consumer application to do things after
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinExtensionType</TokenIdentifier>
+			<Abstract type="html">Checkin extensions allow the PayPal consumer application to do things after
 a buyer checks in. As of this writing, the only extension available is
 &quot;postOpen&quot; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
 loyalty program integration</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) PPHLocationTabExtensionType tabExtensionType</Declaration>
+			<Declaration>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</Declaration>
 			
 			
-			<Anchor>//api/name/tabExtensionType</Anchor>
+			<Anchor>//api/name/checkinExtensionType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/tabExtensionType</TokenIdentifier>
-			<Abstract type="html">Tab extensions allow the PayPal consumer application to do things after
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinExtensionType</TokenIdentifier>
+			<Abstract type="html">Checkin extensions allow the PayPal consumer application to do things after
 a buyer checks in. As of this writing, the only extension available is
 &quot;postOpen&quot; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
 loyalty program integration</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) PPHLocationTabExtensionType tabExtensionType</Declaration>
+			<Declaration>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</Declaration>
 			
 			
-			<Anchor>//api/name/tabExtensionType</Anchor>
+			<Anchor>//api/name/checkinExtensionType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
@@ -426,41 +426,41 @@ loyalty program integration</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setTabDurationInMinutes:</TokenIdentifier>
-			<Abstract type="html">Length of time, in minutes, that an unused tab lasts. A tab expires after this duration,
-or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinDurationInMinutes:</TokenIdentifier>
+			<Abstract type="html">Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) NSInteger tabDurationInMinutes</Declaration>
+			<Declaration>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</Declaration>
 			
 			
-			<Anchor>//api/name/tabDurationInMinutes</Anchor>
+			<Anchor>//api/name/checkinDurationInMinutes</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/tabDurationInMinutes</TokenIdentifier>
-			<Abstract type="html">Length of time, in minutes, that an unused tab lasts. A tab expires after this duration,
-or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinDurationInMinutes</TokenIdentifier>
+			<Abstract type="html">Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) NSInteger tabDurationInMinutes</Declaration>
+			<Declaration>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</Declaration>
 			
 			
-			<Anchor>//api/name/tabDurationInMinutes</Anchor>
+			<Anchor>//api/name/checkinDurationInMinutes</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/tabDurationInMinutes</TokenIdentifier>
-			<Abstract type="html">Length of time, in minutes, that an unused tab lasts. A tab expires after this duration,
-or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinDurationInMinutes</TokenIdentifier>
+			<Abstract type="html">Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) NSInteger tabDurationInMinutes</Declaration>
+			<Declaration>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</Declaration>
 			
 			
-			<Anchor>//api/name/tabDurationInMinutes</Anchor>
+			<Anchor>//api/name/checkinDurationInMinutes</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		

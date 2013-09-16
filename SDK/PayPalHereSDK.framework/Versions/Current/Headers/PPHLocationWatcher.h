@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PPHLocationTab;
+@class PPHLocationCheckin;
 @class PPHLocationWatcher;
 @class PPHError;
 
@@ -17,28 +17,28 @@
 @protocol PPHLocationWatcherDelegate <NSObject>
 @optional
 /*!
- * A new tab has been opened since the last update
- * @param watcher information about the location on which the tab has been opened
- * @param tab information about the tab and customer
+ * A new checkin has been opened since the last update
+ * @param watcher information about the location on which the checkin has been opened
+ * @param checkin information about the checkin and customer
  */
--(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectNewTab: (PPHLocationTab*) tab;
+-(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectNewTab: (PPHLocationCheckin*) checkin;
 /*!
- * A tab has been closed in some way (paid, cancelled, left, etc) since the last update
- * @param watcher information about the location on which the tab has been closed
- * @param tab last known information about the tab and customer
+ * A checkin has been closed in some way (paid, cancelled, left, etc) since the last update
+ * @param watcher information about the location on which the checkin has been closed
+ * @param checkin last known information about the checkin and customer
  */
--(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectRemovedTab: (PPHLocationTab*) tab;
+-(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectRemovedTab: (PPHLocationCheckin*) checkin;
 /*!
- * An error has occurred trying to update tab information
+ * An error has occurred trying to update checkin information
  * @param watcher the watcher that tried to update
  * @param error the error
  */
 -(void)locationWatcher: (PPHLocationWatcher*) watcher didReceiveError: (PPHError*) error;
 /*!
- * A request for updated tab information has completed successfully.
+ * A request for updated checkin information has completed successfully.
  * @param watcher the watcher that tried to update
  * @param openTabs Known open tabs as of the last update
- * @param wasModified Whether any tab information was updated
+ * @param wasModified Whether any checkin information was updated
  */
 -(void)locationWatcher: (PPHLocationWatcher*) watcher didCompleteUpdate: (NSArray*) openTabs wasModified: (BOOL) wasModified;
 @end

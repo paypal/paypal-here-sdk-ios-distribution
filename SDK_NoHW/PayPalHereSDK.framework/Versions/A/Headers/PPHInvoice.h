@@ -247,8 +247,7 @@
 #pragma mark -
 #pragma mark Networking
 /*!
- PROTOTYPE CODE - DON'T CALL UNLESS YOU KNOW WHAT YOU'RE DOING!
- Enqueues a network action to synchronize the invoice with the server's representation of it. 
+ Enqueues a network action to synchronize the invoice with the server's representation of it.
  @param completionHandler PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.
  */
 - (void)refreshInvoice: (PPHInvoiceBasicCompletionHandler)completionHandler;

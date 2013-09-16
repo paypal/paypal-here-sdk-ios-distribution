@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PPHInvoiceProtocol.h"
 #import "PPHCardNotPresentData.h"
+#import "PPHInvoiceConstants.h"
 
 /*!
  * All network requests around payment will use this id (which can be passed to the network delegate to cancel them)
@@ -17,7 +18,7 @@
 
 @class PPHChipAndPinAuthEvent;
 @class PPHChipAndPinEventWithEmv;
-@class PPHLocationTab;
+@class PPHLocationCheckin;
 @class PPHCardSwipeData;
 @class PPHError;
 @class UIImage;
@@ -98,13 +99,13 @@
 
 #pragma mark - Local/Tab payment
 /*!
- * Capture funds against an open tab from PPHLocalManager and PPHLocationWatcher
- * @param tab information about the tab (only id is needed)
+ * Capture funds against an open checkin from PPHLocalManager and PPHLocationWatcher
+ * @param checkin information about the checkin (only id is needed)
  * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
  * attempting to collect payment.
  * @param completionHandler called when the action has completed
  */
--(void)beginTabPayment: (PPHLocationTab*) tab forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHPaymentResponse*)) completionHandler;
+-(void)beginTabPayment: (PPHLocationCheckin*) checkin forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHPaymentResponse*)) completionHandler;
 
 #pragma mark - Card related payment options
 
@@ -136,6 +137,16 @@
  * @param completionHandler called when the action has completed
  */
 -(void)beginCardNotPresentChargeAttempt: (PPHCardNotPresentData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
+
+/*!
+ * Mark an invoice as having been paid by an external payment type such as Cash or Check.
+ * @param paymentType must be cash or check currently for this method to succeed
+ * @param note a short note, such as the amount tendered or check number
+ * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+ * attempting to collect payment.
+ * @param completionHandler called when the action has completed
+ */
+-(void)beginRecordingExternalPayment: (PPHPaymentMethod) paymentType withNote: (NSString*) note forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHPaymentResponse *response)) completionHandler;
 
 /*!
  * Provide a signature record for a previously successful charge.
@@ -192,4 +203,7 @@
  */
 -(void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv*)event andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
+/*
+- (void)beginSendReceipt: (id<PPHInvoiceProtocol>) ToEmail: (NSString*) email completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
+*/
 @end

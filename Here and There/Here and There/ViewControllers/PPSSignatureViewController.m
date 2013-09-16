@@ -59,10 +59,10 @@
     }];
     
     /* Example of sending unencrypted swipe data (which should never be done from the client, but just so you know the format...)
-    PPHCardSwipeData *newData = [[PPHCardSwipeData alloc] initWithTrack1:@"%B4111111111111111^CardUser/John^150310100000019301000000877000000?" track2:@";41111111111111111=1503101193010877?" readerSerial:@"109283019823" withType:@"mySwiperMaker" andExtraInfo:nil];
-    */
-
-    [[PayPalHereSDK sharedPaymentProcessor] beginCardPresentChargeAttempt:self.cardData forInvoice:self.invoice withSignature:self.signature.printableImage completionHandler:^(PPHCardChargeResponse *response) {
+    self.cardData = [[PPHCardSwipeData alloc] initWithTrack1:@"%B4111111111111111^CardUser/John^150310100000019301000000877000000?" track2:@";41111111111111111=1503101193010877?" readerSerial:@"109283019823" withType:@"mySwiperMaker" andExtraInfo:nil];
+     */
+    
+    [[PayPalHereSDK sharedPaymentProcessor] beginCardPresentChargeAttempt: self.cardData forInvoice:self.invoice withSignature:self.signature.printableImage completionHandler:^(PPHCardChargeResponse *response) {
         [pv dismiss:YES];
         if (response.error.isCancelError) { return; }
         if (response.error) {

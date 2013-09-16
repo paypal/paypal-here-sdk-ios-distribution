@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
      */
     ePPHErrorCategoryAmbiguous,
     /*!
-     * The error indicates there was a problem with the data submitted such as an invalid tab or card number/expiration, etc.
+     * The error indicates there was a problem with the data submitted such as an invalid checkin or card number/expiration, etc.
      */
     ePPHErrorCategoryData
 };
@@ -85,4 +85,5 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
 #define kPPHLocalErrorDomain        @"PPHLocal"
 #define kPPHHTTPErrorDomain         @"PPHHTTP"
 #define kPPHInvoiceErrorDomain      @"PPHInvoice"
+#define kPPHServerErrorDomain       @"PPHServer"
 

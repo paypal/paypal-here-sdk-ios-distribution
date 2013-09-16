@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C73F339917E7A18400D83415 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = C73F339717E7A18400D83415 /* NIActions.m */; };
 		C76019FE17876E0300DFAE57 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76019FD17876E0300DFAE57 /* CFNetwork.framework */; };
 		C7A78D0F17A8694B00E22B1A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A78D0E17A8694B00E22B1A /* Icon.png */; };
 		C7A78D1117A8694F00E22B1A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A78D1017A8694F00E22B1A /* Icon@2x.png */; };
@@ -117,6 +118,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C73F339617E7A18400D83415 /* NIActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIActions.h; path = ../../nimbus/src/core/src/NIActions.h; sourceTree = "<group>"; };
+		C73F339717E7A18400D83415 /* NIActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NIActions.m; path = ../../nimbus/src/core/src/NIActions.m; sourceTree = "<group>"; };
+		C73F339817E7A18400D83415 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NIActions+Subclassing.h"; path = "../../nimbus/src/core/src/NIActions+Subclassing.h"; sourceTree = "<group>"; };
 		C76019FD17876E0300DFAE57 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C7A78D0E17A8694B00E22B1A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C7A78D1017A8694F00E22B1A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -423,6 +427,9 @@
 		C7A8784B16D6D46B00A0C23F /* core */ = {
 			isa = PBXGroup;
 			children = (
+				C73F339617E7A18400D83415 /* NIActions.h */,
+				C73F339717E7A18400D83415 /* NIActions.m */,
+				C73F339817E7A18400D83415 /* NIActions+Subclassing.h */,
 				C7A8784C16D6D47A00A0C23F /* NIButtonUtilities.h */,
 				C7A8784D16D6D47A00A0C23F /* NIButtonUtilities.m */,
 				C7A8784E16D6D47A00A0C23F /* NICommonMetrics.h */,
@@ -810,6 +817,7 @@
 				C7A878BA16D6D49F00A0C23F /* CSSTokens.m in Sources */,
 				C7A878BB16D6D49F00A0C23F /* NIChameleonObserver.m in Sources */,
 				C7A878BC16D6D49F00A0C23F /* NICSSParser.m in Sources */,
+				C73F339917E7A18400D83415 /* NIActions.m in Sources */,
 				C7A878BD16D6D49F00A0C23F /* NICSSRuleset.m in Sources */,
 				C7A878BE16D6D49F00A0C23F /* NIDOM.m in Sources */,
 				C7A878BF16D6D49F00A0C23F /* NIStylesheet.m in Sources */,
@@ -904,6 +912,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/../SDK/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -929,6 +942,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/../SDK/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;

@@ -19,7 +19,8 @@
 @interface PPSOrderEntryViewController () <
     UITextFieldDelegate,
     CLLocationManagerDelegate,
-    PPHLocationWatcherDelegate
+    PPHLocationWatcherDelegate,
+    PPHCardReaderDelegate
 >
 @property (nonatomic,strong) NITextField *amount;
 @property (nonatomic,strong) PPSKeypad *keypad;
@@ -28,6 +29,7 @@
 @property (assign) BOOL gotValidLocation;
 @property (nonatomic,strong) PPHLocationWatcher *watcher;
 @property (nonatomic,strong) NIBadgeView *badge;
+@property (nonatomic,strong) PPHCardReaderWatcher *upgradeWatcher;
 @end
 
 @implementation PPSOrderEntryViewController
@@ -72,6 +74,7 @@
     [self.tracker startUpdatingLocation];
     
     self.badge.hidden = YES;
+    self.upgradeWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
 }
 
 -(void)viewDidUnload
@@ -85,8 +88,22 @@
     [super viewDidAppear:animated];
     [self.amount becomeFirstResponder];
     if (self.watcher) {
-        [self.watcher updatePeriodically:2 withMaximumInterval:20];
+//        [self.watcher updatePeriodically:2 withMaximumInterval:20];
     }
+}
+
+-(void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required isInitial:(BOOL)initial {
+    __block PPSProgressView *pv = [PPSProgressView progressViewWithTitle:@"Software Upgrade" andMessage:@"For EMV Reader" withCancelHandler:^(PPSProgressView *progressView) {
+        
+    }];
+    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:nil completionHandler:^(PPHError *error) {
+        NSLog(@"Update successful");
+        [pv dismiss:YES];
+    } ];
+}
+
+-(void)didUpgradeReader:(BOOL)successful withMessage:(NSString *)message {
+    
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -113,7 +130,7 @@
                     // Error handling would be a good thing.
                     if (error == nil) {
                         self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:loc.locationId withDelegate:self];
-                        [self.watcher updatePeriodically:2 withMaximumInterval:20];
+//                        [self.watcher updatePeriodically:2 withMaximumInterval:20];
                     }
                 }];
             } else {
@@ -133,20 +150,20 @@
                 [myLocation save:^(PPHError *error) {
                     
                 }];
-                self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:myLocation.locationId withDelegate:self];
-                [self.watcher updatePeriodically:2 withMaximumInterval:20];
+//                self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:myLocation.locationId withDelegate:self];
+//                [self.watcher updatePeriodically:2 withMaximumInterval:20];
                 NSLog(@"%@", myLocation);
             }
         }];
     }
 }
 
--(void)locationWatcher:(PPHLocationWatcher *)watcher didDetectNewTab:(PPHLocationTab *)tab
+-(void)locationWatcher:(PPHLocationWatcher *)watcher didDetectNewTab:(PPHLocationCheckin *)tab
 {
     
 }
 
--(void)locationWatcher:(PPHLocationWatcher *)watcher didDetectRemovedTab:(PPHLocationTab *)tab
+-(void)locationWatcher:(PPHLocationWatcher *)watcher didDetectRemovedTab:(PPHLocationCheckin *)tab
 {
     
 }

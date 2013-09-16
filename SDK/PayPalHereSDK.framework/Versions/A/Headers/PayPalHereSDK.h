@@ -34,11 +34,11 @@
  */
 +(PPHCardReaderManager*) sharedCardReaderManager;
 /*!
- * The interface to interact with tab and checkin services and merchant locations
+ * The interface to interact with checkin services and merchant locations
  */
 +(PPHLocalManager*) sharedLocalManager;
 /*!
- * The interface to process payments with card swipe, keyed in/scanned, and tabs
+ * The interface to process payments with card swipe, keyed in/scanned, and checkins
  */
 +(PPHPaymentProcessor*) sharedPaymentProcessor;
 /*!

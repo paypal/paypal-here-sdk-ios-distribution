@@ -12,14 +12,14 @@
 @class PPHInvoiceContactInfo;
 @class PPHError;
 
-typedef NS_ENUM(NSInteger,PPHLocationTabType) {
-    ePPHTabTypeNone = 0,
-    ePPHTabTypeStandard
+typedef NS_ENUM(NSInteger,PPHLocationCheckinType) {
+    ePPHCheckinTypeNone = 0,
+    ePPHCheckinTypeStandard
 };
 
-typedef NS_ENUM(NSInteger,PPHLocationTabExtensionType) {
-    ePPHTabExtensionTypeNone = 0,
-    ePPHTabExtensionTypePostOpen
+typedef NS_ENUM(NSInteger,PPHLocationCheckinExtensionType) {
+    ePPHCheckinExtensionTypeNone = 0,
+    ePPHCheckinExtensionTypePostOpen
 };
 
 typedef NS_ENUM(NSInteger,PPHLocationStatus) {
@@ -29,8 +29,8 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
 };
 
 /*!
- * A location represents a compartmentalized set of tabs for a merchant. A merchant may have
- * many locations, some of which are open at a particular time and able to accept new customer tabs.
+ * A location represents a compartmentalized set of checkins for a merchant. A merchant may have
+ * many locations, some of which are open at a particular time and able to accept new customer checkin.
  */
 @interface PPHLocation : NSObject <
     NSCopying
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
 @property (nonatomic,assign) CLLocationCoordinate2D location;
 
 /*!
- * Whether or not the location is open for tabs at the moment
+ * Whether or not the location is open for checkins at the moment
  */
 @property (nonatomic,assign) BOOL isAvailable;
 
@@ -81,22 +81,22 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
 @property (nonatomic,assign) BOOL isMobile;
 
 /*!
- * Whether tabs are supported at this location
+ * Whether checkins are supported at this location
  */
-@property (nonatomic,assign) PPHLocationTabType tabType;
+@property (nonatomic,assign) PPHLocationCheckinType checkinType;
 
 /*!
  * The URL to use in conjunction with extension type
  ￼￼￼*/
-@property (nonatomic,strong) NSURL* tabExtensionUrl;
+@property (nonatomic,strong) NSURL* checkinExtensionUrl;
 /*!
- * Tab extensions allow the PayPal consumer application to do things after
+ * Checkin extensions allow the PayPal consumer application to do things after
  * a buyer checks in. As of this writing, the only extension available is
  * "postOpen" which basically means open a URL in a webview after checkin.
  * This enables a wide variety of features such as online ordering or
  * loyalty program integration
  */
-@property (nonatomic,assign) PPHLocationTabExtensionType tabExtensionType;
+@property (nonatomic,assign) PPHLocationCheckinExtensionType checkinExtensionType;
 
 /*!
  * The URL for the logo image of this location
@@ -104,10 +104,10 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
 @property (nonatomic,strong) NSString* logoUrl;
 
 /*!
- * Length of time, in minutes, that an unused tab lasts. A tab expires after this duration, 
- * or when the tab is used in a payment—whichever occurs first. Minimum of 15. The default is 120.
+ * Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
+ * or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.
  */
-@property (nonatomic,assign) NSInteger tabDurationInMinutes;
+@property (nonatomic,assign) NSInteger checkinDurationInMinutes;
 
 /*
  * These fields are supplied only by the PayPal server when the location has been read into the object
