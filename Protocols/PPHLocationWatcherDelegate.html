@@ -145,28 +145,28 @@ and errors occur.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/locationWatcher:didDetectNewTab:">&ndash;&nbsp;locationWatcher:didDetectNewTab:</a></code>
-		<span class="tooltip"><p>A new tab has been opened since the last update</p></span>
+		<span class="tooltip"><p>A new checkin has been opened since the last update</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/locationWatcher:didDetectRemovedTab:">&ndash;&nbsp;locationWatcher:didDetectRemovedTab:</a></code>
-		<span class="tooltip"><p>A tab has been closed in some way (paid, cancelled, left, etc) since the last update</p></span>
+		<span class="tooltip"><p>A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/locationWatcher:didReceiveError:">&ndash;&nbsp;locationWatcher:didReceiveError:</a></code>
-		<span class="tooltip"><p>An error has occurred trying to update tab information</p></span>
+		<span class="tooltip"><p>An error has occurred trying to update checkin information</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/locationWatcher:didCompleteUpdate:wasModified:">&ndash;&nbsp;locationWatcher:didCompleteUpdate:wasModified:</a></code>
-		<span class="tooltip"><p>A request for updated tab information has completed successfully.</p></span>
+		<span class="tooltip"><p>A request for updated checkin information has completed successfully.</p></span>
 	</span>
 	
 	
@@ -194,7 +194,7 @@ and errors occur.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A request for updated tab information has completed successfully.</p>
+		<p>A request for updated checkin information has completed successfully.</p>
 	</div>		
 	
     
@@ -218,7 +218,7 @@ and errors occur.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>wasModified</em></dt>
-			<dd><p>Whether any tab information was updated</p></dd>
+			<dd><p>Whether any checkin information was updated</p></dd>
 		</dl>
 		
 	</div>
@@ -231,7 +231,7 @@ and errors occur.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>A request for updated tab information has completed successfully.</p>
+		<p>A request for updated checkin information has completed successfully.</p>
 	</div>
 	
 	
@@ -255,12 +255,12 @@ and errors occur.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A new tab has been opened since the last update</p>
+		<p>A new checkin has been opened since the last update</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)locationWatcher:(PPHLocationWatcher *)<em>watcher</em> didDetectNewTab:(PPHLocationTab *)<em>tab</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)locationWatcher:(PPHLocationWatcher *)<em>watcher</em> didDetectNewTab:(PPHLocationCheckin *)<em>checkin</em></code></div>
 
     
 	
@@ -269,12 +269,12 @@ and errors occur.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>watcher</em></dt>
-			<dd><p>information about the location on which the tab has been opened</p></dd>
+			<dd><p>information about the location on which the checkin has been opened</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>tab</em></dt>
-			<dd><p>information about the tab and customer</p></dd>
+			<dt><em>checkin</em></dt>
+			<dd><p>information about the checkin and customer</p></dd>
 		</dl>
 		
 	</div>
@@ -287,7 +287,7 @@ and errors occur.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>A new tab has been opened since the last update</p>
+		<p>A new checkin has been opened since the last update</p>
 	</div>
 	
 	
@@ -311,12 +311,12 @@ and errors occur.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A tab has been closed in some way (paid, cancelled, left, etc) since the last update</p>
+		<p>A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)locationWatcher:(PPHLocationWatcher *)<em>watcher</em> didDetectRemovedTab:(PPHLocationTab *)<em>tab</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)locationWatcher:(PPHLocationWatcher *)<em>watcher</em> didDetectRemovedTab:(PPHLocationCheckin *)<em>checkin</em></code></div>
 
     
 	
@@ -325,12 +325,12 @@ and errors occur.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>watcher</em></dt>
-			<dd><p>information about the location on which the tab has been closed</p></dd>
+			<dd><p>information about the location on which the checkin has been closed</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>tab</em></dt>
-			<dd><p>last known information about the tab and customer</p></dd>
+			<dt><em>checkin</em></dt>
+			<dd><p>last known information about the checkin and customer</p></dd>
 		</dl>
 		
 	</div>
@@ -343,7 +343,7 @@ and errors occur.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>A tab has been closed in some way (paid, cancelled, left, etc) since the last update</p>
+		<p>A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</p>
 	</div>
 	
 	
@@ -367,7 +367,7 @@ and errors occur.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>An error has occurred trying to update tab information</p>
+		<p>An error has occurred trying to update checkin information</p>
 	</div>		
 	
     
@@ -399,7 +399,7 @@ and errors occur.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>An error has occurred trying to update tab information</p>
+		<p>An error has occurred trying to update checkin information</p>
 	</div>
 	
 	
@@ -429,7 +429,7 @@ and errors occur.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-03-13)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-14)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

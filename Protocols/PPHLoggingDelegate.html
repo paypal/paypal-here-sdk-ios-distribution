@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>PPHPaymentResponse Class Reference</title>
+		<title>PPHLoggingDelegate Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">PPHPaymentResponse Class Reference</h1>
+				<h1 class="hideInXcode">PPHLoggingDelegate Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,19 +38,17 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/correlationId">&nbsp;&nbsp;&nbsp;&nbsp;correlationId</option>
-	
-	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
-	
-	<option value="//api/name/paypalInvoiceId">&nbsp;&nbsp;&nbsp;&nbsp;paypalInvoiceId</option>
-	
-	<option value="//api/name/transactionId">&nbsp;&nbsp;&nbsp;&nbsp;transactionId</option>
 	
 	
 	
 	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/logPayPalHereError:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereError:</option>
+	
+	<option value="//api/name/logPayPalHereInfo:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereInfo:</option>
+	
+	<option value="//api/name/logPayPalHereWarning:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereWarning:</option>
 	
 	
 	
@@ -74,28 +72,26 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/correlationId">correlationId</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereError:">logPayPalHereError:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereInfo:">logPayPalHereInfo:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paypalInvoiceId">paypalInvoiceId</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transactionId">transactionId</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereWarning:">logPayPalHereWarning:</a></span></li>
 	
 </ul></li>
-
-
-
-
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="PPHPaymentResponse Class Reference" name="top"></a>
+				<a title="PPHLoggingDelegate Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -104,18 +100,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">PPHPaymentResponse Class Reference</h1>
+						<h1 class="title title-header">PPHLoggingDelegate Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
+	<td class="specification-title">Conforms to</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">PPHPaymentProcessor.h</td>
+	<td class="specification-value">PPHLoggingDelegate.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -125,7 +121,13 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Generic base class for payment attempt response data from PayPal services</p>
+						<p>For debugging purposes it can be helpful to see our internal logs.
+Implement this protocol and set the logging delegate on <a href="../Classes/PayPalHereSDK.html">PayPalHereSDK</a>.
+You should generally not set this delegate in production code as it will
+have a theoretical performance impact (we&rsquo;ll call respondsToSelector a lot).
+If you respond to a given selector, we&rsquo;ll put the message together, which will
+cause a bunch of string munging to happen. So basically, use this when you
+mean it, not just on a whim.</p>
 					</div>
 					
 					
@@ -143,31 +145,24 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/error">&nbsp;&nbsp;error</a></code>
-		<span class="tooltip"><p>Non-nil if an error has occurred in processing the payment.</p></span>
+		<code><a href="#//api/name/logPayPalHereError:">&ndash;&nbsp;logPayPalHereError:</a></code>
+		<span class="tooltip"><p>Log a message considered to be indicative of an error.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/transactionId">&nbsp;&nbsp;transactionId</a></code>
-		<span class="tooltip"><p>Non-nil if the transaction has succeeded and has a reference number</p></span>
+		<code><a href="#//api/name/logPayPalHereWarning:">&ndash;&nbsp;logPayPalHereWarning:</a></code>
+		<span class="tooltip"><p>Log a message considered to be a potential issue affecting proper function.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/paypalInvoiceId">&nbsp;&nbsp;paypalInvoiceId</a></code>
-		<span class="tooltip"><p>The invoiceId of the invoice this payment was made against.</p></span>
+		<code><a href="#//api/name/logPayPalHereInfo:">&ndash;&nbsp;logPayPalHereInfo:</a></code>
+		<span class="tooltip"><p>Log informational events.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
 	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/correlationId">&nbsp;&nbsp;correlationId</a></code>
-		<span class="tooltip"><p>The correlation ID of the transaction attempt.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -178,25 +173,39 @@
 					
 					
 					
+					
+					
+					
+					
 					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/correlationId" title="correlationId"></a>
-	<h3 class="subsubtitle method-title">correlationId</h3>
+	<a name="//api/name/logPayPalHereError:" title="logPayPalHereError:"></a>
+	<h3 class="subsubtitle method-title">logPayPalHereError:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The correlation ID of the transaction attempt.</p>
+		<p>Log a message considered to be indicative of an error.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *correlationId</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)logPayPalHereError:(NSString *)<em>message</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The fully formatted log message.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -206,7 +215,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The correlation ID of the transaction attempt.</p>
+		<p>Log a message considered to be indicative of an error.</p>
 	</div>
 	
 	
@@ -217,27 +226,37 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+		<code class="declared-in-ref">PPHLoggingDelegate.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/error" title="error"></a>
-	<h3 class="subsubtitle method-title">error</h3>
+	<a name="//api/name/logPayPalHereInfo:" title="logPayPalHereInfo:"></a>
+	<h3 class="subsubtitle method-title">logPayPalHereInfo:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Non-nil if an error has occurred in processing the payment.</p>
+		<p>Log informational events.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) PPHError *error</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)logPayPalHereInfo:(NSString *)<em>message</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The fully formatted log message.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -247,7 +266,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Non-nil if an error has occurred in processing the payment.</p>
+		<p>Log informational events.</p>
 	</div>
 	
 	
@@ -258,27 +277,37 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+		<code class="declared-in-ref">PPHLoggingDelegate.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/paypalInvoiceId" title="paypalInvoiceId"></a>
-	<h3 class="subsubtitle method-title">paypalInvoiceId</h3>
+	<a name="//api/name/logPayPalHereWarning:" title="logPayPalHereWarning:"></a>
+	<h3 class="subsubtitle method-title">logPayPalHereWarning:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The invoiceId of the invoice this payment was made against.</p>
+		<p>Log a message considered to be a potential issue affecting proper function.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *paypalInvoiceId</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)logPayPalHereWarning:(NSString *)<em>message</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The fully formatted log message.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -288,7 +317,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The invoiceId of the invoice this payment was made against.</p>
+		<p>Log a message considered to be a potential issue affecting proper function.</p>
 	</div>
 	
 	
@@ -299,58 +328,13 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/transactionId" title="transactionId"></a>
-	<h3 class="subsubtitle method-title">transactionId</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Non-nil if the transaction has succeeded and has a reference number</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *transactionId</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Non-nil if the transaction has succeeded and has a reference number</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+		<code class="declared-in-ref">PPHLoggingDelegate.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
-					
-					
-					
-					
 					
 					
 				</div>
