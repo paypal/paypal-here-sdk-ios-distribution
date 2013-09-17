@@ -1,8 +1,6 @@
 //
-//  PPHPaymentProcessor.h
 //  PayPalHereSDK
 //
-//  Created by Max Metral on 10/30/12.
 //  Copyright (c) 2012 PayPal. All rights reserved.
 //
 
@@ -10,6 +8,7 @@
 #import "PPHInvoiceProtocol.h"
 #import "PPHCardNotPresentData.h"
 #import "PPHInvoiceConstants.h"
+#import "PPHReceiptDestination.h"
 
 /*!
  * All network requests around payment will use this id (which can be passed to the network delegate to cancel them)
@@ -105,7 +104,7 @@
  * attempting to collect payment.
  * @param completionHandler called when the action has completed
  */
--(void)beginTabPayment: (PPHLocationCheckin*) checkin forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHPaymentResponse*)) completionHandler;
+-(void)beginCheckinPayment: (PPHLocationCheckin*) checkin forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHPaymentResponse*)) completionHandler;
 
 #pragma mark - Card related payment options
 
@@ -203,7 +202,13 @@
  */
 -(void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv*)event andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
-/*
-- (void)beginSendReceipt: (id<PPHInvoiceProtocol>) ToEmail: (NSString*) email completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
-*/
+/*!
+ * Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.
+ * @param payment the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
+ * values of this object, so you can make one up with that data. For EMV, we need the transaction handle as well (e.g. from PPHChipAndPinAuthResponse)
+ * @param destination the destination for the receipt (e.g. an email address or phone number)
+ * @param completionHandler called when the receipt is sent or an error occurs
+ */
+- (void)beginSendReceipt: (PPHPaymentResponse*) payment to: (PPHReceiptDestination*) destination completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
+
 @end

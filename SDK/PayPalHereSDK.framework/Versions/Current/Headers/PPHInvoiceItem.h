@@ -53,6 +53,11 @@
 @property (strong,nonatomic,readonly) NSString* taxRateName;
 
 /*!
+ * The image associated with this item, if any. Must be SSL.
+ */
+@property (strong, nonatomic) NSString* imageUrl;
+
+/*!
  * Do NOT call the default initializer. You will be greeted with an NSInternalInconsistencyException.
  */
 -(id)init UNAVAILABLE_ATTRIBUTE;

@@ -36,11 +36,11 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginTabPayment:forInvoice:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCheckinPayment:forInvoice:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Capture funds against an open checkin from PPHLocalManager and PPHLocationWatcher</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>			
 			
-			<Declaration>- (void)beginTabPayment:(PPHLocationCheckin *)checkin forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginCheckinPayment:(PPHLocationCheckin *)checkin forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>checkin</Name>
@@ -55,7 +55,7 @@ attempting to collect payment.</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/beginTabPayment:forInvoice:completionHandler:</Anchor>
+			<Anchor>//api/name/beginCheckinPayment:forInvoice:completionHandler:</Anchor>
             <NodeRef refid="35"/>
 		</Token>
 		
@@ -311,6 +311,30 @@ attempting to collect payment.</Abstract>
 			</Parameters>
 			
 			<Anchor>//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginSendReceipt:to:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>			
+			
+			<Declaration>- (void)beginSendReceipt:(PPHPaymentResponse *)payment to:(PPHReceiptDestination *)destination completionHandler:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>payment</Name>
+					<Abstract type="html">the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
+values of this object, so you can make one up with that data. For EMV, we need the transaction handle as well (e.g. from PPHChipAndPinAuthResponse</Abstract>
+				</Parameter><Parameter>
+					<Name>destination</Name>
+					<Abstract type="html">the destination for the receipt (e.g. an email address or phone number)</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the receipt is sent or an error occurs</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginSendReceipt:to:completionHandler:</Anchor>
             <NodeRef refid="35"/>
 		</Token>
 		

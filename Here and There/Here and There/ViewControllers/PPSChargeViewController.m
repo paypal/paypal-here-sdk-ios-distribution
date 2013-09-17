@@ -261,7 +261,7 @@
         PPSProgressView *pg = [PPSProgressView progressViewWithTitle:@"Processing Payment" andMessage:nil withCancelHandler:^(PPSProgressView *progressView) {
             
         }];
-        [[PayPalHereSDK sharedPaymentProcessor] beginTabPayment:self.candidateTab forInvoice:self.invoice completionHandler:^(PPHPaymentResponse *response) {
+        [[PayPalHereSDK sharedPaymentProcessor] beginCheckinPayment:self.candidateTab forInvoice:self.invoice completionHandler:^(PPHPaymentResponse *response) {
             [pg dismiss:YES];
             if (response.error != nil) {
                 NSString *msg = response.error.localizedDescription;

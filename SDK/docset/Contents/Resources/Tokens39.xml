@@ -1,279 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PayPalHereSDK.html">
+	<File path="Classes/PPHSignatureView.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PayPalHereSDK</TokenIdentifier>
-			<Abstract type="html">The main object through which you can interact with PayPal and associated hardware devices
-such as card readers and chip &amp;amp; pin devices.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHSignatureView</TokenIdentifier>
+			<Abstract type="html">A UIView subclass that will record user touches into a signature image.
+Generally should be used &quot;full-ish&quot; screen.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
 			
 			<NodeRef refid="39"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedCardReaderManager</TokenIdentifier>
-			<Abstract type="html">The interface to interact with the card reader</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/setDelegate:</TokenIdentifier>
+			<Abstract type="html">A receiver of events on the signature view</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>+ (PPHCardReaderManager *)sharedCardReaderManager</Declaration>
+			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
 			
 			
-			<Anchor>//api/name/sharedCardReaderManager</Anchor>
+			<Anchor>//api/name/delegate</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedLocalManager</TokenIdentifier>
-			<Abstract type="html">The interface to interact with checkin services and merchant locations</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/delegate</TokenIdentifier>
+			<Abstract type="html">A receiver of events on the signature view</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>+ (PPHLocalManager *)sharedLocalManager</Declaration>
+			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
 			
 			
-			<Anchor>//api/name/sharedLocalManager</Anchor>
+			<Anchor>//api/name/delegate</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedPaymentProcessor</TokenIdentifier>
-			<Abstract type="html">The interface to process payments with card swipe, keyed in/scanned, and checkins</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instp/PPHSignatureView/delegate</TokenIdentifier>
+			<Abstract type="html">A receiver of events on the signature view</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>+ (PPHPaymentProcessor *)sharedPaymentProcessor</Declaration>
+			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
 			
 			
-			<Anchor>//api/name/sharedPaymentProcessor</Anchor>
+			<Anchor>//api/name/delegate</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedAccessController</TokenIdentifier>
-			<Abstract type="html">A helper to establish OAuth credentials on behalf of your application for a merchant.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/isEmptySignature</TokenIdentifier>
+			<Abstract type="html">Is the current signature considered empty?</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>+ (PPHAccessController *)sharedAccessController</Declaration>
+			<Declaration>- (BOOL)isEmptySignature</Declaration>
 			
 			
-			<Anchor>//api/name/sharedAccessController</Anchor>
+			<Anchor>//api/name/isEmptySignature</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setNetworkDelegate:</TokenIdentifier>
-			<Abstract type="html">Should you wish to handle your own network requests, you can set this singleton
-which the PayPal Here SDK will call whenever a network request needs to go out.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/printableImage</TokenIdentifier>
+			<Abstract type="html">Get the signature image for printing or upload purposes</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>+ (void)setNetworkDelegate:(id&lt;PPHNetworkRequestDelegate&gt;)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">an object implementing PPHNetworkRequestDelegate which will be in charge of executing requests</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (UIImage *)printableImage</Declaration>
 			
-			<Anchor>//api/name/setNetworkDelegate:</Anchor>
+			
+			<Anchor>//api/name/printableImage</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/networkDelegate</TokenIdentifier>
-			<Abstract type="html">The current network request delegate.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/clearSignaturePad</TokenIdentifier>
+			<Abstract type="html">Clear the current signature. It&apos;s good practice to do this after you&apos;re done with it as well
+to avoid memory usage and potential data exposure.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>+ (id&lt;PPHNetworkRequestDelegate&gt;)networkDelegate</Declaration>
-			
-			
-			<Anchor>//api/name/networkDelegate</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</TokenIdentifier>
-			<Abstract type="html">If you handle your own network requests, you should update the progress of those requests
-via this method so that various SDK features (such as reader software updates) can report
-overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible - so for example you could say a network request consists
-of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
-estimated relative durations of each of those to be used in computing the total step units.
-But for the rest of us mortals, you&apos;ll probably just say it&apos;s 1 step and the percentage is
-the percentage of the download that&apos;s completed.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (void)reportNetworkRequestProgress:(NSURLRequest *)originalRequest currentStep:(NSInteger)currentStep totalSteps:(NSInteger)totalSteps currentStepPercentage:(NSInteger)wholeNumberCurrentPercentage totalStepPercentageEstimate:(NSInteger)wholeNumberTotalPercentage</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>originalRequest</Name>
-					<Abstract type="html">The request as originally passed to your network delegate. If you
-&quot;rewrite&quot; the request, you need to keep the old one around to properly inform us of
-progress.</Abstract>
-				</Parameter><Parameter>
-					<Name>currentStep</Name>
-					<Abstract type="html">The 1-based index of the step currently executing (e.g. it doesn&apos;t make
-sense to be on the 0th step.</Abstract>
-				</Parameter><Parameter>
-					<Name>totalSteps</Name>
-					<Abstract type="html">The count of the total number of steps required to execute the request.
-Must be at least 1.</Abstract>
-				</Parameter><Parameter>
-					<Name>wholeNumberCurrentPercentage</Name>
-					<Abstract type="html">a number between 0 and 100 expressing how much of the
-current step is completed.</Abstract>
-				</Parameter><Parameter>
-					<Name>wholeNumberTotalPercentage</Name>
-					<Abstract type="html">a number between 0 and 100 expressing how much of the
-total process is completed.</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setAnalyticsDelegate:</TokenIdentifier>
-			<Abstract type="html">Should you wish to handle your own analytics, you can set this singleton.
-Be warned if you don&apos;t also let us do our own analytics we will not be able
-to help diagnose aggregate issues for our SDK in your application.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (void)setAnalyticsDelegate:(id&lt;PPHAnalyticsDelegate&gt;)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">an object implementing PPHAnalyticsDelegate which will be in charge of reporting events</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setAnalyticsDelegate:</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/analyticsDelegate</TokenIdentifier>
-			<Abstract type="html">The current analytics delegate.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (id&lt;PPHAnalyticsDelegate&gt;)analyticsDelegate</Declaration>
+			<Declaration>- (void)clearSignaturePad</Declaration>
 			
 			
-			<Anchor>//api/name/analyticsDelegate</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setLoggingDelegate:</TokenIdentifier>
-			<Abstract type="html">Should you wish to receive internal log messages, set this delegate. See
-PPHLogingDelegate for a warning about performance impact.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (void)setLoggingDelegate:(id&lt;PPHLoggingDelegate&gt;)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">an object implementing one or more methods of
-the PPHLoggingDelegate</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setLoggingDelegate:</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/loggingDelegate</TokenIdentifier>
-			<Abstract type="html">The current logging delegate or nil.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (id&lt;PPHLoggingDelegate&gt;)loggingDelegate</Declaration>
-			
-			
-			<Anchor>//api/name/loggingDelegate</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/activeMerchant</TokenIdentifier>
-			<Abstract type="html">The currently active merchant account</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (PPHMerchantInfo *)activeMerchant</Declaration>
-			
-			
-			<Anchor>//api/name/activeMerchant</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setActiveMerchant:asDefaultMerchant:</TokenIdentifier>
-			<Abstract type="html">Set the currently active merchant for which all payment operations will be done.
-If asDefault is YES, we will persist this merchant information to secure storage
-and then when your app runs again, automatically pull it back out. If asDefault is NO
-you&apos;re on your own and activeMerchant will be nil when you run again. To &quot;log the
-merchant out&quot; you can call this with a nil merchant.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (void)setActiveMerchant:(PPHMerchantInfo *)merchant asDefaultMerchant:(BOOL)asDefault</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>merchant</Name>
-					<Abstract type="html">The merchant information including OAuth credentials</Abstract>
-				</Parameter><Parameter>
-					<Name>asDefault</Name>
-					<Abstract type="html">YES to securely store to keychain for future app runs, NO to keep
-in memory copy only</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setActiveMerchant:asDefaultMerchant:</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/hasLocationAccess</TokenIdentifier>
-			<Abstract type="html">Returns YES if we have the access we need to device location information
-(we ask for significant location changes so long as a transaction is in progress,
-or for general location updates if the device does not support significant updates).</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (BOOL)hasLocationAccess</Declaration>
-			
-			
-			<Anchor>//api/name/hasLocationAccess</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/askForLocationAccess</TokenIdentifier>
-			<Abstract type="html">To allow you fine grained control over location access prompts, you can call this method
-explicitly. It doesn&apos;t do anything more than ask for location, so you can certainly do
-that yourself and get control of the messaging, but this method is here for your
-convenience.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (BOOL)askForLocationAccess</Declaration>
-			
-			
-			<Anchor>//api/name/askForLocationAccess</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setBaseAPIURL:</TokenIdentifier>
-			<Abstract type="html">For TEST purposes, you can set the service URL used for requests in the PayPal Here SDK</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
-			
-			<Declaration>+ (void)setBaseAPIURL:(NSURL *)url</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>url</Name>
-					<Abstract type="html">The base URL (essentially https://stagename/) for your non-live environment.</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setBaseAPIURL:</Anchor>
+			<Anchor>//api/name/clearSignaturePad</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		

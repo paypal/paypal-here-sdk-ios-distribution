@@ -25,6 +25,7 @@ typedef enum {
     ePPHTotalSimpleTotal =  ePPHTotalIncludeItems | ePPHTotalIncludeTax,
     ePPHTotalGrandTotal =  ePPHTotalIncludeItems | ePPHTotalIncludeTax | ePPHTotalIncludeDiscount | ePPHTotalIncludeGratuity | ePPHTotalIncludeShipping | ePPHTotalIncludeShippingTax | ePPHTotalIncludeCustomAmount,
     ePPHTotalTaxTotal = ePPHTotalIncludeTax | ePPHTotalIncludeShippingTax,
+    ePPHTotalGrandTotalInclusive =  ePPHTotalIncludeItems | ePPHTotalIncludeDiscount | ePPHTotalIncludeGratuity | ePPHTotalIncludeShipping | ePPHTotalIncludeShippingTax | ePPHTotalIncludeCustomAmount,
 } PPHInvoiceTotalParts;
 
 /*!
@@ -51,7 +52,7 @@ typedef enum {
 /*!
  * Total of discounts on the order
  */
-//@property (nonatomic,strong,readonly) NSDecimalNumber *discountsTotal;
+@property (nonatomic,strong,readonly) NSDecimalNumber *discountsTotal;
 /*!
  * Tip added to the order
  */
