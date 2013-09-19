@@ -35,8 +35,4 @@
  */
 @property (nonatomic,strong) PPHAccessAccount* payPalAccount;
 
-/*!
- * Information re payment limits
- */
-@property (nonatomic, strong) PPHPaymentLimits *paymentLimits;
 @end

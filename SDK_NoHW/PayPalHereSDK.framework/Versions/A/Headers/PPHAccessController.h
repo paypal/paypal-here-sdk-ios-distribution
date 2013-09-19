@@ -10,7 +10,7 @@
 
 @class PPHError;
 
-typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* transaction, NSDictionary* extraInfo);
+typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo);
 typedef void (^PPHAccessTokenRefreshHandler)(PPHAccessResultType status, PPHError *error);
 
 /*!
