@@ -150,7 +150,7 @@
 /*! The last received status of the invoice */
 @property (nonatomic,readonly) NSString *transactionId;
 /*! Data about the payment of the invoice */
-@property (nonatomic,readonly) PPHInvoicePayment *paymentInfo;
+@property (nonatomic,strong) PPHInvoicePayment *paymentInfo;
 /*! An array of PPHInvoicePayments received from the server */
 @property (nonatomic,readonly) NSArray *refunds;
 /*! The last received status of the invoice */
