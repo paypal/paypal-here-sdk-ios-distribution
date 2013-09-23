@@ -38,8 +38,8 @@
 @end
 
 #ifdef DEBUG
-NSString *sServiceHost = nil;
-//NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
+//NSString *sServiceHost = nil;
+NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
 #endif
 
 /**
