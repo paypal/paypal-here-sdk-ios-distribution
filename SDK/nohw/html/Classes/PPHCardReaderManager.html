@@ -1,0 +1,1063 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>PPHCardReaderManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PayPalHereSDK </a></h1>
+				<a id="developerHome" href="../index.html">PayPal</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">PPHCardReaderManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/activateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- activateReader:</option>
+	
+	<option value="//api/name/availableDevices">&nbsp;&nbsp;&nbsp;&nbsp;- availableDevices</option>
+	
+	<option value="//api/name/beginMonitoring">&nbsp;&nbsp;&nbsp;&nbsp;- beginMonitoring</option>
+	
+	<option value="//api/name/beginMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- beginMonitoring:</option>
+	
+	<option value="//api/name/beginTransaction:">&nbsp;&nbsp;&nbsp;&nbsp;- beginTransaction:</option>
+	
+	<option value="//api/name/beginUpgrade:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginUpgrade:completionHandler:</option>
+	
+	<option value="//api/name/continueTransaction:">&nbsp;&nbsp;&nbsp;&nbsp;- continueTransaction:</option>
+	
+	<option value="//api/name/deactivateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- deactivateReader:</option>
+	
+	<option value="//api/name/endMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- endMonitoring:</option>
+	
+	<option value="//api/name/endTransaction">&nbsp;&nbsp;&nbsp;&nbsp;- endTransaction</option>
+	
+	<option value="//api/name/selectApplication:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- selectApplication:atIndex:</option>
+	
+	<option value="//api/name/setPreferenceOrder:">&nbsp;&nbsp;&nbsp;&nbsp;- setPreferenceOrder:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activateReader:">activateReader:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableDevices">availableDevices</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginMonitoring">beginMonitoring</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginMonitoring:">beginMonitoring:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginTransaction:">beginTransaction:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginUpgrade:completionHandler:">beginUpgrade:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/continueTransaction:">continueTransaction:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deactivateReader:">deactivateReader:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endMonitoring:">endMonitoring:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endTransaction">endTransaction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectApplication:atIndex:">selectApplication:atIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPreferenceOrder:">setPreferenceOrder:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="PPHCardReaderManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">PPHCardReaderManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">PPHCardReaderManager.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The card reader manager handles all interaction with card and chip&amp;pin hardware devices.
+This includes audio readers, dock port readers, and Bluetooth readers.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginMonitoring">&ndash;&nbsp;beginMonitoring</a></code>
+		<span class="tooltip"><p>Monitor for all known device types</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginMonitoring:">&ndash;&nbsp;beginMonitoring:</a></code>
+		<span class="tooltip"><p>Begin monitoring the device for connection and removal of the specified reader types.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/endMonitoring:">&ndash;&nbsp;endMonitoring:</a></code>
+		<span class="tooltip"><p>Stop reacting to events around device connection and removal.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activateReader:">&ndash;&nbsp;activateReader:</a></code>
+		<span class="tooltip"><p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
+in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deactivateReader:">&ndash;&nbsp;deactivateReader:</a></code>
+		<span class="tooltip"><p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
+or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
+disconnect the reader.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginTransaction:">&ndash;&nbsp;beginTransaction:</a></code>
+		<span class="tooltip"><p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
+readers this isn&rsquo;t necessary, but if you want to support those readers,
+you must call this method when you know the final amount that will be charged.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/endTransaction">&ndash;&nbsp;endTransaction</a></code>
+		<span class="tooltip"><p>Once a transaction is complete, either via our processing services or out-of-band processing
+such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
+some readers are battery powered, you should call this as soon as reasonable. The SDK will
+automatically take care of this when your app is suspended or interrupted.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectApplication:atIndex:">&ndash;&nbsp;selectApplication:atIndex:</a></code>
+		<span class="tooltip"><p>For Chip &amp; Pin cards with multiple applications, you must select one
+in response to the ePPHChipAndPinEventDecisionRequired event in order
+to proceed.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/continueTransaction:">&ndash;&nbsp;continueTransaction:</a></code>
+		<span class="tooltip"><p>For Chip &amp; Pin cards, after the initial auth is done with the PayPal servers, the response
+must be sent to the terminal for further processing. A card reader event (approve/decline)
+will typically be fired shortly after, and the result of that should be passed to
+finalizeChipAndPinTransaction.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setPreferenceOrder:">&ndash;&nbsp;setPreferenceOrder:</a></code>
+		<span class="tooltip"><p>For accessory based readers, there is the possibility that multiple capable devices may
+be connected to the phone at the same time. In this case, specifying a preference
+order can be useful to manage multiple devices with multiple phones. Generally,
+you&rsquo;re probably better off using the inherent iOS pairing screens to manage this,
+but to each their own. In addition, if you have custom bluetooth or dock port readers
+that we support, you can pass the custom protocol string in this list and we&rsquo;ll look for
+that. IMPORTANT: You still need to add the protocol to your application&rsquo;s plist
+(under supported accessories) in order for this to work.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableDevices">&ndash;&nbsp;availableDevices</a></code>
+		<span class="tooltip"><p>An array of known available devices. For example with bluetooth devices this will include
+paired devices that are currently within range/connectable.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginUpgrade:completionHandler:">&ndash;&nbsp;beginUpgrade:completionHandler:</a></code>
+		<span class="tooltip"><p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
+for the target reader. The error will be nil if it worked, else will tell you what went wrong.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/activateReader:" title="activateReader:"></a>
+	<h3 class="subsubtitle method-title">activateReader:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
+in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)<em>readerOrNil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>readerOrNil</em></dt>
+			<dd><p>The reader to activate or nil for the default/only reader.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
+in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableDevices" title="availableDevices"></a>
+	<h3 class="subsubtitle method-title">availableDevices</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An array of known available devices. For example with bluetooth devices this will include
+paired devices that are currently within range/connectable.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)availableDevices</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSArray(<a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>)</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An array of known available devices. For example with bluetooth devices this will include
+paired devices that are currently within range/connectable.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginMonitoring" title="beginMonitoring"></a>
+	<h3 class="subsubtitle method-title">beginMonitoring</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Monitor for all known device types</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)beginMonitoring</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Monitor for all known device types</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginMonitoring:" title="beginMonitoring:"></a>
+	<h3 class="subsubtitle method-title">beginMonitoring:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Begin monitoring the device for connection and removal of the specified reader types.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)beginMonitoring:(PPHReaderTypeMask)<em>readerTypes</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>readerTypes</em></dt>
+			<dd><p>the types of readers to watch for</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Begin monitoring the device for connection and removal of the specified reader types.</p>
+
+<p>PLEASE NOTE that we will call EAAccessoryManager::register/unregisterForLocalNotifications
+based on whether you pass the bluetooth or feature port reader types. So if your application is
+ALSO manipulating the accessory framework, you should pass one of those types if you don&rsquo;t want
+us to shutoff accessory notifications for your app. Alternatively, you can call endMonitoring first
+and then <a href="#//api/name/beginMonitoring">beginMonitoring</a> with your new types. This is obviously an edge case since you will likely
+just call <a href="#//api/name/beginMonitoring">beginMonitoring</a> once and be done with it.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginTransaction:" title="beginTransaction:"></a>
+	<h3 class="subsubtitle method-title">beginTransaction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
+readers this isn&rsquo;t necessary, but if you want to support those readers,
+you must call this method when you know the final amount that will be charged.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)beginTransaction:(id&lt;PPHInvoiceProtocol&gt;)<em>transaction</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>transaction</em></dt>
+			<dd><p>the invoice containing the amount and currency information that will be charged</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
+readers this isn&rsquo;t necessary, but if you want to support those readers,
+you must call this method when you know the final amount that will be charged.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginUpgrade:completionHandler:" title="beginUpgrade:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginUpgrade:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
+for the target reader. The error will be nil if it worked, else will tell you what went wrong.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)<em>reader</em> completionHandler:(void ( ^ ) ( PPHError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>reader</em></dt>
+			<dd><p>the reader to upgrade</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the upgrade succeeds or fails</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
+for the target reader. The error will be nil if it worked, else will tell you what went wrong.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/continueTransaction:" title="continueTransaction:"></a>
+	<h3 class="subsubtitle method-title">continueTransaction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>For Chip &amp; Pin cards, after the initial auth is done with the PayPal servers, the response
+must be sent to the terminal for further processing. A card reader event (approve/decline)
+will typically be fired shortly after, and the result of that should be passed to
+finalizeChipAndPinTransaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)continueTransaction:(PPHChipAndPinAuthResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>the response received from the PayPal servers</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For Chip &amp; Pin cards, after the initial auth is done with the PayPal servers, the response
+must be sent to the terminal for further processing. A card reader event (approve/decline)
+will typically be fired shortly after, and the result of that should be passed to
+finalizeChipAndPinTransaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deactivateReader:" title="deactivateReader:"></a>
+	<h3 class="subsubtitle method-title">deactivateReader:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
+or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
+disconnect the reader.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)deactivateReader:(PPHCardReaderBasicInformation *)<em>readerOrNil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>readerOrNil</em></dt>
+			<dd><p>The reader to deactivate or nil for the default/only reader.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
+or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
+disconnect the reader.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/endMonitoring:" title="endMonitoring:"></a>
+	<h3 class="subsubtitle method-title">endMonitoring:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Stop reacting to events around device connection and removal.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)endMonitoring:(BOOL)<em>unregisterForLocalNotifications</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>unregisterForLocalNotifications</em></dt>
+			<dd><p>if YES, we will call EAAccessoryManager unregisterForLocalNotifications</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Stop reacting to events around device connection and removal.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/endTransaction" title="endTransaction"></a>
+	<h3 class="subsubtitle method-title">endTransaction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Once a transaction is complete, either via our processing services or out-of-band processing
+such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
+some readers are battery powered, you should call this as soon as reasonable. The SDK will
+automatically take care of this when your app is suspended or interrupted.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)endTransaction</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Once a transaction is complete, either via our processing services or out-of-band processing
+such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
+some readers are battery powered, you should call this as soon as reasonable. The SDK will
+automatically take care of this when your app is suspended or interrupted.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectApplication:atIndex:" title="selectApplication:atIndex:"></a>
+	<h3 class="subsubtitle method-title">selectApplication:atIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>For Chip &amp; Pin cards with multiple applications, you must select one
+in response to the ePPHChipAndPinEventDecisionRequired event in order
+to proceed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)selectApplication:(PPHChipAndPinDecisionEvent *)<em>event</em> atIndex:(NSInteger)<em>index</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>event</em></dt>
+			<dd><p>the original decision event from the reader</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>the index of the selected application</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For Chip &amp; Pin cards with multiple applications, you must select one
+in response to the ePPHChipAndPinEventDecisionRequired event in order
+to proceed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setPreferenceOrder:" title="setPreferenceOrder:"></a>
+	<h3 class="subsubtitle method-title">setPreferenceOrder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>For accessory based readers, there is the possibility that multiple capable devices may
+be connected to the phone at the same time. In this case, specifying a preference
+order can be useful to manage multiple devices with multiple phones. Generally,
+you&rsquo;re probably better off using the inherent iOS pairing screens to manage this,
+but to each their own. In addition, if you have custom bluetooth or dock port readers
+that we support, you can pass the custom protocol string in this list and we&rsquo;ll look for
+that. IMPORTANT: You still need to add the protocol to your application&rsquo;s plist
+(under supported accessories) in order for this to work.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setPreferenceOrder:(NSArray *)<em>arrayOfCardReaderBasicInfo</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>arrayOfCardReaderBasicInfo</em></dt>
+			<dd><p>The array argument should be a set of card reader
+information with as much information as relevant
+filled out (for example name is not required when devices of that type have no name)</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For accessory based readers, there is the possibility that multiple capable devices may
+be connected to the phone at the same time. In this case, specifying a preference
+order can be useful to manage multiple devices with multiple phones. Generally,
+you&rsquo;re probably better off using the inherent iOS pairing screens to manage this,
+but to each their own. In addition, if you have custom bluetooth or dock port readers
+that we support, you can pass the custom protocol string in this list and we&rsquo;ll look for
+that. IMPORTANT: You still need to add the protocol to your application&rsquo;s plist
+(under supported accessories) in order for this to work.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-23)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
