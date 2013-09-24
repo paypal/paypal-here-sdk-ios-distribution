@@ -24,7 +24,7 @@
 {
     if ((self = [self initWithStylesheet:stylesheet withCssClass:cssClass andId:viewId])) {
         _dom.target = target;
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:resourcePath ofType:@"json" inDirectory:@"json"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[@"json/" stringByAppendingString:resourcePath] ofType:@"json"];
         NSArray *viewSpecs = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:0 error:nil];
 
         [self buildSubviews:viewSpecs inDOM:_dom];
