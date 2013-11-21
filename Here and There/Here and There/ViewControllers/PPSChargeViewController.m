@@ -132,10 +132,10 @@
     __block PPSProgressView *pv = [PPSProgressView progressViewWithTitle:@"Software Upgrade" andMessage:@"For EMV Reader" withCancelHandler:^(PPSProgressView *progressView) {
         
     }];
-    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:nil completionHandler:^(PPHError *error) {
-        NSLog(@"Update successful");
-        [pv dismiss:YES];
-    } ];
+    
+
+    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:reader];
+    [pv dismiss:YES];
 }
 
 #pragma mark -
@@ -167,7 +167,8 @@
         case ePPHChipAndPinEventAuthRequired:
             [[PayPalHereSDK sharedPaymentProcessor] beginChipAndPinAuthorization: (PPHChipAndPinAuthEvent*) event forInvoice:self.invoice completionHandler:^(PPHChipAndPinAuthResponse *response) {
                 weakSelf.activeAuthResponse = response;
-                [[PayPalHereSDK sharedCardReaderManager] continueTransaction:response];
+                //TODO: continue the transaction
+                
             }];
             break;
         case ePPHChipAndPinEventApproved:

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
+#import <PayPalHereSDK/PayPalHereSDK.h>
+
 #import "AFNetworking.h"
 #import "PPSProgressView.h"
 #import "UIView+NIStyleable.h"
@@ -38,8 +40,15 @@
         if (JSON && [JSON objectForKey:@"url"] && [[JSON objectForKey:@"url"] isKindOfClass:[NSString class]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[JSON objectForKey:@"url"]]];
         } else if (JSON && [JSON objectForKey:@"access_token"]) {
-            [PPSPreferences setMerchantFromServerResponse:JSON];
-            self.navigationController.viewControllers = @[[PPSOrderEntryViewController new]];
+
+            PPHMerchantInfo *merchantInfo = [PPSPreferences merchantFromServerResponse:JSON withMerchantId:[PPSPreferences currentUsername]];
+            
+            [PayPalHereSDK setActiveMerchant:merchantInfo withMerchantId:[PPSPreferences currentUsername] completionHandler:
+              ^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
+                  NSLog(@"done");
+                  self.navigationController.viewControllers = @[[PPSOrderEntryViewController new]];
+              }];
+            
         } else {
             [PPSAlertView showAlertViewWithTitle:@"Oops" message:@"Failed to get a response from the Here and There server" buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:nil];
         }

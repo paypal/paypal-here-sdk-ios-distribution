@@ -38,8 +38,9 @@
 @end
 
 #ifdef DEBUG
-//NSString *sServiceHost = nil;
-NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
+NSString *sServiceHost = nil;
+//NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
+
 #endif
 
 /**
@@ -148,15 +149,15 @@ NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need i
             [PPSPreferences setCurrentTicket:ticket];
 
             // Find out if this account has already been setup for PayPal Access in our sample server "architecture"
-            [PPSPreferences setMerchantFromServerResponse:JSON];
+            PPHMerchantInfo *merchantInfo = [PPSPreferences merchantFromServerResponse:JSON withMerchantId:self.username.text];
+
 
             if ([PayPalHereSDK activeMerchant].payPalAccount)
             {                
                 if (![PayPalHereSDK activeMerchant].payPalAccount.email) {
-                    [[PayPalHereSDK sharedAccessController] setupMerchant:[PayPalHereSDK activeMerchant].payPalAccount completionHandler:^(PPHAccessResultType status, PPHAccessAccount *transaction, NSDictionary *extraInfo) {
+
+                    [PayPalHereSDK  setActiveMerchant:merchantInfo withMerchantId:self.username.text completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo)   {
                         
-                        // Take this from the server for simplicity
-                        [PayPalHereSDK activeMerchant].currencyCode = transaction.currencyCode;
                         // Go to order entry view
                         [progress dismiss:YES];
                         PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];
@@ -185,9 +186,11 @@ NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need i
     [operation start];
 }
 
+
 #ifdef DEBUG
 #pragma mark -
 #pragma mark Net Service Handlers
+
 
 -(void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
@@ -216,6 +219,6 @@ NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need i
         [PPSAlertView showAlertViewWithTitle:@"Failed to Find Server" message:@"Make sure your sample server is running." buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:nil];
     }
 }
-
 #endif
+
 @end

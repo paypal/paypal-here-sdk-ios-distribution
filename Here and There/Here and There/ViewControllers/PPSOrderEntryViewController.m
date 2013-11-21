@@ -17,10 +17,10 @@
 #import "NimbusBadge.h"
 
 @interface PPSOrderEntryViewController () <
-    UITextFieldDelegate,
-    CLLocationManagerDelegate,
-    PPHLocationWatcherDelegate,
-    PPHCardReaderDelegate
+UITextFieldDelegate,
+CLLocationManagerDelegate,
+PPHLocationWatcherDelegate,
+PPHCardReaderDelegate
 >
 @property (nonatomic,strong) NITextField *amount;
 @property (nonatomic,strong) PPSKeypad *keypad;
@@ -51,21 +51,21 @@
     
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     [super viewDidLoad];
-  
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.view buildSubviews:@[
-     [NITextField new], @"#amount",
-     [UIButton buttonWithType:UIButtonTypeCustom], @"#charge", @".primaryBtn", SELECT_SELF(chargePressed),
-     [NIBadgeView new], @"#badge"
-     ] inDOM:self.dom];
+                               [NITextField new], @"#amount",
+                               [UIButton buttonWithType:UIButtonTypeCustom], @"#charge", @".primaryBtn", SELECT_SELF(chargePressed),
+                               [NIBadgeView new], @"#badge"
+                               ] inDOM:self.dom];
     self.keypad = [PPSKeypad new];
     self.keypad.frameWidth = self.view.frameWidth;
-
+    
     self.amount.inputView = self.keypad;
     self.amount.delegate = self;
     self.amount.autocorrectionType = UITextAutocorrectionTypeNo;
     [self.amount addTarget:self action:@selector(validate) forControlEvents:UIControlEventEditingChanged];
-
+    
     self.keypad.delegate = self.amount;
     self.charge.enabled = NO;
     
@@ -96,10 +96,8 @@
     __block PPSProgressView *pv = [PPSProgressView progressViewWithTitle:@"Software Upgrade" andMessage:@"For EMV Reader" withCancelHandler:^(PPSProgressView *progressView) {
         
     }];
-    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:nil completionHandler:^(PPHError *error) {
-        NSLog(@"Update successful");
-        [pv dismiss:YES];
-    } ];
+    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:reader];
+    [pv dismiss:YES];
 }
 
 -(void)didUpgradeReader:(BOOL)successful withMessage:(NSString *)message {
@@ -150,8 +148,8 @@
                 [myLocation save:^(PPHError *error) {
                     
                 }];
-//                self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:myLocation.locationId withDelegate:self];
-//                [self.watcher updatePeriodically:2 withMaximumInterval:20];
+                //                self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:myLocation.locationId withDelegate:self];
+                //                [self.watcher updatePeriodically:2 withMaximumInterval:20];
                 NSLog(@"%@", myLocation);
             }
         }];
@@ -202,7 +200,7 @@
                 self.badge.hidden = YES;
             }
         }];
-    }    
+    }
 }
 
 -(void)chargePressed
@@ -215,7 +213,7 @@
                   quantity:[NSDecimalNumber one]
                  unitPrice:[PPHAmount amountWithString:self.amount.text inCurrency:currency].amount
                    taxRate:nil taxRateName:nil];
-
+    
     // TODO support cancellation
     __block PPSProgressView *progress = [PPSProgressView progressViewWithTitle:@"Saving Order" andMessage:nil withCancelHandler:nil];
     [invoice save:^(PPHError *error) {
@@ -239,7 +237,7 @@
 -(void)validate
 {
     PPHAmount *amount = [PPHAmount amountWithString:self.amount.text inCurrency:[PayPalHereSDK activeMerchant].currencyCode];
-    self.charge.enabled = amount.isValid;    
+    self.charge.enabled = amount.isValid;
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
