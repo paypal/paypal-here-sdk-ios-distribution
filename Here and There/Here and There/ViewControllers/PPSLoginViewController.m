@@ -40,7 +40,6 @@
 #ifdef DEBUG
 NSString *sServiceHost = nil;
 //NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
-//NSString *sServiceHost = @"http://morning-tundra-8515.herokuapp.com/";
 
 #endif
 

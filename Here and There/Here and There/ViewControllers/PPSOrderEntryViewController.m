@@ -88,7 +88,7 @@ PPHCardReaderDelegate
     [super viewDidAppear:animated];
     [self.amount becomeFirstResponder];
     if (self.watcher) {
-        //        [self.watcher updatePeriodically:2 withMaximumInterval:20];
+//        [self.watcher updatePeriodically:2 withMaximumInterval:20];
     }
 }
 
@@ -128,7 +128,7 @@ PPHCardReaderDelegate
                     // Error handling would be a good thing.
                     if (error == nil) {
                         self.watcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:loc.locationId withDelegate:self];
-                        //                        [self.watcher updatePeriodically:2 withMaximumInterval:20];
+//                        [self.watcher updatePeriodically:2 withMaximumInterval:20];
                     }
                 }];
             } else {

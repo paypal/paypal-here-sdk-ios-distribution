@@ -17,7 +17,7 @@ static NSLock *sKeychainLock = nil;
 
 +(PPHMerchantInfo *)merchantFromServerResponse:(NSDictionary *)JSON withMerchantId:(NSString *)merchantId
 {
-    PPHMerchantInfo *ppmerchant = nil;  //[PayPalHereSDK activeMerchant];
+    PPHMerchantInfo *ppmerchant = nil;
     
     if ([JSON objectForKey:@"merchant"]) {
         ppmerchant = [[PPHMerchantInfo alloc] init];
