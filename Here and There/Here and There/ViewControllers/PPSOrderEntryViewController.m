@@ -97,12 +97,7 @@ PPHCardReaderDelegate
         
     }];
     [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:reader];
-    /*
-     TODO:    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:nil completionHandler:^(PPHError *error) {
-     NSLog(@"Update successful");
-     [pv dismiss:YES];
-     } ];
-     */
+    [pv dismiss:YES];
 }
 
 -(void)didUpgradeReader:(BOOL)successful withMessage:(NSString *)message {

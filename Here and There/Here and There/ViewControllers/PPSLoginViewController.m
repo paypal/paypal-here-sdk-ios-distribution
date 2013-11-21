@@ -38,10 +38,9 @@
 @end
 
 #ifdef DEBUG
-//NSString *sServiceHost = nil;
+NSString *sServiceHost = nil;
 //NSString *sServiceHost = @"https://www.appsforhere.com/pphsdk"; // If you need it preconfigured
-// Dom debugging:
-NSString *sServiceHost = @"http://morning-tundra-8515.herokuapp.com/";
+//NSString *sServiceHost = @"http://morning-tundra-8515.herokuapp.com/";
 
 #endif
 
@@ -157,28 +156,7 @@ NSString *sServiceHost = @"http://morning-tundra-8515.herokuapp.com/";
             if ([PayPalHereSDK activeMerchant].payPalAccount)
             {                
                 if (![PayPalHereSDK activeMerchant].payPalAccount.email) {
-#if 0
-                    [[PayPalHereSDK sharedAccessController] setupMerchant:[PayPalHereSDK activeMerchant].payPalAccount completionHandler:^(PPHAccessResultType status, PPHAccessAccount *transaction, NSDictionary *extraInfo) {
-                        
-                        // Take this from the server for simplicity
-                        [PayPalHereSDK activeMerchant].currencyCode = transaction.currencyCode;
-                        // Go to order entry view
-                        [progress dismiss:YES];
-                        PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];
-                        self.navigationController.viewControllers = @[entry];
-                    }];
-#endif
-#if oldway
-                    [PayPalHereSDK  setActiveMerchant:merchantInfo asDefaultMerchant:YES completionHandler:^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo)   {
-                        
-                        // Go to order entry view
-                        [progress dismiss:YES];
-                        PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];
-                        self.navigationController.viewControllers = @[entry];
-                    }];
-                    
-                    
-#else
+
                     [PayPalHereSDK  setActiveMerchant:merchantInfo withMerchantId:self.username.text completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo)   {
                         
                         // Go to order entry view
@@ -186,7 +164,6 @@ NSString *sServiceHost = @"http://morning-tundra-8515.herokuapp.com/";
                         PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];
                         self.navigationController.viewControllers = @[entry];
                     }];
-#endif
                 } else {
                     // Go to order entry view
                     [progress dismiss:YES];

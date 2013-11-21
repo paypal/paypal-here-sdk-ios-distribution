@@ -40,18 +40,15 @@
         if (JSON && [JSON objectForKey:@"url"] && [[JSON objectForKey:@"url"] isKindOfClass:[NSString class]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[JSON objectForKey:@"url"]]];
         } else if (JSON && [JSON objectForKey:@"access_token"]) {
-#ifdef oldway
-            [PPSPreferences setMerchantFromServerResponse:JSON];
-#else
+
             PPHMerchantInfo *merchantInfo = [PPSPreferences merchantFromServerResponse:JSON withMerchantId:[PPSPreferences currentUsername]];
             
             [PayPalHereSDK setActiveMerchant:merchantInfo withMerchantId:[PPSPreferences currentUsername] completionHandler:
               ^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
-                  //done;
                   NSLog(@"done");
+                  self.navigationController.viewControllers = @[[PPSOrderEntryViewController new]];
               }];
-#endif
-            self.navigationController.viewControllers = @[[PPSOrderEntryViewController new]];
+            
         } else {
             [PPSAlertView showAlertViewWithTitle:@"Oops" message:@"Failed to get a response from the Here and There server" buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:nil];
         }

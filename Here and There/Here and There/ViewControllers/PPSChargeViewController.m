@@ -133,15 +133,9 @@
         
     }];
     
-#ifdef oldway
-    [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:nil completionHandler:^(PPHError *error) {
-        NSLog(@"Update successful");
-        
-    } ];
-#else
+
     [[PayPalHereSDK sharedCardReaderManager] beginUpgrade:reader];
     [pv dismiss:YES];
-#endif
 }
 
 #pragma mark -
@@ -173,12 +167,8 @@
         case ePPHChipAndPinEventAuthRequired:
             [[PayPalHereSDK sharedPaymentProcessor] beginChipAndPinAuthorization: (PPHChipAndPinAuthEvent*) event forInvoice:self.invoice completionHandler:^(PPHChipAndPinAuthResponse *response) {
                 weakSelf.activeAuthResponse = response;
-#ifdef oldway
-                [[PayPalHereSDK sharedCardReaderManager] continueTransaction:response];
-#else
-                //Surely there's something to do?
+                //TODO: continue the transaction
                 
-#endif
             }];
             break;
         case ePPHChipAndPinEventApproved:

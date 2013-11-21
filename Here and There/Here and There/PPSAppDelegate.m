@@ -117,20 +117,7 @@
                 merchant.payPalAccount = account;
                 
                 PPSProgressView *progress = [PPSProgressView progressViewWithTitle:@"Linking Accounts" andMessage:nil withCancelHandler:nil];
-                
-                
-#if oldway
-                [PayPalHereSDK setActiveMerchant:merchant asDefaultMerchant:YES completionHandler:^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
-                    [progress dismiss:YES];
-                    
-                    NSLog(@"setActiveMerchant complete.  Status: %d", status);
-                    
-                    UINavigationController *nc = (UINavigationController*) self.masterViewController.mainController;
-                    nc.viewControllers = @[[PPSOrderEntryViewController new]];
-                    NSLog(@"%@",account);
-                }];
-                
-#else
+
                 NSString * merchantId = [PPSPreferences currentUsername];
                 
                 [PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo)   {
@@ -142,7 +129,6 @@
                     nc.viewControllers = @[[PPSOrderEntryViewController new]];
                     NSLog(@"%@",account);
                 }];
-#endif
             }
         }
     }
