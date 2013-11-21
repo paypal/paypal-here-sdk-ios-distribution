@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PPHMerchantInfo;
+
 @interface PPSPreferences : NSObject
 +(NSString*)currentUsername;
 +(void)setCurrentUsername: (NSString*) username;
@@ -18,7 +20,8 @@
 +(NSString*)currentLocationName;
 +(void)setCurrentLocationName: (NSString*) internalName;
 
-+(void)setMerchantFromServerResponse: (NSDictionary*) dictionary;
+//+(void)setMerchantFromServerResponse: (NSDictionary*) dictionary;
++(PPHMerchantInfo *)merchantFromServerResponse:(NSDictionary *)JSON withMerchantId:(NSString *)merchantId;
 
 #ifdef DEBUG
 +(NSString*)savedPasswordInDebug;

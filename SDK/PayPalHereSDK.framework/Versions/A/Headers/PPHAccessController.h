@@ -5,12 +5,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHAccessAccount.h>
 #import <PayPalHereSDK/PPHAccessResultType.h>
 
 @class PPHError;
 
-typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* transaction, NSDictionary* extraInfo);
+// ATTENTION - this interface will become private very soon.
+
 typedef void (^PPHAccessTokenRefreshHandler)(PPHAccessResultType status, PPHError *error);
 
 /*!
@@ -25,11 +27,15 @@ typedef void (^PPHAccessTokenRefreshHandler)(PPHAccessResultType status, PPHErro
 
 /*!
  * Once you get an access_token and merchant info, pass it into setupMerchant
- * and we'll verify PayPal Here setup and save their credentials
+ * and we'll verify PayPal Here setup and save their credentials.
+ *
+ * DEPRECATED: Use the setActiveMerchant on PayPalHereSDK which now encompasses both telling us about the merchant
+ * and setting them up.
+ *
  * @param account The account created as a result of a successful PayPal Access login redirect
  * @param completionHandler Will be called when we have gotten information about the account (eligibility, identity)
  */
--(void)setupMerchant: (PPHAccessAccount*) account completionHandler: (PPHAccessCompletionHandler) completionHandler;
+-(void)setupMerchant: (PPHAccessAccount*) account completionHandler: (PPHAccessCompletionHandler) completionHandler DEPRECATED_ATTRIBUTE;
 
 /*!
  * Refresh a PPHAccessAccount token using the refresh_url. If successful, the access_token

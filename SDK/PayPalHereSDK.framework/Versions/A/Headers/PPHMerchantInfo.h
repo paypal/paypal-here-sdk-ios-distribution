@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 #import "PPHInvoiceContactInfo.h"
+#import "PPHAccessAccount.h"
 
-@class PPHAccessAccount;
 @class PPHPaymentLimits;
 
 /*!
@@ -31,12 +31,14 @@
 @property (nonatomic,strong) NSString* currencyCode;
 
 /*!
+ * Tax Id (not required) or ABN/VAT id (only for receipts at this point)
+ */
+@property (nonatomic,strong) NSString *taxId;
+
+/*!
  * Access credentials from PayPal Access
  */
 @property (nonatomic,strong) PPHAccessAccount* payPalAccount;
 
-/*!
- * Information re payment limits
- */
-@property (nonatomic, strong) PPHPaymentLimits *paymentLimits;
+
 @end

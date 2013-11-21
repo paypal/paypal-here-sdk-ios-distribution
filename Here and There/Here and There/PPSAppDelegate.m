@@ -43,7 +43,9 @@
     // IMPORTANT: you may need to install the intermediate certificate on your device by visiting:
     // https://www.digicert.com/CACerts/DigiCertHighAssuranceCA-3.crt
     // which I've shortened to http://tiny.cc/pphstageca
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2md030.stage.paypal.com/webapps/"]];
+    //[PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2md030.stage.paypal.com/webapps/"]];
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph32.stage.paypal.com/webapps/"]];
+
     [PayPalHereSDK setNetworkDelegate:self];
     
     // By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
@@ -113,19 +115,34 @@
                 PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access expires_in:[query objectForKey:@"expires_in"] refreshUrl:refresh details:query];
                 PPHMerchantInfo *merchant = [PayPalHereSDK activeMerchant];
                 merchant.payPalAccount = account;
-                PPHAccessController *c = [[PPHAccessController alloc] init];
+                
                 PPSProgressView *progress = [PPSProgressView progressViewWithTitle:@"Linking Accounts" andMessage:nil withCancelHandler:nil];
-                [c setupMerchant:account completionHandler:^(PPHAccessResultType status, PPHAccessAccount *transaction, NSDictionary *extraInfo) {
+                
+                
+#if oldway
+                [PayPalHereSDK setActiveMerchant:merchant asDefaultMerchant:YES completionHandler:^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
                     [progress dismiss:YES];
                     
-                    // This comes from setupMerchant, so you can either trust our setting or yours, though non-default currency (of the account)
-                    // is not currently supported.
-                    merchant.currencyCode = transaction.currencyCode;
-                    [PayPalHereSDK setActiveMerchant:merchant asDefaultMerchant:YES];
+                    NSLog(@"setActiveMerchant complete.  Status: %d", status);
+                    
                     UINavigationController *nc = (UINavigationController*) self.masterViewController.mainController;
                     nc.viewControllers = @[[PPSOrderEntryViewController new]];
                     NSLog(@"%@",account);
                 }];
+                
+#else
+                NSString * merchantId = [PPSPreferences currentUsername];
+                
+                [PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo)   {
+                    [progress dismiss:YES];
+                    
+                    NSLog(@"setActiveMerchant complete.  Status: %d", status);
+                    
+                    UINavigationController *nc = (UINavigationController*) self.masterViewController.mainController;
+                    nc.viewControllers = @[[PPSOrderEntryViewController new]];
+                    NSLog(@"%@",account);
+                }];
+#endif
             }
         }
     }

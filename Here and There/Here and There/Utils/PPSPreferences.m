@@ -15,6 +15,7 @@ static NSLock *sKeychainLock = nil;
 
 @implementation PPSPreferences
 
+#ifdef oldway
 +(void)setMerchantFromServerResponse:(NSDictionary *)JSON
 {
     PPHMerchantInfo *ppmerchant = [PayPalHereSDK activeMerchant];
@@ -44,6 +45,37 @@ static NSLock *sKeychainLock = nil;
         ppmerchant.payPalAccount = account;
     }
 }
+#else
++(PPHMerchantInfo *)merchantFromServerResponse:(NSDictionary *)JSON withMerchantId:(NSString *)merchantId
+{
+    PPHMerchantInfo *ppmerchant = nil;  //[PayPalHereSDK activeMerchant];
+    
+    if ([JSON objectForKey:@"merchant"]) {
+        ppmerchant = [[PPHMerchantInfo alloc] init];
+        // Now, you need to fill out the merchant info with the things you've gathered about the account on "your side"
+        NSDictionary *yourMerchant = [JSON objectForKey:@"merchant"];
+        ppmerchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
+                                         initWithCountryCode: [yourMerchant objectForKey:@"country"]
+                                         city:[yourMerchant objectForKey:@"city"]
+                                         addressLineOne:[yourMerchant objectForKey:@"line1"]];
+        ppmerchant.invoiceContactInfo.businessName = [yourMerchant objectForKey:@"businessName"];
+        ppmerchant.invoiceContactInfo.state = [yourMerchant objectForKey:@"state"];
+        ppmerchant.invoiceContactInfo.postalCode = [yourMerchant objectForKey:@"postalCode"];
+        ppmerchant.currencyCode = [yourMerchant objectForKey:@"currency"];
+        
+        if ([JSON objectForKey:@"access_token"]) {
+            NSString* key = [PPSPreferences currentTicket];
+            NSString* access = [PPSCryptoUtils AES256Decrypt: [JSON objectForKey:@"access_token"] withPassword:key];
+            
+            PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
+                                                                           expires_in:[JSON objectForKey:@"expires_in"]
+                                                                           refreshUrl:[JSON objectForKey:@"refresh_url"] details:JSON];
+            ppmerchant.payPalAccount = account;
+        }
+    }
+    return ppmerchant;
+}
+#endif
 
 +(NSString *)currentLocationName {
     return [self stringForSecureKey:@"CurrentLocation"];

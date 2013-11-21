@@ -5,6 +5,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPHPaymentLimits.h"
 
 typedef NS_ENUM(NSInteger, PPHAccountStatus) {
     ePPHAccountStatusUnknown,
@@ -14,7 +15,8 @@ typedef NS_ENUM(NSInteger, PPHAccountStatus) {
 typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
     ePPHAvailablePaymentTypeNone = 0,
     ePPHAvailablePaymentTypeCard = 1,
-    ePPHAvailablePaymentTypeCheckin = 1 << 1
+    ePPHAvailablePaymentTypeCheckin = 1 << 1,
+    ePPHAvailablePaymentTypeChip = 1 << 2
 };
 
 /*!
@@ -90,6 +92,10 @@ typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
  */
 @property (nonatomic, readonly) PPHAvailablePaymentTypes availablePaymentTypes;
 /*!
+ * Information re payment limits
+ */
+@property (nonatomic, strong) PPHPaymentLimits *paymentLimits;
+/*!
  * Any extra info provided by the OAuth process
  */
 @property (nonatomic, strong, readonly) NSDictionary *extraInfo;
@@ -98,3 +104,5 @@ typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
  */
 @property (nonatomic, strong, readonly) NSString *currencyCode;
 @end
+
+#define kPPHEmailAddressUnavailable 0xdeadbeef
