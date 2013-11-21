@@ -13,6 +13,7 @@
 
 #define kPPHAnalyticsSwipeTypeRoam   @"kPPHAnalyticsSwipeTypeRoam"
 #define kPPHAnalyticsSwipeTypeMagtek @"kPPHAnalyticsSwipeTypeMagtek"
+#define kPPHAnalyticsSwipeTypeMagbar @"kPPHAnalyticsSwipeTypeMagbar"
 
 #define kPPHAnalyticsSoftwareUpdateErrorTypeKey @"kPPHSoftwareUpdateErrorTypeKey"
 #define kPPHAnalyticsSoftwareUpdateErrorKey     @"kPPHSoftwareUpdateErrorKey"

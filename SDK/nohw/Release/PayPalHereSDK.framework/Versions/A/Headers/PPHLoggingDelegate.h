@@ -32,4 +32,18 @@
  * @param message The fully formatted log message.
  */
 -(void)logPayPalHereInfo: (NSString*) message;
+/*!
+ * Log fxn tracing events.
+ * @param message The fully formatted log message.
+ */
+-(void)logPayPalHereTrace: (NSString*) message;
+/*!
+ * Log debug/verbose events.
+ * @param message The fully formatted log message.
+ */
+-(void)logPayPalHereDebug: (NSString*) message;
+/*!
+ * Cause the logger to send all its queued messages now.
+ */
+-(void)flush;
 @end

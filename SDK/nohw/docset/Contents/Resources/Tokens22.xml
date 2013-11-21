@@ -114,6 +114,23 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/paymentMethodIsCreditCard:</TokenIdentifier>
+			<Abstract type="html">Is the payment method a type of Credit Card payment?</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)paymentMethodIsCreditCard:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsCreditCard:</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusIsPaid:</TokenIdentifier>
 			<Abstract type="html">Determine whether this invoice status means that the invoice was paid at some point
 (i.e. is it paid, refunded, or partially refunded)</Abstract>

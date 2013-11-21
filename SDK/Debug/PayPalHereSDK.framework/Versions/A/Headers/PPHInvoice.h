@@ -115,6 +115,8 @@
 @property (strong,nonatomic) NSString *shippingTaxRateName;
 /*! Is the tax included in the subtotal? */
 @property (nonatomic) BOOL taxInclusive;
+/*! Is the discount to be subtracted before tax? */
+@property (nonatomic) BOOL taxCalculatedAfterDiscount;
 /*! The name of a custom value entered on an invoice from the website. */
 @property (strong,nonatomic) NSString *customAmountName;
 /*! The amount of a custom value entered on an invoice from the website. */
@@ -129,14 +131,6 @@
 @property (strong,nonatomic,readonly) NSString *currency;
 
 
-
-#pragma mark -
-#pragma mark Local fields
-/*! Sometimes (for external URL launching for example) we know the target SMS ahead of time. This is a LOCAL ONLY property */
-@property (strong,nonatomic) NSString *receiptToPhone;
-
-
-
 #pragma mark -
 #pragma mark Convenience access to external data.
 /*! The unique identifier for the invoice received when creating the invoice on the network */
@@ -147,8 +141,6 @@
 @property (nonatomic,readonly) NSString *merchantReferenceNumber;
 /*! A memo from the server that contains location data of a payment */
 @property (nonatomic,readonly) NSString *merchantMemo;
-/*! The last received status of the invoice */
-@property (nonatomic,readonly) NSString *transactionId;
 /*! Data about the payment of the invoice */
 @property (nonatomic,strong) PPHInvoicePayment *paymentInfo;
 /*! An array of PPHInvoicePayments received from the server */
@@ -157,12 +149,6 @@
 @property (nonatomic,readonly) PPHInvoiceStatus status;
 /*! YES if invoice origin is Web */
 @property (nonatomic,readonly) BOOL originatedOnWeb;
-/*! The original dictionary that was received from the server */
-@property (nonatomic,readonly) NSDictionary *originalServerJson;
-/*! The last error received in a network transaction */
-@property (nonatomic,readonly) PPHError *lastError;
-
-
 
 #pragma mark -
 #pragma mark Calculated values
@@ -183,23 +169,18 @@
 @property (nonatomic,readonly) NSDecimalNumber *refundTotal;
 /*! Convenience method for accessing PPHInvoiceTotals data */
 @property (nonatomic,readonly) NSDictionary *taxDetails;
-
+/*! Convenience method for accessing PPHInvoiceTotals data */
+@property (nonatomic,readonly) PPHAmount *totalWithRefunds;
 
 
 #pragma mark -
 #pragma mark Invoice Information
-/*! The default email address for an invoice. */
-+ (NSString*)fakePayerEmail;
 /*! The items in the invoice. Sorted according to display order. */
 @property (nonatomic,readonly) NSArray *items;
-/*! Has this invoice been modified since the last save (or never saved)? */
-@property (nonatomic,readonly) BOOL needsServerSave;
 /*! A dump of the dictionary representation of the invoice */
 @property (nonatomic,readonly) NSString *description;
 /*! Number of unique items in the invoice */
 @property (nonatomic,readonly) int itemCount;
-/*! Localized due date for presentation */
-@property (nonatomic,readonly) NSString *localizedDueDateString;
 
 /*!
  * Get the quantity of an item currently on the order.
@@ -209,8 +190,6 @@
 
 #pragma mark -
 #pragma mark Invoice Manipulation
-/*! Is the discount to be subtracted before tax? */
-@property (nonatomic) BOOL taxCalculatedAfterDiscount;
 
 /*! A note that can be used when marking as paid if no other is specified. */
 @property (strong,nonatomic) NSString *note;
@@ -271,5 +250,17 @@
  @param completionHandler PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.
  */
 - (void)cancel:(PPHInvoiceBasicCompletionHandler)completionHandler;
+
+/*!
+ Enqueues a network action to get refund details
+ @param completionHandler PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.
+ */
+- (void)getRefundDetails:(PPHInvoiceBasicCompletionHandler)completionHandler;
+
+/*!
+ Enqueues a network action to delete the invoice.
+ @param completionHandler PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.
+ */
+- (void)deleteInvoice:(PPHInvoiceBasicCompletionHandler)completionHandler;
 
 @end

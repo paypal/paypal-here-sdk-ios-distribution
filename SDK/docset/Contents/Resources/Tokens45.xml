@@ -68,5 +68,51 @@ mean it, not just on a whim.</Abstract>
             <NodeRef refid="45"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereTrace:</TokenIdentifier>
+			<Abstract type="html">Log fxn tracing events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)logPayPalHereTrace:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereTrace:</Anchor>
+            <NodeRef refid="45"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereDebug:</TokenIdentifier>
+			<Abstract type="html">Log debug/verbose events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)logPayPalHereDebug:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereDebug:</Anchor>
+            <NodeRef refid="45"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/flush</TokenIdentifier>
+			<Abstract type="html">Cause the logger to send all its queued messages now.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)flush</Declaration>
+			
+			
+			<Anchor>//api/name/flush</Anchor>
+            <NodeRef refid="45"/>
+		</Token>
+		
 	</File>
 </Tokens>

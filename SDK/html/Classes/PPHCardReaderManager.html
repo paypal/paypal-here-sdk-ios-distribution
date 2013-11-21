@@ -54,17 +54,13 @@
 	
 	<option value="//api/name/beginTransaction:">&nbsp;&nbsp;&nbsp;&nbsp;- beginTransaction:</option>
 	
-	<option value="//api/name/beginUpgrade:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginUpgrade:completionHandler:</option>
-	
-	<option value="//api/name/continueTransaction:">&nbsp;&nbsp;&nbsp;&nbsp;- continueTransaction:</option>
+	<option value="//api/name/beginUpgrade:">&nbsp;&nbsp;&nbsp;&nbsp;- beginUpgrade:</option>
 	
 	<option value="//api/name/deactivateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- deactivateReader:</option>
 	
 	<option value="//api/name/endMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- endMonitoring:</option>
 	
 	<option value="//api/name/endTransaction">&nbsp;&nbsp;&nbsp;&nbsp;- endTransaction</option>
-	
-	<option value="//api/name/selectApplication:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- selectApplication:atIndex:</option>
 	
 	<option value="//api/name/setPreferenceOrder:">&nbsp;&nbsp;&nbsp;&nbsp;- setPreferenceOrder:</option>
 	
@@ -106,17 +102,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginTransaction:">beginTransaction:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginUpgrade:completionHandler:">beginUpgrade:completionHandler:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/continueTransaction:">continueTransaction:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginUpgrade:">beginUpgrade:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deactivateReader:">deactivateReader:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endMonitoring:">endMonitoring:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endTransaction">endTransaction</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectApplication:atIndex:">selectApplication:atIndex:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPreferenceOrder:">setPreferenceOrder:</a></span></li>
 	
@@ -233,25 +225,6 @@ automatically take care of this when your app is suspended or interrupted.</p></
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/selectApplication:atIndex:">&ndash;&nbsp;selectApplication:atIndex:</a></code>
-		<span class="tooltip"><p>For Chip &amp; Pin cards with multiple applications, you must select one
-in response to the ePPHChipAndPinEventDecisionRequired event in order
-to proceed.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/continueTransaction:">&ndash;&nbsp;continueTransaction:</a></code>
-		<span class="tooltip"><p>For Chip &amp; Pin cards, after the initial auth is done with the PayPal servers, the response
-must be sent to the terminal for further processing. A card reader event (approve/decline)
-will typically be fired shortly after, and the result of that should be passed to
-finalizeChipAndPinTransaction.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/setPreferenceOrder:">&ndash;&nbsp;setPreferenceOrder:</a></code>
 		<span class="tooltip"><p>For accessory based readers, there is the possibility that multiple capable devices may
 be connected to the phone at the same time. In this case, specifying a preference
@@ -274,9 +247,9 @@ paired devices that are currently within range/connectable.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/beginUpgrade:completionHandler:">&ndash;&nbsp;beginUpgrade:completionHandler:</a></code>
+		<code><a href="#//api/name/beginUpgrade:">&ndash;&nbsp;beginUpgrade:</a></code>
 		<span class="tooltip"><p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
-for the target reader. The error will be nil if it worked, else will tell you what went wrong.</p></span>
+for the target reader.</p></span>
 	</span>
 	
 	
@@ -553,19 +526,19 @@ you must call this method when you know the final amount that will be charged.</
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/beginUpgrade:completionHandler:" title="beginUpgrade:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">beginUpgrade:completionHandler:</h3>
+	<a name="//api/name/beginUpgrade:" title="beginUpgrade:"></a>
+	<h3 class="subsubtitle method-title">beginUpgrade:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
 		<p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
-for the target reader. The error will be nil if it worked, else will tell you what went wrong.</p>
+for the target reader.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)<em>reader</em> completionHandler:(void ( ^ ) ( PPHError *error ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)<em>reader</em></code></div>
 
     
 	
@@ -577,11 +550,6 @@ for the target reader. The error will be nil if it worked, else will tell you wh
 			<dd><p>the reader to upgrade</p></dd>
 		</dl>
 		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>called when the upgrade succeeds or fails</p></dd>
-		</dl>
-		
 	</div>
 	
 	
@@ -593,64 +561,7 @@ for the target reader. The error will be nil if it worked, else will tell you wh
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
-for the target reader. The error will be nil if it worked, else will tell you what went wrong.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/continueTransaction:" title="continueTransaction:"></a>
-	<h3 class="subsubtitle method-title">continueTransaction:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>For Chip &amp; Pin cards, after the initial auth is done with the PayPal servers, the response
-must be sent to the terminal for further processing. A card reader event (approve/decline)
-will typically be fired shortly after, and the result of that should be passed to
-finalizeChipAndPinTransaction.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)continueTransaction:(PPHChipAndPinAuthResponse *)<em>response</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>response</em></dt>
-			<dd><p>the response received from the PayPal servers</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>For Chip &amp; Pin cards, after the initial auth is done with the PayPal servers, the response
-must be sent to the terminal for further processing. A card reader event (approve/decline)
-will typically be fired shortly after, and the result of that should be passed to
-finalizeChipAndPinTransaction.</p>
+for the target reader.</p>
 	</div>
 	
 	
@@ -821,66 +732,6 @@ automatically take care of this when your app is suspended or interrupted.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/selectApplication:atIndex:" title="selectApplication:atIndex:"></a>
-	<h3 class="subsubtitle method-title">selectApplication:atIndex:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>For Chip &amp; Pin cards with multiple applications, you must select one
-in response to the ePPHChipAndPinEventDecisionRequired event in order
-to proceed.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)selectApplication:(PPHChipAndPinDecisionEvent *)<em>event</em> atIndex:(NSInteger)<em>index</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>event</em></dt>
-			<dd><p>the original decision event from the reader</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>index</em></dt>
-			<dd><p>the index of the selected application</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>For Chip &amp; Pin cards with multiple applications, you must select one
-in response to the ePPHChipAndPinEventDecisionRequired event in order
-to proceed.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/setPreferenceOrder:" title="setPreferenceOrder:"></a>
 	<h3 class="subsubtitle method-title">setPreferenceOrder:</h3>
 	
@@ -960,7 +811,7 @@ that. IMPORTANT: You still need to add the protocol to your application&rsquo;s 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-10-12)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-11-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

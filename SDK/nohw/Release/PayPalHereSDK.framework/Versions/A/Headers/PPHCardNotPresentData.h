@@ -7,14 +7,14 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, PPHCreditCardType) {
-    PPHCreditCardTypeUnknown = 0,
-    PPHCreditCardTypeVisa = 1,
-    PPHCreditCardTypeMastercard = 2,
-    PPHCreditCardTypeDiscover = 3,
-    PPHCreditCardTypeAmEx = 4,
-    PPHCreditCardTypeJCB = 5,
-    PPHCreditCardTypeMaestro = 6,
-    PPHCreditCardTypePayPal = 7
+    ePPHCreditCardTypeUnknown = 0,
+    ePPHCreditCardTypeVisa = 1,
+    ePPHCreditCardTypeMastercard = 2,
+    ePPHCreditCardTypeDiscover = 3,
+    ePPHCreditCardTypeAmEx = 4,
+    ePPHCreditCardTypeJCB = 5,
+    ePPHCreditCardTypeMaestro = 6,
+    ePPHCreditCardTypePayPal = 7
 };
 
 

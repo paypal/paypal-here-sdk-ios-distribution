@@ -108,6 +108,7 @@
 
 #pragma mark - Card related payment options
 
+// TODO move this to private, because beginTransaction will be the app entry point for EMV
 /*!
  * Authorize a chip and pin card after pin has been validated
  * @param auth from PPHCardReaderManager auth event.
@@ -156,6 +157,7 @@
  */
 -(void)provideSignature: (UIImage *)signature forTransaction: (PPHCardChargeResponse *)response andInvoice: (id<PPHInvoiceProtocol>)invoice completionHandler: (void (^)(PPHError *))completionHandler;
 
+// TODO move this private - handle inside SDK flow
 /*!
  * Capture funds against a chip&pin or chip card
  * @param approvalFromTerminalOrNil for chip&pin card, this is passed to you by PPHCardReaderManager event
@@ -166,6 +168,7 @@
  */
 -(void)finalizeChipAndPin: (PPHChipAndPinEventWithEmv*) approvalFromTerminalOrNil withAuth: (PPHChipAndPinAuthResponse*) auth forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse* response)) completionHandler;
 
+// TODO move this private - handle inside SDK flow
 /*!
  * Capture funds against a chip&pin&signature or chip&signature card
  * @param approvalFromTerminalOrNil for chip&pin card, this is passed to you by PPHCardReaderManager event

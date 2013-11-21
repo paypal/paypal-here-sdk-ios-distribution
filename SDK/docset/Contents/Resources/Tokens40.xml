@@ -208,11 +208,9 @@ the PPHLoggingDelegate</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setActiveMerchant:asDefaultMerchant:</TokenIdentifier>
-			<Abstract type="html">Set the currently active merchant for which all payment operations will be done.
-If asDefault is YES, we will persist this merchant information to secure storage
-and then when your app runs again, automatically pull it back out. If asDefault is NO
-you&apos;re on your own and activeMerchant will be nil when you run again. To &quot;log the
-merchant out&quot; you can call this with a nil merchant.</Abstract>
+			<Abstract type="html">DEPRECATED - Use the version that takes a completion handler and encompasses the setupMerchant call as well.
+We hope this will lead to less cases where you think you&apos;ve setup the SDK but something went wrong in the
+call to get status and account details.</Abstract>
 			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
 			
 			<Declaration>+ (void)setActiveMerchant:(PPHMerchantInfo *)merchant asDefaultMerchant:(BOOL)asDefault</Declaration>
@@ -228,6 +226,31 @@ in memory copy only</Abstract>
 			</Parameters>
 			
 			<Anchor>//api/name/setActiveMerchant:asDefaultMerchant:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setActiveMerchant:asDefaultMerchant:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Set the currently active merchant for which all payment operations will be done.
+If asDefault is YES, we will persist this merchant information to secure storage
+and then when your app runs again, automatically pull it back out. If asDefault is NO
+you&apos;re on your own and activeMerchant will be nil when you run again. To &quot;log the
+merchant out&quot; you can call this with a nil merchant.</Abstract>
+			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			
+			<Declaration>+ (void)setActiveMerchant:(PPHMerchantInfo *)merchant asDefaultMerchant:(BOOL)asDefault completionHandler:(PPHAccessCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>merchant</Name>
+					<Abstract type="html">The merchant information including OAuth credentials</Abstract>
+				</Parameter><Parameter>
+					<Name>asDefault</Name>
+					<Abstract type="html">YES to securely store to keychain for future app runs, NO to keep
+in memory copy only</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
@@ -274,6 +297,18 @@ convenience.</Abstract>
 			</Parameters>
 			
 			<Anchor>//api/name/setBaseAPIURL:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sdkVersion</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)sdkVersion</Declaration>
+			
+			
+			<Anchor>//api/name/sdkVersion</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		

@@ -56,7 +56,11 @@
 	
 	<option value="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">&nbsp;&nbsp;&nbsp;&nbsp;+ reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</option>
 	
+	<option value="//api/name/sdkVersion">&nbsp;&nbsp;&nbsp;&nbsp;+ sdkVersion</option>
+	
 	<option value="//api/name/setActiveMerchant:asDefaultMerchant:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:asDefaultMerchant:</option>
+	
+	<option value="//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:asDefaultMerchant:completionHandler:</option>
 	
 	<option value="//api/name/setAnalyticsDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAnalyticsDelegate:</option>
 	
@@ -116,7 +120,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sdkVersion">sdkVersion</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:asDefaultMerchant:">setActiveMerchant:asDefaultMerchant:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:">setActiveMerchant:asDefaultMerchant:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAnalyticsDelegate:">setAnalyticsDelegate:</a></span></li>
 	
@@ -288,6 +296,15 @@ PPHLogingDelegate for a warning about performance impact.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setActiveMerchant:asDefaultMerchant:">+&nbsp;setActiveMerchant:asDefaultMerchant:</a></code>
+		<span class="tooltip"><p>DEPRECATED &ndash; Use the version that takes a completion handler and encompasses the setupMerchant call as well.
+We hope this will lead to less cases where you think you&rsquo;ve setup the SDK but something went wrong in the
+call to get status and account details.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:">+&nbsp;setActiveMerchant:asDefaultMerchant:completionHandler:</a></code>
 		<span class="tooltip"><p>Set the currently active merchant for which all payment operations will be done.
 If asDefault is YES, we will persist this merchant information to secure storage
 and then when your app runs again, automatically pull it back out. If asDefault is NO
@@ -319,6 +336,13 @@ convenience.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/setBaseAPIURL:">+&nbsp;setBaseAPIURL:</a></code>
 		<span class="tooltip"><p>For TEST purposes, you can set the service URL used for requests in the PayPal Here SDK</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sdkVersion">+&nbsp;sdkVersion</a></code>
+		
 	</span>
 	
 	
@@ -687,17 +711,26 @@ the percentage of the download that&rsquo;s completed.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/sdkVersion" title="sdkVersion"></a>
+	<h3 class="subsubtitle method-title">sdkVersion</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)sdkVersion</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setActiveMerchant:asDefaultMerchant:" title="setActiveMerchant:asDefaultMerchant:"></a>
 	<h3 class="subsubtitle method-title">setActiveMerchant:asDefaultMerchant:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set the currently active merchant for which all payment operations will be done.
-If asDefault is YES, we will persist this merchant information to secure storage
-and then when your app runs again, automatically pull it back out. If asDefault is NO
-you&rsquo;re on your own and <a href="#//api/name/activeMerchant">activeMerchant</a> will be nil when you run again. To &ldquo;log the
-merchant out&rdquo; you can call this with a nil merchant.</p>
+		<p>DEPRECATED &ndash; Use the version that takes a completion handler and encompasses the setupMerchant call as well.
+We hope this will lead to less cases where you think you&rsquo;ve setup the SDK but something went wrong in the
+call to get status and account details.</p>
 	</div>		
 	
     
@@ -730,11 +763,78 @@ in memory copy only</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
+		<p>DEPRECATED &ndash; Use the version that takes a completion handler and encompasses the setupMerchant call as well.
+We hope this will lead to less cases where you think you&rsquo;ve setup the SDK but something went wrong in the
+call to get status and account details.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:" title="setActiveMerchant:asDefaultMerchant:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">setActiveMerchant:asDefaultMerchant:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
 		<p>Set the currently active merchant for which all payment operations will be done.
 If asDefault is YES, we will persist this merchant information to secure storage
 and then when your app runs again, automatically pull it back out. If asDefault is NO
 you&rsquo;re on your own and <a href="#//api/name/activeMerchant">activeMerchant</a> will be nil when you run again. To &ldquo;log the
 merchant out&rdquo; you can call this with a nil merchant.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setActiveMerchant:(PPHMerchantInfo *)<em>merchant</em> asDefaultMerchant:(BOOL)<em>asDefault</em> completionHandler:(PPHAccessCompletionHandler)<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>merchant</em></dt>
+			<dd><p>The merchant information including OAuth credentials</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>asDefault</em></dt>
+			<dd><p>YES to securely store to keychain for future app runs, NO to keep
+in memory copy only</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set the currently active merchant for which all payment operations will be done.
+If asDefault is YES, we will persist this merchant information to secure storage
+and then when your app runs again, automatically pull it back out. If asDefault is NO
+you&rsquo;re on your own and <a href="#//api/name/activeMerchant">activeMerchant</a> will be nil when you run again. To &ldquo;log the
+merchant out&rdquo; you can call this with a nil merchant.</p>
+
+<p>IMPORTANT: you must wait for the completion hander to fire and for successful
+initialization otherwise you will not be able to do transactions or other API calls
+successfully.</p>
 	</div>
 	
 	
@@ -1143,7 +1243,7 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-10-12)</span><br />
+						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-11-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

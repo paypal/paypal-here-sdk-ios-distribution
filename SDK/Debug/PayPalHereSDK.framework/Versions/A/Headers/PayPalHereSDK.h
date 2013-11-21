@@ -5,7 +5,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PayPalHereSDK/PPHAccessController.h>
 #import <PayPalHereSDK/PPHCardReaderManager.h>
 #import <PayPalHereSDK/PPHCardSwipeData.h>
 #import <PayPalHereSDK/PPHError.h>
@@ -16,7 +15,11 @@
 #import <PayPalHereSDK/PPHMerchantInfo.h>
 #import <PayPalHereSDK/PPHLocalManager.h>
 #import <PayPalHereSDK/PPHLoggingDelegate.h>
+#import <PayPalHereSDK/PPHAccessResultType.h>
 
+typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo);
+
+@class PPHAccessController;
 @protocol PPHAnalyticsDelegate;
 
 /*!
@@ -44,7 +47,7 @@
 /*!
  * A helper to establish OAuth credentials on behalf of your application for a merchant.
  */
-+(PPHAccessController*) sharedAccessController;
++(PPHAccessController*) sharedAccessController DEPRECATED_ATTRIBUTE;
 
 /*!
  * Should you wish to handle your own network requests, you can set this singleton
@@ -114,16 +117,32 @@
 +(PPHMerchantInfo*)activeMerchant;
 
 /*!
+ * DEPRECATED - Use the version that takes a completion handler and encompasses the setupMerchant call as well.
+ * We hope this will lead to less cases where you think you've setup the SDK but something went wrong in the
+ * call to get status and account details.
+ *
+ * @param merchant The merchant information including OAuth credentials
+ * @param asDefault YES to securely store to keychain for future app runs, NO to keep
+ * in memory copy only
+ */
++(void)setActiveMerchant:(PPHMerchantInfo*)merchant asDefaultMerchant: (BOOL) asDefault DEPRECATED_ATTRIBUTE;
+
+/*!
  * Set the currently active merchant for which all payment operations will be done.
  * If asDefault is YES, we will persist this merchant information to secure storage
  * and then when your app runs again, automatically pull it back out. If asDefault is NO
  * you're on your own and activeMerchant will be nil when you run again. To "log the
  * merchant out" you can call this with a nil merchant.
+ *
+ * IMPORTANT: you must wait for the completion hander to fire and for successful
+ * initialization otherwise you will not be able to do transactions or other API calls
+ * successfully.
+ *
  * @param merchant The merchant information including OAuth credentials
  * @param asDefault YES to securely store to keychain for future app runs, NO to keep
  * in memory copy only
  */
-+(void)setActiveMerchant:(PPHMerchantInfo*)merchant asDefaultMerchant: (BOOL) asDefault;
++(void)setActiveMerchant:(PPHMerchantInfo*)merchant asDefaultMerchant: (BOOL) asDefault completionHandler: (PPHAccessCompletionHandler) completionHandler;
 
 /*!
  * Returns YES if we have the access we need to device location information
@@ -147,5 +166,7 @@
  * @param url The base URL (essentially https://stagename/) for your non-live environment.
  */
 +(void)setBaseAPIURL: (NSURL*) url;
+
++(NSString*) sdkVersion;
 
 @end

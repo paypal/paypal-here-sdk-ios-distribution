@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 #import "PPHInvoiceConstants.h"
 #import "PPHAmount.h"
+#import "PPHCardNotPresentData.h"
 
 /*!
  * A data structure representing a payment on an invoice. It includes details about the method of payment, any relevant transaction identifiers, the location
@@ -60,6 +61,18 @@
 /*! Additional information about the payment such as the amount of cash tendered, etc. TODO put this in separate fields */
 @property (strong,nonatomic,readonly) NSString* details;
 
+/*! If this payment was made with a credit card this is the type of that card. */
+@property (nonatomic,readonly) PPHCreditCardType creditCardType;
+
+/*! If this payment was made with a credit card this is the last four digits of the card number. */
+@property (strong,nonatomic,readonly) NSString* creditCardLastFourDigits;
+
+/*! If this payment was made with a credit card this is the discrete application of that card that was used, if available. */
+@property (strong,nonatomic,readonly) NSString* creditCardApplicationName;
+
 /*! PayPal fee, if applicable and known - this is typically only filled out when reading payment details from transaction details APIs */
 @property (strong,nonatomic,readonly) PPHAmount* fee;
+
+/*! If this payment was made with cash and we know the amount tendered, this will be non-nil */
+@property (strong,nonatomic,readonly) NSDecimalNumber *cashTendered;
 @end

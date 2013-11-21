@@ -1,121 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHPaymentLimits.html">
+	<File path="Classes/PPHMerchantInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHPaymentLimits</TokenIdentifier>
-			<Abstract type="html">A container for various limits and rules around payments</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHMerchantInfo</TokenIdentifier>
+			<Abstract type="html">Information about the merchant&apos;s preferences such as currency and invoice header information.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
 			<NodeRef refid="33"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentLimits/setMinimumCardChargeAllowed:</TokenIdentifier>
-			<Abstract type="html">The smallest amount you can successfully charge with a card.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceLogoUrl:</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *minimumCardChargeAllowed</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
 			
-			<Anchor>//api/name/minimumCardChargeAllowed</Anchor>
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentLimits/minimumCardChargeAllowed</TokenIdentifier>
-			<Abstract type="html">The smallest amount you can successfully charge with a card.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *minimumCardChargeAllowed</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
 			
-			<Anchor>//api/name/minimumCardChargeAllowed</Anchor>
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentLimits/minimumCardChargeAllowed</TokenIdentifier>
-			<Abstract type="html">The smallest amount you can successfully charge with a card.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *minimumCardChargeAllowed</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
 			
-			<Anchor>//api/name/minimumCardChargeAllowed</Anchor>
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentLimits/setMaximumCardChargeAllowed:</TokenIdentifier>
-			<Abstract type="html">The largest amount you can successfully charge with a card.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceContactInfo:</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *maximumCardChargeAllowed</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
 			
-			<Anchor>//api/name/maximumCardChargeAllowed</Anchor>
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentLimits/maximumCardChargeAllowed</TokenIdentifier>
-			<Abstract type="html">The largest amount you can successfully charge with a card.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *maximumCardChargeAllowed</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
 			
-			<Anchor>//api/name/maximumCardChargeAllowed</Anchor>
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentLimits/maximumCardChargeAllowed</TokenIdentifier>
-			<Abstract type="html">The largest amount you can successfully charge with a card.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *maximumCardChargeAllowed</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
 			
-			<Anchor>//api/name/maximumCardChargeAllowed</Anchor>
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentLimits/setSignatureRequiredAbove:</TokenIdentifier>
-			<Abstract type="html">Amount over which this merchant requires a signature.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setCurrencyCode:</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *signatureRequiredAbove</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
 			
 			
-			<Anchor>//api/name/signatureRequiredAbove</Anchor>
+			<Anchor>//api/name/currencyCode</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentLimits/signatureRequiredAbove</TokenIdentifier>
-			<Abstract type="html">Amount over which this merchant requires a signature.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/currencyCode</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *signatureRequiredAbove</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
 			
 			
-			<Anchor>//api/name/signatureRequiredAbove</Anchor>
+			<Anchor>//api/name/currencyCode</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentLimits/signatureRequiredAbove</TokenIdentifier>
-			<Abstract type="html">Amount over which this merchant requires a signature.  If nil then the value is unknown.</Abstract>
-			<DeclaredIn>PPHPaymentLimits.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/currencyCode</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong) NSDecimalNumber *signatureRequiredAbove</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
 			
 			
-			<Anchor>//api/name/signatureRequiredAbove</Anchor>
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTaxId:</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/taxId</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/taxId</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setPayPalAccount:</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/payPalAccount</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/payPalAccount</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		

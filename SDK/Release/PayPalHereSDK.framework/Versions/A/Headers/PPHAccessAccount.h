@@ -104,3 +104,5 @@ typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
  */
 @property (nonatomic, strong, readonly) NSString *currencyCode;
 @end
+
+#define kPPHEmailAddressUnavailable 0xdeadbeef

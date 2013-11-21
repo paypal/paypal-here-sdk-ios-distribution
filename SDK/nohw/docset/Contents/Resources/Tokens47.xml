@@ -1,127 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHSimpleCardReaderDelegate.html">
+	<File path="Protocols/PPHSignatureViewDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHSimpleCardReaderDelegate</TokenIdentifier>
-			<Abstract type="html">Basic events for audio, feature port, and EMV readers. While methods are marked optional for cases where you
-just want to see certain events (like reader software upgrade), the delegate that&apos;s actually looking to complete
-a payment is going to need all of these.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSignatureViewDelegate</TokenIdentifier>
+			<Abstract type="html">A delegate that receives events related to buyer signatures in the PPHSignatureView</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
 			
 			<NodeRef refid="47"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didStartReaderDetection:</TokenIdentifier>
-			<Abstract type="html">This event will be triggered in cases where reader detection takes a while, such as for
-the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureTouchesBegan</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has begun, so that you can hide potentially conflicting UI</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
 			
-			<Declaration>- (void)didStartReaderDetection:(PPHCardReaderBasicInformation *)reader</Declaration>
+			<Declaration>- (void)signatureTouchesBegan</Declaration>
+			
+			
+			<Anchor>//api/name/signatureTouchesBegan</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureUpdated:</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has completed. Note that it may &quot;begin again&quot; such as a
+disconnected gesture for last name.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>			
+			
+			<Declaration>- (void)signatureUpdated:(BOOL)isEmpty</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">the basic information about reader that is actively being &quot;verified&quot;</Abstract>
+					<Name>isEmpty</Name>
+					<Abstract type="html">whether the new signature is empty</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didStartReaderDetection:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didDetectReaderDevice:</TokenIdentifier>
-			<Abstract type="html">A fully working reader was detected and is available</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">the reader that was detected</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/didDetectReaderDevice:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didRemoveReader:</TokenIdentifier>
-			<Abstract type="html">A reader device has been removed from the system</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didRemoveReader:(PPHReaderType)readerType</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>readerType</Name>
-					<Abstract type="html">the type of reader that was removed</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/didRemoveReader:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didDetectCardSwipeAttempt</TokenIdentifier>
-			<Abstract type="html">Something has occurred in the read head of the reader. Since processing can take a second or so,
-this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
-will hurt success rate.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didDetectCardSwipeAttempt</Declaration>
-			
-			
-			<Anchor>//api/name/didDetectCardSwipeAttempt</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didCompleteCardSwipe:</TokenIdentifier>
-			<Abstract type="html">A card swipe has succeeded</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didCompleteCardSwipe:(PPHCardSwipeData *)card</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>card</Name>
-					<Abstract type="html">Encrypted and masked data about the card</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/didCompleteCardSwipe:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didFailToReadCard</TokenIdentifier>
-			<Abstract type="html">A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didFailToReadCard</Declaration>
-			
-			
-			<Anchor>//api/name/didFailToReadCard</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didReceiveCardReaderMetadata:</TokenIdentifier>
-			<Abstract type="html">Serial number and other related information is available for the card reader.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>			
-			
-			<Declaration>- (void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>metadata</Name>
-					<Abstract type="html">the available data about the reader</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/didReceiveCardReaderMetadata:</Anchor>
+			<Anchor>//api/name/signatureUpdated:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		

@@ -130,48 +130,6 @@ automatically take care of this when your app is suspended or interrupted.</Abst
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/selectApplication:atIndex:</TokenIdentifier>
-			<Abstract type="html">For Chip &amp;amp; Pin cards with multiple applications, you must select one
-in response to the ePPHChipAndPinEventDecisionRequired event in order
-to proceed.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
-			
-			<Declaration>- (void)selectApplication:(PPHChipAndPinDecisionEvent *)event atIndex:(NSInteger)index</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">the original decision event from the reader</Abstract>
-				</Parameter><Parameter>
-					<Name>index</Name>
-					<Abstract type="html">the index of the selected application</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/selectApplication:atIndex:</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/continueTransaction:</TokenIdentifier>
-			<Abstract type="html">For Chip &amp;amp; Pin cards, after the initial auth is done with the PayPal servers, the response
-must be sent to the terminal for further processing. A card reader event (approve/decline)
-will typically be fired shortly after, and the result of that should be passed to
-finalizeChipAndPinTransaction.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
-			
-			<Declaration>- (void)continueTransaction:(PPHChipAndPinAuthResponse *)response</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>response</Name>
-					<Abstract type="html">the response received from the PayPal servers</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/continueTransaction:</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/setPreferenceOrder:</TokenIdentifier>
 			<Abstract type="html">For accessory based readers, there is the possibility that multiple capable devices may
 be connected to the phone at the same time. In this case, specifying a preference
@@ -211,23 +169,20 @@ paired devices that are currently within range/connectable.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginUpgrade:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginUpgrade:</TokenIdentifier>
 			<Abstract type="html">In the case of readers requiring further setup, call this method with the PPHCardReaderBasicInformation
-for the target reader. The error will be nil if it worked, else will tell you what went wrong.</Abstract>
+for the target reader.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
 			
-			<Declaration>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)reader completionHandler:(void ( ^ ) ( PPHError *error ))completionHandler</Declaration>
+			<Declaration>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)reader</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
 					<Abstract type="html">the reader to upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">called when the upgrade succeeds or fails</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/beginUpgrade:completionHandler:</Anchor>
+			<Anchor>//api/name/beginUpgrade:</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		

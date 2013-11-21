@@ -23,6 +23,7 @@ typedef enum
     ePPHPaymentMethodPaypal,
     ePPHPaymentMethodCheck,
     ePPHPaymentMethodCash,
+    ePPHPaymentMethodChipCard,
     ePPHPaymentMethodOther
 } PPHPaymentMethod;
 
@@ -55,6 +56,8 @@ typedef enum
 #define kInvoiceCCChargeCallId @"CardCharge"
 #define kInvoiceCheckinChargeCallId @"CheckinCharge"
 #define kInvoiceBarcodeChargeCallId @"CodePayment"
+#define kInvoiceGetTransactionDetailsCallId @"TransactionDetails"
+#define kInvoiceGetRefundDetailsCallId @"GetRefunds"
 
 /*!
  * Convenience methods for dealing with the various invoice enumerations
@@ -93,6 +96,12 @@ typedef enum
  */
 + (NSString*)stringFromPaymentMethodDetail:(PPHPaymentMethodDetail)type;
 
+
+/*!
+ * Is the payment method a type of Credit Card payment?
+ * @param method the payment method
+ */
++ (BOOL)paymentMethodIsCreditCard:(PPHPaymentMethod)method;
 /*!
  * Determine whether this invoice status means that the invoice was paid at some point
  * (i.e. is it paid, refunded, or partially refunded)

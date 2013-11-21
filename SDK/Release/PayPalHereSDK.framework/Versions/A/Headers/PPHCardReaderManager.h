@@ -92,24 +92,6 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
 -(void)endTransaction;
 
 /*!
- * For Chip & Pin cards with multiple applications, you must select one
- * in response to the ePPHChipAndPinEventDecisionRequired event in order
- * to proceed.
- * @param event the original decision event from the reader
- * @param index the index of the selected application
- */
--(void)selectApplication: (PPHChipAndPinDecisionEvent*) event atIndex: (NSInteger) index;
-
-/*!
- * For Chip & Pin cards, after the initial auth is done with the PayPal servers, the response
- * must be sent to the terminal for further processing. A card reader event (approve/decline)
- * will typically be fired shortly after, and the result of that should be passed to
- * finalizeChipAndPinTransaction.
- * @param response the response received from the PayPal servers
- */
--(void)continueTransaction: (PPHChipAndPinAuthResponse*) response;
-
-/*!
  * For accessory based readers, there is the possibility that multiple capable devices may
  * be connected to the phone at the same time. In this case, specifying a preference
  * order can be useful to manage multiple devices with multiple phones. Generally, 
@@ -135,10 +117,9 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
 
 /*!
  * In the case of readers requiring further setup, call this method with the PPHCardReaderBasicInformation
- * for the target reader. The error will be nil if it worked, else will tell you what went wrong.
+ * for the target reader.
  * @param reader the reader to upgrade
- * @param completionHandler called when the upgrade succeeds or fails
  */
--(void)beginUpgrade: (PPHCardReaderBasicInformation*) reader completionHandler: (void (^)(PPHError *error)) completionHandler;
+-(void)beginUpgrade: (PPHCardReaderBasicInformation*) reader;
 
 @end
