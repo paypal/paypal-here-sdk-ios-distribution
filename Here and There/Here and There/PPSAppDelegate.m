@@ -43,8 +43,7 @@
     // IMPORTANT: you may need to install the intermediate certificate on your device by visiting:
     // https://www.digicert.com/CACerts/DigiCertHighAssuranceCA-3.crt
     // which I've shortened to http://tiny.cc/pphstageca
-    //[PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2md030.stage.paypal.com/webapps/"]];
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph32.stage.paypal.com/webapps/"]];
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2md030.stage.paypal.com/webapps/"]];
 
     [PayPalHereSDK setNetworkDelegate:self];
     
@@ -61,7 +60,7 @@
     PPSLoginViewController *root = [[PPSLoginViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
     
-    self.masterViewController = [[PPSMasterViewController alloc] initWithViewController:nav];
+    self.masterViewController = [[PPSMasterViewController alloc] initWithWindow: self.window andViewController:nav];
     self.window.rootViewController = self.masterViewController;
     
     [self.window makeKeyAndVisible];

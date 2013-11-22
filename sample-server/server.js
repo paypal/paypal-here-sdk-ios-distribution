@@ -14,10 +14,19 @@ var express = require('express'),
     domain = require('domain'),
     crypto = require('crypto'),
     nStore = require('nStore'),
-    request = require('request'),
     ppCrypto = require('./lib/pp-crypto'),
     oauth = require('./lib/oauth'),
     mdns = require('mdns');
+
+// We need our own pool because if someone else gets to the global agent first, our options will not
+// take effect and some servers fail for some esoteric SSL reason.
+var requestPool = {};
+var request = require('request').defaults({
+    pool: requestPool,
+    agentOptions: {
+        secureProtocol: "SSLv3_method"
+    }
+});
 
 /* In the real world we should wait for the db to be open, but this is a sample app so we'll just
  * pretend it's super fast and never fails.

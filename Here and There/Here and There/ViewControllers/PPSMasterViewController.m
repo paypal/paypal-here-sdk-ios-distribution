@@ -10,24 +10,25 @@
 #import "PPSMasterViewController.h"
 
 @interface PPSMasterViewController ()
-{
-    CGAffineTransform rotationTransform;
-}
+@property (nonatomic,strong) UIWindow *window;
 @property (nonatomic,strong) UIView *overlayContainer;
 @property (nonatomic,strong) UIView *currentOverlay;
+@property (nonatomic, assign) CGAffineTransform rotationTransform;
 @end
 
 @implementation PPSMasterViewController
--(id)initWithViewController:(UIViewController *)controller
+-(id)initWithWindow: (UIWindow*) window andViewController:(UIViewController *)controller
 {
     if ((self = [super init])) {
         self.mainController = controller;
+        self.window = window;
     }
     return self;
 }
 
 -(void)loadView
 {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [super loadView];
     [self.view addSubview:self.mainController.view];
     [self addChildViewController:self.mainController];
@@ -72,11 +73,7 @@
     }
     
     UIWindow *w = [[UIApplication sharedApplication].windows lastObject];
-    self.overlayContainer = [[UIView alloc] initWithFrame:w.bounds];
-    if (w == [PPSAppDelegate appDelegate].window) {
-        [self setTransformForCurrentOrientation:NO];
-    }
-
+    self.overlayContainer = [[UIView alloc] initWithFrame:self.window.bounds];
     if (animated) {
         self.overlayContainer.alpha = 0;
     }
@@ -120,50 +117,59 @@
     }
 }
 
--(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    if (self.overlayContainer.superview == [PPSAppDelegate appDelegate].window) {
-        [self setTransformForCurrentOrientation:YES];
-    }
+    [self setTransformForCurrentOrientation];
 }
 
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    if (self.overlayContainer.superview == [PPSAppDelegate appDelegate].window) {
-        [self setTransformForCurrentOrientation:NO];
-    }
+    [self setTransformForCurrentOrientation];
 }
 
-- (void)setTransformForCurrentOrientation:(BOOL)animated {
-    if (!self.overlayContainer) {
-        return;
-    }
-	// Stay in sync with the superview
-    self.overlayContainer.bounds = self.view.superview.bounds;
+- (void)setTransformForCurrentOrientation {
+    self.overlayContainer.bounds = self.window.bounds;
     [self.overlayContainer setNeedsDisplay];
-    
-	UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-	CGFloat radians = 0;
-	if (UIInterfaceOrientationIsLandscape(orientation)) {
-		if (orientation == UIInterfaceOrientationLandscapeLeft) { radians = -(CGFloat)M_PI_2; }
-		else { radians = (CGFloat)M_PI_2; }
-		// Window coordinates differ!
-		self.overlayContainer.bounds = CGRectMake(0, 0, self.overlayContainer.bounds.size.height, self.overlayContainer.bounds.size.width);
-	} else {
-		if (orientation == UIInterfaceOrientationPortraitUpsideDown) { radians = (CGFloat)M_PI; }
-		else { radians = 0; }
-	}
-	rotationTransform = CGAffineTransformMakeRotation(radians);
-    
-	if (animated) {
-		[UIView beginAnimations:nil context:nil];
-	}
-	self.overlayContainer.transform = rotationTransform;
-	if (animated) {
-		[UIView commitAnimations];
-	}
+
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    CGFloat radians = 0;
+    self.overlayContainer.transform = CGAffineTransformIdentity;
+
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        if (orientation == UIInterfaceOrientationLandscapeLeft) {
+            radians = -(CGFloat)M_PI_2;
+        } else {
+            radians = (CGFloat)M_PI_2;
+        }
+        // Window coordinates differ!
+        self.overlayContainer.bounds = CGRectMake(0, 0, self.overlayContainer.bounds.size.height, self.overlayContainer.bounds.size.width);
+
+    } else {
+        if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+            radians = (CGFloat)M_PI;
+        } else {
+            radians = 0;
+        }
+    }
+
+    self.rotationTransform = CGAffineTransformMakeRotation(radians);
+
+    self.overlayContainer.transform = self.rotationTransform;
+    self.overlayContainer.frame = CGRectMake(0, 0, self.overlayContainer.frame.size.width, self.overlayContainer.frame.size.height);
+}
+
+// in a navigation controller subclass (the window's root view controller)
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (self.mainController) {
+        // ask whatever view controller is currently visible for the current status bar style
+        return [self.mainController preferredStatusBarStyle];
+    }
+    return UIStatusBarStyleLightContent;
 }
 
 @end

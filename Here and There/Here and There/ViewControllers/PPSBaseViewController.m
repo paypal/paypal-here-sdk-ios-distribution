@@ -30,6 +30,7 @@ static NIStylesheet *globalStyles;
                                                      name:NIStylesheetDidChangeNotification
                                                    object:globalStyles];
 #endif
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     return self;
 }

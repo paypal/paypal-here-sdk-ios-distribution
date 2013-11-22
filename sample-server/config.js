@@ -18,4 +18,5 @@ exports.MY_APP_URL = "hereandthere://oauth";
 exports.PAYPAL_SCOPES = "https://uri.paypal.com/services/paypalhere openid email profile";
 
 // Live or stage?
-exports.PAYPAL_ACCESS_BASEURL = "https://www.stage2pph03.stage.paypal.com/webapps/";
+exports.PAYPAL_ACCESS_BASEURL = "https://www.stage2md030.stage.paypal.com/webapps/";
+exports.USE_STRICT_SSL = false;

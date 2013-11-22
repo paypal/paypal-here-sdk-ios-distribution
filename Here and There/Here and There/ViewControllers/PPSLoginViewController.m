@@ -91,6 +91,7 @@ NSString *sServiceHost = nil;
 #endif
     
     [NILocalizedStringWithDefault(@"LoginViewTitle", @"Welcome to Here And There") attach:self withSelector:@selector(setTitle:)];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(void)viewWillLayoutSubviews
@@ -151,24 +152,17 @@ NSString *sServiceHost = nil;
             // Find out if this account has already been setup for PayPal Access in our sample server "architecture"
             PPHMerchantInfo *merchantInfo = [PPSPreferences merchantFromServerResponse:JSON withMerchantId:self.username.text];
 
-
-            if ([PayPalHereSDK activeMerchant].payPalAccount)
-            {                
-                if (![PayPalHereSDK activeMerchant].payPalAccount.email) {
-
-                    [PayPalHereSDK  setActiveMerchant:merchantInfo withMerchantId:self.username.text completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo)   {
-                        
+            if (merchantInfo) {
+                [PayPalHereSDK setActiveMerchant:merchantInfo withMerchantId:self.username.text completionHandler:^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
+                    if (status == ePPHAccessResultSuccess) {
                         // Go to order entry view
                         [progress dismiss:YES];
                         PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];
                         self.navigationController.viewControllers = @[entry];
-                    }];
-                } else {
-                    // Go to order entry view
-                    [progress dismiss:YES];
-                    PPSOrderEntryViewController *entry = [[PPSOrderEntryViewController alloc] init];
-                    self.navigationController.viewControllers = @[entry];
-                }
+                    } else {
+                        NSAssert(NO, @"Failed to setup merchant.");
+                    }
+                }];
             } else {
                 [progress dismiss:YES];
                 self.navigationController.viewControllers = @[[[PPSNeedPayPalSetupViewController alloc] init]];

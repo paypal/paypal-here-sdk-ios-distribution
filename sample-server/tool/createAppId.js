@@ -13,7 +13,7 @@ if (!program.returnUrl || !program.name || !program.client) {
     program.help();
 }
 
-needle.post("https://www.stage2pph03.qa.paypal.com/webapps/auth/protocol/openidconnect/v1/clientregistrationservice",
+needle.post("https://www.stage2md030.qa.paypal.com/webapps/auth/protocol/openidconnect/v1/clientregistrationservice",
     {
         required_permissions: "firstname lastname fullname street city state country emailID dateofbirth https://uri.paypal.com/services/paypalhere payerID emailVerified phoneNumber language accountType accountCreationDate businessname",
         supported_protocols: "openid_connect oauth",

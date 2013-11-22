@@ -18,7 +18,8 @@ static NSLock *sKeychainLock = nil;
 +(PPHMerchantInfo *)merchantFromServerResponse:(NSDictionary *)JSON withMerchantId:(NSString *)merchantId
 {
     PPHMerchantInfo *ppmerchant = nil;
-    
+
+    NSAssert([JSON objectForKey:@"merchant"], @"Your sample server should return a merchant object with information about the merchant.");
     if ([JSON objectForKey:@"merchant"]) {
         ppmerchant = [[PPHMerchantInfo alloc] init];
         // Now, you need to fill out the merchant info with the things you've gathered about the account on "your side"

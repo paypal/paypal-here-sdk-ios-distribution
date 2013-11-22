@@ -12,7 +12,7 @@
 
 @property (nonatomic,strong) UIViewController *mainController;
 
--(id)initWithViewController: (UIViewController*) controller;
+-(id)initWithWindow: (UIWindow*) window andViewController:(UIViewController *)controller;
 
 /**
  * Add a view in front of everything else including the keyboard, optionally

@@ -51,7 +51,7 @@
                 [alertView dismiss:NO];
                 [self.navigationController popViewControllerAnimated:YES];
             }];            
-        } else if (err != ePPHReaderErrorNone) {
+        } else if (err != ePPHReaderErrorNone && err != ePPHReaderErrorNotAvailable) {
             [PPSAlertView showAlertViewWithTitle:@"Reader Error" message:[NSString stringWithFormat:@"Couldn't open reader (%d)", err] buttons:@[@"OK"] cancelButtonIndex:0 selectionHandler:^(PPSAlertView *alertView, UIButton *button, NSInteger index) {
                 [alertView dismiss:NO];
                 [self.navigationController popViewControllerAnimated:YES];
