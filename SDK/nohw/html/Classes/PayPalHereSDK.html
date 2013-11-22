@@ -58,9 +58,7 @@
 	
 	<option value="//api/name/sdkVersion">&nbsp;&nbsp;&nbsp;&nbsp;+ sdkVersion</option>
 	
-	<option value="//api/name/setActiveMerchant:asDefaultMerchant:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:asDefaultMerchant:</option>
-	
-	<option value="//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:asDefaultMerchant:completionHandler:</option>
+	<option value="//api/name/setActiveMerchant:withMerchantId:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:withMerchantId:completionHandler:</option>
 	
 	<option value="//api/name/setAnalyticsDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAnalyticsDelegate:</option>
 	
@@ -122,9 +120,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sdkVersion">sdkVersion</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:asDefaultMerchant:">setActiveMerchant:asDefaultMerchant:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:">setActiveMerchant:asDefaultMerchant:completionHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:withMerchantId:completionHandler:">setActiveMerchant:withMerchantId:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAnalyticsDelegate:">setAnalyticsDelegate:</a></span></li>
 	
@@ -295,21 +291,13 @@ PPHLogingDelegate for a warning about performance impact.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setActiveMerchant:asDefaultMerchant:">+&nbsp;setActiveMerchant:asDefaultMerchant:</a></code>
-		<span class="tooltip"><p>DEPRECATED &ndash; Use the version that takes a completion handler and encompasses the setupMerchant call as well.
-We hope this will lead to less cases where you think you&rsquo;ve setup the SDK but something went wrong in the
-call to get status and account details.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:">+&nbsp;setActiveMerchant:asDefaultMerchant:completionHandler:</a></code>
+		<code><a href="#//api/name/setActiveMerchant:withMerchantId:completionHandler:">+&nbsp;setActiveMerchant:withMerchantId:completionHandler:</a></code>
 		<span class="tooltip"><p>Set the currently active merchant for which all payment operations will be done.
-If asDefault is YES, we will persist this merchant information to secure storage
-and then when your app runs again, automatically pull it back out. If asDefault is NO
-you&rsquo;re on your own and <a href="#//api/name/activeMerchant">activeMerchant</a> will be nil when you run again. To &ldquo;log the
-merchant out&rdquo; you can call this with a nil merchant.</p></span>
+We will persist this merchant information to secure storage.  When your app runs
+again and you call setActiveMerchant with a merchantId we&rsquo;ve seen before we&rsquo;ll
+automatically check the saved merchant info for that merchantId.  If you pass in
+a nil or sparsely filled out merchant object we&rsquo;ll use the values we pulled from
+storage.</p></span>
 	</span>
 	
 	
@@ -342,7 +330,7 @@ convenience.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sdkVersion">+&nbsp;sdkVersion</a></code>
-		
+		<span class="tooltip"><p>The version of the SDK currently in use</p></span>
 	</span>
 	
 	
@@ -715,45 +703,16 @@ the percentage of the download that&rsquo;s completed.</p>
 	<h3 class="subsubtitle method-title">sdkVersion</h3>
 	
 	
-
-	<div class="method-subsection method-declaration"><code>+ (NSString *)sdkVersion</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/setActiveMerchant:asDefaultMerchant:" title="setActiveMerchant:asDefaultMerchant:"></a>
-	<h3 class="subsubtitle method-title">setActiveMerchant:asDefaultMerchant:</h3>
-	
-	
 	
 	<div class="method-subsection brief-description">
-		<p>DEPRECATED &ndash; Use the version that takes a completion handler and encompasses the setupMerchant call as well.
-We hope this will lead to less cases where you think you&rsquo;ve setup the SDK but something went wrong in the
-call to get status and account details.</p>
+		<p>The version of the SDK currently in use</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)setActiveMerchant:(PPHMerchantInfo *)<em>merchant</em> asDefaultMerchant:(BOOL)<em>asDefault</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)sdkVersion</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>merchant</em></dt>
-			<dd><p>The merchant information including OAuth credentials</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>asDefault</em></dt>
-			<dd><p>YES to securely store to keychain for future app runs, NO to keep
-in memory copy only</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -763,9 +722,7 @@ in memory copy only</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>DEPRECATED &ndash; Use the version that takes a completion handler and encompasses the setupMerchant call as well.
-We hope this will lead to less cases where you think you&rsquo;ve setup the SDK but something went wrong in the
-call to get status and account details.</p>
+		<p>The version of the SDK currently in use</p>
 	</div>
 	
 	
@@ -783,22 +740,23 @@ call to get status and account details.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setActiveMerchant:asDefaultMerchant:completionHandler:" title="setActiveMerchant:asDefaultMerchant:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">setActiveMerchant:asDefaultMerchant:completionHandler:</h3>
+	<a name="//api/name/setActiveMerchant:withMerchantId:completionHandler:" title="setActiveMerchant:withMerchantId:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">setActiveMerchant:withMerchantId:completionHandler:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
 		<p>Set the currently active merchant for which all payment operations will be done.
-If asDefault is YES, we will persist this merchant information to secure storage
-and then when your app runs again, automatically pull it back out. If asDefault is NO
-you&rsquo;re on your own and <a href="#//api/name/activeMerchant">activeMerchant</a> will be nil when you run again. To &ldquo;log the
-merchant out&rdquo; you can call this with a nil merchant.</p>
+We will persist this merchant information to secure storage.  When your app runs
+again and you call setActiveMerchant with a merchantId we&rsquo;ve seen before we&rsquo;ll
+automatically check the saved merchant info for that merchantId.  If you pass in
+a nil or sparsely filled out merchant object we&rsquo;ll use the values we pulled from
+storage.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)setActiveMerchant:(PPHMerchantInfo *)<em>merchant</em> asDefaultMerchant:(BOOL)<em>asDefault</em> completionHandler:(PPHAccessCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)setActiveMerchant:(PPHMerchantInfo *)<em>merchant</em> withMerchantId:(NSString *)<em>merchantId</em> completionHandler:(PPHAccessCompletionHandler)<em>completionHandler</em></code></div>
 
     
 	
@@ -811,9 +769,18 @@ merchant out&rdquo; you can call this with a nil merchant.</p>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>asDefault</em></dt>
-			<dd><p>YES to securely store to keychain for future app runs, NO to keep
-in memory copy only</p></dd>
+			<dt><em>merchantId</em></dt>
+			<dd><p>a value which we&rsquo;ll use to uniquely identify this merchant on this device so
+we can save/fetch this specific merchant&rsquo;s information from local secure storage.
+If more than one merchant logs into this system you should make sure you provide
+different values.  This id belongs to the app and is not generated by paypal
+nor sent down to the service.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>The handler to be called when the merchant setup has completed
+(setup includes a call to the server to verify the token and retrieve user information)</p></dd>
 		</dl>
 		
 	</div>
@@ -827,10 +794,11 @@ in memory copy only</p></dd>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Set the currently active merchant for which all payment operations will be done.
-If asDefault is YES, we will persist this merchant information to secure storage
-and then when your app runs again, automatically pull it back out. If asDefault is NO
-you&rsquo;re on your own and <a href="#//api/name/activeMerchant">activeMerchant</a> will be nil when you run again. To &ldquo;log the
-merchant out&rdquo; you can call this with a nil merchant.</p>
+We will persist this merchant information to secure storage.  When your app runs
+again and you call setActiveMerchant with a merchantId we&rsquo;ve seen before we&rsquo;ll
+automatically check the saved merchant info for that merchantId.  If you pass in
+a nil or sparsely filled out merchant object we&rsquo;ll use the values we pulled from
+storage.</p>
 
 <p>IMPORTANT: you must wait for the completion hander to fire and for successful
 initialization otherwise you will not be able to do transactions or other API calls

@@ -17,6 +17,10 @@ typedef NS_ENUM(UInt8, PPHInvoiceReceiptType) {
     ePPHInvoiceReceiptGift
 };
 
+/*!
+ * PPHInvoiceFormatter is capable of rendering the details of invoices for receipt purposes. Online receipts
+ * are typically hosted by PayPal, but this class is mainly useful for producing printable receipts.
+ */
 @interface PPHInvoiceFormatter : NSObject
 
 /**
@@ -27,6 +31,7 @@ typedef NS_ENUM(UInt8, PPHInvoiceReceiptType) {
 /**
  * Format the invoice according to the formatter settings and return a string suitable for printing in
  * a fixed width font
+ * @param invoice The invoice receipt to be printed
  */
 -(NSString*) formattedStringForInvoice: (PPHInvoice*) invoice;
 
@@ -35,6 +40,7 @@ typedef NS_ENUM(UInt8, PPHInvoiceReceiptType) {
  * Format the invoice according to the formatter settings and return an HTML string suitable for printing.
  * If you want to customize the look and feel, the output will contain "targetable" CSS classes and structure
  * to allow a decent amount of customization, and will be XHTML for easy modification.
+ * @param invoice The invoice receipt to be printed
  */
 -(NSString*) htmlStringForInvoice: (PPHInvoice*) invoice;
 
@@ -42,6 +48,8 @@ typedef NS_ENUM(UInt8, PPHInvoiceReceiptType) {
  * Format the invoice according to the formatter settings and return an image with the specified width
  * and height depending on the number of items on the invoice. This is essentially using the htmlStringForInvoice
  * method and rendering it down to an image for you.
+ * @param invoice The invoice receipt to be printed
+ * @param widthInPixels The width of the returned image - height will be determined based on this
  */
 -(UIImage*) formattedImageForInvoice: (PPHInvoice*) invoice withWidth: (NSInteger) widthInPixels;
 

@@ -1,325 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHInvoiceItem.html">
+	<File path="Classes/PPHInvoiceFormatter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceItem</TokenIdentifier>
-			<Abstract type="html">A line item on an invoice. Can be positive, negative, or zero total/unit price.
-See https://cms.paypal.com/cmscontent/US/enUS/files/developer/PP_InvoicingAPIGuide.pdf
-for details on field length restrictions and formats.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceFormatter</TokenIdentifier>
+			<Abstract type="html">PPHInvoiceFormatter is capable of rendering the details of invoices for receipt purposes. Online receipts
+are typically hosted by PayPal, but this class is mainly useful for producing printable receipts.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
 			<NodeRef refid="25"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setItemId:</TokenIdentifier>
-			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
-be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
-work.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemId</Declaration>
-			
-			
-			<Anchor>//api/name/itemId</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/itemId</TokenIdentifier>
-			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
-be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
-work.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemId</Declaration>
-			
-			
-			<Anchor>//api/name/itemId</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/itemId</TokenIdentifier>
-			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
-be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
-work.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemId</Declaration>
-			
-			
-			<Anchor>//api/name/itemId</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setQuantity:</TokenIdentifier>
-			<Abstract type="html">The quantity of this item purchased, which can be fractional</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *quantity</Declaration>
-			
-			
-			<Anchor>//api/name/quantity</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/quantity</TokenIdentifier>
-			<Abstract type="html">The quantity of this item purchased, which can be fractional</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *quantity</Declaration>
-			
-			
-			<Anchor>//api/name/quantity</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/quantity</TokenIdentifier>
-			<Abstract type="html">The quantity of this item purchased, which can be fractional</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *quantity</Declaration>
-			
-			
-			<Anchor>//api/name/quantity</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setName:</TokenIdentifier>
-			<Abstract type="html">The name of this item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *name</Declaration>
-			
-			
-			<Anchor>//api/name/name</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/name</TokenIdentifier>
-			<Abstract type="html">The name of this item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *name</Declaration>
-			
-			
-			<Anchor>//api/name/name</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/name</TokenIdentifier>
-			<Abstract type="html">The name of this item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *name</Declaration>
-			
-			
-			<Anchor>//api/name/name</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setItemDescription:</TokenIdentifier>
-			<Abstract type="html">A longer description for the item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
-			
-			
-			<Anchor>//api/name/itemDescription</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/itemDescription</TokenIdentifier>
-			<Abstract type="html">A longer description for the item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
-			
-			
-			<Anchor>//api/name/itemDescription</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/itemDescription</TokenIdentifier>
-			<Abstract type="html">A longer description for the item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
-			
-			
-			<Anchor>//api/name/itemDescription</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setUnitPrice:</TokenIdentifier>
-			<Abstract type="html">Price per unit - can be negative or zero (and of course positive)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *unitPrice</Declaration>
-			
-			
-			<Anchor>//api/name/unitPrice</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/unitPrice</TokenIdentifier>
-			<Abstract type="html">Price per unit - can be negative or zero (and of course positive)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *unitPrice</Declaration>
-			
-			
-			<Anchor>//api/name/unitPrice</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/unitPrice</TokenIdentifier>
-			<Abstract type="html">Price per unit - can be negative or zero (and of course positive)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *unitPrice</Declaration>
-			
-			
-			<Anchor>//api/name/unitPrice</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setTaxRate:</TokenIdentifier>
-			<Abstract type="html">The tax rate for this item. Note that at the moment tax rules are not flexible on
-the PayPal backend so our rounding and computation rules are also not flexibile.
-One alternative is to use a line item for tax. As an example, a 6% tax rate should
-be .06 for this property.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *taxRate</Declaration>
-			
-			
-			<Anchor>//api/name/taxRate</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/taxRate</TokenIdentifier>
-			<Abstract type="html">The tax rate for this item. Note that at the moment tax rules are not flexible on
-the PayPal backend so our rounding and computation rules are also not flexibile.
-One alternative is to use a line item for tax. As an example, a 6% tax rate should
-be .06 for this property.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *taxRate</Declaration>
-			
-			
-			<Anchor>//api/name/taxRate</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/taxRate</TokenIdentifier>
-			<Abstract type="html">The tax rate for this item. Note that at the moment tax rules are not flexible on
-the PayPal backend so our rounding and computation rules are also not flexibile.
-One alternative is to use a line item for tax. As an example, a 6% tax rate should
-be .06 for this property.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *taxRate</Declaration>
-			
-			
-			<Anchor>//api/name/taxRate</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setTaxRateName:</TokenIdentifier>
-			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
-			
-			
-			<Anchor>//api/name/taxRateName</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/taxRateName</TokenIdentifier>
-			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
-			
-			
-			<Anchor>//api/name/taxRateName</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/taxRateName</TokenIdentifier>
-			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
-			
-			
-			<Anchor>//api/name/taxRateName</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setImageUrl:</TokenIdentifier>
-			<Abstract type="html">The image associated with this item, if any. Must be SSL.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic) NSString *imageUrl</Declaration>
-			
-			
-			<Anchor>//api/name/imageUrl</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/imageUrl</TokenIdentifier>
-			<Abstract type="html">The image associated with this item, if any. Must be SSL.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic) NSString *imageUrl</Declaration>
-			
-			
-			<Anchor>//api/name/imageUrl</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/imageUrl</TokenIdentifier>
-			<Abstract type="html">The image associated with this item, if any. Must be SSL.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
-			
-			<Declaration>@property (strong, nonatomic) NSString *imageUrl</Declaration>
-			
-			
-			<Anchor>//api/name/imageUrl</Anchor>
-            <NodeRef refid="25"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/init</TokenIdentifier>
-			<Abstract type="html">Do NOT call the default initializer. You will be greeted with an NSInternalInconsistencyException.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/init</TokenIdentifier>
+			<Abstract type="html">Initialize the invoice formatter with default properties, namely character based with a 40 column width</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
 			
 			<Declaration>- (id)init</Declaration>
 			
@@ -329,31 +25,133 @@ be .06 for this property.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/asDictionary</TokenIdentifier>
-			<Abstract type="html">Return the item as a dictionary suitable for the invoice API</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
 			
-			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(PPHInvoice *)invoice</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/asDictionary</Anchor>
+			<Anchor>//api/name/formattedStringForInvoice:</Anchor>
             <NodeRef refid="25"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/initWithDictionary:</TokenIdentifier>
-			<Abstract type="html">Create the item from a dictionary from the invoice API</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/htmlStringForInvoice:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return an HTML string suitable for printing.
+If you want to customize the look and feel, the output will contain &quot;targetable&quot; CSS classes and structure
+to allow a decent amount of customization, and will be XHTML for easy modification.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Declaration>- (NSString *)htmlStringForInvoice:(PPHInvoice *)invoice</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>representation</Name>
-					<Abstract type="html">The dictionary from the server</Abstract>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/initWithDictionary:</Anchor>
+			<Anchor>//api/name/htmlStringForInvoice:</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedImageForInvoice:withWidth:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return an image with the specified width
+and height depending on the number of items on the invoice. This is essentially using the htmlStringForInvoice
+method and rendering it down to an image for you.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>- (UIImage *)formattedImageForInvoice:(PPHInvoice *)invoice withWidth:(NSInteger)widthInPixels</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter><Parameter>
+					<Name>widthInPixels</Name>
+					<Abstract type="html">The width of the returned image - height will be determined based on this</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/formattedImageForInvoice:withWidth:</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/setColumnWidth:</TokenIdentifier>
+			<Abstract type="html">The number of columns used in the receipt (since we use fixed width fonts in all cases)</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger columnWidth</Declaration>
+			
+			
+			<Anchor>//api/name/columnWidth</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/columnWidth</TokenIdentifier>
+			<Abstract type="html">The number of columns used in the receipt (since we use fixed width fonts in all cases)</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger columnWidth</Declaration>
+			
+			
+			<Anchor>//api/name/columnWidth</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatter/columnWidth</TokenIdentifier>
+			<Abstract type="html">The number of columns used in the receipt (since we use fixed width fonts in all cases)</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger columnWidth</Declaration>
+			
+			
+			<Anchor>//api/name/columnWidth</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/setReceiptType:</TokenIdentifier>
+			<Abstract type="html">The type of receipt that should be produced by this formatter. You can change this between calls.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</Declaration>
+			
+			
+			<Anchor>//api/name/receiptType</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/receiptType</TokenIdentifier>
+			<Abstract type="html">The type of receipt that should be produced by this formatter. You can change this between calls.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</Declaration>
+			
+			
+			<Anchor>//api/name/receiptType</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatter/receiptType</TokenIdentifier>
+			<Abstract type="html">The type of receipt that should be produced by this formatter. You can change this between calls.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</Declaration>
+			
+			
+			<Anchor>//api/name/receiptType</Anchor>
             <NodeRef refid="25"/>
 		</Token>
 		

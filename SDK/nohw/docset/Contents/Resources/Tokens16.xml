@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHChipAndPinEvent.html">
+	<File path="Classes/PPHChipAndPinDigitEvent.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinEvent</TokenIdentifier>
-			<Abstract type="html">Base class for all events fired from chip&amp;amp;pin readers</Abstract>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinDigitEvent</TokenIdentifier>
+			<Abstract type="html">An event fired when a digit was pressed on the keypad</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
 			<NodeRef refid="16"/>
@@ -12,77 +12,38 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/setEventType:</TokenIdentifier>
-			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
-can be very helpful in debugging and in turning this enum to a string.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinDigitEvent/setDigits:</TokenIdentifier>
+			<Abstract type="html">The number of digits that have been pressed</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger digits</Declaration>
 			
 			
-			<Anchor>//api/name/eventType</Anchor>
+			<Anchor>//api/name/digits</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/eventType</TokenIdentifier>
-			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
-can be very helpful in debugging and in turning this enum to a string.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinDigitEvent/digits</TokenIdentifier>
+			<Abstract type="html">The number of digits that have been pressed</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger digits</Declaration>
 			
 			
-			<Anchor>//api/name/eventType</Anchor>
+			<Anchor>//api/name/digits</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEvent/eventType</TokenIdentifier>
-			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
-can be very helpful in debugging and in turning this enum to a string.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinDigitEvent/digits</TokenIdentifier>
+			<Abstract type="html">The number of digits that have been pressed</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger digits</Declaration>
 			
 			
-			<Anchor>//api/name/eventType</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/setReader:</TokenIdentifier>
-			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
-			
-			
-			<Anchor>//api/name/reader</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/reader</TokenIdentifier>
-			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
-			
-			
-			<Anchor>//api/name/reader</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEvent/reader</TokenIdentifier>
-			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
-			
-			
-			<Anchor>//api/name/reader</Anchor>
+			<Anchor>//api/name/digits</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		

@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -66,6 +68,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -130,6 +134,15 @@
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>PPHInvoiceFormatter is capable of rendering the details of invoices for receipt purposes. Online receipts
+are typically hosted by PayPal, but this class is mainly useful for producing printable receipts.</p>
+					</div>
 					
 					
 					
@@ -314,6 +327,21 @@ method and rendering it down to an image for you.</p>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>The invoice receipt to be printed</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>widthInPixels</em></dt>
+			<dd><p>The width of the returned image &ndash; height will be determined based on this</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -358,6 +386,16 @@ a fixed width font</p>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>The invoice receipt to be printed</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -401,6 +439,16 @@ to allow a decent amount of customization, and will be XHTML for easy modificati
 	<div class="method-subsection method-declaration"><code>- (NSString *)htmlStringForInvoice:(PPHInvoice *)<em>invoice</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>The invoice receipt to be printed</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	

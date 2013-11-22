@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHChipAndPinEventWithEmv.html">
+	<File path="Classes/PPHChipAndPinEvent.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinEventWithEmv</TokenIdentifier>
-			<Abstract type="html">A chip &amp;amp; pin event that includes terminal data aka EMV data</Abstract>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinEvent</TokenIdentifier>
+			<Abstract type="html">Base class for all events fired from chip&amp;amp;pin readers</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
 			<NodeRef refid="17"/>
@@ -12,74 +12,77 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEventWithEmv/setEmvData:</TokenIdentifier>
-			<Abstract type="html">Opaque EMV data to be passed to PayPal services</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/setEventType:</TokenIdentifier>
+			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
+can be very helpful in debugging and in turning this enum to a string.</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSData *emvData</Declaration>
+			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
 			
 			
-			<Anchor>//api/name/emvData</Anchor>
+			<Anchor>//api/name/eventType</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEventWithEmv/emvData</TokenIdentifier>
-			<Abstract type="html">Opaque EMV data to be passed to PayPal services</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/eventType</TokenIdentifier>
+			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
+can be very helpful in debugging and in turning this enum to a string.</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSData *emvData</Declaration>
+			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
 			
 			
-			<Anchor>//api/name/emvData</Anchor>
+			<Anchor>//api/name/eventType</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEventWithEmv/emvData</TokenIdentifier>
-			<Abstract type="html">Opaque EMV data to be passed to PayPal services</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEvent/eventType</TokenIdentifier>
+			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
+can be very helpful in debugging and in turning this enum to a string.</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSData *emvData</Declaration>
+			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
 			
 			
-			<Anchor>//api/name/emvData</Anchor>
+			<Anchor>//api/name/eventType</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEventWithEmv/setTerminalId:</TokenIdentifier>
-			<Abstract type="html">The identifier of the terminal being used in the context of the EMV data</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/setReader:</TokenIdentifier>
+			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *terminalId</Declaration>
+			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
 			
 			
-			<Anchor>//api/name/terminalId</Anchor>
+			<Anchor>//api/name/reader</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEventWithEmv/terminalId</TokenIdentifier>
-			<Abstract type="html">The identifier of the terminal being used in the context of the EMV data</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/reader</TokenIdentifier>
+			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *terminalId</Declaration>
+			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
 			
 			
-			<Anchor>//api/name/terminalId</Anchor>
+			<Anchor>//api/name/reader</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEventWithEmv/terminalId</TokenIdentifier>
-			<Abstract type="html">The identifier of the terminal being used in the context of the EMV data</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEvent/reader</TokenIdentifier>
+			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *terminalId</Declaration>
+			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
 			
 			
-			<Anchor>//api/name/terminalId</Anchor>
+			<Anchor>//api/name/reader</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		

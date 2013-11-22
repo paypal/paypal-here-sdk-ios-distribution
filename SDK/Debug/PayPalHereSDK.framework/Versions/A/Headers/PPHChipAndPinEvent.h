@@ -130,3 +130,14 @@ typedef NS_ENUM(NSInteger, PPHChipAndPinEventType) {
  */
 @property (nonatomic,readonly) BOOL cardRemoved;
 @end
+
+/*!
+ * Fired when reading the EMV chip fails
+ */
+@interface PPHChipAndPinCardChipBrokenEvent : PPHChipAndPinEvent
+/*!
+ * Whether a fallback swipe is now enabled (either by repeated failures
+ * or the configuration of the chip)
+ */
+@property (nonatomic,readonly) BOOL fallbackEnabled;
+@end
