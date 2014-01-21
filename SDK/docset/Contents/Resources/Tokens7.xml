@@ -7,6 +7,7 @@
 			<Abstract type="html">The card reader manager handles all interaction with card and chip&amp;amp;pin hardware devices.
 This includes audio readers, dock port readers, and Bluetooth readers.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+            
 			
 			<NodeRef refid="7"/>
 		</Token>
@@ -15,7 +16,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginMonitoring</TokenIdentifier>
 			<Abstract type="html">Monitor for all known device types</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (PPHReaderError)beginMonitoring</Declaration>
 			
@@ -27,7 +28,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginMonitoring:</TokenIdentifier>
 			<Abstract type="html">Begin monitoring the device for connection and removal of the specified reader types.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (PPHReaderError)beginMonitoring:(PPHReaderTypeMask)readerTypes</Declaration>
 			<Parameters>
@@ -44,7 +45,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/endMonitoring:</TokenIdentifier>
 			<Abstract type="html">Stop reacting to events around device connection and removal.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (void)endMonitoring:(BOOL)unregisterForLocalNotifications</Declaration>
 			<Parameters>
@@ -62,7 +63,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/activateReader:</TokenIdentifier>
 			<Abstract type="html">Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
 in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)readerOrNil</Declaration>
 			<Parameters>
@@ -81,7 +82,7 @@ in other cases this will connect to the bluetooth or feature port accessory or d
 			<Abstract type="html">Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
 or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
 disconnect the reader.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (void)deactivateReader:(PPHCardReaderBasicInformation *)readerOrNil</Declaration>
 			<Parameters>
@@ -100,7 +101,7 @@ disconnect the reader.</Abstract>
 			<Abstract type="html">Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
 readers this isn&apos;t necessary, but if you want to support those readers,
 you must call this method when you know the final amount that will be charged.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (PPHReaderError)beginTransaction:(id&lt;PPHInvoiceProtocol&gt;)transaction</Declaration>
 			<Parameters>
@@ -120,7 +121,7 @@ you must call this method when you know the final amount that will be charged.</
 such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
 some readers are battery powered, you should call this as soon as reasonable. The SDK will
 automatically take care of this when your app is suspended or interrupted.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (void)endTransaction</Declaration>
 			
@@ -139,7 +140,7 @@ but to each their own. In addition, if you have custom bluetooth or dock port re
 that we support, you can pass the custom protocol string in this list and we&apos;ll look for
 that. IMPORTANT: You still need to add the protocol to your application&apos;s plist
 (under supported accessories) in order for this to work.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (void)setPreferenceOrder:(NSArray *)arrayOfCardReaderBasicInfo</Declaration>
 			<Parameters>
@@ -159,7 +160,7 @@ filled out (for example name is not required when devices of that type have no n
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/availableDevices</TokenIdentifier>
 			<Abstract type="html">An array of known available devices. For example with bluetooth devices this will include
 paired devices that are currently within range/connectable.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (NSArray *)availableDevices</Declaration>
 			
@@ -172,7 +173,7 @@ paired devices that are currently within range/connectable.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginUpgrade:</TokenIdentifier>
 			<Abstract type="html">In the case of readers requiring further setup, call this method with the PPHCardReaderBasicInformation
 for the target reader.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
 			<Declaration>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)reader</Declaration>
 			<Parameters>
@@ -186,5 +187,6 @@ for the target reader.</Abstract>
             <NodeRef refid="7"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

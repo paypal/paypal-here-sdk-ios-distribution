@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHPaymentProcessor Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -155,8 +154,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -181,91 +180,78 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginRefund:forAmount:completionHandler:">&ndash;&nbsp;beginRefund:forAmount:completionHandler:</a></code>
-		<span class="tooltip"><p>Issue a refund against a previously successful PayPal transaction.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginCheckinPayment:forInvoice:completionHandler:">&ndash;&nbsp;beginCheckinPayment:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Capture funds against an open checkin from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">&ndash;&nbsp;beginChipAndPinAuthorization:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Authorize a chip and pin card after pin has been validated</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:">&ndash;&nbsp;beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:</a></code>
-		<span class="tooltip"><p>Collect funds against a card that has been passed through a reader and for which magstripe data is available.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Collect funds against a card that has been manually entered.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">&ndash;&nbsp;beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Mark an invoice as having been paid by an external payment type such as Cash or Check.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:andInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Provide a signature record for a previously successful charge.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:">&ndash;&nbsp;finalizeChipAndPin:withAuth:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Capture funds against a chip&amp;pin or chip card</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:">&ndash;&nbsp;finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Capture funds against a chip&amp;pin&amp;signature or chip&amp;signature card</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/checkRefundEligibilityForCardPresent:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForCardPresent:andInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Check if the given swipe data is for the same card that the invoice was paid with</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForChipAndPin:andInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Check if the given chip+pin card data is for the same card that the invoice was paid with</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForDeclinedCardWithEvent:andInvoice:completionHandler:</a></code>
-		<span class="tooltip"><p>Check if the given event contains the same EMV data as the card that the invoice was paid with</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginSendReceipt:to:completionHandler:">&ndash;&nbsp;beginSendReceipt:to:completionHandler:</a></code>
-		<span class="tooltip"><p>Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.</p></span>
 	</span>
 	
 	
@@ -1121,6 +1107,8 @@ attempting to collect payment.</p></dd>
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1131,9 +1119,9 @@ attempting to collect payment.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-01-21)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

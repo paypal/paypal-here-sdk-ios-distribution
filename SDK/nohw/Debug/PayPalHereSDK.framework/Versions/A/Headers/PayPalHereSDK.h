@@ -16,6 +16,7 @@
 #import <PayPalHereSDK/PPHLocalManager.h>
 #import <PayPalHereSDK/PPHLoggingDelegate.h>
 #import <PayPalHereSDK/PPHAccessResultType.h>
+#import <PayPalHereSDK/PPHTransactionManager.h>
 
 typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo);
 
@@ -48,6 +49,12 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  * A helper to establish OAuth credentials on behalf of your application for a merchant.
  */
 +(PPHAccessController*) sharedAccessController DEPRECATED_ATTRIBUTE;
+
+/*!
+ * A way to do payments & refunds in a stateful way
+ */
++(PPHTransactionManager*) sharedTransactionManager;
+
 
 /*!
  * Should you wish to handle your own network requests, you can set this singleton

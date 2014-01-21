@@ -6,6 +6,7 @@
 			<TokenIdentifier>//apple_ref/occ/cl/PPHAmount</TokenIdentifier>
 			<Abstract type="html">All money amounts in PayPal Here should use PPHAmount, as it encapsulates a currency and an appropriately precise amount.</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
+            
 			
 			<NodeRef refid="3"/>
 		</Token>
@@ -14,7 +15,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/defaultCurrencyCodeInCountry:</TokenIdentifier>
 			<Abstract type="html">Get the default currency code given an ISO country code</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>+ (NSString *)defaultCurrencyCodeInCountry:(NSString *)countryCode</Declaration>
 			<Parameters>
@@ -31,7 +32,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/amountWithDecimal:inCurrency:</TokenIdentifier>
 			<Abstract type="html">Create a PPHAmount given a decimal and a currency</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>+ (PPHAmount *)amountWithDecimal:(NSDecimalNumber *)amount inCurrency:(NSString *)currency</Declaration>
 			<Parameters>
@@ -51,7 +52,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/amountWithString:inCurrency:</TokenIdentifier>
 			<Abstract type="html">Create a PPHAmount given a decimal in a string and a currency</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>+ (PPHAmount *)amountWithString:(NSString *)stringValue inCurrency:(NSString *)currency</Declaration>
 			<Parameters>
@@ -71,7 +72,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/init</TokenIdentifier>
 			<Abstract type="html">Don&apos;t init PPHAmounts without data, consider them immutable</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (id)init</Declaration>
 			
@@ -84,7 +85,7 @@
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/initWithPadding:inCurrency:</TokenIdentifier>
 			<Abstract type="html">Initialize an amount with the appropriate padding for a currency. For example,
 in USD which is a 2 digit currency, passing 12345 will return 123.45</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithPadding:(NSString *)amount inCurrency:(NSString *)currency</Declaration>
 			<Parameters>
@@ -105,7 +106,7 @@ in USD which is a 2 digit currency, passing 12345 will return 123.45</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/initWithRounding:inCurrency:</TokenIdentifier>
 			<Abstract type="html">Initialize an amount and round to the appropriate precision for the currency.
 For example in USD passing 1.232 would return 1.23</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithRounding:(NSDecimalNumber *)amount inCurrency:(NSString *)currency</Declaration>
 			<Parameters>
@@ -125,7 +126,7 @@ For example in USD passing 1.232 would return 1.23</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/setCurrencyCode:</TokenIdentifier>
 			<Abstract type="html">The ISO currency code such as USD</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *currencyCode</Declaration>
 			
@@ -137,7 +138,7 @@ For example in USD passing 1.232 would return 1.23</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/currencyCode</TokenIdentifier>
 			<Abstract type="html">The ISO currency code such as USD</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *currencyCode</Declaration>
 			
@@ -149,7 +150,7 @@ For example in USD passing 1.232 would return 1.23</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHAmount/currencyCode</TokenIdentifier>
 			<Abstract type="html">The ISO currency code such as USD</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *currencyCode</Declaration>
 			
@@ -162,7 +163,7 @@ For example in USD passing 1.232 would return 1.23</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/setAmount:</TokenIdentifier>
 			<Abstract type="html">The amount, with potentially higher precision than the currency supports
 so that we don&apos;t break intermediate values.</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *amount</Declaration>
 			
@@ -175,7 +176,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/amount</TokenIdentifier>
 			<Abstract type="html">The amount, with potentially higher precision than the currency supports
 so that we don&apos;t break intermediate values.</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *amount</Declaration>
 			
@@ -188,7 +189,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHAmount/amount</TokenIdentifier>
 			<Abstract type="html">The amount, with potentially higher precision than the currency supports
 so that we don&apos;t break intermediate values.</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *amount</Declaration>
 			
@@ -200,7 +201,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/isValid</TokenIdentifier>
 			<Abstract type="html">YES if the amount is valid (i.e. if amount is not NSDecimalNumber::notANumber</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (BOOL)isValid</Declaration>
 			
@@ -212,7 +213,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/amountInCents</TokenIdentifier>
 			<Abstract type="html">The amount in the minimal unit of the currency (e.g. penny in the US)</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (NSInteger)amountInCents</Declaration>
 			
@@ -224,7 +225,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/isoCurrencyNumber</TokenIdentifier>
 			<Abstract type="html">The ISO currency NUMBER for the currency code</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (NSInteger)isoCurrencyNumber</Declaration>
 			
@@ -236,7 +237,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/currencySymbol</TokenIdentifier>
 			<Abstract type="html">The currency symbol, such as $ for USD</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (NSString *)currencySymbol</Declaration>
 			
@@ -246,9 +247,33 @@ so that we don&apos;t break intermediate values.</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/digitsAfterDecimalSeperator</TokenIdentifier>
+			<Abstract type="html">The amount of digits allowed after the decimal separator in this amount&apos;s currency</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (NSUInteger)digitsAfterDecimalSeperator</Declaration>
+			
+			
+			<Anchor>//api/name/digitsAfterDecimalSeperator</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/decimalSeparator</TokenIdentifier>
+			<Abstract type="html">The character use to separate the integer and fractional part of a decimal number</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)decimalSeparator</Declaration>
+			
+			
+			<Anchor>//api/name/decimalSeparator</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/stringValue</TokenIdentifier>
 			<Abstract type="html">The amount as a string with a currency symbol included</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (NSString *)stringValue</Declaration>
 			
@@ -260,7 +285,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/stringValueWithoutCurrencySymbol</TokenIdentifier>
 			<Abstract type="html">The amount as a string with no currency symbol</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (NSString *)stringValueWithoutCurrencySymbol</Declaration>
 			
@@ -273,7 +298,7 @@ so that we don&apos;t break intermediate values.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/stringValueForPayment</TokenIdentifier>
 			<Abstract type="html">The amount as a string with no currency symbol or thousands separators, and with the decimal
 separator always set to &quot;.&quot;</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (NSString *)stringValueForPayment</Declaration>
 			
@@ -285,7 +310,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/multiply:</TokenIdentifier>
 			<Abstract type="html">Multiply a PPHAmount by a decimal</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)multiply:(NSDecimalNumber *)multiple</Declaration>
 			<Parameters>
@@ -302,7 +327,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/subtract:</TokenIdentifier>
 			<Abstract type="html">Subtract a decimal from a PPHAmount</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)subtract:(NSDecimalNumber *)operand</Declaration>
 			<Parameters>
@@ -319,7 +344,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/add:</TokenIdentifier>
 			<Abstract type="html">Add a PPHAmount to a decimal</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)add:(NSDecimalNumber *)operand</Declaration>
 			<Parameters>
@@ -336,7 +361,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/divideBy:</TokenIdentifier>
 			<Abstract type="html">Divide a PPHAmount by a decimal</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)divideBy:(NSDecimalNumber *)divisor</Declaration>
 			<Parameters>
@@ -353,7 +378,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/multiplyByAmount:</TokenIdentifier>
 			<Abstract type="html">Multiply two PPHAmounts</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)multiplyByAmount:(PPHAmount *)multiple</Declaration>
 			<Parameters>
@@ -370,7 +395,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/subtractAmount:</TokenIdentifier>
 			<Abstract type="html">Subtract a PPHAmount from a PPHAmount</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)subtractAmount:(PPHAmount *)operand</Declaration>
 			<Parameters>
@@ -387,7 +412,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/addAmount:</TokenIdentifier>
 			<Abstract type="html">Add two PPHAmounts</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)addAmount:(PPHAmount *)operand</Declaration>
 			<Parameters>
@@ -404,7 +429,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/divideByAmount:</TokenIdentifier>
 			<Abstract type="html">Divide a PPHAmount by a PPHAmount</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)divideByAmount:(PPHAmount *)divisor</Declaration>
 			<Parameters>
@@ -421,7 +446,7 @@ separator always set to &quot;.&quot;</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/roundedAmount</TokenIdentifier>
 			<Abstract type="html">Return a rounded amount</Abstract>
-			<DeclaredIn>PPHAmount.h</DeclaredIn>			
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
 			<Declaration>- (PPHAmount *)roundedAmount</Declaration>
 			
@@ -430,5 +455,6 @@ separator always set to &quot;.&quot;</Abstract>
             <NodeRef refid="3"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

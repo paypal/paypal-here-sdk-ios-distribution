@@ -73,6 +73,11 @@
 -(NSInteger) isoCurrencyNumber;
 /*! The currency symbol, such as $ for USD */
 -(NSString*) currencySymbol;
+/*! The amount of digits allowed after the decimal separator in this amount's currency */
+-(NSUInteger)digitsAfterDecimalSeperator;
+
+/*! The character use to separate the integer and fractional part of a decimal number */
+- (NSString *)decimalSeparator;
 
 /*! The amount as a string with a currency symbol included */
 -(NSString*) stringValue;
