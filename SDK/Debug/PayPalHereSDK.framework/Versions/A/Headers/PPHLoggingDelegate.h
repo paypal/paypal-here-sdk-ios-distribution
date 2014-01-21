@@ -42,8 +42,28 @@
  * @param message The fully formatted log message.
  */
 -(void)logPayPalHereDebug: (NSString*) message;
+
+/*!
+ * Log a message considered to be indicative of an error for hardware interactions.
+ * @param message The fully formatted log message.
+ */
+- (void)logPayPalHereHardwareError:(NSString *)message;
+
+/*!
+ * Log a message considered to be a potential issue affecting proper function for hardware interactions.
+ * @param message The fully formatted log message.
+ */
+- (void)logPayPalHereHardwareWarning:(NSString *)message;
+
+/*!
+ * Log informational events for hardware interactions.
+ * @param message The fully formatted log message.
+ */
+- (void)logPayPalHereHardwareInfo:(NSString *)message;
+
 /*!
  * Cause the logger to send all its queued messages now.
  */
 -(void)flush;
+
 @end

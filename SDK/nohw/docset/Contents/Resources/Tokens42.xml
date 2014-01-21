@@ -1,84 +1,515 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHAnalyticsDelegate.html">
+	<File path="Classes/PPHTransactionManager.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHAnalyticsDelegate</TokenIdentifier>
-			<Abstract type="html">PPHAnalyticsDelegate is in charge of delivering analytics events to a server</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionManager</TokenIdentifier>
+			<Abstract type="html">A stateful transaciton (payment &amp;amp; refunds) processor.
+Here are some usage examples:</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+            
 			
 			<NodeRef refid="42"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/beginSession:</TokenIdentifier>
-			<Abstract type="html">Start an analytics session - create any sort of visitor/device identifiers etc.</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setCurrentInvoice:</TokenIdentifier>
+			<Abstract type="html">The invoice used for this transaction.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginSession:(NSDictionary *)properties</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>properties</Name>
-					<Abstract type="html">session-wide information about the session</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHInvoice *currentInvoice</Declaration>
 			
-			<Anchor>//api/name/beginSession:</Anchor>
+			
+			<Anchor>//api/name/currentInvoice</Anchor>
             <NodeRef refid="42"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/amendSession:</TokenIdentifier>
-			<Abstract type="html">Update session information of an in progress session</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/currentInvoice</TokenIdentifier>
+			<Abstract type="html">The invoice used for this transaction.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)amendSession:(NSDictionary *)properties</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>properties</Name>
-					<Abstract type="html">session-wide information about the session</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHInvoice *currentInvoice</Declaration>
 			
-			<Anchor>//api/name/amendSession:</Anchor>
+			
+			<Anchor>//api/name/currentInvoice</Anchor>
             <NodeRef refid="42"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/endSession</TokenIdentifier>
-			<Abstract type="html">End an analytics session - clear any identifiers</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/currentInvoice</TokenIdentifier>
+			<Abstract type="html">The invoice used for this transaction.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)endSession</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoice *currentInvoice</Declaration>
 			
 			
-			<Anchor>//api/name/endSession</Anchor>
+			<Anchor>//api/name/currentInvoice</Anchor>
             <NodeRef refid="42"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/queueEvent:withType:andInfo:</TokenIdentifier>
-			<Abstract type="html">Log an analytics event</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setSignature:</TokenIdentifier>
+			<Abstract type="html">You may set a signature prior to authorizing a transaction</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)queueEvent:(PPHAnalyticsEventName)event withType:(PPHAnalyticsEventType)type andInfo:(NSDictionary *)info</Declaration>
+			<Declaration>@property (nonatomic, strong) UIImage *signature</Declaration>
+			
+			
+			<Anchor>//api/name/signature</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/signature</TokenIdentifier>
+			<Abstract type="html">You may set a signature prior to authorizing a transaction</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) UIImage *signature</Declaration>
+			
+			
+			<Anchor>//api/name/signature</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/signature</TokenIdentifier>
+			<Abstract type="html">You may set a signature prior to authorizing a transaction</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) UIImage *signature</Declaration>
+			
+			
+			<Anchor>//api/name/signature</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setEncryptedCardData:</TokenIdentifier>
+			<Abstract type="html">Card swipe data we&apos;ll use if the PaymentType is CardReader.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardSwipeData *encryptedCardData</Declaration>
+			
+			
+			<Anchor>//api/name/encryptedCardData</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/encryptedCardData</TokenIdentifier>
+			<Abstract type="html">Card swipe data we&apos;ll use if the PaymentType is CardReader.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardSwipeData *encryptedCardData</Declaration>
+			
+			
+			<Anchor>//api/name/encryptedCardData</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/encryptedCardData</TokenIdentifier>
+			<Abstract type="html">Card swipe data we&apos;ll use if the PaymentType is CardReader.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardSwipeData *encryptedCardData</Declaration>
+			
+			
+			<Anchor>//api/name/encryptedCardData</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setManualEntryOrScannedCardData:</TokenIdentifier>
+			<Abstract type="html">Card swipe data we&apos;ll use if the PaymentType is ManualEntry</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardNotPresentData *manualEntryOrScannedCardData</Declaration>
+			
+			
+			<Anchor>//api/name/manualEntryOrScannedCardData</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/manualEntryOrScannedCardData</TokenIdentifier>
+			<Abstract type="html">Card swipe data we&apos;ll use if the PaymentType is ManualEntry</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardNotPresentData *manualEntryOrScannedCardData</Declaration>
+			
+			
+			<Anchor>//api/name/manualEntryOrScannedCardData</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/manualEntryOrScannedCardData</TokenIdentifier>
+			<Abstract type="html">Card swipe data we&apos;ll use if the PaymentType is ManualEntry</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardNotPresentData *manualEntryOrScannedCardData</Declaration>
+			
+			
+			<Anchor>//api/name/manualEntryOrScannedCardData</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setCheckedInClient:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHLocationCheckin *checkedInClient</Declaration>
+			
+			
+			<Anchor>//api/name/checkedInClient</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/checkedInClient</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHLocationCheckin *checkedInClient</Declaration>
+			
+			
+			<Anchor>//api/name/checkedInClient</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/checkedInClient</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHLocationCheckin *checkedInClient</Declaration>
+			
+			
+			<Anchor>//api/name/checkedInClient</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setIsProcessingPayment:</TokenIdentifier>
+			<Abstract type="html">Discover if we&apos;re busy processing a payment we the back end.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isProcessingPayment</Declaration>
+			
+			<ReturnValue><Abstract type="html">a boolean value.  Returns true if we&apos;re currently processing a finalizePayment</Abstract></ReturnValue>
+			<Anchor>//api/name/isProcessingPayment</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/isProcessingPayment</TokenIdentifier>
+			<Abstract type="html">Discover if we&apos;re busy processing a payment we the back end.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isProcessingPayment</Declaration>
+			
+			<ReturnValue><Abstract type="html">a boolean value.  Returns true if we&apos;re currently processing a finalizePayment</Abstract></ReturnValue>
+			<Anchor>//api/name/isProcessingPayment</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/isProcessingPayment</TokenIdentifier>
+			<Abstract type="html">Discover if we&apos;re busy processing a payment we the back end.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isProcessingPayment</Declaration>
+			
+			<ReturnValue><Abstract type="html">a boolean value.  Returns true if we&apos;re currently processing a finalizePayment</Abstract></ReturnValue>
+			<Anchor>//api/name/isProcessingPayment</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setHasActiveTransaction:</TokenIdentifier>
+			<Abstract type="html">Discover if we&apos;re currently handling a transaction.  While handling a transaction
+we can accept an invoice.  If configured to work with the hardware scanners (the
+default) we will also be scanning for card swipes.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL hasActiveTransaction</Declaration>
+			
+			<ReturnValue><Abstract type="html">a boolean value.  Returns true if we&apos;re currently handling a transaction.</Abstract></ReturnValue>
+			<Anchor>//api/name/hasActiveTransaction</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/hasActiveTransaction</TokenIdentifier>
+			<Abstract type="html">Discover if we&apos;re currently handling a transaction.  While handling a transaction
+we can accept an invoice.  If configured to work with the hardware scanners (the
+default) we will also be scanning for card swipes.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL hasActiveTransaction</Declaration>
+			
+			<ReturnValue><Abstract type="html">a boolean value.  Returns true if we&apos;re currently handling a transaction.</Abstract></ReturnValue>
+			<Anchor>//api/name/hasActiveTransaction</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/hasActiveTransaction</TokenIdentifier>
+			<Abstract type="html">Discover if we&apos;re currently handling a transaction.  While handling a transaction
+we can accept an invoice.  If configured to work with the hardware scanners (the
+default) we will also be scanning for card swipes.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL hasActiveTransaction</Declaration>
+			
+			<ReturnValue><Abstract type="html">a boolean value.  Returns true if we&apos;re currently handling a transaction.</Abstract></ReturnValue>
+			<Anchor>//api/name/hasActiveTransaction</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setCardReaderMonitorEnabled:</TokenIdentifier>
+			<Abstract type="html">Configure the TransactionManager to start and stop listening for card swipes while performing a
+transaction. By default, the TransactionManager performs this action but, if the application would
+like to take control of this, set the boolean param to false. This would expect the application to
+make use of CardReaderManager&apos;s WaitForAuthorization and CancelWaitForAuthorization
+APIs to start and stop listening for card swipes.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL cardReaderMonitorEnabled</Declaration>
+			
+			
+			<Anchor>//api/name/cardReaderMonitorEnabled</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/cardReaderMonitorEnabled</TokenIdentifier>
+			<Abstract type="html">Configure the TransactionManager to start and stop listening for card swipes while performing a
+transaction. By default, the TransactionManager performs this action but, if the application would
+like to take control of this, set the boolean param to false. This would expect the application to
+make use of CardReaderManager&apos;s WaitForAuthorization and CancelWaitForAuthorization
+APIs to start and stop listening for card swipes.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL cardReaderMonitorEnabled</Declaration>
+			
+			
+			<Anchor>//api/name/cardReaderMonitorEnabled</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/cardReaderMonitorEnabled</TokenIdentifier>
+			<Abstract type="html">Configure the TransactionManager to start and stop listening for card swipes while performing a
+transaction. By default, the TransactionManager performs this action but, if the application would
+like to take control of this, set the boolean param to false. This would expect the application to
+make use of CardReaderManager&apos;s WaitForAuthorization and CancelWaitForAuthorization
+APIs to start and stop listening for card swipes.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL cardReaderMonitorEnabled</Declaration>
+			
+			
+			<Anchor>//api/name/cardReaderMonitorEnabled</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setIgnoreHardwareReaders:</TokenIdentifier>
+			<Abstract type="html">Configure the TransactionManager to ignore OR work with any payment readers that might
+be attached.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoreHardwareReaders</Declaration>
+			
+			
+			<Anchor>//api/name/ignoreHardwareReaders</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/ignoreHardwareReaders</TokenIdentifier>
+			<Abstract type="html">Configure the TransactionManager to ignore OR work with any payment readers that might
+be attached.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoreHardwareReaders</Declaration>
+			
+			
+			<Anchor>//api/name/ignoreHardwareReaders</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/ignoreHardwareReaders</TokenIdentifier>
+			<Abstract type="html">Configure the TransactionManager to ignore OR work with any payment readers that might
+be attached.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoreHardwareReaders</Declaration>
+			
+			
+			<Anchor>//api/name/ignoreHardwareReaders</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/beginPayment</TokenIdentifier>
+			<Abstract type="html">Used to begin all types of payment (check-in, card present, manual entry, cash, etc)
+This call causes the hardware enabled version of the SDK to start scanning for card swipes.
+the currentInvoice is initialized with an empty inventory for you to add items to.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)beginPayment</Declaration>
+			
+			
+			<Anchor>//api/name/beginPayment</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/beginPaymentWithAmount:andName:</TokenIdentifier>
+			<Abstract type="html">Begin a fixed amount payment.  Similar to beginPayment except this time the
+TransactionManager&apos;s invoice object becomes primed with an invoice containing
+the fixed amount item.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)beginPaymentWithAmount:(PPHAmount *)amount andName:(NSString *)itemName</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">the name of the event that has occurred</Abstract>
+					<Name>amount</Name>
+					<Abstract type="html">the amount to charge the customer.</Abstract>
 				</Parameter><Parameter>
-					<Name>type</Name>
-					<Abstract type="html">the type of event that has occurred</Abstract>
-				</Parameter><Parameter>
-					<Name>info</Name>
-					<Abstract type="html">additional information about the event</Abstract>
+					<Name>itemName</Name>
+					<Abstract type="html">the name for this item.  Will be stored in the invoice.</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/queueEvent:withType:andInfo:</Anchor>
+			<Anchor>//api/name/beginPaymentWithAmount:andName:</Anchor>
             <NodeRef refid="42"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/cancelPayment</TokenIdentifier>
+			<Abstract type="html">give up on the current payment if possible (if not already capturing payment).   Clears state members.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (PPHError *)cancelPayment</Declaration>
+			
+			
+			<Anchor>//api/name/cancelPayment</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/processPaymentWithPaymentType:withTransactionController:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)processPaymentWithPaymentType:(PPHPaymentMethod)paymentType withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)controller completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>paymentType</Name>
+					<Abstract type="html">the type of payment to collect.  You&apos;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&apos;t set the
+checkedInClient property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</Abstract>
+				</Parameter><Parameter>
+					<Name>controller</Name>
+					<Abstract type="html">Can be nil.  If provided, the transaction manager will call the callbacks
+defined in the PPHTransactionControllerDelegate.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/finalizePaymentForTransaction:withSignature:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Used to capture the signature of the customer if it already hasn&apos;t been captured in the processPayment call
+and complete the transaction.
+In case of EMV related payments, this API should be used after the processPayment call has been
+approved by the terminal. If the terminal declines, the transaction would be voided.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)finalizePaymentForTransaction:(PPHTransactionRecord *)previousTransaction withSignature:(UIImage *)signature completionHandler:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>previousTransaction</Name>
+					<Abstract type="html">: The transaction record object that is returned back from the processPayment call.</Abstract>
+				</Parameter><Parameter>
+					<Name>signature</Name>
+					<Abstract type="html">: A bitmap signature of the customer.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: A response handler that would be invoked by the SDK in case of a success or a failure.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/finalizePaymentForTransaction:withSignature:completionHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/beginRefund:forAmount:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Issue a refund against a previously successful PayPal transaction.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)beginRefund:(PPHTransactionRecord *)previousTransaction forAmount:(PPHAmount *)amountOrNil completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>previousTransaction</Name>
+					<Abstract type="html">The transaction identifier for the original payment transaction</Abstract>
+				</Parameter><Parameter>
+					<Name>amountOrNil</Name>
+					<Abstract type="html">Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&apos;s a full refund.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginRefund:forAmount:completionHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/sendReceipt:toRecipient:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)sendReceipt:(PPHTransactionRecord *)previousTransaction toRecipient:(PPHReceiptDestination *)destination completionHandler:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>previousTransaction</Name>
+					<Abstract type="html">: The transaction record object that is returned back from the processPayment call. This will
+contain all the necessary information required such as the invoice id,
+transaction id etc needed to send the receipt.
+Use this API when the transaction record is available. For example,
+when the transaction is successful.</Abstract>
+				</Parameter><Parameter>
+					<Name>destination</Name>
+					<Abstract type="html">: A PPHReceiptDestination object which describes either the email address or phone number to
+which we should send the receipt.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: A response handler that would be invoked by the SDK in case of a success or a failure.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/sendReceipt:toRecipient:completionHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+        
 	</File>
 </Tokens>

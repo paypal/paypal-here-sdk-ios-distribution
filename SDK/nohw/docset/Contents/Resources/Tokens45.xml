@@ -1,99 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHLocationWatcherDelegate.html">
+	<File path="Classes/PPHTransactionResponse.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHLocationWatcherDelegate</TokenIdentifier>
-			<Abstract type="html">A PPHLocationWatcherDelegate receives events when new tabs are created, old tabs are removed,
-and errors occur.</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionResponse</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+            
 			
 			<NodeRef refid="45"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectNewTab:</TokenIdentifier>
-			<Abstract type="html">A new checkin has been opened since the last update</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/setError:</TokenIdentifier>
+			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectNewTab:(PPHLocationCheckin *)checkin</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">information about the location on which the checkin has been opened</Abstract>
-				</Parameter><Parameter>
-					<Name>checkin</Name>
-					<Abstract type="html">information about the checkin and customer</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
 			
-			<Anchor>//api/name/locationWatcher:didDetectNewTab:</Anchor>
+			
+			<Anchor>//api/name/error</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectRemovedTab:</TokenIdentifier>
-			<Abstract type="html">A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/error</TokenIdentifier>
+			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectRemovedTab:(PPHLocationCheckin *)checkin</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">information about the location on which the checkin has been closed</Abstract>
-				</Parameter><Parameter>
-					<Name>checkin</Name>
-					<Abstract type="html">last known information about the checkin and customer</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
 			
-			<Anchor>//api/name/locationWatcher:didDetectRemovedTab:</Anchor>
+			
+			<Anchor>//api/name/error</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didReceiveError:</TokenIdentifier>
-			<Abstract type="html">An error has occurred trying to update checkin information</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionResponse/error</TokenIdentifier>
+			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didReceiveError:(PPHError *)error</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">the watcher that tried to update</Abstract>
-				</Parameter><Parameter>
-					<Name>error</Name>
-					<Abstract type="html">the error</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
 			
-			<Anchor>//api/name/locationWatcher:didReceiveError:</Anchor>
+			
+			<Anchor>//api/name/error</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didCompleteUpdate:wasModified:</TokenIdentifier>
-			<Abstract type="html">A request for updated checkin information has completed successfully.</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/setRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">the watcher that tried to update</Abstract>
-				</Parameter><Parameter>
-					<Name>openTabs</Name>
-					<Abstract type="html">Known open tabs as of the last update</Abstract>
-				</Parameter><Parameter>
-					<Name>wasModified</Name>
-					<Abstract type="html">Whether any checkin information was updated</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHTransactionRecord *record</Declaration>
 			
-			<Anchor>//api/name/locationWatcher:didCompleteUpdate:wasModified:</Anchor>
+			
+			<Anchor>//api/name/record</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/record</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHTransactionRecord *record</Declaration>
+			
+			
+			<Anchor>//api/name/record</Anchor>
+            <NodeRef refid="45"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionResponse/record</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHTransactionRecord *record</Declaration>
+			
+			
+			<Anchor>//api/name/record</Anchor>
+            <NodeRef refid="45"/>
+		</Token>
+		
+        
 	</File>
 </Tokens>

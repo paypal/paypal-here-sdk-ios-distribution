@@ -15,6 +15,7 @@
  */
 #define kPPHPaymentNetworkRequestId @"PPHPayment"
 
+@class PPHTokenizedCustomerInformation;
 @class PPHChipAndPinAuthEvent;
 @class PPHChipAndPinEventWithEmv;
 @class PPHLocationCheckin;
@@ -80,6 +81,10 @@
  * For future capability around specific card processing information (as opposed to tabs, for example)
  */
 @interface PPHCardChargeResponse : PPHPaymentResponse
+/**
+ * Information unique to the presented card information which enables pre-configured receipt destination or loyalty programs.
+ */
+@property (nonatomic, strong) PPHTokenizedCustomerInformation *customer;
 @end
 
 /*!

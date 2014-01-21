@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHCardReaderManager Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -143,8 +142,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -169,87 +168,60 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginMonitoring">&ndash;&nbsp;beginMonitoring</a></code>
-		<span class="tooltip"><p>Monitor for all known device types</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginMonitoring:">&ndash;&nbsp;beginMonitoring:</a></code>
-		<span class="tooltip"><p>Begin monitoring the device for connection and removal of the specified reader types.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/endMonitoring:">&ndash;&nbsp;endMonitoring:</a></code>
-		<span class="tooltip"><p>Stop reacting to events around device connection and removal.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/activateReader:">&ndash;&nbsp;activateReader:</a></code>
-		<span class="tooltip"><p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
-in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deactivateReader:">&ndash;&nbsp;deactivateReader:</a></code>
-		<span class="tooltip"><p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
-or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
-disconnect the reader.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginTransaction:">&ndash;&nbsp;beginTransaction:</a></code>
-		<span class="tooltip"><p>Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
-readers this isn&rsquo;t necessary, but if you want to support those readers,
-you must call this method when you know the final amount that will be charged.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/endTransaction">&ndash;&nbsp;endTransaction</a></code>
-		<span class="tooltip"><p>Once a transaction is complete, either via our processing services or out-of-band processing
-such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
-some readers are battery powered, you should call this as soon as reasonable. The SDK will
-automatically take care of this when your app is suspended or interrupted.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setPreferenceOrder:">&ndash;&nbsp;setPreferenceOrder:</a></code>
-		<span class="tooltip"><p>For accessory based readers, there is the possibility that multiple capable devices may
-be connected to the phone at the same time. In this case, specifying a preference
-order can be useful to manage multiple devices with multiple phones. Generally,
-you&rsquo;re probably better off using the inherent iOS pairing screens to manage this,
-but to each their own. In addition, if you have custom bluetooth or dock port readers
-that we support, you can pass the custom protocol string in this list and we&rsquo;ll look for
-that. IMPORTANT: You still need to add the protocol to your application&rsquo;s plist
-(under supported accessories) in order for this to work.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/availableDevices">&ndash;&nbsp;availableDevices</a></code>
-		<span class="tooltip"><p>An array of known available devices. For example with bluetooth devices this will include
-paired devices that are currently within range/connectable.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginUpgrade:">&ndash;&nbsp;beginUpgrade:</a></code>
-		<span class="tooltip"><p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
-for the target reader.</p></span>
 	</span>
 	
 	
@@ -801,6 +773,8 @@ that. IMPORTANT: You still need to add the protocol to your application&rsquo;s 
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -811,9 +785,9 @@ that. IMPORTANT: You still need to add the protocol to your application&rsquo;s 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-01-21)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>
