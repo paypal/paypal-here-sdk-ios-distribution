@@ -310,6 +310,37 @@ convenience.</Abstract>
             <NodeRef refid="47"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/referrerCode</TokenIdentifier>
+			<Abstract type="html">The partner referrer code.</Abstract>
+			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)referrerCode</Declaration>
+			
+			
+			<Anchor>//api/name/referrerCode</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setReferrerCode:</TokenIdentifier>
+			<Abstract type="html">Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+NOTE: If the value is set in here, it would be automatically set within the invoice.
+If not, you would need to feed in same the information within the invoice object.</Abstract>
+			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			
+			<Declaration>+ (void)setReferrerCode:(NSString *)referrerCode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>referrerCode</Name>
+					<Abstract type="html">the referrer code that is obtained once a partner registers with PayPalHere.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setReferrerCode:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
         
 	</File>
 </Tokens>

@@ -53,6 +53,8 @@
 	
 	<option value="//api/name/networkDelegate">&nbsp;&nbsp;&nbsp;&nbsp;+ networkDelegate</option>
 	
+	<option value="//api/name/referrerCode">&nbsp;&nbsp;&nbsp;&nbsp;+ referrerCode</option>
+	
 	<option value="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">&nbsp;&nbsp;&nbsp;&nbsp;+ reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</option>
 	
 	<option value="//api/name/sdkVersion">&nbsp;&nbsp;&nbsp;&nbsp;+ sdkVersion</option>
@@ -66,6 +68,8 @@
 	<option value="//api/name/setLoggingDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setLoggingDelegate:</option>
 	
 	<option value="//api/name/setNetworkDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setNetworkDelegate:</option>
+	
+	<option value="//api/name/setReferrerCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ setReferrerCode:</option>
 	
 	<option value="//api/name/sharedAccessController">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedAccessController</option>
 	
@@ -117,6 +121,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/networkDelegate">networkDelegate</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/referrerCode">referrerCode</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sdkVersion">sdkVersion</a></span></li>
@@ -130,6 +136,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setLoggingDelegate:">setLoggingDelegate:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setNetworkDelegate:">setNetworkDelegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setReferrerCode:">setReferrerCode:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedAccessController">sharedAccessController</a></span></li>
 	
@@ -302,6 +310,18 @@ such as card readers and chip &amp; pin devices.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sdkVersion">+&nbsp;sdkVersion</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/referrerCode">+&nbsp;referrerCode</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setReferrerCode:">+&nbsp;setReferrerCode:</a></code>
 	</span>
 	
 	
@@ -562,6 +582,47 @@ or for general location updates if the device does not support significant updat
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The current network request delegate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/referrerCode" title="referrerCode"></a>
+	<h3 class="subsubtitle method-title">referrerCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The partner referrer code.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)referrerCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The partner referrer code.</p>
 	</div>
 	
 	
@@ -1004,6 +1065,61 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setReferrerCode:" title="setReferrerCode:"></a>
+	<h3 class="subsubtitle method-title">setReferrerCode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+NOTE: If the value is set in here, it would be automatically set within the invoice.
+If not, you would need to feed in same the information within the invoice object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setReferrerCode:(NSString *)<em>referrerCode</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>referrerCode</em></dt>
+			<dd><p>the referrer code that is obtained once a partner registers with PayPalHere.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+NOTE: If the value is set in here, it would be automatically set within the invoice.
+If not, you would need to feed in same the information within the invoice object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sharedAccessController" title="sharedAccessController"></a>
 	<h3 class="subsubtitle method-title">sharedAccessController</h3>
 	
@@ -1225,7 +1341,7 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-01-21)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-01-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
