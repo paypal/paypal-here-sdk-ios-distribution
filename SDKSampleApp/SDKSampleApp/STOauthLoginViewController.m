@@ -242,17 +242,15 @@
                           
 	if (key == nil || access == nil) {
 
-		NSLog(@"Bailing because couldn't decrypt access_code");
+        
+		NSLog(@"Bailing because couldn't decrypt access_code.   key: %@   access: %@   access_token: %@", key, access, access_token);
 
 		self.loginInProgress.hidden = YES;
 
 		UIAlertView *alertView = 
 			[[UIAlertView alloc]
 				initWithTitle:@"Press the Login Button Again"
-				message: 
-				@"The Heroku server's \"ticket\" "
-				@"can't decrypt the PayPal server's \"access token\" - "
-				@"press Login again to recover."
+				message: @"Looks like something went wrong during the redirect.  Tap Login again to retry."
 				delegate:nil
 				cancelButtonTitle:@"OK"
 				otherButtonTitles:nil];
