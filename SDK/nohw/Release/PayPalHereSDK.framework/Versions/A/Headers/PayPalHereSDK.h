@@ -176,5 +176,17 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  */
 +(NSString*) sdkVersion;
 
+/*!
+ * The partner referrer code.
+ */
++(NSString*) referrerCode;
+
+/*!
+ * Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+ * NOTE: If the value is set in here, it would be automatically set within the invoice.
+ * If not, you would need to feed in same the information within the invoice object.
+ * @param referrerCode the referrer code that is obtained once a partner registers with PayPalHere.
+ */
++(void) setReferrerCode: (NSString*) referrerCode;
 
 @end

@@ -17,7 +17,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
-
+    
+    /*
+     * Let's tell the SDK who is referring these customers.
+     * The referrer code is an important value which helps PayPal know which businesses and SDK
+     * users are bringing customers into the PayPal system.  The referrer code is stored in the 
+     * invoices that are sent to the backend.
+     */
+    [PayPalHereSDK setReferrerCode:@"SDKSampleApp, Inc"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
