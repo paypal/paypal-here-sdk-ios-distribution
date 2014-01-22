@@ -105,11 +105,14 @@
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {   
 	if ([url.host isEqualToString:@"oauth"]) {
+        
 		NSMutableDictionary *query = [[NSMutableDictionary alloc] init];
 		for (NSString *keyValuePair in [url.query componentsSeparatedByString:@"&"]) {
 			NSArray *pair = [keyValuePair componentsSeparatedByString:@"="];
 			if (!(pair && [pair count] == 2)) continue;
-			[query setObject:[pair objectAtIndex:1] forKey:[pair objectAtIndex:0]];
+            NSString *escapedData = [pair objectAtIndex:1];
+            escapedData = [escapedData stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			[query setObject:escapedData forKey:[pair objectAtIndex:0]];
 		}
 
 		if ([query objectForKey:@"access_token"] && 
