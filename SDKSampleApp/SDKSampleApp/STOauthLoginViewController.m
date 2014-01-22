@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
 @property (nonatomic, strong) NSArray *pickerURLArray;
+@property (nonatomic, strong) NSArray *serviceArray;
 @property (nonatomic, strong) NSString *serviceHost;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -115,6 +116,9 @@
                              @"password": self.passwordField.text
                              }];
     request.timeoutInterval = 10;
+    
+    
+    [self configureServers:_pickerView];
     
     AFJSONRequestOperation *operation = 
 	  [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *JSON) {
@@ -422,6 +426,13 @@
 		   @"http://desolate-wave-3684.herokuapp.com", 
 		  @"http://stormy-hollows-1584.herokuapp.com"
 		  ];
+    
+  self.serviceArray =
+    @[
+       [NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"],
+       [NSURL URLWithString:@"https://sandbox.paypal.com/webapps/"],
+       [NSURL URLWithString:@"https://www.paypal.com/webapps/"]
+    ];
 
   // note we are using CGRectZero for the dimensions of our picker view,                                                                   
   // this is because picker views have a built in optimum size,                                                                            
@@ -442,17 +453,25 @@
   [self.scrollView addSubview:self.pickerView];
 }
 
+-(void)configureServers:(UIPickerView *)pickerView {
+    NSLog(@"%@",
+		  [NSString stringWithFormat:@"%@",
+           [self.pickerViewArray objectAtIndex:[pickerView selectedRowInComponent:0]]]);
+    
+	NSString *serviceURL = [self.pickerURLArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+	self.serviceURLLabel.text = serviceURL;
+	self.serviceHost = serviceURL;
+    
+    NSURL *urlForTheSDKToUse = [self.serviceArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+    NSLog(@"urlForTheSDKToUse: %@", urlForTheSDKToUse);
+    [PayPalHereSDK setBaseAPIURL:urlForTheSDKToUse];
+}
+
 #pragma mark - UIPickerViewDelegate
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-	NSLog(@"%@", 
-		  [NSString stringWithFormat:@"%@",
-					[self.pickerViewArray objectAtIndex:[pickerView selectedRowInComponent:0]]]);
-
-	NSString *serviceURL = [self.pickerURLArray objectAtIndex:[pickerView selectedRowInComponent:0]];
-	self.serviceURLLabel.text = serviceURL;
-	self.serviceHost = serviceURL;
+	[self configureServers:pickerView];
 }
 
 #pragma mark - UIPickerViewDataSource
