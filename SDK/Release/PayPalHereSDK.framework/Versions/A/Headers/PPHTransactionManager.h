@@ -115,9 +115,6 @@
 /*! The invoice used for this transaction. */
 @property (nonatomic, strong) PPHInvoice *currentInvoice;
 
-/*! You may set a signature prior to authorizing a transaction */
-@property (nonatomic, strong) UIImage *signature;
-
 /*!
  * Card swipe data we'll use if the PaymentType is CardReader.
  */

@@ -122,9 +122,9 @@
 /*! The amount of a custom value entered on an invoice from the website. */
 @property (strong,nonatomic) NSDecimalNumber *customAmountValue;
 /*! Referrer code - used to track source of invoice creation beyond just "API/Web" */
-@property (nonatomic) NSString *referrerCode;
+@property (strong,nonatomic) NSString *referrerCode;
 /*! Cashier ID - Indicate the merchant's sub-user (e.g. Cashier) that is responsible for a transaction. */
-@property (nonatomic) NSString *cashierId;
+@property (strong,nonatomic) NSString *cashierId;
 
 #pragma mark -
 #pragma mark Read only fields

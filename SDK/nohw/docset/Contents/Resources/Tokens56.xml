@@ -54,7 +54,7 @@ is optional in which case finalizeTransaction need to be invoked and the transac
 isSignatureRequiredToFinalize flag is set then a signature is mandatory and without it the transaction will not be finalized.</Abstract>
 			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
 			
-			<Declaration>- (UIImage *)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize</Declaration>
+			<Declaration>- (void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>didFail</Name>
