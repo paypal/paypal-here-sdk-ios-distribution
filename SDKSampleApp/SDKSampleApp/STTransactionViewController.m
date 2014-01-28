@@ -537,9 +537,9 @@
     return ePPHTransactionType_Continue;
 }
 
--(UIImage*)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize {
-    NSLog(@"STTransactionViewController: onPostAuthorize called");
-    return nil;
+-(void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize {
+    NSLog(@"STTransactionViewController: onPostAuthorize called.  isSigRequired: %@", isSignatureRequiredToFinalize ? @"YES" : @"NO");
+    //TODO: Let's collect the signature then supply it via the finalizeTransaction call.
 }
 
 #pragma mark - UITextFieldDelegate

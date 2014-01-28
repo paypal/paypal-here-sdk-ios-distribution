@@ -85,6 +85,6 @@ typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
  *                                      finalize method gets invoked.
  *
  */
--(UIImage *)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize;
+-(void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize;
 
 @end
