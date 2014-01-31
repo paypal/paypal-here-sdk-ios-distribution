@@ -526,6 +526,10 @@
                                   NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", transactionRecord.transactionId];
                                   [self showAlertWithTitle:@"Payment Success" andMessage:message];
                                   
+                                  if(record.error ==nil) {
+                                      //TODO: we may need to finalize the payment with a signature.
+                                  }
+                                  
                               }
                           }];
     }
@@ -754,6 +758,7 @@
 	[self.target.shoppingCartTable reloadData];
 
 }
+
 
 
 @end

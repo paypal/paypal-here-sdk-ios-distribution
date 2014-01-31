@@ -69,19 +69,20 @@ typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
 -(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON;
 
 /*!
- * onPostAuthorize This callback is invoked by the TransactionManager once authorization is complete. Note that authorization
+ * onPostAuthorize 
+ * 
+ * This callback is invoked by the TransactionManager once authorization is complete. Note that authorization
  * complete does not indicate success. The input parameter indicates whether or not the authorization failed.
  * This method is also useful to determine whether or not a signature is need to finalize the transaction. In some cases, signature
- * is optional in which case finalizeTransaction need to be invoked and the transaction would still be successful. However, if the
+ * is optional in which case finalizeTransaction needs to be invoked and the transaction would still be successful. However, if the
  * isSignatureRequiredToFinalize flag is set then a signature is mandatory and without it the transaction will not be finalized.
+ *
  * @param didFail - indicates whether the authorization failed. A true indicates that the authorization itself failed. A false indicates
  *                that the authorization did not fail. It however, DOES NOT indicate that the transaction was successful.
  *
  * @param isSignatureRequiredToFinalize indicates whether or not a signature is required to finalize the transaction. If set to true
  *                                      then it is the responsibility of the application to follow up with a call to finalizePayment
- *                                      with the signature. Alternately, the application can send in the signature as a bitmap in the
- *                                      return value if signature is available right away.
- *                                      Either way, note that if signature is required then the transaction is not successful until the
+ *                                      with the signature.  If signature is required then the transaction is not successful until the
  *                                      finalize method gets invoked.
  *
  */
