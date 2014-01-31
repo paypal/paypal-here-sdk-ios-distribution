@@ -100,6 +100,91 @@ the signature must be captured BEFORE submitting the transaction for payment. We
                         }];
 ```
 
+
+
+The PPHTransactionManager - the Composition Layer
+=================================================
+
+   A payment API is also provided called the PPHTransactionManager.
+The PPHTransactionManager takes care of some details for you - it's possible to take a card swipe payment without having to explicitly save the invoice or to use the card reader API to capture card events.   This comes at the cost of less control over the step by step process.  
+   If you do want to see all the card swiper events you still can create a card watcher and get all the card events while using the PPHTransactionManager at the same time.
+
+How to use it?
+
+First, create a PPHTransactionWatcher object so you can get notified when the transaction manager does something.  Retain this object for the lifetime over which you would like to interact with the PPHTransactionManager:
+```objectivec
+PPHTransactionWatcher *transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
+```
+
+Second, start your payment.  Here's an example of taking a payment for a fixed amount ($5):
+
+```objectivec
+[[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:amountString inCurrency:@"USD"] andName:@"FixedAmountPayment"];
+```
+
+
+Then … wait for the user to swipe a card.   You do that by capturing the ePPHTransactionType_CardDataReceived event from the PPHTransacitonWatcher:
+
+```objectivec
+#pragma mark my PPHTransactionManagerDelegate overrides
+- (void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+  if(event.eventType == ePPHTransactionType_CardDataReceived) {
+      NSLog(@"The transaction manager has card data!");
+      // We're now clear to process the payment
+  }
+}
+```
+
+Now that you know the card has been captured you can ask the PPHTransactionWatcher to process the payment:
+```objectivec
+[[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                  withTransactionController:nil
+                          completionHandler:^(PPHTransactionResponse *response) {
+                              if(!record.error) {
+                                  self.successfulResponse = response;
+                                  NSLog(@"Payment captured successfully!  We now have the money in our account!");                              
+                              }
+                          }];
+```
+
+If you would like to supply a signature you can do so after the processPayment's completion handler successfully returns:
+
+```objectivec
+UIImage *image = [UIImage imageWithData:imageData];                              
+PPHTransactionRecord *transactionRecord = self.successfulResponse.record;
+UIImage *signature = [self mySignatureImage];
+
+[[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:transactionRecord                                                           withSignature:image  
+completionHandler:^(PPHError *error) {
+                                                             
+if(error == nil) {
+   NSLog(@"signature successfully sent.");
+															}
+}];
+```
+
+Required signatures and the PPHTransactionManager
+=================================================
+
+Some transactions require a signature.  This may happen for several reasons.  The transaction amount might be over a certain limit, or the card swiper / chip & pin reader hardware may require it based on a variety of reasons.   The PPHTransactionManager can inform you if a signature is required for the payment that is being processed.  
+
+  To do that take a look at the processPaymentWithPaymentType method.  It takes a parameter names 'withTransactionController'.   The controller is any object that implements the PPHTransactionControllerDelegate delegate.  For this example, let's pass 'self' and have our current view controller implement this delegate:
+```objectivec
+#pragma mark PPHTransactionControllerDelegate overrides
+
+-(void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize {
+    if(isSignatureRequiredToFinalize) {
+        //Looks like this transaction requires a signature.  Make sure we call finalizePaymentForTransaction (as shown above) 
+        // with the signature.
+    }
+}
+```
+
+
+
+
+
+
 Location Management
 ===================
 
