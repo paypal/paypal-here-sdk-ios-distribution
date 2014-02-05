@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007DE88C18A2C02B004D8847 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 007DE88B18A2C02B004D8847 /* libxml2.dylib */; };
 		C73F339917E7A18400D83415 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = C73F339717E7A18400D83415 /* NIActions.m */; };
 		C73F340617F0975500D83415 /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C73F340417F0975500D83415 /* PayPalHereSDK.bundle */; };
 		C73F340717F0975500D83415 /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73F340517F0975500D83415 /* PayPalHereSDK.framework */; };
@@ -118,6 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		007DE88B18A2C02B004D8847 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		C73F339617E7A18400D83415 /* NIActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIActions.h; path = ../../nimbus/src/core/src/NIActions.h; sourceTree = "<group>"; };
 		C73F339717E7A18400D83415 /* NIActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NIActions.m; path = ../../nimbus/src/core/src/NIActions.m; sourceTree = "<group>"; };
 		C73F339817E7A18400D83415 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NIActions+Subclassing.h"; path = "../../nimbus/src/core/src/NIActions+Subclassing.h"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007DE88C18A2C02B004D8847 /* libxml2.dylib in Frameworks */,
 				C73F340717F0975500D83415 /* PayPalHereSDK.framework in Frameworks */,
 				C76019FE17876E0300DFAE57 /* CFNetwork.framework in Frameworks */,
 				C7AE3AFD16DAB43F00CC94A2 /* MediaPlayer.framework in Frameworks */,
@@ -373,6 +376,7 @@
 		C7A8782916D6D28F00A0C23F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007DE88B18A2C02B004D8847 /* libxml2.dylib */,
 				C73F340417F0975500D83415 /* PayPalHereSDK.bundle */,
 				C73F340517F0975500D83415 /* PayPalHereSDK.framework */,
 				C76019FD17876E0300DFAE57 /* CFNetwork.framework */,
@@ -962,8 +966,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/../SDK\\\"",
-					"/Users/mmetral/dev/ios-here-sdk-dist/SDK/Debug",
+					"\"$(SRCROOT)/../SDK/Debug\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Here and There/Here and There-Prefix.pch";
@@ -989,8 +992,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/../SDK\\\"",
-					"/Users/mmetral/dev/ios-here-sdk-dist/SDK/Debug",
+					"\"$(SRCROOT)/../SDK/Debug\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Here and There/Here and There-Prefix.pch";
