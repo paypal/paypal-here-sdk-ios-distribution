@@ -3,7 +3,7 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 12/30/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -3,7 +3,7 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 11/14/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import "STAppDelegate.h"
@@ -11,13 +11,17 @@
 #import "STOauthLoginViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
+@interface STAppDelegate() <
+PPHLoggingDelegate
+>
+@property (nonatomic,strong) id<PPHLoggingDelegate> sdkLogger;
+
+@end
 
 @implementation STAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -43,6 +47,14 @@
      * apps should set this to https://www.paypal.com/webapps/
      */
     [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
+    
+    /* By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
+     * diagnosing issues, but is obviously up to you as to whether you want to do remote logging, or perhaps you
+     * have your own logging infrastructure. This sample app intercepts log messages and writes errors to the
+     * remote logger but not warnings.
+     */
+    self.sdkLogger = [PayPalHereSDK loggingDelegate];
+    [PayPalHereSDK setLoggingDelegate:self];
     
     /*
      * Let's tell the SDK who is referring these customers.
@@ -86,6 +98,27 @@
 	}
 
 	return YES;
+}
+
+// Let's intercept the logging messages of the SDK
+// and display them so we can see what's happening.
+//
+#pragma mark PPHLoggingDelegate methods
+-(void)logPayPalHereInfo:(NSString *)message {
+    NSLog(@"%@", message);
+}
+
+-(void)logPayPalHereError:(NSString *)message {
+    NSLog(@"%@", message);
+    [self.sdkLogger logPayPalHereError: message];
+}
+
+-(void)logPayPalHereWarning:(NSString *)message {
+    NSLog(@"%@", message);
+}
+
+-(void)logPayPalHereDebug:(NSString *)message {
+    NSLog(@"Debug: %@", message);
 }
 
 @end

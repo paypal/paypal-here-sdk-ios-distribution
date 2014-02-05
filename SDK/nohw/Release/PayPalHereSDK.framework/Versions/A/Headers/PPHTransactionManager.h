@@ -49,6 +49,11 @@
 @property (nonatomic,strong) PPHError* error;
 @property (nonatomic,strong) PPHTransactionRecord* record;  //correlation id, transaction id, etc.
 
+/*!
+ *  If YES then the app should supply a signature image using the finalizePaymentForTransaction call
+ */
+@property (nonatomic,assign) BOOL isSignatureRequiredToFinalize;
+
 @end
 
 /*!

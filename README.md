@@ -142,7 +142,12 @@ Now that you know the card has been captured you can ask the PPHTransactionWatch
                           completionHandler:^(PPHTransactionResponse *response) {
                               if(!record.error) {
                                   self.successfulResponse = response;
-                                  NSLog(@"Payment captured successfully!  We now have the money in our account!");                              
+                                  NSLog(@"Payment captured successfully!  We now have the money in our account!");
+
+if(response.isSignatureRequiredToFinalize) {
+   NSLog(@"This payment requires a signature.  Let's provide one via the finalizePayment method");
+
+}                              
                               }
                           }];
 ```
@@ -166,23 +171,8 @@ if(error == nil) {
 Required signatures and the PPHTransactionManager
 =================================================
 
-Some transactions require a signature.  This may happen for several reasons.  The transaction amount might be over a certain limit, or the card swiper / chip & pin reader hardware may require it based on a variety of reasons.   The PPHTransactionManager can inform you if a signature is required for the payment that is being processed.  
-
-  To do that take a look at the processPaymentWithPaymentType method.  It takes a parameter names 'withTransactionController'.   The controller is any object that implements the PPHTransactionControllerDelegate delegate.  For this example, let's pass 'self' and have our current view controller implement this delegate:
-```objectivec
-#pragma mark PPHTransactionControllerDelegate overrides
-
--(void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize {
-    if(isSignatureRequiredToFinalize) {
-        //Looks like this transaction requires a signature.  Make sure we call finalizePaymentForTransaction (as shown above) 
-        // with the signature.
-    }
-}
-```
-
-
-
-
+Some transactions require a signature.  This may happen for several reasons.  The transaction amount might be over a certain limit, or the card swiper / chip & pin reader hardware may require it based on a variety of reasons.   The PPHTransactionManager can inform you if a signature is required for the payment that is being processed. 
+When the processPayment method's completion handler is called you can check the isSignatureRequiredToFinalize member of the PPHTransactionResponse object that is provided to the completion handler. 
 
 
 Location Management

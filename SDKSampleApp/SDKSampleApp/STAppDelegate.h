@@ -3,11 +3,12 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 11/14/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+
 
 @class STOauthLoginViewController;
 
