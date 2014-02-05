@@ -6,6 +6,7 @@
 			<TokenIdentifier>//apple_ref/occ/cl/PPHCardSwipeData</TokenIdentifier>
 			<Abstract type="html">Data received as the result of a successful swipe through the card reader</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+            
 			
 			<NodeRef refid="10"/>
 		</Token>
@@ -14,7 +15,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/initWithTrack1:track2:readerSerial:withType:andExtraInfo:</TokenIdentifier>
 			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithTrack1:(NSString *)track1 track2:(NSString *)track2 readerSerial:(NSString *)serial withType:(NSString *)readerType andExtraInfo:(NSDictionary *)extraInfo</Declaration>
 			<Parameters>
@@ -44,7 +45,7 @@ ksn (key serial number)</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setMaskedCardNumber:</TokenIdentifier>
 			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *maskedCardNumber</Declaration>
 			
@@ -56,7 +57,7 @@ ksn (key serial number)</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/maskedCardNumber</TokenIdentifier>
 			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *maskedCardNumber</Declaration>
 			
@@ -68,7 +69,7 @@ ksn (key serial number)</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/maskedCardNumber</TokenIdentifier>
 			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *maskedCardNumber</Declaration>
 			
@@ -81,7 +82,7 @@ ksn (key serial number)</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardholderName:</TokenIdentifier>
 			<Abstract type="html">If any name was available, this will be non-nil. Sometimes the name is pre-parsed into first
 and last name, so those fields may or may not be filled out.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderName</Declaration>
 			
@@ -94,7 +95,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardholderName</TokenIdentifier>
 			<Abstract type="html">If any name was available, this will be non-nil. Sometimes the name is pre-parsed into first
 and last name, so those fields may or may not be filled out.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderName</Declaration>
 			
@@ -107,7 +108,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardholderName</TokenIdentifier>
 			<Abstract type="html">If any name was available, this will be non-nil. Sometimes the name is pre-parsed into first
 and last name, so those fields may or may not be filled out.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderName</Declaration>
 			
@@ -119,7 +120,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardholderFirstName:</TokenIdentifier>
 			<Abstract type="html">IF AVAILABLE, the parsed first name.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderFirstName</Declaration>
 			
@@ -131,7 +132,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardholderFirstName</TokenIdentifier>
 			<Abstract type="html">IF AVAILABLE, the parsed first name.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderFirstName</Declaration>
 			
@@ -143,7 +144,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardholderFirstName</TokenIdentifier>
 			<Abstract type="html">IF AVAILABLE, the parsed first name.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderFirstName</Declaration>
 			
@@ -155,7 +156,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardholderLastName:</TokenIdentifier>
 			<Abstract type="html">IF AVAILABLE, the parsed last name.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderLastName</Declaration>
 			
@@ -167,7 +168,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardholderLastName</TokenIdentifier>
 			<Abstract type="html">IF AVAILABLE, the parsed last name.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderLastName</Declaration>
 			
@@ -179,7 +180,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardholderLastName</TokenIdentifier>
 			<Abstract type="html">IF AVAILABLE, the parsed last name.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *cardholderLastName</Declaration>
 			
@@ -191,7 +192,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setExpirationMonth:</TokenIdentifier>
 			<Abstract type="html">The month of card expiration, 1-12</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger expirationMonth</Declaration>
 			
@@ -203,7 +204,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/expirationMonth</TokenIdentifier>
 			<Abstract type="html">The month of card expiration, 1-12</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger expirationMonth</Declaration>
 			
@@ -215,7 +216,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/expirationMonth</TokenIdentifier>
 			<Abstract type="html">The month of card expiration, 1-12</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger expirationMonth</Declaration>
 			
@@ -227,7 +228,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setExpirationYear:</TokenIdentifier>
 			<Abstract type="html">The full year of the card expiration, e.g. 2012</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger expirationYear</Declaration>
 			
@@ -239,7 +240,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/expirationYear</TokenIdentifier>
 			<Abstract type="html">The full year of the card expiration, e.g. 2012</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger expirationYear</Declaration>
 			
@@ -251,7 +252,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/expirationYear</TokenIdentifier>
 			<Abstract type="html">The full year of the card expiration, e.g. 2012</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger expirationYear</Declaration>
 			
@@ -263,7 +264,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setExtraData:</TokenIdentifier>
 			<Abstract type="html">Any extra data from the card reader to go along with the swipe</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSDictionary *extraData</Declaration>
 			
@@ -275,7 +276,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/extraData</TokenIdentifier>
 			<Abstract type="html">Any extra data from the card reader to go along with the swipe</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSDictionary *extraData</Declaration>
 			
@@ -287,7 +288,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/extraData</TokenIdentifier>
 			<Abstract type="html">Any extra data from the card reader to go along with the swipe</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSDictionary *extraData</Declaration>
 			
@@ -299,7 +300,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/parseTracks:</TokenIdentifier>
 			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>- (BOOL)parseTracks:(NSString *)track1AndOr2</Declaration>
 			<Parameters>
@@ -316,7 +317,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setReader:</TokenIdentifier>
 			<Abstract type="html">The card reader on which the swipe occurred.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) PPHCardReaderMetadata *reader</Declaration>
 			
@@ -328,7 +329,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/reader</TokenIdentifier>
 			<Abstract type="html">The card reader on which the swipe occurred.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) PPHCardReaderMetadata *reader</Declaration>
 			
@@ -340,7 +341,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/reader</TokenIdentifier>
 			<Abstract type="html">The card reader on which the swipe occurred.</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) PPHCardReaderMetadata *reader</Declaration>
 			
@@ -352,7 +353,7 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/asDictionary</TokenIdentifier>
 			<Abstract type="html">Return the swipe data as a dictionary suitable for submission to PayPal</Abstract>
-			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>			
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
 			<Declaration>- (NSDictionary *)asDictionary</Declaration>
 			
@@ -361,5 +362,6 @@ and last name, so those fields may or may not be filled out.</Abstract>
             <NodeRef refid="10"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

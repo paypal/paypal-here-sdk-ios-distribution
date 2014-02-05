@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PayPalHereSDK Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -54,6 +53,8 @@
 	
 	<option value="//api/name/networkDelegate">&nbsp;&nbsp;&nbsp;&nbsp;+ networkDelegate</option>
 	
+	<option value="//api/name/referrerCode">&nbsp;&nbsp;&nbsp;&nbsp;+ referrerCode</option>
+	
 	<option value="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">&nbsp;&nbsp;&nbsp;&nbsp;+ reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</option>
 	
 	<option value="//api/name/sdkVersion">&nbsp;&nbsp;&nbsp;&nbsp;+ sdkVersion</option>
@@ -68,6 +69,8 @@
 	
 	<option value="//api/name/setNetworkDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setNetworkDelegate:</option>
 	
+	<option value="//api/name/setReferrerCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ setReferrerCode:</option>
+	
 	<option value="//api/name/sharedAccessController">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedAccessController</option>
 	
 	<option value="//api/name/sharedCardReaderManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedCardReaderManager</option>
@@ -75,6 +78,8 @@
 	<option value="//api/name/sharedLocalManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedLocalManager</option>
 	
 	<option value="//api/name/sharedPaymentProcessor">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedPaymentProcessor</option>
+	
+	<option value="//api/name/sharedTransactionManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedTransactionManager</option>
 	
 	
 	
@@ -116,6 +121,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/networkDelegate">networkDelegate</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/referrerCode">referrerCode</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sdkVersion">sdkVersion</a></span></li>
@@ -130,6 +137,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setNetworkDelegate:">setNetworkDelegate:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setReferrerCode:">setReferrerCode:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedAccessController">sharedAccessController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedCardReaderManager">sharedCardReaderManager</a></span></li>
@@ -137,6 +146,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedLocalManager">sharedLocalManager</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedPaymentProcessor">sharedPaymentProcessor</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedTransactionManager">sharedTransactionManager</a></span></li>
 	
 </ul></li>
 
@@ -171,8 +182,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -197,140 +208,120 @@ such as card readers and chip &amp; pin devices.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedCardReaderManager">+&nbsp;sharedCardReaderManager</a></code>
-		<span class="tooltip"><p>The interface to interact with the card reader</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedLocalManager">+&nbsp;sharedLocalManager</a></code>
-		<span class="tooltip"><p>The interface to interact with checkin services and merchant locations</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedPaymentProcessor">+&nbsp;sharedPaymentProcessor</a></code>
-		<span class="tooltip"><p>The interface to process payments with card swipe, keyed in/scanned, and checkins</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedAccessController">+&nbsp;sharedAccessController</a></code>
-		<span class="tooltip"><p>A helper to establish OAuth credentials on behalf of your application for a merchant.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedTransactionManager">+&nbsp;sharedTransactionManager</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setNetworkDelegate:">+&nbsp;setNetworkDelegate:</a></code>
-		<span class="tooltip"><p>Should you wish to handle your own network requests, you can set this singleton
-which the PayPal Here SDK will call whenever a network request needs to go out.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/networkDelegate">+&nbsp;networkDelegate</a></code>
-		<span class="tooltip"><p>The current network request delegate.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">+&nbsp;reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></code>
-		<span class="tooltip"><p>If you handle your own network requests, you should update the progress of those requests
-via this method so that various SDK features (such as reader software updates) can report
-overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible &ndash; so for example you could say a network request consists
-of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
-estimated relative durations of each of those to be used in computing the total step units.
-But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
-the percentage of the download that&rsquo;s completed.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setAnalyticsDelegate:">+&nbsp;setAnalyticsDelegate:</a></code>
-		<span class="tooltip"><p>Should you wish to handle your own analytics, you can set this singleton.
-Be warned if you don&rsquo;t also let us do our own analytics we will not be able
-to help diagnose aggregate issues for our SDK in your application.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/analyticsDelegate">+&nbsp;analyticsDelegate</a></code>
-		<span class="tooltip"><p>The current analytics delegate.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setLoggingDelegate:">+&nbsp;setLoggingDelegate:</a></code>
-		<span class="tooltip"><p>Should you wish to receive internal log messages, set this delegate. See
-PPHLogingDelegate for a warning about performance impact.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/loggingDelegate">+&nbsp;loggingDelegate</a></code>
-		<span class="tooltip"><p>The current logging delegate or nil.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/activeMerchant">+&nbsp;activeMerchant</a></code>
-		<span class="tooltip"><p>The currently active merchant account</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setActiveMerchant:withMerchantId:completionHandler:">+&nbsp;setActiveMerchant:withMerchantId:completionHandler:</a></code>
-		<span class="tooltip"><p>Set the currently active merchant for which all payment operations will be done.
-We will persist this merchant information to secure storage.  When your app runs
-again and you call setActiveMerchant with a merchantId we&rsquo;ve seen before we&rsquo;ll
-automatically check the saved merchant info for that merchantId.  If you pass in
-a nil or sparsely filled out merchant object we&rsquo;ll use the values we pulled from
-storage.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/hasLocationAccess">+&nbsp;hasLocationAccess</a></code>
-		<span class="tooltip"><p>Returns YES if we have the access we need to device location information
-(we ask for significant location changes so long as a transaction is in progress,
-or for general location updates if the device does not support significant updates).</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/askForLocationAccess">+&nbsp;askForLocationAccess</a></code>
-		<span class="tooltip"><p>To allow you fine grained control over location access prompts, you can call this method
-explicitly. It doesn&rsquo;t do anything more than ask for location, so you can certainly do
-that yourself and get control of the messaging, but this method is here for your
-convenience.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setBaseAPIURL:">+&nbsp;setBaseAPIURL:</a></code>
-		<span class="tooltip"><p>For TEST purposes, you can set the service URL used for requests in the PayPal Here SDK</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sdkVersion">+&nbsp;sdkVersion</a></code>
-		<span class="tooltip"><p>The version of the SDK currently in use</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/referrerCode">+&nbsp;referrerCode</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setReferrerCode:">+&nbsp;setReferrerCode:</a></code>
 	</span>
 	
 	
@@ -608,6 +599,47 @@ or for general location updates if the device does not support significant updat
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/referrerCode" title="referrerCode"></a>
+	<h3 class="subsubtitle method-title">referrerCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The partner referrer code.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)referrerCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The partner referrer code.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:" title="reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:"></a>
 	<h3 class="subsubtitle method-title">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</h3>
 	
@@ -617,7 +649,7 @@ or for general location updates if the device does not support significant updat
 		<p>If you handle your own network requests, you should update the progress of those requests
 via this method so that various SDK features (such as reader software updates) can report
 overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible &ndash; so for example you could say a network request consists
+progress than is likely possible - so for example you could say a network request consists
 of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
 estimated relative durations of each of those to be used in computing the total step units.
 But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
@@ -677,7 +709,7 @@ total process is completed.</p></dd>
 		<p>If you handle your own network requests, you should update the progress of those requests
 via this method so that various SDK features (such as reader software updates) can report
 overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible &ndash; so for example you could say a network request consists
+progress than is likely possible - so for example you could say a network request consists
 of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
 estimated relative durations of each of those to be used in computing the total step units.
 But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
@@ -1033,6 +1065,61 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setReferrerCode:" title="setReferrerCode:"></a>
+	<h3 class="subsubtitle method-title">setReferrerCode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+NOTE: If the value is set in here, it would be automatically set within the invoice.
+If not, you would need to feed in same the information within the invoice object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setReferrerCode:(NSString *)<em>referrerCode</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>referrerCode</em></dt>
+			<dd><p>the referrer code that is obtained once a partner registers with PayPalHere.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+NOTE: If the value is set in here, it would be automatically set within the invoice.
+If not, you would need to feed in same the information within the invoice object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sharedAccessController" title="sharedAccessController"></a>
 	<h3 class="subsubtitle method-title">sharedAccessController</h3>
 	
@@ -1196,11 +1283,54 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/sharedTransactionManager" title="sharedTransactionManager"></a>
+	<h3 class="subsubtitle method-title">sharedTransactionManager</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A way to do payments &amp; refunds in a stateful way</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (PPHTransactionManager *)sharedTransactionManager</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A way to do payments &amp; refunds in a stateful way</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1211,9 +1341,9 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-02-05)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

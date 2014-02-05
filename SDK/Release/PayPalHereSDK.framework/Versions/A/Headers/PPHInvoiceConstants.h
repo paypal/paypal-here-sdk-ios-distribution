@@ -48,6 +48,7 @@ typedef enum
     ePPHInvoiceStatusReversed = 8,
     ePPHInvoiceStatusPending = 9,
     ePPHInvoiceStatusSaved = 10,
+    ePPHInvoiceStatusMarkedAsRefunded = 11,
 } PPHInvoiceStatus;
 
 #define kInvoiceNetworkActionCallID @"InvoiceNetworkAction"

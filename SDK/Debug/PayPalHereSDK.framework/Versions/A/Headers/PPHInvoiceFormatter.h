@@ -12,9 +12,9 @@
 @class UIImage;
 
 typedef NS_ENUM(UInt8, PPHInvoiceReceiptType) {
-    ePPHInvoiceReceiptCustomer,
-    ePPHInvoiceReceiptMerchant,
-    ePPHInvoiceReceiptGift
+    ePPHInvoiceReceiptCustomer = 0,
+    ePPHInvoiceReceiptMerchant = 1,
+    ePPHInvoiceReceiptGift     = 2
 };
 
 /*!

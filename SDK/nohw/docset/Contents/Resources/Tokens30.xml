@@ -6,6 +6,7 @@
 			<TokenIdentifier>//apple_ref/occ/cl/PPHLocalManager</TokenIdentifier>
 			<Abstract type="html">PPHLocalManager provides a &quot;jumping off point&quot; for manipulating merchant locations and watching open and closed checkins</Abstract>
 			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
+            
 			
 			<NodeRef refid="30"/>
 		</Token>
@@ -14,7 +15,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocalManager/watcherForLocationId:withDelegate:</TokenIdentifier>
 			<Abstract type="html">Get an object that will notify delegate of new and removed checkins from customers</Abstract>
-			<DeclaredIn>PPHLocalManager.h</DeclaredIn>			
+			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
 			
 			<Declaration>- (PPHLocationWatcher *)watcherForLocationId:(NSString *)locationId withDelegate:(id&lt;PPHLocationWatcherDelegate&gt;)delegate</Declaration>
 			<Parameters>
@@ -36,7 +37,7 @@ to call update: manually</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocalManager/beginGetLocations:</TokenIdentifier>
 			<Abstract type="html">Kick off a request to get all merchant locations for the currently active merchant</Abstract>
-			<DeclaredIn>PPHLocalManager.h</DeclaredIn>			
+			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
 			
 			<Declaration>- (void)beginGetLocations:(void ( ^ ) ( PPHError *error , NSArray *locations ))handler</Declaration>
 			<Parameters>
@@ -50,5 +51,6 @@ to call update: manually</Abstract>
             <NodeRef refid="30"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

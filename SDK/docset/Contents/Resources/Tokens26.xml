@@ -8,6 +8,7 @@
 See https://cms.paypal.com/cmscontent/US/enUS/files/developer/PP_InvoicingAPIGuide.pdf
 for details on field length restrictions and formats.</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
+            
 			
 			<NodeRef refid="26"/>
 		</Token>
@@ -18,7 +19,7 @@ for details on field length restrictions and formats.</Abstract>
 			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
 be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
 work.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *itemId</Declaration>
 			
@@ -32,7 +33,7 @@ work.</Abstract>
 			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
 be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
 work.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *itemId</Declaration>
 			
@@ -46,7 +47,7 @@ work.</Abstract>
 			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
 be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
 work.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *itemId</Declaration>
 			
@@ -58,7 +59,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setQuantity:</TokenIdentifier>
 			<Abstract type="html">The quantity of this item purchased, which can be fractional</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *quantity</Declaration>
 			
@@ -70,7 +71,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/quantity</TokenIdentifier>
 			<Abstract type="html">The quantity of this item purchased, which can be fractional</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *quantity</Declaration>
 			
@@ -82,7 +83,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/quantity</TokenIdentifier>
 			<Abstract type="html">The quantity of this item purchased, which can be fractional</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *quantity</Declaration>
 			
@@ -94,7 +95,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setName:</TokenIdentifier>
 			<Abstract type="html">The name of this item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *name</Declaration>
 			
@@ -106,7 +107,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/name</TokenIdentifier>
 			<Abstract type="html">The name of this item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *name</Declaration>
 			
@@ -118,7 +119,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/name</TokenIdentifier>
 			<Abstract type="html">The name of this item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *name</Declaration>
 			
@@ -130,7 +131,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setItemDescription:</TokenIdentifier>
 			<Abstract type="html">A longer description for the item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
 			
@@ -142,7 +143,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/itemDescription</TokenIdentifier>
 			<Abstract type="html">A longer description for the item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
 			
@@ -154,7 +155,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/itemDescription</TokenIdentifier>
 			<Abstract type="html">A longer description for the item</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
 			
@@ -166,7 +167,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setUnitPrice:</TokenIdentifier>
 			<Abstract type="html">Price per unit - can be negative or zero (and of course positive)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *unitPrice</Declaration>
 			
@@ -178,7 +179,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/unitPrice</TokenIdentifier>
 			<Abstract type="html">Price per unit - can be negative or zero (and of course positive)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *unitPrice</Declaration>
 			
@@ -190,7 +191,7 @@ work.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/unitPrice</TokenIdentifier>
 			<Abstract type="html">Price per unit - can be negative or zero (and of course positive)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *unitPrice</Declaration>
 			
@@ -205,7 +206,7 @@ work.</Abstract>
 the PayPal backend so our rounding and computation rules are also not flexibile.
 One alternative is to use a line item for tax. As an example, a 6% tax rate should
 be .06 for this property.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *taxRate</Declaration>
 			
@@ -220,7 +221,7 @@ be .06 for this property.</Abstract>
 the PayPal backend so our rounding and computation rules are also not flexibile.
 One alternative is to use a line item for tax. As an example, a 6% tax rate should
 be .06 for this property.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *taxRate</Declaration>
 			
@@ -235,7 +236,7 @@ be .06 for this property.</Abstract>
 the PayPal backend so our rounding and computation rules are also not flexibile.
 One alternative is to use a line item for tax. As an example, a 6% tax rate should
 be .06 for this property.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *taxRate</Declaration>
 			
@@ -247,7 +248,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setTaxRateName:</TokenIdentifier>
 			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
 			
@@ -259,7 +260,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/taxRateName</TokenIdentifier>
 			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
 			
@@ -271,7 +272,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/taxRateName</TokenIdentifier>
 			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
 			
@@ -283,7 +284,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setImageUrl:</TokenIdentifier>
 			<Abstract type="html">The image associated with this item, if any. Must be SSL.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic) NSString *imageUrl</Declaration>
 			
@@ -295,7 +296,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/imageUrl</TokenIdentifier>
 			<Abstract type="html">The image associated with this item, if any. Must be SSL.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic) NSString *imageUrl</Declaration>
 			
@@ -307,7 +308,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/imageUrl</TokenIdentifier>
 			<Abstract type="html">The image associated with this item, if any. Must be SSL.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic) NSString *imageUrl</Declaration>
 			
@@ -319,7 +320,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/init</TokenIdentifier>
 			<Abstract type="html">Do NOT call the default initializer. You will be greeted with an NSInternalInconsistencyException.</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>- (id)init</Declaration>
 			
@@ -331,7 +332,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/asDictionary</TokenIdentifier>
 			<Abstract type="html">Return the item as a dictionary suitable for the invoice API</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>- (NSDictionary *)asDictionary</Declaration>
 			
@@ -343,7 +344,7 @@ be .06 for this property.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/initWithDictionary:</TokenIdentifier>
 			<Abstract type="html">Create the item from a dictionary from the invoice API</Abstract>
-			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>			
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
 			<Parameters>
@@ -357,5 +358,6 @@ be .06 for this property.</Abstract>
             <NodeRef refid="26"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

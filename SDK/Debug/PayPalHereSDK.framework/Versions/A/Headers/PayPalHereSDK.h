@@ -16,6 +16,7 @@
 #import <PayPalHereSDK/PPHLocalManager.h>
 #import <PayPalHereSDK/PPHLoggingDelegate.h>
 #import <PayPalHereSDK/PPHAccessResultType.h>
+#import <PayPalHereSDK/PPHTransactionManager.h>
 
 typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo);
 
@@ -48,6 +49,12 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  * A helper to establish OAuth credentials on behalf of your application for a merchant.
  */
 +(PPHAccessController*) sharedAccessController DEPRECATED_ATTRIBUTE;
+
+/*!
+ * A way to do payments & refunds in a stateful way
+ */
++(PPHTransactionManager*) sharedTransactionManager;
+
 
 /*!
  * Should you wish to handle your own network requests, you can set this singleton
@@ -169,5 +176,17 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  */
 +(NSString*) sdkVersion;
 
+/*!
+ * The partner referrer code.
+ */
++(NSString*) referrerCode;
+
+/*!
+ * Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
+ * NOTE: If the value is set in here, it would be automatically set within the invoice.
+ * If not, you would need to feed in same the information within the invoice object.
+ * @param referrerCode the referrer code that is obtained once a partner registers with PayPalHere.
+ */
++(void) setReferrerCode: (NSString*) referrerCode;
 
 @end

@@ -8,6 +8,7 @@
 In order to implement proper security, you should create a server similar to
 the sample server included in this SDK to store your app secret server-side (only).</Abstract>
 			<DeclaredIn>PPHAccessController.h</DeclaredIn>
+            
 			
 			<NodeRef refid="2"/>
 		</Token>
@@ -17,7 +18,7 @@ the sample server included in this SDK to store your app secret server-side (onl
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessController/setupMerchant:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Once you get an access_token and merchant info, pass it into setupMerchant
 and we&apos;ll verify PayPal Here setup and save their credentials.</Abstract>
-			<DeclaredIn>PPHAccessController.h</DeclaredIn>			
+			<DeclaredIn>PPHAccessController.h</DeclaredIn>
 			
 			<Declaration>- (void)setupMerchant:(PPHAccessAccount *)account completionHandler:(PPHAccessCompletionHandler)completionHandler</Declaration>
 			<Parameters>
@@ -38,7 +39,7 @@ and we&apos;ll verify PayPal Here setup and save their credentials.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessController/refresh:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Refresh a PPHAccessAccount token using the refreshurl. If successful, the accesstoken
 will be updated</Abstract>
-			<DeclaredIn>PPHAccessController.h</DeclaredIn>			
+			<DeclaredIn>PPHAccessController.h</DeclaredIn>
 			
 			<Declaration>- (void)refresh:(PPHAccessAccount *)account completionHandler:(PPHAccessTokenRefreshHandler)completionHandler</Declaration>
 			<Parameters>
@@ -55,5 +56,6 @@ will be updated</Abstract>
             <NodeRef refid="2"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>
