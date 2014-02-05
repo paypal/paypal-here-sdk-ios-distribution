@@ -3,7 +3,7 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 11/14/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import "PPSPreferences.h"
@@ -35,7 +35,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-	self.title = @"PayPal Login via OAuth";
+	self.title = @"Merchant Login";
 	self.usernameField.delegate = self;
 	self.passwordField.delegate = self;
 
@@ -106,6 +106,8 @@
     }
 
 	self.loginInProgress.hidden = NO;
+    [self.loginInProgress startAnimating];
+    self.loginButton.enabled = NO;
 
 	NSLog(@"Attepting to log-in via service at [%@]", self.serviceHost);
 
@@ -124,6 +126,9 @@
 	  [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *JSON) {
 
 		  self.loginInProgress.hidden = YES;
+          [self.loginInProgress stopAnimating];
+          self.loginButton.enabled = YES;
+
 
 		  if (JSON) {
 			  if ([JSON objectForKey:@"merchant"]) {
@@ -373,17 +378,18 @@
                          initWithNibName:@"STTransactionViewController_iPad"
                          bundle:nil];
 	}
-    
+    /*
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
 									  initWithTitle: @"Login"
 									  style: UIBarButtonItemStyleBordered
 									  target: nil 
 									  action: nil];
+     */
 
-	[self.navigationItem setBackBarButtonItem: backButton];
+	//[self.navigationItem setBackBarButtonItem: backButton];
     
-
-	[self.navigationController pushViewController:transactionVC animated:YES];
+    self.navigationController.viewControllers = @[transactionVC];
+	//[self.navigationController pushViewController:transactionVC animated:YES];
 }
 
 - (void)dismissKeyboard

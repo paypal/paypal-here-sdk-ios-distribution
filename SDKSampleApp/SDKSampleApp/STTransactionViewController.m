@@ -3,11 +3,12 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 11/19/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import "STTransactionViewController.h"
-#import "STReaderInfoViewController.h"
+#import "SASettingsViewController.h"
+#import "SASignatureViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
@@ -22,10 +23,7 @@
 #define kQUANTITY		@"Quantity"
 
 @interface STTransactionViewController ()
-@property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
-@property (nonatomic,strong) PPHCardReaderBasicInformation *readerInfo;
-@property (nonatomic,strong) PPHCardReaderMetadata *readerMetadata;
 @property (nonatomic,strong) TransactionButton *appleItemButton;
 @property (nonatomic,strong) TransactionButton *bananaItemButton;
 @property (nonatomic,strong) TransactionButton *orangeItemButton;
@@ -41,13 +39,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
 		self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
-		self.readerInfo = nil;
-		self.readerMetadata = nil;
-        
-
-		self.shoppingCart = 
+		self.shoppingCart =
 			[NSMutableDictionary 
 				dictionaryWithObjectsAndKeys:
 
@@ -92,15 +85,6 @@
 	self.title = @"Transaction";
 	self.amountTextField.delegate = self;
 
-	if ([[[PayPalHereSDK sharedCardReaderManager] availableDevices] count] > 0) {
-		self.readerDetectedButton.enabled = YES;
-	}
-	else {
-		self.readerDetectedButton.enabled = NO;
-	}
-
-
-	[[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
 
 	self.appleItemButton = [[TransactionButton alloc] 
 							   initWithTransactionVC:self
@@ -143,13 +127,6 @@
 
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-
-	[[PayPalHereSDK sharedCardReaderManager] endMonitoring:YES];
-    
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -225,12 +202,6 @@
         return;
     }
     
-	// Check reader status:
-	if (!self.readerDetectedButton.enabled) {
-        [self showAlertWithTitle:@"Card Reader Needed!" andMessage:@"To complete your purchase, you must attach a card reader."];
-        return;
-	}
-
 	
     // If it is setup then let's proceede with a test:
     
@@ -258,6 +229,7 @@
     self.waitingForCardSwipe = YES;
 
     [self showAlertWithTitle:@"Please Swipe your Credit Card" andMessage:@"The PayPalHereSDK is now waiting for a card swipe to proceed."];
+
 }
 
 - (IBAction)onManualCardChargePressed:(id)sender {
@@ -311,9 +283,10 @@
         return;
     }
     
-    //Now, take a payment with it
+    //For Cash the PPHTransactionManager will simply record the invoice to the backend.
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     
+    tm.ignoreHardwareReaders = YES;     //Let's not scan for any hardware during this transaciton.
     [tm beginPaymentWithAmount:[PPHAmount amountWithString:@"33.00" inCurrency:@"USD"] andName:@"FixedAmountPayment"];
     [tm processPaymentWithPaymentType:ePPHPaymentMethodCash
               withTransactionController:self
@@ -328,77 +301,11 @@
                               NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
                               [self showAlertWithTitle:@"Payment Success" andMessage:message];
                           }
+                          tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                       }];
     
 }
 
-- (IBAction)onReaderDetailsPressed:(id)sender {
-
-	if (self.readerInfo == nil) {
-
-		UIAlertView *alertView;
-
-		alertView = [[UIAlertView alloc]
-						initWithTitle:@"No Reader Details Available"
-						message: @"Something has gone wrong, the reader details are supposed to be available here, but they're not."
-						delegate:nil
-						cancelButtonTitle:@"OK"
-						otherButtonTitles:nil];
-											   
-		[alertView show];
-		return;
-
-	}
-
-	// Transition to the Reader Info screen:
-	STReaderInfoViewController *readerInfoVC = nil;
-
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		readerInfoVC = [[STReaderInfoViewController alloc]
-                         initWithNibName:@"STReaderInfoViewController_iPhone"
-                         bundle:nil];
-	}
-	else {
-		readerInfoVC = [[STReaderInfoViewController alloc]
-                         initWithNibName:@"STReaderInfoViewController_iPad"
-                         bundle:nil];
-	}
-
-
-	UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
-									  initWithTitle: @"Transaction"
-									  style: UIBarButtonItemStyleBordered
-									  target: nil 
-									  action: nil];
-
-	[self.navigationItem setBackBarButtonItem: backButton];
-
-
-	// Set up the fields:
-	PPHReaderType type = self.readerInfo.readerType;
-	readerInfoVC.readerType = (type == ePPHReaderTypeAudioJack ?
-							   @"Audio Jack Reader" :
-							   (type == ePPHReaderTypeDockPort ? 
-								@"Dock Port Reader" :
-								(type == ePPHReaderTypeChipAndPinBluetooth ?
-								 @"Chip and Pin BT Reader" :
-								 @"Unknown Reader Type")));
-
-	readerInfoVC.readerFamily = self.readerInfo.family;
-	readerInfoVC.friendlyName = self.readerInfo.friendlyName;
-
-
-	// Do we have any interesting meta-data to show?
-	if (self.readerMetadata != nil) {
-		readerInfoVC.serialNumber = self.readerMetadata.serialNumber;
-		readerInfoVC.firmwareRevision = self.readerMetadata.firmwareRevision;
-		readerInfoVC.batteryLevel = [NSString stringWithFormat:@"%d", self.readerMetadata.batteryLevel];
-	}
-
-	[self.navigationController pushViewController:readerInfoVC animated:YES];
-
-
-}
 
 - (double) sumShoppingCart
 {
@@ -413,6 +320,23 @@
 	}
 
 	return total;
+}
+
+- (IBAction)onSettingsPressed:(id)sender {
+    SASettingsViewController *settings = nil;
+    
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		settings = [[SASettingsViewController alloc]
+                        initWithNibName:@"SASettingsViewController_iPhone"
+                        bundle:nil];
+	}
+	else {
+		settings = [[SASettingsViewController alloc]
+                        initWithNibName:@"SASettingsViewController_iPad"
+                        bundle:nil];
+	}
+    
+    [self.navigationController pushViewController:settings animated:YES];
 }
 
 #pragma mark - UITableViewDataSource callbacks
@@ -511,23 +435,28 @@
     if(event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
 
         self.waitingForCardSwipe = NO;
-
+        
         //Now ask to authorize (and take) payment.
         [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                   withTransactionController:self
-                          completionHandler:^(PPHTransactionResponse *record) {
-                              if(record.error) {
-                                  NSString *message = [NSString stringWithFormat:@"Card payment finished with an error: %@", record.error.apiMessage];
+                          completionHandler:^(PPHTransactionResponse *response) {
+                              if(response.error) {
+                                  NSString *message = [NSString stringWithFormat:@"Card payment finished with an error: %@", response.error.apiMessage];
                                   [self showAlertWithTitle:@"Payment Failed" andMessage:message];
                               }
                               else {
-                                  PPHTransactionResponse *localTransactionResponse = record;
+                                  PPHTransactionResponse *localTransactionResponse = response;
                                   PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-                                  NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", transactionRecord.transactionId];
-                                  [self showAlertWithTitle:@"Payment Success" andMessage:message];
                                   
-                                  if(record.error ==nil) {
-                                      //TODO: we may need to finalize the payment with a signature.
+                                  // Is a signature required for this payment?  If so
+                                  // then let's collect a signature and provide it to the SDK.
+                                  if(response.isSignatureRequiredToFinalize) {
+                                      [self collectSignatureAndFinalizePurchaseWithRecord:transactionRecord];
+                                  }
+                                  else {
+                                      // All done.  Tell the user the good news.
+                                      NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", transactionRecord.transactionId];
+                                      [self showAlertWithTitle:@"Payment Success" andMessage:message];
                                   }
                                   
                               }
@@ -541,9 +470,29 @@
     return ePPHTransactionType_Continue;
 }
 
--(void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize {
-    NSLog(@"STTransactionViewController: onPostAuthorize called.  isSigRequired: %@", isSignatureRequiredToFinalize ? @"YES" : @"NO");
-    //TODO: Let's collect the signature then supply it via the finalizeTransaction call.
+-(void)onPostAuthorize:(BOOL)didFail {
+    NSLog(@"STTransactionViewController: onPostAuthorize called.  'authorize' %@ fail", didFail ? @"DID" : @"DID NOT");
+}
+
+
+-(void)collectSignatureAndFinalizePurchaseWithRecord:(PPHTransactionRecord*)record {
+    
+    SASignatureViewController *settings = nil;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        settings = [[SASignatureViewController alloc]
+                    initWithNibName:@"SASignatureViewController_iPhone"
+                    bundle:nil
+                    transactionRecord:record];
+    }
+    else {
+        settings = [[SASignatureViewController alloc]
+                    initWithNibName:@"SASignatureViewController_iPad"
+                    bundle:nil
+                    transactionRecord:record];
+    }
+    
+    [self.navigationController pushViewController:settings animated:YES];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -556,7 +505,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 	// Allow the Backspace character:
-	if (!string.length) 
+	if (!string.length)
 		return YES;
 
 	// Do not allow pasting of a range of characters:
@@ -601,76 +550,6 @@
 
 }
 
-#pragma mark -
-#pragma mark PPHSimpleCardReaderDelegate
-
--(void)didStartReaderDetection:(PPHCardReaderBasicInformation *)readerType
-{   
-  NSLog(@"Detecting Device");
-  [self.detectingReaderSpinny startAnimating];
-}
-
--(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader
-{   
-  NSLog(@"%@", [NSString stringWithFormat:@"Detected %@", reader.friendlyName]);
-  [self.detectingReaderSpinny stopAnimating];
-  self.readerDetectedButton.enabled = YES;
-  self.readerInfo = reader;
-}
-
--(void)didRemoveReader:(PPHReaderType)readerType
-{
-  NSLog(@"Reader Removed");
-  [self.detectingReaderSpinny stopAnimating];
-  self.readerDetectedButton.enabled = NO;
-  self.readerInfo = nil;
-}
-
--(void)didCompleteCardSwipe:(PPHCardSwipeData*)card
-{
-	NSLog(@"Got card swipe!");
-}
-
--(void)didFailToReadCard
-{
-	NSLog(@"Card swipe failed!!");
-    
-    UIAlertView *alertView;
-    
-    alertView = [[UIAlertView alloc]
-                 initWithTitle:@"Problem reading card"
-                 message: @"Looks like there was a failed swipe.  Please try again."
-                 delegate:nil
-                 cancelButtonTitle:@"OK"
-                 otherButtonTitles:nil];
-    
-    [alertView show];
-}
-
--(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
-{   
-	if (metadata == nil) {
-		NSLog(@"didReceiveCardReaderMetadata got NIL metada! Ignoring..");
-		return;
-	}
-
-	self.readerMetadata = metadata;
-
-	if (metadata.serialNumber != nil) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Reader Serial %@", metadata.serialNumber]);
-	}
-
-	if (metadata.firmwareRevision != nil) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Firmware Revision %@", metadata.firmwareRevision]);
-	}
-
-	const NSInteger kZero = 0;
-
-	if (metadata.batteryLevel != kZero) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Battery Level %d", metadata.batteryLevel]);
-	}
-
-}
 
 
 #pragma mark -

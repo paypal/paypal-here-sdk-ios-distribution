@@ -46,26 +46,20 @@ Return CONTINUE if you wish the SDK to continue processing this transaction.</Ab
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/onPostAuthorize:isSigRequired:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/onPostAuthorize:</TokenIdentifier>
 			<Abstract type="html">onPostAuthorize</Abstract>
 			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)onPostAuthorize:(BOOL)didFail isSigRequired:(BOOL)isSignatureRequiredToFinalize</Declaration>
+			<Declaration>- (void)onPostAuthorize:(BOOL)didFail</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>didFail</Name>
 					<Abstract type="html">- indicates whether the authorization failed. A true indicates that the authorization itself failed. A false indicates
 that the authorization did not fail. It however, DOES NOT indicate that the transaction was successful.</Abstract>
-				</Parameter><Parameter>
-					<Name>isSignatureRequiredToFinalize</Name>
-					<Abstract type="html">indicates whether or not a signature is required to finalize the transaction. If set to true
-then it is the responsibility of the application to follow up with a call to finalizePayment
-with the signature.  If signature is required then the transaction is not successful until the
-finalize method gets invoked.</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/onPostAuthorize:isSigRequired:</Anchor>
+			<Anchor>//api/name/onPostAuthorize:</Anchor>
             <NodeRef refid="56"/>
 		</Token>
 		

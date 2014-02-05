@@ -3,25 +3,21 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 11/19/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHCardReaderDelegate.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import "STItemizedPurchaseButton.h"
 
 @interface STTransactionViewController : UIViewController <
 	UITextFieldDelegate,
-  	PPHSimpleCardReaderDelegate,
 	PPHTransactionManagerDelegate,
 	PPHTransactionControllerDelegate,
 	UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UILabel *enterAmountLabel;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *detectingReaderSpinny;
-@property (weak, nonatomic) IBOutlet UIButton *readerDetectedButton;
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *itemizedModeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton *appleButton;
@@ -34,9 +30,9 @@
 
 - (IBAction)itemizedModeChanged:(id)sender;
 - (IBAction)onChargePressed:(id)sender;
-- (IBAction)onReaderDetailsPressed:(id)sender;
 - (IBAction)onManualCardChargePressed:(id)sender;
 - (IBAction)onCashChargePressed:(id)sender;
+- (IBAction)onSettingsPressed:(id)sender;
 
 @end
 

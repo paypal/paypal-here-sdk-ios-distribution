@@ -41,6 +41,10 @@
 		001569F6188E02230023053A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 001569F4188E02230023053A /* InfoPlist.strings */; };
 		001569F9188F25D60023053A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569F8188F25D60023053A /* libxml2.dylib */; };
 		001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 001569A0188E01090023053A /* PayPalHereSDK.bundle */; };
+		007DE86218A0144A004D8847 /* SASettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SASettingsViewController.m */; };
+		007DE86318A0144A004D8847 /* SASettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE86118A0144A004D8847 /* SASettingsViewController_iPhone.xib */; };
+		007DE87B18A062DC004D8847 /* SASignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE87918A062DC004D8847 /* SASignatureViewController.m */; };
+		007DE87C18A062DC004D8847 /* SASignatureViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE87A18A062DC004D8847 /* SASignatureViewController_iPhone.xib */; };
 		99859DED1835B07300AB3FE1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */; };
 		99859DEF1835B09A00AB3FE1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */; };
 		99859DF11835B0AF00AB3FE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */; };
@@ -111,6 +115,12 @@
 		001569EE188E01F60023053A /* SimplerTransaction-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SimplerTransaction-Prefix.pch"; path = "SDKSampleApp/SimplerTransaction-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		001569F5188E02230023053A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SDKSampleApp/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		001569F8188F25D60023053A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		007DE85F18A0144A004D8847 /* SASettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SASettingsViewController.h; path = SDKSampleApp/Screens/Settings/SASettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		007DE86018A0144A004D8847 /* SASettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SASettingsViewController.m; path = SDKSampleApp/Screens/Settings/SASettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		007DE86118A0144A004D8847 /* SASettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SASettingsViewController_iPhone.xib; path = SDKSampleApp/Screens/Settings/SASettingsViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		007DE87818A062DC004D8847 /* SASignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SASignatureViewController.h; path = SDKSampleApp/Screens/Transaction/SASignatureViewController.h; sourceTree = SOURCE_ROOT; };
+		007DE87918A062DC004D8847 /* SASignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SASignatureViewController.m; path = SDKSampleApp/Screens/Transaction/SASignatureViewController.m; sourceTree = SOURCE_ROOT; };
+		007DE87A18A062DC004D8847 /* SASignatureViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SASignatureViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/SASignatureViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
 		99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -166,6 +176,16 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		007DE85C18A010B4004D8847 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				007DE85F18A0144A004D8847 /* SASettingsViewController.h */,
+				007DE86018A0144A004D8847 /* SASettingsViewController.m */,
+				007DE86118A0144A004D8847 /* SASettingsViewController_iPhone.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		99831AF518720EDE0095FDC9 /* ReaderInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +219,7 @@
 		99859E031836ADC300AB3FE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				007DE85C18A010B4004D8847 /* Settings */,
 				99859E4A183C38DA00AB3FE1 /* Login */,
 				99859E4B183C38FB00AB3FE1 /* Transaction */,
 				99831AF518720EDE0095FDC9 /* ReaderInfo */,
@@ -262,6 +283,9 @@
 				001569BF188E01B20023053A /* STTransactionViewController_iPhone.xib */,
 				001569C0188E01B20023053A /* STTransactionViewController.h */,
 				001569C1188E01B20023053A /* STTransactionViewController.m */,
+				007DE87818A062DC004D8847 /* SASignatureViewController.h */,
+				007DE87918A062DC004D8847 /* SASignatureViewController.m */,
+				007DE87A18A062DC004D8847 /* SASignatureViewController_iPhone.xib */,
 			);
 			name = Transaction;
 			sourceTree = "<group>";
@@ -390,8 +414,10 @@
 				001569A8188E01270023053A /* apple.jpg in Resources */,
 				001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */,
 				001569CA188E01C60023053A /* STReaderInfoViewController_iPad.xib in Resources */,
+				007DE86318A0144A004D8847 /* SASettingsViewController_iPhone.xib in Resources */,
 				001569F0188E01F60023053A /* Default.png in Resources */,
 				001569F6188E02230023053A /* InfoPlist.strings in Resources */,
+				007DE87C18A062DC004D8847 /* SASignatureViewController_iPhone.xib in Resources */,
 				001569C4188E01B20023053A /* STTransactionViewController_iPhone.xib in Resources */,
 				001569A9188E01270023053A /* banana.jpg in Resources */,
 				001569F1188E01F60023053A /* Default@2x.png in Resources */,
@@ -423,8 +449,10 @@
 				001569CC188E01C60023053A /* STReaderInfoViewController.m in Sources */,
 				001569E5188E01DD0023053A /* AFPropertyListRequestOperation.m in Sources */,
 				001569B0188E01520023053A /* PPSCryptoUtils.m in Sources */,
+				007DE86218A0144A004D8847 /* SASettingsViewController.m in Sources */,
 				001569E4188E01DD0023053A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				001569C5188E01B20023053A /* STTransactionViewController.m in Sources */,
+				007DE87B18A062DC004D8847 /* SASignatureViewController.m in Sources */,
 				001569C2188E01B20023053A /* STItemizedPurchaseButton.m in Sources */,
 				001569F2188E01F60023053A /* main.m in Sources */,
 				001569B4188E01720023053A /* STAppDelegate.m in Sources */,

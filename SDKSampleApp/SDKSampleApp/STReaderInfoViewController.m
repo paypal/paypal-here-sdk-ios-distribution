@@ -3,7 +3,7 @@
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 12/30/13.
-//  Copyright (c) 2013 PayPalHereSDK. All rights reserved.
+//  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
 #import "STReaderInfoViewController.h"
@@ -31,18 +31,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-	self.title = @"Reader Info";
-	self.readerTypeLabel.text = self.readerType;
+}
+
+- (void)viewWillAppear:(BOOL)animated   {
+    [super viewWillAppear:animated];
+    
+    self.title = @"Reader Info";
+
+    self.readerTypeLabel.text = self.readerType;
 	self.readerFamilyLabel.text = self.readerFamily;
 	self.friendlyNameLabel.text = self.friendlyName;
-
+    
 	// Setting up the metadata fields is a bit more complicated,
 	// since a given piece of metadata may or may not be "there"
 	// (or "there yet"). Handle that in the 'updateMetadataFields'
 	// utility routine:
 	[self updateMetadataFields];
+    
+}
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,7 +66,6 @@
 -(void)didRemoveReader:(PPHReaderType)readerType
 {
 	NSLog(@"Reader Removed");
-	[self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
@@ -80,7 +89,6 @@
 	}
 
 	[self updateMetadataFields];
-
 }
 
 
@@ -88,7 +96,6 @@
 #pragma mark utility functions
 -(void)updateMetadataFields
 {
-
 	if (self.serialNumber != nil) {
 		self.serialNumberLabel.hidden = NO;
 		self.serialNumberLabelLabel.hidden = NO;
@@ -118,8 +125,6 @@
 		self.batteryLevelLabel.hidden = YES;
 		self.batteryLevelLabelLabel.hidden = YES;
 	}
-
-
 }
 
 @end
