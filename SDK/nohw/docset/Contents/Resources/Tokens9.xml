@@ -7,6 +7,7 @@
 			<Abstract type="html">The CardReaderWatcher basically translates between untyped NotificationCenter events
 and a clean delegate interface without sacrificing the ability to have multiple listeners</Abstract>
 			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
+            
 			
 			<NodeRef refid="9"/>
 		</Token>
@@ -15,7 +16,7 @@ and a clean delegate interface without sacrificing the ability to have multiple 
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderWatcher/initWithDelegate:</TokenIdentifier>
 			<Abstract type="html">Initialize a watcher to send events to the delegate</Abstract>
-			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithDelegate:(id&lt;PPHCardReaderDelegate&gt;)delegate</Declaration>
 			<Parameters>
@@ -32,7 +33,7 @@ and a clean delegate interface without sacrificing the ability to have multiple 
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderWatcher/initWithSimpleDelegate:</TokenIdentifier>
 			<Abstract type="html">Initialize a watcher to send events to the delegate (for &quot;simple&quot; card reader events)</Abstract>
-			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>			
+			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithSimpleDelegate:(id&lt;PPHSimpleCardReaderDelegate&gt;)delegate</Declaration>
 			<Parameters>
@@ -46,5 +47,6 @@ and a clean delegate interface without sacrificing the ability to have multiple 
             <NodeRef refid="9"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

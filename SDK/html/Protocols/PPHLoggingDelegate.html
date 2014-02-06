@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHLoggingDelegate Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -50,6 +49,12 @@
 	
 	<option value="//api/name/logPayPalHereError:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereError:</option>
 	
+	<option value="//api/name/logPayPalHereHardwareError:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereHardwareError:</option>
+	
+	<option value="//api/name/logPayPalHereHardwareInfo:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereHardwareInfo:</option>
+	
+	<option value="//api/name/logPayPalHereHardwareWarning:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereHardwareWarning:</option>
+	
 	<option value="//api/name/logPayPalHereInfo:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereInfo:</option>
 	
 	<option value="//api/name/logPayPalHereTrace:">&nbsp;&nbsp;&nbsp;&nbsp;- logPayPalHereTrace:</option>
@@ -90,6 +95,12 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereError:">logPayPalHereError:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereHardwareError:">logPayPalHereHardwareError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereHardwareInfo:">logPayPalHereHardwareInfo:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereHardwareWarning:">logPayPalHereHardwareWarning:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereInfo:">logPayPalHereInfo:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logPayPalHereTrace:">logPayPalHereTrace:</a></span></li>
@@ -127,8 +138,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -158,42 +169,54 @@ mean it, not just on a whim.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logPayPalHereError:">&ndash;&nbsp;logPayPalHereError:</a></code>
-		<span class="tooltip"><p>Log a message considered to be indicative of an error.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logPayPalHereWarning:">&ndash;&nbsp;logPayPalHereWarning:</a></code>
-		<span class="tooltip"><p>Log a message considered to be a potential issue affecting proper function.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logPayPalHereInfo:">&ndash;&nbsp;logPayPalHereInfo:</a></code>
-		<span class="tooltip"><p>Log informational events.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logPayPalHereTrace:">&ndash;&nbsp;logPayPalHereTrace:</a></code>
-		<span class="tooltip"><p>Log fxn tracing events.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logPayPalHereDebug:">&ndash;&nbsp;logPayPalHereDebug:</a></code>
-		<span class="tooltip"><p>Log debug/verbose events.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logPayPalHereHardwareError:">&ndash;&nbsp;logPayPalHereHardwareError:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logPayPalHereHardwareWarning:">&ndash;&nbsp;logPayPalHereHardwareWarning:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logPayPalHereHardwareInfo:">&ndash;&nbsp;logPayPalHereHardwareInfo:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/flush">&ndash;&nbsp;flush</a></code>
-		<span class="tooltip"><p>Cause the logger to send all its queued messages now.</p></span>
 	</span>
 	
 	
@@ -341,6 +364,159 @@ mean it, not just on a whim.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Log a message considered to be indicative of an error.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLoggingDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logPayPalHereHardwareError:" title="logPayPalHereHardwareError:"></a>
+	<h3 class="subsubtitle method-title">logPayPalHereHardwareError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a message considered to be indicative of an error for hardware interactions.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logPayPalHereHardwareError:(NSString *)<em>message</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The fully formatted log message.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Log a message considered to be indicative of an error for hardware interactions.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLoggingDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logPayPalHereHardwareInfo:" title="logPayPalHereHardwareInfo:"></a>
+	<h3 class="subsubtitle method-title">logPayPalHereHardwareInfo:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log informational events for hardware interactions.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logPayPalHereHardwareInfo:(NSString *)<em>message</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The fully formatted log message.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Log informational events for hardware interactions.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHLoggingDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logPayPalHereHardwareWarning:" title="logPayPalHereHardwareWarning:"></a>
+	<h3 class="subsubtitle method-title">logPayPalHereHardwareWarning:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a message considered to be a potential issue affecting proper function for hardware interactions.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logPayPalHereHardwareWarning:(NSString *)<em>message</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The fully formatted log message.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Log a message considered to be a potential issue affecting proper function for hardware interactions.</p>
 	</div>
 	
 	
@@ -513,6 +689,8 @@ mean it, not just on a whim.</p>
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -523,9 +701,9 @@ mean it, not just on a whim.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-02-05)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

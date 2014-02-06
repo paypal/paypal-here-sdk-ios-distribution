@@ -7,6 +7,7 @@
 			<Abstract type="html">A location represents a compartmentalized set of checkins for a merchant. A merchant may have
 many locations, some of which are open at a particular time and able to accept new customer checkin.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
+            
 			
 			<NodeRef refid="31"/>
 		</Token>
@@ -15,7 +16,7 @@ many locations, some of which are open at a particular time and able to accept n
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/initWithDictionary:</TokenIdentifier>
 			<Abstract type="html">Read a PPHLocation from the server</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithDictionary:(NSDictionary *)dictionary</Declaration>
 			<Parameters>
@@ -33,7 +34,7 @@ many locations, some of which are open at a particular time and able to accept n
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/save:</TokenIdentifier>
 			<Abstract type="html">Save a PPHLocation to the server. If locationId is empty, this will create a new location,
 otherwise it will update an existing location.</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>- (void)save:(void ( ^ ) ( PPHError *error ))completionHandler</Declaration>
 			<Parameters>
@@ -50,7 +51,7 @@ otherwise it will update an existing location.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setInternalName:</TokenIdentifier>
 			<Abstract type="html">The internal name of the location; this must be unique for the merchant</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *internalName</Declaration>
 			
@@ -62,7 +63,7 @@ otherwise it will update an existing location.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/internalName</TokenIdentifier>
 			<Abstract type="html">The internal name of the location; this must be unique for the merchant</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *internalName</Declaration>
 			
@@ -74,7 +75,7 @@ otherwise it will update an existing location.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/internalName</TokenIdentifier>
 			<Abstract type="html">The internal name of the location; this must be unique for the merchant</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *internalName</Declaration>
 			
@@ -86,7 +87,7 @@ otherwise it will update an existing location.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setDisplayMessage:</TokenIdentifier>
 			<Abstract type="html">A short message displayed in search results</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *displayMessage</Declaration>
 			
@@ -98,7 +99,7 @@ otherwise it will update an existing location.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/displayMessage</TokenIdentifier>
 			<Abstract type="html">A short message displayed in search results</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *displayMessage</Declaration>
 			
@@ -110,7 +111,7 @@ otherwise it will update an existing location.</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/displayMessage</TokenIdentifier>
 			<Abstract type="html">A short message displayed in search results</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *displayMessage</Declaration>
 			
@@ -123,7 +124,7 @@ otherwise it will update an existing location.</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setContactInfo:</TokenIdentifier>
 			<Abstract type="html">Not ALL fields of the contact info are used for locations. Line 1, Line 2, City, State,
 PostalCode, Country, Phone Number and Business Name are used</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *contactInfo</Declaration>
 			
@@ -136,7 +137,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/contactInfo</TokenIdentifier>
 			<Abstract type="html">Not ALL fields of the contact info are used for locations. Line 1, Line 2, City, State,
 PostalCode, Country, Phone Number and Business Name are used</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *contactInfo</Declaration>
 			
@@ -149,7 +150,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/contactInfo</TokenIdentifier>
 			<Abstract type="html">Not ALL fields of the contact info are used for locations. Line 1, Line 2, City, State,
 PostalCode, Country, Phone Number and Business Name are used</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *contactInfo</Declaration>
 			
@@ -161,7 +162,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setLocation:</TokenIdentifier>
 			<Abstract type="html">Currently only latitude and longitude matter</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) CLLocationCoordinate2D location</Declaration>
 			
@@ -173,7 +174,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/location</TokenIdentifier>
 			<Abstract type="html">Currently only latitude and longitude matter</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) CLLocationCoordinate2D location</Declaration>
 			
@@ -185,7 +186,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/location</TokenIdentifier>
 			<Abstract type="html">Currently only latitude and longitude matter</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) CLLocationCoordinate2D location</Declaration>
 			
@@ -197,7 +198,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setIsAvailable:</TokenIdentifier>
 			<Abstract type="html">Whether or not the location is open for checkins at the moment</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) BOOL isAvailable</Declaration>
 			
@@ -209,7 +210,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/isAvailable</TokenIdentifier>
 			<Abstract type="html">Whether or not the location is open for checkins at the moment</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) BOOL isAvailable</Declaration>
 			
@@ -221,7 +222,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/isAvailable</TokenIdentifier>
 			<Abstract type="html">Whether or not the location is open for checkins at the moment</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) BOOL isAvailable</Declaration>
 			
@@ -233,7 +234,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setIsMobile:</TokenIdentifier>
 			<Abstract type="html">Whether this location moves or always stays in the same place</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) BOOL isMobile</Declaration>
 			
@@ -245,7 +246,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/isMobile</TokenIdentifier>
 			<Abstract type="html">Whether this location moves or always stays in the same place</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) BOOL isMobile</Declaration>
 			
@@ -257,7 +258,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/isMobile</TokenIdentifier>
 			<Abstract type="html">Whether this location moves or always stays in the same place</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) BOOL isMobile</Declaration>
 			
@@ -269,7 +270,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinType:</TokenIdentifier>
 			<Abstract type="html">Whether checkins are supported at this location</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) PPHLocationCheckinType checkinType</Declaration>
 			
@@ -281,7 +282,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinType</TokenIdentifier>
 			<Abstract type="html">Whether checkins are supported at this location</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) PPHLocationCheckinType checkinType</Declaration>
 			
@@ -293,7 +294,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinType</TokenIdentifier>
 			<Abstract type="html">Whether checkins are supported at this location</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) PPHLocationCheckinType checkinType</Declaration>
 			
@@ -306,7 +307,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinExtensionUrl:</TokenIdentifier>
 			<Abstract type="html">* The URL to use in conjunction with extension type
 ￼￼￼</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSURL *checkinExtensionUrl</Declaration>
 			
@@ -319,7 +320,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinExtensionUrl</TokenIdentifier>
 			<Abstract type="html">* The URL to use in conjunction with extension type
 ￼￼￼</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSURL *checkinExtensionUrl</Declaration>
 			
@@ -332,7 +333,7 @@ PostalCode, Country, Phone Number and Business Name are used</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinExtensionUrl</TokenIdentifier>
 			<Abstract type="html">* The URL to use in conjunction with extension type
 ￼￼￼</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSURL *checkinExtensionUrl</Declaration>
 			
@@ -348,7 +349,7 @@ a buyer checks in. As of this writing, the only extension available is
 &quot;postOpen&quot; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
 loyalty program integration</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</Declaration>
 			
@@ -364,7 +365,7 @@ a buyer checks in. As of this writing, the only extension available is
 &quot;postOpen&quot; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
 loyalty program integration</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</Declaration>
 			
@@ -380,7 +381,7 @@ a buyer checks in. As of this writing, the only extension available is
 &quot;postOpen&quot; which basically means open a URL in a webview after checkin.
 This enables a wide variety of features such as online ordering or
 loyalty program integration</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) PPHLocationCheckinExtensionType checkinExtensionType</Declaration>
 			
@@ -392,7 +393,7 @@ loyalty program integration</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setLogoUrl:</TokenIdentifier>
 			<Abstract type="html">The URL for the logo image of this location</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *logoUrl</Declaration>
 			
@@ -404,7 +405,7 @@ loyalty program integration</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/logoUrl</TokenIdentifier>
 			<Abstract type="html">The URL for the logo image of this location</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *logoUrl</Declaration>
 			
@@ -416,7 +417,7 @@ loyalty program integration</Abstract>
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/logoUrl</TokenIdentifier>
 			<Abstract type="html">The URL for the logo image of this location</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *logoUrl</Declaration>
 			
@@ -429,7 +430,7 @@ loyalty program integration</Abstract>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCheckinDurationInMinutes:</TokenIdentifier>
 			<Abstract type="html">Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
 or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</Declaration>
 			
@@ -442,7 +443,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/checkinDurationInMinutes</TokenIdentifier>
 			<Abstract type="html">Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
 or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</Declaration>
 			
@@ -455,7 +456,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/checkinDurationInMinutes</TokenIdentifier>
 			<Abstract type="html">Length of time, in minutes, that an unused checkin lasts. A checkin expires after this duration,
 or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) NSInteger checkinDurationInMinutes</Declaration>
 			
@@ -467,7 +468,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setLocationId:</TokenIdentifier>
 			<Abstract type="html">An alphanumeric id for the location for use in other API calls</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *locationId</Declaration>
 			
@@ -479,7 +480,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/locationId</TokenIdentifier>
 			<Abstract type="html">An alphanumeric id for the location for use in other API calls</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *locationId</Declaration>
 			
@@ -491,7 +492,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/locationId</TokenIdentifier>
 			<Abstract type="html">An alphanumeric id for the location for use in other API calls</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *locationId</Declaration>
 			
@@ -503,7 +504,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setCreateDate:</TokenIdentifier>
 			<Abstract type="html">The date on which the location was originally created</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDate *createDate</Declaration>
 			
@@ -515,7 +516,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/createDate</TokenIdentifier>
 			<Abstract type="html">The date on which the location was originally created</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDate *createDate</Declaration>
 			
@@ -527,7 +528,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/createDate</TokenIdentifier>
 			<Abstract type="html">The date on which the location was originally created</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDate *createDate</Declaration>
 			
@@ -539,7 +540,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setUpdateDate:</TokenIdentifier>
 			<Abstract type="html">The date on which the location information was last updated</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDate *updateDate</Declaration>
 			
@@ -551,7 +552,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/updateDate</TokenIdentifier>
 			<Abstract type="html">The date on which the location information was last updated</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDate *updateDate</Declaration>
 			
@@ -563,7 +564,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/updateDate</TokenIdentifier>
 			<Abstract type="html">The date on which the location information was last updated</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSDate *updateDate</Declaration>
 			
@@ -575,7 +576,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setStatus:</TokenIdentifier>
 			<Abstract type="html">The current status of this location record (not the open/closed status the location itself - use isAvailable for that)</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) PPHLocationStatus status</Declaration>
 			
@@ -587,7 +588,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/status</TokenIdentifier>
 			<Abstract type="html">The current status of this location record (not the open/closed status the location itself - use isAvailable for that)</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) PPHLocationStatus status</Declaration>
 			
@@ -599,7 +600,7 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/status</TokenIdentifier>
 			<Abstract type="html">The current status of this location record (not the open/closed status the location itself - use isAvailable for that)</Abstract>
-			<DeclaredIn>PPHLocation.h</DeclaredIn>			
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) PPHLocationStatus status</Declaration>
 			
@@ -608,5 +609,6 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
             <NodeRef refid="31"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>
