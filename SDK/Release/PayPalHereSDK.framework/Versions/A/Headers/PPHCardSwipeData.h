@@ -57,6 +57,12 @@
 @property (nonatomic,strong) NSDictionary *extraData;
 
 /*!
+ * Set this property to YES before beginning payment is we have, or will collect a signature
+ * for this payment. Beginning a payment with a signature will automatically set this value to YES.
+ */
+@property (nonatomic) BOOL signaturePresent;
+
+/*!
  * Parse raw track data for name, account number, etc.
  * @param track1AndOr2 whatever was received from the card reader
  */
