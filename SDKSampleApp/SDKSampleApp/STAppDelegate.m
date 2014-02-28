@@ -121,4 +121,9 @@ PPHLoggingDelegate
     NSLog(@"Debug: %@", message);
 }
 
+-(void)logPayPalHereHardwareInfo:(NSString *)message {
+    NSLog(@"Debug: %@", message);
+}
+
+
 @end

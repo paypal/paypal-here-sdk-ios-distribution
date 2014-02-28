@@ -11,7 +11,7 @@
 
 #import "AFNetworking.h"
 #import "STOauthLoginViewController.h"
-#import "STTransactionViewController.h"
+#import "TransactionViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
@@ -366,16 +366,16 @@
 
 - (void)transitionToTransactionViewController
 {
-	STTransactionViewController *transactionVC = nil;
+	TransactionViewController *transactionVC = nil;
     
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		transactionVC = [[STTransactionViewController alloc]
-                         initWithNibName:@"STTransactionViewController_iPhone"
+		transactionVC = [[TransactionViewController alloc]
+                         initWithNibName:@"TransactionViewController_iPhone"
                          bundle:nil];
 	}
 	else {
-		transactionVC = [[STTransactionViewController alloc]
-                         initWithNibName:@"STTransactionViewController_iPad"
+		transactionVC = [[TransactionViewController alloc]
+                         initWithNibName:@"TransactionViewController_iPad"
                          bundle:nil];
 	}
     /*

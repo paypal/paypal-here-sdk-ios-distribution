@@ -1,5 +1,5 @@
 //
-//  SASettingsViewController.h
+//  SettingsViewController.h
 //  SDKSampleApp
 //
 //  Created by Angelini, Dom on 2/3/14.
@@ -10,7 +10,7 @@
 #import <PayPalHereSDK/PPHCardReaderDelegate.h>
 
 
-@interface SASettingsViewController : UIViewController <
+@interface SettingsViewController : UIViewController <
 PPHSimpleCardReaderDelegate
 >
 

@@ -1,5 +1,5 @@
 //
-//  STReaderInfoViewController.h
+//  ReaderInfoViewController.h
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 12/30/13.
@@ -10,7 +10,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHCardReaderDelegate.h>
 
-@interface STReaderInfoViewController : UIViewController <
+@interface ReaderInfoViewController : UIViewController <
   	PPHSimpleCardReaderDelegate
 >
 

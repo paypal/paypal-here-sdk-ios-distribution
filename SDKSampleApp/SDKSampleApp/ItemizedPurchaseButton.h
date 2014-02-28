@@ -1,5 +1,5 @@
 //
-//  STItemizedPurchaseButton.h
+//  ItemizedPurchaseButton.h
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 1/10/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STItemizedPurchaseButton : NSObject
+@interface ItemizedPurchaseButton : NSObject
 
 @property (nonatomic,strong) UIButton *button;
 

@@ -1,19 +1,19 @@
 //
-//  STReaderInfoViewController.m
+//  ReaderInfoViewController.m
 //  SimplerTransaction
 //
 //  Created by Cotter, Vince on 12/30/13.
 //  Copyright (c) 2013 PayPal Partner. All rights reserved.
 //
 
-#import "STReaderInfoViewController.h"
+#import "ReaderInfoViewController.h"
 
-@interface STReaderInfoViewController ()
+@interface ReaderInfoViewController ()
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
 -(void)updateMetadataFields;
 @end
 
-@implementation STReaderInfoViewController
+@implementation ReaderInfoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

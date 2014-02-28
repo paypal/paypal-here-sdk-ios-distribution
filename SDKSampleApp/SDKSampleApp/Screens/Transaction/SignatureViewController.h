@@ -1,5 +1,5 @@
 //
-//  SASignatureViewController.h
+//  SignatureViewController.h
 //  SDKSampleApp
 //
 //  Created by Angelini, Dom on 2/3/14.
@@ -11,7 +11,7 @@
 
 @class PPHTransactionRecord;
 
-@interface SASignatureViewController : UIViewController
+@interface SignatureViewController : UIViewController
 
 @property (nonatomic,strong) IBOutlet UIButton* charge;
 @property (nonatomic,strong) IBOutlet PPHSignatureView* signature;

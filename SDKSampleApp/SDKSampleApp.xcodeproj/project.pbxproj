@@ -18,13 +18,13 @@
 		001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569B5188E018D0023053A /* STOauthLoginViewController_iPad.xib */; };
 		001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569B6188E018D0023053A /* STOauthLoginViewController_iPhone.xib */; };
 		001569BB188E018D0023053A /* STOauthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569B8188E018D0023053A /* STOauthLoginViewController.m */; };
-		001569C2188E01B20023053A /* STItemizedPurchaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569BD188E01B20023053A /* STItemizedPurchaseButton.m */; };
-		001569C3188E01B20023053A /* STTransactionViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569BE188E01B20023053A /* STTransactionViewController_iPad.xib */; };
-		001569C4188E01B20023053A /* STTransactionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569BF188E01B20023053A /* STTransactionViewController_iPhone.xib */; };
-		001569C5188E01B20023053A /* STTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569C1188E01B20023053A /* STTransactionViewController.m */; };
-		001569CA188E01C60023053A /* STReaderInfoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569C6188E01C60023053A /* STReaderInfoViewController_iPad.xib */; };
-		001569CB188E01C60023053A /* STReaderInfoViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569C7188E01C60023053A /* STReaderInfoViewController_iPhone.xib */; };
-		001569CC188E01C60023053A /* STReaderInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569C9188E01C60023053A /* STReaderInfoViewController.m */; };
+		001569C2188E01B20023053A /* ItemizedPurchaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569BD188E01B20023053A /* ItemizedPurchaseButton.m */; };
+		001569C3188E01B20023053A /* TransactionViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569BE188E01B20023053A /* TransactionViewController_iPad.xib */; };
+		001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569BF188E01B20023053A /* TransactionViewController_iPhone.xib */; };
+		001569C5188E01B20023053A /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569C1188E01B20023053A /* TransactionViewController.m */; };
+		001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569C6188E01C60023053A /* ReaderInfoViewController_iPad.xib */; };
+		001569CB188E01C60023053A /* ReaderInfoViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569C7188E01C60023053A /* ReaderInfoViewController_iPhone.xib */; };
+		001569CC188E01C60023053A /* ReaderInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569C9188E01C60023053A /* ReaderInfoViewController.m */; };
 		001569E0188E01DD0023053A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569CE188E01DD0023053A /* AFHTTPClient.m */; };
 		001569E1188E01DD0023053A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569D0188E01DD0023053A /* AFHTTPRequestOperation.m */; };
 		001569E2188E01DD0023053A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569D2188E01DD0023053A /* AFImageRequestOperation.m */; };
@@ -41,10 +41,15 @@
 		001569F6188E02230023053A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 001569F4188E02230023053A /* InfoPlist.strings */; };
 		001569F9188F25D60023053A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569F8188F25D60023053A /* libxml2.dylib */; };
 		001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 001569A0188E01090023053A /* PayPalHereSDK.bundle */; };
-		007DE86218A0144A004D8847 /* SASettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SASettingsViewController.m */; };
-		007DE86318A0144A004D8847 /* SASettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE86118A0144A004D8847 /* SASettingsViewController_iPhone.xib */; };
-		007DE87B18A062DC004D8847 /* SASignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE87918A062DC004D8847 /* SASignatureViewController.m */; };
-		007DE87C18A062DC004D8847 /* SASignatureViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE87A18A062DC004D8847 /* SASignatureViewController_iPhone.xib */; };
+		007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SettingsViewController.m */; };
+		007DE86318A0144A004D8847 /* SettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE86118A0144A004D8847 /* SettingsViewController_iPhone.xib */; };
+		007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE87918A062DC004D8847 /* SignatureViewController.m */; };
+		007DE87C18A062DC004D8847 /* SignatureViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE87A18A062DC004D8847 /* SignatureViewController_iPhone.xib */; };
+		00DD4A2518C135EA00F5CA33 /* AddTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DD4A1518C135EA00F5CA33 /* AddTipViewController.m */; };
+		00DD4A2618C135EA00F5CA33 /* AddTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00DD4A1618C135EA00F5CA33 /* AddTipViewController.xib */; };
+		00DD4A2718C135EA00F5CA33 /* CheckedInCustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DD4A1818C135EA00F5CA33 /* CheckedInCustomerCell.m */; };
+		00DD4A2A18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00DD4A1C18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib */; };
+		00DD4A2B18C135EA00F5CA33 /* PaymentMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DD4A1E18C135EA00F5CA33 /* PaymentMethodViewController.m */; };
 		99859DED1835B07300AB3FE1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */; };
 		99859DEF1835B09A00AB3FE1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */; };
 		99859DF11835B0AF00AB3FE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */; };
@@ -78,16 +83,16 @@
 		001569B6188E018D0023053A /* STOauthLoginViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STOauthLoginViewController_iPhone.xib; path = SDKSampleApp/STOauthLoginViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
 		001569B7188E018D0023053A /* STOauthLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STOauthLoginViewController.h; path = SDKSampleApp/STOauthLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		001569B8188E018D0023053A /* STOauthLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STOauthLoginViewController.m; path = SDKSampleApp/STOauthLoginViewController.m; sourceTree = SOURCE_ROOT; };
-		001569BC188E01B20023053A /* STItemizedPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STItemizedPurchaseButton.h; path = SDKSampleApp/STItemizedPurchaseButton.h; sourceTree = SOURCE_ROOT; };
-		001569BD188E01B20023053A /* STItemizedPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STItemizedPurchaseButton.m; path = SDKSampleApp/STItemizedPurchaseButton.m; sourceTree = SOURCE_ROOT; };
-		001569BE188E01B20023053A /* STTransactionViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STTransactionViewController_iPad.xib; path = SDKSampleApp/STTransactionViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
-		001569BF188E01B20023053A /* STTransactionViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STTransactionViewController_iPhone.xib; path = SDKSampleApp/STTransactionViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
-		001569C0188E01B20023053A /* STTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STTransactionViewController.h; path = SDKSampleApp/STTransactionViewController.h; sourceTree = SOURCE_ROOT; };
-		001569C1188E01B20023053A /* STTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STTransactionViewController.m; path = SDKSampleApp/STTransactionViewController.m; sourceTree = SOURCE_ROOT; };
-		001569C6188E01C60023053A /* STReaderInfoViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STReaderInfoViewController_iPad.xib; path = SDKSampleApp/STReaderInfoViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
-		001569C7188E01C60023053A /* STReaderInfoViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STReaderInfoViewController_iPhone.xib; path = SDKSampleApp/STReaderInfoViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
-		001569C8188E01C60023053A /* STReaderInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReaderInfoViewController.h; path = SDKSampleApp/STReaderInfoViewController.h; sourceTree = SOURCE_ROOT; };
-		001569C9188E01C60023053A /* STReaderInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReaderInfoViewController.m; path = SDKSampleApp/STReaderInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		001569BC188E01B20023053A /* ItemizedPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemizedPurchaseButton.h; path = SDKSampleApp/ItemizedPurchaseButton.h; sourceTree = SOURCE_ROOT; };
+		001569BD188E01B20023053A /* ItemizedPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemizedPurchaseButton.m; path = SDKSampleApp/ItemizedPurchaseButton.m; sourceTree = SOURCE_ROOT; };
+		001569BE188E01B20023053A /* TransactionViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransactionViewController_iPad.xib; path = SDKSampleApp/TransactionViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
+		001569BF188E01B20023053A /* TransactionViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransactionViewController_iPhone.xib; path = SDKSampleApp/TransactionViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		001569C0188E01B20023053A /* TransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionViewController.h; path = SDKSampleApp/TransactionViewController.h; sourceTree = SOURCE_ROOT; };
+		001569C1188E01B20023053A /* TransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionViewController.m; path = SDKSampleApp/TransactionViewController.m; sourceTree = SOURCE_ROOT; };
+		001569C6188E01C60023053A /* ReaderInfoViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReaderInfoViewController_iPad.xib; path = SDKSampleApp/ReaderInfoViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
+		001569C7188E01C60023053A /* ReaderInfoViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReaderInfoViewController_iPhone.xib; path = SDKSampleApp/ReaderInfoViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		001569C8188E01C60023053A /* ReaderInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReaderInfoViewController.h; path = SDKSampleApp/ReaderInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		001569C9188E01C60023053A /* ReaderInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReaderInfoViewController.m; path = SDKSampleApp/ReaderInfoViewController.m; sourceTree = SOURCE_ROOT; };
 		001569CD188E01DD0023053A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = SDKSampleApp/ThirdParty/AFNetworking/AFHTTPClient.h; sourceTree = SOURCE_ROOT; };
 		001569CE188E01DD0023053A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = SDKSampleApp/ThirdParty/AFNetworking/AFHTTPClient.m; sourceTree = SOURCE_ROOT; };
 		001569CF188E01DD0023053A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = SDKSampleApp/ThirdParty/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
@@ -115,12 +120,20 @@
 		001569EE188E01F60023053A /* SimplerTransaction-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SimplerTransaction-Prefix.pch"; path = "SDKSampleApp/SimplerTransaction-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		001569F5188E02230023053A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SDKSampleApp/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		001569F8188F25D60023053A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		007DE85F18A0144A004D8847 /* SASettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SASettingsViewController.h; path = SDKSampleApp/Screens/Settings/SASettingsViewController.h; sourceTree = SOURCE_ROOT; };
-		007DE86018A0144A004D8847 /* SASettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SASettingsViewController.m; path = SDKSampleApp/Screens/Settings/SASettingsViewController.m; sourceTree = SOURCE_ROOT; };
-		007DE86118A0144A004D8847 /* SASettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SASettingsViewController_iPhone.xib; path = SDKSampleApp/Screens/Settings/SASettingsViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
-		007DE87818A062DC004D8847 /* SASignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SASignatureViewController.h; path = SDKSampleApp/Screens/Transaction/SASignatureViewController.h; sourceTree = SOURCE_ROOT; };
-		007DE87918A062DC004D8847 /* SASignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SASignatureViewController.m; path = SDKSampleApp/Screens/Transaction/SASignatureViewController.m; sourceTree = SOURCE_ROOT; };
-		007DE87A18A062DC004D8847 /* SASignatureViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SASignatureViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/SASignatureViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		007DE85F18A0144A004D8847 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = SDKSampleApp/Screens/Settings/SettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		007DE86018A0144A004D8847 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = SDKSampleApp/Screens/Settings/SettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		007DE86118A0144A004D8847 /* SettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController_iPhone.xib; path = SDKSampleApp/Screens/Settings/SettingsViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		007DE87818A062DC004D8847 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignatureViewController.h; path = SDKSampleApp/Screens/Transaction/SignatureViewController.h; sourceTree = SOURCE_ROOT; };
+		007DE87918A062DC004D8847 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignatureViewController.m; path = SDKSampleApp/Screens/Transaction/SignatureViewController.m; sourceTree = SOURCE_ROOT; };
+		007DE87A18A062DC004D8847 /* SignatureViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignatureViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/SignatureViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		00DD4A1418C135EA00F5CA33 /* AddTipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTipViewController.h; path = SDKSampleApp/Screens/Transaction/AddTipViewController.h; sourceTree = SOURCE_ROOT; };
+		00DD4A1518C135EA00F5CA33 /* AddTipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTipViewController.m; path = SDKSampleApp/Screens/Transaction/AddTipViewController.m; sourceTree = SOURCE_ROOT; };
+		00DD4A1618C135EA00F5CA33 /* AddTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddTipViewController.xib; path = SDKSampleApp/Screens/Transaction/AddTipViewController.xib; sourceTree = SOURCE_ROOT; };
+		00DD4A1718C135EA00F5CA33 /* CheckedInCustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckedInCustomerCell.h; path = SDKSampleApp/Screens/Transaction/CheckedInCustomerCell.h; sourceTree = SOURCE_ROOT; };
+		00DD4A1818C135EA00F5CA33 /* CheckedInCustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckedInCustomerCell.m; path = SDKSampleApp/Screens/Transaction/CheckedInCustomerCell.m; sourceTree = SOURCE_ROOT; };
+		00DD4A1C18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PaymentMethodViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/PaymentMethodViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		00DD4A1D18C135EA00F5CA33 /* PaymentMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentMethodViewController.h; path = SDKSampleApp/Screens/Transaction/PaymentMethodViewController.h; sourceTree = SOURCE_ROOT; };
+		00DD4A1E18C135EA00F5CA33 /* PaymentMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentMethodViewController.m; path = SDKSampleApp/Screens/Transaction/PaymentMethodViewController.m; sourceTree = SOURCE_ROOT; };
 		99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -179,9 +192,9 @@
 		007DE85C18A010B4004D8847 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				007DE85F18A0144A004D8847 /* SASettingsViewController.h */,
-				007DE86018A0144A004D8847 /* SASettingsViewController.m */,
-				007DE86118A0144A004D8847 /* SASettingsViewController_iPhone.xib */,
+				007DE85F18A0144A004D8847 /* SettingsViewController.h */,
+				007DE86018A0144A004D8847 /* SettingsViewController.m */,
+				007DE86118A0144A004D8847 /* SettingsViewController_iPhone.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -189,10 +202,10 @@
 		99831AF518720EDE0095FDC9 /* ReaderInfo */ = {
 			isa = PBXGroup;
 			children = (
-				001569C6188E01C60023053A /* STReaderInfoViewController_iPad.xib */,
-				001569C7188E01C60023053A /* STReaderInfoViewController_iPhone.xib */,
-				001569C8188E01C60023053A /* STReaderInfoViewController.h */,
-				001569C9188E01C60023053A /* STReaderInfoViewController.m */,
+				001569C6188E01C60023053A /* ReaderInfoViewController_iPad.xib */,
+				001569C7188E01C60023053A /* ReaderInfoViewController_iPhone.xib */,
+				001569C8188E01C60023053A /* ReaderInfoViewController.h */,
+				001569C9188E01C60023053A /* ReaderInfoViewController.m */,
 			);
 			name = ReaderInfo;
 			sourceTree = "<group>";
@@ -277,15 +290,23 @@
 		99859E4B183C38FB00AB3FE1 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				001569BC188E01B20023053A /* STItemizedPurchaseButton.h */,
-				001569BD188E01B20023053A /* STItemizedPurchaseButton.m */,
-				001569BE188E01B20023053A /* STTransactionViewController_iPad.xib */,
-				001569BF188E01B20023053A /* STTransactionViewController_iPhone.xib */,
-				001569C0188E01B20023053A /* STTransactionViewController.h */,
-				001569C1188E01B20023053A /* STTransactionViewController.m */,
-				007DE87818A062DC004D8847 /* SASignatureViewController.h */,
-				007DE87918A062DC004D8847 /* SASignatureViewController.m */,
-				007DE87A18A062DC004D8847 /* SASignatureViewController_iPhone.xib */,
+				00DD4A1418C135EA00F5CA33 /* AddTipViewController.h */,
+				00DD4A1518C135EA00F5CA33 /* AddTipViewController.m */,
+				00DD4A1618C135EA00F5CA33 /* AddTipViewController.xib */,
+				00DD4A1718C135EA00F5CA33 /* CheckedInCustomerCell.h */,
+				00DD4A1818C135EA00F5CA33 /* CheckedInCustomerCell.m */,
+				00DD4A1C18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib */,
+				00DD4A1D18C135EA00F5CA33 /* PaymentMethodViewController.h */,
+				00DD4A1E18C135EA00F5CA33 /* PaymentMethodViewController.m */,
+				001569BC188E01B20023053A /* ItemizedPurchaseButton.h */,
+				001569BD188E01B20023053A /* ItemizedPurchaseButton.m */,
+				001569BE188E01B20023053A /* TransactionViewController_iPad.xib */,
+				001569BF188E01B20023053A /* TransactionViewController_iPhone.xib */,
+				001569C0188E01B20023053A /* TransactionViewController.h */,
+				001569C1188E01B20023053A /* TransactionViewController.m */,
+				007DE87818A062DC004D8847 /* SignatureViewController.h */,
+				007DE87918A062DC004D8847 /* SignatureViewController.m */,
+				007DE87A18A062DC004D8847 /* SignatureViewController_iPhone.xib */,
 			);
 			name = Transaction;
 			sourceTree = "<group>";
@@ -413,19 +434,21 @@
 				001569AA188E01270023053A /* orange.jpg in Resources */,
 				001569A8188E01270023053A /* apple.jpg in Resources */,
 				001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */,
-				001569CA188E01C60023053A /* STReaderInfoViewController_iPad.xib in Resources */,
-				007DE86318A0144A004D8847 /* SASettingsViewController_iPhone.xib in Resources */,
+				001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */,
+				007DE86318A0144A004D8847 /* SettingsViewController_iPhone.xib in Resources */,
+				00DD4A2A18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib in Resources */,
 				001569F0188E01F60023053A /* Default.png in Resources */,
 				001569F6188E02230023053A /* InfoPlist.strings in Resources */,
-				007DE87C18A062DC004D8847 /* SASignatureViewController_iPhone.xib in Resources */,
-				001569C4188E01B20023053A /* STTransactionViewController_iPhone.xib in Resources */,
+				007DE87C18A062DC004D8847 /* SignatureViewController_iPhone.xib in Resources */,
+				00DD4A2618C135EA00F5CA33 /* AddTipViewController.xib in Resources */,
+				001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */,
 				001569A9188E01270023053A /* banana.jpg in Resources */,
 				001569F1188E01F60023053A /* Default@2x.png in Resources */,
 				001569EF188E01F60023053A /* Default-568h@2x.png in Resources */,
 				001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */,
 				001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */,
-				001569C3188E01B20023053A /* STTransactionViewController_iPad.xib in Resources */,
-				001569CB188E01C60023053A /* STReaderInfoViewController_iPhone.xib in Resources */,
+				001569C3188E01B20023053A /* TransactionViewController_iPad.xib in Resources */,
+				001569CB188E01C60023053A /* ReaderInfoViewController_iPhone.xib in Resources */,
 				001569AB188E01270023053A /* strawberry.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,21 +462,24 @@
 			files = (
 				001569E8188E01DD0023053A /* UIImageView+AFNetworking.m in Sources */,
 				001569BB188E018D0023053A /* STOauthLoginViewController.m in Sources */,
+				00DD4A2518C135EA00F5CA33 /* AddTipViewController.m in Sources */,
 				001569E3188E01DD0023053A /* AFJSONRequestOperation.m in Sources */,
 				001569E1188E01DD0023053A /* AFHTTPRequestOperation.m in Sources */,
 				001569E7188E01DD0023053A /* AFXMLRequestOperation.m in Sources */,
 				001569E6188E01DD0023053A /* AFURLConnectionOperation.m in Sources */,
 				001569E2188E01DD0023053A /* AFImageRequestOperation.m in Sources */,
 				001569E0188E01DD0023053A /* AFHTTPClient.m in Sources */,
+				00DD4A2718C135EA00F5CA33 /* CheckedInCustomerCell.m in Sources */,
 				001569B1188E01520023053A /* PPSPreferences.m in Sources */,
-				001569CC188E01C60023053A /* STReaderInfoViewController.m in Sources */,
+				001569CC188E01C60023053A /* ReaderInfoViewController.m in Sources */,
 				001569E5188E01DD0023053A /* AFPropertyListRequestOperation.m in Sources */,
 				001569B0188E01520023053A /* PPSCryptoUtils.m in Sources */,
-				007DE86218A0144A004D8847 /* SASettingsViewController.m in Sources */,
+				007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */,
 				001569E4188E01DD0023053A /* AFNetworkActivityIndicatorManager.m in Sources */,
-				001569C5188E01B20023053A /* STTransactionViewController.m in Sources */,
-				007DE87B18A062DC004D8847 /* SASignatureViewController.m in Sources */,
-				001569C2188E01B20023053A /* STItemizedPurchaseButton.m in Sources */,
+				001569C5188E01B20023053A /* TransactionViewController.m in Sources */,
+				007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */,
+				00DD4A2B18C135EA00F5CA33 /* PaymentMethodViewController.m in Sources */,
+				001569C2188E01B20023053A /* ItemizedPurchaseButton.m in Sources */,
 				001569F2188E01F60023053A /* main.m in Sources */,
 				001569B4188E01720023053A /* STAppDelegate.m in Sources */,
 			);
@@ -498,7 +524,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -523,7 +549,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -534,6 +560,7 @@
 		99D9819F1835995100D234A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -543,8 +570,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
 				INFOPLIST_FILE = "SDKSampleApp/SimplerTransaction-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				OTHER_LDFLAGS = "-lstdc++";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-stdlib=libstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -554,6 +584,7 @@
 		99D981A01835995100D234A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -563,8 +594,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
 				INFOPLIST_FILE = "SDKSampleApp/SimplerTransaction-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				OTHER_LDFLAGS = "-lstdc++";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-stdlib=libstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
