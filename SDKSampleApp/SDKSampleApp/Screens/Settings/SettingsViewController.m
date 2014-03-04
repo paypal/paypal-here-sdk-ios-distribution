@@ -1,17 +1,17 @@
 //
-//  SASettingsViewController.m
+//  SettingsViewController.m
 //  SDKSampleApp
 //
 //  Created by Angelini, Dom on 2/3/14.
 //  Copyright (c) 2014 PayPal Partner. All rights reserved.
 //
 
-#import "SASettingsViewController.h"
-#import "STReaderInfoViewController.h"
+#import "SettingsViewController.h"
+#import "ReaderInfoViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
-@interface SASettingsViewController ()
+@interface SettingsViewController ()
 @property (nonatomic,strong) PPHCardReaderBasicInformation *readerInfo;
 @property (nonatomic,strong) PPHCardReaderMetadata *readerMetadata;
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation SASettingsViewController
+@implementation SettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,16 +72,16 @@
 - (IBAction)onReaderDetailsPressed:(id)sender {
     
 	// Transition to the Reader Info screen:
-	STReaderInfoViewController *readerInfoVC = nil;
+	ReaderInfoViewController *readerInfoVC = nil;
     
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		readerInfoVC = [[STReaderInfoViewController alloc]
-                        initWithNibName:@"STReaderInfoViewController_iPhone"
+		readerInfoVC = [[ReaderInfoViewController alloc]
+                        initWithNibName:@"ReaderInfoViewController_iPhone"
                         bundle:nil];
 	}
 	else {
-		readerInfoVC = [[STReaderInfoViewController alloc]
-                        initWithNibName:@"STReaderInfoViewController_iPad"
+		readerInfoVC = [[ReaderInfoViewController alloc]
+                        initWithNibName:@"ReaderInfoViewController_iPad"
                         bundle:nil];
 	}
     

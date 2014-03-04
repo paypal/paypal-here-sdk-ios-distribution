@@ -169,6 +169,8 @@
 /*! Convenience method for accessing PPHInvoiceTotals data */
 @property (nonatomic,readonly) NSDecimalNumber *refundTotal;
 /*! Convenience method for accessing PPHInvoiceTotals data */
+@property (nonatomic,readonly) NSDecimalNumber *totalFees;
+/*! Convenience method for accessing PPHInvoiceTotals data */
 @property (nonatomic,readonly) NSDictionary *taxDetails;
 /*! Convenience method for accessing PPHInvoiceTotals data */
 @property (nonatomic,readonly) PPHAmount *totalWithRefunds;

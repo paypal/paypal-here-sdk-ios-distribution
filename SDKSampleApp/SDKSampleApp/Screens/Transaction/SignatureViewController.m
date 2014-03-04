@@ -1,17 +1,17 @@
 //
-//  SASignatureViewController.m
+//  SignatureViewController.m
 //  SDKSampleApp
 //
 //  Created by Angelini, Dom on 2/3/14.
 //  Copyright (c) 2014 PayPal Partner. All rights reserved.
 //
 
-#import "SASignatureViewController.h"
+#import "SignatureViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 
-@interface SASignatureViewController () <
+@interface SignatureViewController () <
     PPHSignatureViewDelegate,
     UIAlertViewDelegate
 >
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation SASignatureViewController
+@implementation SignatureViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecord:(PPHTransactionRecord*)capturedPayment
