@@ -13,16 +13,28 @@
 
 @interface AddTipViewController ()
 @property (strong, nonatomic) PPHInvoice *myInvoice;
+@property (strong, nonatomic) NSDecimalNumberHandler *formatter;
 @end
 
 @implementation AddTipViewController
 
+/*
+ * When creating the AddTipViewController an invoice will be passed in.  This
+ * class will attempt to collect a tip amount from the customer and add it to 
+ * this invoice.
+ */
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
            forInvoice:(PPHInvoice *)invoice
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.myInvoice = invoice;
+        self.formatter = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown
+                                                                                scale:2
+                                                                     raiseOnExactness:NO
+                                                                      raiseOnOverflow:NO
+                                                                     raiseOnUnderflow:NO
+                                                                  raiseOnDivideByZero:NO];
     }
     return self;
 }
@@ -57,10 +69,21 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(IBAction)onAddTip:(id)sender
-{
-    _myInvoice.gratuity = [NSDecimalNumber decimalNumberWithString:_tipToAdd.text];
+/*
+ * Called when the user taps the Add Tip button.
+ *
+ * Here we update the invoice's gratuity field.
+ */
+-(IBAction)onAddTip:(id)sender {
+    NSDecimalNumber *formattedTip = [self formatNumber:_tipToAdd.text];
+    
+    _myInvoice.gratuity = formattedTip;
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (NSDecimalNumber *)formatNumber:(NSString *)value {
+    NSDecimalNumber *nsdnValue = [NSDecimalNumber decimalNumberWithString:value];
+    return [nsdnValue decimalNumberByRoundingAccordingToBehavior:_formatter];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -79,24 +102,23 @@
         return YES;
     }
     
-    
-    //Is the string only digts?
-    if([self isAllDigits:newValue]) {
-        NSDecimalNumber* num = [NSDecimalNumber decimalNumberWithString:newValue];
-        NSDecimalNumber *grandTotal = _myInvoice.totalAmount.amount;
-        NSDecimalNumber *newSum = [num decimalNumberByAdding: grandTotal];
-        self.grandTotalWithTip.text = [newSum description];
-        return YES;
+    NSDecimalNumber *num = [self formatNumber:newValue];
+    NSString *newStr = [num description];
+    int desiredLen = [newStr length];
+    int currentLen = [_tipToAdd.text length];
+    if(![self isPeriod:string] && desiredLen == currentLen) {
+        return NO;
     }
     
-    return NO;
+    NSDecimalNumber *grandTotal = _myInvoice.totalAmount.amount;
+    NSDecimalNumber *newSum = [num decimalNumberByAdding: grandTotal];
+    
+    self.grandTotalWithTip.text = [newSum description];
+    return YES;
 }
 
-- (BOOL) isAllDigits:(NSString *)string
-{
-    NSCharacterSet* nonNumbers = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-    NSRange r = [string rangeOfCharacterFromSet: nonNumbers];
-    return r.location == NSNotFound;
+- (BOOL) isPeriod:(NSString*) string {
+    return [string length] == 1 && [string compare:@"."] == NSOrderedSame;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
