@@ -35,6 +35,8 @@
 #define kPPHLocalErrorBadConfigurationNoMerchant -2003
 #define kPPHLocalErrorBadConfigurationNoRecord -2004
 #define kPPHLocalErrorBadConfigurationInvalidState -2005
+#define kPPHLocalErrorBadConfigurationMerchantAccountNotActivatedForPayments -2006
+
 
 
 // Some NSString constants used by the PPHTransactionWatcher:
@@ -218,6 +220,7 @@
 -(void) processPaymentWithPaymentType:(PPHPaymentMethod) paymentType
               withTransactionController:(id<PPHTransactionControllerDelegate>)controller
                       completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
+
 
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
