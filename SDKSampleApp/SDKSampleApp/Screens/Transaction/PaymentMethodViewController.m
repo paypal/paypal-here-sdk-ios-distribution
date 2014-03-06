@@ -17,6 +17,8 @@
 #import "SignatureViewController.h"
 #import "AddTipViewController.h"
 #import "CheckedInCustomerCell.h"
+#import "PaymentCompleteViewController.h"
+
 
 @interface PaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
@@ -109,8 +111,9 @@
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
                             PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Manual Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
-                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            //NSString *message = [NSString stringWithFormat:@"Manual Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
+                            //[self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            [self showPaymentCompeleteView : transactionRecord];
                         }
                         
                     }];
@@ -134,12 +137,23 @@
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
                             PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
-                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+//                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
+  //                          [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            [self showPaymentCompeleteView : transactionRecord];
                         }
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
 
+}
+
+-(void) showPaymentCompeleteView:(PPHTransactionRecord *)record {
+    
+     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
+                                                    initWithNibName:@"PaymentCompleteViewController"
+                                                    bundle:nil];
+    paymentCompleteViewController.transactionRecord = record;
+    [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+    
 }
 
 
