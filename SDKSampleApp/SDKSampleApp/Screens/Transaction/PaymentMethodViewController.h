@@ -31,5 +31,4 @@ PPHTransactionManagerDelegate
 - (IBAction)addTip:(id)sender;
 
 
-
 @end

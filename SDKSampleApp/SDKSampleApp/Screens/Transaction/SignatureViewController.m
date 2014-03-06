@@ -10,6 +10,7 @@
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
+#import "PaymentCompleteViewController.h"
 
 @interface SignatureViewController () <
     PPHSignatureViewDelegate,
@@ -100,7 +101,19 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self showPaymentCompeleteView:_capturedPaymentRecord];
+}
+
+
+-(void) showPaymentCompeleteView:(PPHTransactionRecord *)record {
+    
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
+                                                                    initWithNibName:@"PaymentCompleteViewController"
+                                                                    bundle:nil];
+    paymentCompleteViewController.transactionRecord = record;
+    [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+    
 }
 
 @end

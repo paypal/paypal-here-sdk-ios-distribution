@@ -24,6 +24,7 @@
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
+@property PPHTransactionRecord *transactionRecord;
 
 @end
 
@@ -110,10 +111,11 @@
                         }
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
-                            PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-                            //NSString *message = [NSString stringWithFormat:@"Manual Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
-                            //[self showAlertWithTitle:@"Payment Success" andMessage:message];
-                            [self showPaymentCompeleteView : transactionRecord];
+                            //PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
+                            _transactionRecord = localTransactionResponse.record;
+                            NSString *message = [NSString stringWithFormat:@"Manual Entry finished successfully with transactionId: %@", _transactionRecord.transactionId];
+                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            //[self showPaymentCompeleteView : transactionRecord];
                         }
                         
                     }];
@@ -136,22 +138,23 @@
                         }
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
-                            PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-//                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
-  //                          [self showAlertWithTitle:@"Payment Success" andMessage:message];
-                            [self showPaymentCompeleteView : transactionRecord];
+                            //PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
+                            _transactionRecord = localTransactionResponse.record;
+                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", _transactionRecord.transactionId];
+                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            //[self showPaymentCompeleteView : transactionRecord];
                         }
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
 
 }
 
--(void) showPaymentCompeleteView:(PPHTransactionRecord *)record {
+-(void) showPaymentCompeleteView {
     
      PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                     initWithNibName:@"PaymentCompleteViewController"
                                                     bundle:nil];
-    paymentCompleteViewController.transactionRecord = record;
+    paymentCompleteViewController.transactionRecord = _transactionRecord;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }
@@ -174,7 +177,8 @@
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if(_doneWithPayScreen)
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        //[self.navigationController popToRootViewControllerAnimated:YES];
+        [self showPaymentCompeleteView];
 }
 
 #pragma mark PPHTransactionControllerDelegate
@@ -235,20 +239,23 @@
                                                                    }
                                                                    else {
                                                                        PPHTransactionResponse *localTransactionResponse = response;
-                                                                       PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
+                                                                       //PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
+                                                                       _transactionRecord = localTransactionResponse.record;
      
                                                                        // Is a signature required for this payment?  If so
                                                                        // then let's collect a signature and provide it to the SDK.
                                                                        if(response.isSignatureRequiredToFinalize) {
-                                                                           [self collectSignatureAndFinalizePurchaseWithRecord:transactionRecord];
+                                                                           [self collectSignatureAndFinalizePurchaseWithRecord:_transactionRecord];
                                                                        }
                                                                        else {
                                                                            // All done.  Tell the user the good news.
                                                                            //Let's exit the payment screen once they hit OK
                                                                            _doneWithPayScreen = YES;
 
-                                                                           NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", transactionRecord.transactionId];
+                                                                           NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", _transactionRecord.transactionId];
                                                                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                                                                           //[self showPaymentCompeleteView: transactionRecord];
+                                                                           
                                                                        }
          
                                                                    }
