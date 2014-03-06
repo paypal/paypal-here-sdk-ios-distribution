@@ -111,11 +111,9 @@
                         }
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
-                            //PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
                             _transactionRecord = localTransactionResponse.record;
                             NSString *message = [NSString stringWithFormat:@"Manual Entry finished successfully with transactionId: %@", _transactionRecord.transactionId];
                             [self showAlertWithTitle:@"Payment Success" andMessage:message];
-                            //[self showPaymentCompeleteView : transactionRecord];
                         }
                         
                     }];
@@ -138,19 +136,17 @@
                         }
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
-                            //PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
                             _transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", _transactionRecord.transactionId];
+                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with invoice Id: %@", _transactionRecord.invoice.paypalInvoiceId];
                             [self showAlertWithTitle:@"Payment Success" andMessage:message];
-                            //[self showPaymentCompeleteView : transactionRecord];
                         }
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
 
 }
 
--(void) showPaymentCompeleteView {
-    
+-(void) showPaymentCompeleteView
+{
      PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                     initWithNibName:@"PaymentCompleteViewController"
                                                     bundle:nil];
@@ -158,7 +154,6 @@
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }
-
 
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
 {
@@ -177,7 +172,6 @@
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if(_doneWithPayScreen)
-        //[self.navigationController popToRootViewControllerAnimated:YES];
         [self showPaymentCompeleteView];
 }
 
@@ -239,7 +233,6 @@
                                                                    }
                                                                    else {
                                                                        PPHTransactionResponse *localTransactionResponse = response;
-                                                                       //PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
                                                                        _transactionRecord = localTransactionResponse.record;
      
                                                                        // Is a signature required for this payment?  If so
@@ -254,8 +247,6 @@
 
                                                                            NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", _transactionRecord.transactionId];
                                                                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
-                                                                           //[self showPaymentCompeleteView: transactionRecord];
-                                                                           
                                                                        }
          
                                                                    }

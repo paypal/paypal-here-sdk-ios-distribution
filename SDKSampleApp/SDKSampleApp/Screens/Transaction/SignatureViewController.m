@@ -101,7 +101,6 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    //[self.navigationController popToRootViewControllerAnimated:YES];
     [self showPaymentCompeleteView:_capturedPaymentRecord];
 }
 

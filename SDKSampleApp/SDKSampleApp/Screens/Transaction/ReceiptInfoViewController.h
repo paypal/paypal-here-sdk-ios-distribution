@@ -19,7 +19,7 @@ UIAlertViewDelegate
 @property (weak, nonatomic) IBOutlet UITextField *infoTextField;
 @property (strong, nonatomic) PPHTransactionRecord * transactionRecord;
 
-@property (nonatomic) BOOL *isEmail;
+@property (nonatomic) BOOL isEmail;
 
 -(IBAction)onSendPressed:(id)sender;
 

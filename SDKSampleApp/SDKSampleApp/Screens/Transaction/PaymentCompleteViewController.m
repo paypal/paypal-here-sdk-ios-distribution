@@ -36,25 +36,26 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)onEmailPressed:(id)sender {
-    //[self showReceiptView:@"Please provide an email address"];
+-(IBAction)onEmailPressed:(id)sender
+{
     [self showReceiptView:YES];
 }
 
--(IBAction)onTextPressed:(id)sender {
-    //[self showReceiptView:@"Please provide a phone number"];
+-(IBAction)onTextPressed:(id)sender
+{
     [self showReceiptView:NO];
 }
 
--(IBAction)onNoThanksPressed:(id)sender {
+-(IBAction)onNoThanksPressed:(id)sender
+{
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void) showReceiptView:(BOOL *)isEmail {
+-(void) showReceiptView:(BOOL *)isEmail
+{
     ReceiptInfoViewController* receiptInfoViewController = [[ReceiptInfoViewController alloc]
                                                                     initWithNibName:@"ReceiptInfoViewController"
                                                                     bundle:nil];
-    //NSLog(message);
     receiptInfoViewController.isEmail = isEmail;
     receiptInfoViewController.transactionRecord = _transactionRecord;
     [self.navigationController pushViewController:receiptInfoViewController animated:YES];

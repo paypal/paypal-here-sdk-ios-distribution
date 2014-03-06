@@ -14,7 +14,7 @@
 
 @interface ReceiptInfoViewController ()
 
-@property (weak, nonatomic) NSString *infoMessage;
+@property BOOL doneWithReceiptScreen;
 
 @end
 
@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.doneWithReceiptScreen = NO;
     }
     return self;
 }
@@ -36,12 +37,11 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-    if([self isEmail]) {
-        _infoMessage = @"Please provide an email address";
+    if(_isEmail) {
+        _infoLabel.text = @"Please provide an email address";
     } else {
-        _infoMessage = @"Please provide a phone number";
+        _infoLabel.text = @"Please provide a phone number";
     }
-     _infoLabel.text = _infoMessage;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +50,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)onSendPressed:(id)sender {
+-(IBAction)onSendPressed:(id)sender
+{
 
     // Make sure the user has entered some amount:
     NSString *infoString = self.infoTextField.text;
@@ -59,15 +60,12 @@
         return;
     }
     
+    _doneWithReceiptScreen = YES;
+    
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     PPHReceiptDestination * destination = [[PPHReceiptDestination alloc] init];
     destination.destinationAddress = infoString;
-    
-    if([self isEmail]) {
-        destination.isEmail = YES;
-    } else {
-        destination.isEmail = NO;
-    }
+    destination.isEmail = _isEmail;
     [tm sendReceipt:_transactionRecord toRecipient: destination completionHandler:^(PPHError *error) {
         if(error == nil) {
             [self showAlertWithTitle:@"Receipt Sent" andMessage:@"Please wait for a few minutes to receive the receipt on your device."];
@@ -76,10 +74,10 @@
             [self showAlertWithTitle:@"Error while sending receipt." andMessage:error.description];
         }
     }];
-
-    
 }
--(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
+
+-(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
+{
     UIAlertView *alertView =
     [[UIAlertView alloc]
      initWithTitle:title
@@ -91,8 +89,10 @@
     [alertView show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(_doneWithReceiptScreen)
+        [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
