@@ -36,7 +36,8 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) viewWillAppear:(BOOL)animated {
+-(void) viewWillAppear:(BOOL)animated
+{
     if(_isEmail) {
         _infoLabel.text = @"Please provide an email address";
     } else {

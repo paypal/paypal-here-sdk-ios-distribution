@@ -74,14 +74,16 @@
  *
  * Here we update the invoice's gratuity field.
  */
--(IBAction)onAddTip:(id)sender {
+-(IBAction)onAddTip:(id)sender
+{
     NSDecimalNumber *formattedTip = [self formatNumber:_tipToAdd.text];
     
     _myInvoice.gratuity = formattedTip;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (NSDecimalNumber *)formatNumber:(NSString *)value {
+- (NSDecimalNumber *)formatNumber:(NSString *)value
+{
     NSDecimalNumber *nsdnValue = [NSDecimalNumber decimalNumberWithString:value];
     return [nsdnValue decimalNumberByRoundingAccordingToBehavior:_formatter];
 }

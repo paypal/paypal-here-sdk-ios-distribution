@@ -50,7 +50,8 @@
     [parent addSubview:_signature];
 }
 
--(void)signatureTouchesBegan {
+-(void)signatureTouchesBegan
+{
     self.charge.hidden = YES;
 }
 
@@ -82,7 +83,8 @@
  * When the done button is pressed let's send the signature to the SDK along with the payment record
  * to associate with this signature.  The SDK will record the signature to the service.
  */
-- (IBAction)onDonePressed:(id)sender {
+- (IBAction)onDonePressed:(id)sender
+{
     
     // Let's provide the signature for this transaction.
     [[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:_capturedPaymentRecord
@@ -100,13 +102,14 @@
                     }];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     [self showPaymentCompeleteView:_capturedPaymentRecord];
 }
 
 
--(void) showPaymentCompeleteView:(PPHTransactionRecord *)record {
-    
+-(void) showPaymentCompeleteView:(PPHTransactionRecord *)record
+{
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                                     initWithNibName:@"PaymentCompleteViewController"
                                                                     bundle:nil];
