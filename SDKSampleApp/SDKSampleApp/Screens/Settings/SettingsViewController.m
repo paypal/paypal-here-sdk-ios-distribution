@@ -284,7 +284,7 @@
         
         myLocation.contactInfo = [PayPalHereSDK activeMerchant].invoiceContactInfo;
         myLocation.internalName = @"TestAppLocation";
-        myLocation.displayMessage = @"SDKSampleApp POS";
+        myLocation.displayMessage = myLocation.contactInfo.businessName;
         myLocation.gratuityType = ePPHGratuityTypeStandard;
         myLocation.checkinType = ePPHCheckinTypeStandard;
         //myLocation.contactInfo.businessName = @"SDKSampleApp Business";
