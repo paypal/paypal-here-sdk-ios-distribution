@@ -11,8 +11,6 @@
 
 @interface PaymentMethodViewController : UIViewController
 <
-UITableViewDataSource,
-UITableViewDelegate,
 UIAlertViewDelegate,
 PPHTransactionControllerDelegate,
 PPHTransactionManagerDelegate
@@ -29,7 +27,7 @@ PPHTransactionManagerDelegate
 - (IBAction)payWithManualEntryCard:(id)sender;
 - (IBAction)payWithCashEntryCard:(id)sender;
 - (IBAction)addTip:(id)sender;
-
+- (IBAction)payWithCheckedInClient:(id)sender;
 
 
 @end

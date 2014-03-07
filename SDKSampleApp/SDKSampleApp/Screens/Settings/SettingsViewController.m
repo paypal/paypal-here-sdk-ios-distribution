@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "ReaderInfoViewController.h"
+#import "STAppDelegate.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
@@ -15,11 +16,16 @@
 @property (nonatomic,strong) PPHCardReaderBasicInformation *readerInfo;
 @property (nonatomic,strong) PPHCardReaderMetadata *readerMetadata;
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
-
-
+@property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic,strong) CLLocation *merchantLocation;
+@property BOOL gotValidLocation;
+@property BOOL isMerchantCheckinPending;
 @end
 
 @implementation SettingsViewController
+
+@synthesize checkinSwitch;
+@synthesize checkinMerchantSpinny;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +42,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(appDelegate.isMerchantCheckedin){
+        [self.checkinSwitch setOn:YES animated:YES];
+    }else{
+        [self.checkinSwitch setOn:NO animated:YES];
+    }
+    self.checkinMerchantSpinny.hidden = YES;
+    
+    self.merchantLocation = nil;
+    self.isMerchantCheckinPending = NO;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+}
+
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    [self.locationManager stopUpdatingLocation];
+}
+
+-(void)dealloc
+{
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +97,28 @@
     
 	[[PayPalHereSDK sharedCardReaderManager] endMonitoring:YES];
     
+}
+
+- (IBAction)onCheckinButtonToggled:(id)sender
+{
+    NSLog(@"onCheckinButton clicked");
+    if(self.checkinSwitch.on){
+        if(nil != self.merchantLocation){
+            self.checkinSwitch.hidden = YES;
+            self.checkinMerchantSpinny.hidden = NO;
+            [self.checkinMerchantSpinny startAnimating];
+            [self getMerchantCheckin:self.merchantLocation];
+        }else{
+            self.isMerchantCheckinPending = TRUE;
+        }
+    }else{
+        [self.checkinSwitch setOn:NO animated:YES];
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        PPHLocation *myLocation = appDelegate.merchantLocation;
+        myLocation.isAvailable = NO;
+        appDelegate.merchantLocation = nil;
+        appDelegate.isMerchantCheckedin = NO;
+    }
 }
 
 - (IBAction)onReaderDetailsPressed:(id)sender {
@@ -188,5 +240,82 @@
     
 }
 
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    // We just set this once in the sample app. In a real app you would want to update the location as the merchant moves any meaningful distance. Threshold should be set by your needs, but usually something like 1/4 mile would work
+    NSLog(@"Got the LocationUpdate. newLocation Latitude:%f Longitude:%f ",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
+    
+    if (!self.gotValidLocation) {
+        self.gotValidLocation = YES;
+        self.merchantLocation = newLocation;
+        [self.locationManager stopUpdatingLocation];
+        if(self.isMerchantCheckinPending){
+            self.isMerchantCheckinPending = NO;
+            [self getMerchantCheckin:self.merchantLocation];
+        }
+    }
+}
 
+-(void) getMerchantCheckin: (CLLocation*)newLocation
+{
+    [[PayPalHereSDK sharedLocalManager] beginGetLocations:^(PPHError *error, NSArray *locations){
+        if (error) {
+            return;
+        }
+        PPHLocation *myLocation = nil;
+        if(nil != locations && 0 < [locations count]){
+            NSLog(@"This merchant has already checked-in locations. Will try to find if the current location is in the list or not");
+            NSString *currentName = @"TestAppLocation";
+            if (currentName && currentName.length > 0) {
+                for (PPHLocation *loc in locations) {
+                    if ([loc.internalName isEqualToString:currentName]) {
+                        NSLog(@"Yes. we found the current location as one of the merchant's checked-in locations.");
+                        myLocation = loc;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if(nil == myLocation){
+            NSLog(@"We didn't find or match the current location in any of the merchants checked-in locations. Hence creating the new checking location");
+            myLocation = [[PPHLocation alloc] init];
+        }
+        
+        myLocation.contactInfo = [PayPalHereSDK activeMerchant].invoiceContactInfo;
+        myLocation.internalName = @"TestAppLocation";
+        myLocation.displayMessage = @"SDKSampleApp POS";
+        myLocation.gratuityType = ePPHGratuityTypeStandard;
+        myLocation.checkinType = ePPHCheckinTypeStandard;
+        myLocation.contactInfo.businessName = @"SDKSampleApp Business";
+        myLocation.contactInfo.phoneNumber = @"4086573456";
+        myLocation.contactInfo.city = @"San Jose";
+        myLocation.contactInfo.countryCode=@"US";
+        myLocation.contactInfo.lineOne=@"2211 North 1st Street";
+        myLocation.contactInfo.lineTwo=@"San Jose";
+        myLocation.logoUrl = @"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ3TotXBdfo9zyQhf4eCP33T6vQXh3A9GAe_lsqUOVLMNbdLolO";
+        myLocation.location = newLocation.coordinate;
+        myLocation.isMobile = YES;
+        myLocation.isAvailable = YES;
+        
+        [myLocation save:^(PPHError *error) {
+            if (error == nil) {
+                NSLog(@"Successfully saved the current location with locationID: %@",myLocation.locationId);
+                STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+                appDelegate.merchantLocation = myLocation;
+                appDelegate.isMerchantCheckedin = YES;
+                [self.checkinMerchantSpinny stopAnimating];
+                self.checkinMerchantSpinny.hidden = true;
+                self.checkinSwitch.hidden=NO;
+                [self.checkinSwitch setOn:YES animated:YES];
+            }else{
+                NSLog(@"Oops.. We got error while saving the location. Error Code: %d Error Description: %@",error.code, error.description);
+                [self.checkinMerchantSpinny stopAnimating];
+                self.checkinMerchantSpinny.hidden = true;
+                self.checkinSwitch.hidden=NO;
+                [self.checkinSwitch setOn:NO animated:YES];
+            }
+        }];
+    }];
+}
 @end
