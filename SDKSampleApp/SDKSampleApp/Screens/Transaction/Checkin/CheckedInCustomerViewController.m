@@ -137,11 +137,6 @@
                                             reuseIdentifier:@"CheckedInCustomerCellIdentifier"];
     }
     PPHLocationCheckin *client = [self.checkedInClients objectAtIndex:indexPath.row];
-    
-    //load the image of the checked in client
-    /*NSData *data = [[NSData alloc] initWithContentsOfURL:client.photoUrl];
-    UIImage *tmpImage = [[UIImage alloc] initWithData:data];
-    cell.imageView.image = tmpImage;*/
     cell.imageView.image = [UIImage imageNamed:@"default_image.jpg"];;
         
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -149,8 +144,9 @@
         if (imgData) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage *actualImage = [UIImage imageWithData:imgData];
-                cell.imageView.image = actualImage;
-                [cell.imageView setNeedsDisplay];
+                CheckedInCustomerCell *c = (CheckedInCustomerCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                c.imageView.image = actualImage;
+                [c.imageView setNeedsDisplay];
             });
         }
     });
@@ -182,20 +178,11 @@
 -(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectNewTab: (PPHLocationCheckin*) checkin
 {
     NSLog(@"Got the new checked in client after did the update. Need to update the rows");
-    /*if(nil == self.checkedInClients){
-        self.checkedInClients = [NSMutableArray array];
-    }
-    [self.checkedInClients addObject:checkin];
-    [self.tableView reloadData];*/
 }
 
 -(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectRemovedTab: (PPHLocationCheckin*) checkin
 {
     NSLog(@"One of the checked in client checked out. Need to update the rows");
-    /*if([self.checkedInClients containsObject:checkin]){
-        [self.checkedInClients removeObject:checkin];
-        [self.tableView reloadData];
-    }*/
 }
 
 -(void)locationWatcher: (PPHLocationWatcher*) watcher didReceiveError: (PPHError*) error

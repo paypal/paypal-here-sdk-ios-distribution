@@ -66,6 +66,7 @@
 		DE5A6E4518C945F7007361F6 /* CheckedInCustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5A6E4118C945F7007361F6 /* CheckedInCustomerCell.m */; };
 		DE5A6E4618C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE5A6E4218C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib */; };
 		DE5A6E4718C945F7007361F6 /* CheckedInCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5A6E4418C945F7007361F6 /* CheckedInCustomerViewController.m */; };
+		DE5A6E4918C95473007361F6 /* default_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE5A6E4818C95473007361F6 /* default_image.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +155,7 @@
 		DE5A6E4218C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckedInCustomerViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/Checkin/CheckedInCustomerViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
 		DE5A6E4318C945F7007361F6 /* CheckedInCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckedInCustomerViewController.h; path = SDKSampleApp/Screens/Transaction/Checkin/CheckedInCustomerViewController.h; sourceTree = SOURCE_ROOT; };
 		DE5A6E4418C945F7007361F6 /* CheckedInCustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckedInCustomerViewController.m; path = SDKSampleApp/Screens/Transaction/Checkin/CheckedInCustomerViewController.m; sourceTree = SOURCE_ROOT; };
+		DE5A6E4818C95473007361F6 /* default_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_image.jpg; path = SDKSampleApp/Resources/default_image.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 		99831B0D187F78810095FDC9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE5A6E4818C95473007361F6 /* default_image.jpg */,
 				001569A4188E01270023053A /* apple.jpg */,
 				001569A5188E01270023053A /* banana.jpg */,
 				001569A6188E01270023053A /* orange.jpg */,
@@ -424,6 +427,11 @@
 				CLASSPREFIX = ST;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = PayPalHereSDK;
+				TargetAttributes = {
+					99D981771835995100D234A1 = {
+						DevelopmentTeam = 7NGG64KSJB;
+					};
+				};
 			};
 			buildConfigurationList = 99D981731835995000D234A1 /* Build configuration list for PBXProject "SDKSampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -461,6 +469,7 @@
 				001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */,
 				001569A9188E01270023053A /* banana.jpg in Resources */,
 				001569F1188E01F60023053A /* Default@2x.png in Resources */,
+				DE5A6E4918C95473007361F6 /* default_image.jpg in Resources */,
 				001569EF188E01F60023053A /* Default-568h@2x.png in Resources */,
 				001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */,
 				001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */,

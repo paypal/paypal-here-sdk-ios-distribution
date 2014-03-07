@@ -287,13 +287,13 @@
         myLocation.displayMessage = @"SDKSampleApp POS";
         myLocation.gratuityType = ePPHGratuityTypeStandard;
         myLocation.checkinType = ePPHCheckinTypeStandard;
-        myLocation.contactInfo.businessName = @"SDKSampleApp Business";
-        myLocation.contactInfo.phoneNumber = @"4086573456";
-        myLocation.contactInfo.city = @"San Jose";
+        //myLocation.contactInfo.businessName = @"SDKSampleApp Business";
+        //myLocation.contactInfo.phoneNumber = @"4086573456";
+        //myLocation.contactInfo.city = @"San Jose";
         myLocation.contactInfo.countryCode=@"US";
         myLocation.contactInfo.lineOne=@"2211 North 1st Street";
         myLocation.contactInfo.lineTwo=@"San Jose";
-        myLocation.logoUrl = @"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ3TotXBdfo9zyQhf4eCP33T6vQXh3A9GAe_lsqUOVLMNbdLolO";
+        //myLocation.logoUrl = @"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ3TotXBdfo9zyQhf4eCP33T6vQXh3A9GAe_lsqUOVLMNbdLolO";
         myLocation.location = newLocation.coordinate;
         myLocation.isMobile = YES;
         myLocation.isAvailable = YES;
@@ -304,17 +304,15 @@
                 STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
                 appDelegate.merchantLocation = myLocation;
                 appDelegate.isMerchantCheckedin = YES;
-                [self.checkinMerchantSpinny stopAnimating];
-                self.checkinMerchantSpinny.hidden = true;
-                self.checkinSwitch.hidden=NO;
                 [self.checkinSwitch setOn:YES animated:YES];
             }else{
                 NSLog(@"Oops.. We got error while saving the location. Error Code: %d Error Description: %@",error.code, error.description);
-                [self.checkinMerchantSpinny stopAnimating];
-                self.checkinMerchantSpinny.hidden = true;
-                self.checkinSwitch.hidden=NO;
                 [self.checkinSwitch setOn:NO animated:YES];
             }
+            [self.checkinMerchantSpinny stopAnimating];
+            self.checkinMerchantSpinny.hidden = true;
+            self.checkinSwitch.hidden=NO;
+
         }];
     }];
 }
