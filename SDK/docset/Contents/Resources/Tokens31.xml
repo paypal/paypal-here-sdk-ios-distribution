@@ -32,8 +32,8 @@ many locations, some of which are open at a particular time and able to accept n
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/save:</TokenIdentifier>
-			<Abstract type="html">Save a PPHLocation to the server. If locationId is empty, this will create a new location,
-otherwise it will update an existing location.</Abstract>
+			<Abstract type="html">Save a PPHLocation to the server. If locationId is empty, this will create a new location
+and the locationId parameter will become set.  Otherwise it will update an existing location.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
 			<Declaration>- (void)save:(void ( ^ ) ( PPHError *error ))completionHandler</Declaration>
@@ -462,6 +462,42 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
 			
 			
 			<Anchor>//api/name/checkinDurationInMinutes</Anchor>
+            <NodeRef refid="31"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setGratuityType:</TokenIdentifier>
+			<Abstract type="html">Whether the opportunity to set a tip should be shown to consumers in the PayPal app for this location</Abstract>
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) PPHGratuityType gratuityType</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityType</Anchor>
+            <NodeRef refid="31"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/gratuityType</TokenIdentifier>
+			<Abstract type="html">Whether the opportunity to set a tip should be shown to consumers in the PayPal app for this location</Abstract>
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) PPHGratuityType gratuityType</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityType</Anchor>
+            <NodeRef refid="31"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocation/gratuityType</TokenIdentifier>
+			<Abstract type="html">Whether the opportunity to set a tip should be shown to consumers in the PayPal app for this location</Abstract>
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) PPHGratuityType gratuityType</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityType</Anchor>
             <NodeRef refid="31"/>
 		</Token>
 		

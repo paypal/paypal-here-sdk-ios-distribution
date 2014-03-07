@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <PayPalHereSDK/PPHLocation.h>
 
 
 @class STOauthLoginViewController;
@@ -19,5 +20,7 @@
 @property (strong, nonatomic) STOauthLoginViewController *viewController;
 
 @property (strong, nonatomic) CLLocationManager *localMgr;
+@property (assign, nonatomic)BOOL isMerchantCheckedin;
+@property (strong, nonatomic) PPHLocation *merchantLocation;
 
 @end

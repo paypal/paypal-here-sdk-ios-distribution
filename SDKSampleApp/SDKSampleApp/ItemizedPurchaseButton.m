@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 PayPal Partner. All rights reserved.
 //
 
-#import "STItemizedPurchaseButton.h"
+#import "ItemizedPurchaseButton.h"
 
-@interface STItemizedPurchaseButton ()
+@interface ItemizedPurchaseButton ()
 -(void)itemHoldTimer;
 -(void)itemTouchDown;
 -(void)itemTouchUpInside;
@@ -16,7 +16,7 @@
 @property (nonatomic,strong) NSTimer *timer;
 @end
 
-@implementation STItemizedPurchaseButton
+@implementation ItemizedPurchaseButton
 
 - (id) initWithButton:(UIButton *)aButton 
 {

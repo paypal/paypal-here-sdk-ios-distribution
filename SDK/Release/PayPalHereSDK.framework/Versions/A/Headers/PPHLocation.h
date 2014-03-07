@@ -28,6 +28,11 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
     ePPHLocationStatusDeleted = 2
 };
 
+typedef NS_ENUM(NSInteger,PPHGratuityType) {
+    ePPHGratuityTypeNone = 0,
+    ePPHGratuityTypeStandard = 1
+};
+
 /*!
  * A location represents a compartmentalized set of checkins for a merchant. A merchant may have
  * many locations, some of which are open at a particular time and able to accept new customer checkin.
@@ -43,8 +48,9 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
 -(id)initWithDictionary: (NSDictionary*)dictionary;
 
 /*!
- * Save a PPHLocation to the server. If locationId is empty, this will create a new location,
- * otherwise it will update an existing location.
+ * Save a PPHLocation to the server. If locationId is empty, this will create a new location
+ * and the locationId parameter will become set.  Otherwise it will update an existing location.
+ *
  * @param completionHandler called when the network request completes
  */
 -(void)save: (void (^)(PPHError* error)) completionHandler;
@@ -108,6 +114,11 @@ typedef NS_ENUM(NSInteger,PPHLocationStatus) {
  * or when the checkin is used in a payment—whichever occurs first. Minimum of 15. The default is 120.
  */
 @property (nonatomic,assign) NSInteger checkinDurationInMinutes;
+
+/*!
+ * Whether the opportunity to set a tip should be shown to consumers in the PayPal app for this location
+ */
+@property (nonatomic,assign) PPHGratuityType gratuityType;
 
 /*
  * These fields are supplied only by the PayPal server when the location has been read into the object
