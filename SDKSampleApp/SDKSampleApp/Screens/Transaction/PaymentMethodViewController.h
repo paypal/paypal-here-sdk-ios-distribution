@@ -29,5 +29,4 @@ PPHTransactionManagerDelegate
 - (IBAction)addTip:(id)sender;
 - (IBAction)payWithCheckedInClient:(id)sender;
 
-
 @end
