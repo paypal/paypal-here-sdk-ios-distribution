@@ -77,7 +77,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void) showReceiptView:(BOOL *)isEmail
+-(void) showReceiptView:(BOOL)isEmail
 {
     ReceiptInfoViewController* receiptInfoViewController = [[ReceiptInfoViewController alloc]
                                                                     initWithNibName:@"ReceiptInfoViewController"

@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "STOauthLoginViewController.h"
 #import "TransactionViewController.h"
+#import "STAppDelegate.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
@@ -103,6 +104,11 @@
 	NSString *initialServiceHost = [self.pickerURLArray objectAtIndex:[self.pickerView selectedRowInComponent:0]];
 	self.serviceURLLabel.text = initialServiceHost;
 	self.serviceHost = initialServiceHost;
+
+    // Make the merchant checked in flag to false, since if we are in login screen then this should be the starting poing
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.isMerchantCheckedin = NO;
+    appDelegate.merchantLocation = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

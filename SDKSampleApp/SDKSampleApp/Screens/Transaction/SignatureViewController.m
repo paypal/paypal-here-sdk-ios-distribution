@@ -89,15 +89,7 @@
     [[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:_capturedPaymentResponse.record
                         withSignature:self.signature.printableImage
                     completionHandler:^(PPHError *error) {
-                        
-                        if(error == nil) {
-                            [self showAlertWithTitle:@"Payment Success" andMessage:[NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", _capturedPaymentResponse.record.transactionId]];
-                        }
-                        else {
-                            [self showAlertWithTitle:@"Payment Success" andMessage:[NSString stringWithFormat:@"Card payment finished successfully but we failed to provide the signature.  TransacitonId: %@", _capturedPaymentResponse.record.transactionId]];
-                        }
-                        
-                        
+                        [self showPaymentCompeleteView:_capturedPaymentResponse];                        
                     }];
 }
 

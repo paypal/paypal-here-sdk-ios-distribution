@@ -18,7 +18,8 @@
 #import "AddTipViewController.h"
 #import "CheckedInCustomerCell.h"
 #import "PaymentCompleteViewController.h"
-
+#import "CheckedInCustomerViewController.h"
+#import "STAppDelegate.h"
 
 @interface PaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
@@ -135,6 +136,35 @@
                                                     bundle:nil];
     paymentCompleteViewController.transactionResponse = _transactionResposne;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+    
+}
+
+-(IBAction)payWithCheckedInClient:(id)sender
+{
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(!appDelegate.isMerchantCheckedin){
+        UIAlertView *alert = [ [UIAlertView alloc] initWithTitle:@"Alert"
+                                                         message:@"You are not checked-in. Please go to Settings and check-in first to take payments through this channel"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil ];
+        [alert show];
+        return;
+    }
+    CheckedInCustomerViewController *checkedInCustomerView = nil;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        checkedInCustomerView = [[CheckedInCustomerViewController alloc]
+                         initWithNibName:@"CheckedInCustomerViewController_iPhone"
+                         bundle:nil];
+    }
+    else {
+        checkedInCustomerView = [[CheckedInCustomerViewController alloc]
+                         initWithNibName:@"CheckedInCustomerViewController_iPad"
+                         bundle:nil];
+    }
+    
+    [self.navigationController pushViewController:checkedInCustomerView animated:YES];
     
 }
 
