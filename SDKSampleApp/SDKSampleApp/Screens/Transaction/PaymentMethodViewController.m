@@ -24,7 +24,7 @@
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
-@property PPHTransactionRecord *transactionRecord;
+@property PPHTransactionResponse *transactionResposne;
 
 @end
 
@@ -105,16 +105,8 @@
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
                         _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
-                        if(record.error) {
-                            NSString *message = [NSString stringWithFormat:@"Manual Entry payment finished with an error: %@", record.error.apiMessage];
-                            [self showAlertWithTitle:@"Payment Failed" andMessage:message];
-                        }
-                        else {
-                            PPHTransactionResponse *localTransactionResponse = record;
-                            _transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Manual Entry finished successfully with transactionId: %@", _transactionRecord.transactionId];
-                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
-                        }
+                        self.transactionResposne = record;
+                        [self showPaymentCompeleteView];
                         
                     }];
 }
@@ -129,17 +121,8 @@
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
                         _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
-
-                        if(record.error) {
-                            NSString *message = [NSString stringWithFormat:@"Cash Entry payment finished with an error: %@", record.error.apiMessage];
-                            [self showAlertWithTitle:@"Payment Failed" andMessage:message];
-                        }
-                        else {
-                            PPHTransactionResponse *localTransactionResponse = record;
-                            _transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with invoice Id: %@", _transactionRecord.invoice.paypalInvoiceId];
-                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
-                        }
+                        self.transactionResposne = record;
+                        [self showPaymentCompeleteView];
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
 
@@ -150,7 +133,7 @@
      PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                     initWithNibName:@"PaymentCompleteViewController"
                                                     bundle:nil];
-    paymentCompleteViewController.transactionRecord = _transactionRecord;
+    paymentCompleteViewController.transactionResponse = _transactionResposne;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }
@@ -227,26 +210,21 @@
          [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                        withTransactionController:self
                                                                completionHandler:^(PPHTransactionResponse *response) {
+                                                                   self.transactionResposne = response;
                                                                    if(response.error) {
-                                                                       NSString *message = [NSString stringWithFormat:@"Card payment finished with an error: %@", response.error.apiMessage];
-                                                                       [self showAlertWithTitle:@"Payment Failed" andMessage:message];
+                                                                       [self showPaymentCompeleteView];
                                                                    }
                                                                    else {
-                                                                       PPHTransactionResponse *localTransactionResponse = response;
-                                                                       _transactionRecord = localTransactionResponse.record;
-     
                                                                        // Is a signature required for this payment?  If so
                                                                        // then let's collect a signature and provide it to the SDK.
                                                                        if(response.isSignatureRequiredToFinalize) {
-                                                                           [self collectSignatureAndFinalizePurchaseWithRecord:_transactionRecord];
+                                                                           [self collectSignatureAndFinalizePurchaseWithRecord];
                                                                        }
                                                                        else {
                                                                            // All done.  Tell the user the good news.
                                                                            //Let's exit the payment screen once they hit OK
                                                                            _doneWithPayScreen = YES;
-
-                                                                           NSString *message = [NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", _transactionRecord.transactionId];
-                                                                           [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                                                                           [self showPaymentCompeleteView];
                                                                        }
          
                                                                    }
@@ -254,7 +232,7 @@
      }
 }
 
--(void)collectSignatureAndFinalizePurchaseWithRecord:(PPHTransactionRecord*)record
+-(void)collectSignatureAndFinalizePurchaseWithRecord
 {
     
     SignatureViewController *settings = nil;
@@ -263,13 +241,13 @@
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPhone"
                     bundle:nil
-                    transactionRecord:record];
+                    transactionResponse:_transactionResposne];
     }
     else {
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPad"
                     bundle:nil
-                    transactionRecord:record];
+                    transactionResponse:_transactionResposne];
     }
     
     [self.navigationController pushViewController:settings animated:YES];

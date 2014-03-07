@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-
+@class PPHTransactionResponse;
 @interface PaymentCompleteViewController : UIViewController
 
-@property (strong, nonatomic) PPHTransactionRecord * transactionRecord;
+@property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
+
+@property (weak, nonatomic) IBOutlet UILabel *paymentStatus;
+@property (weak, nonatomic) IBOutlet UILabel *paymentDetails;
 
 -(IBAction)onEmailPressed:(id)sender;
 -(IBAction)onTextPressed:(id)sender;

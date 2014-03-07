@@ -7,9 +7,8 @@
 //
 
 #import "SignatureViewController.h"
-
-#import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
+#import <PayPalHereSDK/PayPalHereSDK.h>
 #import "PaymentCompleteViewController.h"
 
 @interface SignatureViewController () <
@@ -17,18 +16,18 @@
     UIAlertViewDelegate
 >
 
-@property (nonatomic,strong) PPHTransactionRecord* capturedPaymentRecord;
+@property (nonatomic,strong) PPHTransactionResponse* capturedPaymentResponse;
 
 @end
 
 @implementation SignatureViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecord:(PPHTransactionRecord*)capturedPayment
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionResponse:(PPHTransactionResponse*)capturedPayment
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.capturedPaymentRecord = capturedPayment;
+        self.capturedPaymentResponse = capturedPayment;
     }
     return self;
 }
@@ -87,15 +86,15 @@
 {
     
     // Let's provide the signature for this transaction.
-    [[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:_capturedPaymentRecord
+    [[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:_capturedPaymentResponse.record
                         withSignature:self.signature.printableImage
                     completionHandler:^(PPHError *error) {
                         
                         if(error == nil) {
-                            [self showAlertWithTitle:@"Payment Success" andMessage:[NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", _capturedPaymentRecord.transactionId]];
+                            [self showAlertWithTitle:@"Payment Success" andMessage:[NSString stringWithFormat:@"Card payment finished successfully with transactionId: %@", _capturedPaymentResponse.record.transactionId]];
                         }
                         else {
-                            [self showAlertWithTitle:@"Payment Success" andMessage:[NSString stringWithFormat:@"Card payment finished successfully but we failed to provide the signature.  TransacitonId: %@", _capturedPaymentRecord.transactionId]];
+                            [self showAlertWithTitle:@"Payment Success" andMessage:[NSString stringWithFormat:@"Card payment finished successfully but we failed to provide the signature.  TransacitonId: %@", _capturedPaymentResponse.record.transactionId]];
                         }
                         
                         
@@ -104,16 +103,16 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self showPaymentCompeleteView:_capturedPaymentRecord];
+    [self showPaymentCompeleteView:_capturedPaymentResponse];
 }
 
 
--(void) showPaymentCompeleteView:(PPHTransactionRecord *)record
+-(void) showPaymentCompeleteView:(PPHTransactionResponse *)response
 {
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                                     initWithNibName:@"PaymentCompleteViewController"
                                                                     bundle:nil];
-    paymentCompleteViewController.transactionRecord = record;
+    paymentCompleteViewController.transactionResponse = response;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }

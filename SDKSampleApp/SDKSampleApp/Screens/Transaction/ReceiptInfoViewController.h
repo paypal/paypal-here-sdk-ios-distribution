@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
 
+@class PPHTransactionRecord;
 @interface ReceiptInfoViewController : UIViewController
 <
 UIAlertViewDelegate
 >
-
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UITextField *infoTextField;

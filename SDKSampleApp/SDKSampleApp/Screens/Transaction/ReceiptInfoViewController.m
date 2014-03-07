@@ -56,7 +56,8 @@
 
     // Make sure the user has entered some amount:
     NSString *infoString = self.infoTextField.text;
-    if ([infoString length] == 0) {
+    if ([infoString length] == 0)
+    {
         [self showAlertWithTitle:@"Input Error" andMessage:_infoLabel.text];
         return;
     }
@@ -67,11 +68,15 @@
     PPHReceiptDestination * destination = [[PPHReceiptDestination alloc] init];
     destination.destinationAddress = infoString;
     destination.isEmail = _isEmail;
-    [tm sendReceipt:_transactionRecord toRecipient: destination completionHandler:^(PPHError *error) {
-        if(error == nil) {
+    [tm sendReceipt: _transactionRecord toRecipient: destination completionHandler:^(PPHError *error)
+    {
+        if(error == nil)
+        {
             [self showAlertWithTitle:@"Receipt Sent" andMessage:@"Please wait for a few minutes to receive the receipt on your device."];
             
-        } else {
+        }
+        else
+        {
             [self showAlertWithTitle:@"Error while sending receipt." andMessage:error.description];
         }
     }];

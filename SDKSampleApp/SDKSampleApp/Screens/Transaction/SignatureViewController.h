@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PPHSignatureView.h>
 
-@class PPHTransactionRecord;
+@class PPHTransactionResponse;
 
 @interface SignatureViewController : UIViewController
 
@@ -18,6 +18,6 @@
 
 
 - (IBAction)onDonePressed:(id)sender;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecord:(PPHTransactionRecord*)capturedPayment;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionResponse:(PPHTransactionResponse*) capturedPayment;
 
 @end
