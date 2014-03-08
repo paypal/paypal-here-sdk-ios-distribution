@@ -1,5 +1,5 @@
 //
-//  SASignatureViewController.h
+//  SignatureViewController.h
 //  SDKSampleApp
 //
 //  Created by Angelini, Dom on 2/3/14.
@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PPHSignatureView.h>
 
-@class PPHTransactionRecord;
+@class PPHTransactionResponse;
 
-@interface SASignatureViewController : UIViewController
+@interface SignatureViewController : UIViewController
 
 @property (nonatomic,strong) IBOutlet UIButton* charge;
 @property (nonatomic,strong) IBOutlet PPHSignatureView* signature;
 
 
 - (IBAction)onDonePressed:(id)sender;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecord:(PPHTransactionRecord*)capturedPayment;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionResponse:(PPHTransactionResponse*) capturedPayment;
 
 @end
