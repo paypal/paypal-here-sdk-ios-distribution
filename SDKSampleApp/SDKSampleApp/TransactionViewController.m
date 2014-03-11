@@ -122,7 +122,12 @@
     
 	// Make sure the UI is in the right state for the selectd mode:
 	[self changeUIStateForItemizedMode:[self.itemizedModeSegmentedControl selectedSegmentIndex]];
+    
+    _amountTextField.delegate = self;
+    [_amountTextField setReturnKeyType:UIReturnKeyDone];
 }
+
+
 
 
 - (void) didReceiveMemoryWarning
@@ -357,6 +362,10 @@
 {
 	[self.amountTextField resignFirstResponder];
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [_amountTextField resignFirstResponder];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

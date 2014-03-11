@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     NSLog(@"Calling updateNow on Location Watcher to get the current checked in clients for the location ID: %@ ",self.checkinLocationId);
-    [self.locationWatcher updatePeriodically:20 withMaximumInterval:60];
+    
     self.processingTransactionSpinny.hidden=YES;
 }
 
@@ -49,6 +49,7 @@
     [super viewDidUnload];
     [self.locationWatcher stopPeriodicUpdates];
 }
+
 
 -(void)didReceiveMemoryWarning
 {
@@ -59,6 +60,21 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // If we are becoming visible then let's ask
+    // the location watcher to send us periodic updates.  This will
+    // let us know when people check in or out of our store.
+    _locationWatcher.delegate = self;
+    [_locationWatcher updatePeriodically:20 withMaximumInterval:60];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    // If we are becoming invisible then let's ask
+    // the location watcher to stop sending us periodic updates.  Also
+    // clear out the delegate.
+    _locationWatcher.delegate = nil;
+    [_locationWatcher stopPeriodicUpdates];
 }
 
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
