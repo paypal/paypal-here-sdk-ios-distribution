@@ -68,6 +68,7 @@
     NSString* expYearStr = [self.expYear text];
     NSString* cvvStr = [self.cvv text];
     
+    //preliminary checks for entered info...
     if(nil == cardNumStr || nil == expMonthStr || nil == expYearStr || nil == cvvStr
        || (15 > [cardNumStr length]) || (2 != [expMonthStr length]) || (4 != [expYearStr length])
        || (3 != [cvvStr length]) || (12 < [expMonthStr integerValue]) || ([[self getCurrentYear] integerValue] > [expYearStr integerValue])){
