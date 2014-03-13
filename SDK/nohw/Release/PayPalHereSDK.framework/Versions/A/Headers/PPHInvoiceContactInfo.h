@@ -65,6 +65,10 @@
  */
 @property (nonatomic,strong) NSString* postalCode;
 /*!
+ * The tax id (VAT, ABN) of the contact, if available
+ */
+@property (nonatomic,strong) NSString* taxId;
+/*!
  * The state of the address of the contact, if available
  */
 @property (nonatomic,strong) NSString* state;
