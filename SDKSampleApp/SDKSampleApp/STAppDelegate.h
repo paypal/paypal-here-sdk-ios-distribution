@@ -22,5 +22,6 @@
 @property (strong, nonatomic) CLLocationManager *localMgr;
 @property (assign, nonatomic)BOOL isMerchantCheckedin;
 @property (strong, nonatomic) PPHLocation *merchantLocation;
+@property(strong, nonatomic) NSMutableArray *transactionRecords;
 
 @end

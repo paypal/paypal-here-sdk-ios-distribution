@@ -20,6 +20,13 @@ PPHLoggingDelegate
 
 @implementation STAppDelegate
 
+-(NSMutableArray *)transactionRecords
+{
+    if(!_transactionRecords) _transactionRecords =  [[NSMutableArray alloc] init];
+    
+    return _transactionRecords;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

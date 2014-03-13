@@ -9,6 +9,7 @@
 #import "TransactionViewController.h"
 #import "SettingsViewController.h"
 #import "PaymentMethodViewController.h"
+#import "RefundViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
@@ -270,6 +271,16 @@
 	}
     
     [self.navigationController pushViewController:settings animated:YES];
+}
+
+- (IBAction)onRefundsPressed:(id)sender
+{
+    RefundViewController * refund =  [[RefundViewController alloc]
+                         initWithNibName:@"RefundViewController"
+                         bundle:nil];
+    
+    [self.navigationController pushViewController:refund animated:YES];
+    
 }
 
 #pragma mark - UITableViewDataSource callbacks
