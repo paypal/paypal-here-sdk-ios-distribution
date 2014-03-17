@@ -19,7 +19,7 @@
 #import "CheckedInCustomerCell.h"
 #import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerViewController.h"
-#import "ManualCardEntry.h"
+#import "ManualCardEntryViewController.h"
 #import "STAppDelegate.h"
 
 @interface PaymentMethodViewController ()
@@ -85,8 +85,8 @@
 
 -(IBAction)payWithManualEntryCard:(id)sender
 {
-    ManualCardEntry *cardEntryView = [[ManualCardEntry alloc]
-                                 initWithNibName:@"ManualCardEntryController"
+    ManualCardEntryViewController *cardEntryView = [[ManualCardEntryViewController alloc]
+                                 initWithNibName:@"ManualCardEntryViewController"
                                  bundle:nil];
     [self.navigationController pushViewController:cardEntryView animated:YES];
 }
