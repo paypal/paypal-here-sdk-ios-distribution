@@ -110,6 +110,9 @@
             [self getMerchantCheckin:self.merchantLocation];
         }else{
             self.isMerchantCheckinPending = TRUE;
+            self.checkinSwitch.hidden = YES;
+            self.checkinMerchantSpinny.hidden = NO;
+            [self.checkinMerchantSpinny startAnimating];
         }
     }else{
         [self.checkinSwitch setOn:NO animated:YES];
