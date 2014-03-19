@@ -71,7 +71,6 @@
     self.totalLabel.text = totalStr;
     self.tipLabel.text = tipStr;
     self.taxLabel.text = totalTaxStr;
-    
     [self.processingTransactionSpinny stopAnimating];
     self.processingTransactionSpinny.hidden = YES;
 }
@@ -110,9 +109,14 @@
 
 -(void) showPaymentCompeleteView
 {
-     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Add the record into an array so that we can issue a refund later.
+    [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                     initWithNibName:@"PaymentCompleteViewController"
-                                                    bundle:nil];
+                                                             bundle:nil];
     paymentCompleteViewController.transactionResponse = _transactionResposne;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
