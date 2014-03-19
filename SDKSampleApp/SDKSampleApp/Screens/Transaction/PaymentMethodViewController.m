@@ -19,6 +19,7 @@
 #import "CheckedInCustomerCell.h"
 #import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerViewController.h"
+#import "ManualCardEntryViewController.h"
 #import "STAppDelegate.h"
 
 @interface PaymentMethodViewController ()
@@ -83,32 +84,10 @@
 
 -(IBAction)payWithManualEntryCard:(id)sender
 {
-    // Setup the manually entered card data
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setMonth:9];
-    [comps setYear:2019];
-    
-    PPHCardNotPresentData *manualCardData = [[PPHCardNotPresentData alloc] init];
-    manualCardData.cardNumber = @"4111111111111111";
-    manualCardData.cvv2 = @"408";
-    manualCardData.expirationDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    
-    
-    //Now, take a payment with it
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    
-    //[tm beginPaymentWithAmount:[PPHAmount amountWithString:@"33.00" inCurrency:@"USD"] andName:@"FixedAmountPayment"];
-    tm.manualEntryOrScannedCardData = manualCardData;
-    
-    
-    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
-            withTransactionController:self
-                    completionHandler:^(PPHTransactionResponse *record) {
-                        _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
-                        self.transactionResposne = record;
-                        [self showPaymentCompeleteView];
-                        
-                    }];
+    ManualCardEntryViewController *cardEntryView = [[ManualCardEntryViewController alloc]
+                                 initWithNibName:@"ManualCardEntryViewController"
+                                 bundle:nil];
+    [self.navigationController pushViewController:cardEntryView animated:YES];
 }
 
 -(IBAction)payWithCashEntryCard:(id)sender

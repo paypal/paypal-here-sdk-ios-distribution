@@ -69,6 +69,8 @@
 		99D9817C1835995100D234A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D9817B1835995100D234A1 /* UIKit.framework */; };
 		99D9817E1835995100D234A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D9817D1835995100D234A1 /* Foundation.framework */; };
 		99D981801835995100D234A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D9817F1835995100D234A1 /* CoreGraphics.framework */; };
+		DE4208B018CFD2030008C5BF /* ManualCardEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4208AE18CFD2030008C5BF /* ManualCardEntryViewController.xib */; };
+		DE4CBABA18D7AC0B009854BD /* ManualCardEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4CBAB918D7AC0B009854BD /* ManualCardEntryViewController.m */; };
 		DE5A6E4518C945F7007361F6 /* CheckedInCustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5A6E4118C945F7007361F6 /* CheckedInCustomerCell.m */; };
 		DE5A6E4618C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE5A6E4218C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib */; };
 		DE5A6E4718C945F7007361F6 /* CheckedInCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5A6E4418C945F7007361F6 /* CheckedInCustomerViewController.m */; };
@@ -165,6 +167,9 @@
 		99D9817B1835995100D234A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		99D9817D1835995100D234A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		99D9817F1835995100D234A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DE4208AE18CFD2030008C5BF /* ManualCardEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManualCardEntryViewController.xib; path = SDKSampleApp/Screens/Transaction/ManualEntry/ManualCardEntryViewController.xib; sourceTree = SOURCE_ROOT; };
+		DE4CBAB818D7AC0B009854BD /* ManualCardEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManualCardEntryViewController.h; path = SDKSampleApp/Screens/Transaction/ManualEntry/ManualCardEntryViewController.h; sourceTree = SOURCE_ROOT; };
+		DE4CBAB918D7AC0B009854BD /* ManualCardEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManualCardEntryViewController.m; path = SDKSampleApp/Screens/Transaction/ManualEntry/ManualCardEntryViewController.m; sourceTree = SOURCE_ROOT; };
 		DE5A6E4018C945F7007361F6 /* CheckedInCustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckedInCustomerCell.h; path = SDKSampleApp/Screens/Transaction/Checkin/CheckedInCustomerCell.h; sourceTree = SOURCE_ROOT; };
 		DE5A6E4118C945F7007361F6 /* CheckedInCustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckedInCustomerCell.m; path = SDKSampleApp/Screens/Transaction/Checkin/CheckedInCustomerCell.m; sourceTree = SOURCE_ROOT; };
 		DE5A6E4218C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckedInCustomerViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/Checkin/CheckedInCustomerViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
@@ -313,6 +318,7 @@
 		99859E4B183C38FB00AB3FE1 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				DE4208AB18CFD1DD0008C5BF /* ManualCardEntry */,
 				191DB94218C8440F005C0FC8 /* PaymentCompleteViewController.h */,
 				191DB94318C8440F005C0FC8 /* PaymentCompleteViewController.m */,
 				191DB94418C8440F005C0FC8 /* PaymentCompleteViewController.xib */,
@@ -410,6 +416,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DE4208AB18CFD1DD0008C5BF /* ManualCardEntry */ = {
+			isa = PBXGroup;
+			children = (
+				DE4CBAB818D7AC0B009854BD /* ManualCardEntryViewController.h */,
+				DE4CBAB918D7AC0B009854BD /* ManualCardEntryViewController.m */,
+				DE4208AE18CFD2030008C5BF /* ManualCardEntryViewController.xib */,
+			);
+			name = ManualCardEntry;
+			sourceTree = "<group>";
+		};
 		DE5A6E3F18C945D2007361F6 /* Checkin */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,7 +469,7 @@
 				ORGANIZATIONNAME = PayPalHereSDK;
 				TargetAttributes = {
 					99D981771835995100D234A1 = {
-						DevelopmentTeam = 52A5T5596S;
+						DevelopmentTeam = 7NGG64KSJB;
 					};
 				};
 			};
@@ -491,6 +507,7 @@
 				001569F6188E02230023053A /* InfoPlist.strings in Resources */,
 				007DE87C18A062DC004D8847 /* SignatureViewController_iPhone.xib in Resources */,
 				00DD4A2618C135EA00F5CA33 /* AddTipViewController.xib in Resources */,
+				DE4208B018CFD2030008C5BF /* ManualCardEntryViewController.xib in Resources */,
 				001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */,
 				001569A9188E01270023053A /* banana.jpg in Resources */,
 				191DB94C18C8440F005C0FC8 /* PaymentCompleteViewController.xib in Resources */,
@@ -531,6 +548,7 @@
 				DE5A6E4718C945F7007361F6 /* CheckedInCustomerViewController.m in Sources */,
 				007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */,
 				001569E4188E01DD0023053A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				DE4CBABA18D7AC0B009854BD /* ManualCardEntryViewController.m in Sources */,
 				001569C5188E01B20023053A /* TransactionViewController.m in Sources */,
 				007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */,
 				00DD4A2B18C135EA00F5CA33 /* PaymentMethodViewController.m in Sources */,

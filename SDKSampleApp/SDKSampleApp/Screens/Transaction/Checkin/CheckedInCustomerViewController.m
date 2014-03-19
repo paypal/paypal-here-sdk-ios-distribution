@@ -13,13 +13,13 @@
 
 
 #import "CheckedInCustomerViewController.h"
+#import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerCell.h"
 #import "STAppDelegate.h"
 
 @interface CheckedInCustomerViewController ()
 @property (nonatomic,strong) NSMutableArray *checkedInClients;
 @property (nonatomic,strong) PPHLocationWatcher *locationWatcher;
-@property (assign, nonatomic)BOOL doneWithPayScreen;
 @end
 
 
@@ -100,7 +100,6 @@
     [tm processPaymentWithPaymentType:ePPHPaymentMethodPaypal
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
-                        _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
                         [self.processingTransactionSpinny stopAnimating];
                         self.processingTransactionSpinny.hidden=YES;
                         if(record.error) {
@@ -109,9 +108,9 @@
                         }
                         else {
                             PPHTransactionResponse *localTransactionResponse = record;
-                            PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
-                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
+                            paymentCompleteViewController.transactionResponse = localTransactionResponse;
+                            [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
                         }
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
@@ -119,13 +118,6 @@
 }
 
 
-#pragma mark UIAlertViewDelegate
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if(self.doneWithPayScreen){
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-}
 
 #pragma mark PPHTransactionControllerDelegate
 -(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSString*) preAuthJSON
