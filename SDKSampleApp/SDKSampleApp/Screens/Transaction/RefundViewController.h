@@ -15,6 +15,6 @@ UITableViewDelegate,
 UIAlertViewDelegate
 >
 
-@property(weak, nonatomic) IBOutlet UITableView *refundTableView;
+@property (weak, nonatomic) IBOutlet UITableView *refundTableView;
 
 @end

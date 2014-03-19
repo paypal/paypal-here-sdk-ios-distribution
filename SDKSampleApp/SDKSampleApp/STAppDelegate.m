@@ -22,8 +22,9 @@ PPHLoggingDelegate
 
 -(NSMutableArray *)transactionRecords
 {
-    if(!_transactionRecords) _transactionRecords =  [[NSMutableArray alloc] init];
-    
+    if(!_transactionRecords) {
+        _transactionRecords =  [[NSMutableArray alloc] init];
+    }
     return _transactionRecords;
 }
 
@@ -77,7 +78,6 @@ PPHLoggingDelegate
     
     return YES;
 }
-
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {   

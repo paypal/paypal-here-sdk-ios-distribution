@@ -15,7 +15,7 @@
 
 @interface RefundViewController ()
 
-@property(strong, nonatomic) NSMutableArray *transactionRecords;
+@property (strong, nonatomic) NSMutableArray *transactionRecords;
 
 @end
 
@@ -68,32 +68,25 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PPHTransactionRecord *record = [self.transactionRecords objectAtIndex:indexPath.row];
-    if(record != nil)
-    {
+    if(record != nil) {
         [self performRefund:record];
-    }
-    else
-    {
+    } else {
         // Show an error message.
     }
 }
 
+// Call the refund API within the SDK to perform the refund.
 -(void) performRefund: (PPHTransactionRecord *) trxnRecord
 {
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    [tm beginRefund:trxnRecord forAmount:trxnRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response)
-    {
-        if(response.error)
-        {
+    [tm beginRefund:trxnRecord forAmount:trxnRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response) {
+        if(response.error) {
             [self showAlertWithTitle:@"Refund Error" andMessage:response.error.description];
-        }
-        else
-        {
+        } else {
             [self showAlertWithTitle:@"Refund Successful" andMessage:@"Your transaction amount was successfully refunded."];
         }
         // Remove this transaction record from the table view.
         [self removeRefundedRecordFromTableView:trxnRecord];
-        
     }];
 }
 
@@ -108,19 +101,17 @@
     UIAlertView *alertView =
     [[UIAlertView alloc]
      initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
+           message: message
+          delegate:self
+ cancelButtonTitle:@"OK"
+ otherButtonTitles:nil];
     
     [alertView show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
-
 
 @end
