@@ -27,7 +27,7 @@
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
 @property BOOL isCashTransaction;
-@property PPHTransactionResponse *transactionResposne;
+@property PPHTransactionResponse *transactionResponse;
 
 @end
 
@@ -105,7 +105,7 @@
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
                         _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
-                        self.transactionResposne = record;
+                        self.transactionResponse = record;
                         [self showPaymentCompeleteView];
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
@@ -118,13 +118,13 @@
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
-        [appDelegate.transactionRecords addObject:_transactionResposne.record];
+        [appDelegate.transactionRecords addObject:_transactionResponse.record];
     }
     
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                     initWithNibName:@"PaymentCompleteViewController"
                                                              bundle:nil];
-    paymentCompleteViewController.transactionResponse = _transactionResposne;
+    paymentCompleteViewController.transactionResponse = _transactionResponse;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }
@@ -230,7 +230,7 @@
          [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                        withTransactionController:self
                                                                completionHandler:^(PPHTransactionResponse *response) {
-                                                                   self.transactionResposne = response;
+                                                                   self.transactionResponse = response;
                                                                    if(response.error) {
                                                                        [self showPaymentCompeleteView];
                                                                    }
@@ -261,13 +261,13 @@
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPhone"
                     bundle:nil
-                    transactionResponse:_transactionResposne];
+                    transactionResponse:_transactionResponse];
     }
     else {
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPad"
                     bundle:nil
-                    transactionResponse:_transactionResposne];
+                    transactionResponse:_transactionResponse];
     }
     
     [self.navigationController pushViewController:settings animated:YES];

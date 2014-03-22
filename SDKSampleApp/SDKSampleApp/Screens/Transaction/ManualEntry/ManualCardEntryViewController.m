@@ -11,7 +11,7 @@
 #import "STAppDelegate.h"
 
 @interface ManualCardEntryViewController ()
-@property (strong, nonatomic)PPHTransactionResponse *transactionResposne;
+@property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
 @end
 
 @implementation ManualCardEntryViewController
@@ -115,7 +115,7 @@
     [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
-                        self.transactionResposne = record;
+                        self.transactionResponse = record;
                         [self showPaymentCompeleteView];
                     }];
 
@@ -126,10 +126,10 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Add the record into an array so that we can issue a refund later.
-    [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    [appDelegate.transactionRecords addObject:_transactionResponse.record];
 
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
-    paymentCompleteViewController.transactionResponse = _transactionResposne;
+    paymentCompleteViewController.transactionResponse = _transactionResponse;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES]; 
 }
 
