@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.processingRefundSpinny.hidden=YES;
     // Do any additional setup after loading the view from its nib.
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.transactionRecords = appDelegate.transactionRecords;
@@ -72,12 +73,16 @@
         [self performRefund:record];
     } else {
         // Show an error message.
+        NSLog(@"The selected record seems to be nil.");
     }
 }
 
 // Call the refund API within the SDK to perform the refund.
 -(void) performRefund: (PPHTransactionRecord *) trxnRecord
 {
+    self.processingRefundSpinny.hidden=NO;
+    [self.processingRefundSpinny startAnimating];
+    
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     [tm beginRefund:trxnRecord forAmount:trxnRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response) {
         if(response.error) {

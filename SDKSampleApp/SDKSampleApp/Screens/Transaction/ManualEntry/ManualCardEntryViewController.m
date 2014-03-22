@@ -8,6 +8,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
+#import "STAppDelegate.h"
 
 @interface ManualCardEntryViewController ()
 @property (strong, nonatomic)PPHTransactionResponse *transactionResposne;
@@ -122,6 +123,11 @@
 
 -(void) showPaymentCompeleteView
 {
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Add the record into an array so that we can issue a refund later.
+    [appDelegate.transactionRecords addObject:_transactionResposne.record];
+
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
     paymentCompleteViewController.transactionResponse = _transactionResposne;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES]; 

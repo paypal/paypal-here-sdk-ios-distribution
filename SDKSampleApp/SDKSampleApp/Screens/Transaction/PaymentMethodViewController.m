@@ -26,6 +26,7 @@
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
+@property BOOL isCashTransaction;
 @property PPHTransactionResponse *transactionResposne;
 
 @end
@@ -39,6 +40,7 @@
 		self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
         self.waitingForCardSwipe = YES;
         self.doneWithPayScreen = NO;
+        self.isCashTransaction = NO;
     }
     return self;
 }
@@ -92,6 +94,9 @@
 
 -(IBAction)payWithCashEntryCard:(id)sender
 {
+    // Since this is a cash transaction, set this flag.
+    // We will not be saving these transaction records since we would not perform refunds on cash transactions.
+    self.isCashTransaction = YES;
     
     //For Cash the PPHTransactionManager will simply record the invoice to the backend.
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
@@ -109,10 +114,12 @@
 
 -(void) showPaymentCompeleteView
 {
-    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // Add the record into an array so that we can issue a refund later.
-    [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    if(!_isCashTransaction) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    }
     
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                     initWithNibName:@"PaymentCompleteViewController"
