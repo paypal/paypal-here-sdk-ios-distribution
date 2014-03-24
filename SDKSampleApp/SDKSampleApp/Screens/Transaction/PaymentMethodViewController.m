@@ -111,7 +111,9 @@
 {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    if (_transactionResposne.record != nil) {
+        [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    }
 
     PaymentCompleteViewController *paymentCompleteViewController;
     
