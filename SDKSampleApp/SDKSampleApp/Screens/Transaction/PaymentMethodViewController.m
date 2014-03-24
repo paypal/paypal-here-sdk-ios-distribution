@@ -85,8 +85,8 @@
 -(IBAction)payWithManualEntryCard:(id)sender
 {
     ManualCardEntryViewController *cardEntryView = [[ManualCardEntryViewController alloc]
-                                 initWithNibName:@"ManualCardEntryViewController"
-                                 bundle:nil];
+                                                    initWithNibName:@"ManualCardEntryViewController"
+                                                    bundle:nil];
     [self.navigationController pushViewController:cardEntryView animated:YES];
 }
 
@@ -110,16 +110,18 @@
 -(void) showPaymentCompeleteView
 {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // Add the record into an array so that we can issue a refund later.
+
     [appDelegate.transactionRecords addObject:_transactionResposne.record];
+
+    PaymentCompleteViewController *paymentCompleteViewController;
     
-    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
-                                                    initWithNibName:@"PaymentCompleteViewController"
-                                                             bundle:nil];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController_iPhone" bundle:nil];
+    } else {
+        paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController_iPad" bundle:nil];
+    }
     paymentCompleteViewController.transactionResponse = _transactionResposne;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
-    
 }
 
 -(IBAction)payWithCheckedInClient:(id)sender
@@ -247,9 +249,7 @@
 
 -(void)collectSignatureAndFinalizePurchaseWithRecord
 {
-    
     SignatureViewController *settings = nil;
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPhone"
@@ -262,18 +262,17 @@
                     bundle:nil
                     transactionResponse:_transactionResposne];
     }
-    
     [self.navigationController pushViewController:settings animated:YES];
 }
 
 - (IBAction)addTip:(id)sender
 {
-    AddTipViewController *addTipVC = [[AddTipViewController alloc]
-                    initWithNibName:@"AddTipViewController"
-                    bundle:nil
-                    forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    
-    
+    AddTipViewController *addTipVC = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPhone" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
+    } else {
+        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPad" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
+    }
     [self.navigationController pushViewController:addTipVC animated:YES];
 }
 

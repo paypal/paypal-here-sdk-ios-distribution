@@ -20,6 +20,7 @@
 @interface CheckedInCustomerViewController ()
 @property (nonatomic,strong) NSMutableArray *checkedInClients;
 @property (nonatomic,strong) PPHLocationWatcher *locationWatcher;
+@property (assign, nonatomic)BOOL doneWithPayScreen;
 @end
 
 
@@ -118,6 +119,13 @@
 }
 
 
+#pragma mark UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(self.doneWithPayScreen){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
 
 #pragma mark PPHTransactionControllerDelegate
 -(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSString*) preAuthJSON
