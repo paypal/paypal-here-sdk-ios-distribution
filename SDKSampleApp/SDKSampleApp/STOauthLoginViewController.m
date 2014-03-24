@@ -424,6 +424,7 @@
                          bundle:nil];
 	}
 	else {
+        NSLog(@"stepping in ipad detection");
 		transactionVC = [[TransactionViewController alloc]
                          initWithNibName:@"TransactionViewController_iPad"
                          bundle:nil];

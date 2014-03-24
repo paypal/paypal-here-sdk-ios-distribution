@@ -73,9 +73,16 @@
 
 -(void) showReceiptView:(BOOL)isEmail
 {
-    ReceiptInfoViewController* receiptInfoViewController = [[ReceiptInfoViewController alloc]
-                                                                    initWithNibName:@"ReceiptInfoViewController"
-                                                                             bundle:nil];
+    ReceiptInfoViewController* receiptInfoViewController = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        receiptInfoViewController = [[ReceiptInfoViewController alloc]
+                         initWithNibName:@"ReceiptInfoViewController_iPhone"
+                         bundle:nil];
+    } else {
+        receiptInfoViewController = [[ReceiptInfoViewController alloc]
+                                     initWithNibName:@"ReceiptInfoViewController_iPad"
+                                     bundle:nil];
+    }
     receiptInfoViewController.isEmail = isEmail;
     receiptInfoViewController.transactionRecord = _transactionResponse.record;
     [self.navigationController pushViewController:receiptInfoViewController animated:YES];

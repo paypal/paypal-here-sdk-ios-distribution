@@ -21,6 +21,7 @@
 @property (nonatomic,strong) NSMutableArray *checkedInClients;
 @property (nonatomic,strong) PPHLocationWatcher *locationWatcher;
 @property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
+@property (assign, nonatomic) BOOL doneWithPayScreen;
 @end
 
 
@@ -126,6 +127,14 @@
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
     paymentCompleteViewController.transactionResponse = _transactionResponse;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+}
+
+#pragma mark UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(self.doneWithPayScreen){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark PPHTransactionControllerDelegate

@@ -55,6 +55,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
+    NSLog(@"In settings view controller");
 }
 
 -(void)viewDidUnload
@@ -103,6 +104,7 @@
 {
     NSLog(@"onCheckinButton clicked");
     if(self.checkinSwitch.on){
+        NSLog(@"In Check In Switch On");
         if(nil != self.merchantLocation){
             self.checkinSwitch.hidden = YES;
             self.checkinMerchantSpinny.hidden = NO;
@@ -110,11 +112,9 @@
             [self getMerchantCheckin:self.merchantLocation];
         }else{
             self.isMerchantCheckinPending = TRUE;
-            self.checkinSwitch.hidden = YES;
-            self.checkinMerchantSpinny.hidden = NO;
-            [self.checkinMerchantSpinny startAnimating];
         }
     }else{
+        NSLog(@"In Check In Switch Off");
         [self.checkinSwitch setOn:NO animated:YES];
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         PPHLocation *myLocation = appDelegate.merchantLocation;
