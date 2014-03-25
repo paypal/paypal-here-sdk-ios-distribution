@@ -20,7 +20,8 @@
 @interface CheckedInCustomerViewController ()
 @property (nonatomic,strong) NSMutableArray *checkedInClients;
 @property (nonatomic,strong) PPHLocationWatcher *locationWatcher;
-@property (assign, nonatomic)BOOL doneWithPayScreen;
+@property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
+@property (assign, nonatomic) BOOL doneWithPayScreen;
 @end
 
 
@@ -108,16 +109,25 @@
                             [self showAlertWithTitle:@"Payment Failed" andMessage:message];
                         }
                         else {
-                            PPHTransactionResponse *localTransactionResponse = record;
-                            PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
-                            paymentCompleteViewController.transactionResponse = localTransactionResponse;
-                            [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+                            self.transactionResponse = record;
+                            [self showPaymentCompeleteView];
                         }
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
     
 }
 
+-(void) showPaymentCompeleteView
+{
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Add the record into an array so that we can issue a refund later.
+    [appDelegate.transactionRecords addObject:_transactionResponse.record];
+    
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
+    paymentCompleteViewController.transactionResponse = _transactionResponse;
+    [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+}
 
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex

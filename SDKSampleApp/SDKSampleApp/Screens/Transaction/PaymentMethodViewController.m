@@ -26,7 +26,8 @@
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
-@property PPHTransactionResponse *transactionResposne;
+@property BOOL isCashTransaction;
+@property PPHTransactionResponse *transactionResponse;
 
 @end
 
@@ -39,6 +40,7 @@
 		self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
         self.waitingForCardSwipe = YES;
         self.doneWithPayScreen = NO;
+        self.isCashTransaction = NO;
     }
     return self;
 }
@@ -92,6 +94,9 @@
 
 -(IBAction)payWithCashEntryCard:(id)sender
 {
+    // Since this is a cash transaction, set this flag.
+    // We will not be saving these transaction records since we would not perform refunds on cash transactions.
+    self.isCashTransaction = YES;
     
     //For Cash the PPHTransactionManager will simply record the invoice to the backend.
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
@@ -100,7 +105,7 @@
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
                         _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
-                        self.transactionResposne = record;
+                        self.transactionResponse = record;
                         [self showPaymentCompeleteView];
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
@@ -109,12 +114,13 @@
 
 -(void) showPaymentCompeleteView
 {
-    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    if (_transactionResposne.record != nil) {
-        [appDelegate.transactionRecords addObject:_transactionResposne.record];
+    if(!_isCashTransaction && _transactionResponse.record != nil) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.transactionRecords addObject:_transactionResponse.record];
     }
-
+    
     PaymentCompleteViewController *paymentCompleteViewController;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -122,7 +128,8 @@
     } else {
         paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController_iPad" bundle:nil];
     }
-    paymentCompleteViewController.transactionResponse = _transactionResposne;
+    
+    paymentCompleteViewController.transactionResponse = _transactionResponse;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
 }
 
@@ -227,7 +234,7 @@
          [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                        withTransactionController:self
                                                                completionHandler:^(PPHTransactionResponse *response) {
-                                                                   self.transactionResposne = response;
+                                                                   self.transactionResponse = response;
                                                                    if(response.error) {
                                                                        [self showPaymentCompeleteView];
                                                                    }
@@ -256,13 +263,13 @@
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPhone"
                     bundle:nil
-                    transactionResponse:_transactionResposne];
+                    transactionResponse:_transactionResponse];
     }
     else {
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPad"
                     bundle:nil
-                    transactionResponse:_transactionResposne];
+                    transactionResponse:_transactionResponse];
     }
     [self.navigationController pushViewController:settings animated:YES];
 }
