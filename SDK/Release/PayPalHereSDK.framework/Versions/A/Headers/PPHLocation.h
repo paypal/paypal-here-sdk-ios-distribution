@@ -56,6 +56,13 @@ typedef NS_ENUM(NSInteger,PPHGratuityType) {
 -(void)save: (void (^)(PPHError* error)) completionHandler;
 
 /*!
+ * Delete a PPHLocation.
+ *
+ * @param completionHandler called when the network request completes
+ */
+-(void)deleteLocation: (void (^)(PPHError *)) completionHandler;
+
+/*!
  * The internal name of the location; this must be unique for the merchant
  */
 @property (nonatomic,strong) NSString *internalName;

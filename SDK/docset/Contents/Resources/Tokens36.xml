@@ -113,6 +113,34 @@ with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Authorize funds against a card that has been passed through a reader and for which magstripe data is available.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCardPresentAuthorizationAttempt:(PPHCardSwipeData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">from PPCardReaderManager swipe event</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter><Parameter>
+					<Name>signature</Name>
+					<Abstract type="html">the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="36"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Collect funds against a card that has been manually entered.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
@@ -133,6 +161,30 @@ attempting to collect payment.</Abstract>
 			</Parameters>
 			
 			<Anchor>//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="36"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCapture:forInvoice:withAmount:asFinal:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Capture funds against an authorization</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCapture:(PPHCardChargeResponse *)authorization forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice withAmount:(PPHAmount *)amount asFinal:(BOOL)finalCapture completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/beginCapture:forInvoice:withAmount:asFinal:completionHandler:</Anchor>
+            <NodeRef refid="36"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginVoid:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Void an existing authorization</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginVoid:(PPHCardChargeResponse *)authorization forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/beginVoid:forInvoice:completionHandler:</Anchor>
             <NodeRef refid="36"/>
 		</Token>
 		
@@ -186,63 +238,6 @@ attempting to collect payment.</Abstract>
 			</Parameters>
 			
 			<Anchor>//api/name/provideSignature:forTransaction:andInvoice:completionHandler:</Anchor>
-            <NodeRef refid="36"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/finalizeChipAndPin:withAuth:forInvoice:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Capture funds against a chip&amp;amp;pin or chip card</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>- (void)finalizeChipAndPin:(PPHChipAndPinEventWithEmv *)approvalFromTerminalOrNil withAuth:(PPHChipAndPinAuthResponse *)auth forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>approvalFromTerminalOrNil</Name>
-					<Abstract type="html">for chip&amp;amp;pin card, this is passed to you by PPHCardReaderManager event</Abstract>
-				</Parameter><Parameter>
-					<Name>auth</Name>
-					<Abstract type="html">for chip&amp;amp;pin card, this is passed to you by PPHCardReaderManager event</Abstract>
-				</Parameter><Parameter>
-					<Name>invoice</Name>
-					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
-attempting to collect payment.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">called when the action has completed</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/finalizeChipAndPin:withAuth:forInvoice:completionHandler:</Anchor>
-            <NodeRef refid="36"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Capture funds against a chip&amp;amp;pin&amp;amp;signature or chip&amp;amp;signature card</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>- (void)finalizeChipAndPin:(PPHChipAndPinEventWithEmv *)approvalFromTerminalOrNil withSignature:(UIImage *)signature andAuth:(PPHChipAndPinAuthResponse *)auth forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>approvalFromTerminalOrNil</Name>
-					<Abstract type="html">for chip&amp;amp;pin card, this is passed to you by PPHCardReaderManager event</Abstract>
-				</Parameter><Parameter>
-					<Name>signature</Name>
-					<Abstract type="html">the buyer-generated signature</Abstract>
-				</Parameter><Parameter>
-					<Name>auth</Name>
-					<Abstract type="html">for chip&amp;amp;pin card, this is passed to you by PPHCardReaderManager event</Abstract>
-				</Parameter><Parameter>
-					<Name>invoice</Name>
-					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
-attempting to collect payment.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">called when the action has completed</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/finalizeChipAndPin:withSignature:andAuth:forInvoice:completionHandler:</Anchor>
             <NodeRef refid="36"/>
 		</Token>
 		

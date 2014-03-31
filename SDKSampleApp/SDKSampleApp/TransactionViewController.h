@@ -28,6 +28,7 @@ UITableViewDataSource
 - (IBAction)itemizedModeChanged:(id)sender;
 - (IBAction)onChargePressed:(id)sender;
 - (IBAction)onSettingsPressed:(id)sender;
+- (IBAction)onRefundsPressed:(id)sender;
 
 @end
 
