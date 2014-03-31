@@ -159,7 +159,7 @@
 	if (self.readerMetadata != nil) {
 		readerInfoVC.serialNumber = self.readerMetadata.serialNumber;
 		readerInfoVC.firmwareRevision = self.readerMetadata.firmwareRevision;
-		readerInfoVC.batteryLevel = [NSString stringWithFormat:@"%d", self.readerMetadata.batteryLevel];
+		readerInfoVC.batteryLevel = [NSString stringWithFormat:@"%ldd", self.readerMetadata.batteryLevel];
 	}
     
 	[self.navigationController pushViewController:readerInfoVC animated:YES];
@@ -238,7 +238,7 @@
 	const NSInteger kZero = 0;
     
 	if (metadata.batteryLevel != kZero) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Battery Level %d", metadata.batteryLevel]);
+		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Battery Level %ld", metadata.batteryLevel]);
 	}
     
 }
@@ -309,7 +309,7 @@
                 appDelegate.isMerchantCheckedin = YES;
                 [self.checkinSwitch setOn:YES animated:YES];
             }else{
-                NSLog(@"Oops.. We got error while saving the location. Error Code: %d Error Description: %@",error.code, error.description);
+                NSLog(@"Oops.. We got error while saving the location. Error Code: %ld Error Description: %@",error.code, error.description);
                 [self.checkinSwitch setOn:NO animated:YES];
             }
             [self.checkinMerchantSpinny stopAnimating];

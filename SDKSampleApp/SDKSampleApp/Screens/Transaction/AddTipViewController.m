@@ -106,8 +106,8 @@
     
     NSDecimalNumber *num = [self formatNumber:newValue];
     NSString *newStr = [num description];
-    int desiredLen = [newStr length];
-    int currentLen = [_tipToAdd.text length];
+    int desiredLen = (int) [newStr length];
+    int currentLen = (int) [_tipToAdd.text length];
     if(![self isPeriod:string] && desiredLen == currentLen) {
         return NO;
     }
