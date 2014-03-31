@@ -82,7 +82,7 @@
 	const NSInteger kZero = 0;
 
 	if (metadata.batteryLevel != kZero) {
-		self.batteryLevel = [NSString stringWithFormat:@"%d", metadata.batteryLevel];
+		self.batteryLevel = [NSString stringWithFormat:@"%ld", metadata.batteryLevel];
 	}
 	else {
 		self.batteryLevel = nil;

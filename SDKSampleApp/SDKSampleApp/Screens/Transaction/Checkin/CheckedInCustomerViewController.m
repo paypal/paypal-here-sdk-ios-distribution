@@ -13,13 +13,15 @@
 
 
 #import "CheckedInCustomerViewController.h"
+#import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerCell.h"
 #import "STAppDelegate.h"
 
 @interface CheckedInCustomerViewController ()
 @property (nonatomic,strong) NSMutableArray *checkedInClients;
 @property (nonatomic,strong) PPHLocationWatcher *locationWatcher;
-@property (assign, nonatomic)BOOL doneWithPayScreen;
+@property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
+@property (assign, nonatomic) BOOL doneWithPayScreen;
 @end
 
 
@@ -100,7 +102,6 @@
     [tm processPaymentWithPaymentType:ePPHPaymentMethodPaypal
             withTransactionController:self
                     completionHandler:^(PPHTransactionResponse *record) {
-                        _doneWithPayScreen = YES;   //Let's exit the payment screen once they hit OK
                         [self.processingTransactionSpinny stopAnimating];
                         self.processingTransactionSpinny.hidden=YES;
                         if(record.error) {
@@ -108,16 +109,25 @@
                             [self showAlertWithTitle:@"Payment Failed" andMessage:message];
                         }
                         else {
-                            PPHTransactionResponse *localTransactionResponse = record;
-                            PPHTransactionRecord *transactionRecord = localTransactionResponse.record;
-                            NSString *message = [NSString stringWithFormat:@"Cash Entry finished successfully with transactionId: %@", transactionRecord.transactionId];
-                            [self showAlertWithTitle:@"Payment Success" andMessage:message];
+                            self.transactionResponse = record;
+                            [self showPaymentCompeleteView];
                         }
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
     
 }
 
+-(void) showPaymentCompeleteView
+{
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Add the record into an array so that we can issue a refund later.
+    [appDelegate.transactionRecords addObject:_transactionResponse.record];
+    
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
+    paymentCompleteViewController.transactionResponse = _transactionResponse;
+    [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+}
 
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -186,7 +196,7 @@
 #pragma mark PPHLocationWatcherDelegate
 -(void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified
 {
-    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %d",[openTabs count]);
+    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %lu",[openTabs count]);
     self.checkedInClients = [[NSMutableArray alloc] initWithArray:openTabs];
     [self.tableView reloadData];
 }

@@ -36,21 +36,15 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(_transactionResponse.error == nil)
-    {
+    if(_transactionResponse.error == nil) {
         self.paymentStatus.text = @"Payment Successful";
-        if(_transactionResponse.record.transactionId != nil)
-        {
+        if(_transactionResponse.record.transactionId != nil) {
             self.paymentDetails.text = [NSString stringWithFormat: @"Transaction Id : %@", _transactionResponse.record.transactionId];
-        }
-        else
-        {
+        } else {
             self.paymentDetails.text = [NSString stringWithFormat: @"Invoice Id : %@", _transactionResponse.record.payPalInvoiceId];
         }
-        
     }
-    else
-    {
+    else {
         self.paymentStatus.text = @"Payment Declined";
         self.paymentDetails.text = [NSString stringWithFormat: @"Error : %@", _transactionResponse.error.description];
     }
@@ -79,9 +73,16 @@
 
 -(void) showReceiptView:(BOOL)isEmail
 {
-    ReceiptInfoViewController* receiptInfoViewController = [[ReceiptInfoViewController alloc]
-                                                                    initWithNibName:@"ReceiptInfoViewController"
-                                                                    bundle:nil];
+    ReceiptInfoViewController* receiptInfoViewController = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        receiptInfoViewController = [[ReceiptInfoViewController alloc]
+                         initWithNibName:@"ReceiptInfoViewController_iPhone"
+                         bundle:nil];
+    } else {
+        receiptInfoViewController = [[ReceiptInfoViewController alloc]
+                                     initWithNibName:@"ReceiptInfoViewController_iPad"
+                                     bundle:nil];
+    }
     receiptInfoViewController.isEmail = isEmail;
     receiptInfoViewController.transactionRecord = _transactionResponse.record;
     [self.navigationController pushViewController:receiptInfoViewController animated:YES];

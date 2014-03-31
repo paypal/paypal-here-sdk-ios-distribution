@@ -80,6 +80,11 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
 /*! Stores the last five error objects created, for easier debugging and reporting when problems occur */
 +(NSArray*)recentErrors;
 
+/*! Generate an NSDictionary representing this error object, typically for writing to JSON */
+- (NSDictionary *) asDictionary;
+
+/*! Read a PPHError from a dictionary created by NSDictionary */
+- (id) initWithDictionary: (NSDictionary *) dictionary;
 @end
 
 #define kPPHLocalErrorDomain        @"PPHLocal"

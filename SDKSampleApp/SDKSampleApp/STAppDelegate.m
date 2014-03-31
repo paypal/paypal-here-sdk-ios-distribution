@@ -20,6 +20,14 @@ PPHLoggingDelegate
 
 @implementation STAppDelegate
 
+-(NSMutableArray *)transactionRecords
+{
+    if(!_transactionRecords) {
+        _transactionRecords =  [[NSMutableArray alloc] init];
+    }
+    return _transactionRecords;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -43,8 +51,10 @@ PPHLoggingDelegate
     // Let's setup the SDK ------------------------------
     
     /*
-     * Default to using a stage.  The login sample UI will change this value.   Shipping 
-     * apps should set this to https://www.paypal.com/webapps/
+     * Default to using a stage.  The login sample UI will change this value.   
+     * Shipping apps that want to use Live should not call this method.
+     * To connect your app to PayPal's Sandbox (just like live, but no money actually gets captured/transfered) you
+     * can use this URL: https://sandbox.paypal.com/webapps/
      */
     [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
     
@@ -70,7 +80,6 @@ PPHLoggingDelegate
     
     return YES;
 }
-
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {   
