@@ -34,4 +34,14 @@ immediately if something is going wrong in the SDK instances.
   - Fix a bug in the no-hw version of the SDK when taking key-in payment and you
     happen to have a doc port swiper plugged in.
 
+1.3.3
+ What’s new:
+  - Fix a bug when dealing with declined cards.
+  - New API in PPHLocaiton allowing you to delete a locaiton from the service.
+  - Fix bug where currencies with 1 decimal place were sometimes formatted with 2 decimal places.
+  - Added better handling of discounts with zero value.
+  - Rounding fix for items with discounts.
+  - Fixed defect where once stopping location monitoring it could never be restarted.
+  - Support for auth/capture/void in payment processor and a fix to refund response handling for session tokens.
+
 
