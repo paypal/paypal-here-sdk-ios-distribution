@@ -43,6 +43,22 @@
  * The correlation ID of the transaction attempt.
  */
 @property (nonatomic,strong) NSString* correlationId;
+/*!
+ * Whether this was an authorization rather than a sale. In this context,
+ * authorization means a "complete transaction and verification of funds"
+ * that provides a token that can be captured at a future time. Note that
+ * this is NOT the same as an "EMV authorization" which is a part of the
+ * transaction flow for EMV.
+ */
+@property (nonatomic,assign) BOOL isPaymentAuthorization;
+/*!
+ * Return this object as a dictionary (for example for JSON serialization)
+ */
+- (NSDictionary *) asDictionary;
+/*!
+ * Create a payment response from an NSDictionary that was generated with asDictionary
+ */
+- (id) initWithDictionary: (NSDictionary *) dictionary;
 @end
 
 /*!
@@ -135,6 +151,17 @@
 -(void)beginCardPresentChargeAttempt: (PPHCardSwipeData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice withSignature: (UIImage*) signature completionHandler: (void (^)(PPHCardChargeResponse *response)) completionHandler;
 
 /*!
+ * Authorize funds against a card that has been passed through a reader and for which magstripe data is available.
+ * @param card from PPCardReaderManager swipe event
+ * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+ * attempting to collect payment.
+ * @param completionHandler called when the action has completed
+ * @param signature the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+ * with provideSignature:forTransaction:andInvoice:completionHandler:
+ */
+-(void)beginCardPresentAuthorizationAttempt: (PPHCardSwipeData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHCardChargeResponse *response)) completionHandler;
+
+/*!
  * Collect funds against a card that has been manually entered.
  * @param card Filled out manually or via a Card Scan
  * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
@@ -142,6 +169,16 @@
  * @param completionHandler called when the action has completed
  */
 -(void)beginCardNotPresentChargeAttempt: (PPHCardNotPresentData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
+
+/*!
+ * Capture funds against an authorization
+ */
+-(void)beginCapture: (PPHCardChargeResponse *) authorization forInvoice: (id<PPHInvoiceProtocol>) invoice withAmount: (PPHAmount *) amount asFinal: (BOOL) finalCapture completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
+
+/*!
+ * Void an existing authorization
+ */
+-(void)beginVoid: (PPHCardChargeResponse *) authorization forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
 
 /*!
  * Mark an invoice as having been paid by an external payment type such as Cash or Check.
@@ -162,28 +199,6 @@
  */
 -(void)provideSignature: (UIImage *)signature forTransaction: (PPHCardChargeResponse *)response andInvoice: (id<PPHInvoiceProtocol>)invoice completionHandler: (void (^)(PPHError *))completionHandler;
 
-// TODO move this private - handle inside SDK flow
-/*!
- * Capture funds against a chip&pin or chip card
- * @param approvalFromTerminalOrNil for chip&pin card, this is passed to you by PPHCardReaderManager event
- * @param auth for chip&pin card, this is passed to you by PPHCardReaderManager event
- * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
- * attempting to collect payment.
- * @param completionHandler called when the action has completed
- */
--(void)finalizeChipAndPin: (PPHChipAndPinEventWithEmv*) approvalFromTerminalOrNil withAuth: (PPHChipAndPinAuthResponse*) auth forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse* response)) completionHandler;
-
-// TODO move this private - handle inside SDK flow
-/*!
- * Capture funds against a chip&pin&signature or chip&signature card
- * @param approvalFromTerminalOrNil for chip&pin card, this is passed to you by PPHCardReaderManager event
- * @param auth for chip&pin card, this is passed to you by PPHCardReaderManager event
- * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
- * attempting to collect payment.
- * @param completionHandler called when the action has completed
- * @param signature the buyer-generated signature
- */
--(void)finalizeChipAndPin: (PPHChipAndPinEventWithEmv*) approvalFromTerminalOrNil withSignature: (UIImage*) signature andAuth: (PPHChipAndPinAuthResponse*) auth forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse* response)) completionHandler;
 
 /*!
  * Check if the given swipe data is for the same card that the invoice was paid with
@@ -220,3 +235,9 @@
 - (void)beginSendReceipt: (PPHPaymentResponse*) payment to: (PPHReceiptDestination*) destination completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
 
 @end
+
+#define kPPHPaymentErrorDomain      @"PPH.Payment"
+#define kPPHCaptureFailedErrorCode  0xdeadbeef
+#define kPPHVoidFailedErrorCode     0xd00dbeef
+#define kPPHRefundFailedErrorCode   0xdaadbeef
+

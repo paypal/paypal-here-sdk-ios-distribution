@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		001569A3188E01090023053A /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569A1188E01090023053A /* PayPalHereSDK.framework */; };
 		001569A8188E01270023053A /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 001569A4188E01270023053A /* apple.jpg */; };
 		001569A9188E01270023053A /* banana.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 001569A5188E01270023053A /* banana.jpg */; };
 		001569AA188E01270023053A /* orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 001569A6188E01270023053A /* orange.jpg */; };
@@ -51,6 +50,7 @@
 		0047B81718E0ECB600F2B9E4 /* ReceiptInfoViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B80F18E0ECB600F2B9E4 /* ReceiptInfoViewController_iPhone.xib */; };
 		0047B81818E0ECB600F2B9E4 /* SignatureViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B81018E0ECB600F2B9E4 /* SignatureViewController_iPad.xib */; };
 		0047B81A18E0F42200F2B9E4 /* CheckedInCustomerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B81918E0F42200F2B9E4 /* CheckedInCustomerViewController_iPad.xib */; };
+		007C7B1E18EA0CC1006C5371 /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569A1188E01090023053A /* PayPalHereSDK.framework */; };
 		007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SettingsViewController.m */; };
 		007DE86318A0144A004D8847 /* SettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE86118A0144A004D8847 /* SettingsViewController_iPhone.xib */; };
 		007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE87918A062DC004D8847 /* SignatureViewController.m */; };
@@ -203,8 +203,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007C7B1E18EA0CC1006C5371 /* PayPalHereSDK.framework in Frameworks */,
 				001569F9188F25D60023053A /* libxml2.dylib in Frameworks */,
-				001569A3188E01090023053A /* PayPalHereSDK.framework in Frameworks */,
 				99859E231836B0E200AB3FE1 /* MobileCoreServices.framework in Frameworks */,
 				99859E011835B3CF00AB3FE1 /* Security.framework in Frameworks */,
 				99859DFF1835B35500AB3FE1 /* CFNetwork.framework in Frameworks */,
@@ -692,6 +692,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -715,7 +716,8 @@
 					"-stdlib=libstdc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "615A1A3F-8C17-44E9-ABCB-AC43C9E25483";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -49,6 +49,23 @@ and the locationId parameter will become set.  Otherwise it will update an exist
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/deleteLocation:</TokenIdentifier>
+			<Abstract type="html">Delete a PPHLocation.</Abstract>
+			<DeclaredIn>PPHLocation.h</DeclaredIn>
+			
+			<Declaration>- (void)deleteLocation:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the network request completes</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/deleteLocation:</Anchor>
+            <NodeRef refid="31"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHLocation/setInternalName:</TokenIdentifier>
 			<Abstract type="html">The internal name of the location; this must be unique for the merchant</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>

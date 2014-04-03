@@ -21,6 +21,8 @@ CLLocationManagerDelegate
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *detectingReaderSpinny;
 @property (weak, nonatomic) IBOutlet UISwitch *checkinSwitch;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *checkinMerchantSpinny;
+@property (weak, nonatomic) IBOutlet UILabel *sampleAppVersion;
+
 
 - (IBAction)onReaderDetailsPressed:(id)sender;
 - (IBAction)onCheckinButtonToggled:(id)sender;
