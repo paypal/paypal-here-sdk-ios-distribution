@@ -147,7 +147,7 @@
     [self.loginInProgress startAnimating];
     self.loginButton.enabled = NO;
 
-	NSLog(@"Attepting to log-in via service at [%@]", self.serviceHost);
+	NSLog(@"Attempting to log-in via service at [%@]", self.serviceHost);
 
     // This is the STEP 1 referenced in the documentation at the top of the file.  This executes a /login
     // call against the sample business service.  This isn't a paypal loging, but instead triggers a business
@@ -482,7 +482,7 @@
     @[
        [NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"],
        [NSURL URLWithString:@"https://sandbox.paypal.com/webapps/"],
-       [NSURL URLWithString:@"https://www.paypal.com/webapps/"]
+       [NSNull null]
     ];
 
   // note we are using CGRectZero for the dimensions of our picker view,                                                                   
@@ -512,21 +512,30 @@
  * called. 
  */
 -(void)configureServers:(UIPickerView *)pickerView {
+    int index = [pickerView selectedRowInComponent:0];
+    
     NSLog(@"%@",
 		  [NSString stringWithFormat:@"%@",
-           [self.pickerViewArray objectAtIndex:[pickerView selectedRowInComponent:0]]]);
+           [self.pickerViewArray objectAtIndex:index]]);
     
-	NSString *serviceURL = [self.pickerURLArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+	NSString *serviceURL = [self.pickerURLArray objectAtIndex:index];
 	self.serviceURLLabel.text = serviceURL;
 	self.serviceHost = serviceURL;
     
-    NSURL *urlForTheSDKToUse = [self.serviceArray objectAtIndex:[pickerView selectedRowInComponent:0]];
-    NSLog(@"urlForTheSDKToUse: %@", urlForTheSDKToUse);
+    NSURL *testBaseUrlForTheSDKToUse = [self.serviceArray objectAtIndex:index];
+    
+    
+    //If we want Live then use nil as the base URL.
+    if([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
+        testBaseUrlForTheSDKToUse = nil;
+    }
+    
+    NSLog(@"urlForTheSDKToUse: %@", testBaseUrlForTheSDKToUse);
     
     /*
      * Tell the SDK what base URL to use for PayPal API calls
      */
-    [PayPalHereSDK setBaseAPIURL:urlForTheSDKToUse];
+    [PayPalHereSDK setBaseAPIURL:testBaseUrlForTheSDKToUse];
 }
 
 #pragma mark - UIPickerViewDelegate
