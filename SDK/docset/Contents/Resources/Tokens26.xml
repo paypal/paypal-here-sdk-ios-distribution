@@ -16,7 +16,7 @@ for details on field length restrictions and formats.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setItemId:</TokenIdentifier>
-			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
+			<Abstract type="html">An itemId for YOUR reference - this is not currently stored with the invoice on the server side. This id must
 be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
 work.</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
@@ -30,7 +30,7 @@ work.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/itemId</TokenIdentifier>
-			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
+			<Abstract type="html">An itemId for YOUR reference - this is not currently stored with the invoice on the server side. This id must
 be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
 work.</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
@@ -44,7 +44,7 @@ work.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/itemId</TokenIdentifier>
-			<Abstract type="html">An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
+			<Abstract type="html">An itemId for YOUR reference - this is not currently stored with the invoice on the server side. This id must
 be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
 work.</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
@@ -53,6 +53,48 @@ work.</Abstract>
 			
 			
 			<Anchor>//api/name/itemId</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setItemDetailId:</TokenIdentifier>
+			<Abstract type="html">An item &quot;variation id&quot; for YOUR reference - this is also not currently stored with the invoice server side.
+If set, the increment/decrement operators will match on it as well. We&apos;ve kept it separate from itemId
+so that when we DO store itemId server side (soon), you won&apos;t have to rework a bunch of code.</Abstract>
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDetailId</Declaration>
+			
+			
+			<Anchor>//api/name/itemDetailId</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/itemDetailId</TokenIdentifier>
+			<Abstract type="html">An item &quot;variation id&quot; for YOUR reference - this is also not currently stored with the invoice server side.
+If set, the increment/decrement operators will match on it as well. We&apos;ve kept it separate from itemId
+so that when we DO store itemId server side (soon), you won&apos;t have to rework a bunch of code.</Abstract>
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDetailId</Declaration>
+			
+			
+			<Anchor>//api/name/itemDetailId</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/itemDetailId</TokenIdentifier>
+			<Abstract type="html">An item &quot;variation id&quot; for YOUR reference - this is also not currently stored with the invoice server side.
+If set, the increment/decrement operators will match on it as well. We&apos;ve kept it separate from itemId
+so that when we DO store itemId server side (soon), you won&apos;t have to rework a bunch of code.</Abstract>
+			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDetailId</Declaration>
+			
+			
+			<Anchor>//api/name/itemDetailId</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
@@ -133,7 +175,7 @@ work.</Abstract>
 			<Abstract type="html">A longer description for the item</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
+			<Declaration>@property (strong, nonatomic) NSString *itemDescription</Declaration>
 			
 			
 			<Anchor>//api/name/itemDescription</Anchor>
@@ -145,7 +187,7 @@ work.</Abstract>
 			<Abstract type="html">A longer description for the item</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
+			<Declaration>@property (strong, nonatomic) NSString *itemDescription</Declaration>
 			
 			
 			<Anchor>//api/name/itemDescription</Anchor>
@@ -157,7 +199,7 @@ work.</Abstract>
 			<Abstract type="html">A longer description for the item</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
-			<Declaration>@property (strong, nonatomic, readonly) NSString *itemDescription</Declaration>
+			<Declaration>@property (strong, nonatomic) NSString *itemDescription</Declaration>
 			
 			
 			<Anchor>//api/name/itemDescription</Anchor>
@@ -247,7 +289,7 @@ be .06 for this property.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/setTaxRateName:</TokenIdentifier>
-			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
+			<Abstract type="html">The name of the tax rate for this item - limited to 10 characters (yikes)</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
@@ -259,7 +301,7 @@ be .06 for this property.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceItem/taxRateName</TokenIdentifier>
-			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
+			<Abstract type="html">The name of the tax rate for this item - limited to 10 characters (yikes)</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
@@ -271,7 +313,7 @@ be .06 for this property.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceItem/taxRateName</TokenIdentifier>
-			<Abstract type="html">The name of the tax rate for this item - limited to 6 characters (yikes)</Abstract>
+			<Abstract type="html">The name of the tax rate for this item - limited to 10 characters (yikes)</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
 			<Declaration>@property (strong, nonatomic, readonly) NSString *taxRateName</Declaration>
