@@ -59,7 +59,7 @@ PPHLoggingDelegate
      *   [PayPalHereSDK setBaseAPIURL:nil];   OR don't call setBaseAPIURL at all.
      *
      *   To run against Sandbox:
-     *   [PayPalHereSDK setBaseAPIURL:@"https://sandbox.paypal.com/webapps/"];
+     *   [PayPalHereSDK setBaseAPIURL:@"https://www.sandbox.paypal.com/webapps/"];
      *
      *   To run against a stage:
      *   [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
