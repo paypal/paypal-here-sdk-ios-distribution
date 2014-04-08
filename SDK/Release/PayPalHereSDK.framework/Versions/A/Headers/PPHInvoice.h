@@ -198,15 +198,22 @@
 @property (strong,nonatomic) NSString *note;
 
 /*!
- Fetches an invoice item that corresponds to an itemId. This can be used with itemIds for custom items you added, or a SellableItem's id.
- @param itemId NSString The itemId to find in the invoice.
+ Fetches an invoice item that corresponds to an itemId with no detailId.
  @return PPHInvoiceItem The invoice item that was found. If there was none nil is returned.
  */
 - (PPHInvoiceItem*)invoiceItemWithId:(NSString*)itemId;
 
 /*!
- Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such items to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item's itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.
- @param itemId NSString The itemId for the new invoice. Must be unique to other invoice items. You can use this to get a pointer to the item later using invoiceWithId if you don't call reconcileInContext.
+ Fetches an invoice item that corresponds to an itemId and detailId. 
+ @param itemId NSString The itemId to find in the invoice.
+ @param detailId NSString The detail id (usually identifying options or variations)
+ @return PPHInvoiceItem The invoice item that was found. If there was none nil is returned.
+ */
+- (PPHInvoiceItem*)invoiceItemWithId:(NSString*)itemId detailId:(NSString*)detailId;
+
+/*!
+ Creates an invoice item with the given parameters an returns a pointer to it.
+ @param itemId NSString The itemId for the new invoice item. Must be unique to other invoice items which don't have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don't call reconcileInContext.
  @param name NSString The item name.
  @param quantity NSDecimalNumber The number of the items to put in the cart.
  @param unitPrice NSDecimalNumber The price of a single one of these items.
@@ -215,6 +222,19 @@
  @return PPHInvoiceItem The newly created item.
  */
 - (PPHInvoiceItem*)addItemWithId:(NSString *)itemId name:(NSString *)name quantity:(NSDecimalNumber *)quantity unitPrice:(NSDecimalNumber *)unitPrice taxRate:(NSDecimalNumber *)taxRate taxRateName:(NSString*)taxRateName;
+
+/*!
+ Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such items to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item's itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.
+ @param itemId NSString The itemId for the new invoice item. Must be unique to other invoice items (including itemDetailId). You can use this to get a pointer to the item later using invoiceWithId if you don't call reconcileInContext.
+ @param itemDetailId NSString The "identifying details" for the item such as size, toppings, etc.
+ @param name NSString The item name.
+ @param quantity NSDecimalNumber The number of the items to put in the cart.
+ @param unitPrice NSDecimalNumber The price of a single one of these items.
+ @param taxRate NSDecimalNumber The tax to be applied to this item.
+ @param taxRateName NSString The name for the tax rate given to this item.
+ @return PPHInvoiceItem The newly created item.
+ */
+- (PPHInvoiceItem*)addItemWithId:(NSString *)itemId detailId:(NSString *)detailId name:(NSString *)name quantity:(NSDecimalNumber *)quantity unitPrice:(NSDecimalNumber *)unitPrice taxRate:(NSDecimalNumber *)taxRate taxRateName:(NSString*)taxRateName;
 
 /*!
  Adds the specified quantity to the specified InvoiceItem in the invoice, you may pass a negative quantity value to decrement the item. Calling increment on an InvoiceItem that does not exist in the invoice will cause the item to be added with the desired quantity.
