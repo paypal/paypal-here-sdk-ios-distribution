@@ -6,6 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PPHAmount;
+
 typedef NS_ENUM(NSInteger,PPHLocationCheckinStatus)
 {
     ePPHCheckinStatusUnknown = 0,
@@ -62,4 +64,12 @@ typedef NS_ENUM(NSInteger,PPHLocationCheckinStatus)
  */
 @property (nonatomic,readonly) PPHLocationCheckinStatus status;
 
+/*!
+ * If the buyer has set a gratuity preference as a fixed amount, this value will be non-nil
+ */
+@property (nonatomic,strong) PPHAmount *gratuityAmount;
+/*!
+ * If the buyer has set a gratuity preference as a percentage, this value will be non-nil
+ */
+@property (nonatomic,strong) NSDecimalNumber *gratuityPercentage;
 @end

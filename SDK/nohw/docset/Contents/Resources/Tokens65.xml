@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHErrorCategory.html">
+	<File path="Constants/PPHCreditCardType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHErrorCategory</TokenIdentifier>
-			<Abstract type="html">The error category is useful for understanding what action should be taken in response to a particular
-domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
-on paypal.com and updated periodically.</Abstract>
-			<DeclaredIn>PPHError.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHCreditCardType</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
             
 			
 			<NodeRef refid="65"/>
@@ -16,79 +14,81 @@ on paypal.com and updated periodically.</Abstract>
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryUnknown</TokenIdentifier>
-            <Abstract type="html">No additional information is available about the error.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryUnknown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeUnknown</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeUnknown</Declaration>
             
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryOutage</TokenIdentifier>
-            <Abstract type="html">The error indicates a PayPal or dependent system outage of some variety.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryOutage</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
             
             <NodeRef refid="65"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryRetry</TokenIdentifier>
-            <Abstract type="html">The error is likely transient and a retry may be successful.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryRetry</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeVisa</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeVisa</Declaration>
             
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryBuyerDeclined</TokenIdentifier>
-            <Abstract type="html">The error indicates the buyer&apos;s request to pay was declined and retry is unlikely to succeed without some
-external change such as the credit card company releasing a hold or PayPal funding sources changing (just as examples)
-     </Abstract>
-            <Declaration>ePPHErrorCategoryBuyerDeclined</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
             
             <NodeRef refid="65"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategorySellerDeclined</TokenIdentifier>
-            <Abstract type="html">The error indicates there is a problem with the merchant account such as a restriction or account capability error.
-     </Abstract>
-            <Declaration>ePPHErrorCategorySellerDeclined</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeMastercard</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeMastercard</Declaration>
             
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryAmbiguous</TokenIdentifier>
-            <Abstract type="html">The error is known to have multiple causes from the category list and we can&apos;t be sure which one caused this occurrence.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryAmbiguous</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
             
             <NodeRef refid="65"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryData</TokenIdentifier>
-            <Abstract type="html">The error indicates there was a problem with the data submitted such as an invalid checkin or card number/expiration, etc.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryData</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeDiscover</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeDiscover</Declaration>
             
-            <DeclaredIn>PPHError.h</DeclaredIn>
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
+            
+            <NodeRef refid="65"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeAmEx</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeAmEx</Declaration>
+            
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
+            
+            <NodeRef refid="65"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeJCB</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeJCB</Declaration>
+            
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
+            
+            <NodeRef refid="65"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypeMaestro</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypeMaestro</Declaration>
+            
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
+            
+            <NodeRef refid="65"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHCreditCardTypePayPal</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHCreditCardTypePayPal</Declaration>
+            
+            <DeclaredIn>PPHCardNotPresentData.h</DeclaredIn>
             
             <NodeRef refid="65"/>
         </Token>
