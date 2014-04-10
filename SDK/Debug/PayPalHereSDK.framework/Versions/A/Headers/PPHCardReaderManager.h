@@ -25,6 +25,12 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
     ePPHReaderErrorNotAvailable = 4
 };
 
+typedef NS_ENUM(NSInteger, EMVTransactionType) {
+    eEMVTransactionTypeSale = 0,
+    eEMVTransactionTypeRefund = 20,
+    eEMVTransactionTypeInvalid = 40
+};
+
 @class PPHChipAndPinDecisionEvent;
 @class PPHChipAndPinAuthResponse;
 @class PPHError;
@@ -74,14 +80,6 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
  * @param readerOrNil The reader to deactivate or nil for the default/only reader.
  */
 -(void)deactivateReader: (PPHCardReaderBasicInformation*) readerOrNil;
-
-/*!
- * Setup the card reader to process a transaction with an amount in a currency. For non-chip and pin
- * readers this isn't necessary, but if you want to support those readers,
- * you must call this method when you know the final amount that will be charged.
- * @param transaction the invoice containing the amount and currency information that will be charged
- */
--(PPHReaderError)beginTransaction: (id<PPHInvoiceProtocol>) transaction;
 
 /*!
  * Once a transaction is complete, either via our processing services or out-of-band processing
