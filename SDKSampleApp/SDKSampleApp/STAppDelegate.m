@@ -51,13 +51,22 @@ PPHLoggingDelegate
     // Let's setup the SDK ------------------------------
     
     /*
-     * Default to using a stage.  The login sample UI will change this value.   
-     * Shipping apps that want to use Live should not call this method.
-     * To connect your app to PayPal's Sandbox (just like live, but no money actually gets captured/transfered) you
-     * can use this URL: https://sandbox.paypal.com/webapps/
+     * How to configure the SDK to use Live vs Sandbox
+     *
+     * Examples:
+     *   To run against Live:
+     *   [PayPalHereSDK setBaseAPIURL:nil];   OR don't call setBaseAPIURL at all.
+     *
+     *   To run against Sandbox:
+     *   [PayPalHereSDK setBaseAPIURL:@"https://www.sandbox.paypal.com/webapps/"];
+     *
+     *   To run against a stage:
+     *   [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
      */
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
     
+    //Default to using a stage.  The login sample UI will change this value.
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
+   
     /* By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
      * diagnosing issues, but is obviously up to you as to whether you want to do remote logging, or perhaps you
      * have your own logging infrastructure. This sample app intercepts log messages and writes errors to the
@@ -77,7 +86,7 @@ PPHLoggingDelegate
     // Either the app, or the SDK must requrest location access if we'd like
     // the SDK to take payments.
     [PayPalHereSDK askForLocationAccess];
-    
+        
     return YES;
 }
 
