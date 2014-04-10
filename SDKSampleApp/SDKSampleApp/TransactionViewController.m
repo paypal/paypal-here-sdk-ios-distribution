@@ -469,7 +469,7 @@
 		self.shoppingCartTable.hidden = NO;
 	}
 	else {
-		NSLog(@"WTF? Somehow got this undefined mode specifier value: %ld:", mode);
+		NSLog(@"WTF? Somehow got this undefined mode specifier value: %d:", mode);
 	}
     
 }

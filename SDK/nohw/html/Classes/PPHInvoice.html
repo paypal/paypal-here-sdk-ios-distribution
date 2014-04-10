@@ -131,6 +131,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:">&nbsp;&nbsp;&nbsp;&nbsp;- addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:</option>
+	
 	<option value="//api/name/addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:">&nbsp;&nbsp;&nbsp;&nbsp;- addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:</option>
 	
 	<option value="//api/name/asDictionary">&nbsp;&nbsp;&nbsp;&nbsp;- asDictionary</option>
@@ -154,6 +156,8 @@
 	<option value="//api/name/initWithItem:forAmount:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithItem:forAmount:</option>
 	
 	<option value="//api/name/invoiceItemWithId:">&nbsp;&nbsp;&nbsp;&nbsp;- invoiceItemWithId:</option>
+	
+	<option value="//api/name/invoiceItemWithId:detailId:">&nbsp;&nbsp;&nbsp;&nbsp;- invoiceItemWithId:detailId:</option>
 	
 	<option value="//api/name/quantityByItemId:">&nbsp;&nbsp;&nbsp;&nbsp;- quantityByItemId:</option>
 	
@@ -285,6 +289,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:">addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:">addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/asDictionary">asDictionary</a></span></li>
@@ -308,6 +314,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithItem:forAmount:">initWithItem:forAmount:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invoiceItemWithId:">invoiceItemWithId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invoiceItemWithId:detailId:">invoiceItemWithId:detailId:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/quantityByItemId:">quantityByItemId:</a></span></li>
 	
@@ -679,7 +687,19 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/invoiceItemWithId:detailId:">&ndash;&nbsp;invoiceItemWithId:detailId:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:">&ndash;&nbsp;addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:">&ndash;&nbsp;addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:</a></code>
 	</span>
 	
 	
@@ -2462,13 +2482,99 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:" title="addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:"></a>
+	<h3 class="subsubtitle method-title">addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such <a href="#//api/name/items">items</a> to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item&rsquo;s itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)addItemWithId:(NSString *)<em>itemId</em> detailId:(NSString *)<em>detailId</em> name:(NSString *)<em>name</em> quantity:(NSDecimalNumber *)<em>quantity</em> unitPrice:(NSDecimalNumber *)<em>unitPrice</em> taxRate:(NSDecimalNumber *)<em>taxRate</em> taxRateName:(NSString *)<em>taxRateName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>itemId</em></dt>
+			<dd><p>NSString The itemId for the new invoice item. Must be unique to other invoice <a href="#//api/name/items">items</a> (including itemDetailId). You can use this to get a pointer to the item later using invoiceWithId if you don&rsquo;t call reconcileInContext.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>NSString The item name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>quantity</em></dt>
+			<dd><p>NSDecimalNumber The number of the <a href="#//api/name/items">items</a> to put in the cart.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>unitPrice</em></dt>
+			<dd><p>NSDecimalNumber The price of a single one of these <a href="#//api/name/items">items</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>taxRate</em></dt>
+			<dd><p>NSDecimalNumber The <a href="#//api/name/tax">tax</a> to be applied to this item.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>taxRateName</em></dt>
+			<dd><p>NSString The name for the <a href="#//api/name/tax">tax</a> rate given to this item.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>itemDetailId</em></dt>
+			<dd><p>NSString The &ldquo;identifying details&rdquo; for the item such as size, toppings, etc.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><a href="../Classes/PPHInvoiceItem.html">PPHInvoiceItem</a> The newly created item.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such <a href="#//api/name/items">items</a> to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item&rsquo;s itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoice.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:" title="addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:"></a>
 	<h3 class="subsubtitle method-title">addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such <a href="#//api/name/items">items</a> to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item&rsquo;s itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.</p>
+		<p>Creates an invoice item with the given parameters an returns a pointer to it.</p>
 	</div>		
 	
     
@@ -2482,7 +2588,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>itemId</em></dt>
-			<dd><p>NSString The itemId for the new invoice. Must be unique to other invoice <a href="#//api/name/items">items</a>. You can use this to get a pointer to the item later using invoiceWithId if you don&rsquo;t call reconcileInContext.</p></dd>
+			<dd><p>NSString The itemId for the new invoice item. Must be unique to other invoice <a href="#//api/name/items">items</a> which don&rsquo;t have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don&rsquo;t call reconcileInContext.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -2525,7 +2631,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such <a href="#//api/name/items">items</a> to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item&rsquo;s itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.</p>
+		<p>Creates an invoice item with the given parameters an returns a pointer to it.</p>
 	</div>
 	
 	
@@ -3099,12 +3205,58 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Fetches an invoice item that corresponds to an itemId. This can be used with itemIds for custom <a href="#//api/name/items">items</a> you added, or a SellableItem&rsquo;s id.</p>
+		<p>Fetches an invoice item that corresponds to an itemId with no detailId.</p>
 	</div>		
 	
     
 
 	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)<em>itemId</em></code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><a href="../Classes/PPHInvoiceItem.html">PPHInvoiceItem</a> The invoice item that was found. If there was none nil is returned.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Fetches an invoice item that corresponds to an itemId with no detailId.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoice.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/invoiceItemWithId:detailId:" title="invoiceItemWithId:detailId:"></a>
+	<h3 class="subsubtitle method-title">invoiceItemWithId:detailId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches an invoice item that corresponds to an itemId and detailId.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)<em>itemId</em> detailId:(NSString *)<em>detailId</em></code></div>
 
     
 	
@@ -3114,6 +3266,11 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>itemId</em></dt>
 			<dd><p>NSString The itemId to find in the invoice.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>detailId</em></dt>
+			<dd><p>NSString The detail id (usually identifying options or variations)</p></dd>
 		</dl>
 		
 	</div>
@@ -3131,7 +3288,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Fetches an invoice item that corresponds to an itemId. This can be used with itemIds for custom <a href="#//api/name/items">items</a> you added, or a SellableItem&rsquo;s id.</p>
+		<p>Fetches an invoice item that corresponds to an itemId and detailId.</p>
 	</div>
 	
 	
@@ -3459,7 +3616,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-03-28)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-04-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

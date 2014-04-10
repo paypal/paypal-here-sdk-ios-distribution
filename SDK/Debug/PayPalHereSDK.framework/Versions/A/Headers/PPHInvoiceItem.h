@@ -19,11 +19,17 @@
 >
 
 /*!
- * An itemId for YOUR reference - this is not stored with the invoice on the server side. This id must
+ * An itemId for YOUR reference - this is not currently stored with the invoice on the server side. This id must
  * be unique amongst all the items on an invoice so that the quantity increment/decrement operators can
  * work.
  */
 @property (strong,nonatomic,readonly) NSString* itemId;
+/*!
+ * An item "variation id" for YOUR reference - this is also not currently stored with the invoice server side.
+ * If set, the increment/decrement operators will match on it as well. We've kept it separate from itemId
+ * so that when we DO store itemId server side (soon), you won't have to rework a bunch of code.
+ */
+@property (strong,nonatomic,readonly) NSString* itemDetailId;
 /*!
  * The quantity of this item purchased, which can be fractional
  */
@@ -35,7 +41,7 @@
 /*!
  * A longer description for the item
  */
-@property (strong,nonatomic,readonly) NSString* itemDescription;
+@property (strong,nonatomic) NSString* itemDescription;
 /*!
  * Price per unit - can be negative or zero (and of course positive)
  */
@@ -48,7 +54,7 @@
  */
 @property (strong,nonatomic,readonly) NSDecimalNumber* taxRate;
 /*!
- * The name of the tax rate for this item - limited to 6 characters (yikes)
+ * The name of the tax rate for this item - limited to 10 characters (yikes)
  */
 @property (strong,nonatomic,readonly) NSString* taxRateName;
 

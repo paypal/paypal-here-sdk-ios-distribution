@@ -90,6 +90,7 @@
     self.detectingReaderSpinny.hidden = YES;
     
     self.sdkVersion.text = [PayPalHereSDK sdkVersion];
+    self.sampleAppVersion.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
