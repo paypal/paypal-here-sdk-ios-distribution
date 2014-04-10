@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/PPHTransactionEventType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHTransactionEventType</TokenIdentifier>
+			<Abstract type="html">The Payment Events we&apos;ll send to the app.  These are currently a simple enum.</Abstract>
+			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="77"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_Idle</TokenIdentifier>
+            <Abstract type="html">The TransactionManager has entered the idle state.  It is not doing any work and is ready to begin a payment or refund.
+     </Abstract>
+            <Declaration>ePPHTransactionType_Idle</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_GettingPaymentInfo</TokenIdentifier>
+            <Abstract type="html">The transactionManager has entered a state of data collection.  beginPayment() has been called and we &lt;br&gt;
+are currently collecting information from card readers or the application.  You can now set/modify the invoice,
+signatures, and other data related to this payment.
+     </Abstract>
+            <Declaration>ePPHTransactionType_GettingPaymentInfo</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_CardDataReceived</TokenIdentifier>
+            <Abstract type="html">Card data received.  The transaction manager has received card data.
+     </Abstract>
+            <Declaration>ePPHTransactionType_CardDataReceived</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_ProcessingPayment</TokenIdentifier>
+            <Abstract type="html">The TransactionManager has entered a state where it is communicating with the backend servers to collect a payment.
+It is now too late to cancel the payment.
+     </Abstract>
+            <Declaration>ePPHTransactionType_ProcessingPayment</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_WaitingForSignature</TokenIdentifier>
+            <Abstract type="html">The TransactionManager has entered a state where it has completed the transaction successfully and is
+waiting for the app to collect a signature from the customer and call the finalizePayment API.
+     </Abstract>
+            <Declaration>ePPHTransactionType_WaitingForSignature</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
+	</File>
+</Tokens>
