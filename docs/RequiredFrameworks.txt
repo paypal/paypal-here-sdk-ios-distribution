@@ -1,0 +1,25 @@
+Required Frameworks
+
+When building with the iOS PayPal Here SDK you'll need to add several
+iOS framworks to your project that the SDK relies on.
+
+This includes 
+
+AudioToolbox.framework
+MobileCoreServices.framework
+Security.framework
+CFNetwork.framework
+AVFoundation.framework
+ExternalAccessory.framework
+MediaPlayer.framework
+CoreTelephony.framework
+Foundation.framework 
+
+Compilation flags:
+Note that, depeneding on your xcode version, base SDK choice, and if you have any .mm files
+in your project, you may also need these flags in your project's 'Other Linker Flags':
+-lstdc++
+-stdlib=libstdc++
+
+
+
