@@ -39,7 +39,20 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
      * The TransactionManager has entered a state where it has completed the transaction successfully and is
      * waiting for the app to collect a signature from the customer and call the finalizePayment API.
      */
-    ePPHTransactionType_WaitingForSignature
+    ePPHTransactionType_WaitingForSignature,
+    
+    /*!
+     * Event specifying that transaction has been cancelled. This will happen only in case of EMV Payments when te user pulls 
+     * the card out of the reader when transaction is going on
+     */
+    ePPHTransactionType_TransactionCancelled,
+    
+    /*!
+     * Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal 
+     * declines the transaction for some reason.
+     */
+    ePPHTransactionType_TransactionDeclined
+    
 };
 
 /**

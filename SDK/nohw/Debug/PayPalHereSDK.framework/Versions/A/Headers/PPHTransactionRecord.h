@@ -21,7 +21,7 @@
 @interface PPHTransactionRecord : NSObject
 
 /*! The invoice that was used for this purchase */
-@property (nonatomic, strong,readonly) PPHInvoice *invoice;
+@property (nonatomic,strong,readonly) PPHInvoice *invoice;
 
 /*! The date on which the payment or refund occurred */
 @property (nonatomic,strong,readonly) NSDate *date;
@@ -50,5 +50,11 @@
 
 /*! The Chip n Pin transaction handle (if applicable) */
 @property (nonatomic,strong,readonly) NSString *transactionHandle;
+
+/*! Create a PPHTransactionRecord with a transactionId.  This can be used with beginRefund */
+-(id) initWithTransactionId:(NSString *)transactionId;
+
+/*! Create a PPHTransactionRecord with a transactionId and a payPalInvoiceId.  This can be used with sendReceipt */
+-(id) initWithTransactionId:(NSString *)transactionId andWithPayPalInvoiceId:(NSString *)payPalInvoiceId;
 
 @end

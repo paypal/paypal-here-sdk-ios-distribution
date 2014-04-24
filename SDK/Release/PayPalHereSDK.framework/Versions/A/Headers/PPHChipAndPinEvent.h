@@ -109,6 +109,13 @@ typedef NS_ENUM(NSInteger, PPHChipAndPinEventType) {
  * Whether the PIN has been verified in this transaction
  */
 @property (nonatomic,readonly) BOOL pinVerified;
+
+/*!
+ * Whether PIN is present for this transaction. pinPresent indicates whether PIN was entered by the user and NOT whether
+ * it was validated by the terminal
+ */
+ @property (nonatomic, readonly) BOOL pinPresent;
+
 /*!
  * Whether the current card requires signature for transactions
  */

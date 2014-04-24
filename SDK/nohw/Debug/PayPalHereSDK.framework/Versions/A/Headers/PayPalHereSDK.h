@@ -18,6 +18,11 @@
 #import <PayPalHereSDK/PPHAccessResultType.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 
+typedef NS_ENUM(NSInteger, PPHSDKServiceType) {
+    ePPHSDKServiceType_Live,
+    ePPHSDKServiceType_Sandbox
+};
+
 typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo);
 
 @class PPHAccessController;
@@ -170,6 +175,12 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  * @param url The base URL (essentially https://stagename/) for your non-live environment.
  */
 +(void)setBaseAPIURL: (NSURL*) url;
+
+/*!
+ *New way of setting the base service URL, please use the provided enum constants and we 
+ *will do the rest, for your convenience.
+ */
++(void)selectEnvironmentWithType: (PPHSDKServiceType) serviceType;
 
 /*!
  * The version of the SDK currently in use
