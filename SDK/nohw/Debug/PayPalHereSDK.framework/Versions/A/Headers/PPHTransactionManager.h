@@ -11,6 +11,7 @@
 #import "PPHTransactionControllerDelegate.h"
 #import "PPHCardNotPresentData.h"
 #import "PPHInvoice.h"
+#import "PPHCardReaderManager.h"
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
@@ -36,13 +37,14 @@
 #define kPPHLocalErrorBadConfigurationNoRecord -2004
 #define kPPHLocalErrorBadConfigurationInvalidState -2005
 #define kPPHLocalErrorBadConfigurationMerchantAccountNotActivatedForPayments -2006
-
+#define kPPHLocalErrorBadConfigurationInvalidParameters -2007
+#define kPPHLocalErrorBadConfigurationNoCurrentInvoice -2008
+#define kPPHLocalErrorBadConfigurationInvoiceAlreadyPaid -2009
 
 
 // Some NSString constants used by the PPHTransactionWatcher:
 #define kPPHTransactionManagerStateChange	@"PPH.TransactionManager.StateChange"
 #define kPPHTransactionManagerEventKey		@"PPH.TransactionManager.EventKey"
-
 
 @interface PPHTransactionResponse : NSObject
 /*!
@@ -201,6 +203,13 @@
  */
 -(PPHError *) cancelPayment;
 
+/*!
+ * Initiate the EMV transaction. This needs to called after beginPayment and when the specific amount
+ * and currency is known. During this call the amount and currency code will be sent to the terminal
+ * for getting the card data for processing.
+ */
+-(void) initiateEMVTransaction:(PPHAmount*) amount transactionType:(PPHEMVTransactionType)transactionType;
+
 /*! 
  * Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
  *
@@ -236,9 +245,12 @@
 
 /*!
  * Issue a refund against a previously successful PayPal transaction.
- * @param previousTransaction The transaction identifier for the original payment transaction
- * @param amountOrNil Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
- * @param completionHandler called when the action has completed
+ * @param previousTransaction   The transaction identifier for the original payment transaction.
+ *                              If you want to send a receipt and you don't have a PPHTransactionRecord you can construct one.  Just make
+ *                              sure it has the transactionId and payPalInvoiceId properties set.
+ *
+ * @param amountOrNil           Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
+ * @param completionHandler     Called when the action has completed
  */
 -(void)beginRefund:(PPHTransactionRecord*) previousTransaction forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
 
@@ -246,14 +258,15 @@
  * Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.
  *
  * @param previousTransaction : The transaction record object that is returned back from the processPayment call. This will
- *               contain all the necessary information required such as the invoice id,
- *               transaction id etc needed to send the receipt.
- *               Use this API when the transaction record is available. For example,
- *               when the transaction is successful.
- * @param destination : A PPHReceiptDestination object which describes either the email address or phone number to 
+ *               contain the invoice id and transaction id etc needed to send the receipt.
+ *
+ *               If you want to send a receipt and you don't have a PPHTransactionRecord you can construct one.  Just make 
+ *               sure it has the transactionId and payPalInvoiceId properties set.
+ * @param destination : A PPHReceiptDestination object which describes either the email address or phone number to
  *                      which we should send the receipt.
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
  */
 -(void)sendReceipt:(PPHTransactionRecord*) previousTransaction toRecipient:(PPHReceiptDestination*)destination completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
+
 
 @end
