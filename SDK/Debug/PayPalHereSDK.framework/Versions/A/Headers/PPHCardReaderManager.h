@@ -22,13 +22,17 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
      * A request to use the reader was made but there was either no reader available or
      * active.
      */
-    ePPHReaderErrorNotAvailable = 4
+    ePPHReaderErrorNotAvailable = 4,
+    /*!
+     * The current transaction is not valid (no amount), or reader was mid-transaction and could not be started.
+     */
+    ePPHReaderErrorTransactionNotValid = 5
 };
 
-typedef NS_ENUM(NSInteger, EMVTransactionType) {
-    eEMVTransactionTypeSale = 0,
-    eEMVTransactionTypeRefund = 20,
-    eEMVTransactionTypeInvalid = 40
+typedef NS_ENUM(NSInteger, PPHEMVTransactionType) {
+    ePPHEMVTransactionTypeInvalid,
+    ePPHEMVTransactionTypeSale,
+    ePPHEMVTransactionTypeRefund
 };
 
 @class PPHChipAndPinDecisionEvent;
@@ -82,14 +86,6 @@ typedef NS_ENUM(NSInteger, EMVTransactionType) {
 -(void)deactivateReader: (PPHCardReaderBasicInformation*) readerOrNil;
 
 /*!
- * Once a transaction is complete, either via our processing services or out-of-band processing
- * such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
- * some readers are battery powered, you should call this as soon as reasonable. The SDK will
- * automatically take care of this when your app is suspended or interrupted.
- */
--(void)endTransaction;
-
-/*!
  * For accessory based readers, there is the possibility that multiple capable devices may
  * be connected to the phone at the same time. In this case, specifying a preference
  * order can be useful to manage multiple devices with multiple phones. Generally, 
@@ -119,5 +115,7 @@ typedef NS_ENUM(NSInteger, EMVTransactionType) {
  * @param reader the reader to upgrade
  */
 -(void)beginUpgrade: (PPHCardReaderBasicInformation*) reader;
+
+@property (nonatomic,readonly) BOOL isInPinRetryMode;
 
 @end
