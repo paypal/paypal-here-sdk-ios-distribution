@@ -172,13 +172,24 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
 
 /*!
  * For TEST purposes, you can set the service URL used for requests in the PayPal Here SDK
+ *
+ * DEPRECATED: Use the selectEnvironmentWithType method which allows selection between available
+ * services.
+ *
  * @param url The base URL (essentially https://stagename/) for your non-live environment.
  */
-+(void)setBaseAPIURL: (NSURL*) url;
++(void)setBaseAPIURL: (NSURL*) url DEPRECATED_ATTRIBUTE;
 
 /*!
- *New way of setting the base service URL, please use the provided enum constants and we 
- *will do the rest, for your convenience.
+ * Used to select between PPHSDKServiceTypes - currently just Live or Sandbox.  
+ * 
+ * By default the SDK will run against Live, no need to call this method if you'd
+ * like to use the Live service.
+ *
+ * However, if you want the SDK to run against PayPal's Sandbox environment,
+ * or you wish to point the SDK back at Live, you can use this method.
+ *
+ * @param serviceType The service to connect to.
  */
 +(void)selectEnvironmentWithType: (PPHSDKServiceType) serviceType;
 

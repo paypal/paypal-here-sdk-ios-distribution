@@ -62,6 +62,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- authorizePaymentWithPaymentType:withCompletionHandler:</option>
+	
 	<option value="//api/name/beginPayment">&nbsp;&nbsp;&nbsp;&nbsp;- beginPayment</option>
 	
 	<option value="//api/name/beginPaymentWithAmount:andName:">&nbsp;&nbsp;&nbsp;&nbsp;- beginPaymentWithAmount:andName:</option>
@@ -70,11 +72,17 @@
 	
 	<option value="//api/name/cancelPayment">&nbsp;&nbsp;&nbsp;&nbsp;- cancelPayment</option>
 	
+	<option value="//api/name/capturePaymentForAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- capturePaymentForAuthorization:withCompletionHandler:</option>
+	
 	<option value="//api/name/finalizePaymentForTransaction:withSignature:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizePaymentForTransaction:withSignature:completionHandler:</option>
+	
+	<option value="//api/name/initiateEMVTransaction:transactionType:">&nbsp;&nbsp;&nbsp;&nbsp;- initiateEMVTransaction:transactionType:</option>
 	
 	<option value="//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentWithPaymentType:withTransactionController:completionHandler:</option>
 	
 	<option value="//api/name/sendReceipt:toRecipient:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- sendReceipt:toRecipient:completionHandler:</option>
+	
+	<option value="//api/name/voidAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- voidAuthorization:withCompletionHandler:</option>
 	
 	
 	
@@ -124,6 +132,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">authorizePaymentWithPaymentType:withCompletionHandler:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginPayment">beginPayment</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginPaymentWithAmount:andName:">beginPaymentWithAmount:andName:</a></span></li>
@@ -132,11 +142,17 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelPayment">cancelPayment</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capturePaymentForAuthorization:withCompletionHandler:">capturePaymentForAuthorization:withCompletionHandler:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizePaymentForTransaction:withSignature:completionHandler:">finalizePaymentForTransaction:withSignature:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initiateEMVTransaction:transactionType:">initiateEMVTransaction:transactionType:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">processPaymentWithPaymentType:withTransactionController:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendReceipt:toRecipient:completionHandler:">sendReceipt:toRecipient:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/voidAuthorization:withCompletionHandler:">voidAuthorization:withCompletionHandler:</a></span></li>
 	
 </ul></li>
 
@@ -302,6 +318,30 @@ NSLog(&ldquo;Payment Completed&rdquo;);
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancelPayment">&ndash;&nbsp;cancelPayment</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initiateEMVTransaction:transactionType:">&ndash;&nbsp;initiateEMVTransaction:transactionType:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">&ndash;&nbsp;authorizePaymentWithPaymentType:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/voidAuthorization:withCompletionHandler:">&ndash;&nbsp;voidAuthorization:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/capturePaymentForAuthorization:withCompletionHandler:">&ndash;&nbsp;capturePaymentForAuthorization:withCompletionHandler:</a></code>
 	</span>
 	
 	
@@ -689,6 +729,47 @@ change this setting.   Calling setIgnoreHardwareReaders during a transaction wil
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/authorizePaymentWithPaymentType:withCompletionHandler:" title="authorizePaymentWithPaymentType:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">authorizePaymentWithPaymentType:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Auth/Cap Flow methods, more descriptive comments will be released soon along with documentation&hellip;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Auth/Cap Flow methods, more descriptive comments will be released soon along with documentation&hellip;</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/beginPayment" title="beginPayment"></a>
 	<h3 class="subsubtitle method-title">beginPayment</h3>
 	
@@ -814,7 +895,10 @@ the fixed amount item.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>previousTransaction</em></dt>
-			<dd><p>The transaction identifier for the original payment transaction</p></dd>
+			<dd><p>The transaction identifier for the original payment transaction.
+If you want to send a receipt and you don&rsquo;t have a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you can construct one.  Just make
+sure it at least has the transactionId set.  Other params being set is ok, they will not be accessed
+by beginRefund.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -824,7 +908,7 @@ the fixed amount item.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>called when the action has completed</p></dd>
+			<dd><p>Called when the action has completed</p></dd>
 		</dl>
 		
 	</div>
@@ -896,6 +980,17 @@ the fixed amount item.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/capturePaymentForAuthorization:withCompletionHandler:" title="capturePaymentForAuthorization:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">capturePaymentForAuthorization:withCompletionHandler:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)capturePaymentForAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/finalizePaymentForTransaction:withSignature:completionHandler:" title="finalizePaymentForTransaction:withSignature:completionHandler:"></a>
 	<h3 class="subsubtitle method-title">finalizePaymentForTransaction:withSignature:completionHandler:</h3>
 	
@@ -946,6 +1041,51 @@ approved by the terminal. If the terminal declines, the transaction would be voi
 and complete the transaction.
 In case of EMV related payments, this API should be used after the processPayment call has been
 approved by the terminal. If the terminal declines, the transaction would be voided.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initiateEMVTransaction:transactionType:" title="initiateEMVTransaction:transactionType:"></a>
+	<h3 class="subsubtitle method-title">initiateEMVTransaction:transactionType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initiate the EMV transaction. This needs to called after <a href="#//api/name/beginPayment">beginPayment</a> and when the specific amount
+and currency is known. During this call the amount and currency code will be sent to the terminal
+for getting the card data for processing.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)initiateEMVTransaction:(PPHAmount *)<em>amount</em> transactionType:(PPHEMVTransactionType)<em>transactionType</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initiate the EMV transaction. This needs to called after <a href="#//api/name/beginPayment">beginPayment</a> and when the specific amount
+and currency is known. During this call the amount and currency code will be sent to the terminal
+for getting the card data for processing.</p>
 	</div>
 	
 	
@@ -1053,10 +1193,10 @@ record the invoice into the paypal system for record-keeping purposes.</p>
 		<dl class="argument-def parameter-def">
 			<dt><em>previousTransaction</em></dt>
 			<dd><p>: The transaction record object that is returned back from the processPayment call. This will
-contain all the necessary information required such as the invoice id,
-transaction id etc needed to send the receipt.
-Use this API when the transaction record is available. For example,
-when the transaction is successful.</p></dd>
+contain the invoice id and transaction id etc needed to send the receipt.</p>
+
+<p>If you want to send a receipt and you don&rsquo;t have a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you can construct one.  Just make
+sure it has BOTH the transactionId and payPalInvoiceId properties set.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -1097,6 +1237,17 @@ which we should send the receipt.</p></dd>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/voidAuthorization:withCompletionHandler:" title="voidAuthorization:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">voidAuthorization:withCompletionHandler:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)voidAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+
+    
+</div>
+						
 					</div>
 					
 					
@@ -1112,7 +1263,7 @@ which we should send the receipt.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-04-09)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-05-16)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
