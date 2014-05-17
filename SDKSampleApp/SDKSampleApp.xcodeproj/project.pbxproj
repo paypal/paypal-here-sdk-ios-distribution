@@ -52,6 +52,9 @@
 		007DE86318A0144A004D8847 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE86118A0144A004D8847 /* SettingsViewController.xib */; };
 		007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE87918A062DC004D8847 /* SignatureViewController.m */; };
 		007DE87C18A062DC004D8847 /* SignatureViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE87A18A062DC004D8847 /* SignatureViewController_iPhone.xib */; };
+		00A0FB3C1926E7D800059B1D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A0FB3B1926E7D800059B1D /* CoreBluetooth.framework */; };
+		00A0FB3E1926E7DD00059B1D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A0FB3D1926E7DD00059B1D /* libz.dylib */; };
+		00A0FB401926E7F000059B1D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A0FB3F1926E7F000059B1D /* libsqlite3.dylib */; };
 		00A2EFFF1922C46A00C20037 /* AuthorizationCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A2EFFD1922C46A00C20037 /* AuthorizationCompleteViewController.m */; };
 		00A2F0001922C46A00C20037 /* AuthorizationCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A2EFFE1922C46A00C20037 /* AuthorizationCompleteViewController.xib */; };
 		00A2F0051923F05600C20037 /* AuthorizedPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A2F0031923F05600C20037 /* AuthorizedPaymentsViewController.m */; };
@@ -157,6 +160,9 @@
 		007DE87818A062DC004D8847 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignatureViewController.h; path = SDKSampleApp/Screens/Transaction/SignatureViewController.h; sourceTree = SOURCE_ROOT; };
 		007DE87918A062DC004D8847 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignatureViewController.m; path = SDKSampleApp/Screens/Transaction/SignatureViewController.m; sourceTree = SOURCE_ROOT; };
 		007DE87A18A062DC004D8847 /* SignatureViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignatureViewController_iPhone.xib; path = SDKSampleApp/Screens/Transaction/SignatureViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		00A0FB3B1926E7D800059B1D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		00A0FB3D1926E7DD00059B1D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		00A0FB3F1926E7F000059B1D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		00A2EFFC1922C46A00C20037 /* AuthorizationCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationCompleteViewController.h; path = SDKSampleApp/Screens/Transaction/AuthorizationCompleteViewController.h; sourceTree = SOURCE_ROOT; };
 		00A2EFFD1922C46A00C20037 /* AuthorizationCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationCompleteViewController.m; path = SDKSampleApp/Screens/Transaction/AuthorizationCompleteViewController.m; sourceTree = SOURCE_ROOT; };
 		00A2EFFE1922C46A00C20037 /* AuthorizationCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthorizationCompleteViewController.xib; path = SDKSampleApp/Screens/Transaction/AuthorizationCompleteViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -212,6 +218,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A0FB401926E7F000059B1D /* libsqlite3.dylib in Frameworks */,
+				00A0FB3E1926E7DD00059B1D /* libz.dylib in Frameworks */,
+				00A0FB3C1926E7D800059B1D /* CoreBluetooth.framework in Frameworks */,
 				007C7B1E18EA0CC1006C5371 /* PayPalHereSDK.framework in Frameworks */,
 				001569F9188F25D60023053A /* libxml2.dylib in Frameworks */,
 				99859E231836B0E200AB3FE1 /* MobileCoreServices.framework in Frameworks */,
@@ -420,6 +429,9 @@
 		99D9817A1835995100D234A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00A0FB3F1926E7F000059B1D /* libsqlite3.dylib */,
+				00A0FB3D1926E7DD00059B1D /* libz.dylib */,
+				00A0FB3B1926E7D800059B1D /* CoreBluetooth.framework */,
 				001569F8188F25D60023053A /* libxml2.dylib */,
 				001569A0188E01090023053A /* PayPalHereSDK.bundle */,
 				001569A1188E01090023053A /* PayPalHereSDK.framework */,

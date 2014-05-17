@@ -253,34 +253,12 @@
          STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
          
          if(appDelegate.paymentFlowIsAuthOnly) {
-             /*
-              * Not yet implemented
-              *
-              */
-             /*
-              [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
-                                completionHandler:^(PPHTransactionResponse *response) {
-                                    self.transactionResponse = response;
-                                    if(response.error) {
-                                        [self showAuthorizationCompeleteView];
-                                    }
-                                    else {
-                                        // Is a signature required for this payment?  If so
-                                        // then let's collect a signature and provide it to the SDK.
-                                        if(response.isSignatureRequiredToFinalize) {
-                                            [self collectSignatureAndFinalizePurchaseWithRecord];
-                                        }
-                                        else {
-                                            // All done.  Tell the user the good news.
-                                            //Let's exit the payment screen once they hit OK
-                                            _doneWithPayScreen = YES;
-                                            [self showPaymentCompeleteView];
-                                        }
-              
-                                    }
-                                }];
-              */
-             //*/
+             
+             [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                                 withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                                     self.transactionResponse = response;
+                                                                     [self showAuthorizationCompeleteView];
+                                                                 }];
          }
          else {
              //Now ask to authorize (and take) payment all in one shot.

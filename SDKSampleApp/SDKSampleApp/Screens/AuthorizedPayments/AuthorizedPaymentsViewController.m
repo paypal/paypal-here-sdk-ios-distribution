@@ -15,17 +15,19 @@
 #import "AuthorizedInvoiceInspectorViewController.h"
 
 @interface AuthorizedPaymentsViewController ()
-@property (strong, nonatomic) NSMutableArray *transactionRecords;
+@property (strong, nonatomic) NSArray *transactionRecords;
 @property (assign, nonatomic) BOOL showingNoneAvailable;
 @end
 
 @implementation AuthorizedPaymentsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecords:(NSArray *)records
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _showingNoneAvailable = NO;
+        _transactionRecords = records;
+
     }
     return self;
 }

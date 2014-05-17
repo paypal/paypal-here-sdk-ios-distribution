@@ -16,4 +16,6 @@ UITableViewDelegate
 
 @property (weak, nonatomic) IBOutlet UITableView *authorizedPaymentsTableView;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecords:(NSArray *)records;
+
 @end

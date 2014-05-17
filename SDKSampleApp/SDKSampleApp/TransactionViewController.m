@@ -15,6 +15,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
+#import "STAppDelegate.h"
 
 
 #define kAPPLES			@"Apples"
@@ -277,9 +278,12 @@
 
 - (IBAction)onViewAuthorizedSales:(id)sender
 {
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+
     AuthorizedPaymentsViewController * vc =  [[AuthorizedPaymentsViewController alloc]
                                       initWithNibName:@"AuthorizedPaymentsViewController"
-                                      bundle:nil];
+                                      bundle:nil
+                                    transactionRecords:appDelegate.authorizedRecords];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

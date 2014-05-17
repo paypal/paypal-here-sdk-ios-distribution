@@ -22,13 +22,6 @@ PPHLoggingDelegate
 
 @implementation STAppDelegate
 
--(NSMutableArray *)transactionRecords
-{
-    if(!_transactionRecords) {
-        _transactionRecords =  [[NSMutableArray alloc] init];
-    }
-    return _transactionRecords;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -47,6 +40,9 @@ PPHLoggingDelegate
 
     [self.window makeKeyAndVisible];
 
+    self.transactionRecords = [[NSMutableArray alloc] init];
+    self.authorizedRecords = [[NSMutableArray alloc] init];
+    
 	NSLog(@"This is our Bundle Identifier Key: [%@]", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey]);
 
     
