@@ -103,8 +103,9 @@
 {
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                                     initWithNibName:@"PaymentCompleteViewController"
-                                                                    bundle:nil];
-    paymentCompleteViewController.transactionResponse = response;
+                                                                    bundle:nil
+                                                                    forResponse:response];
+    
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }

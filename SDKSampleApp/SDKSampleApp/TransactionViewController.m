@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "PaymentMethodViewController.h"
 #import "RefundViewController.h"
+#import "AuthorizedPaymentsViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
@@ -79,7 +80,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-	self.title = @"Transaction";
+	self.title = @"New Transaction";
 	self.amountTextField.delegate = self;
     
     
@@ -257,18 +258,9 @@
 }
 
 - (IBAction)onSettingsPressed:(id)sender {
-    SettingsViewController *settings = nil;
-    
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		settings = [[SettingsViewController alloc]
-                    initWithNibName:@"SettingsViewController_iPhone"
-                    bundle:nil];
-	}
-	else {
-		settings = [[SettingsViewController alloc]
-                    initWithNibName:@"SettingsViewController_iPad"
-                    bundle:nil];
-	}
+    SettingsViewController *settings = [[SettingsViewController alloc]
+                                        initWithNibName:@"SettingsViewController"
+                                                 bundle:nil];
     
     [self.navigationController pushViewController:settings animated:YES];
 }
@@ -281,6 +273,15 @@
     
     [self.navigationController pushViewController:refund animated:YES];
     
+}
+
+- (IBAction)onViewAuthorizedSales:(id)sender
+{
+    AuthorizedPaymentsViewController * vc =  [[AuthorizedPaymentsViewController alloc]
+                                      initWithNibName:@"AuthorizedPaymentsViewController"
+                                      bundle:nil];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource callbacks

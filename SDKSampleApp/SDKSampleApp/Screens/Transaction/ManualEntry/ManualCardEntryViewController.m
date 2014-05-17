@@ -8,6 +8,8 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
+#import "AuthorizationCompleteViewController.h"
+
 #import "STAppDelegate.h"
 
 @interface ManualCardEntryViewController ()
@@ -30,7 +32,10 @@
     [super viewDidLoad];
     self.processingTransactionSpinny.hidden=YES;
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    NSString *buttonText = appDelegate.paymentFlowIsAuthOnly ? @"Authorize" : @"Process";
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:buttonText
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick:)];
     self.navigationItem.rightBarButtonItem = rightButton;
 }
@@ -108,16 +113,33 @@
     //Now, take a payment with it
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     
-    //[tm beginPaymentWithAmount:[PPHAmount amountWithString:@"33.00" inCurrency:@"USD"] andName:@"FixedAmountPayment"];
     tm.manualEntryOrScannedCardData = manualCardData;
     
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    BOOL authOnly = appDelegate.paymentFlowIsAuthOnly;
     
-    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
-            withTransactionController:self
-                    completionHandler:^(PPHTransactionResponse *record) {
-                        self.transactionResponse = record;
-                        [self showPaymentCompeleteView];
-                    }];
+    if(authOnly) {
+        /*
+         * Not yet implemented
+         *
+         
+        [tm authorizePaymentWithPaymentType:ePPHPaymentMethodKey
+                        completionHandler:^(PPHTransactionResponse *record) {
+                            self.transactionResponse = record;
+                            [self showAuthorizationCompeleteView];
+                        }];
+         */
+        
+    }
+    else {
+    
+        [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
+                withTransactionController:self
+                        completionHandler:^(PPHTransactionResponse *record) {
+                            self.transactionResponse = record;
+                            [self showPaymentCompeleteView];
+                        }];
+    }
 
 }
 
@@ -130,9 +152,26 @@
         [appDelegate.transactionRecords addObject:_transactionResponse.record];
     }
 
-    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
-    paymentCompleteViewController.transactionResponse = _transactionResponse;
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
+    
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES]; 
+}
+
+-(void) showAuthorizationCompeleteView
+{
+    if(_transactionResponse.record != nil) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.authorizedRecords addObject:_transactionResponse.record];
+    }
+    
+    AuthorizationCompleteViewController* vc = [[AuthorizationCompleteViewController alloc]
+                                               initWithNibName:@"AuthorizationCompleteViewController"
+                                               bundle:nil
+                                               forAuthResponse:_transactionResponse];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark PPHTransactionControllerDelegate

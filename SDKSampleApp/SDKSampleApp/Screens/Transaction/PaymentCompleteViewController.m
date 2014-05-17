@@ -13,16 +13,18 @@
 #import <PayPalHereSDK/PPHError.h>
 
 @interface PaymentCompleteViewController ()
-
+@property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
 @end
 
 @implementation PaymentCompleteViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil
+          forResponse:(PPHTransactionResponse *)transactionResponse {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.transactionResponse = transactionResponse;
     }
     return self;
 }

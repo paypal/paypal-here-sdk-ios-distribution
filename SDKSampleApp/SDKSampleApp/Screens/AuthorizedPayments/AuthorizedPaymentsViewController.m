@@ -1,26 +1,25 @@
 //
-//  RefundViewController.m
+//  AuthorizedPaymentsViewController.m
 //  SDKSampleApp
 //
-//  Created by Chandrashekar,Sathyanarayan on 3/13/14.
+//  Created by Angelini, Dom on 5/14/14.
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
+#import "AuthorizedPaymentsViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHInvoice.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
-#import "RefundViewController.h"
-#import "STAppDelegate.h"
 
-@interface RefundViewController ()
+#import "AuthorizedInvoiceInspectorViewController.h"
 
+@interface AuthorizedPaymentsViewController ()
 @property (strong, nonatomic) NSMutableArray *transactionRecords;
 @property (assign, nonatomic) BOOL showingNoneAvailable;
-
 @end
 
-@implementation RefundViewController
+@implementation AuthorizedPaymentsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,13 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.processingRefundSpinny.hidden=YES;
     
-    self.title = @"Captured Invoices";
+    self.title = @"Authorized Invoices";
 
-    // Do any additional setup after loading the view from its nib.
-    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.transactionRecords = appDelegate.transactionRecords;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,17 +62,17 @@
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"RefundCellIdentifier";
+    static NSString *CellIdentifier = @"AuthCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     if(_showingNoneAvailable) {
         cell.textLabel.text = @"There are no entries";
     } else {
         PPHTransactionRecord *tr = [self.transactionRecords objectAtIndex:indexPath.row];
         cell.textLabel.text = tr.payPalInvoiceId;
+        cell.detailTextLabel.text = @"Authorized";
     }
     return cell;
 }
@@ -90,53 +85,18 @@
     
     PPHTransactionRecord *record = [self.transactionRecords objectAtIndex:indexPath.row];
     if(record != nil) {
-        [self performRefund:record];
+        [self inspectRecord:record];
     } else {
         // Show an error message.
         NSLog(@"The selected record seems to be nil.");
     }
 }
 
-// Call the refund API within the SDK to perform the refund.
--(void) performRefund: (PPHTransactionRecord *) trxnRecord
-{
-    self.processingRefundSpinny.hidden=NO;
-    [self.processingRefundSpinny startAnimating];
+- (void) inspectRecord:(PPHTransactionRecord *)record {
+    AuthorizedInvoiceInspectorViewController *vc = [[AuthorizedInvoiceInspectorViewController alloc] initWithNibName:@"AuthorizedInvoiceInspectorViewController" bundle:nil transactionRecord:record];
     
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    [tm beginRefund:trxnRecord forAmount:trxnRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response) {
-        if(response.error) {
-            [self showAlertWithTitle:@"Refund Error" andMessage:response.error.description];
-        } else {
-            [self showAlertWithTitle:@"Refund Successful" andMessage:@"Your transaction amount was successfully refunded."];
-        }
-        // Remove this transaction record from the table view.
-        [self removeRefundedRecordFromTableView:trxnRecord];
-    }];
-}
-
--(void) removeRefundedRecordFromTableView: (PPHTransactionRecord *) trxnRecord
-{
-    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.transactionRecords removeObject: trxnRecord];
-}
-
--(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-           message: message
-          delegate:self
- cancelButtonTitle:@"OK"
- otherButtonTitles:nil];
+    [self.navigationController pushViewController:vc animated:YES];
     
-    [alertView show];
-}
-
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

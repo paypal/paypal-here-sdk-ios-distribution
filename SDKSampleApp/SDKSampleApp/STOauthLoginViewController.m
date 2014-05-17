@@ -251,7 +251,9 @@
                           andMessage:[NSString stringWithFormat: @"The Server returned an error: [%@]",
                                       [error localizedDescription]]];
 
-		  NSLog(@"The Heroku login call failed: [%@]", error);
+            NSLog(@"The Heroku login call failed: [%@]", error);
+            self.loginButton.enabled = YES;
+
 
 		}];
     

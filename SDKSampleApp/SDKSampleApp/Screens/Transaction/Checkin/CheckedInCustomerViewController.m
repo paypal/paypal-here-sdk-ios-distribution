@@ -124,8 +124,8 @@
     // Add the record into an array so that we can issue a refund later.
     [appDelegate.transactionRecords addObject:_transactionResponse.record];
     
-    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
-    paymentCompleteViewController.transactionResponse = _transactionResponse;
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
+
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
 }
 
