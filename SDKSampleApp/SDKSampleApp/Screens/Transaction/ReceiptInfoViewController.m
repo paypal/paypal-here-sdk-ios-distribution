@@ -38,7 +38,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    if(_isEmail) {
+    if (_isEmail) {
         _infoLabel.text = @"Please provide an email address";
     } else {
         _infoLabel.text = @"Please provide a phone number";
@@ -68,7 +68,7 @@
     destination.destinationAddress = infoString;
     destination.isEmail = _isEmail;
     [tm sendReceipt: _transactionRecord toRecipient: destination completionHandler:^(PPHError *error) {
-        if(error == nil) {
+        if (error == nil) {
             [self showAlertWithTitle:@"Receipt Sent" andMessage:@"Please wait for a few minutes to receive the receipt on your device."];
         } else {
             [self showAlertWithTitle:@"Error while sending receipt." andMessage:error.description];
@@ -91,7 +91,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(_doneWithReceiptScreen) {
+    if (_doneWithReceiptScreen) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }

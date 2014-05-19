@@ -11,6 +11,8 @@
 #import "STOauthLoginViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
+#define kSDKSampleApp_paymentFlow_authOnlyBool_Key @"SDKSampleApp.paymentFlow.authOnlyBool"
+
 @interface STAppDelegate() <
 PPHLoggingDelegate
 >
@@ -20,13 +22,6 @@ PPHLoggingDelegate
 
 @implementation STAppDelegate
 
--(NSMutableArray *)transactionRecords
-{
-    if(!_transactionRecords) {
-        _transactionRecords =  [[NSMutableArray alloc] init];
-    }
-    return _transactionRecords;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -45,6 +40,9 @@ PPHLoggingDelegate
 
     [self.window makeKeyAndVisible];
 
+    self.transactionRecords = [[NSMutableArray alloc] init];
+    self.authorizedRecords = [[NSMutableArray alloc] init];
+    
 	NSLog(@"This is our Bundle Identifier Key: [%@]", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey]);
 
     
@@ -86,7 +84,10 @@ PPHLoggingDelegate
     // Either the app, or the SDK must requrest location access if we'd like
     // the SDK to take payments.
     [PayPalHereSDK askForLocationAccess];
-        
+    
+    // We keep track of the user's preference for sample app's payment flow.  Either Authorize-Only or Full-Capture
+    self.paymentFlowIsAuthOnly = [[NSUserDefaults standardUserDefaults] boolForKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
+    
     return YES;
 }
 
@@ -116,6 +117,15 @@ PPHLoggingDelegate
 	}
 
 	return YES;
+}
+
+- (void) setPaymentFlowIsAuthOnly:(BOOL)paymentFlowIsAuthOnly {
+    [[NSUserDefaults standardUserDefaults] setBool:paymentFlowIsAuthOnly forKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
+    [[NSUserDefaults standardUserDefaults]  synchronize];
+}
+
+- (BOOL) paymentFlowIsAuthOnly {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
 }
 
 // Let's intercept the logging messages of the SDK

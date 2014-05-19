@@ -37,6 +37,11 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/isInPinRetryMode">&nbsp;&nbsp;&nbsp;&nbsp;isInPinRetryMode</option>
+	
+	
 	
 	
 	
@@ -56,8 +61,6 @@
 	<option value="//api/name/deactivateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- deactivateReader:</option>
 	
 	<option value="//api/name/endMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- endMonitoring:</option>
-	
-	<option value="//api/name/endTransaction">&nbsp;&nbsp;&nbsp;&nbsp;- endTransaction</option>
 	
 	<option value="//api/name/setPreferenceOrder:">&nbsp;&nbsp;&nbsp;&nbsp;- setPreferenceOrder:</option>
 	
@@ -83,6 +86,12 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isInPinRetryMode">isInPinRetryMode</a></span></li>
+	
+</ul></li>
+
 
 
 
@@ -102,8 +111,6 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deactivateReader:">deactivateReader:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endMonitoring:">endMonitoring:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endTransaction">endTransaction</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPreferenceOrder:">setPreferenceOrder:</a></span></li>
 	
@@ -193,12 +200,6 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/endTransaction">&ndash;&nbsp;endTransaction</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/setPreferenceOrder:">&ndash;&nbsp;setPreferenceOrder:</a></code>
 	</span>
 	
@@ -215,6 +216,12 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isInPinRetryMode">&nbsp;&nbsp;isInPinRetryMode</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
 </li>
 						</ul>
 						
@@ -223,6 +230,23 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 					
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/isInPinRetryMode" title="isInPinRetryMode"></a>
+	<h3 class="subsubtitle method-title">isInPinRetryMode</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isInPinRetryMode</code></div>
+
+    
+</div>
+						
+					</div>
 					
 					
 					
@@ -592,53 +616,6 @@ disconnect the reader.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/endTransaction" title="endTransaction"></a>
-	<h3 class="subsubtitle method-title">endTransaction</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Once a transaction is complete, either via our processing services or out-of-band processing
-such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
-some readers are battery powered, you should call this as soon as reasonable. The SDK will
-automatically take care of this when your app is suspended or interrupted.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)endTransaction</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Once a transaction is complete, either via our processing services or out-of-band processing
-such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
-some readers are battery powered, you should call this as soon as reasonable. The SDK will
-automatically take care of this when your app is suspended or interrupted.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/setPreferenceOrder:" title="setPreferenceOrder:"></a>
 	<h3 class="subsubtitle method-title">setPreferenceOrder:</h3>
 	
@@ -720,7 +697,7 @@ that. IMPORTANT: You still need to add the protocol to your application&rsquo;s 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-04-09)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-05-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

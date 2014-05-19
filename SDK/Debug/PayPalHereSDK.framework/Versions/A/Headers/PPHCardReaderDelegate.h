@@ -80,8 +80,9 @@
  * @param message the reason or explanation for the upgrade
  * @param required whether the reader can proceed without an upgrade
  * @param initial whether this is the initial upgrade to the reader
+ * @param estimatedDuration the estimated time the update will take to apply in total
  */
--(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial;
+-(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial withEstimatedDuration: (NSTimeInterval) estimatedDuration;
 
 /*!
  * The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work

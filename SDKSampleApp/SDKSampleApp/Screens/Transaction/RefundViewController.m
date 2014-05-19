@@ -16,6 +16,7 @@
 @interface RefundViewController ()
 
 @property (strong, nonatomic) NSMutableArray *transactionRecords;
+@property (assign, nonatomic) BOOL showingNoneAvailable;
 
 @end
 
@@ -25,6 +26,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _showingNoneAvailable = NO;
     }
     return self;
 }
@@ -33,6 +35,9 @@
 {
     [super viewDidLoad];
     self.processingRefundSpinny.hidden=YES;
+    
+    self.title = @"Captured Invoices";
+
     // Do any additional setup after loading the view from its nib.
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.transactionRecords = appDelegate.transactionRecords;
@@ -51,7 +56,13 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.transactionRecords count];
+    int numTransactions = [self.transactionRecords count];
+    if (numTransactions == 0) {
+        numTransactions += 1;
+        _showingNoneAvailable = YES;
+    }
+    
+    return numTransactions;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,15 +72,24 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    PPHTransactionRecord *tr = [self.transactionRecords objectAtIndex:indexPath.row];
-    cell.textLabel.text = tr.payPalInvoiceId;
+    
+    if (_showingNoneAvailable) {
+        cell.textLabel.text = @"There are no entries";
+    } else {
+        PPHTransactionRecord *tr = [self.transactionRecords objectAtIndex:indexPath.row];
+        cell.textLabel.text = tr.payPalInvoiceId;
+    }
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_showingNoneAvailable) {
+        return;
+    }
+    
     PPHTransactionRecord *record = [self.transactionRecords objectAtIndex:indexPath.row];
-    if(record != nil) {
+    if (record != nil) {
         [self performRefund:record];
     } else {
         // Show an error message.
@@ -85,7 +105,7 @@
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     [tm beginRefund:trxnRecord forAmount:trxnRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response) {
-        if(response.error) {
+        if (response.error) {
             [self showAlertWithTitle:@"Refund Error" andMessage:response.error.description];
         } else {
             [self showAlertWithTitle:@"Refund Successful" andMessage:@"Your transaction amount was successfully refunded."];
