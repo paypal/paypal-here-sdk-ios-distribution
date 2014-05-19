@@ -22,9 +22,9 @@ CLLocationManagerDelegate
 @property (weak, nonatomic) IBOutlet UISwitch *checkinSwitch;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *checkinMerchantSpinny;
 @property (weak, nonatomic) IBOutlet UILabel *sampleAppVersion;
-
+@property (weak, nonatomic) IBOutlet UISegmentedControl *paymentFlowType;
 
 - (IBAction)onReaderDetailsPressed:(id)sender;
 - (IBAction)onCheckinButtonToggled:(id)sender;
-
+- (IBAction)onPaymentFlowTypePressed:(id)sender;
 @end

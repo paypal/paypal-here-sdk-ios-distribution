@@ -4,7 +4,8 @@
 //  Copyright (c) 2012 PayPal. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef _PPHCARDNOTPRESENTDATA_H_
+#define _PPHCARDNOTPRESENTDATA_H_
 
 typedef NS_ENUM(NSInteger, PPHCreditCardType) {
     ePPHCreditCardTypeUnknown = 0,
@@ -56,3 +57,5 @@ typedef NS_ENUM(NSInteger, PPHCreditCardType) {
 @property (nonatomic, readonly) PPHCreditCardType cardType;
 
 @end
+
+#endif

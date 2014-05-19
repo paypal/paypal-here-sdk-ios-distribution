@@ -29,6 +29,8 @@ UITableViewDataSource
 - (IBAction)onChargePressed:(id)sender;
 - (IBAction)onSettingsPressed:(id)sender;
 - (IBAction)onRefundsPressed:(id)sender;
+- (IBAction)onViewAuthorizedSales:(id)sender;
+
 
 @end
 

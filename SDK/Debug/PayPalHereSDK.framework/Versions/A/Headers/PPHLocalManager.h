@@ -30,4 +30,23 @@
  * @param handler called on completion of the request
  */
 -(void)beginGetLocations: (void (^)(PPHError *error, NSArray* locations)) handler;
+
+/*!
+ * Get or set the location for which a soft beacon should be advertised by this device, if the device supports BLE.
+ * Use location watcher to get status of enablement
+ */
+@property (nonatomic, strong) PPHLocation *beaconLocation;
+
+/*!
+ * Whether the soft beacon is currently broadcasting (requires beaconLocation to be non-nil, but also that it's working.)
+ * For status updates during the process, see PPHLocationWatcher.
+ */
+-(BOOL)isBeaconActive;
+
+/*!
+ * Using background beacon services requires specific entitlements for your application. Since we cannot read these entitlements
+ * automatically at runtime, you must tell the SDK if you want background beacon advertisements to be enabled. Defaults to false.
+ * Must be set before setBeaconLocation as it generally only matters when starting CoreBluetooth services.
+ */
+@property (nonatomic,assign) BOOL isBackgroundBeaconEnabled;
 @end

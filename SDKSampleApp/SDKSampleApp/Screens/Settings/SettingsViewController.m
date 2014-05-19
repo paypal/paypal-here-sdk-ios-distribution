@@ -27,8 +27,7 @@
 @synthesize checkinSwitch;
 @synthesize checkinMerchantSpinny;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.readerInfo = nil;
@@ -39,11 +38,10 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.isMerchantCheckedin){
+    if (appDelegate.isMerchantCheckedin){
         [self.checkinSwitch setOn:YES animated:YES];
     }else{
         [self.checkinSwitch setOn:NO animated:YES];
@@ -58,19 +56,16 @@
     NSLog(@"In settings view controller");
 }
 
--(void)viewDidUnload
-{
+-(void)viewDidUnload {
     [super viewDidUnload];
     [self.locationManager stopUpdatingLocation];
 }
 
--(void)dealloc
-{
+-(void)dealloc {
     [self.locationManager stopUpdatingLocation];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -91,22 +86,24 @@
     
     self.sdkVersion.text = [PayPalHereSDK sdkVersion];
     self.sampleAppVersion.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    
+    _paymentFlowType.hidden = NO;
+    
+    [self configureAuthType];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
 	[[PayPalHereSDK sharedCardReaderManager] endMonitoring:YES];
     
 }
 
-- (IBAction)onCheckinButtonToggled:(id)sender
-{
+- (IBAction)onCheckinButtonToggled:(id)sender {
     NSLog(@"onCheckinButton clicked");
-    if(self.checkinSwitch.on){
+    if (self.checkinSwitch.on){
         NSLog(@"In Check In Switch On");
-        if(nil != self.merchantLocation){
+        if (nil != self.merchantLocation){
             self.checkinSwitch.hidden = YES;
             self.checkinMerchantSpinny.hidden = NO;
             [self.checkinMerchantSpinny startAnimating];
@@ -126,21 +123,10 @@
 }
 
 - (IBAction)onReaderDetailsPressed:(id)sender {
-    
 	// Transition to the Reader Info screen:
-	ReaderInfoViewController *readerInfoVC = nil;
-    
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		readerInfoVC = [[ReaderInfoViewController alloc]
-                        initWithNibName:@"ReaderInfoViewController_iPhone"
+	ReaderInfoViewController *readerInfoVC = [[ReaderInfoViewController alloc]
+                        initWithNibName:@"ReaderInfoViewController"
                         bundle:nil];
-	}
-	else {
-		readerInfoVC = [[ReaderInfoViewController alloc]
-                        initWithNibName:@"ReaderInfoViewController_iPad"
-                        bundle:nil];
-	}
-    
     
     // Set up the fields:
 	PPHReaderType type = self.readerInfo.readerType;
@@ -160,7 +146,7 @@
 	if (self.readerMetadata != nil) {
 		readerInfoVC.serialNumber = self.readerMetadata.serialNumber;
 		readerInfoVC.firmwareRevision = self.readerMetadata.firmwareRevision;
-		readerInfoVC.batteryLevel = [NSString stringWithFormat:@"%ldd", self.readerMetadata.batteryLevel];
+		readerInfoVC.batteryLevel = [NSString stringWithFormat:@"%ldd", (long)self.readerMetadata.batteryLevel];
 	}
     
 	[self.navigationController pushViewController:readerInfoVC animated:YES];
@@ -168,20 +154,53 @@
     
 }
 
+/*
+ * Handle the Payment Flow stle.
+ *
+ * The sample app's payment flow has two flavors.  The first is called 'full process payment', the second is
+ * called 'Auth Only'.   
+ *
+ * When we're in Full Process Payment mode we'll ask the SDK to 'processPayment', which
+ * means we'll attempt to capture and finalize your money from the customer when you tap Purchase.
+ *
+ * When we're in Auth Only mode we'll follow a different flow.  We'll authorize the card you've
+ * swiped or entered for 115% of the purchase total.   Once authorized we'll end the transcation flow so you
+ * can take a new payment.  Later you can visit the Authorized Invoices screen and select invoices to capture
+ * payment on.  At that time you can enter the tip and capture payment, or reauthorize the invoice for a 
+ * different amount, or void the transaction, or just capture payment on the invoice without adding a tip.
+ *
+ * Note that these modes only affect swipe and manual card payments.  For Cash or checkin payments we
+ * won't attempt an authorize but instead will just call processPayment - which for Checkin payments will
+ * capture your money right away and for cash payments will simply record the invoice as having been
+ * paid in cash.
+ */
+#define kAuthOnlySegment 0
+#define kFullProcessPaymentSegment 1
+
+- (IBAction)onPaymentFlowTypePressed:(id)sender {
+    UISegmentedControl *segControl = (UISegmentedControl *) sender;
+    NSInteger index = segControl.selectedSegmentIndex;
+    
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.paymentFlowIsAuthOnly = (index == kAuthOnlySegment);
+}
+
+- (void)configureAuthType {
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _paymentFlowType.selectedSegmentIndex = appDelegate.paymentFlowIsAuthOnly ? kAuthOnlySegment : kFullProcessPaymentSegment;
+}
 
 
 #pragma mark -
 #pragma mark PPHSimpleCardReaderDelegate
 
--(void)didStartReaderDetection:(PPHCardReaderBasicInformation *)readerType
-{
+-(void)didStartReaderDetection:(PPHCardReaderBasicInformation *)readerType {
     NSLog(@"Detecting Device");
     self.detectingReaderSpinny.hidden = NO;
     [self.detectingReaderSpinny startAnimating];
 }
 
--(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader
-{
+-(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader {
     NSLog(@"%@", [NSString stringWithFormat:@"Detected %@", reader.friendlyName]);
     self.detectingReaderSpinny.hidden = YES;
     [self.detectingReaderSpinny stopAnimating];
@@ -189,8 +208,7 @@
     self.readerInfo = reader;
 }
 
--(void)didRemoveReader:(PPHReaderType)readerType
-{
+-(void)didRemoveReader:(PPHReaderType)readerType {
     NSLog(@"Reader Removed");
     self.detectingReaderSpinny.hidden = YES;
     [self.detectingReaderSpinny stopAnimating];
@@ -198,13 +216,11 @@
     self.readerInfo = nil;
 }
 
--(void)didCompleteCardSwipe:(PPHCardSwipeData*)card
-{
+-(void)didCompleteCardSwipe:(PPHCardSwipeData*)card {
 	NSLog(@"Got card swipe!");
 }
 
--(void)didFailToReadCard
-{
+-(void)didFailToReadCard {
 	NSLog(@"Card swipe failed!!");
     
     UIAlertView *alertView;
@@ -219,8 +235,7 @@
     [alertView show];
 }
 
--(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
-{
+-(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata {
 	if (metadata == nil) {
 		NSLog(@"didReceiveCardReaderMetadata got NIL metada! Ignoring..");
 		return;
@@ -239,13 +254,12 @@
 	const NSInteger kZero = 0;
     
 	if (metadata.batteryLevel != kZero) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Battery Level %ld", metadata.batteryLevel]);
+		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Battery Level %ld", (long)metadata.batteryLevel]);
 	}
     
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     // We just set this once in the sample app. In a real app you would want to update the location as the merchant moves any meaningful distance. Threshold should be set by your needs, but usually something like 1/4 mile would work
     NSLog(@"Got the LocationUpdate. newLocation Latitude:%f Longitude:%f ",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
     
@@ -253,21 +267,20 @@
         self.gotValidLocation = YES;
         self.merchantLocation = newLocation;
         [self.locationManager stopUpdatingLocation];
-        if(self.isMerchantCheckinPending){
+        if (self.isMerchantCheckinPending){
             self.isMerchantCheckinPending = NO;
             [self getMerchantCheckin:self.merchantLocation];
         }
     }
 }
 
--(void) getMerchantCheckin: (CLLocation*)newLocation
-{
+-(void) getMerchantCheckin: (CLLocation*)newLocation {
     [[PayPalHereSDK sharedLocalManager] beginGetLocations:^(PPHError *error, NSArray *locations){
         if (error) {
             return;
         }
         PPHLocation *myLocation = nil;
-        if(nil != locations && 0 < [locations count]){
+        if (nil != locations && 0 < [locations count]){
             NSLog(@"This merchant has already checked-in locations. Will try to find if the current location is in the list or not");
             NSString *currentName = @"TestAppLocation";
             if (currentName && currentName.length > 0) {
@@ -281,7 +294,7 @@
             }
         }
         
-        if(nil == myLocation){
+        if (nil == myLocation){
             NSLog(@"We didn't find or match the current location in any of the merchants checked-in locations. Hence creating the new checking location");
             myLocation = [[PPHLocation alloc] init];
         }
@@ -310,7 +323,7 @@
                 appDelegate.isMerchantCheckedin = YES;
                 [self.checkinSwitch setOn:YES animated:YES];
             }else{
-                NSLog(@"Oops.. We got error while saving the location. Error Code: %ld Error Description: %@",error.code, error.description);
+                NSLog(@"Oops.. We got error while saving the location. Error Code: %ld Error Description: %@",(long)error.code, error.description);
                 [self.checkinSwitch setOn:NO animated:YES];
             }
             [self.checkinMerchantSpinny stopAnimating];
