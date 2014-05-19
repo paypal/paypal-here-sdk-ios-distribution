@@ -43,6 +43,7 @@
 #define kPPHLocalErrorBadConfigurationAuthForProvidedPaymentMethodNotSupported - 2010
 #define kPPHLocalErrorBadConfigurationNoInvoiceInTransactionRecord - 2011
 #define kPPHLocalErrorBadConfigurationNoTransactionIdInTransactionRecord - 2012
+#define kPPHLocalErrorBadConfigurationNoPaymentData - 2013
 
 // Mapping the different API's in Transaction Manager to key's
 // used in saving of invoice, and can be extended for other future use cases
