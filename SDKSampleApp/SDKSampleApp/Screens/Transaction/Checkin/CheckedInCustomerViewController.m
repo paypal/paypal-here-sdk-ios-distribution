@@ -104,7 +104,7 @@
                     completionHandler:^(PPHTransactionResponse *record) {
                         [self.processingTransactionSpinny stopAnimating];
                         self.processingTransactionSpinny.hidden=YES;
-                        if(record.error) {
+                        if (record.error) {
                             NSString *message = [NSString stringWithFormat:@"Payment using checkin Failed with an error: %@", record.error.apiMessage];
                             [self showAlertWithTitle:@"Payment Failed" andMessage:message];
                         }
@@ -132,7 +132,7 @@
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if(self.doneWithPayScreen){
+    if (self.doneWithPayScreen){
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
@@ -185,7 +185,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PPHLocationCheckin *client = [self.checkedInClients objectAtIndex:indexPath.row];
-    if(nil != client){
+    if (nil != client){
         NSLog(@"Calling takePaymentUsingCheckinClient with the checkedin client: %@",client.customerName);
         [self takePaymentUsingCheckinClient:client];
     }else{

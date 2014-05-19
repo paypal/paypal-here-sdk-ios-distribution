@@ -41,7 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.isMerchantCheckedin){
+    if (appDelegate.isMerchantCheckedin){
         [self.checkinSwitch setOn:YES animated:YES];
     }else{
         [self.checkinSwitch setOn:NO animated:YES];
@@ -101,9 +101,9 @@
 
 - (IBAction)onCheckinButtonToggled:(id)sender {
     NSLog(@"onCheckinButton clicked");
-    if(self.checkinSwitch.on){
+    if (self.checkinSwitch.on){
         NSLog(@"In Check In Switch On");
-        if(nil != self.merchantLocation){
+        if (nil != self.merchantLocation){
             self.checkinSwitch.hidden = YES;
             self.checkinMerchantSpinny.hidden = NO;
             [self.checkinMerchantSpinny startAnimating];
@@ -182,7 +182,7 @@
     NSInteger index = segControl.selectedSegmentIndex;
     
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.paymentFlowIsAuthOnly = index == kAuthOnlySegment;
+    appDelegate.paymentFlowIsAuthOnly = (index == kAuthOnlySegment);
 }
 
 - (void)configureAuthType {
@@ -267,7 +267,7 @@
         self.gotValidLocation = YES;
         self.merchantLocation = newLocation;
         [self.locationManager stopUpdatingLocation];
-        if(self.isMerchantCheckinPending){
+        if (self.isMerchantCheckinPending){
             self.isMerchantCheckinPending = NO;
             [self getMerchantCheckin:self.merchantLocation];
         }
@@ -280,7 +280,7 @@
             return;
         }
         PPHLocation *myLocation = nil;
-        if(nil != locations && 0 < [locations count]){
+        if (nil != locations && 0 < [locations count]){
             NSLog(@"This merchant has already checked-in locations. Will try to find if the current location is in the list or not");
             NSString *currentName = @"TestAppLocation";
             if (currentName && currentName.length > 0) {
@@ -294,7 +294,7 @@
             }
         }
         
-        if(nil == myLocation){
+        if (nil == myLocation){
             NSLog(@"We didn't find or match the current location in any of the merchants checked-in locations. Hence creating the new checking location");
             myLocation = [[PPHLocation alloc] init];
         }

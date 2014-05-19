@@ -115,7 +115,7 @@
 
 -(void) showPaymentCompeleteView
 {
-    if(!_isCashTransaction && _transactionResponse.record != nil) {
+    if (!_isCashTransaction && _transactionResponse.record != nil) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
@@ -135,7 +135,7 @@
 
 -(void) showAuthorizationCompeleteView
 {
-    if(_transactionResponse.record != nil) {
+    if (_transactionResponse.record != nil) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
@@ -153,7 +153,7 @@
 -(IBAction)payWithCheckedInClient:(id)sender
 {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(!appDelegate.isMerchantCheckedin){
+    if (!appDelegate.isMerchantCheckedin){
         UIAlertView *alert = [ [UIAlertView alloc] initWithTitle:@"Alert"
                                                          message:@"You are not checked-in. Please go to Settings and check-in first to take payments through this channel"
                                                         delegate:self
@@ -195,7 +195,7 @@
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if(_doneWithPayScreen)
+    if (_doneWithPayScreen)
         [self showPaymentCompeleteView];
 }
 
@@ -236,7 +236,7 @@
  */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-     if(event.eventType == ePPHTransactionType_Idle) {
+     if (event.eventType == ePPHTransactionType_Idle) {
          [self.processingTransactionSpinny stopAnimating];
          self.processingTransactionSpinny.hidden = YES;
      }
@@ -246,13 +246,13 @@
      }
      
      NSLog(@"Our local instance of PPHTransactionWatcher picked up a PPHTransactionManager event notification: <%@>", event);
-     if(event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
+     if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
      
          self.waitingForCardSwipe = NO;
      
          STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
          
-         if(appDelegate.paymentFlowIsAuthOnly) {
+         if (appDelegate.paymentFlowIsAuthOnly) {
              
              [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                                  withCompletionHandler:^(PPHTransactionResponse *response) {
@@ -266,13 +266,13 @@
                                                        withTransactionController:self
                                                                completionHandler:^(PPHTransactionResponse *response) {
                                                                    self.transactionResponse = response;
-                                                                   if(response.error) {
+                                                                   if (response.error) {
                                                                        [self showPaymentCompeleteView];
                                                                    }
                                                                    else {
                                                                        // Is a signature required for this payment?  If so
                                                                        // then let's collect a signature and provide it to the SDK.
-                                                                       if(response.isSignatureRequiredToFinalize) {
+                                                                       if (response.isSignatureRequiredToFinalize) {
                                                                            [self collectSignatureAndFinalizePurchaseWithRecord];
                                                                        }
                                                                        else {

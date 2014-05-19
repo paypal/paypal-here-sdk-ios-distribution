@@ -40,10 +40,10 @@
     self.invoiceAmountLabel.text = totalStr;
     _invoiceNumberLabel.text = [NSString stringWithFormat: @"Invoice Id : %@", invoice.paypalInvoiceId];
     
-    if(_authResponse.error == nil) {
+    if (_authResponse.error == nil) {
         self.authResultLabel.text = @"Authorization Successful";
         /*
-        if(_transactionResponse.record.transactionId != nil) {
+        if (_transactionResponse.record.transactionId != nil) {
             self.paymentDetails.text = [NSString stringWithFormat: @"Transaction Id : %@", _transactionResponse.record.transactionId];
         } else {
             _invoiceNumberLabel.text = [NSString stringWithFormat: @"Invoice Id : %@", _transactionResponse.record.payPalInvoiceId];

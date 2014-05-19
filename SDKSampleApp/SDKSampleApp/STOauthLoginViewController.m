@@ -118,7 +118,7 @@
     // Did we successfully log in in the past?  If so, let's prefill the username box with
     // that last-good user name.
     NSString *lastGoodUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastgoodusername"];
-    if(lastGoodUserName) {
+    if (lastGoodUserName) {
         self.usernameField.text = lastGoodUserName;
     }
 }
@@ -528,7 +528,7 @@
     
     
     //If we want Live then use nil as the base URL.
-    if([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
+    if ([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
         testBaseUrlForTheSDKToUse = nil;
     }
     

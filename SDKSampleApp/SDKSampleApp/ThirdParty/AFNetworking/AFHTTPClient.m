@@ -145,7 +145,7 @@ NSArray * AFQueryStringPairsFromDictionary(NSDictionary *dictionary) {
 NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     NSMutableArray *mutableQueryStringComponents = [NSMutableArray array];
     
-    if([value isKindOfClass:[NSDictionary class]]) {
+    if ([value isKindOfClass:[NSDictionary class]]) {
         // Sort dictionary keys to ensure consistent ordering in query string, which is important when deserializing potentially ambiguous sequences, such as an array of dictionaries 
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         [[[value allKeys] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] enumerateObjectsUsingBlock:^(id nestedKey, NSUInteger idx, BOOL *stop) {
@@ -154,7 +154,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
                 [mutableQueryStringComponents addObjectsFromArray:AFQueryStringPairsFromKeyAndValue((key ? [NSString stringWithFormat:@"%@[%@]", key, nestedKey] : nestedKey), nestedValue)];
             }
         }];
-    } else if([value isKindOfClass:[NSArray class]]) {
+    } else if ([value isKindOfClass:[NSArray class]]) {
         [value enumerateObjectsUsingBlock:^(id nestedValue, NSUInteger idx, BOOL *stop) {
             [mutableQueryStringComponents addObjectsFromArray:AFQueryStringPairsFromKeyAndValue([NSString stringWithFormat:@"%@[]", key], nestedValue)];
         }];
@@ -278,11 +278,11 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
     BOOL isNetworkReachable = (isReachable && !needsConnection);
     
     AFNetworkReachabilityStatus status = AFNetworkReachabilityStatusUnknown;
-    if(isNetworkReachable == NO){
+    if (isNetworkReachable == NO){
         status = AFNetworkReachabilityStatusNotReachable;
     }
 #if	TARGET_OS_IPHONE
-    else if((flags & kSCNetworkReachabilityFlagsIsWWAN) != 0){
+    else if ((flags & kSCNetworkReachabilityFlagsIsWWAN) != 0){
         status = AFNetworkReachabilityStatusReachableViaWWAN;
     }
 #endif

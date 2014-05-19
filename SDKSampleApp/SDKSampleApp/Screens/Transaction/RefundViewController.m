@@ -57,7 +57,7 @@
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int numTransactions = [self.transactionRecords count];
-    if(numTransactions == 0) {
+    if (numTransactions == 0) {
         numTransactions += 1;
         _showingNoneAvailable = YES;
     }
@@ -73,7 +73,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if(_showingNoneAvailable) {
+    if (_showingNoneAvailable) {
         cell.textLabel.text = @"There are no entries";
     } else {
         PPHTransactionRecord *tr = [self.transactionRecords objectAtIndex:indexPath.row];
@@ -84,12 +84,12 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(_showingNoneAvailable) {
+    if (_showingNoneAvailable) {
         return;
     }
     
     PPHTransactionRecord *record = [self.transactionRecords objectAtIndex:indexPath.row];
-    if(record != nil) {
+    if (record != nil) {
         [self performRefund:record];
     } else {
         // Show an error message.
@@ -105,7 +105,7 @@
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     [tm beginRefund:trxnRecord forAmount:trxnRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response) {
-        if(response.error) {
+        if (response.error) {
             [self showAlertWithTitle:@"Refund Error" andMessage:response.error.description];
         } else {
             [self showAlertWithTitle:@"Refund Successful" andMessage:@"Your transaction amount was successfully refunded."];

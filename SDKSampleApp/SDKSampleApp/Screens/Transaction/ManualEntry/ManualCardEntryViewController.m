@@ -90,7 +90,7 @@
     NSString* cvvStr = [self.cvv2 text];
     
     //preliminary checks for entered info...
-    if(nil == cardNumStr || nil == expMonthStr || nil == expYearStr || nil == cvvStr
+    if (nil == cardNumStr || nil == expMonthStr || nil == expYearStr || nil == cvvStr
        || (15 > [cardNumStr length]) || (2 != [expMonthStr length]) || (4 != [expYearStr length])
        || (3 != [cvvStr length]) || (12 < [expMonthStr integerValue]) || ([[self getCurrentYear] integerValue] > [expYearStr integerValue])){
         
@@ -118,7 +118,7 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     BOOL authOnly = appDelegate.paymentFlowIsAuthOnly;
     
-    if(authOnly) {
+    if (authOnly) {
         /*
          * Not yet implemented
          *
@@ -145,7 +145,7 @@
 
 -(void) showPaymentCompeleteView
 {
-    if(_transactionResponse.record != nil) {
+    if (_transactionResponse.record != nil) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
@@ -159,7 +159,7 @@
 
 -(void) showAuthorizationCompeleteView
 {
-    if(_transactionResponse.record != nil) {
+    if (_transactionResponse.record != nil) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.

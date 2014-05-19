@@ -91,15 +91,15 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newValue = nil;
-    if(range.location == [textField.text length] && [string length] == 1) {
+    if (range.location == [textField.text length] && [string length] == 1) {
         newValue = [NSString stringWithFormat:@"%@%@", textField.text, string];
     }
-    else if(range.location == [textField.text length] - 1 && [string length] == 0) {
+    else if (range.location == [textField.text length] - 1 && [string length] == 0) {
         NSRange desiredRange = { 0, [textField.text length] - 1 };
         newValue = [textField.text substringWithRange:desiredRange];
     }
     
-    if([newValue length] <= 0) {
+    if ([newValue length] <= 0) {
         self.grandTotalWithTip.text = [_myInvoice.totalAmount.amount description];
         return YES;
     }
@@ -108,7 +108,7 @@
     NSString *newStr = [num description];
     int desiredLen = [newStr length];
     int currentLen = [_tipToAdd.text length];
-    if(![self isPeriod:string] && desiredLen == currentLen) {
+    if (![self isPeriod:string] && desiredLen == currentLen) {
         return NO;
     }
     

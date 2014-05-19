@@ -118,7 +118,7 @@
     
     // Do we have a previous transaction?   Cancel it.
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    if(tm.hasActiveTransaction)
+    if (tm.hasActiveTransaction)
     {
         [tm cancelPayment];
     }
@@ -149,7 +149,7 @@
     
     
     PPHMerchantInfo *currentMerchant = [PayPalHereSDK activeMerchant];
-    if(currentMerchant == nil) {
+    if (currentMerchant == nil) {
         [self showAlertWithTitle:@"Bad State!" andMessage:@"The merchant hasn't been created yet?   We can't use the SDK until the merchant exists."];
         return;
     }
@@ -191,7 +191,7 @@
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     
-    if([self isOnMultiItemScreen]) {
+    if ([self isOnMultiItemScreen]) {
         [tm beginPayment];
         
         NSArray *itemList = @[kAPPLES, kBANANAS, kORANGES, kSTRAWBERRIES];
