@@ -62,6 +62,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ * When the user taps void all we need to do is call voidAuthorization and pass in 
+ * the record from the authorization attempt.
+ */
 - (IBAction)onVoid:(id)sender {
     _activitySpinner.hidden = NO;
     [_activitySpinner startAnimating];

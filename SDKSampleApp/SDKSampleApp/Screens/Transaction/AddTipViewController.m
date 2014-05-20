@@ -53,6 +53,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     NSDecimalNumber *total = _myInvoice.subTotal;
     NSDecimalNumber *tip = _myInvoice.gratuity;
     NSDecimalNumber *grandTotal = _myInvoice.totalAmount.amount;
