@@ -46,28 +46,28 @@
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.95], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.95"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kAPPLES,
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.50], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.50"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kBANANAS,
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.45], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.40"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kORANGES,
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.25], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.25"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kSTRAWBERRIES,
@@ -155,7 +155,7 @@
     }
     
 	NSString *amountString = nil;
-	double transactionAmount = 0;
+	double transactionAmount = 0;   //TODO: pull use of double
     
 	if ([self isOnMultiItemScreen]) {
 		transactionAmount = [self sumShoppingCart];
@@ -164,7 +164,7 @@
 		[self.amountTextField resignFirstResponder];
         
 		// Make sure the user has entered some amount:
-		amountString = self.amountTextField.text;
+		amountString = _amountTextField.text;
 		if ([amountString length] == 0) {
 			[self showAlertWithTitle:@"Input Error" andMessage:@"You need to enter a transaction amount before you can purchase something."];
 			return;

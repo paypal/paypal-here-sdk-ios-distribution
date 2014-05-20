@@ -40,10 +40,16 @@
 
 }
 
+
+- (void) viewWillAppear:(BOOL)animated  {
+    [super viewWillAppear:animated];
+    
+    [_authorizedPaymentsTableView reloadData];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView

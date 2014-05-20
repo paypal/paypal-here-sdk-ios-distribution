@@ -65,15 +65,11 @@
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     PPHInvoice *invoice = tm.currentInvoice;
-    NSString *subTotalStr = [invoice.subTotal description];
-    NSString *totalStr = [[invoice.totalAmount amount] description];
-    NSString *tipStr = [invoice.gratuity description];
-    NSString *totalTaxStr = [invoice.tax description];
     
-    self.subtotalLabel.text = subTotalStr;
-    self.totalLabel.text = totalStr;
-    self.tipLabel.text = tipStr;
-    self.taxLabel.text = totalTaxStr;
+    self.subtotalLabel.text = [invoice.subTotal description];
+    self.totalLabel.text = [[invoice.totalAmount amount] description];
+    self.tipLabel.text = [invoice.gratuity description];
+    self.taxLabel.text = [invoice.tax description];
     [self.processingTransactionSpinny stopAnimating];
     self.processingTransactionSpinny.hidden = YES;
 }
@@ -119,16 +115,10 @@
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
-        [appDelegate.transactionRecords addObject:_transactionResponse.record];
+        [appDelegate.refundableRecords addObject:_transactionResponse.record];
     }
     
-    PaymentCompleteViewController *paymentCompleteViewController;
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
-    } else {
-        paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
-    }
+    PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
     
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
 }

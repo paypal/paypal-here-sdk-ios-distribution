@@ -38,6 +38,8 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     if (_isEmail) {
         _infoLabel.text = @"Please provide an email address";
     } else {
