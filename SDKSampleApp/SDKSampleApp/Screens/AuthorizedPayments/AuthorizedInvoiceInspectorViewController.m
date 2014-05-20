@@ -153,6 +153,19 @@
     
 }
 
+- (IBAction)onCaptureAndAddItem:(id)sender {
+    
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithString:@"10"];
+
+    [_transactionRecord.invoice addItemWithId:@"id23455"
+                                         name:@"Puppy"
+                                     quantity:[NSDecimalNumber one]
+                                    unitPrice:price
+                                      taxRate:[NSDecimalNumber zero]
+                                  taxRateName:@"notax"];
+    [self capture];
+}
+
 -(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
     UIAlertView *alertView =
     [[UIAlertView alloc]
@@ -171,6 +184,7 @@
     _voidButton.enabled = NO;
     _captureOrigAmountButton.enabled = NO;
     _captureNewAmountButton.enabled = NO;
+    _captureAddItemButton.enabled = NO;
     _actionLabel.text = @"Capturing payment ...";
     
     [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_transactionRecord
@@ -200,6 +214,8 @@
                                                                _voidButton.enabled = YES;
                                                                _captureOrigAmountButton.enabled = YES;
                                                                _captureNewAmountButton.enabled = YES;
+                                                               _captureAddItemButton.enabled = YES;
+
                                                            }
                                                        }];
 

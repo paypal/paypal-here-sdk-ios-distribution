@@ -46,28 +46,28 @@
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.95], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.95"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kAPPLES,
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.50], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.50"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kBANANAS,
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.45], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.40"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kORANGES,
          
          [NSMutableDictionary
           dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber numberWithDouble:0.25], kPRICE,
+          [NSDecimalNumber decimalNumberWithString:@"0.25"], kPRICE,
           [NSDecimalNumber numberWithInt:0], kQUANTITY,
           nil],
          kSTRAWBERRIES,

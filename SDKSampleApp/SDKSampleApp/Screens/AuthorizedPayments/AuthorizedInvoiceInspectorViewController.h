@@ -22,12 +22,15 @@ UITextFieldDelegate
 @property (weak, nonatomic) IBOutlet UIButton *voidButton;
 @property (weak, nonatomic) IBOutlet UIButton *captureOrigAmountButton;
 @property (weak, nonatomic) IBOutlet UIButton *captureNewAmountButton;
+@property (weak, nonatomic) IBOutlet UIButton *captureAddItemButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 
 
 - (IBAction)onVoid:(id)sender;
 - (IBAction)onCapture:(id)sender;
 - (IBAction)onCaptureNewAmount:(id)sender;
+- (IBAction)onCaptureAndAddItem:(id)sender;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil transactionRecord:(PPHTransactionRecord *)record;
 @end
