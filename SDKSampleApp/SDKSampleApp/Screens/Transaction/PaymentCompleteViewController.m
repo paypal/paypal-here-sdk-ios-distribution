@@ -38,6 +38,9 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    self.navigationItem.hidesBackButton = YES;
+
     if (_transactionResponse.error == nil) {
         self.paymentStatus.text = @"Payment Successful";
         if (_transactionResponse.record.transactionId != nil) {

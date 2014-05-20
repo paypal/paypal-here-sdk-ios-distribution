@@ -40,6 +40,13 @@
 
 }
 
+
+- (void) viewWillAppear:(BOOL)animated  {
+    [super viewWillAppear:animated];
+    
+    [_authorizedPaymentsTableView reloadData];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

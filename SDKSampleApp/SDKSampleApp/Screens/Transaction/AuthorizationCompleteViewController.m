@@ -9,6 +9,8 @@
 #import "AuthorizationCompleteViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
+#import <PayPalHereSDK/PPHInvoice.h>
+#import "STAppDelegate.h"
 
 @interface AuthorizationCompleteViewController ()
 @property (strong, nonatomic) PPHTransactionResponse *authResponse;
@@ -34,6 +36,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.hidesBackButton = YES;
+
     PPHInvoice * invoice = _authResponse.record.invoice;
     
     NSString *totalStr = [[invoice.totalAmount amount] description];
@@ -42,23 +48,23 @@
     
     if (_authResponse.error == nil) {
         self.authResultLabel.text = @"Authorization Successful";
-        /*
-        if (_transactionResponse.record.transactionId != nil) {
-            self.paymentDetails.text = [NSString stringWithFormat: @"Transaction Id : %@", _transactionResponse.record.transactionId];
+    
+        if (_authResponse.record.transactionId != nil) {
+            _invoiceNumberLabel.text = [NSString stringWithFormat: @"Transaction Id : %@", _authResponse.record.transactionId];
         } else {
-            _invoiceNumberLabel.text = [NSString stringWithFormat: @"Invoice Id : %@", _transactionResponse.record.payPalInvoiceId];
+            _invoiceNumberLabel.text = [NSString stringWithFormat: @"Invoice Id : %@", _authResponse.record.payPalInvoiceId];
         }
-         */
     }
     else {
-        self.authResultLabel.text = @"Authorization Declined";
-        //self.paymentDetails.text = [NSString stringWithFormat: @"Error : %@", _transactionResponse.error.description];
+        //self.authResultLabel.text = @"Authorization Declined";
+        self.authResultLabel.text = [NSString stringWithFormat: @"Authorization Declined With Error : %@", _authResponse.error.description];
     }
+    
+    _activitySpinner.hidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,12 +72,48 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)onDone:(id)sender {
+- (IBAction)onDone:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(IBAction)onCaptureNow:(id)sender {
-    //Hmm.
+- (IBAction)onCaptureNow:(id)sender {
+    
+    _activitySpinner.hidden = NO;
+    [_activitySpinner startAnimating];
+    _doneButton.enabled = NO;
+    _captureButton.enabled = NO;
+    self.authResultLabel.text = @"Capturing payment ...";
+    
+    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_authResponse.record
+                                                       withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           [_activitySpinner stopAnimating];
+                                                           _activitySpinner.hidden = YES;
+                                                           _doneButton.enabled = YES;
+                                                           
+                                                           if(!response.error) {
+                                                               self.authResultLabel.text = @"Capture Successful";
+                                                               
+                                                               NSString *ourInvoiceId = _authResponse.record.invoice.paypalInvoiceId;
+                                                               
+                                                               //Remove this record from our list of records that need captured.
+                                                               STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+                                                               for(PPHTransactionRecord *record in appDelegate.authorizedRecords) {
+                                                                   if(NSOrderedSame == [ourInvoiceId caseInsensitiveCompare:record.invoice.paypalInvoiceId]) {
+                                                                       [appDelegate.authorizedRecords removeObject:record];
+                                                                       break;
+                                                                   }
+                                                               }
+                                                               
+                                                               //Place this capture record in the list of records that are refundable
+                                                               [appDelegate.refundableRecords addObject:response.record];
+                                                           }
+                                                           else {
+                                                               self.authResultLabel.text = @"Capture Failed";
+                                                               _captureButton.enabled = YES;
+                                                           }
+                                                       }];
 }
+
+
 
 @end

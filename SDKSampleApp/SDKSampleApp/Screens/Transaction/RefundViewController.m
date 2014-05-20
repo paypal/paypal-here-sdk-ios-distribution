@@ -40,7 +40,7 @@
 
     // Do any additional setup after loading the view from its nib.
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.transactionRecords = appDelegate.transactionRecords;
+    self.transactionRecords = appDelegate.refundableRecords;
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,7 +118,7 @@
 -(void) removeRefundedRecordFromTableView: (PPHTransactionRecord *) trxnRecord
 {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.transactionRecords removeObject: trxnRecord];
+    [appDelegate.refundableRecords removeObject: trxnRecord];
 }
 
 -(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message

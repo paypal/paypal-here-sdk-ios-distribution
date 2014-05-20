@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *authResultLabel;
 @property (weak, nonatomic) IBOutlet UILabel *invoiceAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *invoiceNumberLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
+
 
 -(IBAction)onDone:(id)sender;
 

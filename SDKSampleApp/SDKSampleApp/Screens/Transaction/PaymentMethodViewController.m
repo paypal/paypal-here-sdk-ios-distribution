@@ -119,7 +119,7 @@
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
-        [appDelegate.transactionRecords addObject:_transactionResponse.record];
+        [appDelegate.refundableRecords addObject:_transactionResponse.record];
     }
     
     PaymentCompleteViewController *paymentCompleteViewController;

@@ -40,7 +40,7 @@ PPHLoggingDelegate
 
     [self.window makeKeyAndVisible];
 
-    self.transactionRecords = [[NSMutableArray alloc] init];
+    self.refundableRecords = [[NSMutableArray alloc] init];
     self.authorizedRecords = [[NSMutableArray alloc] init];
     
 	NSLog(@"This is our Bundle Identifier Key: [%@]", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey]);
