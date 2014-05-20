@@ -128,6 +128,10 @@
     
     _amountTextField.delegate = self;
     [_amountTextField setReturnKeyType:UIReturnKeyDone];
+    
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [_purchaseButton setTitle:appDelegate.paymentFlowIsAuthOnly ? @"Authorize Purchase" : @"Purchase" forState:UIControlStateNormal];
+
 }
 
 

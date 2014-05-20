@@ -119,16 +119,11 @@
     BOOL authOnly = appDelegate.paymentFlowIsAuthOnly;
     
     if (authOnly) {
-        /*
-         * Not yet implemented
-         *
-         
-        [tm authorizePaymentWithPaymentType:ePPHPaymentMethodKey
-                        completionHandler:^(PPHTransactionResponse *record) {
-                            self.transactionResponse = record;
-                            [self showAuthorizationCompeleteView];
-                        }];
-         */
+        [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodKey
+                                                            withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                                self.transactionResponse = response;
+                                                                [self showAuthorizationCompeleteView];
+                                                            }];
         
     }
     else {

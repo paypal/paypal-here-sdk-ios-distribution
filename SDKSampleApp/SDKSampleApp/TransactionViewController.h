@@ -25,6 +25,9 @@ UITableViewDataSource
 @property (weak, nonatomic) IBOutlet UITableView *shoppingCartTable;
 @property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
+
+
 - (IBAction)itemizedModeChanged:(id)sender;
 - (IBAction)onChargePressed:(id)sender;
 - (IBAction)onSettingsPressed:(id)sender;
