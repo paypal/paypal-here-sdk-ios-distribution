@@ -72,6 +72,8 @@
     _voidButton.enabled = NO;
     _captureOrigAmountButton.enabled = NO;
     _captureNewAmountButton.enabled = NO;
+    _captureAddItemButton.enabled = NO;
+
     _actionLabel.text = @"Voiding Authorization ...";
     
     [[PayPalHereSDK sharedTransactionManager] voidAuthorization:_transactionRecord
@@ -98,6 +100,7 @@
                                                                _voidButton.enabled = YES;
                                                                _captureOrigAmountButton.enabled = YES;
                                                                _captureNewAmountButton.enabled = YES;
+                                                               _captureAddItemButton.enabled = YES;
                                                            }
                                                        }];
 
