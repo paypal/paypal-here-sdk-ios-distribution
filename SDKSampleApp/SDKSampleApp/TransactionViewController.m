@@ -11,11 +11,14 @@
 #import "PaymentMethodViewController.h"
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
+#import "InvoiceViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import "STAppDelegate.h"
+
+#define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 
 #define kAPPLES			@"Apples"
@@ -109,6 +112,8 @@
     
     self.shoppingCartTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.shoppingCartTable setDataSource:self];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(didTabViewInvoice:)];
     
 }
 
@@ -482,6 +487,20 @@
 	}
     
 }
+
+-(IBAction)didTabViewInvoice:(id)sender {
+    PPHInvoice *currentInvoice =[[PayPalHereSDK sharedTransactionManager] currentInvoice];
+//    if (!currentInvoice) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No current Invoice" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        return;
+//    }
+    
+    NSString *nibName = IS_IPAD ? @"InvoiceViewController_ipad.xib" : @"InvoiceViewController";
+    InvoiceViewController *vc = [[InvoiceViewController alloc] initWithInvoice:currentInvoice nibName:nibName bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 @end
 
 @interface TransactionButton ()
@@ -518,12 +537,11 @@
 	[items 
      setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
      forKey:kQUANTITY];
-    
+
     
 	[self.target.shoppingCartTable reloadData];
     
 }
-
 
 
 @end

@@ -30,6 +30,11 @@
 @property BOOL isCashTransaction;
 @property PPHTransactionResponse *transactionResponse;
 
+@property (nonatomic, retain) IBOutlet UIButton *manualButton;
+@property (nonatomic, retain) IBOutlet UIButton *checkinButton;
+@property (nonatomic, retain) IBOutlet UIButton *cashButton;
+@property (nonatomic, retain) IBOutlet UIButton *swipeButton;
+
 @end
 
 @implementation PaymentMethodViewController
@@ -49,6 +54,10 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.manualButton.layer.cornerRadius = 10;
+    self.checkinButton.layer.cornerRadius = 10;
+    self.cashButton.layer.cornerRadius = 10;
+    self.swipeButton.layer.cornerRadius = 10;
 }
 
 -(void)didReceiveMemoryWarning
