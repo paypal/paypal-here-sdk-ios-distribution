@@ -195,7 +195,7 @@
 -(void)displayCaptureTolerance:(BOOL)display {
     if(display) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.captureTolerance.text = [NSString stringWithFormat:@"Capture Tolerance: %@", [appDelegate captureTolerance]];
+        self.captureTolerance.text = [NSString stringWithFormat:@"Maximum Capture Limit: %@ %%", [appDelegate captureTolerance]];
         self.captureTolerance.hidden = NO;
     } else {
         self.captureTolerance.hidden = YES;
