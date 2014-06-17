@@ -22,6 +22,7 @@
 #import "ManualCardEntryViewController.h"
 #import "STAppDelegate.h"
 #import "AuthorizationCompleteViewController.h"
+#import "CurrentTransactionManager.h"
 
 @interface PaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
@@ -305,6 +306,12 @@
         addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPad" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
     }
     [self.navigationController pushViewController:addTipVC animated:YES];
+}
+
+- (IBAction)startNewTransaction:(id)sender {
+    PPHInvoice *invoice = [[PayPalHereSDK sharedTransactionManager] currentInvoice];
+    [CurrentTransactionManager addTransaction:invoice];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
