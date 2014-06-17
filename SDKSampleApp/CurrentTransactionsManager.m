@@ -8,9 +8,9 @@
 
 #define currentTransactionKey @"currentTransactionsKey"
 
-#import "CurrentTransactionManager.h"
+#import "CurrentTransactionsManager.h"
 
-@implementation CurrentTransactionManager
+@implementation CurrentTransactionsManager
 static NSMutableArray *transactions;
 
 +(NSMutableArray *) getCurrentTransactions {
@@ -24,17 +24,17 @@ static NSMutableArray *transactions;
     return transactions;
 }
 +(void) removeTransaction: (PPHInvoice *)invoice {
-    transactions = [CurrentTransactionManager getCurrentTransactions];
+    transactions = [CurrentTransactionsManager getCurrentTransactions];
     [transactions removeObject:invoice];
     
     
-    // store on disk
+// store on disk
 //    [[NSUserDefaults standardUserDefaults] setObject:transactions forKey:currentTransactionKey];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(void) addTransaction: (PPHInvoice *) invoice {
-    transactions = [CurrentTransactionManager getCurrentTransactions];
+    transactions = [CurrentTransactionsManager getCurrentTransactions];
     
     if ([transactions containsObject:invoice]) {
         return;

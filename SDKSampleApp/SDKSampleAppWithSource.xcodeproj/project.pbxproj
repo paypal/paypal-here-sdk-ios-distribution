@@ -37,7 +37,7 @@
 		001569F9188F25D60023053A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569F8188F25D60023053A /* libxml2.dylib */; };
 		007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SettingsViewController.m */; };
 		527039BE194FA5080069CC6C /* STTransactionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527039BD194FA5080069CC6C /* STTransactionsTableViewController.m */; };
-		527039C6194FC2590069CC6C /* CurrentTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 527039C5194FC2590069CC6C /* CurrentTransactionManager.m */; };
+		527039C6194FC2590069CC6C /* CurrentTransactionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 527039C5194FC2590069CC6C /* CurrentTransactionsManager.m */; };
 		99859DED1835B07300AB3FE1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */; };
 		99859DEF1835B09A00AB3FE1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */; };
 		99859DF11835B0AF00AB3FE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */; };
@@ -197,8 +197,8 @@
 		007DE86018A0144A004D8847 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = SDKSampleApp/Screens/Settings/SettingsViewController.m; sourceTree = SOURCE_ROOT; };
 		527039BC194FA5080069CC6C /* STTransactionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTransactionsTableViewController.h; sourceTree = SOURCE_ROOT; };
 		527039BD194FA5080069CC6C /* STTransactionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTransactionsTableViewController.m; sourceTree = SOURCE_ROOT; };
-		527039C4194FC2590069CC6C /* CurrentTransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentTransactionManager.h; sourceTree = SOURCE_ROOT; };
-		527039C5194FC2590069CC6C /* CurrentTransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentTransactionManager.m; sourceTree = SOURCE_ROOT; };
+		527039C4194FC2590069CC6C /* CurrentTransactionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentTransactionsManager.h; sourceTree = SOURCE_ROOT; };
+		527039C5194FC2590069CC6C /* CurrentTransactionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentTransactionsManager.m; sourceTree = SOURCE_ROOT; };
 		99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -362,8 +362,8 @@
 				9DB2DFA5192ABB4900FFB6A8 /* ItemizedPurchaseButton.m */,
 				527039BC194FA5080069CC6C /* STTransactionsTableViewController.h */,
 				527039BD194FA5080069CC6C /* STTransactionsTableViewController.m */,
-				527039C4194FC2590069CC6C /* CurrentTransactionManager.h */,
-				527039C5194FC2590069CC6C /* CurrentTransactionManager.m */,
+				527039C4194FC2590069CC6C /* CurrentTransactionsManager.h */,
+				527039C5194FC2590069CC6C /* CurrentTransactionsManager.m */,
 				9DB2DF99192ABAD300FFB6A8 /* AuthorizedPayments */,
 				9DB2DF92192ABA9600FFB6A8 /* TransactionViewController_iPad.xib */,
 				9DB2DF93192ABA9600FFB6A8 /* TransactionViewController_iPhone.xib */,
@@ -753,7 +753,7 @@
 				9DB2DF83192AB9B000FFB6A8 /* PaymentCompleteViewController.m in Sources */,
 				001569E4188E01DD0023053A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9DB2DF81192AB9B000FFB6A8 /* AuthorizationCompleteViewController.m in Sources */,
-				527039C6194FC2590069CC6C /* CurrentTransactionManager.m in Sources */,
+				527039C6194FC2590069CC6C /* CurrentTransactionsManager.m in Sources */,
 				001569F2188E01F60023053A /* main.m in Sources */,
 				9DB2DF8A192AB9B000FFB6A8 /* ReceiptInfoViewController.m in Sources */,
 				001569B4188E01720023053A /* STAppDelegate.m in Sources */,

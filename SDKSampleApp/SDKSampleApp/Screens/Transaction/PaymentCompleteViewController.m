@@ -8,7 +8,7 @@
 
 #import "PaymentCompleteViewController.h"
 #import "ReceiptInfoViewController.h"
-#import "CurrentTransactionManager.h"
+#import "CurrentTransactionsManager.h"
 
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
@@ -45,7 +45,7 @@
 
     if (_transactionResponse.error == nil) {
         self.paymentStatus.text = @"Payment Successful";
-        [CurrentTransactionManager removeTransaction:_transactionResponse.record.invoice];
+        [CurrentTransactionsManager removeTransaction:_transactionResponse.record.invoice];
         
         if (_transactionResponse.record.transactionId != nil) {
             self.paymentDetails.text = [NSString stringWithFormat: @"Transaction Id : %@", _transactionResponse.record.transactionId];

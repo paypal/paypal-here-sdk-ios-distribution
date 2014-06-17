@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
-#import "CurrentTransactionManager.h"
+#import "CurrentTransactionsManager.h"
 #import "STTransactionsTableViewController.h"
 #import "PaymentMethodViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
@@ -57,14 +57,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[CurrentTransactionManager getCurrentTransactions] count];
+    return [[CurrentTransactionsManager getCurrentTransactions] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
-    PPHInvoice *invoice = [[CurrentTransactionManager getCurrentTransactions] objectAtIndex:indexPath.row];
+    PPHInvoice *invoice = [[CurrentTransactionsManager getCurrentTransactions] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"Invoice total: %.2f", invoice.subTotal.doubleValue];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -75,7 +75,7 @@
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     [tm beginPayment];
-    [tm setCurrentInvoice:[[CurrentTransactionManager getCurrentTransactions] objectAtIndex:indexPath.row]];
+    [tm setCurrentInvoice:[[CurrentTransactionsManager getCurrentTransactions] objectAtIndex:indexPath.row]];
 
     PaymentMethodViewController *paymentMethod = nil;
     
@@ -109,7 +109,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the transaction from disk
-        [CurrentTransactionManager removeTransaction:[[CurrentTransactionManager getCurrentTransactions] objectAtIndex:indexPath.row]];
+        [CurrentTransactionsManager removeTransaction:[[CurrentTransactionsManager getCurrentTransactions] objectAtIndex:indexPath.row]];
         
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
