@@ -25,5 +25,6 @@
 @property (strong, nonatomic) NSMutableArray *refundableRecords;
 @property (strong, nonatomic) NSMutableArray *authorizedRecords;
 @property (assign, nonatomic) BOOL paymentFlowIsAuthOnly;
+@property (strong, nonatomic) NSDecimalNumber *captureTolerance;
 
 @end
