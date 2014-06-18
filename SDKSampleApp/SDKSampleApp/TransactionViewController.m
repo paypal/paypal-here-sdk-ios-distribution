@@ -11,7 +11,8 @@
 #import "PaymentMethodViewController.h"
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
-
+#import "STTransactionsTableViewController.h"
+#import "InvoicesManager.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
@@ -73,6 +74,8 @@
          kSTRAWBERRIES,
          
          nil];
+        
+        self.currentTransactions = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -109,6 +112,7 @@
     
     self.shoppingCartTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.shoppingCartTable setDataSource:self];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(didPressViewTransactions:)];
     
 }
 
@@ -212,7 +216,7 @@
         NSLog(@"About to call beginPaymentWithAmount for amount %@", amountString);
         [tm beginPaymentWithAmount:[PPHAmount amountWithString:amountString inCurrency:@"USD"] andName:@"FixedAmountPayment"];
     }
-    
+        
     PaymentMethodViewController *paymentMethod = nil;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -482,6 +486,12 @@
 	}
     
 }
+
+-(void)didPressViewTransactions:(id)sender {
+    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 @end
 
 @interface TransactionButton ()
@@ -519,10 +529,10 @@
      setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
      forKey:kQUANTITY];
     
-    
 	[self.target.shoppingCartTable reloadData];
     
 }
+
 
 
 

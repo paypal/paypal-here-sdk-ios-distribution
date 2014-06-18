@@ -26,6 +26,7 @@ UITableViewDataSource
 @property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
+@property (strong, nonatomic) NSMutableArray *currentTransactions;
 
 
 - (IBAction)itemizedModeChanged:(id)sender;
