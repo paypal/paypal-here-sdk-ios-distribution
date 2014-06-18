@@ -22,7 +22,7 @@
 #import "ManualCardEntryViewController.h"
 #import "STAppDelegate.h"
 #import "AuthorizationCompleteViewController.h"
-#import "CurrentTransactionsManager.h"
+#import "InvoicesManager.h"
 
 @interface PaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
@@ -310,7 +310,7 @@
 
 - (IBAction)startNewTransaction:(id)sender {
     PPHInvoice *invoice = [[PayPalHereSDK sharedTransactionManager] currentInvoice];
-    [CurrentTransactionsManager addTransaction:invoice];
+    [InvoicesManager addTransaction:invoice];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

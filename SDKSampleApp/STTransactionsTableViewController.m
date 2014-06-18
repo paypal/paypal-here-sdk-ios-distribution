@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
-#import "CurrentTransactionsManager.h"
+#import "InvoicesManager.h"
 #import "STTransactionsTableViewController.h"
 #import "PaymentMethodViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
@@ -57,14 +57,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[CurrentTransactionsManager getCurrentTransactions] count];
+    return [[InvoicesManager getCurrentTransactions] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
-    PPHInvoice *invoice = [[CurrentTransactionsManager getCurrentTransactions] objectAtIndex:indexPath.row];
+    PPHInvoice *invoice = [[InvoicesManager getCurrentTransactions] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"Invoice total: %.2f", invoice.subTotal.doubleValue];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -75,7 +75,7 @@
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     [tm beginPayment];
-    [tm setCurrentInvoice:[[CurrentTransactionsManager getCurrentTransactions] objectAtIndex:indexPath.row]];
+    [tm setCurrentInvoice:[[InvoicesManager getCurrentTransactions] objectAtIndex:indexPath.row]];
 
     PaymentMethodViewController *paymentMethod = nil;
     
@@ -94,22 +94,11 @@
     
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the transaction from disk
-        [CurrentTransactionsManager removeTransaction:[[CurrentTransactionsManager getCurrentTransactions] objectAtIndex:indexPath.row]];
+        // Delete the transaction
+        [InvoicesManager removeTransaction:[[InvoicesManager getCurrentTransactions] objectAtIndex:indexPath.row]];
         
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -119,31 +108,5 @@
 }
 
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

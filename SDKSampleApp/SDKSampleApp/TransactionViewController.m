@@ -12,7 +12,7 @@
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
 #import "STTransactionsTableViewController.h"
-#import "CurrentTransactionsManager.h"
+#import "InvoicesManager.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
