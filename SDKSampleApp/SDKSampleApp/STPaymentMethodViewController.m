@@ -5,11 +5,13 @@
 //  Created by Samuel Jerome on 6/17/14.
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
+#import "STAppDelegate.h"
 
 #import "STPaymentMethodViewController.h"
 #import "STCashPaymentViewController.h"
-#import "ManualCardEntryViewController.h"
-#import "PaymentCompleteViewController.h"
+#import "STManualPaymentViewController.h"
+#import "STCardSwipeViewController.h"
+#import "CheckedInCustomerViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 @interface STPaymentMethodViewController ()
@@ -50,47 +52,38 @@
 }
 
 -(IBAction)didPressSwipe:(id)sender {
-    UIView *view = [[UIView alloc]initWithFrame:self.view.frame];
-    view.backgroundColor = [[UIColor alloc] initWithRed:190 green:190 blue:190 alpha:.8];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 200, 200, 200)];
-    label.text = @"Swipe card now";
-    
-    [view addSubview:label];
-    
-    [self.view addSubview:view];
-    
-
+    STCardSwipeViewController *vc = [[STCardSwipeViewController alloc] initWithAmount:self.amount nibName:@"STCardSwipeViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(IBAction)didPressManual:(id)sender {
-    ManualCardEntryViewController *cardEntryView = [[ManualCardEntryViewController alloc]
-                                                    initWithNibName:@"ManualCardEntryViewController"
-                                                    bundle:nil];
+    STManualPaymentViewController *cardEntryView = [[STManualPaymentViewController alloc] initWithAmount:self.amount nibName:@"STManualPaymentViewController" bundle:nil];
+
     [self.navigationController pushViewController:cardEntryView animated:YES];
 }
 
 -(IBAction)didPressCash:(id)sender {
     STCashPaymentViewController *vc = [[STCashPaymentViewController alloc] initWithAmount:self.amount nibName:@"STCashPaymentViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
-    //For Cash the PPHTransactionManager will simply record the invoice to the backend.
-    
-//    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-//    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
-//    [tm beginPaymentWithAmount:total andName:@"simplePayment"];
-//
-//    [tm processPaymentWithPaymentType:ePPHPaymentMethodCash
-//            withTransactionController:nil
-//                    completionHandler:^(PPHTransactionResponse *record) {
-//                        PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:record];
-//                        
-//                        [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
-//                    }];
-
 }
 
 -(IBAction)didPressCheckIn:(id)sender {
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (!appDelegate.isMerchantCheckedin){
+        UIAlertView *alert = [ [UIAlertView alloc] initWithTitle:@"Alert"
+                                                         message:@"You are not checked-in. Please go to Settings and check-in first to take payments through this channel"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil ];
+        [alert show];
+        return;
+    }
     
+    NSString *interfaceName = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? @"CheckedInCustomerViewController_iPhone" : @"CheckedInCustomerViewController_iPad";
+    [[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:self.amount inCurrency:@"USD"] andName:@"FixedAmount"];
+    
+    CheckedInCustomerViewController *vc = [[CheckedInCustomerViewController alloc] initWithNibName:interfaceName bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

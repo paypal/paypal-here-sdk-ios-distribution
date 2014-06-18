@@ -10,5 +10,4 @@
 
 @interface STPaymentMethodViewController : UIViewController
 - (id)initWithPurchaseAmount:(NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
-
 @end

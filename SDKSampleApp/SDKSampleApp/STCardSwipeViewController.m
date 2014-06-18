@@ -7,18 +7,22 @@
 //
 
 #import "STCardSwipeViewController.h"
+#import "PaymentCompleteViewController.h"
+#import "SignatureViewController.h"
+#import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface STCardSwipeViewController ()
-
+@property (nonatomic, strong) NSString *amount;
+@property BOOL waitingForCardSwipe; // Used to only accept first valid swipe.
 @end
 
 @implementation STCardSwipeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithAmount:(NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.amount = amount;
     }
     return self;
 }
@@ -26,7 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    // Beginning the transaction allows the swiper to listen for swipes. 
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
+    [tm beginPaymentWithAmount:total andName:@"simplePayment"];
+    self.waitingForCardSwipe = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +43,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)collectSignatureAndFinalizePurchaseWithRecord: (PPHTransactionResponse *)response
+{
+    NSString *interfaceName = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? @"SignatureViewController_iPhone" : @"SignatureViewController_iPad";
+    SignatureViewController *settings =  [[SignatureViewController alloc] initWithNibName:interfaceName bundle:nil transactionResponse:response];
+    [self.navigationController pushViewController:settings animated:YES];
+}
+
+/*
+ * Called when the transaction manager wants to communicate certain events.
+ */
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
+{
+    if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
+          self.waitingForCardSwipe = NO;
+        [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                      withTransactionController:nil
+                                                              completionHandler:^(PPHTransactionResponse *response) {
+                                                                  if (response.error || !response.isSignatureRequiredToFinalize) {
+                                                                      PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:response];
+                                                                      
+                                                                      [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+                                                                  } else {
+                                                                      // Is a signature required for this payment?  If so
+                                                                      // then let's collect a signature and provide it to the SDK.
+                                                                     [self collectSignatureAndFinalizePurchaseWithRecord:response];
+                                                                  }
+                                                              }];
+    }
+}
+
 
 @end

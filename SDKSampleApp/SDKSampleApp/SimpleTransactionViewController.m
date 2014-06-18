@@ -36,6 +36,8 @@
                            nil];
     [numberToolbar sizeToFit];
     self.price.inputAccessoryView = numberToolbar;
+
+    [self.price setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,6 +56,24 @@
 
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    // Update the string in the text input
+    NSMutableString* currentString = [NSMutableString stringWithString:textField.text];
+    [currentString replaceCharactersInRange:range withString:string];
+    // Strip out the decimal separator
+    [currentString replaceOccurrencesOfString:@"." withString:@""
+                                      options:NSLiteralSearch range:NSMakeRange(0, [currentString length])];
+    // Generate a new string for the text input
+    int currentValue = [currentString intValue];
+    NSString* format = [NSString stringWithFormat:@"%%.%df", 2];
+    double minorUnitsPerMajor = 100.0;
+    NSString* newString = [NSString stringWithFormat:format, currentValue/minorUnitsPerMajor];
+    textField.text = newString;
+    return NO;
 }
 
 @end

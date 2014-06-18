@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface STManualPaymentViewController : UIViewController
-
+- (id)initWithAmount: (NSString *) amount nibName: (NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 @end

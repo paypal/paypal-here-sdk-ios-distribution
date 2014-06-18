@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface DemosTableViewController : UITableViewController
-@property (nonatomic, strong) NSArray *demoNames;
 @end

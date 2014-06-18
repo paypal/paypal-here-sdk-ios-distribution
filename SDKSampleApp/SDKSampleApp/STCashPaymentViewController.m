@@ -56,7 +56,7 @@
                     completionHandler:^(PPHTransactionResponse *record) {
                         // finished processing
                         [activity stopAnimating];
-                        [sender setEnabled:YES];
+
                         PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:record];
                         
                         [self.navigationController pushViewController:paymentCompleteViewController animated:YES];

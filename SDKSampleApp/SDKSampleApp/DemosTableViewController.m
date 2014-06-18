@@ -5,11 +5,15 @@
 //  Created by Samuel Jerome on 6/17/14.
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
+#define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 #import "DemosTableViewController.h"
 #import "InvoiceViewController.h"
+#import "TransactionViewController.h"
 #import "SimpleTransactionViewController.h"
+
 @interface DemosTableViewController ()
+@property (nonatomic, strong) NSArray *demoNames;
 
 @end
 
@@ -72,9 +76,11 @@
             vc = [[SimpleTransactionViewController alloc] init];
             // Simple Transaction View Controller
             break;
-        case 1:
-            // Auth and Capture View Controller
+        case 1: {
+            NSString *interfaceName = (IPAD) ? @"TransactionViewController_iPad" : @"TransactionViewController_iPhone";
+            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil];
             break;
+        }
         case 2:
             // Invoice
             vc = [[InvoiceViewController alloc] init];
