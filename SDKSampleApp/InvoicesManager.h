@@ -1,5 +1,5 @@
 //
-//  CurrentTransactionManager.h
+//  InvoiceManager.h
 //  SDKSampleAppWithSource
 //
 //  Created by Samuel Jerome on 6/16/14.

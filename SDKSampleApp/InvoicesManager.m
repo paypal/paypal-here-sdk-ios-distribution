@@ -1,5 +1,5 @@
 //
-//  CurrentTransactionManager.m
+//  InvoiceManager.m
 //  SDKSampleAppWithSource
 //
 //  Created by Samuel Jerome on 6/16/14.
