@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STPaymentMethodViewController : UIViewController
+@interface STChoosePaymentMethodViewController : UIViewController
 - (id)initWithPurchaseAmount:(NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 @end

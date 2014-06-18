@@ -9,10 +9,12 @@
 #import "STCardSwipeViewController.h"
 #import "PaymentCompleteViewController.h"
 #import "SignatureViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import <PayPalHereSDK/PPHTransactionWatcher.h>
 
 @interface STCardSwipeViewController ()
+@property (nonatomic, retain) IBOutlet UIImageView *swipeImageView;
 @property (nonatomic, strong) NSString *amount;
+@property (nonatomic, strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe; // Used to only accept first valid swipe.
 @end
 
@@ -22,6 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
         self.amount = amount;
     }
     return self;
@@ -35,6 +38,8 @@
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
+    
+    self.swipeImageView.layer.cornerRadius = 10;
     self.waitingForCardSwipe = YES;
 }
 
@@ -58,6 +63,13 @@
 {
     if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
           self.waitingForCardSwipe = NO;
+        
+        UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [spinny setFrame:CGRectMake(0, 0, 100, 100)];
+        [spinny startAnimating];
+        UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
+        self.navigationItem.rightBarButtonItem = loading;
+
         [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                       withTransactionController:nil
                                                               completionHandler:^(PPHTransactionResponse *response) {

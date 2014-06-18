@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PayPalHereSDK/PayPalHereSDK.h>
 
-@interface STCardSwipeViewController : UIViewController
+@interface STCardSwipeViewController : UIViewController <PPHTransactionManagerDelegate>
 - (id)initWithAmount: (NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
-
 @end

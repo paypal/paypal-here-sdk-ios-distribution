@@ -7,7 +7,7 @@
 //
 
 #import "SimpleTransactionViewController.h"
-#import "STPaymentMethodViewController.h"
+#import "STChoosePaymentMethodViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 @interface SimpleTransactionViewController ()
@@ -52,7 +52,7 @@
 
 -(IBAction)purchaseButtonPressed:(id)sender {
     // Begin payment to make an invoice.
-    STPaymentMethodViewController* vc = [[STPaymentMethodViewController alloc] initWithPurchaseAmount:self.price.text nibName:@"STPaymentMethodViewController" bundle:nil];
+    STChoosePaymentMethodViewController* vc = [[STChoosePaymentMethodViewController alloc] initWithPurchaseAmount:self.price.text nibName:@"STChoosePaymentMethodViewController" bundle:nil];
 
     [self.navigationController pushViewController:vc animated:YES];
 

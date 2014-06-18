@@ -23,7 +23,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.demoNames = @[@"Simple transaction", @"Multiple items, edit invoice", @"Auth and Capture", @"Custom Card Reader Controls"];
+        self.demoNames = @[@"Simple transaction", @"Restaurant App", @"Auth and Capture", @"Custom Card Reader Controls"];
     }
     return self;
 }

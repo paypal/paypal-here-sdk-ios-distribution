@@ -7,15 +7,15 @@
 //
 #import "STAppDelegate.h"
 
-#import "STPaymentMethodViewController.h"
+#import "STChoosePaymentMethodViewController.h"
 #import "STCashPaymentViewController.h"
 #import "STManualPaymentViewController.h"
 #import "STCardSwipeViewController.h"
 #import "CheckedInCustomerViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
-@interface STPaymentMethodViewController ()
-
+@interface STChoosePaymentMethodViewController ()
+@property (nonatomic, retain) IBOutlet UILabel *amountLabel;
 @property (nonatomic, retain) IBOutlet UIButton *manualButton;
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UIButton *cashButton;
@@ -24,7 +24,7 @@
 @property BOOL waitingForCardSwipe;
 @end
 
-@implementation STPaymentMethodViewController
+@implementation STChoosePaymentMethodViewController
 
 
 - (id)initWithPurchaseAmount:(NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -38,11 +38,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     self.manualButton.layer.cornerRadius = 10;
     self.checkinButton.layer.cornerRadius = 10;
     self.cashButton.layer.cornerRadius = 10;
     self.swipeButton.layer.cornerRadius = 10;
+    self.amountLabel.text = self.amount;
 }
 
 - (void)didReceiveMemoryWarning
