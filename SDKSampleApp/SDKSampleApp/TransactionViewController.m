@@ -11,14 +11,11 @@
 #import "PaymentMethodViewController.h"
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
-#import "InvoiceViewController.h"
 #import "STTransactionsTableViewController.h"
-#import "InvoicesManager.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
 #import "STAppDelegate.h"
+
 
 #define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
@@ -29,7 +26,6 @@
 #define kSTRAWBERRIES	@"Strawberries"
 #define kPRICE			@"Price"
 #define kQUANTITY		@"Quantity"
-#define kTextItem       @"fixedAmountItem"
 
 @interface TransactionViewController ()
 - (IBAction)onChargePressed:(id)sender;
@@ -41,6 +37,12 @@
 @property (nonatomic, retain) IBOutlet UIButton *orangesButton;
 @property (nonatomic, retain) IBOutlet UIButton *bananasButton;
 @property (nonatomic, retain) IBOutlet UIButton *strawberriesButton;
+
+@property (weak, nonatomic) IBOutlet UITableView *shoppingCartTable;
+@property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
+
+
 
 @property (nonatomic, strong) NSArray *items;
 @property (strong, nonatomic) NSMutableDictionary *store;
