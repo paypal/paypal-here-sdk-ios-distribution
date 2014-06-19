@@ -7,16 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionViewController">
             <connections>
-                <outlet property="amountTextField" destination="18" id="127"/>
-                <outlet property="appleButton" destination="202" id="234"/>
-                <outlet property="bananaButton" destination="203" id="235"/>
-                <outlet property="enterAmountLabel" destination="4" id="161"/>
-                <outlet property="itemizedModeSegmentedControl" destination="149" id="160"/>
+                <outlet property="applesButton" destination="202" id="dyS-nD-ORz"/>
+                <outlet property="bananasButton" destination="203" id="q5G-hb-pZA"/>
                 <outlet property="longPressExplanationLabel" destination="533" id="574"/>
-                <outlet property="orangeButton" destination="164" id="236"/>
+                <outlet property="orangesButton" destination="164" id="Qwc-9k-WKc"/>
                 <outlet property="purchaseButton" destination="24" id="Ljg-zJ-ap3"/>
                 <outlet property="shoppingCartTable" destination="240" id="433"/>
-                <outlet property="strawberryButton" destination="178" id="237"/>
+                <outlet property="strawberriesButton" destination="178" id="Uin-rY-hQ8"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -25,25 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your Transaction Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="15" y="123" width="300" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="300" id="107"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="18">
-                    <rect key="frame" x="86" y="150" width="158" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="158" id="700"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24">
                     <rect key="frame" x="84" y="424" width="156" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -54,23 +32,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onChargePressed:" destination="-1" eventType="touchUpInside" id="641"/>
+                        <action selector="onChargePressed:" destination="-1" eventType="touchUpInside" id="diI-mu-fS1"/>
                     </connections>
                 </button>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="149">
-                    <rect key="frame" x="15" y="69" width="285" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="285" id="801"/>
-                    </constraints>
-                    <segments>
-                        <segment title="Single Item"/>
-                        <segment title="Itemized"/>
-                    </segments>
-                    <connections>
-                        <action selector="itemizedModeChanged:" destination="-1" eventType="valueChanged" id="159"/>
-                    </connections>
-                </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="164">
                     <rect key="frame" x="167" y="112" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -85,6 +49,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="GTK-cn-6sj"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="178">
                     <rect key="frame" x="211" y="112" width="44" height="44"/>
@@ -100,6 +67,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="vKb-Iw-C1b"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="202">
                     <rect key="frame" x="79" y="112" width="44" height="44"/>
@@ -116,6 +86,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="qED-dD-yFV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="203">
                     <rect key="frame" x="123" y="112" width="44" height="44"/>
@@ -131,8 +104,11 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="d6y-st-s2O"/>
+                    </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="28" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="240">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="28" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="240">
                     <rect key="frame" x="45" y="193" width="240" height="140"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -140,7 +116,7 @@
                         <constraint firstAttribute="height" constant="140" id="409"/>
                     </constraints>
                 </tableView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long-Press Zeroes Out Item Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="533">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Long-Press Zeroes Out Item Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="533">
                     <rect key="frame" x="45" y="164" width="240" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -188,9 +164,7 @@
                 <constraint firstItem="533" firstAttribute="top" secondItem="164" secondAttribute="bottom" constant="8" symbolic="YES" id="537"/>
                 <constraint firstItem="533" firstAttribute="top" secondItem="202" secondAttribute="bottom" constant="8" symbolic="YES" id="547"/>
                 <constraint firstItem="533" firstAttribute="top" secondItem="178" secondAttribute="bottom" constant="8" symbolic="YES" id="552"/>
-                <constraint firstItem="18" firstAttribute="centerX" secondItem="533" secondAttribute="centerX" id="570"/>
                 <constraint firstAttribute="bottom" secondItem="672" secondAttribute="bottom" constant="74" id="735"/>
-                <constraint firstAttribute="trailing" secondItem="149" secondAttribute="trailing" constant="20" symbolic="YES" id="740"/>
                 <constraint firstItem="672" firstAttribute="top" secondItem="24" secondAttribute="bottom" constant="8" symbolic="YES" id="742"/>
                 <constraint firstItem="24" firstAttribute="centerX" secondItem="672" secondAttribute="centerX" id="744"/>
                 <constraint firstItem="24" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="84" id="745"/>
@@ -203,15 +177,9 @@
                 <constraint firstItem="164" firstAttribute="top" secondItem="203" secondAttribute="top" id="754"/>
                 <constraint firstItem="178" firstAttribute="top" secondItem="164" secondAttribute="top" id="755"/>
                 <constraint firstItem="203" firstAttribute="top" secondItem="202" secondAttribute="top" id="757"/>
-                <constraint firstItem="149" firstAttribute="leading" secondItem="4" secondAttribute="leading" id="758"/>
                 <constraint firstItem="240" firstAttribute="top" secondItem="533" secondAttribute="bottom" constant="8" symbolic="YES" id="763"/>
-                <constraint firstItem="18" firstAttribute="baseline" secondItem="533" secondAttribute="baseline" id="765"/>
-                <constraint firstItem="18" firstAttribute="centerX" secondItem="4" secondAttribute="centerX" id="776"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="123" id="782"/>
-                <constraint firstItem="18" firstAttribute="top" secondItem="1" secondAttribute="top" constant="150" id="798"/>
                 <constraint firstItem="240" firstAttribute="trailing" secondItem="533" secondAttribute="trailing" id="799"/>
                 <constraint firstItem="240" firstAttribute="leading" secondItem="533" secondAttribute="leading" id="800"/>
-                <constraint firstItem="149" firstAttribute="top" secondItem="1" secondAttribute="top" constant="69" id="810"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

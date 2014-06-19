@@ -106,7 +106,6 @@
 		9DB2DFA1192ABAE400FFB6A8 /* AuthorizedInvoiceInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB2DF9C192ABAE400FFB6A8 /* AuthorizedInvoiceInspectorViewController.xib */; };
 		9DB2DFA2192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2DF9E192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.m */; };
 		9DB2DFA3192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB2DF9F192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.xib */; };
-		9DB2DFA6192ABB4900FFB6A8 /* ItemizedPurchaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2DFA5192ABB4900FFB6A8 /* ItemizedPurchaseButton.m */; };
 		9DB2DFA8192ABB6600FFB6A8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB2DFA7192ABB6600FFB6A8 /* SettingsViewController.xib */; };
 		DE5A6E4918C95473007361F6 /* default_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE5A6E4818C95473007361F6 /* default_image.jpg */; };
 /* End PBXBuildFile section */
@@ -318,8 +317,6 @@
 		9DB2DF9D192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizedPaymentsViewController.h; path = SDKSampleApp/Screens/AuthorizedPayments/AuthorizedPaymentsViewController.h; sourceTree = SOURCE_ROOT; };
 		9DB2DF9E192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizedPaymentsViewController.m; path = SDKSampleApp/Screens/AuthorizedPayments/AuthorizedPaymentsViewController.m; sourceTree = SOURCE_ROOT; };
 		9DB2DF9F192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthorizedPaymentsViewController.xib; path = SDKSampleApp/Screens/AuthorizedPayments/AuthorizedPaymentsViewController.xib; sourceTree = SOURCE_ROOT; };
-		9DB2DFA4192ABB4900FFB6A8 /* ItemizedPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemizedPurchaseButton.h; path = SDKSampleApp/ItemizedPurchaseButton.h; sourceTree = SOURCE_ROOT; };
-		9DB2DFA5192ABB4900FFB6A8 /* ItemizedPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemizedPurchaseButton.m; path = SDKSampleApp/ItemizedPurchaseButton.m; sourceTree = SOURCE_ROOT; };
 		9DB2DFA7192ABB6600FFB6A8 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = SDKSampleApp/Screens/Settings/SettingsViewController.xib; sourceTree = SOURCE_ROOT; };
 		DE5A6E4818C95473007361F6 /* default_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_image.jpg; path = SDKSampleApp/Resources/default_image.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -449,21 +446,19 @@
 		99859E031836ADC300AB3FE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5263482E1952607A00237D06 /* STTransactionsTableViewController.m */,
+				9DB2DF92192ABA9600FFB6A8 /* TransactionViewController_iPad.xib */,
+				9DB2DF93192ABA9600FFB6A8 /* TransactionViewController_iPhone.xib */,
+				9DB2DF94192ABA9600FFB6A8 /* TransactionViewController.h */,
+				9DB2DF95192ABA9600FFB6A8 /* TransactionViewController.m */,
 				5263482D1952607400237D06 /* STTransactionsTableViewController.h */,
+				5263482E1952607A00237D06 /* STTransactionsTableViewController.m */,
 				5263482C1952605B00237D06 /* InvoicesManager.h */,
 				526348251952605500237D06 /* InvoicesManager.m */,
 				52C893621950A52400A072B6 /* InvoiceViewController.h */,
 				52C893631950A52400A072B6 /* InvoiceViewController.m */,
 				52C893641950A52400A072B6 /* InvoiceViewController.xib */,
 				52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */,
-				9DB2DFA4192ABB4900FFB6A8 /* ItemizedPurchaseButton.h */,
-				9DB2DFA5192ABB4900FFB6A8 /* ItemizedPurchaseButton.m */,
 				9DB2DF99192ABAD300FFB6A8 /* AuthorizedPayments */,
-				9DB2DF92192ABA9600FFB6A8 /* TransactionViewController_iPad.xib */,
-				9DB2DF93192ABA9600FFB6A8 /* TransactionViewController_iPhone.xib */,
-				9DB2DF94192ABA9600FFB6A8 /* TransactionViewController.h */,
-				9DB2DF95192ABA9600FFB6A8 /* TransactionViewController.m */,
 				007DE85C18A010B4004D8847 /* Settings */,
 				99859E4A183C38DA00AB3FE1 /* Login */,
 				99859E4B183C38FB00AB3FE1 /* Transaction */,
@@ -844,7 +839,6 @@
 				52C893A11950FAB100A072B6 /* STCashPaymentViewController.m in Sources */,
 				001569E3188E01DD0023053A /* AFJSONRequestOperation.m in Sources */,
 				001569E1188E01DD0023053A /* AFHTTPRequestOperation.m in Sources */,
-				9DB2DFA6192ABB4900FFB6A8 /* ItemizedPurchaseButton.m in Sources */,
 				5263482F1952607A00237D06 /* STTransactionsTableViewController.m in Sources */,
 				9DB2DF90192AB9B000FFB6A8 /* SignatureViewController.m in Sources */,
 				9DB2DF98192ABA9600FFB6A8 /* TransactionViewController.m in Sources */,
