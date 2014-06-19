@@ -15,7 +15,6 @@
 
 #import "PaymentMethodViewController.h"
 #import "SignatureViewController.h"
-#import "AddTipViewController.h"
 #import "CheckedInCustomerCell.h"
 #import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerViewController.h"
@@ -315,16 +314,6 @@
     [self.navigationController pushViewController:settings animated:YES];
 }
 
-- (IBAction)addTip:(id)sender
-{
-    AddTipViewController *addTipVC = nil;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPhone" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    } else {
-        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPad" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    }
-    [self.navigationController pushViewController:addTipVC animated:YES];
-}
 
 - (IBAction)startNewTransaction:(id)sender {
     PPHInvoice *invoice = [[PayPalHereSDK sharedTransactionManager] currentInvoice];
