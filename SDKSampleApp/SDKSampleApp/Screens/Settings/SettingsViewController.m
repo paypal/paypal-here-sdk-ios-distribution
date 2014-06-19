@@ -183,13 +183,24 @@
     
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.paymentFlowIsAuthOnly = (index == kAuthOnlySegment);
+    [self displayCaptureTolerance:appDelegate.paymentFlowIsAuthOnly];
 }
 
 - (void)configureAuthType {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     _paymentFlowType.selectedSegmentIndex = appDelegate.paymentFlowIsAuthOnly ? kAuthOnlySegment : kFullProcessPaymentSegment;
+    [self displayCaptureTolerance:appDelegate.paymentFlowIsAuthOnly];
 }
 
+-(void)displayCaptureTolerance:(BOOL)display {
+    if(display) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.captureTolerance.text = [NSString stringWithFormat:@"Maximum Capture Limit: %@ %%", [appDelegate captureTolerance]];
+        self.captureTolerance.hidden = NO;
+    } else {
+        self.captureTolerance.hidden = YES;
+    }
+}
 
 #pragma mark -
 #pragma mark PPHSimpleCardReaderDelegate

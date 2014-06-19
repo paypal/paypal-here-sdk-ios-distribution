@@ -36,6 +36,8 @@
 		001569F6188E02230023053A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 001569F4188E02230023053A /* InfoPlist.strings */; };
 		001569F9188F25D60023053A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569F8188F25D60023053A /* libxml2.dylib */; };
 		007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SettingsViewController.m */; };
+		526348261952605500237D06 /* InvoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 526348251952605500237D06 /* InvoicesManager.m */; };
+		5263482F1952607A00237D06 /* STTransactionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5263482E1952607A00237D06 /* STTransactionsTableViewController.m */; };
 		528DE49B1951F137006E5CEE /* STManualPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DE4991951F137006E5CEE /* STManualPaymentViewController.m */; };
 		528DE49C1951F137006E5CEE /* STManualPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528DE49A1951F137006E5CEE /* STManualPaymentViewController.xib */; };
 		528DE4A61952041A006E5CEE /* STCardSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DE4A41952041A006E5CEE /* STCardSwipeViewController.m */; };
@@ -222,6 +224,10 @@
 		001569F8188F25D60023053A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		007DE85F18A0144A004D8847 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = SDKSampleApp/Screens/Settings/SettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		007DE86018A0144A004D8847 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = SDKSampleApp/Screens/Settings/SettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		526348251952605500237D06 /* InvoicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoicesManager.m; sourceTree = SOURCE_ROOT; };
+		5263482C1952605B00237D06 /* InvoicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoicesManager.h; sourceTree = SOURCE_ROOT; };
+		5263482D1952607400237D06 /* STTransactionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTransactionsTableViewController.h; sourceTree = SOURCE_ROOT; };
+		5263482E1952607A00237D06 /* STTransactionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTransactionsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		528DE4981951F137006E5CEE /* STManualPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STManualPaymentViewController.h; path = SDKSampleApp/STManualPaymentViewController.h; sourceTree = SOURCE_ROOT; };
 		528DE4991951F137006E5CEE /* STManualPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STManualPaymentViewController.m; path = SDKSampleApp/STManualPaymentViewController.m; sourceTree = SOURCE_ROOT; };
 		528DE49A1951F137006E5CEE /* STManualPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STManualPaymentViewController.xib; path = SDKSampleApp/STManualPaymentViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -444,6 +450,10 @@
 		99859E031836ADC300AB3FE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5263482E1952607A00237D06 /* STTransactionsTableViewController.m */,
+				5263482D1952607400237D06 /* STTransactionsTableViewController.h */,
+				5263482C1952605B00237D06 /* InvoicesManager.h */,
+				526348251952605500237D06 /* InvoicesManager.m */,
 				52C893621950A52400A072B6 /* InvoiceViewController.h */,
 				52C893631950A52400A072B6 /* InvoiceViewController.m */,
 				52C893641950A52400A072B6 /* InvoiceViewController.xib */,
@@ -837,6 +847,7 @@
 				001569E3188E01DD0023053A /* AFJSONRequestOperation.m in Sources */,
 				001569E1188E01DD0023053A /* AFHTTPRequestOperation.m in Sources */,
 				9DB2DFA6192ABB4900FFB6A8 /* ItemizedPurchaseButton.m in Sources */,
+				5263482F1952607A00237D06 /* STTransactionsTableViewController.m in Sources */,
 				9DB2DF90192AB9B000FFB6A8 /* SignatureViewController.m in Sources */,
 				9DB2DF98192ABA9600FFB6A8 /* TransactionViewController.m in Sources */,
 				528DE49B1951F137006E5CEE /* STManualPaymentViewController.m in Sources */,
@@ -846,6 +857,7 @@
 				52C8939C1950F26100A072B6 /* STChoosePaymentMethodViewController.m in Sources */,
 				001569E2188E01DD0023053A /* AFImageRequestOperation.m in Sources */,
 				001569E0188E01DD0023053A /* AFHTTPClient.m in Sources */,
+				526348261952605500237D06 /* InvoicesManager.m in Sources */,
 				001569B1188E01520023053A /* PPSPreferences.m in Sources */,
 				001569CC188E01C60023053A /* ReaderInfoViewController.m in Sources */,
 				52C893651950A52400A072B6 /* InvoiceViewController.m in Sources */,

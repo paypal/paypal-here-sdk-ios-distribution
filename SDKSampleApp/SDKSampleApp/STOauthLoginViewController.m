@@ -16,6 +16,7 @@
 #import "DemosTableViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
+#import <PayPalHereSDK/PPHPaymentLimits.h>
 
 @interface STOauthLoginViewController ()
 
@@ -319,6 +320,11 @@
 
 			if (status == ePPHAccessResultSuccess) {
                 // Login complete!
+                
+                // Save the capture tolerance, which we might need to display for this merchant on the settings page.
+                STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+                appDelegate.captureTolerance = [[account paymentLimits] captureTolerance];
+
                 // Time to show the sample app UI!
                 //
 				[self transitionToTransactionViewController];

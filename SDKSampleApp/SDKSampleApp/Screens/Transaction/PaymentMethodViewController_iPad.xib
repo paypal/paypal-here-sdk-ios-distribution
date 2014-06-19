@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentMethodViewController">
             <connections>
                 <outlet property="processingTransactionSpinny" destination="UdE-wj-EKS" id="sW1-aB-cAO"/>
+                <outlet property="saveTransactionButton" destination="38c-jG-EDZ" id="n4A-Be-i47"/>
                 <outlet property="subtotalLabel" destination="62e-TN-qUH" id="ESg-xW-ibq"/>
                 <outlet property="taxLabel" destination="ap9-jD-c06" id="Efv-K1-RWx"/>
                 <outlet property="tipLabel" destination="EzW-s0-7kx" id="nj8-jT-YV0"/>
@@ -125,7 +126,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPL-oC-6yV">
-                    <rect key="frame" x="249" y="324" width="271" height="30"/>
+                    <rect key="frame" x="247" y="324" width="273" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Pay With Manual Entry Card">
@@ -137,7 +138,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnL-1p-xFx">
-                    <rect key="frame" x="249" y="354" width="271" height="30"/>
+                    <rect key="frame" x="247" y="362" width="271" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -154,7 +155,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMj-7g-fcn">
-                    <rect key="frame" x="248" y="382" width="272" height="30"/>
+                    <rect key="frame" x="246" y="400" width="272" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Chekin Customers">
@@ -163,6 +164,18 @@
                     </state>
                     <connections>
                         <action selector="payWithCheckedInClient:" destination="-1" eventType="touchUpInside" id="xOa-Ye-qBA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38c-jG-EDZ">
+                    <rect key="frame" x="247" y="438" width="272" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Save Transaction">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startNewTransaction:" destination="-1" eventType="touchUpInside" id="AKF-NH-5ug"/>
                     </connections>
                 </button>
             </subviews>
