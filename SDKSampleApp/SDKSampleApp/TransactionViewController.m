@@ -72,10 +72,10 @@
                        }];
         
         self.shoppingCart = [[NSMutableDictionary alloc] initWithDictionary:
-                             @{kAPPLES:        [NSDecimalNumber decimalNumberWithString:@"0.0"],
-                               kBANANAS:       [NSDecimalNumber decimalNumberWithString:@"0.0"],
-                               kORANGES:       [NSDecimalNumber decimalNumberWithString:@"0.0"],
-                               kSTRAWBERRIES:  [NSDecimalNumber decimalNumberWithString:@"0.0"]
+                             @{kAPPLES:        [NSDecimalNumber zero],
+                               kBANANAS:       [NSDecimalNumber zero],
+                               kORANGES:       [NSDecimalNumber zero],
+                               kSTRAWBERRIES:  [NSDecimalNumber zero]
                                }];
     }
     return self;
@@ -140,13 +140,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (PPHInvoice *)getInvoiceFromShoppingCart:(NSMutableDictionary *)shoppingCart {
-    PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:@"USD"];
-    for (NSString *item in self.shoppingCart) {
-        [invoice addItemWithId:item detailId:nil name:item quantity:shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
-    }
-    return invoice;
-}
 
 - (double) sumShoppingCart
 {
@@ -159,11 +152,21 @@
 	return total;
 }
 
-- (void) verifyInvoiceBeforePayment:(PPHInvoice *)invoice {
+- (NSString *) validateInvoiceForPayment:(PPHInvoice *)invoice {
     if (invoice.subTotal.doubleValue < 0.01 && invoice.subTotal.doubleValue > -0.01) {
-		[self showAlertWithTitle:@"Input Error" andMessage:@"You cannot specify amounts less than a penny."];
+        return @"You cannot specify amounts less than a penny.";
 	}
     // Insert other verifications here
+    
+    return nil;
+}
+
+- (PPHInvoice *)getInvoiceFromShoppingCart:(NSMutableDictionary *)shoppingCart {
+    PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:@"USD"];
+    for (NSString *item in self.shoppingCart) {
+        [invoice addItemWithId:item detailId:nil name:item quantity:shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
+    }
+    return invoice;
 }
 
 - (IBAction)onChargePressed:(id)sender {
@@ -173,16 +176,23 @@
         return;
     }
     
+    // Create invoice by adding the items from the shopping cart.
     PPHInvoice *invoice = [self getInvoiceFromShoppingCart:self.shoppingCart];
-    [self verifyInvoiceBeforePayment:invoice];
+    
+    // Validate invoice for errors
+    NSString *invoiceError = [self validateInvoiceForPayment:invoice];
+    if (invoiceError) {
+        [self showAlertWithTitle:@"Input Error" andMessage:invoiceError];
+        return;
+    }
     
     // Begin the purchase and forward to payment method
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     [tm beginPayment];
     tm.currentInvoice = invoice;
     
-    NSString *interfaceName = (IS_IPAD) ?@"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
-    
+    // Choose Payment method
+    NSString *interfaceName = (IS_IPAD) ? @"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
     PaymentMethodViewController *paymentMethod = [[PaymentMethodViewController alloc]
                                                   initWithNibName:interfaceName
                                                   bundle:nil];
@@ -257,7 +267,9 @@
         itemClicked = kSTRAWBERRIES;
     } else {
         NSLog(@"There is another unidentified target to this method");
+        return;
     }
+    
     NSDecimalNumber *incremented = [self.shoppingCart[itemClicked] decimalNumberByAdding:[NSDecimalNumber one]];
     [self.shoppingCart setObject:incremented forKey:itemClicked];
     
@@ -279,10 +291,10 @@
 
 - (IBAction)didPressClearCart:(id)sender {
     self.shoppingCart = [[NSMutableDictionary alloc] initWithDictionary:
-                         @{kAPPLES:        [NSDecimalNumber decimalNumberWithString:@"0.0"],
-                           kBANANAS:       [NSDecimalNumber decimalNumberWithString:@"0.0"],
-                           kORANGES:       [NSDecimalNumber decimalNumberWithString:@"0.0"],
-                           kSTRAWBERRIES:  [NSDecimalNumber decimalNumberWithString:@"0.0"]
+                         @{kAPPLES:        [NSDecimalNumber zero],
+                           kBANANAS:       [NSDecimalNumber zero],
+                           kORANGES:       [NSDecimalNumber zero],
+                           kSTRAWBERRIES:  [NSDecimalNumber zero]
                            }];
     [self.shoppingCartTable reloadData];
 }
