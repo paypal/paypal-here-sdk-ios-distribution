@@ -181,7 +181,7 @@
     [tm beginPayment];
     tm.currentInvoice = invoice;
     
-    NSString *interfaceName = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? @"PaymentMethodViewController_iPhone" : @"PaymentMethodViewController_iPad";
+    NSString *interfaceName = (IS_IPAD) ?@"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
     
     PaymentMethodViewController *paymentMethod = [[PaymentMethodViewController alloc]
                                                   initWithNibName:interfaceName
