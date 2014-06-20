@@ -15,7 +15,6 @@
 
 #import "PaymentMethodViewController.h"
 #import "SignatureViewController.h"
-#import "AddTipViewController.h"
 #import "CheckedInCustomerCell.h"
 #import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerViewController.h"
@@ -31,6 +30,13 @@
 @property BOOL isCashTransaction;
 @property PPHTransactionResponse *transactionResponse;
 
+@property (nonatomic, retain) IBOutlet UITextField *tipTextField;
+@property (nonatomic, retain) IBOutlet UITextField *discountTextField;
+
+@property (nonatomic, retain) IBOutlet UIButton *manualButton;
+@property (nonatomic, retain) IBOutlet UIButton *checkinButton;
+@property (nonatomic, retain) IBOutlet UIButton *cashButton;
+@property (nonatomic, retain) IBOutlet UIButton *saveTransactionButton;
 @end
 
 @implementation PaymentMethodViewController
@@ -50,6 +56,14 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.manualButton.layer.cornerRadius = 10;
+    self.checkinButton.layer.cornerRadius = 10;
+    self.cashButton.layer.cornerRadius = 10;
+    self.saveTransactionButton.layer.cornerRadius = 10;
+    
+    self.tipTextField.delegate = self;
+    self.discountTextField.delegate = self;
+    
 }
 
 -(void)didReceiveMemoryWarning
@@ -61,18 +75,21 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    [self updatePaymentInformationLabels];
     
-    //NSLocale *locale = [NSLocale currentLocale];
-    
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHInvoice *invoice = tm.currentInvoice;
-    
-    self.subtotalLabel.text = [invoice.subTotal description];
-    self.totalLabel.text = [[invoice.totalAmount amount] description];
-    self.tipLabel.text = [invoice.gratuity description];
-    self.taxLabel.text = [invoice.tax description];
     [self.processingTransactionSpinny stopAnimating];
     self.processingTransactionSpinny.hidden = YES;
+}
+
+-(void)updatePaymentInformationLabels {
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    PPHInvoice *invoice = tm.currentInvoice;
+    self.tipTextField.text = [NSString stringWithFormat:@"%0.2f", [invoice.gratuity doubleValue]];
+    self.discountTextField.text = [NSString stringWithFormat:@"%0.2f", [invoice.discountAmount doubleValue]];
+    self.taxLabel.text = [NSString stringWithFormat:@"%0.2f", [invoice.tax doubleValue]];
+    self.subtotalLabel.text = [NSString stringWithFormat:@"%0.2f", [invoice.subTotal doubleValue]];
+    self.totalLabel.text = [NSString stringWithFormat:@"%0.2f", [[invoice.totalAmount amount] doubleValue]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -297,21 +314,45 @@
     [self.navigationController pushViewController:settings animated:YES];
 }
 
-- (IBAction)addTip:(id)sender
-{
-    AddTipViewController *addTipVC = nil;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPhone" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    } else {
-        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPad" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    }
-    [self.navigationController pushViewController:addTipVC animated:YES];
-}
 
 - (IBAction)startNewTransaction:(id)sender {
     PPHInvoice *invoice = [[PayPalHereSDK sharedTransactionManager] currentInvoice];
     [InvoicesManager addTransaction:invoice];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    // Update the string in the text input
+    NSMutableString* currentString = [NSMutableString stringWithString:textField.text];
+    [currentString replaceCharactersInRange:range withString:string];
+    // Strip out the decimal separator
+    [currentString replaceOccurrencesOfString:@"." withString:@""
+                                      options:NSLiteralSearch range:NSMakeRange(0, [currentString length])];
+    // Generate a new string for the text input
+    int currentValue = [currentString intValue];
+    NSString* format = [NSString stringWithFormat:@"%%.%df", 2];
+    double minorUnitsPerMajor = 100.0;
+    NSString* newString = [NSString stringWithFormat:format, currentValue/minorUnitsPerMajor];
+    textField.text = newString;
+    
+    return NO;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.tipTextField) {
+        [[PayPalHereSDK sharedTransactionManager] currentInvoice].gratuity = [NSDecimalNumber decimalNumberWithString:textField.text];
+    } else if (textField == self.discountTextField) {
+        [[PayPalHereSDK sharedTransactionManager] currentInvoice].discountAmount = [NSDecimalNumber decimalNumberWithString:textField.text];
+    }
+    [self updatePaymentInformationLabels];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+    
+	return YES;
+    
+}
 @end

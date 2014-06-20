@@ -13,6 +13,7 @@
 #import "STOauthLoginViewController.h"
 #import "TransactionViewController.h"
 #import "STAppDelegate.h"
+#import "DemosTableViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHPaymentLimits.h>
@@ -424,21 +425,10 @@
  */
 - (void)transitionToTransactionViewController
 {
-	TransactionViewController *transactionVC = nil;
-    
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		transactionVC = [[TransactionViewController alloc]
-                         initWithNibName:@"TransactionViewController_iPhone"
-                         bundle:nil];
-	}
-	else {
-        NSLog(@"stepping in ipad detection");
-		transactionVC = [[TransactionViewController alloc]
-                         initWithNibName:@"TransactionViewController_iPad"
-                         bundle:nil];
-	}
-    
-    self.navigationController.viewControllers = @[transactionVC];
+
+    DemosTableViewController *vc = [[DemosTableViewController alloc] init];
+    self.navigationController.viewControllers = @[vc];
+
 }
 
 - (void)dismissKeyboard

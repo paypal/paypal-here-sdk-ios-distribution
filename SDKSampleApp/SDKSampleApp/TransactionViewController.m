@@ -12,11 +12,12 @@
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
 #import "STTransactionsTableViewController.h"
-#import "InvoicesManager.h"
+
 #import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
 #import "STAppDelegate.h"
+
+
+#define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 
 #define kAPPLES			@"Apples"
@@ -27,11 +28,31 @@
 #define kQUANTITY		@"Quantity"
 
 @interface TransactionViewController ()
-@property (nonatomic,strong) TransactionButton *appleItemButton;
-@property (nonatomic,strong) TransactionButton *bananaItemButton;
-@property (nonatomic,strong) TransactionButton *orangeItemButton;
-@property (nonatomic,strong) TransactionButton *strawberryItemButton;
+- (IBAction)onChargePressed:(id)sender;
+- (IBAction)onSettingsPressed:(id)sender;
+- (IBAction)onRefundsPressed:(id)sender;
+- (IBAction)onViewAuthorizedSales:(id)sender;
+
+@property (nonatomic, retain) IBOutlet UIButton *applesButton;
+@property (nonatomic, retain) IBOutlet UIButton *orangesButton;
+@property (nonatomic, retain) IBOutlet UIButton *bananasButton;
+@property (nonatomic, retain) IBOutlet UIButton *strawberriesButton;
+
+@property (weak, nonatomic) IBOutlet UITableView *shoppingCartTable;
+@property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
+
+
+
+@property (nonatomic, strong) NSArray *items;
+@property (strong, nonatomic) NSMutableDictionary *store;
 @property (nonatomic,strong) NSMutableDictionary *shoppingCart;
+
+@property (nonatomic,strong) UILongPressGestureRecognizer *lpgrApples;
+@property (nonatomic,strong) UILongPressGestureRecognizer *lpgrBananas;
+@property (nonatomic,strong) UILongPressGestureRecognizer *lpgrOranges;
+@property (nonatomic,strong) UILongPressGestureRecognizer *lpgrStrawberries;
+
 @end
 
 @implementation TransactionViewController
@@ -40,42 +61,22 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-		self.shoppingCart =
-        [NSMutableDictionary
-         dictionaryWithObjectsAndKeys:
-         
-         [NSMutableDictionary
-          dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber decimalNumberWithString:@"0.95"], kPRICE,
-          [NSDecimalNumber numberWithInt:0], kQUANTITY,
-          nil],
-         kAPPLES,
-         
-         [NSMutableDictionary
-          dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber decimalNumberWithString:@"0.50"], kPRICE,
-          [NSDecimalNumber numberWithInt:0], kQUANTITY,
-          nil],
-         kBANANAS,
-         
-         [NSMutableDictionary
-          dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber decimalNumberWithString:@"0.40"], kPRICE,
-          [NSDecimalNumber numberWithInt:0], kQUANTITY,
-          nil],
-         kORANGES,
-         
-         [NSMutableDictionary
-          dictionaryWithObjectsAndKeys:
-          [NSDecimalNumber decimalNumberWithString:@"0.25"], kPRICE,
-          [NSDecimalNumber numberWithInt:0], kQUANTITY,
-          nil],
-         kSTRAWBERRIES,
-         
-         nil];
         
-        self.currentTransactions = [[NSMutableArray alloc] init];
+        self.items = @[kAPPLES, kBANANAS, kORANGES, kSTRAWBERRIES];
+        
+        self.store = [[NSMutableDictionary alloc] initWithDictionary:
+                      @{kAPPLES:        [NSDecimalNumber decimalNumberWithString:@".95"],
+                       kBANANAS:       [NSDecimalNumber decimalNumberWithString:@".50"],
+                       kORANGES:       [NSDecimalNumber decimalNumberWithString:@".40"],
+                       kSTRAWBERRIES:  [NSDecimalNumber decimalNumberWithString:@".25"]
+                       }];
+        
+        self.shoppingCart = [[NSMutableDictionary alloc] initWithDictionary:
+                             @{kAPPLES:        [NSDecimalNumber zero],
+                               kBANANAS:       [NSDecimalNumber zero],
+                               kORANGES:       [NSDecimalNumber zero],
+                               kSTRAWBERRIES:  [NSDecimalNumber zero]
+                               }];
     }
     return self;
 }
@@ -83,37 +84,36 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
 	self.title = @"New Transaction";
-	self.amountTextField.delegate = self;
-    
-    
-	self.appleItemButton = [[TransactionButton alloc]
-                            initWithTransactionVC:self
-                            forItem:kAPPLES
-                            onButton:self.appleButton];
-    
-    
-	self.bananaItemButton = [[TransactionButton alloc]
-                             initWithTransactionVC:self
-                             forItem:kBANANAS
-                             onButton:self.bananaButton];
-    
-	self.orangeItemButton = [[TransactionButton alloc]
-                             initWithTransactionVC:self
-                             forItem:kORANGES
-                             onButton:self.orangeButton];
-    
-	self.strawberryItemButton = [[TransactionButton alloc]
-                                 initWithTransactionVC:self
-                                 forItem:kSTRAWBERRIES
-                                 onButton:self.strawberryButton];
-    
+
     
     self.shoppingCartTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.shoppingCartTable.bounces = NO;
+    self.shoppingCartTable.allowsSelection = NO;
     [self.shoppingCartTable setDataSource:self];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(didPressViewTransactions:)];
     
+    self.lpgrApples = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
+    self.lpgrBananas = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
+    self.lpgrOranges = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
+    self.lpgrStrawberries = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
+
+
+    self.lpgrApples.minimumPressDuration = 0.5;
+    self.lpgrBananas.minimumPressDuration = 0.5;
+    self.lpgrOranges.minimumPressDuration = 0.5;
+    self.lpgrStrawberries.minimumPressDuration = 0.5;
+
+    [self.applesButton addGestureRecognizer:self.lpgrApples];
+    [self.bananasButton addGestureRecognizer:self.lpgrBananas];
+    [self.orangesButton addGestureRecognizer:self.lpgrOranges];
+    [self.strawberriesButton addGestureRecognizer:self.lpgrStrawberries];
+
+    UIBarButtonItem *currentInvoicesButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(didPressViewTransactions:)];
+    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(didPressClearCart:)];
+
+    self.navigationItem.rightBarButtonItems = @[clearButton, currentInvoicesButton];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -127,18 +127,11 @@
         [tm cancelPayment];
     }
     
-	// Make sure the UI is in the right state for the selectd mode:
-	[self changeUIStateForItemizedMode:[self.itemizedModeSegmentedControl selectedSegmentIndex]];
-    
-    _amountTextField.delegate = self;
-    [_amountTextField setReturnKeyType:UIReturnKeyDone];
     
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     [_purchaseButton setTitle:appDelegate.paymentFlowIsAuthOnly ? @"Authorize Purchase" : @"Purchase" forState:UIControlStateNormal];
 
 }
-
-
 
 
 - (void) didReceiveMemoryWarning
@@ -148,87 +141,62 @@
 }
 
 
+- (double) sumShoppingCart
+{
+	double total = 0.0;
+    
+	for (NSString *item in self.shoppingCart) {
+		total += [self.shoppingCart[item] doubleValue]*[self.store[item] doubleValue];
+	}
+    
+	return total;
+}
 
-- (BOOL) isOnMultiItemScreen {
-    return self.amountTextField.hidden;
+- (NSString *) validateInvoiceForPayment:(PPHInvoice *)invoice {
+    if (invoice.subTotal.doubleValue < 0.01 && invoice.subTotal.doubleValue > -0.01) {
+        return @"You cannot specify amounts less than a penny.";
+	}
+    // Insert other verifications here
+    
+    return nil;
+}
+
+- (PPHInvoice *)getInvoiceFromShoppingCart:(NSMutableDictionary *)shoppingCart {
+    PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:@"USD"];
+    for (NSString *item in self.shoppingCart) {
+        [invoice addItemWithId:item detailId:nil name:item quantity:shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
+    }
+    return invoice;
 }
 
 - (IBAction)onChargePressed:(id)sender {
     
-    
-    PPHMerchantInfo *currentMerchant = [PayPalHereSDK activeMerchant];
-    if (currentMerchant == nil) {
+    if (![PayPalHereSDK activeMerchant]) {
         [self showAlertWithTitle:@"Bad State!" andMessage:@"The merchant hasn't been created yet?   We can't use the SDK until the merchant exists."];
         return;
     }
     
-	NSString *amountString = nil;
-	double transactionAmount = 0;   //TODO: pull use of double
+    // Create invoice by adding the items from the shopping cart.
+    PPHInvoice *invoice = [self getInvoiceFromShoppingCart:self.shoppingCart];
     
-	if ([self isOnMultiItemScreen]) {
-		transactionAmount = [self sumShoppingCart];
-	}
-	else {
-		[self.amountTextField resignFirstResponder];
-        
-		// Make sure the user has entered some amount:
-		amountString = _amountTextField.text;
-		if ([amountString length] == 0) {
-			[self showAlertWithTitle:@"Input Error" andMessage:@"You need to enter a transaction amount before you can purchase something."];
-			return;
-		}
-        
-		// Check to make sure this is a non-zero amount:
-		NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-		[f setNumberStyle:NSNumberFormatterDecimalStyle];
-		NSNumber *formattedAmount = [f numberFromString:amountString];
-		if (formattedAmount == nil) {
-			[self showAlertWithTitle:@"Input Error" andMessage:@"You must specify a proper numerical transaction amount in order to purchase something"];
-			return;
-		}
-        
-		transactionAmount = [formattedAmount doubleValue];
-        
-	}
+    // Validate invoice for errors
+    NSString *invoiceError = [self validateInvoiceForPayment:invoice];
+    if (invoiceError) {
+        [self showAlertWithTitle:@"Input Error" andMessage:invoiceError];
+        return;
+    }
     
-	if (transactionAmount < 0.01 && transactionAmount > -0.01) {
-		[self showAlertWithTitle:@"Input Error" andMessage:@"You cannot specify amounts less than a penny."];
-		return;
-	}
-    
-    
+    // Begin the purchase and forward to payment method
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    [tm beginPayment];
+    tm.currentInvoice = invoice;
     
-    if ([self isOnMultiItemScreen]) {
-        [tm beginPayment];
-        
-        NSArray *itemList = @[kAPPLES, kBANANAS, kORANGES, kSTRAWBERRIES];
-        
-        for (NSString *itemName in itemList) {
-            NSMutableDictionary *items = [self.shoppingCart valueForKey:itemName];
-            NSDecimalNumber *quantity = [items valueForKey:kQUANTITY];
-            NSDecimalNumber *costEach = [items valueForKey:kPRICE];
-            
-            [tm.currentInvoice addItemWithId:itemName name:itemName quantity:quantity unitPrice:costEach taxRate:nil taxRateName:nil];
-        }
-    }
-    else {
-        NSLog(@"About to call beginPaymentWithAmount for amount %@", amountString);
-        [tm beginPaymentWithAmount:[PPHAmount amountWithString:amountString inCurrency:@"USD"] andName:@"FixedAmountPayment"];
-    }
-        
-    PaymentMethodViewController *paymentMethod = nil;
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        paymentMethod = [[PaymentMethodViewController alloc]
-                         initWithNibName:@"PaymentMethodViewController_iPhone"
-                         bundle:nil];
-    }
-    else {
-        paymentMethod = [[PaymentMethodViewController alloc]
-                         initWithNibName:@"PaymentMethodViewController_iPad"
-                         bundle:nil];
-    }
+    // Choose Payment method
+    NSString *interfaceName = (IS_IPAD) ? @"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
+    PaymentMethodViewController *paymentMethod = [[PaymentMethodViewController alloc]
+                                                  initWithNibName:interfaceName
+                                                  bundle:nil];
+
     
     [self.navigationController pushViewController:paymentMethod animated:YES];
     
@@ -251,20 +219,6 @@
 
 
 
-- (double) sumShoppingCart
-{
-	NSArray *itemList = @[kAPPLES, kBANANAS, kORANGES, kSTRAWBERRIES];
-    
-	double total = 0;
-    
-	for (NSString *item in itemList) {
-		NSMutableDictionary *items = [self.shoppingCart valueForKey:item];
-        
-		total += ([[items valueForKey:kQUANTITY] intValue] * [[items valueForKey:kPRICE] doubleValue]);
-	}
-    
-	return total;
-}
 
 - (IBAction)onSettingsPressed:(id)sender {
     SettingsViewController *settings = [[SettingsViewController alloc]
@@ -296,6 +250,55 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)didPressViewTransactions:(id)sender {
+    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)didPressAddItem:(id)sender {
+    NSString *itemClicked;
+    if (sender == self.applesButton) {
+        itemClicked = kAPPLES;
+    } else if (sender == self.bananasButton) {
+        itemClicked = kBANANAS;
+    } else if (sender == self.orangesButton) {
+        itemClicked = kORANGES;
+    } else if (sender == self.strawberriesButton) {
+        itemClicked = kSTRAWBERRIES;
+    } else {
+        NSLog(@"There is another unidentified target to this method");
+        return;
+    }
+    
+    NSDecimalNumber *incremented = [self.shoppingCart[itemClicked] decimalNumberByAdding:[NSDecimalNumber one]];
+    [self.shoppingCart setObject:incremented forKey:itemClicked];
+    
+    [self.shoppingCartTable reloadData];
+}
+
+-(IBAction)buttonLongPressed:(id)sender {
+    if (sender == self.lpgrApples) {
+        [self.shoppingCart setObject:[NSDecimalNumber zero] forKey:kAPPLES];
+    } else if (sender == self.lpgrBananas) {
+        [self.shoppingCart setObject:[NSDecimalNumber zero] forKey:kBANANAS];
+    } else if (sender == self.lpgrOranges) {
+        [self.shoppingCart setObject:[NSDecimalNumber zero] forKey:kORANGES];
+    } else if (sender == self.lpgrStrawberries) {
+        [self.shoppingCart setObject:[NSDecimalNumber zero] forKey:kSTRAWBERRIES];
+    }
+    [self.shoppingCartTable reloadData];
+}
+
+- (IBAction)didPressClearCart:(id)sender {
+    self.shoppingCart = [[NSMutableDictionary alloc] initWithDictionary:
+                         @{kAPPLES:        [NSDecimalNumber zero],
+                           kBANANAS:       [NSDecimalNumber zero],
+                           kORANGES:       [NSDecimalNumber zero],
+                           kSTRAWBERRIES:  [NSDecimalNumber zero]
+                           }];
+    [self.shoppingCartTable reloadData];
+}
+
 #pragma mark - UITableViewDataSource callbacks
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -314,226 +317,26 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            cell.textLabel.adjustsFontSizeToFitWidth = YES;
-        }
-    }
-    else
-    {
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        }
+    if (!cell && IS_IPAD) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    } else if (!cell && !IS_IPAD) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-	NSMutableDictionary *items = nil;
-	NSString *item = nil;
-	switch (indexPath.row) {
-        case 0:
-            item = kAPPLES;
-            break;
-            
-        case 1:
-            item = kBANANAS;
-            break;
-            
-        case 2:
-            item = kORANGES;
-            break;
-            
-        case 3:
-            item = kSTRAWBERRIES;
-            break;
-            
-	}
-    
-	if (indexPath.row == 4) {
-		cell.textLabel.text =
-        [NSString stringWithFormat:@"TOTAL: $%0.2f", [self sumShoppingCart]];
-		cell.textLabel.textAlignment = NSTextAlignmentCenter;
-	}
-	else {
-		NSString *spacer = (indexPath.row == 3 ? @"\t\t" : @"\t\t\t");
-		items = [self.shoppingCart valueForKey:item];
-		cell.textLabel.text =
-        [NSString
-         stringWithFormat:
-         [[@"%@ ($%0.2f)" stringByAppendingString:spacer] stringByAppendingString:@"%d"],
-         item,
-         [[items valueForKey:kPRICE] doubleValue],
-         [[items valueForKey:kQUANTITY] intValue]];
-        
+    if (indexPath.row < self.items.count) {
+        NSString* item = self.items[indexPath.row];
+        NSString *format = (indexPath.row == 0) ?  @"%@ ($%0.2f)\t\t\t\t%d" : (indexPath.row == 3) ? @"%@ ($%0.2f)\t\t%d" : @"%@ ($%0.2f)\t\t\t%d";
+        cell.textLabel.text = [NSString stringWithFormat:format, item, [(NSDecimalNumber *)self.store[item] doubleValue], [self.shoppingCart[item] intValue]];
 		cell.textLabel.textAlignment = NSTextAlignmentLeft;
-        
-	}
+    } else {
+        cell.textLabel.text = [NSString stringWithFormat:@"TOTAL: $%0.2f", [self sumShoppingCart]];
+		cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    }
     
     
 	return cell;
 }
-
-
-
-
-
-
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-	[self.amountTextField resignFirstResponder];
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [_amountTextField resignFirstResponder];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-	// Allow the Backspace character:
-	if (!string.length)
-		return YES;
-    
-	// Do not allow pasting of a range of characters:
-	if (string.length > 1)
-		return NO;
-    
-	// Allow leading '+' or '-' signs:
-	if ([textField.text length] == 0 &&
-		(
-         [string rangeOfString:@"+"].location != NSNotFound ||
-         [string rangeOfString:@"-"].location != NSNotFound
-         )
-		) {
-		return YES;
-	}
-    
-	NSUInteger currentDecimalPointLocation = [textField.text rangeOfString:@"."].location;
-	NSUInteger newDecimalPointLocation = [string rangeOfString:@"."].location;
-    
-	// Reject any non-numeric inputs (other than '.').
-	if ([string
-         rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location
-		!= NSNotFound  &&
-		newDecimalPointLocation == NSNotFound
-		)
-		return NO;
-    
-	// If you haven't already got a decimal point yet, any numeric input is OK:
-	if (currentDecimalPointLocation == NSNotFound)
-		return YES;
-    
-	// If you've already got a decimal point, and the user tries to
-	// feed you another, the input is definitely invalid:
-	if (newDecimalPointLocation != NSNotFound)
-		return NO;
-    
-    
-	// Finally, check for more than 2 digits to the right of the decimal point:
-	BOOL notTooManyDigitsFollowTheDecimalPoint = ([textField.text length] - currentDecimalPointLocation) <= 2;
-    
-	return notTooManyDigitsFollowTheDecimalPoint;
-    
-}
-
-
-
-#pragma mark -
-#pragma mark UISegmentedControl
-
-- (IBAction)itemizedModeChanged:(id)sender
-{
-	UISegmentedControl *itemizedModeSelector = (UISegmentedControl *) sender;
-	NSInteger itemizedMode = [itemizedModeSelector selectedSegmentIndex];
-	[self changeUIStateForItemizedMode:itemizedMode];
-}
-
-- (void) changeUIStateForItemizedMode:(NSInteger )mode
-{
-	const NSInteger kSingleItemMode = 0;
-	const NSInteger kItemizedMode = 1;
-    
-	if (mode == kSingleItemMode) {
-		self.amountTextField.hidden = NO;
-		self.enterAmountLabel.hidden = NO;
-        
-		self.appleButton.hidden = YES;
-		self.bananaButton.hidden = YES;
-		self.orangeButton.hidden = YES;
-		self.strawberryButton.hidden = YES;
-		self.longPressExplanationLabel.hidden = YES;
-        
-		self.shoppingCartTable.hidden = YES;
-	}
-	else if (mode == kItemizedMode) {
-		self.amountTextField.hidden = YES;
-		self.enterAmountLabel.hidden = YES;
-        
-		self.appleButton.hidden = NO;
-		self.bananaButton.hidden = NO;
-		self.orangeButton.hidden = NO;
-		self.strawberryButton.hidden = NO;
-		self.longPressExplanationLabel.hidden = NO;
-        
-		self.shoppingCartTable.hidden = NO;
-	}
-	else {
-		NSLog(@"WTF? Somehow got this undefined mode specifier value: %d:", mode);
-	}
-    
-}
-
--(void)didPressViewTransactions:(id)sender {
-    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-@end
-
-@interface TransactionButton ()
-@property (nonatomic, strong) TransactionViewController *target;
-@property (nonatomic, strong) NSString *item;
-@end
-
-@implementation TransactionButton
-- (id) initWithTransactionVC:(TransactionViewController *)vc forItem:(NSString *)item onButton:(UIButton *)aButton
-{
-	if ((self = [super initWithButton:aButton])) {
-		_target = vc;
-		_item = item;
-	}
-    
-	return self;
-}
-
-- (void) itemWasTouchedUpAndDidHold
-{
-	NSMutableDictionary *items = [self.target.shoppingCart valueForKey:self.item];
-	[items 
-     setObject:[NSDecimalNumber numberWithInt:0]
-     forKey:kQUANTITY];
-    
-	[self.target.shoppingCartTable reloadData];
-    
-}
-
-- (void) itemWasTouchedUp
-{
-	NSMutableDictionary *items = [self.target.shoppingCart valueForKey:self.item];
-	NSNumber *quantity = [items valueForKey:kQUANTITY];
-	[items 
-     setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
-     forKey:kQUANTITY];
-    
-	[self.target.shoppingCartTable reloadData];
-    
-}
-
-
 
 
 @end

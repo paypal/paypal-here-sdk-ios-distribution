@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -7,16 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionViewController">
             <connections>
-                <outlet property="amountTextField" destination="18" id="127"/>
-                <outlet property="appleButton" destination="202" id="234"/>
-                <outlet property="bananaButton" destination="203" id="235"/>
-                <outlet property="enterAmountLabel" destination="4" id="161"/>
-                <outlet property="itemizedModeSegmentedControl" destination="149" id="160"/>
+                <outlet property="applesButton" destination="202" id="iAX-Jv-2xJ"/>
+                <outlet property="bananasButton" destination="203" id="fb8-fY-Zbg"/>
                 <outlet property="longPressExplanationLabel" destination="533" id="574"/>
-                <outlet property="orangeButton" destination="164" id="236"/>
+                <outlet property="orangesButton" destination="164" id="KOX-HA-XG1"/>
                 <outlet property="purchaseButton" destination="24" id="JCp-N0-yex"/>
                 <outlet property="shoppingCartTable" destination="240" id="433"/>
-                <outlet property="strawberryButton" destination="178" id="237"/>
+                <outlet property="strawberriesButton" destination="178" id="1I8-6x-eJP"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -25,19 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your Transaction Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4">
-                    <rect key="frame" x="234" y="123" width="300" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="18">
-                    <rect key="frame" x="305" y="152" width="158" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="24">
                     <rect key="frame" x="306" y="375" width="156" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -45,20 +29,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onChargePressed:" destination="-1" eventType="touchUpInside" id="641"/>
+                        <action selector="onChargePressed:" destination="-1" eventType="touchUpInside" id="anx-MA-xGf"/>
                     </connections>
                 </button>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="149">
-                    <rect key="frame" x="255" y="76" width="259" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="Single Item"/>
-                        <segment title="Itemized"/>
-                    </segments>
-                    <connections>
-                        <action selector="itemizedModeChanged:" destination="-1" eventType="valueChanged" id="159"/>
-                    </connections>
-                </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="164">
                     <rect key="frame" x="379" y="112" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -70,9 +43,12 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="3bj-vu-KXn"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="178">
-                    <rect key="frame" x="423" y="110" width="44" height="44"/>
+                    <rect key="frame" x="424" y="112" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" image="strawberry.jpg" backgroundImage="Default.png">
@@ -82,6 +58,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="wqX-X5-nB6"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="202">
                     <rect key="frame" x="290" y="110" width="44" height="44"/>
@@ -94,6 +73,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="B6x-IH-six"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="203">
                     <rect key="frame" x="334" y="112" width="44" height="44"/>
@@ -106,6 +88,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didPressAddItem:" destination="-1" eventType="touchUpInside" id="mCT-ir-j7f"/>
+                    </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="28" sectionHeaderHeight="22" sectionFooterHeight="22" id="240">
                     <rect key="frame" x="264" y="202" width="240" height="140"/>

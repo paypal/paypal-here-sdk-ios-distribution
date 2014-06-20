@@ -11,6 +11,7 @@
 
 @interface PaymentMethodViewController : UIViewController
 <
+UITextFieldDelegate,
 UIAlertViewDelegate,
 PPHTransactionControllerDelegate,
 PPHTransactionManagerDelegate
