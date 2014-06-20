@@ -187,19 +187,6 @@
     
 }
 
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    
-    [alertView show];
-}
-
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {

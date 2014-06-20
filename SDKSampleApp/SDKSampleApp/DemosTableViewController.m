@@ -11,10 +11,10 @@
 #import "InvoiceViewController.h"
 #import "TransactionViewController.h"
 #import "SimpleTransactionViewController.h"
+#import "SimpleFSPaymentDelegate.h"
 
 @interface DemosTableViewController ()
 @property (nonatomic, strong) NSArray *demoNames;
-
 @end
 
 @implementation DemosTableViewController
@@ -73,15 +73,11 @@
             break;
         case 1: {
             NSString *interfaceName = (IPAD) ? @"TransactionViewController_iPad" : @"TransactionViewController_iPhone";
-            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil];
+            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil aDelegate:[[SimpleFSPaymentDelegate alloc] init]];
             break;
-        }
-        case 2:
-            // Invoice
-            vc = [[InvoiceViewController alloc] init];
-
-        
-        default:
+        } case 2: {
+            return;
+        } default:
             break;
     }
     
