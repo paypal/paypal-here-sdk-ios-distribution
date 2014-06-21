@@ -12,6 +12,7 @@
 #import "TransactionViewController.h"
 #import "SimpleTransactionViewController.h"
 #import "SimpleFSPaymentDelegate.h"
+#import "CCCFSPaymentDelegate.h"
 
 @interface DemosTableViewController ()
 @property (nonatomic, strong) NSArray *demoNames;
@@ -76,7 +77,9 @@
             vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil aDelegate:[[SimpleFSPaymentDelegate alloc] init]];
             break;
         } case 2: {
-            return;
+            NSString *interfaceName = (IPAD) ? @"TransactionViewController_iPad" : @"TransactionViewController_iPhone";
+            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil aDelegate:[[CCCFSPaymentDelegate alloc] init]];
+            break;
         } default:
             break;
     }

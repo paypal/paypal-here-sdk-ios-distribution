@@ -1,16 +1,16 @@
 //
-//  SAPaymentMethod.m
-//  SDKSampleApp
+//  CCCFSPaymentMethodViewController.m
+//  SDKSampleAppWithSource
 //
-//  Created by Angelini, Dom on 2/3/14.
+//  Created by Samuel Jerome on 6/20/14.
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
-
-
+#import "CCCFSPaymentMethodViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
+#import <PayPalHereSDK/PPHCardReaderManager.h>
 
 #import "PaymentMethodViewController.h"
 #import "SignatureViewController.h"
@@ -21,8 +21,14 @@
 #import "STAppDelegate.h"
 #import "AuthorizationCompleteViewController.h"
 #import "InvoicesManager.h"
+#import "CCSwipersTableTableViewController.h"
 
-@interface PaymentMethodViewController ()
+enum swiperState : NSUInteger {
+    kSwiperStateListening = 0,
+    kSwiperStateOff = 1,
+};
+
+@interface CCCFSPaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
 @property PPHTransactionResponse *transactionResponse;
 
@@ -37,6 +43,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UIButton *cashButton;
 @property (nonatomic, retain) IBOutlet UIButton *saveTransactionButton;
+@property (nonatomic, retain) IBOutlet UIButton *listenForSwipesButton;
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (weak, nonatomic) IBOutlet UILabel *subtotalLabel;
@@ -45,15 +52,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
 
-
 - (IBAction)payWithManualEntryCard:(id)sender;
 - (IBAction)payWithCashEntryCard:(id)sender;
 - (IBAction)payWithCheckedInClient:(id)sender;
+- (IBAction)listenForSwipes:(id)sender;
 - (IBAction)startNewTransaction:(id)sender;
 
 @end
 
-@implementation PaymentMethodViewController
+@implementation CCCFSPaymentMethodViewController
+
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,6 +82,9 @@
     self.checkinButton.layer.cornerRadius = 10;
     self.cashButton.layer.cornerRadius = 10;
     self.saveTransactionButton.layer.cornerRadius = 10;
+    self.listenForSwipesButton.layer.cornerRadius = 10;
+    
+    self.listenForSwipesButton.tag = kSwiperStateOff;
     
     self.tipTextField.delegate = self;
     self.discountTextField.delegate = self;
@@ -89,7 +100,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     [self updatePaymentInformationLabels];
     
     [self.processingTransactionSpinny stopAnimating];
@@ -138,7 +149,7 @@
                         [self showPaymentCompeleteView];
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
-
+    
 }
 
 -(void) showPaymentCompeleteView
@@ -188,17 +199,22 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         checkedInCustomerView = [[CheckedInCustomerViewController alloc]
-                         initWithNibName:@"CheckedInCustomerViewController_iPhone"
-                         bundle:nil];
+                                 initWithNibName:@"CheckedInCustomerViewController_iPhone"
+                                 bundle:nil];
     }
     else {
         checkedInCustomerView = [[CheckedInCustomerViewController alloc]
-                         initWithNibName:@"CheckedInCustomerViewController_iPad"
-                         bundle:nil];
+                                 initWithNibName:@"CheckedInCustomerViewController_iPad"
+                                 bundle:nil];
     }
     
     [self.navigationController pushViewController:checkedInCustomerView animated:YES];
     
+}
+
+- (IBAction)listenForSwipes:(id)sender {
+    CCSwipersTableTableViewController *vc = [[CCSwipersTableTableViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark UIAlertViewDelegate
@@ -245,56 +261,56 @@
  */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-     if (event.eventType == ePPHTransactionType_Idle) {
-         [self.processingTransactionSpinny stopAnimating];
-         self.processingTransactionSpinny.hidden = YES;
-     }
-     else {
-         [self.processingTransactionSpinny startAnimating];
-         self.processingTransactionSpinny.hidden = NO;
-     }
-     
-     NSLog(@"Our local instance of PPHTransactionWatcher picked up a PPHTransactionManager event notification: <%@>", event);
-     if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
-     
-         self.waitingForCardSwipe = NO;
-     
-         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-         
-         if (appDelegate.paymentFlowIsAuthOnly) {
-             
-             [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
-                                                                 withCompletionHandler:^(PPHTransactionResponse *response) {
-                                                                     self.transactionResponse = response;
-                                                                     [self showAuthorizationCompeleteView];
-                                                                 }];
-         }
-         else {
-             //Now ask to authorize (and take) payment all in one shot.
-             [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
-                                                       withTransactionController:self
-                                                               completionHandler:^(PPHTransactionResponse *response) {
-                                                                   self.transactionResponse = response;
-                                                                   if (response.error) {
-                                                                       [self showPaymentCompeleteView];
-                                                                   }
-                                                                   else {
-                                                                       // Is a signature required for this payment?  If so
-                                                                       // then let's collect a signature and provide it to the SDK.
-                                                                       if (response.isSignatureRequiredToFinalize) {
-                                                                           [self collectSignatureAndFinalizePurchaseWithRecord];
-                                                                       }
-                                                                       else {
-                                                                           // All done.  Tell the user the good news.
-                                                                           //Let's exit the payment screen once they hit OK
-                                                                           _doneWithPayScreen = YES;
-                                                                           [self showPaymentCompeleteView];
-                                                                       }
-         
-                                                                   }
-                                                               }];
-         }
-     }
+    if (event.eventType == ePPHTransactionType_Idle) {
+        [self.processingTransactionSpinny stopAnimating];
+        self.processingTransactionSpinny.hidden = YES;
+    }
+    else {
+        [self.processingTransactionSpinny startAnimating];
+        self.processingTransactionSpinny.hidden = NO;
+    }
+    
+    NSLog(@"Our local instance of PPHTransactionWatcher picked up a PPHTransactionManager event notification: <%@>", event);
+    if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
+        
+        self.waitingForCardSwipe = NO;
+        
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if (appDelegate.paymentFlowIsAuthOnly) {
+            
+            [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                                withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                                    self.transactionResponse = response;
+                                                                    [self showAuthorizationCompeleteView];
+                                                                }];
+        }
+        else {
+            //Now ask to authorize (and take) payment all in one shot.
+            [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                          withTransactionController:self
+                                                                  completionHandler:^(PPHTransactionResponse *response) {
+                                                                      self.transactionResponse = response;
+                                                                      if (response.error) {
+                                                                          [self showPaymentCompeleteView];
+                                                                      }
+                                                                      else {
+                                                                          // Is a signature required for this payment?  If so
+                                                                          // then let's collect a signature and provide it to the SDK.
+                                                                          if (response.isSignatureRequiredToFinalize) {
+                                                                              [self collectSignatureAndFinalizePurchaseWithRecord];
+                                                                          }
+                                                                          else {
+                                                                              // All done.  Tell the user the good news.
+                                                                              //Let's exit the payment screen once they hit OK
+                                                                              _doneWithPayScreen = YES;
+                                                                              [self showPaymentCompeleteView];
+                                                                          }
+                                                                          
+                                                                      }
+                                                                  }];
+        }
+    }
 }
 
 -(void)collectSignatureAndFinalizePurchaseWithRecord
@@ -356,4 +372,5 @@ replacementString:(NSString *)string
 	return YES;
     
 }
+
 @end

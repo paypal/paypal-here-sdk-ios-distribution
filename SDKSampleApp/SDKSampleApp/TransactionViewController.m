@@ -12,6 +12,7 @@
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
 #import "STTransactionsTableViewController.h"
+#import "CCCFSPaymentMethodViewController.h"
 #import "STAppDelegate.h"
 
 #define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
@@ -170,8 +171,8 @@
         }
         case kSACCC: {
             // Choose Payment method
-            NSString *interfaceName = (IS_IPAD) ? @"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
-            paymentMethodVC = [[PaymentMethodViewController alloc] initWithNibName:interfaceName bundle:nil];
+            NSString *interfaceName = @"CCCFSPaymentMethodViewController";
+            paymentMethodVC = [[CCCFSPaymentMethodViewController alloc] initWithNibName:interfaceName bundle:nil];
             break;
         }
             

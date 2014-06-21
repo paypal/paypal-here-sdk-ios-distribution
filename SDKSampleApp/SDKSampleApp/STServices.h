@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 typedef enum {
     kSASimple,
