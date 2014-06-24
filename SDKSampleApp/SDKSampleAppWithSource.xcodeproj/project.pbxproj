@@ -52,6 +52,8 @@
 		52C8939D1950F26100A072B6 /* STChoosePaymentMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C8939B1950F26100A072B6 /* STChoosePaymentMethodViewController.xib */; };
 		52C893A11950FAB100A072B6 /* STCashPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8939F1950FAB100A072B6 /* STCashPaymentViewController.m */; };
 		52C893A21950FAB100A072B6 /* STCashPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C893A01950FAB100A072B6 /* STCashPaymentViewController.xib */; };
+		52EEFDAB1958B57B0040BBD6 /* CCCustomInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EEFDA91958B57B0040BBD6 /* CCCustomInputViewController.m */; };
+		52EEFDAC1958B57B0040BBD6 /* CCCustomInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EEFDAA1958B57B0040BBD6 /* CCCustomInputViewController.xib */; };
 		52FC086A1952352C004C3342 /* swipe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52FC08691952352C004C3342 /* swipe.jpg */; };
 		52FC087719524522004C3342 /* PayPalHereSDK.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DA1F8C71926B495004BB1B8 /* PayPalHereSDK.bundle */; };
 		52FEBCE71954AD42001FFD57 /* SimpleFSPaymentDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FEBCE61954AD42001FFD57 /* SimpleFSPaymentDelegate.m */; };
@@ -251,6 +253,10 @@
 		52C8939E1950FAB100A072B6 /* STCashPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCashPaymentViewController.h; path = SDKSampleApp/STCashPaymentViewController.h; sourceTree = SOURCE_ROOT; };
 		52C8939F1950FAB100A072B6 /* STCashPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCashPaymentViewController.m; path = SDKSampleApp/STCashPaymentViewController.m; sourceTree = SOURCE_ROOT; };
 		52C893A01950FAB100A072B6 /* STCashPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STCashPaymentViewController.xib; path = SDKSampleApp/STCashPaymentViewController.xib; sourceTree = SOURCE_ROOT; };
+		52EEFDA81958B57B0040BBD6 /* CCCustomInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCCustomInputViewController.h; path = SDKSampleApp/CCCustomInputViewController.h; sourceTree = SOURCE_ROOT; };
+		52EEFDA91958B57B0040BBD6 /* CCCustomInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCCustomInputViewController.m; path = SDKSampleApp/CCCustomInputViewController.m; sourceTree = SOURCE_ROOT; };
+		52EEFDAA1958B57B0040BBD6 /* CCCustomInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CCCustomInputViewController.xib; path = SDKSampleApp/CCCustomInputViewController.xib; sourceTree = SOURCE_ROOT; };
+		52EEFDAD1958FB560040BBD6 /* STConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = SOURCE_ROOT; };
 		52FC085E19520D4D004C3342 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		52FC08691952352C004C3342 /* swipe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = swipe.jpg; sourceTree = SOURCE_ROOT; };
 		52FEBCE51954AD42001FFD57 /* SimpleFSPaymentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleFSPaymentDelegate.h; path = SDKSampleApp/SimpleFSPaymentDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -416,9 +422,9 @@
 		52FC08681952345F004C3342 /* FruitStore */ = {
 			isa = PBXGroup;
 			children = (
+				52FEBCF11954C029001FFD57 /* SharedFS */,
 				52FEBCF31954C0D2001FFD57 /* Simple */,
 				52FEBCF21954C054001FFD57 /* CCCFS */,
-				52FEBCF11954C029001FFD57 /* SharedFS */,
 			);
 			name = FruitStore;
 			sourceTree = "<group>";
@@ -448,6 +454,9 @@
 				52FEBD051954E7B0001FFD57 /* CCSwipersTableTableViewController.h */,
 				52FEBD061954E7B0001FFD57 /* CCSwipersTableTableViewController.m */,
 				52FEBD071954E7B0001FFD57 /* CCSwipersTableTableViewController.xib */,
+				52EEFDA81958B57B0040BBD6 /* CCCustomInputViewController.h */,
+				52EEFDA91958B57B0040BBD6 /* CCCustomInputViewController.m */,
+				52EEFDAA1958B57B0040BBD6 /* CCCustomInputViewController.xib */,
 			);
 			name = CCCFS;
 			sourceTree = "<group>";
@@ -632,6 +641,7 @@
 		99D981811835995100D234A1 /* SimplerTransaction */ = {
 			isa = PBXGroup;
 			children = (
+				52EEFDAD1958FB560040BBD6 /* STConstants.h */,
 				52FEBCE81954B145001FFD57 /* STServices.h */,
 				52FEBCE91954B145001FFD57 /* STServices.m */,
 				5263482C1952605B00237D06 /* InvoicesManager.h */,
@@ -820,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB2DF8F192AB9B000FFB6A8 /* SignatureViewController_iPhone.xib in Resources */,
+				52EEFDAC1958B57B0040BBD6 /* CCCustomInputViewController.xib in Resources */,
 				001569AA188E01270023053A /* orange.jpg in Resources */,
 				9DB2DF5F192AB99E00FFB6A8 /* CheckedInCustomerViewController_iPad.xib in Resources */,
 				52FEBD091954E7B0001FFD57 /* CCSwipersTableTableViewController.xib in Resources */,
@@ -872,6 +883,7 @@
 			files = (
 				001569E8188E01DD0023053A /* UIImageView+AFNetworking.m in Sources */,
 				9DB2DF87192AB9B000FFB6A8 /* PaymentMethodViewController.m in Sources */,
+				52EEFDAB1958B57B0040BBD6 /* CCCustomInputViewController.m in Sources */,
 				52C8937F1950C3F600A072B6 /* SimpleTransactionViewController.m in Sources */,
 				9DB2DF8C192AB9B000FFB6A8 /* RefundViewController.m in Sources */,
 				001569BB188E018D0023053A /* STOauthLoginViewController.m in Sources */,
@@ -1024,7 +1036,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1053,7 +1065,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

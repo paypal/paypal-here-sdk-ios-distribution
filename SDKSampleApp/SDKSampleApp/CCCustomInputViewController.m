@@ -1,21 +1,15 @@
 //
-//  STManualPaymentViewController.m
+//  CCCustomInputViewController.m
 //  SDKSampleAppWithSource
 //
-//  Created by Samuel Jerome on 6/18/14.
+//  Created by Samuel Jerome on 6/23/14.
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
-#import "STManualPaymentViewController.h"
-#import "PaymentCompleteViewController.h"
-#import "STServices.h"
+#import "CCCustomInputViewController.h"
+#import "STAppDelegate.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
-
-@interface STManualPaymentViewController ()
-@property (nonatomic, strong) NSString *amount;
-
-
+@interface CCCustomInputViewController ()
 @property (retain, nonatomic) IBOutlet UIButton *fillInCardInfo;
 @property (retain, nonatomic) IBOutlet UIButton *clearCardInfo;
 
@@ -23,19 +17,19 @@
 @property (weak, nonatomic) IBOutlet UITextField *expMonth;
 @property (weak, nonatomic) IBOutlet UITextField *expYear;
 @property (weak, nonatomic) IBOutlet UITextField *cvv2;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
 
 -(IBAction)fillInCardInfo:(id)sender;
 -(IBAction)clearCardInfo:(id)sender;
+-(IBAction)didPressProcess:(id)sender;
 @end
 
-@implementation STManualPaymentViewController
+@implementation CCCustomInputViewController
 
-- (id)initWithAmount: (NSString *) amount nibName: (NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.amount = amount;
+        // Custom initialization
     }
     return self;
 }
@@ -43,12 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.fillInCardInfo.layer.cornerRadius = 10;
-    self.clearCardInfo.layer.cornerRadius = 10;
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Process!"
-                                                                    style:UIBarButtonItemStyleDone target:self action:@selector(carryOutPayment:)];
+                                                                    style:UIBarButtonItemStyleDone target:self action:@selector(didPressProcess:)];
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
@@ -108,38 +99,44 @@
     return manualCardData;
 }
 
-- (IBAction)carryOutPayment:(id)sender
-{
-    PPHCardNotPresentData *manualCardData = [self extractCardDataFromTextFields];
-    if (!manualCardData) {
-        [STServices showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
+
+-(IBAction)didPressProcess:(id)sender {
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    PPHCardNotPresentData *manualData = [self extractCardDataFromTextFields];
+    tm.manualEntryOrScannedCardData = manualData;
+    if (!manualData) {
         return;
     }
-    
-    //Now, make a payment with card data
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
-    [tm beginPaymentWithAmount:total andName:@"simplePayment"];
-    tm.manualEntryOrScannedCardData = manualCardData;
-    
-    UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [spinny setFrame:CGRectMake(0, 0, 100, 100)];
-    [spinny startAnimating];
-    UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
-    self.navigationItem.rightBarButtonItem = loading;
-    
-    [self.fillInCardInfo setEnabled:NO];
-    [self.clearCardInfo setEnabled:NO];
-    
-    
-    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
-                withTransactionController:nil
-                        completionHandler:^(PPHTransactionResponse *record) {
-                            PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:record];
-                            [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
-                            }
-     ];
+    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey withTransactionController:self completionHandler:^(PPHTransactionResponse *response){
+        
+    }];
 }
 
+-(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON {
+    NSURL *url = [NSURL URLWithString:STAGE];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:preAuthJSON
+                                                        options:NSJSONWritingPrettyPrinted
+                                                          error:nil];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
+    [request setValue:@"Content-type" forHTTPHeaderField:@"Content-type"];
+    //[request setValue: forHTTPHeaderField:@"Authorization"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    
+    }];
+    
+    return ePPHTransactionType_Handled;
+}
+
+-(void)onPostAuthorize:(BOOL)didFail {
+    
+}
+
+- (void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+    
+}
 
 @end

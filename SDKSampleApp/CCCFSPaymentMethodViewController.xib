@@ -9,12 +9,15 @@
             <connections>
                 <outlet property="cashButton" destination="lD0-mS-2Sz" id="sj5-cS-yHh"/>
                 <outlet property="checkinButton" destination="AmQ-Ka-as9" id="OSK-hr-bHl"/>
+                <outlet property="customInputButton" destination="M0e-iU-OrK" id="hGO-X1-Kxk"/>
                 <outlet property="discountTextField" destination="Xo5-FJ-q3V" id="dFy-xR-7PA"/>
                 <outlet property="listenForSwipesButton" destination="kMX-0N-lHZ" id="Hzd-Zg-cRf"/>
                 <outlet property="manualButton" destination="wX8-2q-Ka4" id="hW2-Ez-VLj"/>
                 <outlet property="processingTransactionSpinny" destination="dAh-rz-jRG" id="DFt-6b-awg"/>
-                <outlet property="saveTransactionButton" destination="1Bw-B1-MRc" id="brB-48-gpc"/>
+                <outlet property="subtotalLabel" destination="Ax2-UP-Af4" id="cOw-ll-vxv"/>
+                <outlet property="taxLabel" destination="LpT-aI-xBY" id="gnR-dl-Stm"/>
                 <outlet property="tipTextField" destination="s1S-LE-4j4" id="mim-q2-6um"/>
+                <outlet property="totalLabel" destination="83a-lY-IHk" id="WJg-kj-MRt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment Method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfN-5J-3tn">
-                    <rect key="frame" x="18" y="262" width="289" height="30"/>
+                    <rect key="frame" x="20" y="257" width="289" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="highlightedColor"/>
@@ -107,7 +110,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wX8-2q-Ka4">
-                    <rect key="frame" x="30" y="295" width="271" height="30"/>
+                    <rect key="frame" x="30" y="290" width="270" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Credit Card: Manual">
@@ -119,7 +122,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lD0-mS-2Sz">
-                    <rect key="frame" x="31" y="333" width="271" height="32"/>
+                    <rect key="frame" x="30" y="328" width="270" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -132,11 +135,11 @@
                     </connections>
                 </button>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dAh-rz-jRG">
-                    <rect key="frame" x="147" y="235" width="20" height="20"/>
+                    <rect key="frame" x="150" y="249" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmQ-Ka-as9">
-                    <rect key="frame" x="31" y="373" width="272" height="30"/>
+                    <rect key="frame" x="30" y="368" width="270" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Chekin Customers">
@@ -145,18 +148,6 @@
                     </state>
                     <connections>
                         <action selector="payWithCheckedInClient:" destination="-1" eventType="touchUpInside" id="zdb-KV-ajq"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bw-B1-MRc">
-                    <rect key="frame" x="30" y="411" width="271" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Save Transaction">
-                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="startNewTransaction:" destination="-1" eventType="touchUpInside" id="i4B-3l-N52"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1S-LE-4j4">
@@ -185,15 +176,27 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMX-0N-lHZ">
-                    <rect key="frame" x="29" y="449" width="271" height="30"/>
+                    <rect key="frame" x="30" y="406" width="270" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.81872733851459878" green="1" blue="0.60456331115717166" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Listen for swipes!">
-                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Custom Listen for swipes">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="listenForSwipes:" destination="-1" eventType="touchUpInside" id="X9T-6S-ibb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0e-iU-OrK">
+                    <rect key="frame" x="30" y="444" width="270" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Custom Card Input">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="payWithCustomInput:" destination="-1" eventType="touchUpInside" id="MoP-yv-5nV"/>
                     </connections>
                 </button>
             </subviews>

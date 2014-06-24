@@ -36,7 +36,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *manualButton;
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UIButton *cashButton;
-@property (nonatomic, retain) IBOutlet UIButton *saveTransactionButton;
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (weak, nonatomic) IBOutlet UILabel *subtotalLabel;
@@ -73,11 +72,12 @@
     self.manualButton.layer.cornerRadius = 10;
     self.checkinButton.layer.cornerRadius = 10;
     self.cashButton.layer.cornerRadius = 10;
-    self.saveTransactionButton.layer.cornerRadius = 10;
     
     self.tipTextField.delegate = self;
     self.discountTextField.delegate = self;
     
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(startNewTransaction:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 }
 
 -(void)didReceiveMemoryWarning

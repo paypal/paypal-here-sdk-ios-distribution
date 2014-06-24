@@ -9,7 +9,7 @@
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
 #import "AuthorizationCompleteViewController.h"
-
+#import "STServices.h"
 #import "STAppDelegate.h"
 
 @interface ManualCardEntryViewController ()
@@ -62,17 +62,6 @@
     [self.cvv2 setText:@""];
 }
 
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    [alertView show];
-}
 
 -(NSString*) getCurrentYear
 {
@@ -94,7 +83,7 @@
        || (15 > [cardNumStr length]) || (2 != [expMonthStr length]) || (4 != [expYearStr length])
        || (3 != [cvvStr length]) || (12 < [expMonthStr integerValue]) || ([[self getCurrentYear] integerValue] > [expYearStr integerValue])){
         
-        [self showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
+        [STServices showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
         return;
     }
     

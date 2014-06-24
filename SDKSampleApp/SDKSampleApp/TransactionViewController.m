@@ -175,9 +175,10 @@
             paymentMethodVC = [[CCCFSPaymentMethodViewController alloc] initWithNibName:interfaceName bundle:nil];
             break;
         }
-            
+        case kSAError:
+            NSLog(@"Error! Bad Flow");
+            return;
         default:
-            [STServices showAlertWithTitle:@"Error!" andMessage:@"Bad Flow"];
             return;
     }
     

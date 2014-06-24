@@ -37,6 +37,7 @@
     // Beginning the transaction allows the swiper to listen for swipes. 
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
+    tm.ignoreHardwareReaders = NO;
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     
     self.swipeImageView.layer.cornerRadius = 10;

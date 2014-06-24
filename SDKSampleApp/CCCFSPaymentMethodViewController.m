@@ -18,6 +18,7 @@
 #import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerViewController.h"
 #import "ManualCardEntryViewController.h"
+#import "CCCustomInputViewController.h"
 #import "STAppDelegate.h"
 #import "AuthorizationCompleteViewController.h"
 #import "InvoicesManager.h"
@@ -42,19 +43,19 @@ enum swiperState : NSUInteger {
 @property (nonatomic, retain) IBOutlet UIButton *manualButton;
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UIButton *cashButton;
-@property (nonatomic, retain) IBOutlet UIButton *saveTransactionButton;
 @property (nonatomic, retain) IBOutlet UIButton *listenForSwipesButton;
+@property (nonatomic, retain) IBOutlet UIButton *customInputButton;
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (weak, nonatomic) IBOutlet UILabel *subtotalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taxLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
 
 - (IBAction)payWithManualEntryCard:(id)sender;
 - (IBAction)payWithCashEntryCard:(id)sender;
 - (IBAction)payWithCheckedInClient:(id)sender;
+- (IBAction)payWithCustomInput:(id)sender;
 - (IBAction)listenForSwipes:(id)sender;
 - (IBAction)startNewTransaction:(id)sender;
 
@@ -81,13 +82,16 @@ enum swiperState : NSUInteger {
     self.manualButton.layer.cornerRadius = 10;
     self.checkinButton.layer.cornerRadius = 10;
     self.cashButton.layer.cornerRadius = 10;
-    self.saveTransactionButton.layer.cornerRadius = 10;
     self.listenForSwipesButton.layer.cornerRadius = 10;
+    self.customInputButton.layer.cornerRadius = 10;
     
     self.listenForSwipesButton.tag = kSwiperStateOff;
     
     self.tipTextField.delegate = self;
     self.discountTextField.delegate = self;
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(startNewTransaction:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
     
 }
 
@@ -150,6 +154,11 @@ enum swiperState : NSUInteger {
                         tm.ignoreHardwareReaders = NO;    //Back to the default running state.
                     }];
     
+}
+
+- (IBAction)payWithCustomInput:(id)sender {
+    CCCustomInputViewController *vc = [[CCCustomInputViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void) showPaymentCompeleteView
@@ -261,57 +270,26 @@ enum swiperState : NSUInteger {
  */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-    if (event.eventType == ePPHTransactionType_Idle) {
-        [self.processingTransactionSpinny stopAnimating];
-        self.processingTransactionSpinny.hidden = YES;
-    }
-    else {
-        [self.processingTransactionSpinny startAnimating];
-        self.processingTransactionSpinny.hidden = NO;
-    }
     
-    NSLog(@"Our local instance of PPHTransactionWatcher picked up a PPHTransactionManager event notification: <%@>", event);
-    if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
-        
-        self.waitingForCardSwipe = NO;
-        
-        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        if (appDelegate.paymentFlowIsAuthOnly) {
-            
-            [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
-                                                                withCompletionHandler:^(PPHTransactionResponse *response) {
-                                                                    self.transactionResponse = response;
-                                                                    [self showAuthorizationCompeleteView];
-                                                                }];
-        }
-        else {
-            //Now ask to authorize (and take) payment all in one shot.
-            [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
-                                                          withTransactionController:self
-                                                                  completionHandler:^(PPHTransactionResponse *response) {
-                                                                      self.transactionResponse = response;
-                                                                      if (response.error) {
-                                                                          [self showPaymentCompeleteView];
-                                                                      }
-                                                                      else {
-                                                                          // Is a signature required for this payment?  If so
-                                                                          // then let's collect a signature and provide it to the SDK.
-                                                                          if (response.isSignatureRequiredToFinalize) {
-                                                                              [self collectSignatureAndFinalizePurchaseWithRecord];
-                                                                          }
-                                                                          else {
-                                                                              // All done.  Tell the user the good news.
-                                                                              //Let's exit the payment screen once they hit OK
-                                                                              _doneWithPayScreen = YES;
-                                                                              [self showPaymentCompeleteView];
-                                                                          }
-                                                                          
-                                                                      }
-                                                                  }];
-        }
-    }
 }
+
+//                                                                      if (response.error) {
+//                                                                          [self showPaymentCompeleteView];
+//                                                                      }
+//                                                                      else {
+//                                                                          // Is a signature required for this payment?  If so
+//                                                                          // then let's collect a signature and provide it to the SDK.
+//                                                                          if (response.isSignatureRequiredToFinalize) {
+//                                                                              [self collectSignatureAndFinalizePurchaseWithRecord];
+//                                                                          }
+//                                                                          else {
+//                                                                              // All done.  Tell the user the good news.
+//                                                                              //Let's exit the payment screen once they hit OK
+//                                                                              _doneWithPayScreen = YES;
+//                                                                              [self showPaymentCompeleteView];
+//                                                                          }
+//                                                                          
+//                                                                      }
 
 -(void)collectSignatureAndFinalizePurchaseWithRecord
 {

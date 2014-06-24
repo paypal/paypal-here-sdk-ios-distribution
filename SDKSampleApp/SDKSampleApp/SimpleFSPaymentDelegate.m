@@ -37,6 +37,7 @@
     
     // Begin the purchase and forward to payment method
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    tm.ignoreHardwareReaders = NO;
     [tm beginPayment];
     tm.currentInvoice = invoice;
     return kSAFS;
