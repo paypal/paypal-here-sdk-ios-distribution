@@ -119,11 +119,6 @@
 }
 
 -(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON {
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:accessTokenKey];
-    if (!accessToken) {
-        [STServices showAlertWithTitle:@"Error!" andMessage:@"No account"];
-        return ePPHTransactionType_Continue;
-    }
     
     UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinny setFrame:CGRectMake(0, 0, 100, 100)];

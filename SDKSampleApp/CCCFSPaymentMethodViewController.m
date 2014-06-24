@@ -270,7 +270,14 @@ enum swiperState : NSUInteger {
  */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-    NSLog(@"Payment Event Came");
+    if (event.eventType == ePPHTransactionType_Idle) {
+        [self.processingTransactionSpinny stopAnimating];
+        self.processingTransactionSpinny.hidden = YES;
+    }
+    else {
+        [self.processingTransactionSpinny startAnimating];
+        self.processingTransactionSpinny.hidden = NO;
+    }
 }
 
 -(void)collectSignatureAndFinalizePurchaseWithRecord
