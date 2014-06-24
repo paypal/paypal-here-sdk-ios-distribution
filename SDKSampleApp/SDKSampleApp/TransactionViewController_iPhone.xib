@@ -22,9 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24">
-                    <rect key="frame" x="84" y="424" width="156" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24">
+                    <rect key="frame" x="31" y="398" width="263" height="69"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="156" id="717"/>
                     </constraints>
@@ -127,8 +128,8 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="672">
-                    <rect key="frame" x="84" y="462" width="157" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="672">
+                    <rect key="frame" x="249" y="64" width="51" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Settings">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,9 +139,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvy-A7-Y1r">
-                    <rect key="frame" x="67" y="495" width="196" height="30"/>
+                    <rect key="frame" x="29" y="475" width="114" height="65"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Refund a Completed Sale">
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Refund">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -148,15 +150,24 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAe-ye-Jrg">
-                    <rect key="frame" x="26" y="527" width="263" height="30"/>
+                    <rect key="frame" x="169" y="475" width="125" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Authorized Sales That Need Capturing">
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title=" Capture">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="onViewAuthorizedSales:" destination="-1" eventType="touchUpInside" id="Qqi-zG-oMx"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bhz-qh-5hi">
+                    <rect key="frame" x="60" y="362" width="205" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Authorize Only"/>
+                        <segment title="Full Capture"/>
+                    </segments>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -164,11 +175,6 @@
                 <constraint firstItem="533" firstAttribute="top" secondItem="164" secondAttribute="bottom" constant="8" symbolic="YES" id="537"/>
                 <constraint firstItem="533" firstAttribute="top" secondItem="202" secondAttribute="bottom" constant="8" symbolic="YES" id="547"/>
                 <constraint firstItem="533" firstAttribute="top" secondItem="178" secondAttribute="bottom" constant="8" symbolic="YES" id="552"/>
-                <constraint firstAttribute="bottom" secondItem="672" secondAttribute="bottom" constant="74" id="735"/>
-                <constraint firstItem="672" firstAttribute="top" secondItem="24" secondAttribute="bottom" constant="8" symbolic="YES" id="742"/>
-                <constraint firstItem="24" firstAttribute="centerX" secondItem="672" secondAttribute="centerX" id="744"/>
-                <constraint firstItem="24" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="84" id="745"/>
-                <constraint firstItem="24" firstAttribute="leading" secondItem="672" secondAttribute="leading" id="746"/>
                 <constraint firstAttribute="trailing" secondItem="178" secondAttribute="trailing" constant="65" id="747"/>
                 <constraint firstItem="203" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="123" id="749"/>
                 <constraint firstAttribute="trailing" secondItem="164" secondAttribute="trailing" constant="109" id="751"/>

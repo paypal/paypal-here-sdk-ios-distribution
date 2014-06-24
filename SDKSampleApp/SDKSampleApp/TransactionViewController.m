@@ -38,7 +38,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *shoppingCartTable;
 @property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
+@property (weak, nonatomic) IBOutlet UIButton *refundButton;
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) NSMutableDictionary *store;
@@ -97,6 +101,12 @@
     self.lpgrOranges = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
     self.lpgrStrawberries = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
 
+    self.purchaseButton.layer.cornerRadius = 10;
+    self.captureButton.layer.cornerRadius = 10;
+    self.refundButton.layer.cornerRadius = 10;
+    
+    self.settingsButton.titleLabel.text =  @"\u2699";
+    
     self.lpgrApples.minimumPressDuration = 0.5;
     self.lpgrBananas.minimumPressDuration = 0.5;
     self.lpgrOranges.minimumPressDuration = 0.5;
