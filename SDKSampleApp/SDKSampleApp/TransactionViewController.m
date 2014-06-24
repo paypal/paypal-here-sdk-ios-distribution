@@ -25,7 +25,7 @@
 #define kPRICE			@"Price"
 #define kQUANTITY		@"Quantity"
 
-@interface TransactionViewController ()
+@interface TransactionViewController () <InvoicesProtocal>
 - (IBAction)onChargePressed:(id)sender;
 - (IBAction)onSettingsPressed:(id)sender;
 - (IBAction)onRefundsPressed:(id)sender;
@@ -48,6 +48,8 @@
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrBananas;
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrOranges;
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrStrawberries;
+
+@property kSAFlow flow;
 @end
 
 @implementation TransactionViewController
@@ -158,7 +160,10 @@
 
 - (IBAction)onChargePressed:(id)sender {
     PPHInvoice *invoice = [self getInvoiceFromShoppingCart];
-    
+    [self purchaseWithInvoice:invoice];
+}
+
+- (void) purchaseWithInvoice:(PPHInvoice *)invoice {
     kSAFlow currentFlow = [self.delegate purchase:invoice];
     
     UIViewController *paymentMethodVC = nil;
@@ -216,7 +221,7 @@
 }
 
 -(void)didPressViewTransactions:(id)sender {
-    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain andDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

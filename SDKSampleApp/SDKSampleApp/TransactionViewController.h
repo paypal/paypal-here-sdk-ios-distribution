@@ -17,8 +17,9 @@
 
 @interface TransactionViewController : UIViewController <UITableViewDataSource>
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil aDelegate: (id) delegate;
-@property (nonatomic, strong) id<PaymentProtocol> delegate;
+- (void) purchaseWithInvoice:(PPHInvoice *)invoice;
 
+@property (nonatomic, strong) id<PaymentProtocol> delegate;
 @end
 
 

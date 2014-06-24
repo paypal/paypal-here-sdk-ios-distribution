@@ -7,7 +7,9 @@
 //
 
 #import "CCCustomInputViewController.h"
+#import "PaymentCompleteViewController.h"
 #import "STAppDelegate.h"
+#import "STServices.h"
 
 @interface CCCustomInputViewController ()
 @property (retain, nonatomic) IBOutlet UIButton *fillInCardInfo;
@@ -37,6 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.fillInCardInfo.layer.cornerRadius = 10;
+    self.clearCardInfo.layer.cornerRadius = 10;
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Process!"
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(didPressProcess:)];
@@ -103,29 +108,52 @@
 -(IBAction)didPressProcess:(id)sender {
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     PPHCardNotPresentData *manualData = [self extractCardDataFromTextFields];
-    tm.manualEntryOrScannedCardData = manualData;
     if (!manualData) {
+        [STServices showAlertWithTitle:@"Error!" andMessage:@"Card data invalid"];
         return;
     }
+    tm.manualEntryOrScannedCardData = manualData;
     [tm processPaymentWithPaymentType:ePPHPaymentMethodKey withTransactionController:self completionHandler:^(PPHTransactionResponse *response){
         
     }];
 }
 
 -(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON {
-    NSURL *url = [NSURL URLWithString:STAGE];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:accessTokenKey];
+    if (!accessToken) {
+        [STServices showAlertWithTitle:@"Error!" andMessage:@"No account"];
+        return ePPHTransactionType_Continue;
+    }
+    
+    UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinny setFrame:CGRectMake(0, 0, 100, 100)];
+    [spinny startAnimating];
+    UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
+    self.navigationItem.rightBarButtonItem = loading;
+
+    
+    NSURL *url = [NSURL URLWithString:@"https://www.stage2mb006.stage.paypal.com/webapps/hereapi/merchant/v1/pay"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:preAuthJSON
-                                                        options:NSJSONWritingPrettyPrinted
+                                                        options:0
                                                           error:nil];
-    
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
-    [request setValue:@"Content-type" forHTTPHeaderField:@"Content-type"];
-    //[request setValue: forHTTPHeaderField:@"Authorization"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", [PayPalHereSDK activeMerchant].payPalAccount.access_token] forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+
+
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-    
+        PPHTransactionResponse *transactionResponse = [[PPHTransactionResponse alloc] init];
+        if (error) {
+            transactionResponse.error = [PPHError pphErrorWithNSError:error];
+        } else {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            transactionResponse.record = [[PPHTransactionRecord alloc] initWithTransactionId:dict[@"transactionNumber"] andWithPayPalInvoiceId:dict[@"invoiceId"]];
+        }
+        PaymentCompleteViewController *vc = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:transactionResponse];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     
     return ePPHTransactionType_Handled;

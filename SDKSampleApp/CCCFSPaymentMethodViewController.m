@@ -270,26 +270,8 @@ enum swiperState : NSUInteger {
  */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-    
+    NSLog(@"Payment Event Came");
 }
-
-//                                                                      if (response.error) {
-//                                                                          [self showPaymentCompeleteView];
-//                                                                      }
-//                                                                      else {
-//                                                                          // Is a signature required for this payment?  If so
-//                                                                          // then let's collect a signature and provide it to the SDK.
-//                                                                          if (response.isSignatureRequiredToFinalize) {
-//                                                                              [self collectSignatureAndFinalizePurchaseWithRecord];
-//                                                                          }
-//                                                                          else {
-//                                                                              // All done.  Tell the user the good news.
-//                                                                              //Let's exit the payment screen once they hit OK
-//                                                                              _doneWithPayScreen = YES;
-//                                                                              [self showPaymentCompeleteView];
-//                                                                          }
-//                                                                          
-//                                                                      }
 
 -(void)collectSignatureAndFinalizePurchaseWithRecord
 {

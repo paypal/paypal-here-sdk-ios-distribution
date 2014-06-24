@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PPHInvoice.h>
-@interface STTransactionsTableViewController : UITableViewController
 
+@protocol InvoicesProtocal <NSObject>
+@required
+- (void) purchaseWithInvoice:(PPHInvoice *)invoice;
+@end
+
+@interface STTransactionsTableViewController : UITableViewController
+@property (nonatomic, weak) id<InvoicesProtocal> delegate;
+- (id)initWithStyle:(UITableViewStyle)style andDelegate: (id<InvoicesProtocal>) delegate;
 @end

@@ -65,12 +65,11 @@
     if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
           self.waitingForCardSwipe = NO;
         
-        UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [spinny setFrame:CGRectMake(0, 0, 100, 100)];
+        UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [spinny setFrame:CGRectMake(self.view.frame.size.width/2-50, 349, 100, 100)];
         [spinny startAnimating];
-        UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
-        self.navigationItem.rightBarButtonItem = loading;
-
+        [self.view addSubview:spinny];
+        
         [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                       withTransactionController:nil
                                                               completionHandler:^(PPHTransactionResponse *response) {
