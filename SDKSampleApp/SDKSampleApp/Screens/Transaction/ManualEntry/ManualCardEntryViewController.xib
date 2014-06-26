@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManualCardEntryViewController">
             <connections>
-                <outlet property="cardNumber" destination="wqp-4R-arL" id="RsE-jc-mrV"/>
-                <outlet property="cvv2" destination="I6P-lr-LZ4" id="rwJ-bl-2aS"/>
-                <outlet property="expMonth" destination="Yhl-eg-lJP" id="GrE-cg-8at"/>
-                <outlet property="expYear" destination="W7y-9G-S5H" id="uo3-Qd-NHJ"/>
-                <outlet property="processingTransactionSpinny" destination="OW0-pL-3d2" id="0yA-ks-7oU"/>
+                <outlet property="cardNumber" destination="eOK-De-Wlq" id="8gk-PC-nx6"/>
+                <outlet property="clearCardInfoButton" destination="4KP-ag-l15" id="PVo-hC-Q3h"/>
+                <outlet property="cvv2" destination="gue-Vs-rjN" id="Saw-9b-xBY"/>
+                <outlet property="expMonth" destination="ARp-Dw-wSV" id="0Ad-p1-lwp"/>
+                <outlet property="expYear" destination="f2i-mB-sAT" id="hRE-E6-RMv"/>
+                <outlet property="fillInCardInfoButton" destination="S93-xf-8dP" id="PdK-cT-z1N"/>
+                <outlet property="processingTransactionSpinny" destination="Dkq-k8-yjV" id="ib7-YS-NfS"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -20,87 +23,144 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wqp-4R-arL">
-                    <rect key="frame" x="32" y="96" width="257" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOK-De-Wlq">
+                    <rect key="frame" x="37" y="116" width="257" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="257" id="svJ-Ia-f1Y"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Credit Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-t0-jpv">
-                    <rect key="frame" x="32" y="74" width="155" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrA-aF-1UG">
+                    <rect key="frame" x="37" y="94" width="155" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yhl-eg-lJP">
-                    <rect key="frame" x="32" y="186" width="50" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARp-Dw-wSV">
+                    <rect key="frame" x="37" y="206" width="50" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Gse-4H-NC4"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtT-SK-UAG">
-                    <rect key="frame" x="32" y="139" width="101" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6v-UX-Uvp">
+                    <rect key="frame" x="37" y="159" width="101" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="101" id="R10-qT-R5A"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bu-Rj-gct">
+                    <rect key="frame" x="37" y="183" width="50" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-ze-b9B">
-                    <rect key="frame" x="32" y="163" width="50" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gch-xR-RhM">
+                    <rect key="frame" x="112" y="183" width="34" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pc-as-UFR">
-                    <rect key="frame" x="92" y="163" width="34" height="21"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-mB-sAT">
+                    <rect key="frame" x="97" y="206" width="65" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7y-9G-S5H">
-                    <rect key="frame" x="92" y="186" width="65" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="41N-FC-c2D"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CVV" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg2-Gv-7qy">
-                    <rect key="frame" x="238" y="163" width="34" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5G-a4-OX8">
+                    <rect key="frame" x="254" y="183" width="34" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I6P-lr-LZ4">
-                    <rect key="frame" x="238" y="186" width="57" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gue-Vs-rjN">
+                    <rect key="frame" x="243" y="206" width="57" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="IVb-2k-O28"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="45" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OW0-pL-3d2">
-                    <rect key="frame" x="143" y="236" width="44" height="45"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S93-xf-8dP">
+                    <rect key="frame" x="29" y="256" width="133" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="133" id="AWl-j2-WsY"/>
+                        <constraint firstAttribute="width" secondItem="S93-xf-8dP" secondAttribute="height" multiplier="19:6" id="B9r-Wt-t4O"/>
+                    </constraints>
+                    <state key="normal" title="Fill In Card Data">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="fillInCardInfo:" destination="-1" eventType="touchUpInside" id="Bhe-4r-v0I"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KP-ag-l15">
+                    <rect key="frame" x="178" y="256" width="127" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4KP-ag-l15" secondAttribute="height" multiplier="127:42" id="lgI-59-ZBi"/>
+                        <constraint firstAttribute="width" constant="127" id="uLC-w0-ETU"/>
+                    </constraints>
+                    <state key="normal" title="Clear Card Data">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clearCardInfo:" destination="-1" eventType="touchUpInside" id="SEt-nv-JM6"/>
+                    </connections>
+                </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Dkq-k8-yjV">
+                    <rect key="frame" x="155" y="315" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQa-gS-Bfu">
-                    <rect key="frame" x="32" y="236" width="110" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Fill In Card Data">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="fillInCardInfo:" destination="-1" eventType="touchUpInside" id="DtS-gB-73c"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qt-78-AMR">
-                    <rect key="frame" x="190" y="236" width="110" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Clear Card Data">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clearCardInfo:" destination="-1" eventType="touchUpInside" id="TVq-Ai-p0Y"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="S93-xf-8dP" firstAttribute="top" secondItem="ARp-Dw-wSV" secondAttribute="bottom" constant="20" id="1CH-rw-OLS"/>
+                <constraint firstItem="9bu-Rj-gct" firstAttribute="top" secondItem="x6v-UX-Uvp" secondAttribute="bottom" constant="3" id="5WB-qs-2AN"/>
+                <constraint firstAttribute="centerX" secondItem="eOK-De-Wlq" secondAttribute="centerX" constant="-5.5" id="5ok-Qq-leA"/>
+                <constraint firstItem="4KP-ag-l15" firstAttribute="width" secondItem="4KP-ag-l15" secondAttribute="height" multiplier="127:42" id="72O-9F-KqE"/>
+                <constraint firstItem="ARp-Dw-wSV" firstAttribute="leading" secondItem="S93-xf-8dP" secondAttribute="leading" constant="8" id="A8f-Eb-eLD"/>
+                <constraint firstItem="9bu-Rj-gct" firstAttribute="centerX" secondItem="x6v-UX-Uvp" secondAttribute="centerX" constant="-25.5" id="ACZ-fG-SIL"/>
+                <constraint firstItem="S93-xf-8dP" firstAttribute="width" secondItem="S93-xf-8dP" secondAttribute="height" multiplier="19:6" id="D4j-Xf-I25"/>
+                <constraint firstItem="9bu-Rj-gct" firstAttribute="centerX" secondItem="ARp-Dw-wSV" secondAttribute="centerX" id="D6r-3L-EQC"/>
+                <constraint firstItem="eOK-De-Wlq" firstAttribute="centerX" secondItem="x6v-UX-Uvp" secondAttribute="centerX" constant="78" id="I4M-ji-YiR"/>
+                <constraint firstItem="gue-Vs-rjN" firstAttribute="centerX" secondItem="4KP-ag-l15" secondAttribute="centerX" constant="30" id="I6g-6b-4Eo"/>
+                <constraint firstItem="ARp-Dw-wSV" firstAttribute="top" secondItem="9bu-Rj-gct" secondAttribute="bottom" constant="2" id="Jv6-4e-W8f"/>
+                <constraint firstItem="o5G-a4-OX8" firstAttribute="centerX" secondItem="gue-Vs-rjN" secondAttribute="centerX" constant="-0.5" id="O16-qp-L0V"/>
+                <constraint firstItem="Gch-xR-RhM" firstAttribute="centerX" secondItem="x6v-UX-Uvp" secondAttribute="centerX" constant="41.5" id="P7i-vJ-f6o"/>
+                <constraint firstItem="f2i-mB-sAT" firstAttribute="top" secondItem="Gch-xR-RhM" secondAttribute="bottom" constant="2" id="QNH-md-HBr"/>
+                <constraint firstItem="eOK-De-Wlq" firstAttribute="top" secondItem="CrA-aF-1UG" secondAttribute="bottom" constant="1" id="Tpr-rW-vDV"/>
+                <constraint firstItem="gue-Vs-rjN" firstAttribute="top" secondItem="o5G-a4-OX8" secondAttribute="bottom" constant="2" id="Vww-9H-W94"/>
+                <constraint firstItem="f2i-mB-sAT" firstAttribute="centerY" secondItem="gue-Vs-rjN" secondAttribute="centerY" id="XQd-9D-WYP"/>
+                <constraint firstItem="CrA-aF-1UG" firstAttribute="centerX" secondItem="eOK-De-Wlq" secondAttribute="centerX" constant="-51" id="YFj-tO-mdY"/>
+                <constraint firstItem="ARp-Dw-wSV" firstAttribute="centerY" secondItem="f2i-mB-sAT" secondAttribute="centerY" id="aPl-44-CUV"/>
+                <constraint firstAttribute="centerY" secondItem="Dkq-k8-yjV" secondAttribute="centerY" constant="-41" id="ebx-sV-0vf"/>
+                <constraint firstItem="4KP-ag-l15" firstAttribute="centerY" secondItem="S93-xf-8dP" secondAttribute="centerY" id="hPl-j4-PLf"/>
+                <constraint firstItem="Gch-xR-RhM" firstAttribute="centerX" secondItem="f2i-mB-sAT" secondAttribute="centerX" constant="-0.5" id="kHM-AU-z9w"/>
+                <constraint firstItem="Gch-xR-RhM" firstAttribute="top" secondItem="x6v-UX-Uvp" secondAttribute="bottom" constant="3" id="nl6-9a-tGg"/>
+                <constraint firstItem="CrA-aF-1UG" firstAttribute="top" secondItem="1" secondAttribute="top" constant="94" id="pUt-9I-Iys"/>
+                <constraint firstAttribute="centerX" secondItem="Dkq-k8-yjV" secondAttribute="centerX" constant="-5" id="qvq-nK-KN8"/>
+                <constraint firstItem="x6v-UX-Uvp" firstAttribute="top" secondItem="eOK-De-Wlq" secondAttribute="bottom" constant="13" id="tEG-r5-RTf"/>
+                <constraint firstItem="f2i-mB-sAT" firstAttribute="leading" secondItem="ARp-Dw-wSV" secondAttribute="trailing" constant="10" id="v4h-j7-owK"/>
+                <constraint firstItem="4KP-ag-l15" firstAttribute="leading" secondItem="S93-xf-8dP" secondAttribute="trailing" constant="16" id="wmt-td-lQ5"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

@@ -14,6 +14,8 @@
 
 @interface ManualCardEntryViewController ()
 @property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
+@property (nonatomic, retain) IBOutlet UIButton *fillInCardInfoButton;
+@property (nonatomic, retain) IBOutlet UIButton *clearCardInfoButton;
 @end
 
 @implementation ManualCardEntryViewController
@@ -31,6 +33,9 @@
 {
     [super viewDidLoad];
     self.processingTransactionSpinny.hidden=YES;
+    
+    self.fillInCardInfoButton.layer.cornerRadius = 10;
+    self.clearCardInfoButton.layer.cornerRadius = 10;
     
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
 

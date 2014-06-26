@@ -16,6 +16,9 @@
 
 @interface PaymentCompleteViewController ()
 @property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
+@property (nonatomic, retain) IBOutlet UIButton *textButton;
+@property (nonatomic, retain) IBOutlet UIButton *emailButton;
+@property (nonatomic, retain) IBOutlet UIButton *noThanksButton;
 @end
 
 @implementation PaymentCompleteViewController
@@ -35,6 +38,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.textButton.layer.cornerRadius = 10;
+    self.emailButton.layer.cornerRadius = 10;
+    self.noThanksButton.layer.cornerRadius = 10;
 }
 
 -(void) viewWillAppear:(BOOL)animated

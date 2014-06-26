@@ -104,8 +104,7 @@
     self.purchaseButton.layer.cornerRadius = 10;
     self.captureButton.layer.cornerRadius = 10;
     self.refundButton.layer.cornerRadius = 10;
-    
-    self.settingsButton.titleLabel.text =  @"\u2699";
+    self.settingsButton.layer.cornerRadius = 10;
     
     self.lpgrApples.minimumPressDuration = 0.5;
     self.lpgrBananas.minimumPressDuration = 0.5;

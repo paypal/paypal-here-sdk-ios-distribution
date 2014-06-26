@@ -159,23 +159,27 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     UITableViewCell *currentCell = self.activeReader[cellKey];
     
-    if (self.activeReader) {
+    if (self.activeReader[readerKey]) {
         [[PayPalHereSDK sharedCardReaderManager] deactivateReader:self.activeReader[readerKey]];
-        [currentCell setEditing:NO animated:YES];
+        [currentCell setEditing:NO animated:NO];
         [currentCell setHighlighted:NO];
+        currentCell.textLabel.text = [self.activeReader[readerKey] family];
     }
     if (cell == currentCell) {
         [self.activeReader removeAllObjects];
         return;
     }
     
-    [cell setEditing:YES animated:YES];
     [self.activeReader setObject:self.availableDevices[indexPath.row] forKey:readerKey];
     [self.activeReader setObject:cell forKey:cellKey];
     
+    [cell setEditing:YES animated:NO];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ is now activated", [self.activeReader[readerKey] family]];
+
     [[PayPalHereSDK sharedCardReaderManager] activateReader:self.activeReader[readerKey]];
 }
 
