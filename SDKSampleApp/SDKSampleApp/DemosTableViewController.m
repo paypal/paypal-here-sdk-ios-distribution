@@ -8,7 +8,6 @@
 #define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 #import "DemosTableViewController.h"
-#import "InvoiceViewController.h"
 #import "TransactionViewController.h"
 #import "SimpleTransactionViewController.h"
 #import "SimpleFSPaymentDelegate.h"

@@ -42,9 +42,6 @@
 		528DE49C1951F137006E5CEE /* STManualPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528DE49A1951F137006E5CEE /* STManualPaymentViewController.xib */; };
 		528DE4A61952041A006E5CEE /* STCardSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DE4A41952041A006E5CEE /* STCardSwipeViewController.m */; };
 		528DE4A71952041A006E5CEE /* STCardSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528DE4A51952041A006E5CEE /* STCardSwipeViewController.xib */; };
-		52C893651950A52400A072B6 /* InvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C893631950A52400A072B6 /* InvoiceViewController.m */; };
-		52C893661950A52400A072B6 /* InvoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C893641950A52400A072B6 /* InvoiceViewController.xib */; };
-		52C893681950A5C900A072B6 /* InvoiceViewController_ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */; };
 		52C8937B1950C1C300A072B6 /* DemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8937A1950C1C300A072B6 /* DemosTableViewController.m */; };
 		52C8937F1950C3F600A072B6 /* SimpleTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8937D1950C3F600A072B6 /* SimpleTransactionViewController.m */; };
 		52C893801950C3F600A072B6 /* SimpleTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C8937E1950C3F600A072B6 /* SimpleTransactionViewController.xib */; };
@@ -238,10 +235,6 @@
 		528DE4A31952041A006E5CEE /* STCardSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCardSwipeViewController.h; path = SDKSampleApp/STCardSwipeViewController.h; sourceTree = SOURCE_ROOT; };
 		528DE4A41952041A006E5CEE /* STCardSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCardSwipeViewController.m; path = SDKSampleApp/STCardSwipeViewController.m; sourceTree = SOURCE_ROOT; };
 		528DE4A51952041A006E5CEE /* STCardSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STCardSwipeViewController.xib; path = SDKSampleApp/STCardSwipeViewController.xib; sourceTree = SOURCE_ROOT; };
-		52C893621950A52400A072B6 /* InvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InvoiceViewController.h; path = SDKSampleApp/InvoiceViewController.h; sourceTree = SOURCE_ROOT; };
-		52C893631950A52400A072B6 /* InvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InvoiceViewController.m; path = SDKSampleApp/InvoiceViewController.m; sourceTree = SOURCE_ROOT; };
-		52C893641950A52400A072B6 /* InvoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InvoiceViewController.xib; path = SDKSampleApp/InvoiceViewController.xib; sourceTree = SOURCE_ROOT; };
-		52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceViewController_ipad.xib; sourceTree = SOURCE_ROOT; };
 		52C893791950C1C300A072B6 /* DemosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemosTableViewController.h; path = SDKSampleApp/DemosTableViewController.h; sourceTree = SOURCE_ROOT; };
 		52C8937A1950C1C300A072B6 /* DemosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemosTableViewController.m; path = SDKSampleApp/DemosTableViewController.m; sourceTree = SOURCE_ROOT; };
 		52C8937C1950C3F600A072B6 /* SimpleTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleTransactionViewController.h; path = SDKSampleApp/SimpleTransactionViewController.h; sourceTree = SOURCE_ROOT; };
@@ -511,7 +504,6 @@
 		99859E031836ADC300AB3FE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9DB2DF99192ABAD300FFB6A8 /* AuthorizedPayments */,
 				007DE85C18A010B4004D8847 /* Settings */,
 				99859E4B183C38FB00AB3FE1 /* Transaction */,
 				99831AF518720EDE0095FDC9 /* ReaderInfo */,
@@ -587,6 +579,7 @@
 				9DB2DF7A192AB9B000FFB6A8 /* SignatureViewController_iPhone.xib */,
 				9DB2DF7B192AB9B000FFB6A8 /* SignatureViewController.h */,
 				9DB2DF7C192AB9B000FFB6A8 /* SignatureViewController.m */,
+				9DB2DF99192ABAD300FFB6A8 /* AuthorizedPayments */,
 				DE4208AB18CFD1DD0008C5BF /* ManualCardEntry */,
 				DE5A6E3F18C945D2007361F6 /* Checkin */,
 			);
@@ -646,10 +639,6 @@
 				52EEFDAD1958FB560040BBD6 /* STConstants.h */,
 				52FEBCE81954B145001FFD57 /* STServices.h */,
 				52FEBCE91954B145001FFD57 /* STServices.m */,
-				52C893621950A52400A072B6 /* InvoiceViewController.h */,
-				52C893631950A52400A072B6 /* InvoiceViewController.m */,
-				52C893641950A52400A072B6 /* InvoiceViewController.xib */,
-				52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */,
 				52C893791950C1C300A072B6 /* DemosTableViewController.h */,
 				52C8937A1950C1C300A072B6 /* DemosTableViewController.m */,
 				528DE4A21951F9BC006E5CEE /* SimpleTransactionApp */,
@@ -839,11 +828,9 @@
 				9DB2DF88192AB9B000FFB6A8 /* ReceiptInfoViewController_iPad.xib in Resources */,
 				9DB2DF84192AB9B000FFB6A8 /* PaymentCompleteViewController.xib in Resources */,
 				001569A8188E01270023053A /* apple.jpg in Resources */,
-				52C893681950A5C900A072B6 /* InvoiceViewController_ipad.xib in Resources */,
 				9DB2DF60192AB99E00FFB6A8 /* CheckedInCustomerViewController_iPhone.xib in Resources */,
 				52FC086A1952352C004C3342 /* swipe.jpg in Resources */,
 				001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */,
-				52C893661950A52400A072B6 /* InvoiceViewController.xib in Resources */,
 				9DB2DFA1192ABAE400FFB6A8 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
 				9DB2DF96192ABA9600FFB6A8 /* TransactionViewController_iPad.xib in Resources */,
 				9DB2DF8D192AB9B000FFB6A8 /* RefundViewController.xib in Resources */,
@@ -907,7 +894,6 @@
 				526348261952605500237D06 /* InvoicesManager.m in Sources */,
 				001569B1188E01520023053A /* PPSPreferences.m in Sources */,
 				001569CC188E01C60023053A /* ReaderInfoViewController.m in Sources */,
-				52C893651950A52400A072B6 /* InvoiceViewController.m in Sources */,
 				001569E5188E01DD0023053A /* AFPropertyListRequestOperation.m in Sources */,
 				001569B0188E01520023053A /* PPSCryptoUtils.m in Sources */,
 				9DB2DF5E192AB99E00FFB6A8 /* CheckedInCustomerCell.m in Sources */,
@@ -1020,7 +1006,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"\"$(SRCROOT)/../SDK/Debug/\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
@@ -1049,7 +1035,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"\"$(SRCROOT)/../SDK/Debug/\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
