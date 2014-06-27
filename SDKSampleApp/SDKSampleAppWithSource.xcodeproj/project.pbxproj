@@ -42,9 +42,6 @@
 		528DE49C1951F137006E5CEE /* STManualPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528DE49A1951F137006E5CEE /* STManualPaymentViewController.xib */; };
 		528DE4A61952041A006E5CEE /* STCardSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DE4A41952041A006E5CEE /* STCardSwipeViewController.m */; };
 		528DE4A71952041A006E5CEE /* STCardSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528DE4A51952041A006E5CEE /* STCardSwipeViewController.xib */; };
-		52C893651950A52400A072B6 /* InvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C893631950A52400A072B6 /* InvoiceViewController.m */; };
-		52C893661950A52400A072B6 /* InvoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C893641950A52400A072B6 /* InvoiceViewController.xib */; };
-		52C893681950A5C900A072B6 /* InvoiceViewController_ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */; };
 		52C8937B1950C1C300A072B6 /* DemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8937A1950C1C300A072B6 /* DemosTableViewController.m */; };
 		52C8937F1950C3F600A072B6 /* SimpleTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8937D1950C3F600A072B6 /* SimpleTransactionViewController.m */; };
 		52C893801950C3F600A072B6 /* SimpleTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C8937E1950C3F600A072B6 /* SimpleTransactionViewController.xib */; };
@@ -52,8 +49,17 @@
 		52C8939D1950F26100A072B6 /* STChoosePaymentMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C8939B1950F26100A072B6 /* STChoosePaymentMethodViewController.xib */; };
 		52C893A11950FAB100A072B6 /* STCashPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8939F1950FAB100A072B6 /* STCashPaymentViewController.m */; };
 		52C893A21950FAB100A072B6 /* STCashPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C893A01950FAB100A072B6 /* STCashPaymentViewController.xib */; };
+		52EEFDAB1958B57B0040BBD6 /* CCCustomInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EEFDA91958B57B0040BBD6 /* CCCustomInputViewController.m */; };
+		52EEFDAC1958B57B0040BBD6 /* CCCustomInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EEFDAA1958B57B0040BBD6 /* CCCustomInputViewController.xib */; };
 		52FC086A1952352C004C3342 /* swipe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52FC08691952352C004C3342 /* swipe.jpg */; };
 		52FC087719524522004C3342 /* PayPalHereSDK.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DA1F8C71926B495004BB1B8 /* PayPalHereSDK.bundle */; };
+		52FEBCE71954AD42001FFD57 /* SimpleFSPaymentDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FEBCE61954AD42001FFD57 /* SimpleFSPaymentDelegate.m */; };
+		52FEBCEA1954B145001FFD57 /* STServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FEBCE91954B145001FFD57 /* STServices.m */; };
+		52FEBCFA1954D181001FFD57 /* CCCFSPaymentDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FEBCF91954D181001FFD57 /* CCCFSPaymentDelegate.m */; };
+		52FEBD031954D3EC001FFD57 /* CCCFSPaymentMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FEBD011954D3EC001FFD57 /* CCCFSPaymentMethodViewController.m */; };
+		52FEBD041954D3EC001FFD57 /* CCCFSPaymentMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FEBD021954D3EC001FFD57 /* CCCFSPaymentMethodViewController.xib */; };
+		52FEBD081954E7B0001FFD57 /* CCSwipersTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FEBD061954E7B0001FFD57 /* CCSwipersTableTableViewController.m */; };
+		52FEBD091954E7B0001FFD57 /* CCSwipersTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FEBD071954E7B0001FFD57 /* CCSwipersTableTableViewController.xib */; };
 		99859DED1835B07300AB3FE1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */; };
 		99859DEF1835B09A00AB3FE1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */; };
 		99859DF11835B0AF00AB3FE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */; };
@@ -229,10 +235,6 @@
 		528DE4A31952041A006E5CEE /* STCardSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCardSwipeViewController.h; path = SDKSampleApp/STCardSwipeViewController.h; sourceTree = SOURCE_ROOT; };
 		528DE4A41952041A006E5CEE /* STCardSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCardSwipeViewController.m; path = SDKSampleApp/STCardSwipeViewController.m; sourceTree = SOURCE_ROOT; };
 		528DE4A51952041A006E5CEE /* STCardSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STCardSwipeViewController.xib; path = SDKSampleApp/STCardSwipeViewController.xib; sourceTree = SOURCE_ROOT; };
-		52C893621950A52400A072B6 /* InvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InvoiceViewController.h; path = SDKSampleApp/InvoiceViewController.h; sourceTree = SOURCE_ROOT; };
-		52C893631950A52400A072B6 /* InvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InvoiceViewController.m; path = SDKSampleApp/InvoiceViewController.m; sourceTree = SOURCE_ROOT; };
-		52C893641950A52400A072B6 /* InvoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InvoiceViewController.xib; path = SDKSampleApp/InvoiceViewController.xib; sourceTree = SOURCE_ROOT; };
-		52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceViewController_ipad.xib; sourceTree = SOURCE_ROOT; };
 		52C893791950C1C300A072B6 /* DemosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemosTableViewController.h; path = SDKSampleApp/DemosTableViewController.h; sourceTree = SOURCE_ROOT; };
 		52C8937A1950C1C300A072B6 /* DemosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemosTableViewController.m; path = SDKSampleApp/DemosTableViewController.m; sourceTree = SOURCE_ROOT; };
 		52C8937C1950C3F600A072B6 /* SimpleTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleTransactionViewController.h; path = SDKSampleApp/SimpleTransactionViewController.h; sourceTree = SOURCE_ROOT; };
@@ -244,8 +246,24 @@
 		52C8939E1950FAB100A072B6 /* STCashPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCashPaymentViewController.h; path = SDKSampleApp/STCashPaymentViewController.h; sourceTree = SOURCE_ROOT; };
 		52C8939F1950FAB100A072B6 /* STCashPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCashPaymentViewController.m; path = SDKSampleApp/STCashPaymentViewController.m; sourceTree = SOURCE_ROOT; };
 		52C893A01950FAB100A072B6 /* STCashPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STCashPaymentViewController.xib; path = SDKSampleApp/STCashPaymentViewController.xib; sourceTree = SOURCE_ROOT; };
+		52EEFDA81958B57B0040BBD6 /* CCCustomInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCCustomInputViewController.h; path = SDKSampleApp/CCCustomInputViewController.h; sourceTree = SOURCE_ROOT; };
+		52EEFDA91958B57B0040BBD6 /* CCCustomInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCCustomInputViewController.m; path = SDKSampleApp/CCCustomInputViewController.m; sourceTree = SOURCE_ROOT; };
+		52EEFDAA1958B57B0040BBD6 /* CCCustomInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CCCustomInputViewController.xib; path = SDKSampleApp/CCCustomInputViewController.xib; sourceTree = SOURCE_ROOT; };
+		52EEFDAD1958FB560040BBD6 /* STConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = SOURCE_ROOT; };
 		52FC085E19520D4D004C3342 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		52FC08691952352C004C3342 /* swipe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = swipe.jpg; sourceTree = SOURCE_ROOT; };
+		52FEBCE51954AD42001FFD57 /* SimpleFSPaymentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleFSPaymentDelegate.h; path = SDKSampleApp/SimpleFSPaymentDelegate.h; sourceTree = SOURCE_ROOT; };
+		52FEBCE61954AD42001FFD57 /* SimpleFSPaymentDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleFSPaymentDelegate.m; path = SDKSampleApp/SimpleFSPaymentDelegate.m; sourceTree = SOURCE_ROOT; };
+		52FEBCE81954B145001FFD57 /* STServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STServices.h; path = SDKSampleApp/STServices.h; sourceTree = SOURCE_ROOT; };
+		52FEBCE91954B145001FFD57 /* STServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STServices.m; path = SDKSampleApp/STServices.m; sourceTree = SOURCE_ROOT; };
+		52FEBCF81954D181001FFD57 /* CCCFSPaymentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCFSPaymentDelegate.h; sourceTree = SOURCE_ROOT; };
+		52FEBCF91954D181001FFD57 /* CCCFSPaymentDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCFSPaymentDelegate.m; sourceTree = SOURCE_ROOT; };
+		52FEBD001954D3EC001FFD57 /* CCCFSPaymentMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCFSPaymentMethodViewController.h; sourceTree = SOURCE_ROOT; };
+		52FEBD011954D3EC001FFD57 /* CCCFSPaymentMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCFSPaymentMethodViewController.m; sourceTree = SOURCE_ROOT; };
+		52FEBD021954D3EC001FFD57 /* CCCFSPaymentMethodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCCFSPaymentMethodViewController.xib; sourceTree = SOURCE_ROOT; };
+		52FEBD051954E7B0001FFD57 /* CCSwipersTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSwipersTableTableViewController.h; sourceTree = SOURCE_ROOT; };
+		52FEBD061954E7B0001FFD57 /* CCSwipersTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSwipersTableTableViewController.m; sourceTree = SOURCE_ROOT; };
+		52FEBD071954E7B0001FFD57 /* CCSwipersTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCSwipersTableTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -394,12 +412,61 @@
 			name = PaymentTypes;
 			sourceTree = "<group>";
 		};
-		52FC08681952345F004C3342 /* RestaurantApp */ = {
+		52FC08681952345F004C3342 /* FruitStore */ = {
 			isa = PBXGroup;
 			children = (
+				52FEBCF11954C029001FFD57 /* SharedFS */,
+				52FEBCF31954C0D2001FFD57 /* SimpleFS */,
+				52FEBCF21954C054001FFD57 /* CCCFS */,
+			);
+			name = FruitStore;
+			sourceTree = "<group>";
+		};
+		52FEBCF11954C029001FFD57 /* SharedFS */ = {
+			isa = PBXGroup;
+			children = (
+				5263482C1952605B00237D06 /* InvoicesManager.h */,
+				526348251952605500237D06 /* InvoicesManager.m */,
+				9DB2DF92192ABA9600FFB6A8 /* TransactionViewController_iPad.xib */,
+				9DB2DF93192ABA9600FFB6A8 /* TransactionViewController_iPhone.xib */,
+				9DB2DF94192ABA9600FFB6A8 /* TransactionViewController.h */,
+				9DB2DF95192ABA9600FFB6A8 /* TransactionViewController.m */,
+				5263482D1952607400237D06 /* STTransactionsTableViewController.h */,
+				5263482E1952607A00237D06 /* STTransactionsTableViewController.m */,
 				99859E031836ADC300AB3FE1 /* ViewControllers */,
 			);
-			name = RestaurantApp;
+			name = SharedFS;
+			sourceTree = "<group>";
+		};
+		52FEBCF21954C054001FFD57 /* CCCFS */ = {
+			isa = PBXGroup;
+			children = (
+				52FEBCF81954D181001FFD57 /* CCCFSPaymentDelegate.h */,
+				52FEBCF91954D181001FFD57 /* CCCFSPaymentDelegate.m */,
+				52FEBD001954D3EC001FFD57 /* CCCFSPaymentMethodViewController.h */,
+				52FEBD011954D3EC001FFD57 /* CCCFSPaymentMethodViewController.m */,
+				52FEBD021954D3EC001FFD57 /* CCCFSPaymentMethodViewController.xib */,
+				52FEBD051954E7B0001FFD57 /* CCSwipersTableTableViewController.h */,
+				52FEBD061954E7B0001FFD57 /* CCSwipersTableTableViewController.m */,
+				52FEBD071954E7B0001FFD57 /* CCSwipersTableTableViewController.xib */,
+				52EEFDA81958B57B0040BBD6 /* CCCustomInputViewController.h */,
+				52EEFDA91958B57B0040BBD6 /* CCCustomInputViewController.m */,
+				52EEFDAA1958B57B0040BBD6 /* CCCustomInputViewController.xib */,
+			);
+			name = CCCFS;
+			sourceTree = "<group>";
+		};
+		52FEBCF31954C0D2001FFD57 /* SimpleFS */ = {
+			isa = PBXGroup;
+			children = (
+				9DB2DF6D192AB9B000FFB6A8 /* PaymentMethodViewController_iPad.xib */,
+				9DB2DF6E192AB9B000FFB6A8 /* PaymentMethodViewController_iPhone.xib */,
+				9DB2DF6F192AB9B000FFB6A8 /* PaymentMethodViewController.h */,
+				9DB2DF70192AB9B000FFB6A8 /* PaymentMethodViewController.m */,
+				52FEBCE51954AD42001FFD57 /* SimpleFSPaymentDelegate.h */,
+				52FEBCE61954AD42001FFD57 /* SimpleFSPaymentDelegate.m */,
+			);
+			name = SimpleFS;
 			sourceTree = "<group>";
 		};
 		99831AF518720EDE0095FDC9 /* ReaderInfo */ = {
@@ -437,15 +504,7 @@
 		99859E031836ADC300AB3FE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9DB2DF92192ABA9600FFB6A8 /* TransactionViewController_iPad.xib */,
-				9DB2DF93192ABA9600FFB6A8 /* TransactionViewController_iPhone.xib */,
-				9DB2DF94192ABA9600FFB6A8 /* TransactionViewController.h */,
-				9DB2DF95192ABA9600FFB6A8 /* TransactionViewController.m */,
-				5263482D1952607400237D06 /* STTransactionsTableViewController.h */,
-				5263482E1952607A00237D06 /* STTransactionsTableViewController.m */,
-				9DB2DF99192ABAD300FFB6A8 /* AuthorizedPayments */,
 				007DE85C18A010B4004D8847 /* Settings */,
-				99859E4A183C38DA00AB3FE1 /* Login */,
 				99859E4B183C38FB00AB3FE1 /* Transaction */,
 				99831AF518720EDE0095FDC9 /* ReaderInfo */,
 			);
@@ -508,10 +567,6 @@
 				9DB2DF6A192AB9B000FFB6A8 /* PaymentCompleteViewController.h */,
 				9DB2DF6B192AB9B000FFB6A8 /* PaymentCompleteViewController.m */,
 				9DB2DF6C192AB9B000FFB6A8 /* PaymentCompleteViewController.xib */,
-				9DB2DF6D192AB9B000FFB6A8 /* PaymentMethodViewController_iPad.xib */,
-				9DB2DF6E192AB9B000FFB6A8 /* PaymentMethodViewController_iPhone.xib */,
-				9DB2DF6F192AB9B000FFB6A8 /* PaymentMethodViewController.h */,
-				9DB2DF70192AB9B000FFB6A8 /* PaymentMethodViewController.m */,
 				9DB2DF71192AB9B000FFB6A8 /* ReceiptInfoViewController_iPad.xib */,
 				9DB2DF72192AB9B000FFB6A8 /* ReceiptInfoViewController_iPhone.xib */,
 				9DB2DF73192AB9B000FFB6A8 /* ReceiptInfoViewController.h */,
@@ -524,6 +579,7 @@
 				9DB2DF7A192AB9B000FFB6A8 /* SignatureViewController_iPhone.xib */,
 				9DB2DF7B192AB9B000FFB6A8 /* SignatureViewController.h */,
 				9DB2DF7C192AB9B000FFB6A8 /* SignatureViewController.m */,
+				9DB2DF99192ABAD300FFB6A8 /* AuthorizedPayments */,
 				DE4208AB18CFD1DD0008C5BF /* ManualCardEntry */,
 				DE5A6E3F18C945D2007361F6 /* Checkin */,
 			);
@@ -579,16 +635,14 @@
 		99D981811835995100D234A1 /* SimplerTransaction */ = {
 			isa = PBXGroup;
 			children = (
-				5263482C1952605B00237D06 /* InvoicesManager.h */,
-				526348251952605500237D06 /* InvoicesManager.m */,
-				52C893621950A52400A072B6 /* InvoiceViewController.h */,
-				52C893631950A52400A072B6 /* InvoiceViewController.m */,
-				52C893641950A52400A072B6 /* InvoiceViewController.xib */,
-				52C893671950A5C900A072B6 /* InvoiceViewController_ipad.xib */,
+				99859E4A183C38DA00AB3FE1 /* Login */,
+				52EEFDAD1958FB560040BBD6 /* STConstants.h */,
+				52FEBCE81954B145001FFD57 /* STServices.h */,
+				52FEBCE91954B145001FFD57 /* STServices.m */,
 				52C893791950C1C300A072B6 /* DemosTableViewController.h */,
 				52C8937A1950C1C300A072B6 /* DemosTableViewController.m */,
 				528DE4A21951F9BC006E5CEE /* SimpleTransactionApp */,
-				52FC08681952345F004C3342 /* RestaurantApp */,
+				52FC08681952345F004C3342 /* FruitStore */,
 				99831B0D187F78810095FDC9 /* Resources */,
 				007B1E45185FF2720027C263 /* Utils */,
 				99859E041836AE1400AB3FE1 /* Classes */,
@@ -765,18 +819,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB2DF8F192AB9B000FFB6A8 /* SignatureViewController_iPhone.xib in Resources */,
+				52EEFDAC1958B57B0040BBD6 /* CCCustomInputViewController.xib in Resources */,
 				001569AA188E01270023053A /* orange.jpg in Resources */,
 				9DB2DF5F192AB99E00FFB6A8 /* CheckedInCustomerViewController_iPad.xib in Resources */,
+				52FEBD091954E7B0001FFD57 /* CCSwipersTableTableViewController.xib in Resources */,
 				9DB2DFA3192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.xib in Resources */,
 				9DB2DF57192AB99200FFB6A8 /* ManualCardEntryViewController.xib in Resources */,
 				9DB2DF88192AB9B000FFB6A8 /* ReceiptInfoViewController_iPad.xib in Resources */,
 				9DB2DF84192AB9B000FFB6A8 /* PaymentCompleteViewController.xib in Resources */,
 				001569A8188E01270023053A /* apple.jpg in Resources */,
-				52C893681950A5C900A072B6 /* InvoiceViewController_ipad.xib in Resources */,
 				9DB2DF60192AB99E00FFB6A8 /* CheckedInCustomerViewController_iPhone.xib in Resources */,
 				52FC086A1952352C004C3342 /* swipe.jpg in Resources */,
 				001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */,
-				52C893661950A52400A072B6 /* InvoiceViewController.xib in Resources */,
 				9DB2DFA1192ABAE400FFB6A8 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
 				9DB2DF96192ABA9600FFB6A8 /* TransactionViewController_iPad.xib in Resources */,
 				9DB2DF8D192AB9B000FFB6A8 /* RefundViewController.xib in Resources */,
@@ -801,6 +855,7 @@
 				9DB2DF86192AB9B000FFB6A8 /* PaymentMethodViewController_iPhone.xib in Resources */,
 				001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */,
 				001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */,
+				52FEBD041954D3EC001FFD57 /* CCCFSPaymentMethodViewController.xib in Resources */,
 				001569CB188E01C60023053A /* ReaderInfoViewController_iPhone.xib in Resources */,
 				001569AB188E01270023053A /* strawberry.jpg in Resources */,
 			);
@@ -815,30 +870,35 @@
 			files = (
 				001569E8188E01DD0023053A /* UIImageView+AFNetworking.m in Sources */,
 				9DB2DF87192AB9B000FFB6A8 /* PaymentMethodViewController.m in Sources */,
+				52EEFDAB1958B57B0040BBD6 /* CCCustomInputViewController.m in Sources */,
 				52C8937F1950C3F600A072B6 /* SimpleTransactionViewController.m in Sources */,
 				9DB2DF8C192AB9B000FFB6A8 /* RefundViewController.m in Sources */,
 				001569BB188E018D0023053A /* STOauthLoginViewController.m in Sources */,
+				52FEBD031954D3EC001FFD57 /* CCCFSPaymentMethodViewController.m in Sources */,
 				52C893A11950FAB100A072B6 /* STCashPaymentViewController.m in Sources */,
 				001569E3188E01DD0023053A /* AFJSONRequestOperation.m in Sources */,
 				001569E1188E01DD0023053A /* AFHTTPRequestOperation.m in Sources */,
 				5263482F1952607A00237D06 /* STTransactionsTableViewController.m in Sources */,
 				9DB2DF90192AB9B000FFB6A8 /* SignatureViewController.m in Sources */,
 				9DB2DF98192ABA9600FFB6A8 /* TransactionViewController.m in Sources */,
+				52FEBCE71954AD42001FFD57 /* SimpleFSPaymentDelegate.m in Sources */,
 				528DE49B1951F137006E5CEE /* STManualPaymentViewController.m in Sources */,
 				001569E7188E01DD0023053A /* AFXMLRequestOperation.m in Sources */,
 				001569E6188E01DD0023053A /* AFURLConnectionOperation.m in Sources */,
 				528DE4A61952041A006E5CEE /* STCardSwipeViewController.m in Sources */,
 				52C8939C1950F26100A072B6 /* STChoosePaymentMethodViewController.m in Sources */,
 				001569E2188E01DD0023053A /* AFImageRequestOperation.m in Sources */,
+				52FEBCEA1954B145001FFD57 /* STServices.m in Sources */,
+				52FEBD081954E7B0001FFD57 /* CCSwipersTableTableViewController.m in Sources */,
 				001569E0188E01DD0023053A /* AFHTTPClient.m in Sources */,
 				526348261952605500237D06 /* InvoicesManager.m in Sources */,
 				001569B1188E01520023053A /* PPSPreferences.m in Sources */,
 				001569CC188E01C60023053A /* ReaderInfoViewController.m in Sources */,
-				52C893651950A52400A072B6 /* InvoiceViewController.m in Sources */,
 				001569E5188E01DD0023053A /* AFPropertyListRequestOperation.m in Sources */,
 				001569B0188E01520023053A /* PPSCryptoUtils.m in Sources */,
 				9DB2DF5E192AB99E00FFB6A8 /* CheckedInCustomerCell.m in Sources */,
 				52C8937B1950C1C300A072B6 /* DemosTableViewController.m in Sources */,
+				52FEBCFA1954D181001FFD57 /* CCCFSPaymentDelegate.m in Sources */,
 				9DB2DF56192AB99200FFB6A8 /* ManualCardEntryViewController.m in Sources */,
 				9DB2DFA2192ABAE400FFB6A8 /* AuthorizedPaymentsViewController.m in Sources */,
 				007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */,
@@ -946,7 +1006,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"\"$(SRCROOT)/../SDK/Debug/\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
@@ -962,7 +1022,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -975,7 +1035,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"\"$(SRCROOT)/../SDK/Debug/\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
@@ -991,7 +1051,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

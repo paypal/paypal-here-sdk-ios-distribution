@@ -10,7 +10,10 @@
 
 typedef NS_ENUM(NSInteger, PPHAccountStatus) {
     ePPHAccountStatusUnknown,
-    ePPHAccountStatusReady
+    ePPHAccountStatusReady,
+    ePPHAccountStatusRestricted,
+    ePPHAccountStatusEligible,
+    ePPHAccountStatusIneligible
 };
 
 typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {

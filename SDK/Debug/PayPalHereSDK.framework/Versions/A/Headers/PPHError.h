@@ -66,6 +66,8 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
 @property (nonatomic, strong) NSString *correlationId;
 /*! The precise date at which the error occurred */
 @property (nonatomic, strong) NSDate *date;
+/*! A mapped mesage with more detailed information that PPH app and our partners can use */
+@property (nonatomic, readonly) NSString *mappedMessage;
 
 /*! YES if this error is the result of the user pressing cancel (e.g. on a network request) */
 - (BOOL) isCancelError;
@@ -82,6 +84,9 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
 
 /*! Generate an NSDictionary representing this error object, typically for writing to JSON */
 - (NSDictionary *) asDictionary;
+
+/*! Generates the read-only mappedMessage by running a best guess hueristic algorithm */
+- (void) createMappedMessage;
 
 /*! Read a PPHError from a dictionary created by NSDictionary */
 - (id) initWithDictionary: (NSDictionary *) dictionary;

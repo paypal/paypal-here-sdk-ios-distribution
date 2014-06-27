@@ -478,8 +478,8 @@
     
   self.serviceArray =
     @[
-       [NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"],
-       [NSURL URLWithString:@"https://www.sandbox.paypal.com/webapps/"],
+       [NSURL URLWithString:STAGE],
+       [NSURL URLWithString:SANDBOX],
        [NSNull null]
     ];
 

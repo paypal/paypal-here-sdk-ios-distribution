@@ -73,7 +73,7 @@
 }
 
 - (IBAction)onDone:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
 }
 
 - (IBAction)onCaptureNow:(id)sender {

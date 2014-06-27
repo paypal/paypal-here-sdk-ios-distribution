@@ -3,6 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleTransactionViewController">
@@ -18,29 +19,49 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5.00" borderStyle="roundedRect" placeholder="5.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csv-PK-fR0">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5.00" borderStyle="roundedRect" placeholder="5.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csv-PK-fR0">
                     <rect key="frame" x="112" y="99" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="csv-PK-fR0" secondAttribute="height" multiplier="97:30" id="jMp-sn-mVc"/>
+                        <constraint firstAttribute="width" constant="97" id="twd-HX-164"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXR-GD-a21">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXR-GD-a21">
                     <rect key="frame" x="85" y="178" width="150" height="104"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="lXR-GD-a21" secondAttribute="height" multiplier="75:52" id="NVr-ag-a4b"/>
+                        <constraint firstAttribute="width" constant="150" id="hns-T9-My3"/>
+                    </constraints>
                     <state key="normal" title="Purchase!"/>
                     <connections>
                         <action selector="purchaseButtonPressed:" destination="-1" eventType="touchUpInside" id="UZC-Jp-62u"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This demonstrates using the SDK to make a simple purchase of a given amount. Simply enter the total below, and click purchase!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gg-0O-R1k">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This demonstrates using the SDK to make a simple purchase of a given amount. Simply enter the total below, and click purchase!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gg-0O-R1k">
                     <rect key="frame" x="10" y="314" width="300" height="182"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2Gg-0O-R1k" secondAttribute="height" multiplier="150:91" id="S9G-hb-gCE"/>
+                        <constraint firstAttribute="width" constant="300" id="WKx-xX-O3W"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2Gg-0O-R1k" firstAttribute="top" secondItem="lXR-GD-a21" secondAttribute="bottom" constant="32" id="2la-Ta-GLY"/>
+                <constraint firstItem="lXR-GD-a21" firstAttribute="top" secondItem="csv-PK-fR0" secondAttribute="bottom" constant="49" id="BAQ-ze-g3K"/>
+                <constraint firstAttribute="centerX" secondItem="csv-PK-fR0" secondAttribute="centerX" constant="-0.5" id="D88-OU-jKy"/>
+                <constraint firstItem="lXR-GD-a21" firstAttribute="centerX" secondItem="csv-PK-fR0" secondAttribute="centerX" constant="-0.5" id="IWx-0X-o8Y"/>
+                <constraint firstItem="csv-PK-fR0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="99" id="Nnz-WC-ATc"/>
+                <constraint firstAttribute="centerX" secondItem="2Gg-0O-R1k" secondAttribute="centerX" id="jg5-eL-Wk1"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

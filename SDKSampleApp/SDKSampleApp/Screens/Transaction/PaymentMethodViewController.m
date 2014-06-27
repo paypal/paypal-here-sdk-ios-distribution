@@ -9,7 +9,6 @@
 
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
 
@@ -25,10 +24,11 @@
 
 @interface PaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
+@property PPHTransactionResponse *transactionResponse;
+
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
 @property BOOL isCashTransaction;
-@property PPHTransactionResponse *transactionResponse;
 
 @property (nonatomic, retain) IBOutlet UITextField *tipTextField;
 @property (nonatomic, retain) IBOutlet UITextField *discountTextField;
@@ -36,7 +36,20 @@
 @property (nonatomic, retain) IBOutlet UIButton *manualButton;
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UIButton *cashButton;
-@property (nonatomic, retain) IBOutlet UIButton *saveTransactionButton;
+
+@property (strong, nonatomic) UIPageViewController *pageController;
+@property (weak, nonatomic) IBOutlet UILabel *subtotalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taxLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
+
+
+- (IBAction)payWithManualEntryCard:(id)sender;
+- (IBAction)payWithCashEntryCard:(id)sender;
+- (IBAction)payWithCheckedInClient:(id)sender;
+- (IBAction)startNewTransaction:(id)sender;
+
 @end
 
 @implementation PaymentMethodViewController
@@ -59,11 +72,12 @@
     self.manualButton.layer.cornerRadius = 10;
     self.checkinButton.layer.cornerRadius = 10;
     self.cashButton.layer.cornerRadius = 10;
-    self.saveTransactionButton.layer.cornerRadius = 10;
     
     self.tipTextField.delegate = self;
     self.discountTextField.delegate = self;
     
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(startNewTransaction:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 }
 
 -(void)didReceiveMemoryWarning
@@ -185,19 +199,6 @@
     
     [self.navigationController pushViewController:checkedInCustomerView animated:YES];
     
-}
-
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    
-    [alertView show];
 }
 
 #pragma mark UIAlertViewDelegate

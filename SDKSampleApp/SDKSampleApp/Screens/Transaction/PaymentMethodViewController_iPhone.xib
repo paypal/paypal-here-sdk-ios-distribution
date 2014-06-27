@@ -12,7 +12,6 @@
                 <outlet property="discountTextField" destination="K8X-6d-9um" id="iGg-oH-7CL"/>
                 <outlet property="manualButton" destination="dPL-oC-6yV" id="gmX-u9-3wX"/>
                 <outlet property="processingTransactionSpinny" destination="UdE-wj-EKS" id="sW1-aB-cAO"/>
-                <outlet property="saveTransactionButton" destination="n4o-3x-5LY" id="D0V-Q1-4LK"/>
                 <outlet property="subtotalLabel" destination="62e-TN-qUH" id="ESg-xW-ibq"/>
                 <outlet property="taxLabel" destination="ap9-jD-c06" id="Efv-K1-RWx"/>
                 <outlet property="tipTextField" destination="nRf-MR-6bM" id="qx6-i7-Iwd"/>
@@ -156,18 +155,6 @@
                     </state>
                     <connections>
                         <action selector="payWithCheckedInClient:" destination="-1" eventType="touchUpInside" id="xOa-Ye-qBA"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4o-3x-5LY">
-                    <rect key="frame" x="23" y="443" width="271" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Save Transaction">
-                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="startNewTransaction:" destination="-1" eventType="touchUpInside" id="Esf-m4-BRZ"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nRf-MR-6bM">

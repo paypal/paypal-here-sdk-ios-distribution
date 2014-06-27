@@ -44,6 +44,7 @@
     self.checkinButton.layer.cornerRadius = 10;
     self.cashButton.layer.cornerRadius = 10;
     self.swipeButton.layer.cornerRadius = 10;
+    
     self.amountLabel.text = self.amount;
 }
 

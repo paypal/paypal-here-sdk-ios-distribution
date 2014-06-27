@@ -9,9 +9,12 @@
             <connections>
                 <outlet property="applesButton" destination="202" id="iAX-Jv-2xJ"/>
                 <outlet property="bananasButton" destination="203" id="fb8-fY-Zbg"/>
+                <outlet property="captureButton" destination="Qak-S1-1iQ" id="nk8-2S-1In"/>
                 <outlet property="longPressExplanationLabel" destination="533" id="574"/>
                 <outlet property="orangesButton" destination="164" id="KOX-HA-XG1"/>
-                <outlet property="purchaseButton" destination="24" id="JCp-N0-yex"/>
+                <outlet property="purchaseButton" destination="24" id="dlG-dN-uWm"/>
+                <outlet property="refundButton" destination="eZV-R0-TFR" id="jBR-Uv-ekC"/>
+                <outlet property="settingsButton" destination="672" id="igh-VU-LZA"/>
                 <outlet property="shoppingCartTable" destination="240" id="433"/>
                 <outlet property="strawberriesButton" destination="178" id="1I8-6x-eJP"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -23,8 +26,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="24">
-                    <rect key="frame" x="306" y="375" width="156" height="30"/>
+                    <rect key="frame" x="253" y="386" width="263" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Purchase">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -93,20 +97,21 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="28" sectionHeaderHeight="22" sectionFooterHeight="22" id="240">
-                    <rect key="frame" x="264" y="202" width="240" height="140"/>
+                    <rect key="frame" x="264" y="216" width="240" height="140"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long-Press Zeroes Out Item Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="533">
-                    <rect key="frame" x="264" y="164" width="240" height="21"/>
+                    <rect key="frame" x="264" y="172" width="240" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="672">
-                    <rect key="frame" x="306" y="413" width="157" height="30"/>
+                    <rect key="frame" x="253" y="560" width="263" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Settings">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -115,8 +120,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eZV-R0-TFR">
-                    <rect key="frame" x="264" y="451" width="240" height="30"/>
+                    <rect key="frame" x="253" y="444" width="263" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Refund a Completed Sale">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -125,13 +131,13 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qak-S1-1iQ">
-                    <rect key="frame" x="253" y="484" width="263" height="30"/>
+                    <rect key="frame" x="253" y="502" width="263" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Authorized Sales That Need Capturing">
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title=" Capture previous auth">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onRefundsPressed:" destination="-1" eventType="touchUpInside" id="VdB-xM-LcR"/>
                         <action selector="onViewAuthorizedSales:" destination="-1" eventType="touchUpInside" id="Jc3-Uf-CvS"/>
                     </connections>
                 </button>

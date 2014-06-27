@@ -8,6 +8,8 @@
 
 #import "STManualPaymentViewController.h"
 #import "PaymentCompleteViewController.h"
+#import "STServices.h"
+
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface STManualPaymentViewController ()
@@ -70,17 +72,6 @@
     [self.cvv2 setText:@""];
 }
 
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    [alertView show];
-}
 
 -(NSString*) getCurrentYear
 {
@@ -121,7 +112,7 @@
 {
     PPHCardNotPresentData *manualCardData = [self extractCardDataFromTextFields];
     if (!manualCardData) {
-        [self showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
+        [STServices showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
         return;
     }
     

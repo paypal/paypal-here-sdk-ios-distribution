@@ -8,13 +8,13 @@
 #define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 #import "DemosTableViewController.h"
-#import "InvoiceViewController.h"
 #import "TransactionViewController.h"
 #import "SimpleTransactionViewController.h"
+#import "SimpleFSPaymentDelegate.h"
+#import "CCCFSPaymentDelegate.h"
 
 @interface DemosTableViewController ()
 @property (nonatomic, strong) NSArray *demoNames;
-
 @end
 
 @implementation DemosTableViewController
@@ -73,15 +73,13 @@
             break;
         case 1: {
             NSString *interfaceName = (IPAD) ? @"TransactionViewController_iPad" : @"TransactionViewController_iPhone";
-            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil];
+            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil aDelegate:[[SimpleFSPaymentDelegate alloc] init]];
             break;
-        }
-        case 2:
-            // Invoice
-            vc = [[InvoiceViewController alloc] init];
-
-        
-        default:
+        } case 2: {
+            NSString *interfaceName = (IPAD) ? @"TransactionViewController_iPad" : @"TransactionViewController_iPhone";
+            vc = [[TransactionViewController alloc] initWithNibName:interfaceName bundle:nil aDelegate:[[CCCFSPaymentDelegate alloc] init]];
+            break;
+        } default:
             break;
     }
     

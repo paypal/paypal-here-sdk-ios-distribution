@@ -17,11 +17,11 @@
 
 @implementation STTransactionsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style andDelegate: (id<InvoicesProtocal>) delegate
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        self.delegate = delegate;
     }
     return self;
 }
@@ -73,25 +73,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    [tm beginPayment];
-    [tm setCurrentInvoice:[[InvoicesManager getCurrentTransactions] objectAtIndex:indexPath.row]];
-
-    PaymentMethodViewController *paymentMethod = nil;
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        paymentMethod = [[PaymentMethodViewController alloc]
-                         initWithNibName:@"PaymentMethodViewController_iPhone"
-                         bundle:nil];
-    }
-    else {
-        paymentMethod = [[PaymentMethodViewController alloc]
-                         initWithNibName:@"PaymentMethodViewController_iPad"
-                         bundle:nil];
-    }
-    
-    [self.navigationController pushViewController:paymentMethod animated:YES];
-    
+    [self.delegate purchaseWithInvoice:[[InvoicesManager getCurrentTransactions] objectAtIndex:indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -9,11 +9,13 @@
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
 #import "AuthorizationCompleteViewController.h"
-
+#import "STServices.h"
 #import "STAppDelegate.h"
 
 @interface ManualCardEntryViewController ()
 @property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
+@property (nonatomic, retain) IBOutlet UIButton *fillInCardInfoButton;
+@property (nonatomic, retain) IBOutlet UIButton *clearCardInfoButton;
 @end
 
 @implementation ManualCardEntryViewController
@@ -31,6 +33,9 @@
 {
     [super viewDidLoad];
     self.processingTransactionSpinny.hidden=YES;
+    
+    self.fillInCardInfoButton.layer.cornerRadius = 10;
+    self.clearCardInfoButton.layer.cornerRadius = 10;
     
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
 
@@ -62,17 +67,6 @@
     [self.cvv2 setText:@""];
 }
 
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    [alertView show];
-}
 
 -(NSString*) getCurrentYear
 {
@@ -94,7 +88,7 @@
        || (15 > [cardNumStr length]) || (2 != [expMonthStr length]) || (4 != [expYearStr length])
        || (3 != [cvvStr length]) || (12 < [expMonthStr integerValue]) || ([[self getCurrentYear] integerValue] > [expYearStr integerValue])){
         
-        [self showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
+        [STServices showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
         return;
     }
     

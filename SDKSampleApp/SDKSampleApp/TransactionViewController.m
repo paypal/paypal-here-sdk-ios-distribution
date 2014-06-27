@@ -12,10 +12,8 @@
 #import "RefundViewController.h"
 #import "AuthorizedPaymentsViewController.h"
 #import "STTransactionsTableViewController.h"
-
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "CCCFSPaymentMethodViewController.h"
 #import "STAppDelegate.h"
-
 
 #define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
@@ -27,7 +25,7 @@
 #define kPRICE			@"Price"
 #define kQUANTITY		@"Quantity"
 
-@interface TransactionViewController ()
+@interface TransactionViewController () <InvoicesProtocal>
 - (IBAction)onChargePressed:(id)sender;
 - (IBAction)onSettingsPressed:(id)sender;
 - (IBAction)onRefundsPressed:(id)sender;
@@ -40,24 +38,27 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *shoppingCartTable;
 @property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
-
-
+@property (weak, nonatomic) IBOutlet UIButton *refundButton;
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @property (nonatomic, strong) NSArray *items;
-@property (strong, nonatomic) NSMutableDictionary *store;
-@property (nonatomic,strong) NSMutableDictionary *shoppingCart;
+@property (nonatomic, strong) NSMutableDictionary *store;
+@property (nonatomic, strong) NSMutableDictionary *shoppingCart;
 
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrApples;
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrBananas;
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrOranges;
 @property (nonatomic,strong) UILongPressGestureRecognizer *lpgrStrawberries;
 
+@property kSAFlow flow;
 @end
 
 @implementation TransactionViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil aDelegate: (id) delegate
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -77,6 +78,8 @@
                                kORANGES:       [NSDecimalNumber zero],
                                kSTRAWBERRIES:  [NSDecimalNumber zero]
                                }];
+        
+        self.delegate = delegate;
     }
     return self;
 }
@@ -88,7 +91,6 @@
     // Do any additional setup after loading the view from its nib.
 	self.title = @"New Transaction";
 
-    
     self.shoppingCartTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.shoppingCartTable.bounces = NO;
     self.shoppingCartTable.allowsSelection = NO;
@@ -99,7 +101,11 @@
     self.lpgrOranges = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
     self.lpgrStrawberries = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
 
-
+    self.purchaseButton.layer.cornerRadius = 10;
+    self.captureButton.layer.cornerRadius = 10;
+    self.refundButton.layer.cornerRadius = 10;
+    self.settingsButton.layer.cornerRadius = 10;
+    
     self.lpgrApples.minimumPressDuration = 0.5;
     self.lpgrBananas.minimumPressDuration = 0.5;
     self.lpgrOranges.minimumPressDuration = 0.5;
@@ -152,73 +158,46 @@
 	return total;
 }
 
-- (NSString *) validateInvoiceForPayment:(PPHInvoice *)invoice {
-    if (invoice.subTotal.doubleValue < 0.01 && invoice.subTotal.doubleValue > -0.01) {
-        return @"You cannot specify amounts less than a penny.";
-	}
-    // Insert other verifications here
-    
-    return nil;
-}
 
-- (PPHInvoice *)getInvoiceFromShoppingCart:(NSMutableDictionary *)shoppingCart {
+- (PPHInvoice *)getInvoiceFromShoppingCart{
     PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:@"USD"];
     for (NSString *item in self.shoppingCart) {
-        [invoice addItemWithId:item detailId:nil name:item quantity:shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
+        [invoice addItemWithId:item detailId:nil name:item quantity:self.shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
     }
     return invoice;
 }
 
 - (IBAction)onChargePressed:(id)sender {
-    
-    if (![PayPalHereSDK activeMerchant]) {
-        [self showAlertWithTitle:@"Bad State!" andMessage:@"The merchant hasn't been created yet?   We can't use the SDK until the merchant exists."];
-        return;
-    }
-    
-    // Create invoice by adding the items from the shopping cart.
-    PPHInvoice *invoice = [self getInvoiceFromShoppingCart:self.shoppingCart];
-    
-    // Validate invoice for errors
-    NSString *invoiceError = [self validateInvoiceForPayment:invoice];
-    if (invoiceError) {
-        [self showAlertWithTitle:@"Input Error" andMessage:invoiceError];
-        return;
-    }
-    
-    // Begin the purchase and forward to payment method
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    [tm beginPayment];
-    tm.currentInvoice = invoice;
-    
-    // Choose Payment method
-    NSString *interfaceName = (IS_IPAD) ? @"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
-    PaymentMethodViewController *paymentMethod = [[PaymentMethodViewController alloc]
-                                                  initWithNibName:interfaceName
-                                                  bundle:nil];
-
-    
-    [self.navigationController pushViewController:paymentMethod animated:YES];
-    
-    
-    //[self showAlertWithTitle:@"Please Swipe your Credit Card" andMessage:@"The PayPalHereSDK is now waiting for a card swipe to proceed."];
-    
+    PPHInvoice *invoice = [self getInvoiceFromShoppingCart];
+    [self purchaseWithInvoice:invoice];
 }
 
--(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:nil
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
+- (void) purchaseWithInvoice:(PPHInvoice *)invoice {
+    kSAFlow currentFlow = [self.delegate purchase:invoice];
     
-    [alertView show];
+    UIViewController *paymentMethodVC = nil;
+    switch (currentFlow) {
+        case kSAFS: {
+            // Choose Payment method
+            NSString *interfaceName = (IS_IPAD) ? @"PaymentMethodViewController_iPad" : @"PaymentMethodViewController_iPhone";
+            paymentMethodVC = [[PaymentMethodViewController alloc] initWithNibName:interfaceName bundle:nil];
+            break;
+        }
+        case kSACCC: {
+            // Choose Payment method
+            NSString *interfaceName = @"CCCFSPaymentMethodViewController";
+            paymentMethodVC = [[CCCFSPaymentMethodViewController alloc] initWithNibName:interfaceName bundle:nil];
+            break;
+        }
+        case kSAError:
+            NSLog(@"Error! Bad Flow");
+            return;
+        default:
+            return;
+    }
+    
+    [self.navigationController pushViewController:paymentMethodVC animated:YES];
 }
-
-
-
 
 - (IBAction)onSettingsPressed:(id)sender {
     SettingsViewController *settings = [[SettingsViewController alloc]
@@ -251,7 +230,7 @@
 }
 
 -(void)didPressViewTransactions:(id)sender {
-    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    STTransactionsTableViewController *vc = [[STTransactionsTableViewController alloc] initWithStyle:UITableViewStylePlain andDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

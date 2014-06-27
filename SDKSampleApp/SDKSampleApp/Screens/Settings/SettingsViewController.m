@@ -123,9 +123,11 @@
 }
 
 - (IBAction)onReaderDetailsPressed:(id)sender {
+    NSString *interfaceName = (IS_IPAD) ? @"ReaderInfoViewController_iPad" : @"ReaderInfoViewController_iPhone";
+    
 	// Transition to the Reader Info screen:
 	ReaderInfoViewController *readerInfoVC = [[ReaderInfoViewController alloc]
-                        initWithNibName:@"ReaderInfoViewController"
+                        initWithNibName:interfaceName
                         bundle:nil];
     
     // Set up the fields:
