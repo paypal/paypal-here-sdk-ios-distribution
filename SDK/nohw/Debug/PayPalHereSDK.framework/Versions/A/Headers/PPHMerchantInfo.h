@@ -40,5 +40,9 @@
  */
 @property (nonatomic,strong) PPHAccessAccount* payPalAccount;
 
+/*!
+ * Terms set by merchant in business info, currently return policy
+ */
+@property (nonatomic,strong) NSString* terms;
 
 @end
