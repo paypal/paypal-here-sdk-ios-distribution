@@ -85,6 +85,12 @@
 - (id)initWithItem: (NSString*) item forAmount: (PPHAmount*) amount;
 
 /*!
+ Create a new invoice using the data from this invoice.
+ This copies everything except the data that defines it as a unique invoice to PayPal.
+ */
+- (instancetype)copyAsTemplate;
+
+/*!
  Compile the invoice's data to a format that is ready to save as an InvoiceType parameter to an API call.
  @return id The created invoice
  */
@@ -158,6 +164,8 @@
 @property (nonatomic,readonly) PPHInvoiceStatus status;
 /*! YES if invoice origin is Web */
 @property (nonatomic,readonly) BOOL originatedOnWeb;
+/*! The terms associated with the invoice, such as return policy */
+@property (nonatomic,strong) NSString *terms;
 
 #pragma mark -
 #pragma mark Calculated values

@@ -44,6 +44,8 @@
 #define kPPHLocalErrorBadConfigurationNoInvoiceInTransactionRecord - 2011
 #define kPPHLocalErrorBadConfigurationNoTransactionIdInTransactionRecord - 2012
 #define kPPHLocalErrorBadConfigurationNoPaymentData - 2013
+#define kPPHLocalErrorBadConfigurationNotYetImplemented -2014
+
 
 // Mapping the different API's in Transaction Manager to key's
 // used in saving of invoice, and can be extended for other future use cases
@@ -221,14 +223,49 @@
 -(void) initiateEMVTransaction:(PPHAmount*) amount transactionType:(PPHEMVTransactionType)transactionType;
 
 /*!
- * Auth/Cap Flow methods, more descriptive comments will be released soon along with documentation...
+ * Authorize a payment.  Used with either Checkin (ePPHPaymentMethodPaypal) or a card 
+ * payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.
+ *
+ * Once authorized you can be confident that PayPal will allow capture on up to 115% of the amount
+ * authorized (allows for later adding of tips or later adding of some line items just prior to
+ * capturing the payment.
+ *
+ * However, if the merchant's account is so enabled, this capture limit can be upto 500%   See 
+ * PPHPaymentLimits.captureTolerance for more information
+ *
+ * After authorization is successful you can then, at a later time or immediately afterwards, call 
+ * capturePaymentForAuthorization to actually capture your money or you can call voidAuthorization
+ * to discard the payment.
+ *
+ * @param paymentMethod What type of authorization we are doing.  Can be ePPHPaymentMethodPaypal (checkin)
+ *                      or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey
+ *
+ * completionHandler: will return a PPHTransactionResponse.  If there's an error the transation response's
+ * error object will be non nil.  Otherwise it will contain a PPHTransactionRecord which you can 
+ * later pass into voidAuthoriztion or capturePaymentForAuthorization
  */
-- (void) authorizePaymentWithPaymentType:(PPHPaymentMethod)paymentType
+- (void) authorizePaymentWithPaymentType:(PPHPaymentMethod)paymentMethod
                    withCompletionHandler:(void (^)(PPHTransactionResponse *))completionHandler;
 
+/*!
+ * Allows you to void a previously authorized payment.  
+ */
 - (void) voidAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord
      withCompletionHandler:(void (^)(PPHTransactionResponse *))completionHandler;
 
+/*!
+ * Captures a prevoisly authorized payment.  
+ *
+ * In most cases you can capture at 115% of what was previously authorized.  
+ *
+ * However, if the merchant's account is so enabled, this capture limit can be upto 500%   See
+ * PPHPaymentLimits.captureTolerance for more information
+ *
+ * To capture more or less than was authorized you can add a gratutity or add/remove line items 
+ * from the invoice contained in the PPHTransactionRecord you pass in.  If you don't with to add 
+ * a gratutity or change line items just supply the transactionRecord you received when you 
+ * authorized the transaction.
+ */
 - (void) capturePaymentForAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord
                   withCompletionHandler:(void (^)(PPHTransactionResponse *))completionHandler;
 
@@ -252,18 +289,53 @@
               withTransactionController:(id<PPHTransactionControllerDelegate>)controller
                       completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
+/*!
+ * Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+ * This version will cause the SDK to show UI during the payment flow.   
+ *
+ * Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).
+ *
+ * Processing a payment for swipe or key-in or checkin-in payments will
+ * actually capture that payment.  For Cash or Check, this call will simply
+ * record the invoice into the paypal system for record-keeping purposes.
+ *
+ * @param paymentType the type of payment to collect.  You'll get an error back if you
+ *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
+ *                    checkedInClient property.  Likewise with the cardData member and
+ *                    specifying ePPHPaymentMethodSwipe.
+ *
+ * @param controller  Can be nil.  If provided, the transaction manager will call the callbacks
+ *                    defined in the PPHTransactionControllerDelegate.
+ * @param completionHandler called when the action has completed
+ */
+-(void) processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType
+            withTransactionController:(id<PPHTransactionControllerDelegate>)controller
+                    completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
  * and complete the transaction.
- * In case of EMV related payments, this API should be used after the processPayment call has been
- * approved by the terminal. If the terminal declines, the transaction would be voided.
+ *
+ * Can be used to provide a signature in both the sale (processPayment) and auto/capture flows. 
+ * After processPayment returns you can then provide a signature using the PPHTransactionRecord returned by processPayment.
+ * After an authorization you can provide the signature either before or after a capture.
+ *
+ * @param signature : A bitmap signature of the customer.
+ * @param forTransaction : The transaction record object that is returned back from the processPayment call.
+ * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
+ */
+-(void)provideSignature:(UIImage *)signature forTransaction:(PPHTransactionRecord *)previousTransaction completionHandler: (void (^)(PPHError *))completionHandler;
+
+/*!
+ * DEPRECATED
+ * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
+ * and complete the transaction.
  *
  * @param previousTransaction : The transaction record object that is returned back from the processPayment call.
  * @param signature : A bitmap signature of the customer.
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
  */
--(void)finalizePaymentForTransaction:(PPHTransactionRecord *)previousTransaction withSignature:(UIImage *)signature completionHandler: (void (^)(PPHError *))completionHandler;
+-(void)finalizePaymentForTransaction:(PPHTransactionRecord *)previousTransaction withSignature:(UIImage *)signature completionHandler: (void (^)(PPHError *))completionHandler DEPRECATED_ATTRIBUTE;
 
 /*!
  * Issue a refund against a previously successful PayPal transaction.
