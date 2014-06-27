@@ -17,7 +17,6 @@
 		001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569B5188E018D0023053A /* STOauthLoginViewController_iPad.xib */; };
 		001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569B6188E018D0023053A /* STOauthLoginViewController_iPhone.xib */; };
 		001569BB188E018D0023053A /* STOauthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569B8188E018D0023053A /* STOauthLoginViewController.m */; };
-		001569C3188E01B20023053A /* TransactionViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569BE188E01B20023053A /* TransactionViewController_iPad.xib */; };
 		001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569BF188E01B20023053A /* TransactionViewController_iPhone.xib */; };
 		001569C5188E01B20023053A /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569C1188E01B20023053A /* TransactionViewController.m */; };
 		001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001569C6188E01C60023053A /* ReaderInfoViewController_iPad.xib */; };
@@ -78,8 +77,6 @@
 		522456F5195CCEC5003B0C85 /* SimpleTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522456EB195CCEC5003B0C85 /* SimpleTransactionViewController.xib */; };
 		52245702195CCF4F003B0C85 /* InvoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 522456FB195CCF4F003B0C85 /* InvoicesManager.m */; };
 		52245703195CCF4F003B0C85 /* TransactionViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522456FC195CCF4F003B0C85 /* TransactionViewController_iPad.xib */; };
-		52245704195CCF4F003B0C85 /* TransactionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522456FD195CCF4F003B0C85 /* TransactionViewController_iPhone.xib */; };
-		52245705195CCF4F003B0C85 /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522456FF195CCF4F003B0C85 /* TransactionViewController.m */; };
 		52245706195CCF4F003B0C85 /* STTransactionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52245701195CCF4F003B0C85 /* STTransactionsTableViewController.m */; };
 		5224570C195CCFA6003B0C85 /* STServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 52245709195CCFA6003B0C85 /* STServices.m */; };
 		5224570D195CCFA6003B0C85 /* DemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224570B195CCFA6003B0C85 /* DemosTableViewController.m */; };
@@ -683,7 +680,7 @@
 				ORGANIZATIONNAME = PayPalHereSDK;
 				TargetAttributes = {
 					99D981771835995100D234A1 = {
-						DevelopmentTeam = 52A5T5596S;
+						DevelopmentTeam = BHT94GP859;
 					};
 				};
 			};
@@ -709,16 +706,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A2F00E1924080C00C20037 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
+				00A2F0061923F05600C20037 /* AuthorizedPaymentsViewController.xib in Resources */,
+				00A2F0001922C46A00C20037 /* AuthorizationCompleteViewController.xib in Resources */,
+				0047B81A18E0F42200F2B9E4 /* CheckedInCustomerViewController_iPad.xib in Resources */,
 				DE5A6E4618C945F7007361F6 /* CheckedInCustomerViewController_iPhone.xib in Resources */,
-				522456EF195CCEC5003B0C85 /* STCashPaymentViewController.xib in Resources */,
-				001569AA188E01270023053A /* orange.jpg in Resources */,
-				52245722195CD7F8003B0C85 /* CCSwipersTableTableViewController.xib in Resources */,
 				52245724195CD7F8003B0C85 /* CCCustomInputViewController.xib in Resources */,
+				52245720195CD7F8003B0C85 /* CCCFSPaymentMethodViewController.xib in Resources */,
+				52245722195CD7F8003B0C85 /* CCSwipersTableTableViewController.xib in Resources */,
+				001569AA188E01270023053A /* orange.jpg in Resources */,
 				001569A8188E01270023053A /* apple.jpg in Resources */,
 				0047B81618E0ECB600F2B9E4 /* ReceiptInfoViewController_iPad.xib in Resources */,
 				001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */,
 				001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */,
-				52245703195CCF4F003B0C85 /* TransactionViewController_iPad.xib in Resources */,
 				007DE86318A0144A004D8847 /* SettingsViewController.xib in Resources */,
 				00DD4A2A18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib in Resources */,
 				0047B81518E0ECB600F2B9E4 /* PaymentMethodViewController_iPad.xib in Resources */,
@@ -728,29 +728,24 @@
 				007DE87C18A062DC004D8847 /* SignatureViewController_iPhone.xib in Resources */,
 				0047B81818E0ECB600F2B9E4 /* SignatureViewController_iPad.xib in Resources */,
 				DE4208B018CFD2030008C5BF /* ManualCardEntryViewController.xib in Resources */,
-				001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */,
 				001569A9188E01270023053A /* banana.jpg in Resources */,
 				522456F3195CCEC5003B0C85 /* STChoosePaymentMethodViewController.xib in Resources */,
 				191DB94C18C8440F005C0FC8 /* PaymentCompleteViewController.xib in Resources */,
 				001569F1188E01F60023053A /* Default@2x.png in Resources */,
 				522456F5195CCEC5003B0C85 /* SimpleTransactionViewController.xib in Resources */,
-				522456F1195CCEC5003B0C85 /* STManualPaymentViewController.xib in Resources */,
-				00A2F0001922C46A00C20037 /* AuthorizationCompleteViewController.xib in Resources */,
 				DE5A6E4918C95473007361F6 /* default_image.jpg in Resources */,
-				0047B81A18E0F42200F2B9E4 /* CheckedInCustomerViewController_iPad.xib in Resources */,
 				522456ED195CCEC5003B0C85 /* STCardSwipeViewController.xib in Resources */,
 				001569EF188E01F60023053A /* Default-568h@2x.png in Resources */,
-				52245704195CCF4F003B0C85 /* TransactionViewController_iPhone.xib in Resources */,
-				001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */,
-				001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */,
 				197ADB1E18D2483600C22D2A /* RefundViewController.xib in Resources */,
-				001569C3188E01B20023053A /* TransactionViewController_iPad.xib in Resources */,
-				00A2F00E1924080C00C20037 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
 				0047B81718E0ECB600F2B9E4 /* ReceiptInfoViewController_iPhone.xib in Resources */,
 				001569CB188E01C60023053A /* ReaderInfoViewController_iPhone.xib in Resources */,
-				52245720195CD7F8003B0C85 /* CCCFSPaymentMethodViewController.xib in Resources */,
-				00A2F0061923F05600C20037 /* AuthorizedPaymentsViewController.xib in Resources */,
 				001569AB188E01270023053A /* strawberry.jpg in Resources */,
+				522456F1195CCEC5003B0C85 /* STManualPaymentViewController.xib in Resources */,
+				001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */,
+				001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */,
+				522456EF195CCEC5003B0C85 /* STCashPaymentViewController.xib in Resources */,
+				52245703195CCF4F003B0C85 /* TransactionViewController_iPad.xib in Resources */,
+				001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,7 +773,6 @@
 				5224570C195CCFA6003B0C85 /* STServices.m in Sources */,
 				001569E0188E01DD0023053A /* AFHTTPClient.m in Sources */,
 				52245706195CCF4F003B0C85 /* STTransactionsTableViewController.m in Sources */,
-				52245705195CCF4F003B0C85 /* TransactionViewController.m in Sources */,
 				001569B1188E01520023053A /* PPSPreferences.m in Sources */,
 				522456EE195CCEC5003B0C85 /* STCashPaymentViewController.m in Sources */,
 				52245721195CD7F8003B0C85 /* CCSwipersTableTableViewController.m in Sources */,
@@ -931,7 +925,7 @@
 					"-stdlib=libstdc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "615A1A3F-8C17-44E9-ABCB-AC43C9E25483";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
