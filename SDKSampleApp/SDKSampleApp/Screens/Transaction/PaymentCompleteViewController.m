@@ -10,6 +10,7 @@
 #import "ReceiptInfoViewController.h"
 #import "InvoicesManager.h"
 
+#import <PayPalHereSDK/PPHCardEnums.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHError.h>
@@ -59,6 +60,9 @@
         } else {
             self.paymentDetails.text = [NSString stringWithFormat: @"Invoice Id : %@", _transactionResponse.record.payPalInvoiceId];
         }
+        if ([_transactionResponse.record encryptedCardData]) {
+            self.paymentDetails.text = [NSString stringWithFormat:@"%@\n Card-Type is %@", self.paymentDetails.text, [self stringFromCardType:_transactionResponse.record.encryptedCardData.cardType]];
+        }
     }
     else {
         self.paymentStatus.text = @"Payment Declined";
@@ -102,6 +106,39 @@
     receiptInfoViewController.isEmail = isEmail;
     receiptInfoViewController.transactionRecord = _transactionResponse.record;
     [self.navigationController pushViewController:receiptInfoViewController animated:YES];
+}
+
+-(NSString *)stringFromCardType: (PPHCreditCardType) cardType {
+    switch (cardType) {
+        case ePPHCreditCardTypeUnknown:
+            return @"Unknown";
+            break;
+        case ePPHCreditCardTypeVisa:
+            return @"Visa";
+            break;
+        case ePPHCreditCardTypeMastercard:
+            return @"Mastercard";
+            break;
+        case ePPHCreditCardTypeDiscover:
+            return @"Discover";
+            break;
+        case ePPHCreditCardTypeAmEx:
+            return @"AmEx";
+            break;
+        case ePPHCreditCardTypeJCB:
+            return @"JCB";
+            break;
+        case ePPHCreditCardTypeMaestro:
+            return @"Maestro";
+            break;
+        case ePPHCreditCardTypePayPal:
+            return @"PayPal!";
+            break;
+        default:
+            return @"";
+            break;
+    }
+    return @"";
 }
 
 @end
