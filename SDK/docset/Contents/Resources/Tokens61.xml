@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHAnalyticsEventName.html">
+	<File path="Constants/PPHAnalyticsEventType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHAnalyticsEventName</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHAnalyticsEventType</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_None</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeNone</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_None</Declaration>
+            <Declaration>ePPHAnalyticsEventTypeNone</Declaration>
             
             <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_ReaderInserted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_ReaderInserted</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeNormal</TokenIdentifier>
+            <Abstract type="html">A &quot;normal&quot; event meant to help discern what features are being used in you&apos;re app, what situations are being encountered, etc.</Abstract>
+            <Declaration>ePPHAnalyticsEventTypeNormal</Declaration>
             
             <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
@@ -34,69 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_ReaderRemoved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_ReaderRemoved</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="61"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_AudioSwiperError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_AudioSwiperError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="61"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_AudioSwipeSuccessful</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_AudioSwipeSuccessful</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="61"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_DockPortSwiperError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_DockPortSwiperError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="61"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_DockPortSwipeSuccessful</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_DockPortSwipeSuccessful</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="61"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_SoftwareUpdateError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_SoftwareUpdateError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="61"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_SoftwareUpdateRestartReader</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_SoftwareUpdateRestartReader</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeLog</TokenIdentifier>
+            <Abstract type="html">A &quot;log&quot; message that is not as useful for aggregation but more for individual session debugging and troubleshooting</Abstract>
+            <Declaration>ePPHAnalyticsEventTypeLog</Declaration>
             
             <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             

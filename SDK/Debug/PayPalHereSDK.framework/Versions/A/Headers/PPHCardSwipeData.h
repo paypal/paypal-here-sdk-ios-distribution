@@ -3,6 +3,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPHCardEnums.h"
 
 @class PPHCardReaderMetadata;
 
@@ -72,6 +73,11 @@
  * The card reader on which the swipe occurred.
  */
 @property (nonatomic,strong) PPHCardReaderMetadata *reader;
+
+/*!
+ * Return the cardType
+ */
+@property (nonatomic, readonly) PPHCreditCardType cardType;
 
 /*!
  * Return the swipe data as a dictionary suitable for submission to PayPal

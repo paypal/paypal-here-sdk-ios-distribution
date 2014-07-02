@@ -40,6 +40,18 @@
 #define kPPHLocalErrorBadConfigurationInvalidParameters -2007
 #define kPPHLocalErrorBadConfigurationNoCurrentInvoice -2008
 #define kPPHLocalErrorBadConfigurationInvoiceAlreadyPaid -2009
+#define kPPHLocalErrorBadConfigurationAuthForProvidedPaymentMethodNotSupported - 2010
+#define kPPHLocalErrorBadConfigurationNoInvoiceInTransactionRecord - 2011
+#define kPPHLocalErrorBadConfigurationNoTransactionIdInTransactionRecord - 2012
+#define kPPHLocalErrorBadConfigurationNoPaymentData - 2013
+#define kPPHLocalErrorBadConfigurationNotYetImplemented -2014
+
+
+// Mapping the different API's in Transaction Manager to key's
+// used in saving of invoice, and can be extended for other future use cases
+#define kPPHTransactionManagerAPIAuthorizePayment -3000
+#define kPPHTransactionManagerAPICapturePayment -3001
+#define kPPHTransactionManagerAPIProcessPayment -3002
 
 
 // Some NSString constants used by the PPHTransactionWatcher:
@@ -210,7 +222,7 @@
  */
 -(void) initiateEMVTransaction:(PPHAmount*) amount transactionType:(PPHEMVTransactionType)transactionType;
 
-/*! 
+/*!
  * Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
  *
  * Processing a payment for swipe or key-in or checkin-in payments will
@@ -230,38 +242,51 @@
               withTransactionController:(id<PPHTransactionControllerDelegate>)controller
                       completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
-
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
  * and complete the transaction.
- * In case of EMV related payments, this API should be used after the processPayment call has been
- * approved by the terminal. If the terminal declines, the transaction would be voided.
+ *
+ * Can be used to provide a signature in both the sale (processPayment) and auto/capture flows. 
+ * After processPayment returns you can then provide a signature using the PPHTransactionRecord returned by processPayment.
+ * After an authorization you can provide the signature either before or after a capture.
+ *
+ * @param signature : A bitmap signature of the customer.
+ * @param forTransaction : The transaction record object that is returned back from the processPayment call.
+ * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
+ */
+-(void)provideSignature:(UIImage *)signature forTransaction:(PPHTransactionRecord *)previousTransaction completionHandler: (void (^)(PPHError *))completionHandler;
+
+/*!
+ * DEPRECATED
+ * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
+ * and complete the transaction.
  *
  * @param previousTransaction : The transaction record object that is returned back from the processPayment call.
  * @param signature : A bitmap signature of the customer.
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
  */
--(void)finalizePaymentForTransaction:(PPHTransactionRecord *)previousTransaction withSignature:(UIImage *)signature completionHandler: (void (^)(PPHError *))completionHandler;
+-(void)finalizePaymentForTransaction:(PPHTransactionRecord *)previousTransaction withSignature:(UIImage *)signature completionHandler: (void (^)(PPHError *))completionHandler DEPRECATED_ATTRIBUTE;
 
 /*!
  * Issue a refund against a previously successful PayPal transaction.
  * @param previousTransaction   The transaction identifier for the original payment transaction.
  *                              If you want to send a receipt and you don't have a PPHTransactionRecord you can construct one.  Just make
- *                              sure it has the transactionId and payPalInvoiceId properties set.
+ *                              sure it at least has the transactionId set.  Other params being set is ok, they will not be accessed
+ *                              by beginRefund.
  *
  * @param amountOrNil           Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
  * @param completionHandler     Called when the action has completed
  */
 -(void)beginRefund:(PPHTransactionRecord*) previousTransaction forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
 
-/**
+/*!
  * Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.
  *
  * @param previousTransaction : The transaction record object that is returned back from the processPayment call. This will
  *               contain the invoice id and transaction id etc needed to send the receipt.
  *
  *               If you want to send a receipt and you don't have a PPHTransactionRecord you can construct one.  Just make 
- *               sure it has the transactionId and payPalInvoiceId properties set.
+ *               sure it has BOTH the transactionId and payPalInvoiceId properties set.
  * @param destination : A PPHReceiptDestination object which describes either the email address or phone number to
  *                      which we should send the receipt.
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.

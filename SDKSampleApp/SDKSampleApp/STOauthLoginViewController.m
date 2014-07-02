@@ -13,8 +13,10 @@
 #import "STOauthLoginViewController.h"
 #import "TransactionViewController.h"
 #import "STAppDelegate.h"
+#import "DemosTableViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
+#import <PayPalHereSDK/PPHPaymentLimits.h>
 
 @interface STOauthLoginViewController ()
 
@@ -118,7 +120,7 @@
     // Did we successfully log in in the past?  If so, let's prefill the username box with
     // that last-good user name.
     NSString *lastGoodUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastgoodusername"];
-    if(lastGoodUserName) {
+    if (lastGoodUserName) {
         self.usernameField.text = lastGoodUserName;
     }
 }
@@ -251,7 +253,9 @@
                           andMessage:[NSString stringWithFormat: @"The Server returned an error: [%@]",
                                       [error localizedDescription]]];
 
-		  NSLog(@"The Heroku login call failed: [%@]", error);
+            NSLog(@"The Heroku login call failed: [%@]", error);
+            self.loginButton.enabled = YES;
+
 
 		}];
     
@@ -416,21 +420,10 @@
  */
 - (void)transitionToTransactionViewController
 {
-	TransactionViewController *transactionVC = nil;
-    
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		transactionVC = [[TransactionViewController alloc]
-                         initWithNibName:@"TransactionViewController_iPhone"
-                         bundle:nil];
-	}
-	else {
-        NSLog(@"stepping in ipad detection");
-		transactionVC = [[TransactionViewController alloc]
-                         initWithNibName:@"TransactionViewController_iPad"
-                         bundle:nil];
-	}
-    
-    self.navigationController.viewControllers = @[transactionVC];
+
+    DemosTableViewController *vc = [[DemosTableViewController alloc] init];
+    self.navigationController.viewControllers = @[vc];
+
 }
 
 - (void)dismissKeyboard
@@ -480,8 +473,8 @@
     
   self.serviceArray =
     @[
-       [NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"],
-       [NSURL URLWithString:@"https://www.sandbox.paypal.com/webapps/"],
+       [NSURL URLWithString:STAGE],
+       [NSURL URLWithString:SANDBOX],
        [NSNull null]
     ];
 
@@ -526,7 +519,7 @@
     
     
     //If we want Live then use nil as the base URL.
-    if([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
+    if ([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
         testBaseUrlForTheSDKToUse = nil;
     }
     

@@ -8,21 +8,29 @@
 
 #import "PaymentCompleteViewController.h"
 #import "ReceiptInfoViewController.h"
+#import "InvoicesManager.h"
+
+#import <PayPalHereSDK/PPHCardEnums.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHError.h>
 
 @interface PaymentCompleteViewController ()
-
+@property (strong, nonatomic) PPHTransactionResponse *transactionResponse;
+@property (nonatomic, retain) IBOutlet UIButton *textButton;
+@property (nonatomic, retain) IBOutlet UIButton *emailButton;
+@property (nonatomic, retain) IBOutlet UIButton *noThanksButton;
 @end
 
 @implementation PaymentCompleteViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil
+          forResponse:(PPHTransactionResponse *)transactionResponse {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.transactionResponse = transactionResponse;
     }
     return self;
 }
@@ -31,17 +39,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.textButton.layer.cornerRadius = 10;
+    self.emailButton.layer.cornerRadius = 10;
+    self.noThanksButton.layer.cornerRadius = 10;
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(_transactionResponse.error == nil) {
+
+    self.navigationItem.hidesBackButton = YES;
+
+    if (_transactionResponse.error == nil) {
         self.paymentStatus.text = @"Payment Successful";
-        if(_transactionResponse.record.transactionId != nil) {
+        [InvoicesManager removeTransaction:_transactionResponse.record.invoice];
+        
+        if (_transactionResponse.record.transactionId != nil) {
             self.paymentDetails.text = [NSString stringWithFormat: @"Transaction Id : %@", _transactionResponse.record.transactionId];
         } else {
             self.paymentDetails.text = [NSString stringWithFormat: @"Invoice Id : %@", _transactionResponse.record.payPalInvoiceId];
+        }
+        if ([_transactionResponse.record encryptedCardData]) {
+            self.paymentDetails.text = [NSString stringWithFormat:@"%@\n Card-Type is %@", self.paymentDetails.text, [self stringFromCardType:_transactionResponse.record.encryptedCardData.cardType]];
         }
     }
     else {
@@ -86,6 +106,39 @@
     receiptInfoViewController.isEmail = isEmail;
     receiptInfoViewController.transactionRecord = _transactionResponse.record;
     [self.navigationController pushViewController:receiptInfoViewController animated:YES];
+}
+
+-(NSString *)stringFromCardType: (PPHCreditCardType) cardType {
+    switch (cardType) {
+        case ePPHCreditCardTypeUnknown:
+            return @"Unknown";
+            break;
+        case ePPHCreditCardTypeVisa:
+            return @"Visa";
+            break;
+        case ePPHCreditCardTypeMastercard:
+            return @"Mastercard";
+            break;
+        case ePPHCreditCardTypeDiscover:
+            return @"Discover";
+            break;
+        case ePPHCreditCardTypeAmEx:
+            return @"AmEx";
+            break;
+        case ePPHCreditCardTypeJCB:
+            return @"JCB";
+            break;
+        case ePPHCreditCardTypeMaestro:
+            return @"Maestro";
+            break;
+        case ePPHCreditCardTypePayPal:
+            return @"PayPal!";
+            break;
+        default:
+            return @"";
+            break;
+    }
+    return @"";
 }
 
 @end

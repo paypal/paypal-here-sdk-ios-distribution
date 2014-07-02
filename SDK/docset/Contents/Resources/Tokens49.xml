@@ -13,12 +13,12 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:isInitial:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</TokenIdentifier>
 			<Abstract type="html">Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
 NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required isInitial:(BOOL)initial</Declaration>
+			<Declaration>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required isInitial:(BOOL)initial withEstimatedDuration:(NSTimeInterval)estimatedDuration</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
@@ -32,10 +32,13 @@ NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
 				</Parameter><Parameter>
 					<Name>initial</Name>
 					<Abstract type="html">whether this is the initial upgrade to the reader</Abstract>
+				</Parameter><Parameter>
+					<Name>estimatedDuration</Name>
+					<Abstract type="html">the estimated time the update will take to apply in total</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:</Anchor>
+			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		

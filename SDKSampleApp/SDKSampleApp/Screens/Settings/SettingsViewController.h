@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PPHCardReaderDelegate.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
-
+#import "STServices.h"
 
 @interface SettingsViewController : UIViewController <
 PPHSimpleCardReaderDelegate,
@@ -22,7 +22,6 @@ CLLocationManagerDelegate
 @property (weak, nonatomic) IBOutlet UISwitch *checkinSwitch;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *checkinMerchantSpinny;
 @property (weak, nonatomic) IBOutlet UILabel *sampleAppVersion;
-
 
 - (IBAction)onReaderDetailsPressed:(id)sender;
 - (IBAction)onCheckinButtonToggled:(id)sender;

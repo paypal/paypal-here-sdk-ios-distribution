@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="STCardSwipeViewController">
+            <connections>
+                <outlet property="swipeImageView" destination="xbl-mE-Lvs" id="IcJ-hl-U4d"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Reader Listening for Swipes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="264" translatesAutoresizingMaskIntoConstraints="NO" id="oGh-En-ctZ">
+                    <rect key="frame" x="28" y="71" width="264" height="63"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="264" id="USf-Cw-sS3"/>
+                        <constraint firstAttribute="width" secondItem="oGh-En-ctZ" secondAttribute="height" multiplier="88:21" id="izE-K0-lIa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-mE-Lvs">
+                    <rect key="frame" x="28" y="173" width="265" height="149"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="265" id="Q2h-nW-eOW"/>
+                        <constraint firstAttribute="width" secondItem="xbl-mE-Lvs" secondAttribute="height" multiplier="265:149" id="YXA-on-FT5"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="oGh-En-ctZ" secondAttribute="centerX" id="DDL-MJ-7an"/>
+                <constraint firstItem="xbl-mE-Lvs" firstAttribute="centerX" secondItem="oGh-En-ctZ" secondAttribute="centerX" constant="0.5" id="DH1-WD-kZF"/>
+                <constraint firstItem="xbl-mE-Lvs" firstAttribute="top" secondItem="oGh-En-ctZ" secondAttribute="bottom" constant="39" id="oeb-fJ-M22"/>
+                <constraint firstItem="oGh-En-ctZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="71" id="p5g-Fi-RfQ"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="swipe.jpg" width="287" height="176"/>
+    </resources>
+</document>

@@ -165,26 +165,50 @@ attempting to collect payment.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCapture:forInvoice:withAmount:asFinal:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Capture funds against an authorization</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Authorize funds against a card that has been passed in via manual entry, or user key-in.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCapture:(PPHCardChargeResponse *)authorization forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice withAmount:(PPHAmount *)amount asFinal:(BOOL)finalCapture completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">for PPHCardNotPresentData passed in manual card data</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/beginCapture:forInvoice:withAmount:asFinal:completionHandler:</Anchor>
+			<Anchor>//api/name/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:</Anchor>
             <NodeRef refid="36"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginVoid:forInvoice:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">Capture funds against an authorization</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCaptureForTransactionId:(NSString *)txId withAmount:(PPHAmount *)amount andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice asFinal:(BOOL)finalCapture withCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</Anchor>
+            <NodeRef refid="36"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginVoidForTransactionId:withInvoice:andCompletionHandler:</TokenIdentifier>
 			<Abstract type="html">Void an existing authorization</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginVoid:(PPHCardChargeResponse *)authorization forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginVoidForTransactionId:(NSString *)txId withInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice andCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
 			
 			
-			<Anchor>//api/name/beginVoid:forInvoice:completionHandler:</Anchor>
+			<Anchor>//api/name/beginVoidForTransactionId:withInvoice:andCompletionHandler:</Anchor>
             <NodeRef refid="36"/>
 		</Token>
 		

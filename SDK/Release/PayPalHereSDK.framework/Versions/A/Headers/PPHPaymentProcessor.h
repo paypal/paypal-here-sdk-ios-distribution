@@ -9,6 +9,7 @@
 #import "PPHCardNotPresentData.h"
 #import "PPHInvoiceConstants.h"
 #import "PPHReceiptDestination.h"
+#import "PPHTransactionRecord.h"
 
 /*!
  * All network requests around payment will use this id (which can be passed to the network delegate to cancel them)
@@ -82,6 +83,7 @@
  */
 @property (nonatomic,strong) NSString* responseCode;
 @end
+
 
 /*!
  * Additional response data for refund eligibility requests
@@ -171,14 +173,24 @@
 -(void)beginCardNotPresentChargeAttempt: (PPHCardNotPresentData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
 
 /*!
+ * Authorize funds against a card that has been passed in via manual entry, or user key-in.
+ * @param card for PPHCardNotPresentData passed in manual card data
+ * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+ * attempting to collect payment.
+ * @param completionHandler called when the action has completed
+ */
+-(void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)card forInvoice:(id<PPHInvoiceProtocol>)invoice
+    completionHandler:(void (^)(PPHCardChargeResponse *))completionHandler;
+
+/*!
  * Capture funds against an authorization
  */
--(void)beginCapture: (PPHCardChargeResponse *) authorization forInvoice: (id<PPHInvoiceProtocol>) invoice withAmount: (PPHAmount *) amount asFinal: (BOOL) finalCapture completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
+-(void)beginCaptureForTransactionId:(NSString *)txId withAmount:(PPHAmount *)amount andInvoice:(id<PPHInvoiceProtocol>)invoice asFinal:(BOOL)finalCapture withCompletionHandler:(void (^)(PPHCardChargeResponse *))completionHandler;
 
 /*!
  * Void an existing authorization
  */
--(void)beginVoid: (PPHCardChargeResponse *) authorization forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^) (PPHCardChargeResponse *response)) completionHandler;
+-(void)beginVoidForTransactionId:(NSString *)txId withInvoice:(id<PPHInvoiceProtocol>)invoice andCompletionHandler:(void (^)(PPHCardChargeResponse *))completionHandler;
 
 /*!
  * Mark an invoice as having been paid by an external payment type such as Cash or Check.

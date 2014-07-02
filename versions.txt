@@ -59,3 +59,16 @@ immediately if something is going wrong in the SDK instances.
     to re-invoke constructor.
   - Added more functional and unit tests to TransactionManager to reinforce these changes.
 
+1.3.6
+ What's new:
+  - CardType property is available through PPHCardSwipeData. This now allows you to determine the card brand such as 
+    VISA, MASTER, AMEX etc when a card is swiped.
+  - PPHAccountStatus enum has more fine grained description of Merchant account’s status such as whether merchant is
+    eligible, ineligible, restricted etc.
+  - Updates to Sample App to showcase more use cases.
+  - A bug in the way the app’s version info was getting logged has now been fixed.
+  - Various bug fixes in the state machine for the TransactionManager.
+  - String localization for the error messages from backend.
+  - Added more unit and functional tests to the SDK tests.
+
+

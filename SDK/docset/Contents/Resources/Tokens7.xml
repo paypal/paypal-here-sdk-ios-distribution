@@ -97,21 +97,6 @@ disconnect the reader.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/endTransaction</TokenIdentifier>
-			<Abstract type="html">Once a transaction is complete, either via our processing services or out-of-band processing
-such as cash or non-PayPal mechanisms, call endTransaction to shut down the reader. Since
-some readers are battery powered, you should call this as soon as reasonable. The SDK will
-automatically take care of this when your app is suspended or interrupted.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
-			
-			<Declaration>- (void)endTransaction</Declaration>
-			
-			
-			<Anchor>//api/name/endTransaction</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/setPreferenceOrder:</TokenIdentifier>
 			<Abstract type="html">For accessory based readers, there is the possibility that multiple capable devices may
 be connected to the phone at the same time. In this case, specifying a preference
@@ -165,6 +150,42 @@ for the target reader.</Abstract>
 			</Parameters>
 			
 			<Anchor>//api/name/beginUpgrade:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/setIsInPinRetryMode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isInPinRetryMode</Declaration>
+			
+			
+			<Anchor>//api/name/isInPinRetryMode</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/isInPinRetryMode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isInPinRetryMode</Declaration>
+			
+			
+			<Anchor>//api/name/isInPinRetryMode</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderManager/isInPinRetryMode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isInPinRetryMode</Declaration>
+			
+			
+			<Anchor>//api/name/isInPinRetryMode</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		

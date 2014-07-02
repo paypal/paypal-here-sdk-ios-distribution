@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHLocationCheckinType.html">
+	<File path="Constants/PPHLocationStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHLocationCheckinType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHLocationStatus</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
             
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinTypeNone</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHLocationStatusUnknown</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinTypeNone</Declaration>
+            <Declaration>ePPHLocationStatusUnknown</Declaration>
             
             <DeclaredIn>PPHLocation.h</DeclaredIn>
             
@@ -24,9 +24,19 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinTypeStandard</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHLocationStatusActive</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinTypeStandard</Declaration>
+            <Declaration>ePPHLocationStatusActive</Declaration>
+            
+            <DeclaredIn>PPHLocation.h</DeclaredIn>
+            
+            <NodeRef refid="71"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHLocationStatusDeleted</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHLocationStatusDeleted</Declaration>
             
             <DeclaredIn>PPHLocation.h</DeclaredIn>
             

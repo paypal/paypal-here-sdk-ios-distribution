@@ -31,12 +31,20 @@
 #pragma mark -
 #pragma mark Initialization and Exporting
 /*!
- Finds the invoice's item that shares an itemId and updates it copying the attributes of the passed PPHInvoiceItem except for quantity which is used as a delta. If no item is found the passed item is added to the invoice.
+ Finds the invoice with the specified PayPal Invoice ID (a guid-like value starting with INV)
  @param invoiceId NSString The ID of the invoice to fetch from the server. You can acquire an invoice ID from doing a SearchInvoices API call or using one from saving a previous invoice.
  @param context NSManagedObjectContext The context to reconcile the invoice with, nil is you would not like to reconcile at this time.
  @param completionHandler PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.
  */
 + (void)downloadInvoiceForInvoiceId:(NSString*)invoiceId context:(PPHInvoiceItemContext*)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler;
+
+/*!
+ Finds the invoice with the specified merchant reference number
+ @param referenceNumber the merchant reference number on the invoice
+ @param context NSManagedObjectContext The context to reconcile the invoice with, nil is you would not like to reconcile at this time.
+ @param completionHandler PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.
+ */
++ (void)downloadInvoiceForMerchantReferenceNumber:(NSString *)referenceNumber context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler;
 
 /*!
  Initialize the invoice with just a currency. The go to way to make a brand new invoice
@@ -75,6 +83,12 @@
  @param amount The amount of the item
  */
 - (id)initWithItem: (NSString*) item forAmount: (PPHAmount*) amount;
+
+/*!
+ Create a new invoice using the data from this invoice.
+ This copies everything except the data that defines it as a unique invoice to PayPal.
+ */
+- (instancetype)copyAsTemplate;
 
 /*!
  Compile the invoice's data to a format that is ready to save as an InvoiceType parameter to an API call.
@@ -150,6 +164,8 @@
 @property (nonatomic,readonly) PPHInvoiceStatus status;
 /*! YES if invoice origin is Web */
 @property (nonatomic,readonly) BOOL originatedOnWeb;
+/*! The terms associated with the invoice, such as return policy */
+@property (nonatomic,strong) NSString *terms;
 
 #pragma mark -
 #pragma mark Calculated values
