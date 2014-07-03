@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.transactionAmountField.delegate = self;
 }
 
@@ -108,14 +109,38 @@
         PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"US"];
         [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
         
-        //Calling processPaymentWithSDKUI here...
+        PPHAvailablePaymentTypes paymentPermissions = [[PayPalHereSDK activeMerchant] payPalAccount].availablePaymentTypes;
         
-        /*[tm processPaymentUsingSDKUI_WithPaymentType:ePPHPaymentMethodChipCard withTransactionController:nil completionHandler:^(PPHTransactionResponse *record) {
-         
-        }];*/
+        if (ePPHAvailablePaymentTypeChip & paymentPermissions) {
+            
+            //Code is not yet implemented
+            
+            /*[tm processPaymentUsingSDKUI_WithPaymentType:ePPHPaymentMethodChipCard withTransactionController:nil completionHandler:^(PPHTransactionResponse *record) {
+                
+                
+                
+            }];*/
+            
+        } else {
+            
+            [self showAlertWithTitle:@"Payment Failure" andMessage:@"Unfortunately you can not take EMV payments, please call PayPal and get the appropriate permissions."];
+            
+        }
         
     }
     
+}
+
+-(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:nil
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    
+    [alertView show];
 }
 
 - (IBAction)salesHistoryButtonPressed:(id)sender {
