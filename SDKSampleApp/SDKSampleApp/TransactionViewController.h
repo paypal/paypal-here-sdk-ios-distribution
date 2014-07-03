@@ -7,34 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import "ItemizedPurchaseButton.h"
+#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "STServices.h"
 
-@interface TransactionViewController : UIViewController <
-UITextFieldDelegate,
-UITableViewDataSource
->
-
-@property (weak, nonatomic) IBOutlet UILabel *enterAmountLabel;
-@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *itemizedModeSegmentedControl;
-@property (weak, nonatomic) IBOutlet UIButton *appleButton;
-@property (weak, nonatomic) IBOutlet UIButton *bananaButton;
-@property (weak, nonatomic) IBOutlet UIButton *orangeButton;
-@property (weak, nonatomic) IBOutlet UIButton *strawberryButton;
-@property (weak, nonatomic) IBOutlet UITableView *shoppingCartTable;
-@property (weak, nonatomic) IBOutlet UILabel *longPressExplanationLabel;
-
-- (IBAction)itemizedModeChanged:(id)sender;
-- (IBAction)onChargePressed:(id)sender;
-- (IBAction)onSettingsPressed:(id)sender;
-- (IBAction)onRefundsPressed:(id)sender;
-
+@protocol PaymentProtocol <NSObject>
+@required
+- (kSAFlow) purchase:(PPHInvoice *)invoice;
 @end
 
+@interface TransactionViewController : UIViewController <UITableViewDataSource>
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil aDelegate: (id) delegate;
+- (void) purchaseWithInvoice:(PPHInvoice *)invoice;
 
-@interface TransactionButton : ItemizedPurchaseButton
-- (id) initWithTransactionVC:(TransactionViewController *)vc forItem:(NSString *)item onButton:(UIButton *)aButton;
+@property (nonatomic, strong) id<PaymentProtocol> delegate;
 @end
 
 

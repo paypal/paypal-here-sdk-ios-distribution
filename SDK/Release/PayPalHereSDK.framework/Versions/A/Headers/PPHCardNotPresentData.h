@@ -4,19 +4,9 @@
 //  Copyright (c) 2012 PayPal. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSInteger, PPHCreditCardType) {
-    ePPHCreditCardTypeUnknown = 0,
-    ePPHCreditCardTypeVisa = 1,
-    ePPHCreditCardTypeMastercard = 2,
-    ePPHCreditCardTypeDiscover = 3,
-    ePPHCreditCardTypeAmEx = 4,
-    ePPHCreditCardTypeJCB = 5,
-    ePPHCreditCardTypeMaestro = 6,
-    ePPHCreditCardTypePayPal = 7
-};
-
+#ifndef _PPHCARDNOTPRESENTDATA_H_
+#define _PPHCARDNOTPRESENTDATA_H_
+#import "PPHCardEnums.h"
 
 /*!
  * A container for manually entered (or scanned) card data
@@ -56,3 +46,5 @@ typedef NS_ENUM(NSInteger, PPHCreditCardType) {
 @property (nonatomic, readonly) PPHCreditCardType cardType;
 
 @end
+
+#endif

@@ -14,7 +14,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoice/downloadInvoiceForInvoiceId:context:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Finds the invoice&apos;s item that shares an itemId and updates it copying the attributes of the passed PPHInvoiceItem except for quantity which is used as a delta. If no item is found the passed item is added to the invoice.</Abstract>
+			<Abstract type="html">Finds the invoice with the specified PayPal Invoice ID (a guid-like value starting with INV)</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
 			<Declaration>+ (void)downloadInvoiceForInvoiceId:(NSString *)invoiceId context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler</Declaration>
@@ -32,6 +32,29 @@
 			</Parameters>
 			
 			<Anchor>//api/name/downloadInvoiceForInvoiceId:context:completionHandler:</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoice/downloadInvoiceForMerchantReferenceNumber:context:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Finds the invoice with the specified merchant reference number</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>+ (void)downloadInvoiceForMerchantReferenceNumber:(NSString *)referenceNumber context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>referenceNumber</Name>
+					<Abstract type="html">the merchant reference number on the invoice</Abstract>
+				</Parameter><Parameter>
+					<Name>context</Name>
+					<Abstract type="html">NSManagedObjectContext The context to reconcile the invoice with, nil is you would not like to reconcile at this time.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/downloadInvoiceForMerchantReferenceNumber:context:completionHandler:</Anchor>
             <NodeRef refid="22"/>
 		</Token>
 		

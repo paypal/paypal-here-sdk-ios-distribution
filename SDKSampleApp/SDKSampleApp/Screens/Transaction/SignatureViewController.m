@@ -40,8 +40,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
+    [super viewWillAppear:animated];    
     
     UIView *parent = self.view;
     CGRect r = CGRectMake(5, 5, parent.frame.size.width - 10, parent.frame.size.height - 50);
@@ -103,8 +102,9 @@
 {
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]
                                                                     initWithNibName:@"PaymentCompleteViewController"
-                                                                    bundle:nil];
-    paymentCompleteViewController.transactionResponse = response;
+                                                                    bundle:nil
+                                                                    forResponse:response];
+    
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
     
 }

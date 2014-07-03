@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentCompleteViewController">
             <connections>
+                <outlet property="emailButton" destination="Yg9-iA-enL" id="q09-Q4-fvG"/>
+                <outlet property="noThanksButton" destination="Twa-ZZ-xTZ" id="PqZ-8y-Xip"/>
                 <outlet property="paymentDetails" destination="SZ4-IQ-wSX" id="4IP-wY-yep"/>
                 <outlet property="paymentStatus" destination="pEX-Hk-E2x" id="cWz-OC-Yzy"/>
+                <outlet property="textButton" destination="WZp-xh-dEZ" id="ZgP-pK-CUy"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,21 +20,34 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment completed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEX-Hk-E2x">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment completed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEX-Hk-E2x">
                     <rect key="frame" x="43" y="83" width="234" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="c6d-ew-Nrv"/>
+                        <constraint firstAttribute="width" constant="234" id="eKW-xk-qFK"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Would you like a receipt ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pV3-M5-LlT">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like a receipt ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pV3-M5-LlT">
                     <rect key="frame" x="62" y="230" width="197" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="S1a-59-9Ou"/>
+                        <constraint firstAttribute="width" constant="197" id="WUW-Kp-Q0Z"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yg9-iA-enL">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yg9-iA-enL">
                     <rect key="frame" x="20" y="279" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="PFI-LJ-jar"/>
+                        <constraint firstAttribute="height" constant="30" id="who-BQ-yuy"/>
+                    </constraints>
                     <state key="normal" title="Email">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -39,9 +55,14 @@
                         <action selector="onEmailPressed:" destination="-1" eventType="touchUpInside" id="rea-dB-Nyy"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZp-xh-dEZ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZp-xh-dEZ">
                     <rect key="frame" x="20" y="317" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="b3j-9y-O2F"/>
+                        <constraint firstAttribute="width" constant="280" id="cBg-h9-F85"/>
+                    </constraints>
                     <state key="normal" title="Text">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -49,9 +70,14 @@
                         <action selector="onTextPressed:" destination="-1" eventType="touchUpInside" id="dNm-fW-ll0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twa-ZZ-xTZ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twa-ZZ-xTZ">
                     <rect key="frame" x="20" y="355" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="VFo-Q8-3Vw"/>
+                        <constraint firstAttribute="width" constant="280" id="orn-1Y-wo1"/>
+                    </constraints>
                     <state key="normal" title="No Thanks">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -59,14 +85,32 @@
                         <action selector="onNoThanksPressed:" destination="-1" eventType="touchUpInside" id="ZdS-Bv-I0Z"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ4-IQ-wSX">
-                    <rect key="frame" x="20" y="134" width="280" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="SZ4-IQ-wSX">
+                    <rect key="frame" x="20" y="134" width="280" height="69"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="0Gx-hF-v2C"/>
+                        <constraint firstAttribute="height" constant="69" id="41p-Et-hpP"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Twa-ZZ-xTZ" firstAttribute="top" secondItem="WZp-xh-dEZ" secondAttribute="bottom" constant="8" id="AvO-SQ-wj5"/>
+                <constraint firstItem="pV3-M5-LlT" firstAttribute="top" secondItem="SZ4-IQ-wSX" secondAttribute="bottom" constant="27" id="K13-hh-qsh"/>
+                <constraint firstAttribute="centerX" secondItem="Twa-ZZ-xTZ" secondAttribute="centerX" id="S8k-8H-GR2"/>
+                <constraint firstAttribute="centerX" secondItem="pEX-Hk-E2x" secondAttribute="centerX" id="TnI-Ze-g0z"/>
+                <constraint firstItem="SZ4-IQ-wSX" firstAttribute="top" secondItem="pEX-Hk-E2x" secondAttribute="bottom" constant="16" id="UwX-LF-YvO"/>
+                <constraint firstItem="WZp-xh-dEZ" firstAttribute="top" secondItem="Yg9-iA-enL" secondAttribute="bottom" constant="8" id="Vko-Y7-n3Q"/>
+                <constraint firstItem="pEX-Hk-E2x" firstAttribute="top" secondItem="1" secondAttribute="top" constant="83" id="YI0-jy-hMT"/>
+                <constraint firstAttribute="centerX" secondItem="pV3-M5-LlT" secondAttribute="centerX" constant="-0.5" id="Zbr-w1-e9L"/>
+                <constraint firstItem="Yg9-iA-enL" firstAttribute="top" secondItem="pV3-M5-LlT" secondAttribute="bottom" constant="28" id="bh2-xu-cbt"/>
+                <constraint firstAttribute="centerX" secondItem="WZp-xh-dEZ" secondAttribute="centerX" id="h8v-jv-5XA"/>
+                <constraint firstAttribute="centerX" secondItem="SZ4-IQ-wSX" secondAttribute="centerX" id="kWs-Kl-7HA"/>
+                <constraint firstAttribute="centerX" secondItem="Yg9-iA-enL" secondAttribute="centerX" id="uN5-fu-Zc7"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

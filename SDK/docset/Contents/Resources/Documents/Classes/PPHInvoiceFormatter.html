@@ -37,13 +37,6 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/columnWidth">&nbsp;&nbsp;&nbsp;&nbsp;columnWidth</option>
-	
-	<option value="//api/name/receiptType">&nbsp;&nbsp;&nbsp;&nbsp;receiptType</option>
-	
-	
 	
 	
 	
@@ -54,9 +47,7 @@
 	
 	<option value="//api/name/formattedStringForInvoice:">&nbsp;&nbsp;&nbsp;&nbsp;- formattedStringForInvoice:</option>
 	
-	<option value="//api/name/htmlStringForInvoice:">&nbsp;&nbsp;&nbsp;&nbsp;- htmlStringForInvoice:</option>
-	
-	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	<option value="//api/name/formattedStringForInvoice:withFormatData:">&nbsp;&nbsp;&nbsp;&nbsp;- formattedStringForInvoice:withFormatData:</option>
 	
 	
 	
@@ -80,14 +71,6 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/columnWidth">columnWidth</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptType">receiptType</a></span></li>
-	
-</ul></li>
-
 
 
 
@@ -98,9 +81,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/formattedStringForInvoice:">formattedStringForInvoice:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/htmlStringForInvoice:">htmlStringForInvoice:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/formattedStringForInvoice:withFormatData:">formattedStringForInvoice:withFormatData:</a></span></li>
 	
 </ul></li>
 
@@ -158,7 +139,7 @@ are typically hosted by PayPal, but this class is mainly useful for producing pr
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<code><a href="#//api/name/formattedStringForInvoice:withFormatData:">&ndash;&nbsp;formattedStringForInvoice:withFormatData:</a></code>
 	</span>
 	
 	
@@ -170,27 +151,9 @@ are typically hosted by PayPal, but this class is mainly useful for producing pr
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/htmlStringForInvoice:">&ndash;&nbsp;htmlStringForInvoice:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/formattedImageForInvoice:withWidth:">&ndash;&nbsp;formattedImageForInvoice:withWidth:</a></code>
 	</span>
 	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/columnWidth">&nbsp;&nbsp;columnWidth</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/receiptType">&nbsp;&nbsp;receiptType</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -200,94 +163,6 @@ are typically hosted by PayPal, but this class is mainly useful for producing pr
 					
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/columnWidth" title="columnWidth"></a>
-	<h3 class="subsubtitle method-title">columnWidth</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The number of columns used in the receipt (since we use fixed width fonts in all cases)</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger columnWidth</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The number of columns used in the receipt (since we use fixed width fonts in all cases)</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHInvoiceFormatter.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/receiptType" title="receiptType"></a>
-	<h3 class="subsubtitle method-title">receiptType</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The type of receipt that should be produced by this formatter. You can change this between calls.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The type of receipt that should be produced by this formatter. You can change this between calls.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHInvoiceFormatter.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					
@@ -411,20 +286,19 @@ a fixed width font</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/htmlStringForInvoice:" title="htmlStringForInvoice:"></a>
-	<h3 class="subsubtitle method-title">htmlStringForInvoice:</h3>
+	<a name="//api/name/formattedStringForInvoice:withFormatData:" title="formattedStringForInvoice:withFormatData:"></a>
+	<h3 class="subsubtitle method-title">formattedStringForInvoice:withFormatData:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Format the invoice according to the formatter settings and return an HTML string suitable for printing.
-If you want to customize the look and feel, the output will contain &ldquo;targetable&rdquo; CSS classes and structure
-to allow a decent amount of customization, and will be XHTML for easy modification.</p>
+		<p>Format the invoice according to the formatter settings with the given properties and return a string suitable for printing in
+a fixed width font</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)htmlStringForInvoice:(PPHInvoice *)<em>invoice</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)formattedStringForInvoice:(PPHInvoice *)<em>invoice</em> withFormatData:(PPHInvoiceFormatterData *)<em>data</em></code></div>
 
     
 	
@@ -446,50 +320,8 @@ to allow a decent amount of customization, and will be XHTML for easy modificati
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Format the invoice according to the formatter settings and return an HTML string suitable for printing.
-If you want to customize the look and feel, the output will contain &ldquo;targetable&rdquo; CSS classes and structure
-to allow a decent amount of customization, and will be XHTML for easy modification.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHInvoiceFormatter.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="subsubtitle method-title">init</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initialize the invoice formatter with default properties, namely character based with a 40 column width</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initialize the invoice formatter with default properties, namely character based with a 40 column width</p>
+		<p>Format the invoice according to the formatter settings with the given properties and return a string suitable for printing in
+a fixed width font</p>
 	</div>
 	
 	
@@ -521,7 +353,7 @@ to allow a decent amount of customization, and will be XHTML for easy modificati
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-04-09)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-06-26)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

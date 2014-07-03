@@ -72,5 +72,29 @@ waiting for the app to collect a signature from the customer and call the finali
             <NodeRef refid="77"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_TransactionCancelled</TokenIdentifier>
+            <Abstract type="html">Event specifying that transaction has been cancelled. This will happen only in case of EMV Payments when te user pulls
+the card out of the reader when transaction is going on
+     </Abstract>
+            <Declaration>ePPHTransactionType_TransactionCancelled</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_TransactionDeclined</TokenIdentifier>
+            <Abstract type="html">Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal
+declines the transaction for some reason.
+     </Abstract>
+            <Declaration>ePPHTransactionType_TransactionDeclined</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="77"/>
+        </Token>
+        
 	</File>
 </Tokens>

@@ -9,25 +9,45 @@
 
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
 
 #import "PaymentMethodViewController.h"
 #import "SignatureViewController.h"
-#import "AddTipViewController.h"
 #import "CheckedInCustomerCell.h"
 #import "PaymentCompleteViewController.h"
 #import "CheckedInCustomerViewController.h"
 #import "ManualCardEntryViewController.h"
 #import "STAppDelegate.h"
+#import "InvoicesManager.h"
 
 @interface PaymentMethodViewController ()
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
+@property PPHTransactionResponse *transactionResponse;
+
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
 @property BOOL isCashTransaction;
-@property PPHTransactionResponse *transactionResponse;
+
+@property (nonatomic, retain) IBOutlet UITextField *tipTextField;
+@property (nonatomic, retain) IBOutlet UITextField *discountTextField;
+
+@property (nonatomic, retain) IBOutlet UIButton *manualButton;
+@property (nonatomic, retain) IBOutlet UIButton *checkinButton;
+@property (nonatomic, retain) IBOutlet UIButton *cashButton;
+
+@property (strong, nonatomic) UIPageViewController *pageController;
+@property (weak, nonatomic) IBOutlet UILabel *subtotalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taxLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
+
+
+- (IBAction)payWithManualEntryCard:(id)sender;
+- (IBAction)payWithCashEntryCard:(id)sender;
+- (IBAction)payWithCheckedInClient:(id)sender;
+- (IBAction)startNewTransaction:(id)sender;
 
 @end
 
@@ -48,6 +68,15 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.manualButton.layer.cornerRadius = 10;
+    self.checkinButton.layer.cornerRadius = 10;
+    self.cashButton.layer.cornerRadius = 10;
+    
+    self.tipTextField.delegate = self;
+    self.discountTextField.delegate = self;
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(startNewTransaction:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 }
 
 -(void)didReceiveMemoryWarning
@@ -59,22 +88,21 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    [self updatePaymentInformationLabels];
     
-    //NSLocale *locale = [NSLocale currentLocale];
-    
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHInvoice *invoice = tm.currentInvoice;
-    NSString *subTotalStr = [invoice.subTotal description];
-    NSString *totalStr = [[invoice.totalAmount amount] description];
-    NSString *tipStr = [invoice.gratuity description];
-    NSString *totalTaxStr = [invoice.tax description];
-    
-    self.subtotalLabel.text = subTotalStr;
-    self.totalLabel.text = totalStr;
-    self.tipLabel.text = tipStr;
-    self.taxLabel.text = totalTaxStr;
     [self.processingTransactionSpinny stopAnimating];
     self.processingTransactionSpinny.hidden = YES;
+}
+
+-(void)updatePaymentInformationLabels {
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    PPHInvoice *invoice = tm.currentInvoice;
+    self.tipTextField.text = [NSString stringWithFormat:@"%0.2f", [invoice.gratuity doubleValue]];
+    self.discountTextField.text = [NSString stringWithFormat:@"%0.2f", [invoice.discountAmount doubleValue]];
+    self.taxLabel.text = [NSString stringWithFormat:@"%0.2f", [invoice.tax doubleValue]];
+    self.subtotalLabel.text = [NSString stringWithFormat:@"%0.2f", [invoice.subTotal doubleValue]];
+    self.totalLabel.text = [NSString stringWithFormat:@"%0.2f", [[invoice.totalAmount amount] doubleValue]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -114,29 +142,22 @@
 
 -(void) showPaymentCompeleteView
 {
-    if(!_isCashTransaction && _transactionResponse.record != nil) {
+    if (!_isCashTransaction && _transactionResponse.record != nil) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
-        [appDelegate.transactionRecords addObject:_transactionResponse.record];
+        [appDelegate.refundableRecords addObject:_transactionResponse.record];
     }
     
-    PaymentCompleteViewController *paymentCompleteViewController;
+    PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController_iPhone" bundle:nil];
-    } else {
-        paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController_iPad" bundle:nil];
-    }
-    
-    paymentCompleteViewController.transactionResponse = _transactionResponse;
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
 }
 
 -(IBAction)payWithCheckedInClient:(id)sender
 {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(!appDelegate.isMerchantCheckedin){
+    if (!appDelegate.isMerchantCheckedin){
         UIAlertView *alert = [ [UIAlertView alloc] initWithTitle:@"Alert"
                                                          message:@"You are not checked-in. Please go to Settings and check-in first to take payments through this channel"
                                                         delegate:self
@@ -162,23 +183,10 @@
     
 }
 
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    
-    [alertView show];
-}
-
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if(_doneWithPayScreen)
+    if (_doneWithPayScreen)
         [self showPaymentCompeleteView];
 }
 
@@ -214,9 +222,12 @@
 #pragma mark -
 #pragma mark PPHTransactionManagerDelegate overrides
 
+/*
+ * Called when the transaction manager wants to communicate certain events.
+ */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-     if(event.eventType == ePPHTransactionType_Idle) {
+     if (event.eventType == ePPHTransactionType_Idle) {
          [self.processingTransactionSpinny stopAnimating];
          self.processingTransactionSpinny.hidden = YES;
      }
@@ -226,22 +237,21 @@
      }
      
      NSLog(@"Our local instance of PPHTransactionWatcher picked up a PPHTransactionManager event notification: <%@>", event);
-     if(event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
+     if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
      
          self.waitingForCardSwipe = NO;
      
-         //Now ask to authorize (and take) payment.
          [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                        withTransactionController:self
                                                                completionHandler:^(PPHTransactionResponse *response) {
                                                                    self.transactionResponse = response;
-                                                                   if(response.error) {
+                                                                   if (response.error) {
                                                                        [self showPaymentCompeleteView];
                                                                    }
                                                                    else {
                                                                        // Is a signature required for this payment?  If so
                                                                        // then let's collect a signature and provide it to the SDK.
-                                                                       if(response.isSignatureRequiredToFinalize) {
+                                                                       if (response.isSignatureRequiredToFinalize) {
                                                                            [self collectSignatureAndFinalizePurchaseWithRecord];
                                                                        }
                                                                        else {
@@ -253,6 +263,7 @@
          
                                                                    }
                                                                }];
+         
      }
 }
 
@@ -274,15 +285,45 @@
     [self.navigationController pushViewController:settings animated:YES];
 }
 
-- (IBAction)addTip:(id)sender
-{
-    AddTipViewController *addTipVC = nil;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPhone" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    } else {
-        addTipVC = [[AddTipViewController alloc] initWithNibName:@"AddTipViewController_iPad" bundle:nil forInvoice:[[PayPalHereSDK sharedTransactionManager] currentInvoice]];
-    }
-    [self.navigationController pushViewController:addTipVC animated:YES];
+
+- (IBAction)startNewTransaction:(id)sender {
+    PPHInvoice *invoice = [[PayPalHereSDK sharedTransactionManager] currentInvoice];
+    [InvoicesManager addTransaction:invoice];
+    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    // Update the string in the text input
+    NSMutableString* currentString = [NSMutableString stringWithString:textField.text];
+    [currentString replaceCharactersInRange:range withString:string];
+    // Strip out the decimal separator
+    [currentString replaceOccurrencesOfString:@"." withString:@""
+                                      options:NSLiteralSearch range:NSMakeRange(0, [currentString length])];
+    // Generate a new string for the text input
+    int currentValue = [currentString intValue];
+    NSString* format = [NSString stringWithFormat:@"%%.%df", 2];
+    double minorUnitsPerMajor = 100.0;
+    NSString* newString = [NSString stringWithFormat:format, currentValue/minorUnitsPerMajor];
+    textField.text = newString;
+    
+    return NO;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.tipTextField) {
+        [[PayPalHereSDK sharedTransactionManager] currentInvoice].gratuity = [NSDecimalNumber decimalNumberWithString:textField.text];
+    } else if (textField == self.discountTextField) {
+        [[PayPalHereSDK sharedTransactionManager] currentInvoice].discountAmount = [NSDecimalNumber decimalNumberWithString:textField.text];
+    }
+    [self updatePaymentInformationLabels];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+    
+	return YES;
+    
+}
 @end

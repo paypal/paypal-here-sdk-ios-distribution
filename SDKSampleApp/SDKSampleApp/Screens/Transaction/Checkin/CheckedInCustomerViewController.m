@@ -104,7 +104,7 @@
                     completionHandler:^(PPHTransactionResponse *record) {
                         [self.processingTransactionSpinny stopAnimating];
                         self.processingTransactionSpinny.hidden=YES;
-                        if(record.error) {
+                        if (record.error) {
                             NSString *message = [NSString stringWithFormat:@"Payment using checkin Failed with an error: %@", record.error.apiMessage];
                             [self showAlertWithTitle:@"Payment Failed" andMessage:message];
                         }
@@ -122,17 +122,17 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Add the record into an array so that we can issue a refund later.
-    [appDelegate.transactionRecords addObject:_transactionResponse.record];
+    [appDelegate.refundableRecords addObject:_transactionResponse.record];
     
-    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
-    paymentCompleteViewController.transactionResponse = _transactionResponse;
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
+
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
 }
 
 #pragma mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if(self.doneWithPayScreen){
+    if (self.doneWithPayScreen){
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
@@ -185,7 +185,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PPHLocationCheckin *client = [self.checkedInClients objectAtIndex:indexPath.row];
-    if(nil != client){
+    if (nil != client){
         NSLog(@"Calling takePaymentUsingCheckinClient with the checkedin client: %@",client.customerName);
         [self takePaymentUsingCheckinClient:client];
     }else{

@@ -8,10 +8,13 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
+#import "STServices.h"
 #import "STAppDelegate.h"
 
 @interface ManualCardEntryViewController ()
 @property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
+@property (nonatomic, retain) IBOutlet UIButton *fillInCardInfoButton;
+@property (nonatomic, retain) IBOutlet UIButton *clearCardInfoButton;
 @end
 
 @implementation ManualCardEntryViewController
@@ -30,7 +33,11 @@
     [super viewDidLoad];
     self.processingTransactionSpinny.hidden=YES;
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+    self.fillInCardInfoButton.layer.cornerRadius = 10;
+    self.clearCardInfoButton.layer.cornerRadius = 10;
+    
+    NSString *buttonText = @"Process";
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:buttonText
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick:)];
     self.navigationItem.rightBarButtonItem = rightButton;
 }
@@ -57,17 +64,6 @@
     [self.cvv2 setText:@""];
 }
 
--(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
-{
-    UIAlertView *alertView =
-    [[UIAlertView alloc]
-     initWithTitle:title
-     message: message
-     delegate:self
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-    [alertView show];
-}
 
 -(NSString*) getCurrentYear
 {
@@ -85,11 +81,11 @@
     NSString* cvvStr = [self.cvv2 text];
     
     //preliminary checks for entered info...
-    if(nil == cardNumStr || nil == expMonthStr || nil == expYearStr || nil == cvvStr
+    if (nil == cardNumStr || nil == expMonthStr || nil == expYearStr || nil == cvvStr
        || (15 > [cardNumStr length]) || (2 != [expMonthStr length]) || (4 != [expYearStr length])
        || (3 != [cvvStr length]) || (12 < [expMonthStr integerValue]) || ([[self getCurrentYear] integerValue] > [expYearStr integerValue])){
         
-        [self showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
+        [STServices showAlertWithTitle:@"Error" andMessage:@"Please enter the valid details"];
         return;
     }
     
@@ -108,30 +104,28 @@
     //Now, take a payment with it
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     
-    //[tm beginPaymentWithAmount:[PPHAmount amountWithString:@"33.00" inCurrency:@"USD"] andName:@"FixedAmountPayment"];
     tm.manualEntryOrScannedCardData = manualCardData;
     
-    
     [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
-            withTransactionController:self
-                    completionHandler:^(PPHTransactionResponse *record) {
-                        self.transactionResponse = record;
-                        [self showPaymentCompeleteView];
-                    }];
+                withTransactionController:self
+                        completionHandler:^(PPHTransactionResponse *record) {
+                            self.transactionResponse = record;
+                            [self showPaymentCompeleteView];
+                        }];
 
 }
 
 -(void) showPaymentCompeleteView
 {
-    if(_transactionResponse.record != nil) {
+    if (_transactionResponse.record != nil) {
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
-        [appDelegate.transactionRecords addObject:_transactionResponse.record];
+        [appDelegate.refundableRecords addObject:_transactionResponse.record];
     }
 
-    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil];
-    paymentCompleteViewController.transactionResponse = _transactionResponse;
+    PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
+    
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES]; 
 }
 

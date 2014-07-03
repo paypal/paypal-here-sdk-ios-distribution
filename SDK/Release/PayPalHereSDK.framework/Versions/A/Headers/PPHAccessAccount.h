@@ -5,11 +5,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PPHPaymentLimits.h"
+
+@class PPHPaymentLimits;
 
 typedef NS_ENUM(NSInteger, PPHAccountStatus) {
     ePPHAccountStatusUnknown,
-    ePPHAccountStatusReady
+    ePPHAccountStatusReady,
+    ePPHAccountStatusRestricted,
+    ePPHAccountStatusEligible,
+    ePPHAccountStatusIneligible
 };
 
 typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
@@ -106,3 +110,4 @@ typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
 @end
 
 #define kPPHEmailAddressUnavailable 0xdeadbeef
+
