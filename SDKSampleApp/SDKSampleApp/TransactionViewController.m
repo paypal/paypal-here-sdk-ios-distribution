@@ -161,9 +161,19 @@
 
 - (PPHInvoice *)getInvoiceFromShoppingCart{
     PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:@"USD"];
-    for (NSString *item in self.shoppingCart) {
-        [invoice addItemWithId:item detailId:nil name:item quantity:self.shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
+    
+    NSString *taxRate = [[NSUserDefaults standardUserDefaults] objectForKey:@"taxRate"];
+    NSDecimalNumber *taxRateNumber;
+    if (taxRate) {
+        taxRateNumber = [NSDecimalNumber decimalNumberWithString:taxRate];
+    } else {
+        taxRateNumber = [NSDecimalNumber decimalNumberWithString:@".10"];
     }
+
+    for (NSString *item in self.shoppingCart) {
+        [invoice addItemWithId:item detailId:nil name:item quantity:self.shoppingCart[item] unitPrice:self.store[item] taxRate:taxRateNumber taxRateName:@"taxRate"];
+    }
+
     return invoice;
 }
 

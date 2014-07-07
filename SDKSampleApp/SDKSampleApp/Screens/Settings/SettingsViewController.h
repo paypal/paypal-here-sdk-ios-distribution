@@ -13,7 +13,8 @@
 
 @interface SettingsViewController : UIViewController <
 PPHSimpleCardReaderDelegate,
-CLLocationManagerDelegate
+CLLocationManagerDelegate,
+UITextFieldDelegate
 >
 
 @property (weak, nonatomic) IBOutlet UILabel *sdkVersion;

@@ -48,6 +48,14 @@
     self.amountLabel.text = self.amount;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    if (tm.hasActiveTransaction)
+    {
+        [tm cancelPayment];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
