@@ -59,10 +59,10 @@
 }
 
 -(IBAction)fillInCardInfo:(id)sender {
-    [self.cardNumber setText:@"4111111111111111"];
-    [self.expMonth setText:@"09"];
-    [self.expYear setText:@"2019"];
-    [self.cvv2 setText:@"408"];
+    [self.cardNumber setText:@"5428370024365363"];
+    [self.expMonth setText:@"02"];
+    [self.expYear setText:@"2020"];
+    [self.cvv2 setText:@"838"];
 }
 
 -(IBAction)clearCardInfo:(id)sender {

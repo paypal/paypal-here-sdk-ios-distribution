@@ -43,6 +43,11 @@ PPHLoggingDelegate
     self.refundableRecords = [[NSMutableArray alloc] init];
     self.authorizedRecords = [[NSMutableArray alloc] init];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *taxRate = ([defaults objectForKey:@"taxRate"]) ? [defaults objectForKey:@"taxRate"] : @".10";
+    [defaults setObject:taxRate forKey:@"taxRate"];
+    [defaults synchronize];
+    
 	NSLog(@"This is our Bundle Identifier Key: [%@]", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey]);
 
     

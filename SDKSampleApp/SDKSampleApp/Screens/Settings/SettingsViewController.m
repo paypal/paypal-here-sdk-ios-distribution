@@ -13,6 +13,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface SettingsViewController ()
+@property (nonatomic, retain) IBOutlet UITextField *taxRateTextField;
 @property (nonatomic,strong) PPHCardReaderBasicInformation *readerInfo;
 @property (nonatomic,strong) PPHCardReaderMetadata *readerMetadata;
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
@@ -53,6 +54,9 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
+    
+    self.taxRateTextField.delegate = self;
+    self.taxRateTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"taxRate"];
     NSLog(@"In settings view controller");
 }
 
@@ -346,4 +350,31 @@
         }];
     }];
 }
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.taxRateTextField) {
+        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:@"taxRate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // Update the string in the text input
+    NSMutableString* currentString = [NSMutableString stringWithString:textField.text];
+    [currentString replaceCharactersInRange:range withString:string];
+    // Strip out the decimal separator
+    [currentString replaceOccurrencesOfString:@"." withString:@""
+                                      options:NSLiteralSearch range:NSMakeRange(0, [currentString length])];
+    // Generate a new string for the text input
+    int currentValue = [currentString intValue];
+    NSString* format = [NSString stringWithFormat:@"%%.%df", 2];
+    double minorUnitsPerMajor = 100.0;
+    NSString* newString = [NSString stringWithFormat:format, currentValue/minorUnitsPerMajor];
+    textField.text = newString;
+    return NO;
+}
+
 @end
