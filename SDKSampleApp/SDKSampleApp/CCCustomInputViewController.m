@@ -126,8 +126,9 @@
     UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
     self.navigationItem.rightBarButtonItem = loading;
 
-    
-    NSURL *url = [NSURL URLWithString:@"https://www.stage2mb006.stage.paypal.com/webapps/hereapi/merchant/v1/pay"];
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", appDelegate.serviceURL, @"/webapps/hereapi/merchant/v1/pay"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:preAuthJSON
                                                         options:0

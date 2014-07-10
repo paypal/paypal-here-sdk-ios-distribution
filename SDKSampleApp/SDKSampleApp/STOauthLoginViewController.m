@@ -150,7 +150,9 @@
     self.loginButton.enabled = NO;
 
 	NSLog(@"Attempting to log-in via service at [%@]", self.serviceHost);
-
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.serviceURL = self.serviceHost;
+    
     // This is the STEP 1 referenced in the documentation at the top of the file.  This executes a /login
     // call against the sample business service.  This isn't a paypal loging, but instead triggers a business
     // system login.
