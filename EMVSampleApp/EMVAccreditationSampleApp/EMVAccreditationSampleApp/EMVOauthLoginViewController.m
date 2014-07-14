@@ -13,14 +13,12 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface EMVOauthLoginViewController ()
-
 @end
 
 @implementation EMVOauthLoginViewController
 
 #pragma mark
-#pragma mark - View Controller Setup
-
+#pragma mark - View Controller Setup and Tear Down Methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -28,10 +26,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self setUpSegmentedControlAndServiceUrls];
-    [self disableTextFields];
-    [self setUpSpinnerAndAlertView];
-    self.title = @"Emv Sample App";
+    [self setUpSpinnerAndTitle];
+    [self setUpTextFields];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self clearTextFields];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,29 +63,45 @@
     [self.sdkBaseUrlArray addObject:@"https://www.sandbox.paypal.com/webapps/"];
     [self.sdkBaseUrlArray addObject:@"https://www.stage2mb006.stage.paypal.com/webapps/"];
     
+    
+    
 }
 
-- (void)setUpSpinnerAndAlertView {
-    
+- (void)setUpSpinnerAndTitle {
     self.spinner.hidesWhenStopped = YES;
-    self.noServiceHostSelectedAlert.delegate = self;
-    
-    self.noServiceHostSelectedAlert = [[UIAlertView alloc] initWithTitle:@"Login failed" message:@"Please select a service host mode/type from the segmented control." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-
+    self.title = @"Emv Sample App";
 }
 
-- (void)disableTextFields {
-    
+- (void)setUpTextFields {
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    self.passwordField.secureTextEntry = YES;
+}
+
+- (void)clearTextFields {
+    self.usernameField.text = nil;
+    self.passwordField.text = nil;
+}
+
+- (BOOL)fieldValidation {
     
-    [self.usernameField setUserInteractionEnabled:NO];
-    [self.passwordField setUserInteractionEnabled:NO];
+    if (self.usernameField.text && self.passwordField.text) {
+        return YES;
+    }
+    
+    return NO;
     
 }
 
 #pragma mark
 #pragma mark - Delegate Callbacks and IBActions
+- (IBAction)usernameFieldReturned:(id)sender {
+    [sender resignFirstResponder];
+}
+
+- (IBAction)passwordFieldReturned:(id)sender {
+    [sender resignFirstResponder];
+}
 
 - (IBAction)serviceHostSegmentedControlChanged:(id)sender {
     
@@ -111,7 +130,7 @@
 
 - (IBAction)loginPressed:(id)sender {
     
-    if (self.segControl.selectedSegmentIndex != UISegmentedControlNoSegment) {
+    if (self.segControl.selectedSegmentIndex != UISegmentedControlNoSegment && [self fieldValidation]) {
         
         [self.spinner startAnimating];
         
@@ -126,35 +145,20 @@
                                   error:&error];
             
             if (!jsonResponse || ![jsonResponse objectForKey:@"merchant"]) {
-                
-                //fail out, we should say the Heroku server returned an ambiguous response
-                
+                [self showAlertWithTitle:@"Login Failed." andMessage:@"The Heroku sample server returned an ambiguous response."];
+                [self.spinner stopAnimating];
             }
             
             else {
                 
-                //let us fill out and create a Merchant object
-                //we will feed this in to the SDK
+                [self loadMerchantObjectFromHerokuResponse:jsonResponse];
                 
                 NSString *ticket = [jsonResponse objectForKey:@"ticket"];
                 [PPSPreferences setCurrentTicket:ticket];
                 
                 if (!ticket) {
-                    //show alert here, ticket should not be nil
+                    [self showAlertWithTitle:@"Login Failed" andMessage:@"We did not get back a session ticket for the provided username and password combination"];
                 }
-                
-                NSDictionary *yourMerchant = [jsonResponse objectForKey:@"merchant"];
-                
-                self.merchant = [[PPHMerchantInfo alloc] init];
-                self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
-                                                    initWithCountryCode: [yourMerchant objectForKey:@"country"]
-                                                    city:[yourMerchant objectForKey:@"city"]
-                                                    addressLineOne:[yourMerchant objectForKey:@"line1"]];
-                
-                self.merchant.invoiceContactInfo.businessName = [yourMerchant objectForKey:@"businessName"];
-                self.merchant.invoiceContactInfo.state = [yourMerchant objectForKey:@"state"];
-                self.merchant.invoiceContactInfo.postalCode = [yourMerchant objectForKey:@"postalCode"];
-                self.merchant.currencyCode = [yourMerchant objectForKey:@"currency"];
                 
                 if ([jsonResponse objectForKey:@"access_token"]) {
                     // The access token exists!   The user must have previously logged into
@@ -177,10 +181,109 @@
     }
     
     else {
-        
-        [self.noServiceHostSelectedAlert show];
-        
+        [self showAlertWithTitle:@"Login Failed." andMessage:@"Please select a sevice host type from the segmented control"];
     }
+    
+}
+
+#pragma mark
+#pragma mark - PayPal Login, and Merchant Initialize Functions
+- (void) loginToPayPal:(NSString *)ticket
+{
+  	NSLog(@"Logging in to PayPal...");
+    
+    NSMutableURLRequest *request = [self createGoPayPalRequest:ticket];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        NSError *error = nil;
+        NSDictionary *jsonResponse = [NSJSONSerialization
+                                      JSONObjectWithData:data
+                                      options:kNilOptions
+                                      error:&error];
+        
+        if (jsonResponse) {
+			
+			if ([jsonResponse objectForKey:@"url"] && [[jsonResponse objectForKey:@"url"] isKindOfClass:[NSString class]]) {
+                
+                // FIRE UP SAFARI TO LOGIN TO PAYPAL
+                // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
+                NSString *url = [jsonResponse objectForKey:@"url"];
+                NSLog(@"Pointing Safari at URL [%@]", url);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+			}
+			else {
+                
+                // UH-OH - NO URL FOR SAFARI TO FOLLOW, NO ACCESS TOKEN FOR YOU. FAIL.
+                // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
+                NSLog(@"FAILURE! Got neither a URL to point Safari to, nor an Access Token - Huh?");
+                [self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response was ambiguous"];
+                [self.spinner stopAnimating];
+			}
+            
+        }
+        else {
+			[self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response was ambiguous"];
+            [self.spinner stopAnimating];
+        }
+        
+        
+    }];
+}
+
+- (void) setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON
+{
+	NSString* key = [PPSPreferences currentTicket]; // The sample server encrypted the access token using the 'ticket' it returned in step 1 (the /login call)
+	NSString* access_token = [JSON objectForKey:@"access_token"];
+	NSString* access = [PPSCryptoUtils AES256Decrypt:access_token  withPassword:key];
+    
+	if (key == nil || access == nil) {
+        
+		NSLog(@"Bailing because couldn't decrypt access_code.   key: %@   access: %@   access_token: %@", key, access, access_token);
+        
+        [self showAlertWithTitle:@"Login Failed." andMessage:@"Ticket decryption failure."];
+        
+		return;
+	}
+    
+	PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
+                                                                   expires_in:[JSON objectForKey:@"expires_in"]
+                                                                   refreshUrl:[JSON objectForKey:@"refresh_url"] details:JSON];
+    self.merchant.payPalAccount = account;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"lastgoodusername"];
+    
+	[PayPalHereSDK setActiveMerchant:self.merchant
+                      withMerchantId:self.merchant.invoiceContactInfo.businessName
+				   completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo) {
+                       
+                       if (status == ePPHAccessResultSuccess) {
+                           
+                           //Let's update our Merchant object, then refeed it into the SDK
+                           //when that thread comes back with a success we can transition to the
+                           //next View Controller..
+                           //TO DO: Make Heroku App return the correct merchant data...
+                           
+                           [self loadMerchantObjectFromPPAccessResponseObject:account];
+                           [PayPalHereSDK setActiveMerchant:self.merchant withMerchantId:self.merchant.invoiceContactInfo.businessName completionHandler:^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
+                               
+                               if (status == ePPHAccessResultSuccess) {
+                                   [self.spinner stopAnimating];
+                                   [self transitionToTheNextViewController];
+                               }
+                               
+                           }];
+                           
+                       }
+                       
+                       else {
+                           
+                           [self showAlertWithTitle:@"Login Failed." andMessage:@"We were unable to set an active merchant for the provided username and password credentials."];
+                           [self.spinner stopAnimating];
+                           
+                       }
+                       
+                   }];
     
 }
 
@@ -226,117 +329,38 @@
     
 }
 
-#pragma mark 
-#pragma mark - Helper methods
-
-- (void) loginToPayPal:(NSString *)ticket
-{
-  	NSLog(@"Logging in to PayPal...");
+#pragma mark
+#pragma mark - Generic Helper methods
+- (void)loadMerchantObjectFromHerokuResponse:(NSDictionary *)responseDict {
     
-    NSMutableURLRequest *request = [self createGoPayPalRequest:ticket];
+    NSDictionary *yourMerchant = [responseDict objectForKey:@"merchant"];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
-        NSError *error = nil;
-        NSDictionary *jsonResponse = [NSJSONSerialization
-                                      JSONObjectWithData:data
-                                      options:kNilOptions
-                                      error:&error];
-        
-        if (jsonResponse) {
-			NSLog(@"PayPal login attempt got some JSON back: [%@]", jsonResponse);
-            
-			if ([jsonResponse objectForKey:@"url"] && [[jsonResponse objectForKey:@"url"] isKindOfClass:[NSString class]]) {
-                
-                // FIRE UP SAFARI TO LOGIN TO PAYPAL
-                // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
-                NSString *url = [jsonResponse objectForKey:@"url"];
-                NSLog(@"Pointing Safari at URL [%@]", url);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-			}
-			else {
-                
-                // UH-OH - NO URL FOR SAFARI TO FOLLOW, NO ACCESS TOKEN FOR YOU. FAIL.
-                // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
-                NSLog(@"FAILURE! Got neither a URL to point Safari to, nor an Access Token - Huh?");
-                
-                //show some alert
-                
-			}
-            
-        }
-        else {
-			NSLog(@"PayPal login attempt got no JSON back!");
-        }
-        
-        
-    }];
+    self.merchant = [[PPHMerchantInfo alloc] init];
+    self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
+                                        initWithCountryCode: [yourMerchant objectForKey:@"country"]
+                                        city:[yourMerchant objectForKey:@"city"]
+                                        addressLineOne:[yourMerchant objectForKey:@"line1"]];
+    
+    self.merchant.invoiceContactInfo.businessName = [yourMerchant objectForKey:@"businessName"];
+    self.merchant.invoiceContactInfo.state = [yourMerchant objectForKey:@"state"];
+    self.merchant.invoiceContactInfo.postalCode = [yourMerchant objectForKey:@"postalCode"];
+    self.merchant.currencyCode = [yourMerchant objectForKey:@"currency"];
+    
 }
 
-- (void) setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON
-{
-	NSString* key = [PPSPreferences currentTicket]; // The sample server encrypted the access token using the 'ticket' it returned in step 1 (the /login call)
-	NSString* access_token = [JSON objectForKey:@"access_token"];
-	NSString* access = [PPSCryptoUtils AES256Decrypt:access_token  withPassword:key];
+- (void)loadMerchantObjectFromPPAccessResponseObject:(PPHAccessAccount *)accountResp {
     
-	if (key == nil || access == nil) {
-        
-		NSLog(@"Bailing because couldn't decrypt access_code.   key: %@   access: %@   access_token: %@", key, access, access_token);
-       
-        //show some alert here
-        
-		return;
-	}
+    NSDictionary *responseDict = accountResp.extraInfo;
+    NSDictionary *addressInformation = [responseDict objectForKey:@"address"];
+    self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
+                                        initWithCountryCode: [addressInformation objectForKey:@"country"]
+                                        city: [addressInformation objectForKey:@"locality"]
+                                        addressLineOne: [addressInformation objectForKey:@"street_address"]];
     
-    // We have valid credentials.
-    // The login process has been successful.  Here we complete the process.
-    // Let's package them up the credentails into a PPHAccessAcount object and set that
-    // object into the PPHMerchant object we're building.
-	PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
-                                                                   expires_in:[JSON objectForKey:@"expires_in"]
-                                                                   refreshUrl:[JSON objectForKey:@"refresh_url"] details:JSON];
-	self.merchant.payPalAccount = account;  // Set the credentails into the merchant object.
-    
-    // Since this is a successful login, let's save the user name so we can use it as the default username the next
-    // time the sample app is run.
-    [[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"lastgoodusername"];
-    
-    // Call setActiveMerchant
-    // This is how we configure the SDK to use the merchant info and credentails.
-    // Provide the PPHMerchant object we've built, and a key which the SDK will use to uniquely store this merchant's
-    // contact information.
-    // NOTE: setActiveMerchant will kick off two network requests to PayPal.  These calls request detailed information
-    // about the merchant needed so we can take payment for this merchant.  Once those calls are done the completionHandler
-    // block will be called.  If successful, status will be ePPHAccessResultSuccess.  Only if this returns successful
-    // will the SDK be able to take payment, do invoicing related operations, or do checkin operations for this merchant.
-    //
-    // Please wait for this call to complete before attempting other SDK operations.
-    //
-	[PayPalHereSDK setActiveMerchant:self.merchant
-                      withMerchantId:self.merchant.invoiceContactInfo.businessName
-				   completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo) {
-                       
-                       if (status == ePPHAccessResultSuccess) {
-                           // Login complete!
-                           // Time to show the sample app UI!
-                           //
-                           
-                           //let's move to the next view controller and let's stop the spinner
-                           [self.spinner stopAnimating];
-                           [self transitionToTheNextViewController];
-                           
-                       }
-                       
-                       else {
-                           
-                           NSLog(@"We have FAILED to setActiveMerchant from setActiveMerchantWithAccessTokenDict, showing error Alert.");
-                           
-                           //display an alert here
-                           
-                       }
-                       
-                   }];
-    
+    self.merchant.invoiceContactInfo.businessName = [responseDict objectForKey:@"businessName"];
+    self.merchant.invoiceContactInfo.state = [addressInformation objectForKey:@"region"];
+    self.merchant.invoiceContactInfo.postalCode = [addressInformation objectForKey:@"postal_code"];
+    self.merchant.currencyCode = accountResp.currencyCode;
 }
 
 - (void)transitionToTheNextViewController
@@ -356,6 +380,18 @@
 	}
     
     self.navigationController.viewControllers = @[transactionVC];
+}
+
+-(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:nil
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    
+    [alertView show];
 }
 
 @end
