@@ -11,7 +11,7 @@
 #import <PayPalHereSDK/PPHTransactionManager.h>
 
 @interface EMVTransactionViewController : UIViewController <
-PPHSimpleCardReaderDelegate,
+PPHCardReaderDelegate,
 UITextFieldDelegate
 >
 
