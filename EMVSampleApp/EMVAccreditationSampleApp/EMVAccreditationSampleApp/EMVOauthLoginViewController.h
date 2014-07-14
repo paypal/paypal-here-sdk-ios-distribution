@@ -16,7 +16,6 @@
 @property(nonatomic, strong) NSMutableString *urlForTheSdkToUse;
 @property(nonatomic, strong) NSMutableArray *serviceHostUrlArray;
 @property(nonatomic, strong) NSMutableArray *sdkBaseUrlArray;
-@property(nonatomic, strong) UIAlertView *noServiceHostSelectedAlert;
 
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property(weak, nonatomic) IBOutlet UISegmentedControl *segControl;
@@ -24,8 +23,9 @@
 @property(weak, nonatomic) IBOutlet UITextField *passwordField;
 
 - (IBAction)serviceHostSegmentedControlChanged:(id)sender;
-
 - (IBAction)loginPressed:(id)sender;
+- (IBAction)usernameFieldReturned:(id)sender;
+- (IBAction)passwordFieldReturned:(id)sender;
 
 - (void) setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON;
 
