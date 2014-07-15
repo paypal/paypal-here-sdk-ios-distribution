@@ -28,6 +28,8 @@
     
     [self.window makeKeyAndVisible];
     
+    [PayPalHereSDK askForLocationAccess];
+    
     return YES;
 }
 

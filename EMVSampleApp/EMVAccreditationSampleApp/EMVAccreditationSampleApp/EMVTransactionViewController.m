@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
+        self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
         self.emvMetaData = nil;
         self.currentDeviceInfo = nil;
     }
@@ -43,10 +43,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    
     if (tm.hasActiveTransaction) {
         [tm cancelPayment];
     }
+    
+    [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     
 }
 
@@ -71,14 +72,14 @@
 -(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
 {
     self.emvConnectionStatus.textColor = [UIColor blueColor];
-    self.emvConnectionStatus.text = @"EMV device connected, you can begin transacting";
+    self.emvConnectionStatus.text = @"EMV device connected";
     self.emvMetaData = metadata;
 }
 
 -(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader
 {
-    self.emvConnectionStatus.textColor = [UIColor greenColor];
-    self.emvConnectionStatus.text = @"We have detected an EMV device, please wait for it to connect";
+    self.emvConnectionStatus.textColor = [UIColor blueColor];
+    self.emvConnectionStatus.text = @"EMV device connected";
     self.currentDeviceInfo = reader;
 }
 
@@ -100,33 +101,37 @@
 
 - (IBAction)chargeButtonPressed:(id)sender {
     
-    if (self.emvMetaData && self.transactionAmountField.text) {
-
-        PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-        NSDecimalNumber *decimalAmount = [[NSDecimalNumber alloc]
+    if (self.emvMetaData) {
+        
+        if (self.transactionAmountField.text) {
+            
+            PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+            NSDecimalNumber *decimalAmount = [[NSDecimalNumber alloc]
                                           initWithString:self.transactionAmountField.text];
+            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"US"];
+            [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
         
-        PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"US"];
-        [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
+            PPHAvailablePaymentTypes paymentPermissions = [[PayPalHereSDK activeMerchant] payPalAccount].availablePaymentTypes;
         
-        PPHAvailablePaymentTypes paymentPermissions = [[PayPalHereSDK activeMerchant] payPalAccount].availablePaymentTypes;
-        
-        if (ePPHAvailablePaymentTypeChip & paymentPermissions) {
+            if (ePPHAvailablePaymentTypeChip & paymentPermissions) {
             
             //Code is not yet implemented
-            
-            /*[tm processPaymentUsingSDKUI_WithPaymentType:ePPHPaymentMethodChipCard withTransactionController:nil completionHandler:^(PPHTransactionResponse *record) {
+                [tm processPaymentUsingSDKUI_WithPaymentType:ePPHPaymentMethodChipCard withTransactionController:nil completionHandler:^(PPHTransactionResponse *record) {
                 
+                    NSLog(@"Payment complete");
                 
-                
-            }];*/
+                }];
             
-        } else {
-            
-            [self showAlertWithTitle:@"Payment Failure" andMessage:@"Unfortunately you can not take EMV payments, please call PayPal and get the appropriate permissions."];
-            
-        }
+            } else {
+                [self showAlertWithTitle:@"Payment Failure" andMessage:@"Unfortunately you can not take EMV payments, please call PayPal and get the appropriate permissions."];
+            }
         
+        } else {
+            [self showAlertWithTitle:@"Please enter a transaction amount." andMessage:nil];
+        }
+    
+    } else {
+        [self showAlertWithTitle:@"No EMV Data" andMessage:@"Please make sure your EMV device is paired"];
     }
     
 }
@@ -144,6 +149,8 @@
 }
 
 - (IBAction)salesHistoryButtonPressed:(id)sender {
+    
+    NSLog(@"Not yet implemented");
     
 }
 
