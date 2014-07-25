@@ -156,6 +156,19 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/copyAsTemplate</TokenIdentifier>
+			<Abstract type="html">Create a new invoice using the data from this invoice.
+This copies everything except the data that defines it as a unique invoice to PayPal.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)copyAsTemplate</Declaration>
+			
+			
+			<Anchor>//api/name/copyAsTemplate</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/asDictionary</TokenIdentifier>
 			<Abstract type="html">Compile the invoice&apos;s data to a format that is ready to save as an InvoiceType parameter to an API call.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
@@ -1117,6 +1130,42 @@
 			
 			
 			<Anchor>//api/name/originatedOnWeb</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTerms:</TokenIdentifier>
+			<Abstract type="html">The terms associated with the invoice, such as return policy</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/terms</TokenIdentifier>
+			<Abstract type="html">The terms associated with the invoice, such as return policy</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/terms</TokenIdentifier>
+			<Abstract type="html">The terms associated with the invoice, such as return policy</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
             <NodeRef refid="22"/>
 		</Token>
 		

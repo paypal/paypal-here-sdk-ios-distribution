@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHTransactionControllerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionControllerDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="56"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/onPreAuthorizeForInvoice:withPreAuthJSON:</TokenIdentifier>
+			<Abstract type="html">onPreAuthorize This callback is invoked by the TransactionManager in response to a call to
+the processPayment() API in the TransactionManager. As soon as the TransactionManager is ready
+to perform the authorization this callback is invoked. The SDK is responsible for ensuring that
+this call is invoked in the appropriate thread.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary *)preAuthJSON</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inv</Name>
+					<Abstract type="html">This is the Invoice object against which the authorization will be performed. At this point
+the application can choose to make some changes to the invoice. For example, a tip could
+be added to an Invoice at this time or an item could be removed etc.</Abstract>
+				</Parameter><Parameter>
+					<Name>preAuthJSON</Name>
+					<Abstract type="html">A dictionary ready for json conversion and shipment to the paypal service
+that represents the request payload. This is the request data that will
+be sent to the backend and the application is allowed to modify this data.
+CAUTION: Modifying the data incorrectly could cause your transaction to fail. Ensure that any changes by the app
+will not introduce errors and that you handle the error cases appropriately. More documentation on what
+the server expects in the payload can be found in the documentation.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">TransactionControlAction. Return HANDLED if you want the SDK to stop processing the transaction at this point
+If HANDLED is returned, then the Transaction will be canceled but the application is free to keep the invoice around
+if it so wishes. If the invoice is not required then use the cancel method defined on the Invoice to cancel it.
+Return CONTINUE if you wish the SDK to continue processing this transaction.</Abstract></ReturnValue>
+			<Anchor>//api/name/onPreAuthorizeForInvoice:withPreAuthJSON:</Anchor>
+            <NodeRef refid="56"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/onPostAuthorize:</TokenIdentifier>
+			<Abstract type="html">onPostAuthorize</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onPostAuthorize:(BOOL)didFail</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>didFail</Name>
+					<Abstract type="html">- indicates whether the authorization failed. A true indicates that the authorization itself failed. A false indicates
+that the authorization did not fail. It however, DOES NOT indicate that the transaction was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onPostAuthorize:</Anchor>
+            <NodeRef refid="56"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>
