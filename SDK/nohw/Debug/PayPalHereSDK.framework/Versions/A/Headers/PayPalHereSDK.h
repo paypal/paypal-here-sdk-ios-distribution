@@ -163,12 +163,23 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
 +(BOOL)hasLocationAccess;
 
 /*!
- * To allow you fine grained control over location access prompts, you can call this method
- * explicitly. It doesn't do anything more than ask for location, so you can certainly do
- * that yourself and get control of the messaging, but this method is here for your
- * convenience.
+ * DEPRECATED
+ * Calls "- (void)startWatchingLocation"
+ * Returns YES.
  */
 +(BOOL)askForLocationAccess;
+
+/*!
+ * Allow the SDK to begin watching the location to attach to payments. In the future allowing
+ * the SDK to obtain a location fix will be a requirement for taking payments. Location monitoring
+ * is automatically stopped and restarted when the app is suspended if it is being watched.
+ */
++(void)startWatchingLocation;
+
+/*!
+ * Disallow the SDK from getting location updates.
+ */
++(void)stopWatchingLocation;
 
 /*!
  * For TEST purposes, you can set the service URL used for requests in the PayPal Here SDK
@@ -210,5 +221,9 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  * @param referrerCode the referrer code that is obtained once a partner registers with PayPalHere.
  */
 +(void) setReferrerCode: (NSString*) referrerCode;
+
+#ifdef DEBUG
++(void)sendStackTrace;
+#endif
 
 @end

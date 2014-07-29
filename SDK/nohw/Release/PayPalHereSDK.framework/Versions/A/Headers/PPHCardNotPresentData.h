@@ -6,18 +6,7 @@
 
 #ifndef _PPHCARDNOTPRESENTDATA_H_
 #define _PPHCARDNOTPRESENTDATA_H_
-
-typedef NS_ENUM(NSInteger, PPHCreditCardType) {
-    ePPHCreditCardTypeUnknown = 0,
-    ePPHCreditCardTypeVisa = 1,
-    ePPHCreditCardTypeMastercard = 2,
-    ePPHCreditCardTypeDiscover = 3,
-    ePPHCreditCardTypeAmEx = 4,
-    ePPHCreditCardTypeJCB = 5,
-    ePPHCreditCardTypeMaestro = 6,
-    ePPHCreditCardTypePayPal = 7
-};
-
+#import "PPHCardEnums.h"
 
 /*!
  * A container for manually entered (or scanned) card data

@@ -45,7 +45,8 @@
 #define kPPHLocalErrorBadConfigurationNoTransactionIdInTransactionRecord - 2012
 #define kPPHLocalErrorBadConfigurationNoPaymentData - 2013
 #define kPPHLocalErrorBadConfigurationNotYetImplemented -2014
-
+#define kPPHLocalErrorBadConfigurationNegativeRefundAmountNotAllowed -2015
+#define kPPHLocalErrorBadConfigurationInvalidPermissionsForProvidedPaymentType -2016
 
 // Mapping the different API's in Transaction Manager to key's
 // used in saving of invoice, and can be extended for other future use cases

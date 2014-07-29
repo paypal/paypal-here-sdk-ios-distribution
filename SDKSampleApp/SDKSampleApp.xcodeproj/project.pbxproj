@@ -37,13 +37,11 @@
 		001569F2188E01F60023053A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 001569EC188E01F60023053A /* main.m */; };
 		001569F6188E02230023053A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 001569F4188E02230023053A /* InfoPlist.strings */; };
 		001569F9188F25D60023053A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569F8188F25D60023053A /* libxml2.dylib */; };
-		001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 001569A0188E01090023053A /* PayPalHereSDK.bundle */; };
 		0047B81518E0ECB600F2B9E4 /* PaymentMethodViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B80D18E0ECB600F2B9E4 /* PaymentMethodViewController_iPad.xib */; };
 		0047B81618E0ECB600F2B9E4 /* ReceiptInfoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B80E18E0ECB600F2B9E4 /* ReceiptInfoViewController_iPad.xib */; };
 		0047B81718E0ECB600F2B9E4 /* ReceiptInfoViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B80F18E0ECB600F2B9E4 /* ReceiptInfoViewController_iPhone.xib */; };
 		0047B81818E0ECB600F2B9E4 /* SignatureViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B81018E0ECB600F2B9E4 /* SignatureViewController_iPad.xib */; };
 		0047B81A18E0F42200F2B9E4 /* CheckedInCustomerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0047B81918E0F42200F2B9E4 /* CheckedInCustomerViewController_iPad.xib */; };
-		007C7B1E18EA0CC1006C5371 /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569A1188E01090023053A /* PayPalHereSDK.framework */; };
 		007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SettingsViewController.m */; };
 		007DE86318A0144A004D8847 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007DE86118A0144A004D8847 /* SettingsViewController.xib */; };
 		007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE87918A062DC004D8847 /* SignatureViewController.m */; };
@@ -88,6 +86,8 @@
 		52245722195CD7F8003B0C85 /* CCSwipersTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5224571A195CD7F8003B0C85 /* CCSwipersTableTableViewController.xib */; };
 		52245723195CD7F8003B0C85 /* CCCustomInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5224571C195CD7F8003B0C85 /* CCCustomInputViewController.m */; };
 		52245724195CD7F8003B0C85 /* CCCustomInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5224571D195CD7F8003B0C85 /* CCCustomInputViewController.xib */; };
+		523DC44F198821490051F232 /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523DC44E198821490051F232 /* PayPalHereSDK.framework */; };
+		523DC451198821640051F232 /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 523DC450198821640051F232 /* PayPalHereSDK.bundle */; };
 		99859DED1835B07300AB3FE1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */; };
 		99859DEF1835B09A00AB3FE1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */; };
 		99859DF11835B0AF00AB3FE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */; };
@@ -115,8 +115,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		001569A0188E01090023053A /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
-		001569A1188E01090023053A /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
 		001569A4188E01270023053A /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = apple.jpg; path = SDKSampleApp/Resources/apple.jpg; sourceTree = SOURCE_ROOT; };
 		001569A5188E01270023053A /* banana.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = banana.jpg; path = SDKSampleApp/Resources/banana.jpg; sourceTree = SOURCE_ROOT; };
 		001569A6188E01270023053A /* orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = orange.jpg; path = SDKSampleApp/Resources/orange.jpg; sourceTree = SOURCE_ROOT; };
@@ -242,6 +240,8 @@
 		5224571B195CD7F8003B0C85 /* CCCustomInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCCustomInputViewController.h; path = SDKSampleApp/CCCustomInputViewController.h; sourceTree = SOURCE_ROOT; };
 		5224571C195CD7F8003B0C85 /* CCCustomInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCCustomInputViewController.m; path = SDKSampleApp/CCCustomInputViewController.m; sourceTree = SOURCE_ROOT; };
 		5224571D195CD7F8003B0C85 /* CCCustomInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CCCustomInputViewController.xib; path = SDKSampleApp/CCCustomInputViewController.xib; sourceTree = SOURCE_ROOT; };
+		523DC44E198821490051F232 /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
+		523DC450198821640051F232 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		99859DEC1835B07300AB3FE1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		99859DEE1835B09A00AB3FE1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		99859DF01835B0AF00AB3FE1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -277,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523DC44F198821490051F232 /* PayPalHereSDK.framework in Frameworks */,
 				9DB2DF331926EB6C00FFB6A8 /* libsqlite3.dylib in Frameworks */,
 				9DB2DF311926EB6300FFB6A8 /* libz.dylib in Frameworks */,
 				9DB2DF2F1926EB5A00FFB6A8 /* QuartzCore.framework in Frameworks */,
@@ -284,7 +285,6 @@
 				00A0FB401926E7F000059B1D /* libsqlite3.dylib in Frameworks */,
 				00A0FB3E1926E7DD00059B1D /* libz.dylib in Frameworks */,
 				00A0FB3C1926E7D800059B1D /* CoreBluetooth.framework in Frameworks */,
-				007C7B1E18EA0CC1006C5371 /* PayPalHereSDK.framework in Frameworks */,
 				001569F9188F25D60023053A /* libxml2.dylib in Frameworks */,
 				99859E231836B0E200AB3FE1 /* MobileCoreServices.framework in Frameworks */,
 				99859E011835B3CF00AB3FE1 /* Security.framework in Frameworks */,
@@ -567,13 +567,13 @@
 		99D9817A1835995100D234A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				523DC450198821640051F232 /* PayPalHereSDK.bundle */,
+				523DC44E198821490051F232 /* PayPalHereSDK.framework */,
 				9DB2DF321926EB6C00FFB6A8 /* libsqlite3.dylib */,
 				9DB2DF301926EB6300FFB6A8 /* libz.dylib */,
 				9DB2DF2E1926EB5A00FFB6A8 /* QuartzCore.framework */,
 				9DB2DF2C1926EB5500FFB6A8 /* CoreBluetooth.framework */,
 				001569F8188F25D60023053A /* libxml2.dylib */,
-				001569A0188E01090023053A /* PayPalHereSDK.bundle */,
-				001569A1188E01090023053A /* PayPalHereSDK.framework */,
 				99859E221836B0E200AB3FE1 /* MobileCoreServices.framework */,
 				99859E001835B3CF00AB3FE1 /* Security.framework */,
 				99859DFE1835B35500AB3FE1 /* CFNetwork.framework */,
@@ -706,6 +706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523DC451198821640051F232 /* PayPalHereSDK.bundle in Resources */,
 				00A2F00E1924080C00C20037 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
 				00A2F0061923F05600C20037 /* AuthorizedPaymentsViewController.xib in Resources */,
 				00A2F0001922C46A00C20037 /* AuthorizationCompleteViewController.xib in Resources */,
@@ -717,7 +718,6 @@
 				001569AA188E01270023053A /* orange.jpg in Resources */,
 				001569A8188E01270023053A /* apple.jpg in Resources */,
 				0047B81618E0ECB600F2B9E4 /* ReceiptInfoViewController_iPad.xib in Resources */,
-				001569FC188F29530023053A /* PayPalHereSDK.bundle in Resources */,
 				001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */,
 				007DE86318A0144A004D8847 /* SettingsViewController.xib in Resources */,
 				00DD4A2A18C135EA00F5CA33 /* PaymentMethodViewController_iPhone.xib in Resources */,
@@ -886,6 +886,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"/Users/sjerome/Documents/Developments/ios-here-sdk-dist/SDK/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
@@ -915,6 +916,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"/Users/sjerome/Documents/Developments/ios-here-sdk-dist/SDK/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
