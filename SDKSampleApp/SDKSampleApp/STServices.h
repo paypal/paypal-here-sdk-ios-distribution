@@ -18,4 +18,5 @@ typedef enum {
 
 @interface STServices : NSObject
 +(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
+
 @end

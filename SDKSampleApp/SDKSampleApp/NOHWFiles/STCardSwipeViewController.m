@@ -9,7 +9,7 @@
 #import "STCardSwipeViewController.h"
 #import "PaymentCompleteViewController.h"
 #import "SignatureViewController.h"
-#import "MTSCRA.h"
+#import "NoHWCardReaderManager.h"
 
 #import <PayPalHereSDK/PPHCardSwipeData.h>
 #import <PayPalHereSDK/PayPalHereSDK.h>
@@ -19,7 +19,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *deviceStatus;
 @property (nonatomic, strong) NSString *amount;
 @property (nonatomic, strong) PPHCardSwipeData *data;
-@property (nonatomic, strong) MTSCRA *mtSCRALib;
 @end
 
 @implementation STCardSwipeViewController
@@ -45,15 +44,31 @@
     self.swipeImageView.layer.cornerRadius = 10;
     self.swipeImageView.layer.masksToBounds = YES;
     
-    self.mtSCRALib = [[MTSCRA alloc] init];
-    [self.mtSCRALib listenForEvents:(TRANS_EVENT_OK|TRANS_EVENT_START|TRANS_EVENT_ERROR)];
+    void (^dataReadyBlock)(PPHCardSwipeData *) = ^(PPHCardSwipeData *swipeData){
+        // Set Card Data
+        PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+        tm.encryptedCardData = swipeData;
+        
+        // Process Transaction
+        [tm processPaymentWithPaymentType:ePPHPaymentMethodSwipe withTransactionController:nil completionHandler:^(PPHTransactionResponse *response){
+            if (!response.error || !response.isSignatureRequiredToFinalize) {
+                PaymentCompleteViewController *vc = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:response];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            else {
+                NSString *nibName = (IS_IPHONE) ? @"SignatureViewController_iPhone" : @"SignatureViewController_iPad";
+                [self.navigationController pushViewController:[[SignatureViewController alloc] initWithNibName:nibName bundle:nil transactionResponse:response] animated:YES];
+            }
+        }];
+    };
 
-    //Audio
-    [self.mtSCRALib setDeviceType:(MAGTEKAUDIOREADER)];
-    BOOL hi = [self.mtSCRALib openDevice];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackDataReady:) name:@"trackDataReadyNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(devConnStatusChange) name:@"devConnectionNotification" object:nil];
-    
+   void (^deviceConnectionChangedBlock)(BOOL) = ^(BOOL conStatus){
+       self.deviceStatus.text = (conStatus) ? @"Device Connected, swipe now" : @"Device Disconnected, connect please";
+   };
+
+    [NoHWCardReaderManager listenForCardsWithCallbackBlock:dataReadyBlock andDeviceConnectedBlock:deviceConnectionChangedBlock];
+    self.deviceStatus.text = ([NoHWCardReaderManager isDeviceConnected]) ? @"Device Connected, swipe now" : @"Device Disconnected, connect please";
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,36 +77,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-- (void)trackDataReady:(NSNotification *)notification {
-    NSNumber *status = [[notification userInfo] valueForKey:@"status"];
-    [self performSelectorOnMainThread:@selector(onDataEvent:) withObject:status waitUntilDone:YES];
+-(void) viewDidDisappear:(BOOL)animated {
+    [NoHWCardReaderManager stopListening];
 }
 
-- (void)onDataEvent:(id)status
-{
-    NSLog(@"----------%d---------", [status intValue]);
-    if ([status intValue] == TRANS_STATUS_OK) {
-        [[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:_amount inCurrency:@"USD"] andName:@"amount"];
-        PPHCardSwipeData *swipeData = [[PPHCardSwipeData alloc] initWithTrack1:[self.mtSCRALib getTrack1] track2:[self.mtSCRALib getTrack2] readerSerial:[self.mtSCRALib getDeviceSerial] withType:@"MAGTEK" andExtraInfo:@{@"ksn":[self.mtSCRALib getKSN]}];
-        [swipeData parseTracks:[self.mtSCRALib getMaskedTracks]];
-        [PayPalHereSDK sharedTransactionManager].encryptedCardData = swipeData;
-        [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe withTransactionController:nil completionHandler:^(PPHTransactionResponse *response){
-            NSLog(@"HERE");
-        }];
-    }
-}
-
-- (void)devConnStatusChange
-{
-    BOOL isDeviceConnected = [self.mtSCRALib isDeviceConnected];
-    if (isDeviceConnected)
-    {
-        self.deviceStatus.text = @"Device Connected"; }
-    else
-    {
-        self.deviceStatus.text = @"Device Disconnected";
-    }
-}
 @end
