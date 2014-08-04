@@ -117,7 +117,16 @@
  * @param amountOrNil Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
  * @param completionHandler called when the action has completed
  */
--(void)beginRefund: (NSString*) transactionId forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
+- (void)beginRefund: (NSString*) transactionId forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
+
+/*!
+ * Issue a refund against a previously successful non-PayPal transaction.
+ * @param invoiceId The identifier for the invoice to be refunded.
+ * @param amountOrNil Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
+ * @param completionHandler called when the action has completed
+ */
+-(void)beginNonPayPalRefundWithInvoiceId: (NSString *) invoiceId forAmount: (PPHAmount *) amountOrNil completionHandler: (void (^)(PPHPaymentResponse *)) completionHandler;
+
 
 #pragma mark - Local/Tab payment
 /*!

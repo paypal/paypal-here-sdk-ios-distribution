@@ -8,3 +8,5 @@
 
 #define STAGE @"https://www.stage2p1833.stage.paypal.com/webapps/"
 #define SANDBOX @"https://www.sandbox.paypal.com/webapps/"
+
+#define IS_IPHONE ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
