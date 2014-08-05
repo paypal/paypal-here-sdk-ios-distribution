@@ -108,6 +108,13 @@
             PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
             NSDecimalNumber *decimalAmount = [[NSDecimalNumber alloc]
                                           initWithString:self.transactionAmountField.text];
+            
+            if(NSOrderedSame == [[NSDecimalNumber notANumber] compare: decimalAmount]) {
+                //They have not entered a valid number.  Bail.
+                NSLog(@"No valid number entered.  Bailing");
+                return;
+            }
+            
             PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"US"];
             [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
         

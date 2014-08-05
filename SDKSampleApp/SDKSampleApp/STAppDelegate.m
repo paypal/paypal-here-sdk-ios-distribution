@@ -55,21 +55,8 @@ PPHLoggingDelegate
     
     /*
      * How to configure the SDK to use Live vs Sandbox
-     *
-     * Examples:
-     *   To run against Live:
-     *   [PayPalHereSDK setBaseAPIURL:nil];   OR don't call setBaseAPIURL at all.
-     *
-     *   To run against Sandbox:
-     *   [PayPalHereSDK setBaseAPIURL:@"https://www.sandbox.paypal.com/webapps/"];
-     *
-     *   To run against a stage:
-     *   [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
      */
-    
-    //Default to using a stage.  The login sample UI will change this value.
-
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:STAGE]];
+     [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
    
     /* By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
      * diagnosing issues, but is obviously up to you as to whether you want to do remote logging, or perhaps you
