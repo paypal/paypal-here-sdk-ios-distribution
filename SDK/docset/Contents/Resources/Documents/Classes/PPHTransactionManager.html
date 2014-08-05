@@ -78,7 +78,11 @@
 	
 	<option value="//api/name/initiateEMVTransaction:transactionType:">&nbsp;&nbsp;&nbsp;&nbsp;- initiateEMVTransaction:transactionType:</option>
 	
+	<option value="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</option>
+	
 	<option value="//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentWithPaymentType:withTransactionController:completionHandler:</option>
+	
+	<option value="//api/name/provideSignature:forTransaction:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- provideSignature:forTransaction:completionHandler:</option>
 	
 	<option value="//api/name/sendReceipt:toRecipient:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- sendReceipt:toRecipient:completionHandler:</option>
 	
@@ -148,7 +152,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initiateEMVTransaction:transactionType:">initiateEMVTransaction:transactionType:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">processPaymentWithPaymentType:withTransactionController:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/provideSignature:forTransaction:completionHandler:">provideSignature:forTransaction:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendReceipt:toRecipient:completionHandler:">sendReceipt:toRecipient:completionHandler:</a></span></li>
 	
@@ -348,6 +356,18 @@ NSLog(&ldquo;Payment Completed&rdquo;);
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&ndash;&nbsp;processPaymentWithPaymentType:withTransactionController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&ndash;&nbsp;processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/provideSignature:forTransaction:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:completionHandler:</a></code>
 	</span>
 	
 	
@@ -735,14 +755,30 @@ change this setting.   Calling setIgnoreHardwareReaders during a transaction wil
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Auth/Cap Flow methods, more descriptive comments will be released soon along with documentation&hellip;</p>
+		<p>Authorize a payment.  Used with either Checkin (ePPHPaymentMethodPaypal) or a card
+payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)<em>paymentMethod</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentMethod</em></dt>
+			<dd><p>What type of authorization we are doing.  Can be ePPHPaymentMethodPaypal (checkin)
+or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey</p>
+
+<p>completionHandler: will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error the transation response&rsquo;s
+error object will be non nil.  Otherwise it will contain a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> which you can
+later pass into voidAuthoriztion or capturePaymentForAuthorization</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -752,7 +788,19 @@ change this setting.   Calling setIgnoreHardwareReaders during a transaction wil
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Auth/Cap Flow methods, more descriptive comments will be released soon along with documentation&hellip;</p>
+		<p>Authorize a payment.  Used with either Checkin (ePPHPaymentMethodPaypal) or a card
+payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.</p>
+
+<p>Once authorized you can be confident that PayPal will allow capture on up to 115% of the amount
+authorized (allows for later adding of tips or later adding of some line items just prior to
+capturing the payment.</p>
+
+<p>However, if the merchant&rsquo;s account is so enabled, this capture limit can be upto 500%   See
+<a href="../Classes/PPHPaymentLimits.html">PPHPaymentLimits</a>.captureTolerance for more information</p>
+
+<p>After authorization is successful you can then, at a later time or immediately afterwards, call
+capturePaymentForAuthorization to actually capture your money or you can call voidAuthorization
+to discard the payment.</p>
 	</div>
 	
 	
@@ -984,10 +1032,50 @@ by beginRefund.</p></dd>
 	<h3 class="subsubtitle method-title">capturePaymentForAuthorization:withCompletionHandler:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Captures a prevoisly authorized payment.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)capturePaymentForAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Captures a prevoisly authorized payment.</p>
+
+<p>In most cases you can capture at 115% of what was previously authorized.</p>
+
+<p>However, if the merchant&rsquo;s account is so enabled, this capture limit can be upto 500%   See
+<a href="../Classes/PPHPaymentLimits.html">PPHPaymentLimits</a>.captureTolerance for more information</p>
+
+<p>To capture more or less than was authorized you can add a gratutity or add/remove line items
+from the invoice contained in the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you pass in.  If you don&rsquo;t with to add
+a gratutity or change line items just supply the transactionRecord you received when you
+authorized the transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -997,10 +1085,9 @@ by beginRefund.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
-and complete the transaction.
-In case of EMV related payments, this API should be used after the processPayment call has been
-approved by the terminal. If the terminal declines, the transaction would be voided.</p>
+		<p>DEPRECATED
+Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
+and complete the transaction.</p>
 	</div>		
 	
     
@@ -1037,10 +1124,9 @@ approved by the terminal. If the terminal declines, the transaction would be voi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
-and complete the transaction.
-In case of EMV related payments, this API should be used after the processPayment call has been
-approved by the terminal. If the terminal declines, the transaction would be voided.</p>
+		<p>DEPRECATED
+Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
+and complete the transaction.</p>
 	</div>
 	
 	
@@ -1086,6 +1172,79 @@ for getting the card data for processing.</p>
 		<p>Initiate the EMV transaction. This needs to called after <a href="#//api/name/beginPayment">beginPayment</a> and when the specific amount
 and currency is known. During this call the amount and currency code will be sent to the terminal
 for getting the card data for processing.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:" title="processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)<em>controller</em> withViewController:(UIViewController *)<em>vc</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>the type of payment to collect.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd><p>Can be nil.  If provided, the transaction manager will call the callbacks
+defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHTransactionControllerDelegate</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</p>
+
+<p>Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).</p>
+
+<p>Processing a payment for swipe or key-in or checkin-in payments will
+actually capture that payment.  For Cash or Check, this call will simply
+record the invoice into the paypal system for record-keeping purposes.</p>
 	</div>
 	
 	
@@ -1155,6 +1314,73 @@ defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHT
 <p>Processing a payment for swipe or key-in or checkin-in payments will
 actually capture that payment.  For Cash or Check, this call will simply
 record the invoice into the paypal system for record-keeping purposes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/provideSignature:forTransaction:completionHandler:" title="provideSignature:forTransaction:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">provideSignature:forTransaction:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
+and complete the transaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHTransactionRecord *)<em>previousTransaction</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>signature</em></dt>
+			<dd><p>: A bitmap signature of the customer.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: A response handler that would be invoked by the SDK in case of a success or a failure.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>forTransaction</em></dt>
+			<dd><p>: The transaction record object that is returned back from the processPayment call.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
+and complete the transaction.</p>
+
+<p>Can be used to provide a signature in both the sale (processPayment) and auto/capture flows.
+After processPayment returns you can then provide a signature using the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> returned by processPayment.
+After an authorization you can provide the signature either before or after a capture.</p>
 	</div>
 	
 	
@@ -1242,10 +1468,40 @@ which we should send the receipt.</p></dd>
 	<h3 class="subsubtitle method-title">voidAuthorization:withCompletionHandler:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Allows you to void a previously authorized payment.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)voidAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Allows you to void a previously authorized payment.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -1263,7 +1519,7 @@ which we should send the receipt.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-06-26)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-08-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
