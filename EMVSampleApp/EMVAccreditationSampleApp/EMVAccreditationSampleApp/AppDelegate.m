@@ -15,11 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[EMVOauthLoginViewController alloc] initWithNibName:@"EMVOauthLoginViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[EMVOauthLoginViewController alloc] initWithNibName:@"EMVOauthLoginViewController_iPad" bundle:nil];
-    }
+    self.viewController = [[EMVOauthLoginViewController alloc] initWithNibName:@"EMVOauthLoginViewController_iPhone" bundle:nil];
     
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
