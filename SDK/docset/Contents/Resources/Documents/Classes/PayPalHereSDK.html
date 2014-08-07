@@ -61,6 +61,8 @@
 	
 	<option value="//api/name/selectEnvironmentWithType:">&nbsp;&nbsp;&nbsp;&nbsp;+ selectEnvironmentWithType:</option>
 	
+	<option value="//api/name/sendStackTrace">&nbsp;&nbsp;&nbsp;&nbsp;+ sendStackTrace</option>
+	
 	<option value="//api/name/setActiveMerchant:withMerchantId:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setActiveMerchant:withMerchantId:completionHandler:</option>
 	
 	<option value="//api/name/setAnalyticsDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAnalyticsDelegate:</option>
@@ -82,6 +84,10 @@
 	<option value="//api/name/sharedPaymentProcessor">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedPaymentProcessor</option>
 	
 	<option value="//api/name/sharedTransactionManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedTransactionManager</option>
+	
+	<option value="//api/name/startWatchingLocation">&nbsp;&nbsp;&nbsp;&nbsp;+ startWatchingLocation</option>
+	
+	<option value="//api/name/stopWatchingLocation">&nbsp;&nbsp;&nbsp;&nbsp;+ stopWatchingLocation</option>
 	
 	
 	
@@ -131,6 +137,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectEnvironmentWithType:">selectEnvironmentWithType:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendStackTrace">sendStackTrace</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setActiveMerchant:withMerchantId:completionHandler:">setActiveMerchant:withMerchantId:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAnalyticsDelegate:">setAnalyticsDelegate:</a></span></li>
@@ -152,6 +160,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedPaymentProcessor">sharedPaymentProcessor</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedTransactionManager">sharedTransactionManager</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startWatchingLocation">startWatchingLocation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stopWatchingLocation">stopWatchingLocation</a></span></li>
 	
 </ul></li>
 
@@ -307,6 +319,18 @@ such as card readers and chip &amp; pin devices.</p>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/startWatchingLocation">+&nbsp;startWatchingLocation</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stopWatchingLocation">+&nbsp;stopWatchingLocation</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/setBaseAPIURL:">+&nbsp;setBaseAPIURL:</a></code>
 	</span>
 	
@@ -332,6 +356,12 @@ such as card readers and chip &amp; pin devices.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setReferrerCode:">+&nbsp;setReferrerCode:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendStackTrace">+&nbsp;sendStackTrace</a></code>
 	</span>
 	
 	
@@ -439,10 +469,9 @@ such as card readers and chip &amp; pin devices.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>To allow you fine grained control over location access prompts, you can call this method
-explicitly. It doesn&rsquo;t do anything more than ask for location, so you can certainly do
-that yourself and get control of the messaging, but this method is here for your
-convenience.</p>
+		<p>DEPRECATED
+Calls &ldquo;- (void)startWatchingLocation&rdquo;
+Returns YES.</p>
 	</div>		
 	
     
@@ -459,10 +488,9 @@ convenience.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>To allow you fine grained control over location access prompts, you can call this method
-explicitly. It doesn&rsquo;t do anything more than ask for location, so you can certainly do
-that yourself and get control of the messaging, but this method is here for your
-convenience.</p>
+		<p>DEPRECATED
+Calls &ldquo;- (void)startWatchingLocation&rdquo;
+Returns YES.</p>
 	</div>
 	
 	
@@ -836,6 +864,17 @@ or you wish to point the SDK back at Live, you can use this method.</p>
 	</div>				
 	
 	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendStackTrace" title="sendStackTrace"></a>
+	<h3 class="subsubtitle method-title">sendStackTrace</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (void)sendStackTrace</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -1394,6 +1433,92 @@ If not, you would need to feed in same the information within the invoice object
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/startWatchingLocation" title="startWatchingLocation"></a>
+	<h3 class="subsubtitle method-title">startWatchingLocation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Allow the SDK to begin watching the location to attach to payments. In the future allowing
+the SDK to obtain a location fix will be a requirement for taking payments. Location monitoring
+is automatically stopped and restarted when the app is suspended if it is being watched.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)startWatchingLocation</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Allow the SDK to begin watching the location to attach to payments. In the future allowing
+the SDK to obtain a location fix will be a requirement for taking payments. Location monitoring
+is automatically stopped and restarted when the app is suspended if it is being watched.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stopWatchingLocation" title="stopWatchingLocation"></a>
+	<h3 class="subsubtitle method-title">stopWatchingLocation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Disallow the SDK from getting location updates.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)stopWatchingLocation</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Disallow the SDK from getting location updates.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -1411,7 +1536,7 @@ If not, you would need to feed in same the information within the invoice object
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-06-26)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-08-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

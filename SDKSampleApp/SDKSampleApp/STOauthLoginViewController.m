@@ -456,6 +456,10 @@
 
 #pragma mark - UIPickerView
 
+#define stageIndex 0
+#define sandboxIndex 1
+#define liveIndex 2
+
 /*
  * There are currently 3 sample servers (based on the SDK's included node sample-server) for
  * this sample app to login against.  If you stand up your own version of the sample-server you
@@ -533,9 +537,25 @@
     NSLog(@"urlForTheSDKToUse: %@", testBaseUrlForTheSDKToUse);
     
     /*
-     * Tell the SDK what base URL to use for PayPal API calls
+     * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
      */
-    [PayPalHereSDK setBaseAPIURL:testBaseUrlForTheSDKToUse];
+    [PayPalHereSDK setBaseAPIURL:nil];  //Clear out any stage URL we might have set.
+    
+    if(index == liveIndex) {
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
+        return;
+    }
+    else if(index == sandboxIndex) {
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
+        return;
+    }
+    else if(index == stageIndex) {
+        /*
+         * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
+         */
+        [PayPalHereSDK setBaseAPIURL:testBaseUrlForTheSDKToUse];
+        return;
+    }
 }
 
 #pragma mark - UIPickerViewDelegate

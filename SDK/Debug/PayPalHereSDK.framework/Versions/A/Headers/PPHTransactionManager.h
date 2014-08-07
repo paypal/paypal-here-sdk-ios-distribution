@@ -40,7 +40,7 @@
 #define kPPHLocalErrorBadConfigurationInvalidParameters -2007
 #define kPPHLocalErrorBadConfigurationNoCurrentInvoice -2008
 #define kPPHLocalErrorBadConfigurationInvoiceAlreadyPaid -2009
-#define kPPHLocalErrorBadConfigurationAuthForProvidedPaymentMethodNotSupported - 2010
+#define kPPHLocalErrorBadConfigurationAuthForProvidedPaymentMethodNotSupported -  2010
 #define kPPHLocalErrorBadConfigurationNoInvoiceInTransactionRecord - 2011
 #define kPPHLocalErrorBadConfigurationNoTransactionIdInTransactionRecord - 2012
 #define kPPHLocalErrorBadConfigurationNoPaymentData - 2013
@@ -310,8 +310,8 @@
  * @param completionHandler called when the action has completed
  */
 -(void) processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType
-            withTransactionController:(id<PPHTransactionControllerDelegate>)controller
-                    completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
+            withTransactionController:(id<PPHTransactionControllerDelegate>)controller withViewController: (UIViewController *)vc
+                               completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call

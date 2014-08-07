@@ -138,6 +138,11 @@
         
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             
+            if(data == nil && response == nil) {
+                [self showAlertWithTitle:@"Login Failed" andMessage:@"Is the internet connection offline?"];
+                return;
+            }
+            
             NSError *error = nil;
             NSDictionary* jsonResponse = [NSJSONSerialization
                                   JSONObjectWithData:data
@@ -365,19 +370,9 @@
 
 - (void)transitionToTheNextViewController
 {
-	EMVTransactionViewController *transactionVC = nil;
-    
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		transactionVC = [[EMVTransactionViewController alloc]
+	EMVTransactionViewController *transactionVC = [[EMVTransactionViewController alloc]
                          initWithNibName:@"EMVTransactionViewController_iPhone"
                          bundle:nil];
-	}
-	else {
-        NSLog(@"stepping in ipad detection");
-		transactionVC = [[EMVTransactionViewController alloc]
-                         initWithNibName:@"EMVTransactionViewController_iPad"
-                         bundle:nil];
-	}
     
     self.navigationController.viewControllers = @[transactionVC];
 }
