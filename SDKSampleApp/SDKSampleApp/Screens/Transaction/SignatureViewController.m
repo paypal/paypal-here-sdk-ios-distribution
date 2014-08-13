@@ -83,11 +83,10 @@
  */
 - (IBAction)onDonePressed:(id)sender
 {
-    
     // Let's provide the signature for this transaction.
-    [[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:_capturedPaymentResponse.record
-                        withSignature:self.signature.printableImage
-                    completionHandler:^(PPHError *error) {
+    [[PayPalHereSDK sharedTransactionManager] provideSignature:self.signature.printableImage
+                                                forTransaction:_capturedPaymentResponse.record
+                                             completionHandler:^(PPHError *error) {
                         [self showPaymentCompeleteView:_capturedPaymentResponse];                        
                     }];
 }
