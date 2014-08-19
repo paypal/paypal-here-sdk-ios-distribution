@@ -9,9 +9,9 @@ Full class and method documentation can be [found here](http://paypal-mobile.git
 Building
 ========
 
-Clone to repository and then pull down the submodules (Nimbus and AFNetworking):
+Clone to repository and then pull down the submodules by running our update repo script.
 
-    git submodule update --init --recursive
+    ruby update_repo.rb
 
 This should be all that's required to get a clean build. Please note you will need to have an SSH key setup with
 github to make this command work, otherwise you will see "Permission Denied" when trying to pull down the submodules.
