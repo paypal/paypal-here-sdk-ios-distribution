@@ -79,8 +79,8 @@
 }
 
 - (void)clearTextFields {
-    self.usernameField.text = nil;
-    self.passwordField.text = nil;
+    self.usernameField.text = @"sathya";
+    self.passwordField.text = @"11111111";
 }
 
 - (BOOL)fieldValidation {

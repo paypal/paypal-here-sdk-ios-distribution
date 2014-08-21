@@ -24,6 +24,8 @@
     
     [self.window makeKeyAndVisible];
     
+    self.transactionRecords = [[NSMutableArray alloc] init];
+    
     [PayPalHereSDK askForLocationAccess];
     
     return YES;
