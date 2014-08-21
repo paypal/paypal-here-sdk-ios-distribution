@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1982EE8819A266DB00CF0A35 /* EMVSalesHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */; };
+		1986C1FD19A68A7F006E2978 /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1986C1FC19A68A7F006E2978 /* PayPalHereSDK.bundle */; };
 		803E61041959FBC400E4BFDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803E61021959FBC400E4BFDE /* InfoPlist.strings */; };
 		803E61061959FBC400E4BFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61051959FBC400E4BFDE /* main.m */; };
 		803E610A1959FBC400E4BFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61091959FBC400E4BFDE /* AppDelegate.m */; };
@@ -44,10 +46,16 @@
 		804C306D195A837E006ABECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60F91959FBC400E4BFDE /* Foundation.framework */; };
 		804C306E195A8388006ABECA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6195195A4ADB00E4BFDE /* libc++.dylib */; };
 		804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */; };
-		80B7AB4A19747C43002ACB0F /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80B7AB4919747C43002ACB0F /* PayPalHereSDK.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		19CA808B199D20F2001909BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 804C303E195A8140006ABECA /* PayPalHereSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F1C624941975D262000C2BCF;
+			remoteInfo = PPHSDKSmoke;
+		};
 		803E611F1959FBC400E4BFDE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 803E60EE1959FBC400E4BFDE /* Project object */;
@@ -107,6 +115,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1982EE8519A266DB00CF0A35 /* EMVSalesHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVSalesHistoryViewController.h; sourceTree = "<group>"; };
+		1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVSalesHistoryViewController.m; sourceTree = "<group>"; };
+		1986C1FC19A68A7F006E2978 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		803E60F61959FBC400E4BFDE /* EMVAccreditationSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMVAccreditationSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		803E60F91959FBC400E4BFDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,7 +164,6 @@
 		803E6195195A4ADB00E4BFDE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalBeacon.a; path = "../../SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos/libPayPalBeacon.a"; sourceTree = "<group>"; };
 		804C303E195A8140006ABECA /* PayPalHereSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PayPalHereSDK.xcodeproj; path = ../../SDK/source/PayPalHereSDK.xcodeproj; sourceTree = "<group>"; };
-		80B7AB4919747C43002ACB0F /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +210,7 @@
 		803E60ED1959FBC400E4BFDE = {
 			isa = PBXGroup;
 			children = (
-				80B7AB4919747C43002ACB0F /* PayPalHereSDK.bundle */,
+				1986C1FC19A68A7F006E2978 /* PayPalHereSDK.bundle */,
 				804C303E195A8140006ABECA /* PayPalHereSDK.xcodeproj */,
 				803E60FF1959FBC400E4BFDE /* EMVAccreditationSampleApp */,
 				803E61211959FBC400E4BFDE /* EMVAccreditationSampleAppTests */,
@@ -264,6 +274,8 @@
 				803E6164195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib */,
 				803E61141959FBC400E4BFDE /* Images.xcassets */,
 				803E61001959FBC400E4BFDE /* Supporting Files */,
+				1982EE8519A266DB00CF0A35 /* EMVSalesHistoryViewController.h */,
+				1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */,
 			);
 			path = EMVAccreditationSampleApp;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 				804C304D195A8140006ABECA /* libPayPalHereSDK.a */,
 				804C304F195A8140006ABECA /* PPHSDKTests.xctest */,
 				804C3051195A8140006ABECA /* PPHSDKIntegrationTests.octest */,
+				19CA808C199D20F2001909BE /* PPHSDKIntegrationTests copy.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,6 +403,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		19CA808C199D20F2001909BE /* PPHSDKIntegrationTests copy.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PPHSDKIntegrationTests copy.octest";
+			remoteRef = 19CA808B199D20F2001909BE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		804C3049195A8140006ABECA /* libPayPalHereSDK.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -432,7 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B7AB4A19747C43002ACB0F /* PayPalHereSDK.bundle in Resources */,
+				1986C1FD19A68A7F006E2978 /* PayPalHereSDK.bundle in Resources */,
 				803E6165195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib in Resources */,
 				803E61321959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib in Resources */,
 				803E61151959FBC400E4BFDE /* Images.xcassets in Resources */,
@@ -458,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				803E6159195A3EEB00E4BFDE /* PPSCryptoUtils.m in Sources */,
+				1982EE8819A266DB00CF0A35 /* EMVSalesHistoryViewController.m in Sources */,
 				803E6163195A3F5200E4BFDE /* PPSPreferences.m in Sources */,
 				803E6168195A47E700E4BFDE /* EMVTransactionViewController.m in Sources */,
 				803E61131959FBC400E4BFDE /* EMVOauthLoginViewController.m in Sources */,
@@ -608,6 +629,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -635,6 +657,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

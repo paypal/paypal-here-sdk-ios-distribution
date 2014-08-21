@@ -15,5 +15,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) EMVOauthLoginViewController *viewController;
+@property (strong, nonatomic) NSMutableArray *transactionRecords;
 
 @end

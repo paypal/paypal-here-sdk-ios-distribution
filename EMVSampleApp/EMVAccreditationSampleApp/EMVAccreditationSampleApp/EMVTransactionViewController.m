@@ -7,10 +7,12 @@
 //
 
 #import "EMVTransactionViewController.h"
+#import "EMVSalesHistoryViewController.h"
 #import <PayPalHereSDK/PPHTransactionManager.h>
+#import "AppDelegate.h"
 
 @interface EMVTransactionViewController ()
-@property(strong, nonatomic) PPHCardReaderWatcher *cardReaderWatcher;
+@property (strong, nonatomic) PPHCardReaderWatcher *cardReaderWatcher;
 @end
 
 @implementation EMVTransactionViewController
@@ -35,10 +37,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.transactionAmountField.delegate = self;
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -128,8 +132,11 @@
                                           withViewController:self
                                            completionHandler:^(PPHTransactionResponse *record) {
                 
-                    NSLog(@"Payment complete");
-                
+                                               if (record && !record.error) {
+                                                   [self saveTransactionRecordForRefund:record.record];
+                                                   
+                                               }
+                                               
                 }];
             
             } else {
@@ -146,6 +153,12 @@
     
 }
 
+-(void) saveTransactionRecordForRefund:(PPHTransactionRecord *)record {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // Add the record into an array so that we can issue a refund later.
+    [appDelegate.transactionRecords addObject:record];
+}
+
 -(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
     UIAlertView *alertView =
     [[UIAlertView alloc]
@@ -159,20 +172,8 @@
 }
 
 - (IBAction)salesHistoryButtonPressed:(id)sender {
-    
-    NSLog(@"Not yet implemented");
-    
+    EMVSalesHistoryViewController *vc = [[EMVSalesHistoryViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

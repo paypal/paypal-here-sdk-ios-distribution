@@ -24,6 +24,7 @@ typedef enum
     ePPHPaymentMethodCheck,
     ePPHPaymentMethodCash,
     ePPHPaymentMethodChipCard,
+    ePPHPaymentMethodEmvSwipe,
     ePPHPaymentMethodOther
 } PPHPaymentMethod;
 
