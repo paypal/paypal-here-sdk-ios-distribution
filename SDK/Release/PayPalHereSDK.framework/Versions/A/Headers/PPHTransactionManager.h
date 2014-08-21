@@ -300,18 +300,38 @@
  * actually capture that payment.  For Cash or Check, this call will simply
  * record the invoice into the paypal system for record-keeping purposes.
  *
- * @param paymentType the type of payment to collect.  You'll get an error back if you
+ * @param paymentType : The type of payment to collect.  You'll get an error back if you
  *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
  *                    checkedInClient property.  Likewise with the cardData member and
  *                    specifying ePPHPaymentMethodSwipe.
  *
- * @param controller  Can be nil.  If provided, the transaction manager will call the callbacks
+ * @param vc : The current or active view controller.
+ *
+ * @param controller :  Can be nil.  If provided, the transaction manager will call the callbacks
  *                    defined in the PPHTransactionControllerDelegate.
- * @param completionHandler called when the action has completed
+ * @param completionHandler : called when the action has completed
  */
 -(void) processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType
             withTransactionController:(id<PPHTransactionControllerDelegate>)controller withViewController: (UIViewController *)vc
                                completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
+
+/*!
+ * Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+ * This version will cause the SDK to show UI during the refund flow.
+ *
+ * Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).
+ *
+ * @param paymentType the type on which the refund would be performed.  You'll get an error back if you
+ *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
+ *                    checkedInClient property.  Likewise with the cardData member and
+ *                    specifying ePPHPaymentMethodSwipe.
+ *
+ * @param vc : The current or active view controller.
+ *
+ * @param completionHandler called when the action has completed
+ */
+-(void) beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType withViewController: (UIViewController *)vc
+                                       record:(PPHTransactionRecord *)record amount:(PPHAmount*)amount completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call

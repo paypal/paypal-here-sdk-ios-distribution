@@ -196,8 +196,6 @@
 #pragma mark Invoice Information
 /*! The items in the invoice. Sorted according to display order. */
 @property (nonatomic,readonly) NSArray *items;
-/*! A dump of the dictionary representation of the invoice */
-@property (nonatomic,readonly) NSString *description;
 /*! Number of unique items in the invoice */
 @property (nonatomic,readonly) int itemCount;
 
