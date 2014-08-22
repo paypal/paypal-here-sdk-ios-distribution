@@ -18,7 +18,10 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHPaymentLimits.h>
 
-@interface STOauthLoginViewController ()
+@interface STOauthLoginViewController () {
+    CGRect originUsernameFrame;
+    CGRect originPasswordFrame;
+}
 
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
@@ -26,7 +29,6 @@
 @property (nonatomic, strong) NSArray *serviceArray;
 @property (nonatomic, strong) NSString *serviceHost;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @end
 
 /**
@@ -111,12 +113,16 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.isMerchantCheckedin = NO;
     appDelegate.merchantLocation = nil;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
+    originPasswordFrame = self.passwordField.frame;
+    originUsernameFrame = self.usernameField.frame;
+    
     // Did we successfully log in in the past?  If so, let's prefill the username box with
     // that last-good user name.
     NSString *lastGoodUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastgoodusername"];
@@ -437,6 +443,11 @@
 {
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
+    [UIView animateWithDuration:.5 animations:^{
+        [self.usernameField setFrame:originUsernameFrame];
+        [self.passwordField setFrame:originPasswordFrame];
+    } completion:nil];
+    [UIView commitAnimations];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -606,5 +617,13 @@
     return 1;
 }
 
-
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ((textField == self.usernameField || textField == self.passwordField) && IS_IPHONE) {
+        [UIView animateWithDuration:.5 animations:^{
+            [self.usernameField setFrame:CGRectMake(self.view.frame.size.width/2.0 - self.usernameField.frame.size.width/2.0, 150, self.usernameField.frame.size.width, self.usernameField.frame.size.height)];
+            [self.passwordField setFrame:CGRectMake(self.view.frame.size.width/2.0 - self.usernameField.frame.size.width/2.0, 150+self.usernameField.frame.size.height+5, self.usernameField.frame.size.width, self.usernameField.frame.size.height)];
+        } completion:nil];
+        [UIView commitAnimations];
+    }
+}
 @end

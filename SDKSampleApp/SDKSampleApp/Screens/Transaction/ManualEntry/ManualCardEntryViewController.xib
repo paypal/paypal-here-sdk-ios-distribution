@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -14,7 +14,6 @@
                 <outlet property="expMonth" destination="ARp-Dw-wSV" id="0Ad-p1-lwp"/>
                 <outlet property="expYear" destination="f2i-mB-sAT" id="hRE-E6-RMv"/>
                 <outlet property="fillInCardInfoButton" destination="S93-xf-8dP" id="PdK-cT-z1N"/>
-                <outlet property="processingTransactionSpinny" destination="Dkq-k8-yjV" id="ib7-YS-NfS"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -125,10 +124,6 @@
                         <action selector="clearCardInfo:" destination="-1" eventType="touchUpInside" id="SEt-nv-JM6"/>
                     </connections>
                 </button>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Dkq-k8-yjV">
-                    <rect key="frame" x="155" y="315" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -151,12 +146,10 @@
                 <constraint firstItem="f2i-mB-sAT" firstAttribute="centerY" secondItem="gue-Vs-rjN" secondAttribute="centerY" id="XQd-9D-WYP"/>
                 <constraint firstItem="CrA-aF-1UG" firstAttribute="centerX" secondItem="eOK-De-Wlq" secondAttribute="centerX" constant="-51" id="YFj-tO-mdY"/>
                 <constraint firstItem="ARp-Dw-wSV" firstAttribute="centerY" secondItem="f2i-mB-sAT" secondAttribute="centerY" id="aPl-44-CUV"/>
-                <constraint firstAttribute="centerY" secondItem="Dkq-k8-yjV" secondAttribute="centerY" constant="-41" id="ebx-sV-0vf"/>
                 <constraint firstItem="4KP-ag-l15" firstAttribute="centerY" secondItem="S93-xf-8dP" secondAttribute="centerY" id="hPl-j4-PLf"/>
                 <constraint firstItem="Gch-xR-RhM" firstAttribute="centerX" secondItem="f2i-mB-sAT" secondAttribute="centerX" constant="-0.5" id="kHM-AU-z9w"/>
                 <constraint firstItem="Gch-xR-RhM" firstAttribute="top" secondItem="x6v-UX-Uvp" secondAttribute="bottom" constant="3" id="nl6-9a-tGg"/>
                 <constraint firstItem="CrA-aF-1UG" firstAttribute="top" secondItem="1" secondAttribute="top" constant="94" id="pUt-9I-Iys"/>
-                <constraint firstAttribute="centerX" secondItem="Dkq-k8-yjV" secondAttribute="centerX" constant="-5" id="qvq-nK-KN8"/>
                 <constraint firstItem="x6v-UX-Uvp" firstAttribute="top" secondItem="eOK-De-Wlq" secondAttribute="bottom" constant="13" id="tEG-r5-RTf"/>
                 <constraint firstItem="f2i-mB-sAT" firstAttribute="leading" secondItem="ARp-Dw-wSV" secondAttribute="trailing" constant="10" id="v4h-j7-owK"/>
                 <constraint firstItem="4KP-ag-l15" firstAttribute="leading" secondItem="S93-xf-8dP" secondAttribute="trailing" constant="16" id="wmt-td-lQ5"/>
