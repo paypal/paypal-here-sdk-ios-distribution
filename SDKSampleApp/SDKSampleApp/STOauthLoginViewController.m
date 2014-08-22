@@ -21,6 +21,7 @@
 @interface STOauthLoginViewController () {
     CGRect originUsernameFrame;
     CGRect originPasswordFrame;
+    CGRect originLoginFrame;
 }
 
 @property (nonatomic, strong) UIPickerView *pickerView;
@@ -122,6 +123,7 @@
 
     originPasswordFrame = self.passwordField.frame;
     originUsernameFrame = self.usernameField.frame;
+    originLoginFrame = self.loginButton.frame;
     
     // Did we successfully log in in the past?  If so, let's prefill the username box with
     // that last-good user name.
@@ -446,6 +448,7 @@
     [UIView animateWithDuration:.5 animations:^{
         [self.usernameField setFrame:originUsernameFrame];
         [self.passwordField setFrame:originPasswordFrame];
+        [self.loginButton setFrame:originLoginFrame];
     } completion:nil];
     [UIView commitAnimations];
 }
@@ -621,7 +624,8 @@
     if ((textField == self.usernameField || textField == self.passwordField) && IS_IPHONE) {
         [UIView animateWithDuration:.5 animations:^{
             [self.usernameField setFrame:CGRectMake(self.view.frame.size.width/2.0 - self.usernameField.frame.size.width/2.0, 150, self.usernameField.frame.size.width, self.usernameField.frame.size.height)];
-            [self.passwordField setFrame:CGRectMake(self.view.frame.size.width/2.0 - self.usernameField.frame.size.width/2.0, 150+self.usernameField.frame.size.height+5, self.usernameField.frame.size.width, self.usernameField.frame.size.height)];
+            [self.passwordField setFrame:CGRectMake(self.view.frame.size.width/2.0 - self.usernameField.frame.size.width/2.0, 150+self.usernameField.frame.size.height+5, self.passwordField.frame.size.width, self.passwordField.frame.size.height)];
+            [self.loginButton setFrame:CGRectMake(self.loginButton.frame.origin.x, 150+self.usernameField.frame.size.height+5 + self.passwordField.frame.size.height, self.loginButton.frame.size.width, self.loginButton.frame.size.height)];
         } completion:nil];
         [UIView commitAnimations];
     }

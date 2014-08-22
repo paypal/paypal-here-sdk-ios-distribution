@@ -156,6 +156,10 @@
     
     [self.fillInCardInfo setEnabled:NO];
     [self.clearCardInfo setEnabled:NO];
+    [self.cvv2 setEnabled:NO];
+    [self.expYear setEnabled:NO];
+    [self.expMonth setEnabled:NO];
+    [self.cardNumber setEnabled:NO];
     
     [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
                 withTransactionController:nil
