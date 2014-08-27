@@ -25,8 +25,8 @@
 @property (nonatomic, strong) NSArray *pickerURLArray;
 @property (nonatomic, strong) NSArray *serviceArray;
 @property (nonatomic, strong) NSString *serviceHost;
-@property (nonatomic, weak) IBOutlet UIScrollView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *pphLogoImageView;
 @end
 
 /**
@@ -94,7 +94,7 @@
 	self.title = @"Merchant Login";
 	self.usernameField.delegate = self;
 	self.passwordField.delegate = self;
-
+    self.loginButton.layer.cornerRadius = 10.0;
 	[self.scrollView
 		 setContentSize:CGSizeMake(CGRectGetWidth(self.scrollView.frame),
 								   CGRectGetHeight(self.scrollView.frame)
@@ -115,8 +115,7 @@
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(dismissKeyboard)];
     singleTap.numberOfTapsRequired = 1;
-    [self.backgroundView
-     addGestureRecognizer:singleTap];
+    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -130,8 +129,17 @@
         self.usernameField.text = lastGoodUserName;
     }
     
-    [self.backgroundView setContentOffset:CGPointMake(0, 0) animated:NO];
+}
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:2.0 animations:^{
+        [self.pphLogoImageView setAlpha:1.0];
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView commitAnimations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,8 +162,11 @@
         [self dismissKeyboard];
     }
 
-	self.loginInProgress.hidden = NO;
-    [self.loginInProgress startAnimating];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicator.frame = CGRectMake(self.loginButton.frame.size.width/2.0 - 50/2.0, self.loginButton.frame.size.height/2.0-50/2.0, 50.0, 50.0);
+    [indicator startAnimating];
+    
+    [self.loginButton addSubview:indicator];
     self.loginButton.enabled = NO;
 
 	NSLog(@"Attempting to log-in via service at [%@]", self.serviceHost);
@@ -181,9 +192,10 @@
     //
     AFJSONRequestOperation *operation = 
 	  [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *JSON) {
-
-		  self.loginInProgress.hidden = YES;
-          [self.loginInProgress stopAnimating];
+          
+          [indicator stopAnimating];
+          [indicator removeFromSuperview];
+          
           self.loginButton.enabled = YES;
           
           // Did we get a successful response with no data?
@@ -258,13 +270,14 @@
 
 		} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
 
-		  self.loginInProgress.hidden = YES;
-
             [self showAlertWithTitle:@"Heroku Login Failed"
                           andMessage:[NSString stringWithFormat: @"The Server returned an error: [%@]",
                                       [error localizedDescription]]];
 
             NSLog(@"The Heroku login call failed: [%@]", error);
+            
+            [indicator stopAnimating];
+            [indicator removeFromSuperview];
             self.loginButton.enabled = YES;
 
 
@@ -292,8 +305,6 @@
 	if (key == nil || access == nil) {
         
 		NSLog(@"Bailing because couldn't decrypt access_code.   key: %@   access: %@   access_token: %@", key, access, access_token);
-
-		self.loginInProgress.hidden = YES;
 
         [self showAlertWithTitle:@"Press the Login Button Again"
                       andMessage:@"Looks like something went wrong during the redirect.  Tap Login again to retry."];
@@ -325,10 +336,22 @@
     //
     // Please wait for this call to complete before attempting other SDK operations.
     //
-	[PayPalHereSDK setActiveMerchant:self.merchant 
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicator.frame = CGRectMake(self.loginButton.frame.size.width/2.0 - 50/2.0, self.loginButton.frame.size.height/2.0-50/2.0, 50.0, 50.0);
+    [indicator startAnimating];
+    
+    [self.loginButton addSubview:indicator];
+    self.loginButton.enabled = NO;
+    
+	[PayPalHereSDK setActiveMerchant:self.merchant
 				   withMerchantId:self.merchant.invoiceContactInfo.businessName
 				   completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo) {
 
+           [indicator stopAnimating];
+           [indicator removeFromSuperview];
+           
+           self.loginButton.enabled = YES;
 			if (status == ePPHAccessResultSuccess) {
                 // Login complete!
                 
@@ -446,7 +469,14 @@
 {
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
-    [self.backgroundView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+    [UIView animateWithDuration:.4 animations:^{
+        [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView commitAnimations];
+
 }
 
 #pragma mark - UITextFieldDelegate
@@ -618,7 +648,12 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if ((textField == self.usernameField || textField == self.passwordField) && IS_IPHONE) {
-        [self.backgroundView setContentOffset:CGPointMake(0, 100) animated:YES];
+        [UIView animateWithDuration:.4 animations:^{
+            [self.view setFrame:CGRectMake(0, -150, self.view.frame.size.width, self.view.frame.size.height)];
+        } completion:^(BOOL finished) {
+            
+        }];
+        [UIView commitAnimations];
     }
 }
 @end
