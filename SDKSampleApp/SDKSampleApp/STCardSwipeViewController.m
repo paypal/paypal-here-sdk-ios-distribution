@@ -11,9 +11,7 @@
 #import "SignatureViewController.h"
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
 
-@interface STCardSwipeViewController () {
-    CGRect originCardRect;
-}
+@interface STCardSwipeViewController ()
 @property (nonatomic, retain) IBOutlet UIImageView *iphoneImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *swiperImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *cardImageView;
@@ -49,17 +47,20 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    originCardRect = self.cardImageView.frame;
     [self animateCard];
 }
 
 -(void)animateCard {
-    [UIView animateWithDuration:1.5 animations:^{
+    CGRect originalFrame = self.cardImageView.frame;
+    [UIView animateWithDuration:1.25 animations:^{
         [self.cardImageView setFrame:CGRectOffset(self.cardImageView.frame, 100, 0)];
     } completion:^(BOOL finished) {
-        [self.cardImageView setFrame:originCardRect];
-        [self animateCard];
+        [self.cardImageView setFrame:originalFrame];
+        if (self.view.window) {
+            [self animateCard];
+        }
     }];
+    [UIView commitAnimations];
 }
 
 - (void)didReceiveMemoryWarning
