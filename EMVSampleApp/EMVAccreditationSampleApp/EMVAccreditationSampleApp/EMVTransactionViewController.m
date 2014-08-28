@@ -38,6 +38,8 @@
 {
     [super viewDidLoad];
     self.transactionAmountField.delegate = self;
+    self.chargeButton.layer.cornerRadius = 10;
+    self.salesHistoryButton.layer.cornerRadius = 10;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -173,6 +175,7 @@
 
 - (IBAction)salesHistoryButtonPressed:(id)sender {
     EMVSalesHistoryViewController *vc = [[EMVSalesHistoryViewController alloc] init];
+    vc.title = @"Sales History";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

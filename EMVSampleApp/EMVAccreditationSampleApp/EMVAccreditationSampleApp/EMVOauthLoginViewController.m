@@ -13,6 +13,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface EMVOauthLoginViewController ()
+@property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @end
 
 @implementation EMVOauthLoginViewController
@@ -28,13 +29,13 @@
     [self setUpSegmentedControlAndServiceUrls];
     [self setUpSpinnerAndTitle];
     [self setUpTextFields];
+    self.loginButton.layer.cornerRadius = 10;
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [self clearTextFields];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,12 +57,12 @@
                                          initWithString:@"http://desolate-wave-3684.herokuapp.com"]];
     
     [self.serviceHostUrlArray addObject:[[NSMutableString alloc]
-                                         initWithString:@"http://morning-tundra-8515.herokuapp.com"]];
+                                         initWithString:@"http://hidden-spire-8232.herokuapp.com/server"]];
     
     self.sdkBaseUrlArray = [[NSMutableArray alloc] init];
     [self.sdkBaseUrlArray addObject:[NSNull null]];
     [self.sdkBaseUrlArray addObject:@"https://www.sandbox.paypal.com/webapps/"];
-    [self.sdkBaseUrlArray addObject:@"https://www.stage2mb006.stage.paypal.com/webapps/"];
+    [self.sdkBaseUrlArray addObject:@"https://www.stage2mb001.stage.paypal.com/webapps/"];
     
     
     
@@ -97,10 +98,12 @@
 #pragma mark - Delegate Callbacks and IBActions
 - (IBAction)usernameFieldReturned:(id)sender {
     [sender resignFirstResponder];
+    [self resetTextFieldOffset];
 }
 
 - (IBAction)passwordFieldReturned:(id)sender {
     [sender resignFirstResponder];
+    [self resetTextFieldOffset];
 }
 
 - (IBAction)serviceHostSegmentedControlChanged:(id)sender {
@@ -132,6 +135,8 @@
     
     if (self.segControl.selectedSegmentIndex != UISegmentedControlNoSegment && [self fieldValidation]) {
         
+        [self.view endEditing:YES];
+        [self resetTextFieldOffset];
         [self.spinner startAnimating];
         
         NSMutableURLRequest *request = [self createLoginRequest];
@@ -216,7 +221,11 @@
                 NSString *url = [jsonResponse objectForKey:@"url"];
                 NSLog(@"Pointing Safari at URL [%@]", url);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-			}
+                
+			} else if ([jsonResponse objectForKey:@"access_token"]) {
+                
+                [self setActiveMerchantWithAccessTokenDict:jsonResponse];
+            }
 			else {
                 
                 // UH-OH - NO URL FOR SAFARI TO FOLLOW, NO ACCESS TOKEN FOR YOU. FAIL.
@@ -306,6 +315,8 @@
     [loginRequestPostString appendString:self.usernameField.text];
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:self.passwordField.text];
+    [loginRequestPostString appendString:@"&servername="];
+    [loginRequestPostString appendString:@"stage2mb001"];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -327,6 +338,8 @@
     [loginRequestPostString appendString:self.usernameField.text];
     [loginRequestPostString appendString:@"&ticket="];
     [loginRequestPostString appendString:ticket];
+    [loginRequestPostString appendString:@"&servername="];
+    [loginRequestPostString appendString:@"stage2mb001"];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -374,6 +387,7 @@
                          initWithNibName:@"EMVTransactionViewController_iPhone"
                          bundle:nil];
     
+    transactionVC.title = @"Order Entry";
     self.navigationController.viewControllers = @[transactionVC];
 }
 
@@ -387,6 +401,22 @@
      otherButtonTitles:nil];
     
     [alertView show];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == self.usernameField || textField == self.passwordField) {
+        [UIView animateWithDuration:.5 animations:^{
+            [self.view setFrame:CGRectMake(0, -150, self.view.frame.size.width, self.view.frame.size.height)];
+        }];
+        [UIView commitAnimations];
+    }
+}
+
+-(void)resetTextFieldOffset {
+        [UIView animateWithDuration:.4 animations:^{
+            [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        }];
+        [UIView commitAnimations];
 }
 
 @end
