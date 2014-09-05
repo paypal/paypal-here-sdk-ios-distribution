@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *expMonth;
 @property (weak, nonatomic) IBOutlet UITextField *expYear;
 @property (weak, nonatomic) IBOutlet UITextField *cvv2;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
 
 -(IBAction)fillInCardInfo:(id)sender;
 -(IBAction)clearCardInfo:(id)sender;
@@ -50,6 +49,18 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Process!"
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(carryOutPayment:)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    
+    UIToolbar* numberToolbar = [[UIToolbar alloc]init];
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed:)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Purchase!" style:UIBarButtonItemStyleDone target:self action:@selector(purchaseButtonPressed:)],
+                           nil];
+    [numberToolbar sizeToFit];
+    self.cardNumber.inputAccessoryView = numberToolbar;
+    self.expMonth.inputAccessoryView = numberToolbar;
+    self.expYear.inputAccessoryView = numberToolbar;
+    self.cvv2.inputAccessoryView = numberToolbar;
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +82,22 @@
     [self.expYear setText:@""];
     [self.cvv2 setText:@""];
 }
+-(void)cancelButtonPressed:(id)sender {
+    [self.cardNumber resignFirstResponder];
+    [self.expMonth resignFirstResponder];
+    [self.expYear resignFirstResponder];
+    [self.cvv2 resignFirstResponder];
 
+}
+
+-(void)purchaseButtonPressed:(id) sender {
+    [self.cardNumber resignFirstResponder];
+    [self.expMonth resignFirstResponder];
+    [self.expYear resignFirstResponder];
+    [self.cvv2 resignFirstResponder];
+    
+    [self carryOutPayment:sender];
+}
 
 -(NSString*) getCurrentYear
 {
@@ -130,7 +156,10 @@
     
     [self.fillInCardInfo setEnabled:NO];
     [self.clearCardInfo setEnabled:NO];
-    
+    [self.cvv2 setEnabled:NO];
+    [self.expYear setEnabled:NO];
+    [self.expMonth setEnabled:NO];
+    [self.cardNumber setEnabled:NO];
     
     [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
                 withTransactionController:nil

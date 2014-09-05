@@ -32,7 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.processingTransactionSpinny.hidden=YES;
     
     self.fillInCardInfoButton.layer.cornerRadius = 10;
     self.clearCardInfoButton.layer.cornerRadius = 10;
@@ -43,6 +42,18 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:buttonText
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick:)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    
+    UIToolbar* numberToolbar = [[UIToolbar alloc]init];
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed:)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Purchase!" style:UIBarButtonItemStyleDone target:self action:@selector(purchaseButtonPressed:)],
+                           nil];
+    [numberToolbar sizeToFit];
+    self.cardNumber.inputAccessoryView = numberToolbar;
+    self.expMonth.inputAccessoryView = numberToolbar;
+    self.expYear.inputAccessoryView = numberToolbar;
+    self.cvv2.inputAccessoryView = numberToolbar;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +78,22 @@
     [self.cvv2 setText:@""];
 }
 
+-(void)cancelButtonPressed:(id)sender {
+    [self.cardNumber resignFirstResponder];
+    [self.expMonth resignFirstResponder];
+    [self.expYear resignFirstResponder];
+    [self.cvv2 resignFirstResponder];
+    
+}
+
+-(void)purchaseButtonPressed:(id) sender {
+    [self.cardNumber resignFirstResponder];
+    [self.expMonth resignFirstResponder];
+    [self.expYear resignFirstResponder];
+    [self.cvv2 resignFirstResponder];
+    
+    [self onDoneButtonClick:sender];
+}
 
 -(NSString*) getCurrentYear
 {
@@ -92,8 +119,20 @@
         return;
     }
     
-    self.processingTransactionSpinny.hidden=NO;
-    [self.processingTransactionSpinny startAnimating];
+    
+    UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinny setFrame:CGRectMake(0, 0, 100, 100)];
+    [spinny startAnimating];
+    UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
+    self.navigationItem.rightBarButtonItem = loading;
+    
+    [self.fillInCardInfoButton setEnabled:NO];
+    [self.clearCardInfoButton setEnabled:NO];
+    [self.cvv2 setEnabled:NO];
+    [self.expYear setEnabled:NO];
+    [self.expMonth setEnabled:NO];
+    [self.cardNumber setEnabled:NO];
+    
     
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setMonth:[expMonthStr integerValue]];
