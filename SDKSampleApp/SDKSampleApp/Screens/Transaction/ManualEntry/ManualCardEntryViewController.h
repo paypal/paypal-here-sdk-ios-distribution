@@ -18,7 +18,6 @@ PPHTransactionControllerDelegate
 @property (weak, nonatomic) IBOutlet UITextField *expMonth;
 @property (weak, nonatomic) IBOutlet UITextField *expYear;
 @property (weak, nonatomic) IBOutlet UITextField *cvv2;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
 
 -(IBAction)fillInCardInfo:(id)sender;
 -(IBAction)clearCardInfo:(id)sender;

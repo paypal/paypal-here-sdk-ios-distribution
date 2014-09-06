@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="STCardSwipeViewController">
             <connections>
-                <outlet property="swipeImageView" destination="xbl-mE-Lvs" id="IcJ-hl-U4d"/>
+                <outlet property="cardImageView" destination="Zp2-qS-CLu" id="uwK-ep-wQ3"/>
+                <outlet property="iphoneImageView" destination="qJX-Am-5fO" id="X7N-Gd-lsM"/>
+                <outlet property="swiperImageView" destination="xbl-mE-Lvs" id="Oan-qr-u03"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,37 +18,60 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Reader Listening for Swipes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="264" translatesAutoresizingMaskIntoConstraints="NO" id="oGh-En-ctZ">
-                    <rect key="frame" x="28" y="71" width="264" height="63"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-Og-X6M">
+                    <rect key="frame" x="12" y="40" width="297" height="488"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VISA350x220.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Zp2-qS-CLu">
+                            <rect key="frame" x="20" y="47" width="92" height="55"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paypalhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-mE-Lvs">
+                            <rect key="frame" x="65" y="61" width="121" height="52"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iphone.png" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-Am-5fO">
+                            <rect key="frame" x="71" y="110" width="154" height="340"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNO-kC-FZU">
+                            <rect key="frame" x="87" y="157" width="122" height="184"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pp_v_rgb.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-lA-HAR">
+                                    <rect key="frame" x="24" y="22" width="78" height="87"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Swipe Now!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="91" translatesAutoresizingMaskIntoConstraints="NO" id="i2Y-H8-5rf">
+                                    <rect key="frame" x="18" y="106" width="91" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.81976253639999996" green="0.94169491890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="264" id="USf-Cw-sS3"/>
-                        <constraint firstAttribute="width" secondItem="oGh-En-ctZ" secondAttribute="height" multiplier="88:21" id="izE-K0-lIa"/>
+                        <constraint firstAttribute="width" constant="297" id="H24-xI-dnd"/>
+                        <constraint firstAttribute="height" constant="488" id="zqp-fo-JO7"/>
                     </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-mE-Lvs">
-                    <rect key="frame" x="28" y="173" width="265" height="149"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="265" id="Q2h-nW-eOW"/>
-                        <constraint firstAttribute="width" secondItem="xbl-mE-Lvs" secondAttribute="height" multiplier="265:149" id="YXA-on-FT5"/>
-                    </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="oGh-En-ctZ" secondAttribute="centerX" id="DDL-MJ-7an"/>
-                <constraint firstItem="xbl-mE-Lvs" firstAttribute="centerX" secondItem="oGh-En-ctZ" secondAttribute="centerX" constant="0.5" id="DH1-WD-kZF"/>
-                <constraint firstItem="xbl-mE-Lvs" firstAttribute="top" secondItem="oGh-En-ctZ" secondAttribute="bottom" constant="39" id="oeb-fJ-M22"/>
-                <constraint firstItem="oGh-En-ctZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="71" id="p5g-Fi-RfQ"/>
+                <constraint firstAttribute="centerX" secondItem="nzn-Og-X6M" secondAttribute="centerX" constant="-0.5" id="iBT-sn-obk"/>
+                <constraint firstItem="nzn-Og-X6M" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="v6w-uC-eVI"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
-        <image name="swipe.jpg" width="287" height="176"/>
+        <image name="VISA350x220.JPG" width="350" height="220"/>
+        <image name="iphone.png" width="277" height="612"/>
+        <image name="paypalhere.png" width="630" height="215"/>
+        <image name="pp_v_rgb.png" width="1180" height="1164"/>
     </resources>
 </document>

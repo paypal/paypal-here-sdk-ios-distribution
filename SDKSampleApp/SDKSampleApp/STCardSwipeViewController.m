@@ -12,7 +12,9 @@
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
 
 @interface STCardSwipeViewController ()
-@property (nonatomic, retain) IBOutlet UIImageView *swipeImageView;
+@property (nonatomic, retain) IBOutlet UIImageView *iphoneImageView;
+@property (nonatomic, retain) IBOutlet UIImageView *swiperImageView;
+@property (nonatomic, retain) IBOutlet UIImageView *cardImageView;
 @property (nonatomic, strong) NSString *amount;
 @property (nonatomic, strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe; // Used to only accept first valid swipe.
@@ -40,8 +42,25 @@
     tm.ignoreHardwareReaders = NO;
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     
-    self.swipeImageView.layer.cornerRadius = 10;
     self.waitingForCardSwipe = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self animateCard];
+}
+
+-(void)animateCard {
+    CGRect originalFrame = self.cardImageView.frame;
+    [UIView animateWithDuration:1.25 animations:^{
+        [self.cardImageView setFrame:CGRectOffset(self.cardImageView.frame, 100, 0)];
+    } completion:^(BOOL finished) {
+        [self.cardImageView setFrame:originalFrame];
+        if (self.view.window) {
+            [self animateCard];
+        }
+    }];
+    [UIView commitAnimations];
 }
 
 - (void)didReceiveMemoryWarning
