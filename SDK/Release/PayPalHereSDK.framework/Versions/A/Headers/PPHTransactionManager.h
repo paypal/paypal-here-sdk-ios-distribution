@@ -47,6 +47,7 @@
 #define kPPHLocalErrorBadConfigurationNotYetImplemented -2014
 #define kPPHLocalErrorBadConfigurationNegativeRefundAmountNotAllowed -2015
 #define kPPHLocalErrorBadConfigurationInvalidPermissionsForProvidedPaymentType -2016
+#define kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds -2017
 
 // Mapping the different API's in Transaction Manager to key's
 // used in saving of invoice, and can be extended for other future use cases
@@ -383,6 +384,5 @@
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
  */
 -(void)sendReceipt:(PPHTransactionRecord*) previousTransaction toRecipient:(PPHReceiptDestination*)destination completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
-
 
 @end
