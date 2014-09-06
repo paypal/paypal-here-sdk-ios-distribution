@@ -70,6 +70,8 @@
 	
 	<option value="//api/name/beginRefund:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefund:forAmount:completionHandler:</option>
 	
+	<option value="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</option>
+	
 	<option value="//api/name/cancelPayment">&nbsp;&nbsp;&nbsp;&nbsp;- cancelPayment</option>
 	
 	<option value="//api/name/capturePaymentForAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- capturePaymentForAuthorization:withCompletionHandler:</option>
@@ -143,6 +145,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginPaymentWithAmount:andName:">beginPaymentWithAmount:andName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefund:forAmount:completionHandler:">beginRefund:forAmount:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelPayment">cancelPayment</a></span></li>
 	
@@ -362,6 +366,12 @@ NSLog(&ldquo;Payment Completed&rdquo;);
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&ndash;&nbsp;processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&ndash;&nbsp;beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></code>
 	</span>
 	
 	
@@ -987,6 +997,74 @@ by beginRefund.</p></dd>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:" title="beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withViewController:(UIViewController *)<em>vc</em> record:(PPHTransactionRecord *)<em>record</em> amount:(PPHAmount *)<em>amount</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>the type on which the refund would be performed.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vc</em></dt>
+			<dd><p>: The current or active view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</p>
+
+<p>Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/cancelPayment" title="cancelPayment"></a>
 	<h3 class="subsubtitle method-title">cancelPayment</h3>
 	
@@ -1210,7 +1288,7 @@ This version will cause the SDK to show UI during the payment flow.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>paymentType</em></dt>
-			<dd><p>the type of payment to collect.  You&rsquo;ll get an error back if you
+			<dd><p>: The type of payment to collect.  You&rsquo;ll get an error back if you
 specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
 <a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
 specifying ePPHPaymentMethodSwipe.</p></dd>
@@ -1218,13 +1296,18 @@ specifying ePPHPaymentMethodSwipe.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>controller</em></dt>
-			<dd><p>Can be nil.  If provided, the transaction manager will call the callbacks
+			<dd><p>:  Can be nil.  If provided, the transaction manager will call the callbacks
 defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHTransactionControllerDelegate</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>vc</em></dt>
+			<dd><p>: The current or active view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>called when the action has completed</p></dd>
+			<dd><p>: called when the action has completed</p></dd>
 		</dl>
 		
 	</div>
@@ -1519,7 +1602,7 @@ which we should send the receipt.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-08-05)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-09-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
