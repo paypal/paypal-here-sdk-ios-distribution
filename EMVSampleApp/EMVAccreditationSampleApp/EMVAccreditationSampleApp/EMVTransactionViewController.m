@@ -134,10 +134,26 @@
                                           withViewController:self
                                            completionHandler:^(PPHTransactionResponse *record) {
                 
-                                               if (record && !record.error) {
-                                                   [self saveTransactionRecordForRefund:record.record];
-                                                   
+                                               if(record) {
+                                                   if (!record.error) {
+                                                       [self saveTransactionRecordForRefund:record.record];
+                                                   }
+                                                   else if(record.error.code == kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds)  {
+                                                       // This happens when the user is attempting to charge an amount that's outside
+                                                       // of the allowed bounds for this merchant.  Different merchants have different
+                                                       // min and max amounts they can charge.
+                                                       //
+                                                       // Your app can check these bounds before kicking off the payment (and eventually
+                                                       // getting this error).  To do that, please check the PPHPaymentLimits object found
+                                                       // via [[[PayPalHereSDK activeMerchant] payPalAccount] paymentLimits].
+                                                       
+                                                       NSLog(@"The app attempted to charge an out of bounds amount.");
+                                                       NSLog(@"Dev Message: %@", [record.error.userInfo objectForKey:@"DevMessage"]);
+                                                       
+                                                       [self showAlertWithTitle:@"Amount is out of bounds" andMessage:nil];
+                                                   }
                                                }
+
                                                
                 }];
             
