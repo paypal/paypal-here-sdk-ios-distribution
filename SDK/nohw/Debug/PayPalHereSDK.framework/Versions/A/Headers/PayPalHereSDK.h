@@ -222,6 +222,11 @@ typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccess
  */
 +(void) setReferrerCode: (NSString*) referrerCode;
 
+/*!
+ * Returns the current base URL
+ */
++(NSString *)baseURL;
+
 #ifdef DEBUG
 +(void)sendStackTrace;
 #endif
