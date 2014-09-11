@@ -30,7 +30,7 @@ and the consumer/merchant must choose which one to use</Abstract>
 			<Abstract type="html">Name of the application at index ix</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)applicationNameAtIndex:(NSInteger)ix</Declaration>
+			<Declaration>- (NSString *)applicationNameAtIndex:(id)ix</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>ix</Name>
@@ -47,7 +47,7 @@ and the consumer/merchant must choose which one to use</Abstract>
 			<Abstract type="html">Id of the application at index ix</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)applicationIdAtIndex:(NSInteger)ix</Declaration>
+			<Declaration>- (NSString *)applicationIdAtIndex:(id)ix</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>ix</Name>
@@ -59,6 +59,7 @@ and the consumer/merchant must choose which one to use</Abstract>
             <NodeRef refid="15"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

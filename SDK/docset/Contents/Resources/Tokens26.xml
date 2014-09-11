@@ -388,7 +388,7 @@ be .06 for this property.</Abstract>
 			<Abstract type="html">Create the item from a dictionary from the invoice API</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)representation</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>representation</Name>
@@ -405,13 +405,14 @@ be .06 for this property.</Abstract>
 			<Abstract type="html">Calculate the rounded total based on the quantity and unitPrice</Abstract>
 			<DeclaredIn>PPHInvoiceItem.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)roundedTotalInCurrency:(NSString *)currency</Declaration>
+			<Declaration>- (PPHAmount *)roundedTotalInCurrency:(id)currency</Declaration>
 			
 			
 			<Anchor>//api/name/roundedTotalInCurrency:</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

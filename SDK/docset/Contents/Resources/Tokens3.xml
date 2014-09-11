@@ -17,7 +17,7 @@
 			<Abstract type="html">Get the default currency code given an ISO country code</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>+ (NSString *)defaultCurrencyCodeInCountry:(NSString *)countryCode</Declaration>
+			<Declaration>+ (NSString *)defaultCurrencyCodeInCountry:(id)countryCode</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>countryCode</Name>
@@ -34,7 +34,7 @@
 			<Abstract type="html">Create a PPHAmount given a decimal and a currency</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>+ (PPHAmount *)amountWithDecimal:(NSDecimalNumber *)amount inCurrency:(NSString *)currency</Declaration>
+			<Declaration>+ (PPHAmount *)amountWithDecimal:(id)amount inCurrency:(id)currency</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>amount</Name>
@@ -54,7 +54,7 @@
 			<Abstract type="html">Create a PPHAmount given a decimal in a string and a currency</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>+ (PPHAmount *)amountWithString:(NSString *)stringValue inCurrency:(NSString *)currency</Declaration>
+			<Declaration>+ (PPHAmount *)amountWithString:(id)stringValue inCurrency:(id)currency</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>stringValue</Name>
@@ -87,7 +87,7 @@
 in USD which is a 2 digit currency, passing 12345 will return 123.45</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithPadding:(NSString *)amount inCurrency:(NSString *)currency</Declaration>
+			<Declaration>- (id)initWithPadding:(id)amount inCurrency:(id)currency</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>amount</Name>
@@ -108,7 +108,7 @@ in USD which is a 2 digit currency, passing 12345 will return 123.45</Abstract>
 For example in USD passing 1.232 would return 1.23</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithRounding:(NSDecimalNumber *)amount inCurrency:(NSString *)currency</Declaration>
+			<Declaration>- (id)initWithRounding:(id)amount inCurrency:(id)currency</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>amount</Name>
@@ -312,7 +312,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Multiply a PPHAmount by a decimal</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)multiply:(NSDecimalNumber *)multiple</Declaration>
+			<Declaration>- (PPHAmount *)multiply:(id)multiple</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>multiple</Name>
@@ -329,7 +329,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Subtract a decimal from a PPHAmount</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)subtract:(NSDecimalNumber *)operand</Declaration>
+			<Declaration>- (PPHAmount *)subtract:(id)operand</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>operand</Name>
@@ -346,7 +346,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Add a PPHAmount to a decimal</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)add:(NSDecimalNumber *)operand</Declaration>
+			<Declaration>- (PPHAmount *)add:(id)operand</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>operand</Name>
@@ -363,7 +363,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Divide a PPHAmount by a decimal</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)divideBy:(NSDecimalNumber *)divisor</Declaration>
+			<Declaration>- (PPHAmount *)divideBy:(id)divisor</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>divisor</Name>
@@ -380,7 +380,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Multiply two PPHAmounts</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)multiplyByAmount:(PPHAmount *)multiple</Declaration>
+			<Declaration>- (PPHAmount *)multiplyByAmount:(id)multiple</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>multiple</Name>
@@ -397,7 +397,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Subtract a PPHAmount from a PPHAmount</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)subtractAmount:(PPHAmount *)operand</Declaration>
+			<Declaration>- (PPHAmount *)subtractAmount:(id)operand</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>operand</Name>
@@ -414,7 +414,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Add two PPHAmounts</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)addAmount:(PPHAmount *)operand</Declaration>
+			<Declaration>- (PPHAmount *)addAmount:(id)operand</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>operand</Name>
@@ -431,7 +431,7 @@ separator always set to &quot;.&quot;</Abstract>
 			<Abstract type="html">Divide a PPHAmount by a PPHAmount</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
 			
-			<Declaration>- (PPHAmount *)divideByAmount:(PPHAmount *)divisor</Declaration>
+			<Declaration>- (PPHAmount *)divideByAmount:(id)divisor</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>divisor</Name>
@@ -455,6 +455,7 @@ separator always set to &quot;.&quot;</Abstract>
             <NodeRef refid="3"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>
