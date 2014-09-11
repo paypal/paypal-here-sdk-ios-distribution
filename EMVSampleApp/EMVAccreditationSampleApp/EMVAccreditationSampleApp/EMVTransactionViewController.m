@@ -107,6 +107,8 @@
 
 - (IBAction)chargeButtonPressed:(id)sender {
     
+    [_transactionAmountField resignFirstResponder];
+    
     if (self.emvMetaData) {
         
         if (self.transactionAmountField.text) {
