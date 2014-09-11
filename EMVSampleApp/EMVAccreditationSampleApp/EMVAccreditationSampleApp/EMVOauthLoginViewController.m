@@ -62,7 +62,7 @@
     self.sdkBaseUrlArray = [[NSMutableArray alloc] init];
     [self.sdkBaseUrlArray addObject:[NSNull null]];
     [self.sdkBaseUrlArray addObject:@"https://www.sandbox.paypal.com/webapps/"];
-    [self.sdkBaseUrlArray addObject:@"https://www.stage2mb001.stage.paypal.com/webapps/"];
+    [self.sdkBaseUrlArray addObject:@"https://www.stage2mb006.stage.paypal.com/webapps/"];
     
     
     
@@ -316,7 +316,7 @@
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:self.passwordField.text];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb001"];
+    [loginRequestPostString appendString:@"stage2mb006"];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -339,7 +339,7 @@
     [loginRequestPostString appendString:@"&ticket="];
     [loginRequestPostString appendString:ticket];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb001"];
+    [loginRequestPostString appendString:@"stage2mb006"];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
