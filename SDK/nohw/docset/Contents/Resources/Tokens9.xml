@@ -18,7 +18,7 @@ and a clean delegate interface without sacrificing the ability to have multiple 
 			<Abstract type="html">Initialize a watcher to send events to the delegate</Abstract>
 			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDelegate:(id&lt;PPHCardReaderDelegate&gt;)delegate</Declaration>
+			<Declaration>- (id)initWithDelegate:(id)delegate</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>delegate</Name>
@@ -35,7 +35,7 @@ and a clean delegate interface without sacrificing the ability to have multiple 
 			<Abstract type="html">Initialize a watcher to send events to the delegate (for &quot;simple&quot; card reader events)</Abstract>
 			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithSimpleDelegate:(id&lt;PPHSimpleCardReaderDelegate&gt;)delegate</Declaration>
+			<Declaration>- (id)initWithSimpleDelegate:(id)delegate</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>delegate</Name>
@@ -47,6 +47,7 @@ and a clean delegate interface without sacrificing the ability to have multiple 
             <NodeRef refid="9"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>
