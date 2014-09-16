@@ -123,7 +123,7 @@
                 return;
             }
             
-            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"US"];
+            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"GBP"];
             [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
         
             PPHAvailablePaymentTypes paymentPermissions = [[PayPalHereSDK activeMerchant] payPalAccount].availablePaymentTypes;
@@ -137,7 +137,7 @@
                                            completionHandler:^(PPHTransactionResponse *record) {
                 
                                                if(record) {
-                                                   if (!record.error) {
+                                                   if (!record.error && record.record.transactionId) {
                                                        [self saveTransactionRecordForRefund:record.record];
                                                    }
                                                    else if(record.error.code == kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds)  {

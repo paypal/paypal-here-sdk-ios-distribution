@@ -53,7 +53,7 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     PPHTransactionRecord *record = [appDelegate.transactionRecords objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", record.payPalInvoiceId ? record.payPalInvoiceId : record.invoice.paypalInvoiceId];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", record.payPalInvoiceId ? record.payPalInvoiceId : record.invoice.paypalInvoiceId, [record.invoice.totalAmount stringValue]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -129,7 +129,7 @@
         NSLog(@"Refund completed.");
         
         if(response) {
-            if(self.isFullRefund) {
+            if(self.isFullRefund && response.record && !response.error) {
                 [self updateSalesHistoryTable:self.tableIndex];
             }
             [self.navigationController popToRootViewControllerAnimated:YES];
