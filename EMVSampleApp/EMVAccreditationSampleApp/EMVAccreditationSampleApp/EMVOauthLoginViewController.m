@@ -12,8 +12,16 @@
 #import "PPSCryptoUtils.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
+#define kLive @"Live"
+#define kSandbox @"Sandbox"
+#define kStage2mb001 @"stage2mb001"
+#define kStage2mb006 @"stage2mb006"
+#define kStageNameArray @[kStage2mb001, kStage2mb006]
+
 @interface EMVOauthLoginViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
+@property (nonatomic, strong) UIActionSheet *stageSelectedActionSheet;
+@property (nonatomic, strong) NSString *activeServer;
 @end
 
 @implementation EMVOauthLoginViewController
@@ -29,6 +37,7 @@
     [self setUpSegmentedControlAndServiceUrls];
     [self setUpSpinnerAndTitle];
     [self setUpTextFields];
+    [self stageSelectionActionSheet];
     self.loginButton.layer.cornerRadius = 10;
 
 }
@@ -59,13 +68,20 @@
     [self.serviceHostUrlArray addObject:[[NSMutableString alloc]
                                          initWithString:@"http://hidden-spire-8232.herokuapp.com/server"]];
     
-    self.sdkBaseUrlArray = [[NSMutableArray alloc] init];
-    [self.sdkBaseUrlArray addObject:[NSNull null]];
-    [self.sdkBaseUrlArray addObject:@"https://www.sandbox.paypal.com/webapps/"];
-    [self.sdkBaseUrlArray addObject:@"https://www.stage2mb001.stage.paypal.com/webapps/"];
+    self.sdkBaseUrlDict = [[NSMutableDictionary alloc] init];
+    [self.sdkBaseUrlDict setValue:[NSNull null] forKey:kLive];
+    [self.sdkBaseUrlDict setValue:@"https://www.sandbox.paypal.com/webapps/" forKey:kSandbox];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2mb001.stage.paypal.com/webapps/" forKey:kStage2mb001];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb006];
     
-    
-    
+}
+
+-(void)stageSelectionActionSheet {
+    self.stageSelectedActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a stage:"
+                                                                delegate:self
+                                                       cancelButtonTitle:nil
+                                                  destructiveButtonTitle:nil
+                                                       otherButtonTitles:kStage2mb001, kStage2mb006,nil];
 }
 
 - (void)setUpSpinnerAndTitle {
@@ -109,26 +125,35 @@
 - (IBAction)serviceHostSegmentedControlChanged:(id)sender {
     
     if (self.segControl.selectedSegmentIndex == 0) {
+        self.activeServer = kLive;
         self.serviceHostUrl = [self.serviceHostUrlArray objectAtIndex:0];
-        self.urlForTheSdkToUse = [self.sdkBaseUrlArray objectAtIndex:0];
+        self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kLive];
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
     }
     
     else if (self.segControl.selectedSegmentIndex == 1) {
+        self.activeServer = kSandbox;
         self.serviceHostUrl = [self.serviceHostUrlArray objectAtIndex:1];
-        self.urlForTheSdkToUse = [self.sdkBaseUrlArray objectAtIndex:1];
+        self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kSandbox];
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
     }
     
     else {
         self.serviceHostUrl = [self.serviceHostUrlArray objectAtIndex:2];
-        self.urlForTheSdkToUse = [self.sdkBaseUrlArray objectAtIndex:2];
-        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
+        [self.stageSelectedActionSheet showInView:self.view];
     }
     
     NSLog(@"Service Host Url we will use for login %@", self.serviceHostUrl);
     NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
     
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    self.activeServer = kStageNameArray[buttonIndex];
+    self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[buttonIndex]];
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
+    NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
 }
 
 - (IBAction)loginPressed:(id)sender {
@@ -316,7 +341,7 @@
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:self.passwordField.text];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb001"];
+    [loginRequestPostString appendString:self.activeServer];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -339,7 +364,7 @@
     [loginRequestPostString appendString:@"&ticket="];
     [loginRequestPostString appendString:ticket];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb001"];
+    [loginRequestPostString appendString:self.activeServer];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -418,5 +443,6 @@
         }];
         [UIView commitAnimations];
 }
+
 
 @end

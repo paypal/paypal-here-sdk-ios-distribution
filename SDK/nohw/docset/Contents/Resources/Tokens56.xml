@@ -20,7 +20,7 @@ to perform the authorization this callback is invoked. The SDK is responsible fo
 this call is invoked in the appropriate thread.</Abstract>
 			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
 			
-			<Declaration>- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary *)preAuthJSON</Declaration>
+			<Declaration>- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(id)inv withPreAuthJSON:(id)preAuthJSON</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>inv</Name>
@@ -50,7 +50,7 @@ Return CONTINUE if you wish the SDK to continue processing this transaction.</Ab
 			<Abstract type="html">onPostAuthorize</Abstract>
 			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)onPostAuthorize:(BOOL)didFail</Declaration>
+			<Declaration>- (void)onPostAuthorize:(id)didFail</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>didFail</Name>
@@ -63,6 +63,7 @@ that the authorization did not fail. It however, DOES NOT indicate that the tran
             <NodeRef refid="56"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

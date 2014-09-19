@@ -18,7 +18,7 @@
 code.</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>
 			
-			<Declaration>+ (PPHError *)pphErrorWithNSError:(NSError *)error</Declaration>
+			<Declaration>+ (PPHError *)pphErrorWithNSError:(id)error</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>error</Name>
@@ -313,13 +313,14 @@ on paypal.com and updated periodically.</Abstract>
 			<Abstract type="html">Read a PPHError from a dictionary created by NSDictionary</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)dictionary</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)dictionary</Declaration>
 			
 			
 			<Anchor>//api/name/initWithDictionary:</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

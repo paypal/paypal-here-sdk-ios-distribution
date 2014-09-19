@@ -517,7 +517,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(NSDecimalNumber *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -573,7 +573,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(NSString *)<em>stringValue</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(id)<em>stringValue</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -629,7 +629,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (NSString *)defaultCurrencyCodeInCountry:(NSString *)<em>countryCode</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)defaultCurrencyCodeInCountry:(id)<em>countryCode</em></code></div>
 
     
 	
@@ -688,7 +688,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)add:(NSDecimalNumber *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)add:(id)<em>operand</em></code></div>
 
     
 	
@@ -739,7 +739,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)addAmount:(PPHAmount *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)addAmount:(id)<em>operand</em></code></div>
 
     
 	
@@ -954,7 +954,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideBy:(NSDecimalNumber *)<em>divisor</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideBy:(id)<em>divisor</em></code></div>
 
     
 	
@@ -1005,7 +1005,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideByAmount:(PPHAmount *)<em>divisor</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideByAmount:(id)<em>divisor</em></code></div>
 
     
 	
@@ -1098,7 +1098,7 @@ in USD which is a 2 digit currency, passing 12345 will return 123.45</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithPadding:(NSString *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithPadding:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -1156,7 +1156,7 @@ For example in USD passing 1.232 would return 1.23</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithRounding:(NSDecimalNumber *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithRounding:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -1295,7 +1295,7 @@ For example in USD passing 1.232 would return 1.23</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiply:(NSDecimalNumber *)<em>multiple</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiply:(id)<em>multiple</em></code></div>
 
     
 	
@@ -1346,7 +1346,7 @@ For example in USD passing 1.232 would return 1.23</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiplyByAmount:(PPHAmount *)<em>multiple</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiplyByAmount:(id)<em>multiple</em></code></div>
 
     
 	
@@ -1563,7 +1563,7 @@ separator always set to &ldquo;.&rdquo;</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtract:(NSDecimalNumber *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtract:(id)<em>operand</em></code></div>
 
     
 	
@@ -1614,7 +1614,7 @@ separator always set to &ldquo;.&rdquo;</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtractAmount:(PPHAmount *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtractAmount:(id)<em>operand</em></code></div>
 
     
 	
@@ -1658,6 +1658,9 @@ separator always set to &ldquo;.&rdquo;</p>
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1668,7 +1671,7 @@ separator always set to &ldquo;.&rdquo;</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-09-05)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-09-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
