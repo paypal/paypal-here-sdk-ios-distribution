@@ -402,6 +402,12 @@
                 NSLog(@"Pointing Safari at URL [%@]", url);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 			}
+            else if ([jsonResponse objectForKey:@"access_token"]) {
+                // The access token exists!   The user must have previously logged into
+                // the sample server.  Let's give these credentials to the SDK and conclude
+                // the login process.
+                [self setActiveMerchantWithAccessTokenDict:jsonResponse];
+            }
 			else {
                 
                 // UH-OH - NO URL FOR SAFARI TO FOLLOW, NO ACCESS TOKEN FOR YOU. FAIL.
