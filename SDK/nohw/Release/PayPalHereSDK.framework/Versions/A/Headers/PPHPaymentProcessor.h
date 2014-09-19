@@ -247,9 +247,9 @@
 -(void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv*)event andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
 /*!
- * Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.
+ * Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.
  * @param payment the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
- * values of this object, so you can make one up with that data. For EMV, we need the transaction handle as well (e.g. from PPHChipAndPinAuthResponse)
+ * values of this object, so you can make one up with that data.
  * @param destination the destination for the receipt (e.g. an email address or phone number)
  * @param completionHandler called when the receipt is sent or an error occurs
  */

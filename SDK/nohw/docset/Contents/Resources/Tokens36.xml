@@ -359,7 +359,7 @@ attempting to collect payment.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginSendReceipt:to:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.</Abstract>
+			<Abstract type="html">Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
 			<Declaration>- (void)beginSendReceipt:(id)payment to:(id)destination completionHandler:(id)completionHandler</Declaration>
@@ -367,7 +367,7 @@ attempting to collect payment.</Abstract>
 				<Parameter>
 					<Name>payment</Name>
 					<Abstract type="html">the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
-values of this object, so you can make one up with that data. For EMV, we need the transaction handle as well (e.g. from PPHChipAndPinAuthResponse</Abstract>
+values of this object, so you can make one up with that data.</Abstract>
 				</Parameter><Parameter>
 					<Name>destination</Name>
 					<Abstract type="html">the destination for the receipt (e.g. an email address or phone number)</Abstract>
