@@ -315,7 +315,7 @@
     
     if (indexPath.row < self.items.count) {
         NSString* item = self.items[indexPath.row];
-        NSString *format = (indexPath.row == 0) ?  @"%@ ($%0.2f)\t\t\t\t%d" : (indexPath.row == 3) ? @"%@ ($%0.2f)\t\t%d" : @"%@ ($%0.2f)\t\t\t%d";
+        NSString *format = (indexPath.row == 0) ?  @"%@ ($%0.2f)\t\t\t%d" : (indexPath.row == 3) ? @"%@ ($%0.2f)\t%d" : @"%@ ($%0.2f)\t\t%d";
         cell.textLabel.text = [NSString stringWithFormat:format, item, [(NSDecimalNumber *)self.store[item] doubleValue], [self.shoppingCart[item] intValue]];
 		cell.textLabel.textAlignment = NSTextAlignmentLeft;
     } else {
