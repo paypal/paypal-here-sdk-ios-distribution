@@ -43,6 +43,8 @@
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     
     self.waitingForCardSwipe = YES;
+    
+    _activity.hidden = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -84,10 +86,8 @@
     if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
           self.waitingForCardSwipe = NO;
         
-        UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [spinny setFrame:CGRectMake(self.view.frame.size.width/2-50, 349, 100, 100)];
-        [spinny startAnimating];
-        [self.view addSubview:spinny];
+        _activity.hidden = NO;
+        [_activity startAnimating];
         
         [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                       withTransactionController:nil
