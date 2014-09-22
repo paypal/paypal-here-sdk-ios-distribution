@@ -10,5 +10,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface STCardSwipeViewController : UIViewController <PPHTransactionManagerDelegate>
+@property(nonatomic, weak) IBOutlet UIActivityIndicatorView *activity;
+
 - (id)initWithAmount: (NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 @end

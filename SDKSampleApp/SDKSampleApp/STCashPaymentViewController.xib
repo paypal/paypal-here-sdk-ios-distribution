@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="STCashPaymentViewController">
             <connections>
+                <outlet property="activity" destination="P6g-AO-Bwq" id="L2B-a5-BOD"/>
                 <outlet property="doneButton" destination="lTw-EA-k03" id="gRA-Rc-BkU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,12 +18,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTw-EA-k03">
-                    <rect key="frame" x="84" y="220" width="152" height="128"/>
+                    <rect key="frame" x="84" y="278" width="153" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="152" id="EbS-0a-IWI"/>
-                        <constraint firstAttribute="height" constant="128" id="a3S-RX-LsS"/>
+                        <constraint firstAttribute="height" constant="128" id="43z-lt-di6"/>
                     </constraints>
                     <state key="normal" title="Paid">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,21 +35,26 @@
                     <rect key="frame" x="53" y="99" width="214" height="102"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="214" id="Ua7-lG-e7e"/>
-                        <constraint firstAttribute="height" constant="102" id="cN1-Xg-VcB"/>
+                        <constraint firstAttribute="height" constant="102" id="5pi-bo-HOu"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P6g-AO-Bwq">
+                    <rect key="frame" x="150" y="209" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="lTw-EA-k03" firstAttribute="width" secondItem="aC3-9O-cwO" secondAttribute="height" multiplier="76:51" id="2Kb-QE-fK3"/>
-                <constraint firstAttribute="centerY" secondItem="lTw-EA-k03" secondAttribute="centerY" id="EKD-lq-jGC"/>
-                <constraint firstAttribute="centerY" secondItem="aC3-9O-cwO" secondAttribute="centerY" constant="134" id="fpz-IH-Jwy"/>
-                <constraint firstAttribute="centerX" secondItem="aC3-9O-cwO" secondAttribute="centerX" id="v1b-3G-S3l"/>
-                <constraint firstItem="lTw-EA-k03" firstAttribute="leading" secondItem="aC3-9O-cwO" secondAttribute="leading" constant="31" id="yJY-qf-zDs"/>
-                <constraint firstAttribute="centerX" secondItem="lTw-EA-k03" secondAttribute="centerX" id="yNC-1h-W9d"/>
+                <constraint firstItem="aC3-9O-cwO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="53" id="3tP-CT-X9N"/>
+                <constraint firstItem="lTw-EA-k03" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IT2-rf-0aZ"/>
+                <constraint firstItem="lTw-EA-k03" firstAttribute="top" secondItem="P6g-AO-Bwq" secondAttribute="bottom" constant="49" id="QRe-LF-c53"/>
+                <constraint firstItem="lTw-EA-k03" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="84" id="UkJ-FJ-oDv"/>
+                <constraint firstItem="P6g-AO-Bwq" firstAttribute="top" secondItem="aC3-9O-cwO" secondAttribute="bottom" constant="8" symbolic="YES" id="Zei-M9-yBs"/>
+                <constraint firstItem="lTw-EA-k03" firstAttribute="centerX" secondItem="P6g-AO-Bwq" secondAttribute="centerX" id="lJF-Rg-0C2"/>
+                <constraint firstItem="aC3-9O-cwO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="99" id="oNt-Tl-w3c"/>
+                <constraint firstItem="P6g-AO-Bwq" firstAttribute="centerX" secondItem="aC3-9O-cwO" secondAttribute="centerX" id="z13-gx-4oh"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
