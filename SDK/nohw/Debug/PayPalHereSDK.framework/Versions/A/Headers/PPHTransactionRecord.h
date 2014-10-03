@@ -11,12 +11,13 @@
 #import "PPHInvoiceConstants.h"
 #import "PPHCardSwipeData.h"
 
-@class PPHShoppingCart;
 @class PPHCardChargeResponse;
 
-/*! A record of a completed transaction (purchast or refund)
- * Once a pyament is complete you are returned a PPHTransactionRecord.  Historical
- * lists of transacitons done last week are also represented this way.
+/*! The PPHTransactionRecord is an artifact of payment calls made to PayPal's backend - example of payment
+ * calls include making a sale transaction, getting an authorization, capturing a previous authorization and
+ * refunding a transaction. The exact details returned in each of these calls might be different but the Here
+ * SDK abstracts this away so application developers can deal with these as opaque objects. Given a transaction
+ * record the SDK can differentiate and tell whether it represents an authorization or a sale or a refund etc
  */
 @interface PPHTransactionRecord : NSObject
 
@@ -26,8 +27,13 @@
 /*! The date on which the payment or refund occurred */
 @property (nonatomic,strong,readonly) NSDate *date;
 
-/*! For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment */
+/*! For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
+ * In case of Auth and Capture, Holds the final capture id.
+ */
 @property (nonatomic,strong,readonly) NSString *transactionId;
+
+/*! The authorization id of the payment. Only for AUTH & CAPTURE use case.*/
+@property (nonatomic,strong,readonly) NSString *authorizationId;
 
 @property (nonatomic,strong,readonly) NSString *payPalInvoiceId;
 

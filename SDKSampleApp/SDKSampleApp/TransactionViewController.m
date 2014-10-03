@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "PaymentMethodViewController.h"
 #import "RefundViewController.h"
+#import "AuthorizedPaymentsViewController.h"
 #import "STTransactionsTableViewController.h"
 #import "CCCFSPaymentMethodViewController.h"
 #import "STAppDelegate.h"
@@ -40,6 +41,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
 @property (weak, nonatomic) IBOutlet UIButton *refundButton;
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @property (nonatomic, strong) NSArray *items;
@@ -100,6 +102,7 @@
     self.lpgrStrawberries = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonLongPressed:)];
 
     self.purchaseButton.layer.cornerRadius = 10;
+    self.captureButton.layer.cornerRadius = 10;
     self.refundButton.layer.cornerRadius = 10;
     self.settingsButton.layer.cornerRadius = 10;
     
@@ -130,7 +133,9 @@
         [tm cancelPayment];
     }
     
-    [_purchaseButton setTitle:@"Purchase" forState:UIControlStateNormal];
+    
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [_purchaseButton setTitle:appDelegate.paymentFlowIsAuthOnly ? @"Authorize Purchase" : @"Purchase" forState:UIControlStateNormal];
 
 }
 
@@ -156,9 +161,19 @@
 
 - (PPHInvoice *)getInvoiceFromShoppingCart{
     PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:@"USD"];
-    for (NSString *item in self.shoppingCart) {
-        [invoice addItemWithId:item detailId:nil name:item quantity:self.shoppingCart[item] unitPrice:self.store[item] taxRate:nil taxRateName:nil];
+    
+    NSString *taxRate = [[NSUserDefaults standardUserDefaults] objectForKey:@"taxRate"];
+    NSDecimalNumber *taxRateNumber;
+    if (taxRate) {
+        taxRateNumber = [NSDecimalNumber decimalNumberWithString:taxRate];
+    } else {
+        taxRateNumber = [NSDecimalNumber decimalNumberWithString:@".10"];
     }
+
+    for (NSString *item in self.shoppingCart) {
+        [invoice addItemWithId:item detailId:nil name:item quantity:self.shoppingCart[item] unitPrice:self.store[item] taxRate:taxRateNumber taxRateName:@"taxRate"];
+    }
+
     return invoice;
 }
 
@@ -210,6 +225,18 @@
     
     [self.navigationController pushViewController:refund animated:YES];
     
+}
+
+- (IBAction)onViewAuthorizedSales:(id)sender
+{
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    AuthorizedPaymentsViewController * vc =  [[AuthorizedPaymentsViewController alloc]
+                                      initWithNibName:@"AuthorizedPaymentsViewController"
+                                      bundle:nil
+                                    transactionRecords:appDelegate.authorizedRecords];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)didPressViewTransactions:(id)sender {
@@ -288,7 +315,7 @@
     
     if (indexPath.row < self.items.count) {
         NSString* item = self.items[indexPath.row];
-        NSString *format = (indexPath.row == 0) ?  @"%@ ($%0.2f)\t\t\t\t%d" : (indexPath.row == 3) ? @"%@ ($%0.2f)\t\t%d" : @"%@ ($%0.2f)\t\t\t%d";
+        NSString *format = (indexPath.row == 0) ?  @"%@ ($%0.2f)\t\t\t%d" : (indexPath.row == 3) ? @"%@ ($%0.2f)\t%d" : @"%@ ($%0.2f)\t\t%d";
         cell.textLabel.text = [NSString stringWithFormat:format, item, [(NSDecimalNumber *)self.store[item] doubleValue], [self.shoppingCart[item] intValue]];
 		cell.textLabel.textAlignment = NSTextAlignmentLeft;
     } else {

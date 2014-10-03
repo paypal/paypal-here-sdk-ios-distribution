@@ -522,7 +522,7 @@ of invoicing - billing info, merchant info, shipping info, etc.</Abstract>
 			<Abstract type="html">Initialize a PPHInvoiceContactInfo with a minimum valid address</Abstract>
 			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithCountryCode:(NSString *)countryCode city:(NSString *)city addressLineOne:(NSString *)lineOne</Declaration>
+			<Declaration>- (id)initWithCountryCode:(id)countryCode city:(id)city addressLineOne:(id)lineOne</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>countryCode</Name>
@@ -569,7 +569,7 @@ of invoicing - billing info, merchant info, shipping info, etc.</Abstract>
 			<Abstract type="html">Initialize the contact info from a server-provided dictionary</Abstract>
 			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)representation</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>representation</Name>
@@ -581,6 +581,7 @@ of invoicing - billing info, merchant info, shipping info, etc.</Abstract>
             <NodeRef refid="24"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

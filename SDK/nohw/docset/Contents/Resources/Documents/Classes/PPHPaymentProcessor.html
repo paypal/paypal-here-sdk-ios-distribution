@@ -57,6 +57,8 @@
 	
 	<option value="//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginChipAndPinAuthorization:forInvoice:completionHandler:</option>
 	
+	<option value="//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</option>
+	
 	<option value="//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</option>
 	
 	<option value="//api/name/beginRefund:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefund:forAmount:completionHandler:</option>
@@ -114,6 +116,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginCheckinPayment:forInvoice:completionHandler:">beginCheckinPayment:forInvoice:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginChipAndPinAuthorization:forInvoice:completionHandler:">beginChipAndPinAuthorization:forInvoice:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:">beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</a></span></li>
 	
@@ -188,6 +192,12 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/beginRefund:forAmount:completionHandler:">&ndash;&nbsp;beginRefund:forAmount:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:">&ndash;&nbsp;beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</a></code>
 	</span>
 	
 	
@@ -299,14 +309,44 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Capture funds against an authorization</p>
+		<p>Capture funds against an authorization.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCaptureForTransactionId:(NSString *)<em>txId</em> withAmount:(PPHAmount *)<em>amount</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> asFinal:(BOOL)<em>finalCapture</em> withCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCaptureForTransactionId:(id)<em>txId</em> withAmount:(id)<em>amount</em> andInvoice:(id)<em>invoice</em> asFinal:(id)<em>finalCapture</em> withCompletionHandler:(id)<em>completionHandler</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>txId</em></dt>
+			<dd><p>: The authorization id obtained after a successful authorization.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amount</em></dt>
+			<dd><p>: Amount to be captured.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>: The invoice against which the auth was performed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>finalCapture</em></dt>
+			<dd><p>: Set to YES if its a final capture. NO, if we would like to perform multiple captures against this auth. Currently, the SDK supports ONLY single captures.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: Called when the action has completed.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -316,7 +356,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Capture funds against an authorization</p>
+		<p>Capture funds against an authorization.</p>
 	</div>
 	
 	
@@ -345,7 +385,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentAuthorizationAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -407,7 +447,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentChargeAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentChargeAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -469,7 +509,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentAuthorizationAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentAuthorizationAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -489,12 +529,7 @@ attempting to collect payment.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>called when the action has completed</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>signature</em></dt>
-			<dd><p>the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+			<dd><p>called when the action has completed
 with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">provideSignature:forTransaction:andInvoice:completionHandler:</a></p></dd>
 		</dl>
 		
@@ -537,7 +572,7 @@ with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionH
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentChargeAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> withSignature:(UIImage *)<em>signature</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentChargeAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> withSignature:(id)<em>signature</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -605,7 +640,7 @@ with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionH
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCheckinPayment:(PPHLocationCheckin *)<em>checkin</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCheckinPayment:(id)<em>checkin</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -667,7 +702,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent *)<em>auth</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHChipAndPinAuthResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginChipAndPinAuthorization:(id)<em>auth</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -718,6 +753,67 @@ attempting to collect payment.</p></dd>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:" title="beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Issue a refund against a previously successful non-PayPal transaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginNonPayPalRefundWithInvoiceId:(id)<em>invoiceId</em> forAmount:(id)<em>amountOrNil</em> completionHandler:(id)<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoiceId</em></dt>
+			<dd><p>The identifier for the invoice to be refunded.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amountOrNil</em></dt>
+			<dd><p>Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&rsquo;s a full refund.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Issue a refund against a previously successful non-PayPal transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentProcessor.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:" title="beginRecordingExternalPayment:withNote:forInvoice:completionHandler:"></a>
 	<h3 class="subsubtitle method-title">beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</h3>
 	
@@ -729,7 +825,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginRecordingExternalPayment:(PPHPaymentMethod)<em>paymentType</em> withNote:(NSString *)<em>note</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginRecordingExternalPayment:(id)<em>paymentType</em> withNote:(id)<em>note</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -796,7 +892,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(NSString *)<em>transactionId</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(id)<em>transactionId</em> forAmount:(id)<em>amountOrNil</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -852,12 +948,12 @@ attempting to collect payment.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.</p>
+		<p>Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginSendReceipt:(PPHPaymentResponse *)<em>payment</em> to:(PPHReceiptDestination *)<em>destination</em> completionHandler:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginSendReceipt:(id)<em>payment</em> to:(id)<em>destination</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -867,7 +963,7 @@ attempting to collect payment.</p></dd>
 		<dl class="argument-def parameter-def">
 			<dt><em>payment</em></dt>
 			<dd><p>the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
-values of this object, so you can make one up with that data. For EMV, we need the transaction handle as well (e.g. from <a href="../Classes/PPHChipAndPinAuthResponse.html">PPHChipAndPinAuthResponse</a>)</p></dd>
+values of this object, so you can make one up with that data.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -890,7 +986,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Send the receipt for a particular transaction or transaction attempt/failure (in the EMV case) to an email address or mobile phone number.</p>
+		<p>Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</p>
 	</div>
 	
 	
@@ -914,14 +1010,34 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Void an existing authorization</p>
+		<p>Void an existing authorization.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginVoidForTransactionId:(NSString *)<em>txId</em> withInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> andCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginVoidForTransactionId:(id)<em>txId</em> withInvoice:(id)<em>invoice</em> andCompletionHandler:(id)<em>completionHandler</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>txId</em></dt>
+			<dd><p>: The authorization id obtained after a successful authorization.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invoice</em></dt>
+			<dd><p>: The invoice against which the auth was performed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: Called when the action has completed.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -931,7 +1047,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Void an existing authorization</p>
+		<p>Void an existing authorization.</p>
 	</div>
 	
 	
@@ -960,7 +1076,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)<em>card</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForCardPresent:(id)<em>card</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1021,7 +1137,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent *)<em>auth</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForChipAndPin:(id)<em>auth</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1082,7 +1198,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv *)<em>event</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(id)<em>event</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1143,7 +1259,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHCardChargeResponse *)<em>response</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(id)<em>signature</em> forTransaction:(id)<em>response</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1202,6 +1318,9 @@ values of this object, so you can make one up with that data. For EMV, we need t
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1212,7 +1331,7 @@ values of this object, so you can make one up with that data. For EMV, we need t
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-08-04)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-10-02)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

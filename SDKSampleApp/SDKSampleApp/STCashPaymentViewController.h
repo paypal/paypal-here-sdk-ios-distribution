@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
-@interface STCashPaymentViewController : UIViewController 
+@interface STCashPaymentViewController : UIViewController
+@property(nonatomic, weak) IBOutlet UIActivityIndicatorView *activity;
+
 - (id)initWithAmount: (NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 @end

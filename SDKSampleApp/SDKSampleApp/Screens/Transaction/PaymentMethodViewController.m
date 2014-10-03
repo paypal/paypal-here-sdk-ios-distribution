@@ -19,6 +19,7 @@
 #import "CheckedInCustomerViewController.h"
 #import "ManualCardEntryViewController.h"
 #import "STAppDelegate.h"
+#import "AuthorizationCompleteViewController.h"
 #import "InvoicesManager.h"
 
 @interface PaymentMethodViewController ()
@@ -154,6 +155,23 @@
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
 }
 
+-(void) showAuthorizationCompeleteView
+{
+    if (_transactionResponse.record != nil) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.authorizedRecords addObject:_transactionResponse.record];
+    }
+    
+    AuthorizationCompleteViewController* vc = [[AuthorizationCompleteViewController alloc]
+                                               initWithNibName:@"AuthorizationCompleteViewController"
+                                               bundle:nil
+                                               forAuthResponse:_transactionResponse];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(IBAction)payWithCheckedInClient:(id)sender
 {
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -241,7 +259,19 @@
      
          self.waitingForCardSwipe = NO;
      
-         [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+         
+         if (appDelegate.paymentFlowIsAuthOnly) {
+             
+             [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                                 withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                                     self.transactionResponse = response;
+                                                                     [self showAuthorizationCompeleteView];
+                                                                 }];
+         }
+         else {
+             //Now ask to authorize (and take) payment all in one shot.
+             [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                        withTransactionController:self
                                                                completionHandler:^(PPHTransactionResponse *response) {
                                                                    self.transactionResponse = response;
@@ -263,7 +293,7 @@
          
                                                                    }
                                                                }];
-         
+         }
      }
 }
 
