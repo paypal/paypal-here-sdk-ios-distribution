@@ -68,6 +68,11 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
 
 @end
 
+/*!
+ * The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various 
+ * messages throughout the payment flow. These messages reflect the different stages of a transaction
+ * and could be used by the application to display appropriate text, image or UI on the screen.
+ */
 @protocol PPHTransactionManagerDelegate <NSObject>
 
 /**
@@ -76,7 +81,7 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
  * This method will be called whenever the payment manager needs to communicate a payment
  * related event to the application.
  *
- * @param e a PaymentEvent object the contains information about the event.
+ * @param event : A PaymentEvent object the contains information about the event.
  */
 - (void)onPaymentEvent:(PPHTransactionManagerEvent *) event;
 

@@ -68,6 +68,9 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
 @property (nonatomic, strong) NSDate *date;
 /*! A mapped mesage with more detailed information that PPH app and our partners can use */
 @property (nonatomic, readonly) NSString *mappedMessage;
+/*! A message for developers of 3rd party apps who are using the SDK.  May contain useful information or
+ *  suggestions about how this error came about or how to avoid it. */
+@property (nonatomic, readonly) NSString *devMessage;
 
 /*! YES if this error is the result of the user pressing cancel (e.g. on a network request) */
 - (BOOL) isCancelError;

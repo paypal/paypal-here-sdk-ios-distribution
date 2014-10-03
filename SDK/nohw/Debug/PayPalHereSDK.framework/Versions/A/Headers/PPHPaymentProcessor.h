@@ -33,9 +33,16 @@
  */
 @property (nonatomic,strong) PPHError* error;
 /*!
- * Non-nil if the transaction has succeeded and has a reference number
+ * Non-nil if the transaction has succeeded and has a reference number.
+ * For the auth and capture use case, this would house the final capture Id as well.
  */
 @property (nonatomic,strong) NSString* transactionId;
+
+/*!
+ * Non-nil if the authorization has succeeded and has a reference number.
+ */
+@property (nonatomic,strong) NSString* authorizationId;
+
 /*!
  * The invoiceId of the invoice this payment was made against.
  */
@@ -58,6 +65,7 @@
 - (NSDictionary *) asDictionary;
 /*!
  * Create a payment response from an NSDictionary that was generated with asDictionary
+ * @param dictionary : dictionary to be converted to a payment response object.
  */
 - (id) initWithDictionary: (NSDictionary *) dictionary;
 @end
@@ -167,7 +175,6 @@
  * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
  * attempting to collect payment.
  * @param completionHandler called when the action has completed
- * @param signature the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
  * with provideSignature:forTransaction:andInvoice:completionHandler:
  */
 -(void)beginCardPresentAuthorizationAttempt: (PPHCardSwipeData*) card forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHCardChargeResponse *response)) completionHandler;
@@ -192,12 +199,20 @@
     completionHandler:(void (^)(PPHCardChargeResponse *))completionHandler;
 
 /*!
- * Capture funds against an authorization
+ * Capture funds against an authorization.
+ * @param txId : The authorization id obtained after a successful authorization.
+ * @param amount : Amount to be captured.
+ * @param invoice : The invoice against which the auth was performed.
+ * @param finalCapture : Set to YES if its a final capture. NO, if we would like to perform multiple captures against this auth. Currently, the SDK supports ONLY single captures.
+ * @param completionHandler : Called when the action has completed.
  */
 -(void)beginCaptureForTransactionId:(NSString *)txId withAmount:(PPHAmount *)amount andInvoice:(id<PPHInvoiceProtocol>)invoice asFinal:(BOOL)finalCapture withCompletionHandler:(void (^)(PPHCardChargeResponse *))completionHandler;
 
 /*!
- * Void an existing authorization
+ * Void an existing authorization.
+ * @param txId : The authorization id obtained after a successful authorization.
+ * @param invoice : The invoice against which the auth was performed.
+ * @param completionHandler : Called when the action has completed.
  */
 -(void)beginVoidForTransactionId:(NSString *)txId withInvoice:(id<PPHInvoiceProtocol>)invoice andCompletionHandler:(void (^)(PPHCardChargeResponse *))completionHandler;
 
