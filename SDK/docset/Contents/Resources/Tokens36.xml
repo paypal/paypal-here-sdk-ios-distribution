@@ -151,10 +151,7 @@ with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
 attempting to collect payment.</Abstract>
 				</Parameter><Parameter>
 					<Name>completionHandler</Name>
-					<Abstract type="html">called when the action has completed</Abstract>
-				</Parameter><Parameter>
-					<Name>signature</Name>
-					<Abstract type="html">the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+					<Abstract type="html">called when the action has completed
 with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
 				</Parameter>
 			</Parameters>
@@ -213,11 +210,28 @@ attempting to collect payment.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</TokenIdentifier>
-			<Abstract type="html">Capture funds against an authorization</Abstract>
+			<Abstract type="html">Capture funds against an authorization.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
 			<Declaration>- (void)beginCaptureForTransactionId:(id)txId withAmount:(id)amount andInvoice:(id)invoice asFinal:(id)finalCapture withCompletionHandler:(id)completionHandler</Declaration>
-			
+			<Parameters>
+				<Parameter>
+					<Name>txId</Name>
+					<Abstract type="html">: The authorization id obtained after a successful authorization.</Abstract>
+				</Parameter><Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">: Amount to be captured.</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">: The invoice against which the auth was performed.</Abstract>
+				</Parameter><Parameter>
+					<Name>finalCapture</Name>
+					<Abstract type="html">: Set to YES if its a final capture. NO, if we would like to perform multiple captures against this auth. Currently, the SDK supports ONLY single captures.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: Called when the action has completed.</Abstract>
+				</Parameter>
+			</Parameters>
 			
 			<Anchor>//api/name/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</Anchor>
             <NodeRef refid="36"/>
@@ -225,11 +239,22 @@ attempting to collect payment.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginVoidForTransactionId:withInvoice:andCompletionHandler:</TokenIdentifier>
-			<Abstract type="html">Void an existing authorization</Abstract>
+			<Abstract type="html">Void an existing authorization.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
 			<Declaration>- (void)beginVoidForTransactionId:(id)txId withInvoice:(id)invoice andCompletionHandler:(id)completionHandler</Declaration>
-			
+			<Parameters>
+				<Parameter>
+					<Name>txId</Name>
+					<Abstract type="html">: The authorization id obtained after a successful authorization.</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">: The invoice against which the auth was performed.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: Called when the action has completed.</Abstract>
+				</Parameter>
+			</Parameters>
 			
 			<Anchor>//api/name/beginVoidForTransactionId:withInvoice:andCompletionHandler:</Anchor>
             <NodeRef refid="36"/>

@@ -4,9 +4,11 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionRecord</TokenIdentifier>
-			<Abstract type="html">A record of a completed transaction (purchast or refund)
-Once a pyament is complete you are returned a PPHTransactionRecord.  Historical
-lists of transacitons done last week are also represented this way.</Abstract>
+			<Abstract type="html">The PPHTransactionRecord is an artifact of payment calls made to PayPal&apos;s backend - example of payment
+calls include making a sale transaction, getting an authorization, capturing a previous authorization and
+refunding a transaction. The exact details returned in each of these calls might be different but the Here
+SDK abstracts this away so application developers can deal with these as opaque objects. Given a transaction
+record the SDK can differentiate and tell whether it represents an authorization or a sale or a refund etc</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
             
 			
@@ -88,7 +90,8 @@ lists of transacitons done last week are also represented this way.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setTransactionId:</TokenIdentifier>
-			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</Abstract>
+			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
+In case of Auth and Capture, Holds the final capture id.</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
@@ -100,7 +103,8 @@ lists of transacitons done last week are also represented this way.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/transactionId</TokenIdentifier>
-			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</Abstract>
+			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
+In case of Auth and Capture, Holds the final capture id.</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
@@ -112,13 +116,50 @@ lists of transacitons done last week are also represented this way.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/transactionId</TokenIdentifier>
-			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</Abstract>
+			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
+In case of Auth and Capture, Holds the final capture id.</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
 			
 			
 			<Anchor>//api/name/transactionId</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setAuthorizationId:</TokenIdentifier>
+			<Abstract type="html">The authorization id of the payment. Only for AUTH &amp;amp; CAPTURE use case.</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *authorizationId</Declaration>
+			
+			
+			<Anchor>//api/name/authorizationId</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/authorizationId</TokenIdentifier>
+			<Abstract type="html">The authorization id of the payment. Only for AUTH &amp;amp; CAPTURE use case.</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *authorizationId</Declaration>
+			
+			
+			<Anchor>//api/name/authorizationId</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/authorizationId</TokenIdentifier>
+			<Abstract type="html">The authorization id of the payment. Only for AUTH &amp;amp; CAPTURE use case.</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *authorizationId</Declaration>
+			
+			
+			<Anchor>//api/name/authorizationId</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		

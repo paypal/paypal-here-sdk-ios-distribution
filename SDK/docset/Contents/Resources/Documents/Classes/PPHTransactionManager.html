@@ -70,17 +70,9 @@
 	
 	<option value="//api/name/beginRefund:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefund:forAmount:completionHandler:</option>
 	
-	<option value="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</option>
-	
 	<option value="//api/name/cancelPayment">&nbsp;&nbsp;&nbsp;&nbsp;- cancelPayment</option>
 	
 	<option value="//api/name/capturePaymentForAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- capturePaymentForAuthorization:withCompletionHandler:</option>
-	
-	<option value="//api/name/finalizePaymentForTransaction:withSignature:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- finalizePaymentForTransaction:withSignature:completionHandler:</option>
-	
-	<option value="//api/name/initiateEMVTransaction:transactionType:">&nbsp;&nbsp;&nbsp;&nbsp;- initiateEMVTransaction:transactionType:</option>
-	
-	<option value="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</option>
 	
 	<option value="//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentWithPaymentType:withTransactionController:completionHandler:</option>
 	
@@ -146,17 +138,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefund:forAmount:completionHandler:">beginRefund:forAmount:completionHandler:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelPayment">cancelPayment</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capturePaymentForAuthorization:withCompletionHandler:">capturePaymentForAuthorization:withCompletionHandler:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finalizePaymentForTransaction:withSignature:completionHandler:">finalizePaymentForTransaction:withSignature:completionHandler:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initiateEMVTransaction:transactionType:">initiateEMVTransaction:transactionType:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">processPaymentWithPaymentType:withTransactionController:completionHandler:</a></span></li>
 	
@@ -203,55 +187,149 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A stateful transaciton (payment &amp; refunds) processor.
-Here are some usage examples:</p>
+						<p>A stateful transaction (payment &amp; refunds) processor.
+    Here are some usage examples:</p>
 
-<p>Usage for a fixed amount payment with a card reader:</p>
+<pre><code>Already have a PPHInvoice filled out and want to take payment with a card reader?
 
-<p>// Let&rsquo;s charge this user $5.  First, call beginPaymentWithAmount.  This will cause
-// us to start scanning for swipes from any attached reader.</p>
+First, call beginPayment.  This will cause
+us to start scanning for swipes from any attached reader.
 
-<p>-(void) onPurchaseButtonClicked() {
-<a href="../Classes/PPHAmount.html">PPHAmount</a> *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@&ldquo;5.00&rdquo; inCurrency:@&ldquo;USD&rdquo;];
-[[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@&ldquo;FixedAmount&rdquo;];
-}</p>
+-(void) onPurchaseButtonClicked {
+    [[PayPalHereSDK sharedTransactionmanager] beginPayment];
+}
 
-<p>// Once the card is swiped your ___ method will be called.
-// Now we can ask the TransactionManager to take payment using the card data:</p>
+If your class has implemented the PPHTransactionManagerDelegate protocol and
+created a PPHTransactionWatcher then your onPaymentEvent method will be called when
+the user swipes their card.
+Now we can ask the TransactionManager to take payment using the card data:
 
-<p>-(void)didCompleteCardSwipe:(<a href="../Classes/PPHCardSwipeData.html">PPHCardSwipeData</a><em>)card {
-self.waitingForCardSwipe = NO;
-[[PayPalHereSDK sharedTransactionmanager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
-withTransactionController:nil
-completionHandler:^(<a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a> </em>record) {
-NSLog(@&ldquo;Transaction Finished! Success: %@&rdquo;, record.error ? @&ldquo;NO&rdquo; : @&ldquo;YES&rdquo;);
-//Now that the transaciton is complete the PPHTransactionManager will stop scanning for card swipes.
-}];</p>
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+    if (event.eventType == ePPHTransactionType_CardDataReceived) {
 
-<p>Usage for a fixed amount payment with a manually entered card:</p>
+      [[PayPalHereSDK sharedTransactionmanager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                  withTransactionController:nil
+                                                          completionHandler:^(PPHTransactionResponse *record) {
+              NSLog(@"Transaction Finished! Success: %@", record.error ? @"NO" : @"YES");
+              //Now that the transaction is complete the PPHTransactionManager will stop scanning for card swipes.
+      }];
+}
 
-<p>// Let&rsquo;s charge this user $5.  First, call beginPaymentWithAmount.  Then we can immediatly set
-// the manually entered card data and authorize (take) the payment.</p>
+Usage for a fixed amount payment with a card reader:
 
-<p>-(void) onPurchaseButtonClicked() {
-<a href="../Classes/PPHAmount.html">PPHAmount</a> <em>fiveDollarAmount = [<a href="../Classes/PPHAmount.html">PPHAmount</a> [<a href="../Classes/PPHAmount.html">PPHAmount</a> amountWithString:@&ldquo;5.00&rdquo; inCurrency:@&ldquo;USD&rdquo;];
-NSDateComponents </em>comps = [[NSDateComponents alloc] init];
-[comps setMonth:9];
-[comps setYear:2019];</p>
+Let's charge this user $5.  First, call beginPaymentWithAmount.  This will cause
+us to start scanning for swipes from any attached reader.
 
-<p><a href="../Classes/PPHCardNotPresentData.html">PPHCardNotPresentData</a> *manualCardData = [[PPHCardNotPresentData alloc] init];
-manualCardData.cardNumber = @&ldquo;4111111111111111&rdquo;;
-manualCardData.cvv2 = @&ldquo;408&rdquo;;
-manualCardData.expirationDate = [[NSCalendar currentCalendar] dateFromComponents:comps];</p>
+-(void) onPurchaseButtonClicked {
+    PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00" inCurrency:@"USD"];
+    [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@"FixedAmount"];
+}
 
-<p>[[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@&ldquo;FixedAmount&rdquo;];
-[PayPalHereSDK sharedTransactionmanager].<a href="#//api/name/manualEntryOrScannedCardData">manualEntryOrScannedCardData</a> = manualCardData;
-[tm processPaymentWithPaymentType:ePPHPaymentMethodKey
-withTransactionController:nil
-completionHandler:^(<a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a> *record) {
-NSLog(&ldquo;Payment Completed&rdquo;);
-}];
-}</p>
+If your class has implemented the PPHTransactionManagerDelegate protocol and
+created a PPHTransactionWatcher then your onPaymentEvent method will be called when
+the user swipes their card.
+Now we can ask the TransactionManager to take payment using the card data:
+
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+
+    if (event.eventType == ePPHTransactionType_CardDataReceived) {
+
+      [[PayPalHereSDK sharedTransactionmanager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                  withTransactionController:nil
+                                                          completionHandler:^(PPHTransactionResponse *record) {
+              NSLog(@"Transaction Finished! Success: %@", record.error ? @"NO" : @"YES");
+              //Now that the transaction is complete the PPHTransactionManager will stop scanning for card swipes.
+      }];
+}
+
+
+Usage for a fixed amount payment with a manually entered card:
+
+Let's charge this user $5.  First, call beginPaymentWithAmount.  Then we can immediatly set
+the manually entered card data and authorize (take) the payment.
+Note that the SDK will start scanning for card swipes after the call to beginPaymentWithAmount
+even if you eventually intend to take a manual payment.   Once your call to processPaymentWithPaymentType
+is made we'll then stop scanning for swipes.
+
+-(void) onPurchaseButtonClicked {
+    PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00" inCurrency:@"USD"];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMonth:9];
+    [comps setYear:2019];
+
+    PPHCardNotPresentData *manualCardData = [[PPHCardNotPresentData alloc] init];
+    manualCardData.cardNumber = @"4111111111111111";
+    manualCardData.cvv2 = @"408";
+    manualCardData.expirationDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+
+    [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@"FixedAmount"];  // We start scanning for swipes
+    [PayPalHereSDK sharedTransactionmanager].manualEntryOrScannedCardData = manualCardData;
+    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
+            withTransactionController:nil
+                    completionHandler:^(PPHTransactionResponse *record) {
+                               NSLog("Payment Completed"); // We now stop scanning for swipes.
+    }];
+}
+
+AUTH &amp; CAPTURE
+
+The SDK allows you to authorize an amount on a credit card.  Then, later, you can make a follow
+up call to capture that amount.  If the customer added a tip you can also capture with the additional
+tip.  You can also void the authorization.  You can also capture with not just the addition of a
+tip, but also with the addition of invoice items.
+
+Here is an example of an authorization on a credit card:
+
+-(void) onPurchaseButtonClicked {
+    PPHAmount *twentyDollarAmount = [PPHAmount [PPHAmount amountWithString:@"20.00" inCurrency:@"USD"];
+    [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:twentyDollarAmount withName:@"FixedAmount"];
+}
+
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+
+    if (event.eventType == ePPHTransactionType_CardDataReceived) {
+
+        Let's authorize the $20 payment for the card that was swiped.
+        This causes the SDK to stop monitoring for swipes.
+
+       [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                   withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           // Authorization complete!  (well, check response.error first!)
+                                                           // Save the PPHTransactionResponse for later use during the capture.
+                                                           self.myAuthorizedPaymentTransactionResponse = response;
+
+       }];
+    }
+}
+
+
+
+Here is an example of capturing payment on a previously completed authorization
+
+- (void) capturePaymentButtonPressed {
+    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_myAuthorizedPaymentTransactionResponse.record
+                                                     withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           if(!response.error) {
+                                                               NSLog(@"Payment captured!");
+    }
+}
+
+
+Here's an example of capturing payment with a tip.
+
+- (void) capturePaymentButtonPressed {
+
+    NSDecimalNumber *gratuityToAdd = self.gratuityEnteredByCustomer; // Let's use the gratuity your customer entered via your UI
+
+    _myAuthorizedPaymentTransactionResponse.record.invoice.gratuity = gratuityToAdd;
+
+    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_myAuthorizedPaymentTransactionResponse.record
+                                                     withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           if(!response.error) {
+                                                               NSLog(@"Payment captured with Tip!");
+    }
+}
+</code></pre>
 					</div>
 					
 					
@@ -335,12 +413,6 @@ NSLog(&ldquo;Payment Completed&rdquo;);
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initiateEMVTransaction:transactionType:">&ndash;&nbsp;initiateEMVTransaction:transactionType:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">&ndash;&nbsp;authorizePaymentWithPaymentType:withCompletionHandler:</a></code>
 	</span>
 	
@@ -365,25 +437,7 @@ NSLog(&ldquo;Payment Completed&rdquo;);
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&ndash;&nbsp;processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&ndash;&nbsp;beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/provideSignature:forTransaction:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:completionHandler:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/finalizePaymentForTransaction:withSignature:completionHandler:">&ndash;&nbsp;finalizePaymentForTransaction:withSignature:completionHandler:</a></code>
 	</span>
 	
 	
@@ -781,9 +835,12 @@ payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authoriz
 		<dl class="argument-def parameter-def">
 			<dt><em>paymentMethod</em></dt>
 			<dd><p>What type of authorization we are doing.  Can be ePPHPaymentMethodPaypal (checkin)
-or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey</p>
-
-<p>completionHandler: will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error the transation response&rsquo;s
+or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>Will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error then the PPHTransactionRecord&rsquo;s
 error object will be non nil.  Otherwise it will contain a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> which you can
 later pass into voidAuthoriztion or capturePaymentForAuthorization</p></dd>
 		</dl>
@@ -997,74 +1054,6 @@ by beginRefund.</p></dd>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:" title="beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
-This version will cause the SDK to show UI during the refund flow.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)beginRefundUsingSDKUI_WithPaymentType:(id)<em>paymentType</em> withViewController:(id)<em>vc</em> record:(id)<em>record</em> amount:(id)<em>amount</em> completionHandler:(id)<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>paymentType</em></dt>
-			<dd><p>the type on which the refund would be performed.  You&rsquo;ll get an error back if you
-specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
-<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
-specifying ePPHPaymentMethodSwipe.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>vc</em></dt>
-			<dd><p>: The current or active view controller.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>called when the action has completed</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
-This version will cause the SDK to show UI during the refund flow.</p>
-
-<p>Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/cancelPayment" title="cancelPayment"></a>
 	<h3 class="subsubtitle method-title">cancelPayment</h3>
 	
@@ -1121,6 +1110,23 @@ This version will cause the SDK to show UI during the refund flow.</p>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authorizedTransactionRecord</em></dt>
+			<dd><p>This is the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you received in the
+authorizePayment call.  This tells the SDK what auth you&rsquo;d like to capture.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: Will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error
+then the PPHTransactionRecord&rsquo;s error object will be non nil.</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -1137,197 +1143,9 @@ This version will cause the SDK to show UI during the refund flow.</p>
 <a href="../Classes/PPHPaymentLimits.html">PPHPaymentLimits</a>.captureTolerance for more information</p>
 
 <p>To capture more or less than was authorized you can add a gratutity or add/remove line items
-from the invoice contained in the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you pass in.  If you don&rsquo;t with to add
+from the invoice contained in the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you pass in.  If you don&rsquo;t wish to add
 a gratutity or change line items just supply the transactionRecord you received when you
 authorized the transaction.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/finalizePaymentForTransaction:withSignature:completionHandler:" title="finalizePaymentForTransaction:withSignature:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">finalizePaymentForTransaction:withSignature:completionHandler:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>DEPRECATED
-Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
-and complete the transaction.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)finalizePaymentForTransaction:(id)<em>previousTransaction</em> withSignature:(id)<em>signature</em> completionHandler:(id)<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>previousTransaction</em></dt>
-			<dd><p>: The transaction record object that is returned back from the processPayment call.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>signature</em></dt>
-			<dd><p>: A bitmap signature of the customer.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>: A response handler that would be invoked by the SDK in case of a success or a failure.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>DEPRECATED
-Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
-and complete the transaction.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initiateEMVTransaction:transactionType:" title="initiateEMVTransaction:transactionType:"></a>
-	<h3 class="subsubtitle method-title">initiateEMVTransaction:transactionType:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initiate the EMV transaction. This needs to called after <a href="#//api/name/beginPayment">beginPayment</a> and when the specific amount
-and currency is known. During this call the amount and currency code will be sent to the terminal
-for getting the card data for processing.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)initiateEMVTransaction:(id)<em>amount</em> transactionType:(id)<em>transactionType</em></code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initiate the EMV transaction. This needs to called after <a href="#//api/name/beginPayment">beginPayment</a> and when the specific amount
-and currency is known. During this call the amount and currency code will be sent to the terminal
-for getting the card data for processing.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:" title="processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
-This version will cause the SDK to show UI during the payment flow.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)processPaymentUsingSDKUI_WithPaymentType:(id)<em>paymentType</em> withTransactionController:(id)<em>controller</em> withViewController:(id)<em>vc</em> completionHandler:(id)<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>paymentType</em></dt>
-			<dd><p>: The type of payment to collect.  You&rsquo;ll get an error back if you
-specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
-<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
-specifying ePPHPaymentMethodSwipe.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>controller</em></dt>
-			<dd><p>:  Can be nil.  If provided, the transaction manager will call the callbacks
-defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHTransactionControllerDelegate</a>.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>vc</em></dt>
-			<dd><p>: The current or active view controller.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>: called when the action has completed</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
-This version will cause the SDK to show UI during the payment flow.</p>
-
-<p>Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).</p>
-
-<p>Processing a payment for swipe or key-in or checkin-in payments will
-actually capture that payment.  For Cash or Check, this call will simply
-record the invoice into the paypal system for record-keeping purposes.</p>
 	</div>
 	
 	
@@ -1435,17 +1253,17 @@ and complete the transaction.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>signature</em></dt>
-			<dd><p>: A bitmap signature of the customer.</p></dd>
+			<dd><p>: A UIImage contining the signature of the customer.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previousTransaction</em></dt>
+			<dd><p>: The transaction record object that is returned back from the processPayment call.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
 			<dd><p>: A response handler that would be invoked by the SDK in case of a success or a failure.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>forTransaction</em></dt>
-			<dd><p>: The transaction record object that is returned back from the processPayment call.</p></dd>
 		</dl>
 		
 	</div>
@@ -1553,7 +1371,8 @@ which we should send the receipt.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Allows you to void a previously authorized payment.</p>
+		<p>Allows you to void a previously authorized payment.
+@param authorizedTransactionRecord</p>
 	</div>		
 	
     
@@ -1561,6 +1380,17 @@ which we should send the receipt.</p></dd>
 	<div class="method-subsection method-declaration"><code>- (void)voidAuthorization:(id)<em>authorizedTransactionRecord</em> withCompletionHandler:(id)<em>completionHandler</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error then the PPHTransactionRecord&rsquo;s
+error object will be non nil.  Otherwise it will contain a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> for this void action.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -1570,7 +1400,8 @@ which we should send the receipt.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Allows you to void a previously authorized payment.</p>
+		<p>Allows you to void a previously authorized payment.
+@param authorizedTransactionRecord</p>
 	</div>
 	
 	
@@ -1605,7 +1436,7 @@ which we should send the receipt.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-09-15)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-10-02)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

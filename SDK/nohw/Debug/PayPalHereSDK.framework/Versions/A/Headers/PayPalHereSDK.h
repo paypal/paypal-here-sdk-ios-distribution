@@ -18,8 +18,17 @@
 #import <PayPalHereSDK/PPHAccessResultType.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 
+/*!
+ * Enum for the service endpoint to connect to.
+ */
 typedef NS_ENUM(NSInteger, PPHSDKServiceType) {
+    /*!
+     * SDK points to Live.
+     */
     ePPHSDKServiceType_Live,
+    /*!
+     * SDK points to Sandbox.
+     */
     ePPHSDKServiceType_Sandbox
 };
 

@@ -4,8 +4,8 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionManager</TokenIdentifier>
-			<Abstract type="html">A stateful transaciton (payment &amp;amp; refunds) processor.
-Here are some usage examples:</Abstract>
+			<Abstract type="html">A stateful transaction (payment &amp;amp; refunds) processor.
+    Here are some usage examples:</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
             
 			
@@ -371,20 +371,6 @@ the fixed amount item.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/initiateEMVTransaction:transactionType:</TokenIdentifier>
-			<Abstract type="html">Initiate the EMV transaction. This needs to called after beginPayment and when the specific amount
-and currency is known. During this call the amount and currency code will be sent to the terminal
-for getting the card data for processing.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>- (void)initiateEMVTransaction:(id)amount transactionType:(id)transactionType</Declaration>
-			
-			
-			<Anchor>//api/name/initiateEMVTransaction:transactionType:</Anchor>
-            <NodeRef refid="42"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/authorizePaymentWithPaymentType:withCompletionHandler:</TokenIdentifier>
 			<Abstract type="html">Authorize a payment.  Used with either Checkin (ePPHPaymentMethodPaypal) or a card
 payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.</Abstract>
@@ -395,9 +381,10 @@ payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authoriz
 				<Parameter>
 					<Name>paymentMethod</Name>
 					<Abstract type="html">What type of authorization we are doing.  Can be ePPHPaymentMethodPaypal (checkin)
-or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey
-
-completionHandler: will return a PPHTransactionResponse.  If there&apos;s an error the transation response&apos;s
+or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">Will return a PPHTransactionResponse.  If there&apos;s an error then the PPHTransactionRecord&apos;s
 error object will be non nil.  Otherwise it will contain a PPHTransactionRecord which you can
 later pass into voidAuthoriztion or capturePaymentForAuthorization</Abstract>
 				</Parameter>
@@ -409,11 +396,18 @@ later pass into voidAuthoriztion or capturePaymentForAuthorization</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/voidAuthorization:withCompletionHandler:</TokenIdentifier>
-			<Abstract type="html">Allows you to void a previously authorized payment.</Abstract>
+			<Abstract type="html">Allows you to void a previously authorized payment.
+@param authorizedTransactionRecord</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
 			<Declaration>- (void)voidAuthorization:(id)authorizedTransactionRecord withCompletionHandler:(id)completionHandler</Declaration>
-			
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">will return a PPHTransactionResponse.  If there&apos;s an error then the PPHTransactionRecord&apos;s
+error object will be non nil.  Otherwise it will contain a PPHTransactionRecord for this void action.</Abstract>
+				</Parameter>
+			</Parameters>
 			
 			<Anchor>//api/name/voidAuthorization:withCompletionHandler:</Anchor>
             <NodeRef refid="42"/>
@@ -425,7 +419,17 @@ later pass into voidAuthoriztion or capturePaymentForAuthorization</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
 			<Declaration>- (void)capturePaymentForAuthorization:(id)authorizedTransactionRecord withCompletionHandler:(id)completionHandler</Declaration>
-			
+			<Parameters>
+				<Parameter>
+					<Name>authorizedTransactionRecord</Name>
+					<Abstract type="html">This is the PPHTransactionRecord you received in the
+authorizePayment call.  This tells the SDK what auth you&apos;d like to capture.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: Will return a PPHTransactionResponse.  If there&apos;s an error
+then the PPHTransactionRecord&apos;s error object will be non nil.</Abstract>
+				</Parameter>
+			</Parameters>
 			
 			<Anchor>//api/name/capturePaymentForAuthorization:withCompletionHandler:</Anchor>
             <NodeRef refid="42"/>
@@ -459,64 +463,6 @@ defined in the PPHTransactionControllerDelegate.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
-This version will cause the SDK to show UI during the payment flow.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>- (void)processPaymentUsingSDKUI_WithPaymentType:(id)paymentType withTransactionController:(id)controller withViewController:(id)vc completionHandler:(id)completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>paymentType</Name>
-					<Abstract type="html">: The type of payment to collect.  You&apos;ll get an error back if you
-specify ePPHPaymentTypesCheckedInPayment and haven&apos;t set the
-checkedInClient property.  Likewise with the cardData member and
-specifying ePPHPaymentMethodSwipe.</Abstract>
-				</Parameter><Parameter>
-					<Name>controller</Name>
-					<Abstract type="html">:  Can be nil.  If provided, the transaction manager will call the callbacks
-defined in the PPHTransactionControllerDelegate.</Abstract>
-				</Parameter><Parameter>
-					<Name>vc</Name>
-					<Abstract type="html">: The current or active view controller.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">: called when the action has completed</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</Anchor>
-            <NodeRef refid="42"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
-This version will cause the SDK to show UI during the refund flow.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>- (void)beginRefundUsingSDKUI_WithPaymentType:(id)paymentType withViewController:(id)vc record:(id)record amount:(id)amount completionHandler:(id)completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>paymentType</Name>
-					<Abstract type="html">the type on which the refund would be performed.  You&apos;ll get an error back if you
-specify ePPHPaymentTypesCheckedInPayment and haven&apos;t set the
-checkedInClient property.  Likewise with the cardData member and
-specifying ePPHPaymentMethodSwipe.</Abstract>
-				</Parameter><Parameter>
-					<Name>vc</Name>
-					<Abstract type="html">: The current or active view controller.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">called when the action has completed</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</Anchor>
-            <NodeRef refid="42"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/provideSignature:forTransaction:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Used to capture the signature of the customer if it already hasn&apos;t been captured in the processPayment call
 and complete the transaction.</Abstract>
@@ -526,42 +472,17 @@ and complete the transaction.</Abstract>
 			<Parameters>
 				<Parameter>
 					<Name>signature</Name>
-					<Abstract type="html">: A bitmap signature of the customer.</Abstract>
+					<Abstract type="html">: A UIImage contining the signature of the customer.</Abstract>
+				</Parameter><Parameter>
+					<Name>previousTransaction</Name>
+					<Abstract type="html">: The transaction record object that is returned back from the processPayment call.</Abstract>
 				</Parameter><Parameter>
 					<Name>completionHandler</Name>
 					<Abstract type="html">: A response handler that would be invoked by the SDK in case of a success or a failure.</Abstract>
-				</Parameter><Parameter>
-					<Name>forTransaction</Name>
-					<Abstract type="html">: The transaction record object that is returned back from the processPayment call.</Abstract>
 				</Parameter>
 			</Parameters>
 			
 			<Anchor>//api/name/provideSignature:forTransaction:completionHandler:</Anchor>
-            <NodeRef refid="42"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/finalizePaymentForTransaction:withSignature:completionHandler:</TokenIdentifier>
-			<Abstract type="html">DEPRECATED
-Used to capture the signature of the customer if it already hasn&apos;t been captured in the processPayment call
-and complete the transaction.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>- (void)finalizePaymentForTransaction:(id)previousTransaction withSignature:(id)signature completionHandler:(id)completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>previousTransaction</Name>
-					<Abstract type="html">: The transaction record object that is returned back from the processPayment call.</Abstract>
-				</Parameter><Parameter>
-					<Name>signature</Name>
-					<Abstract type="html">: A bitmap signature of the customer.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">: A response handler that would be invoked by the SDK in case of a success or a failure.</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/finalizePaymentForTransaction:withSignature:completionHandler:</Anchor>
             <NodeRef refid="42"/>
 		</Token>
 		
