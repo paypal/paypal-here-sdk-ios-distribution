@@ -18,7 +18,7 @@ and other related information. There can be at most one payment against an invoi
 			<Abstract type="html">Create a payment record manually</Abstract>
 			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithTransaction:(NSString *)transactionId forAmount:(PPHAmount *)amount withMethod:(PPHPaymentMethod)method andDetail:(PPHPaymentMethodDetail)detail onDate:(NSDate *)date</Declaration>
+			<Declaration>- (id)initWithTransaction:(id)transactionId forAmount:(id)amount withMethod:(id)method andDetail:(id)detail onDate:(id)date</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>transactionId</Name>
@@ -47,7 +47,7 @@ and other related information. There can be at most one payment against an invoi
 			<Abstract type="html">Create a payment record from the server information</Abstract>
 			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)representation</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>representation</Name>
@@ -575,6 +575,7 @@ and other related information. There can be at most one payment against an invoi
             <NodeRef refid="28"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

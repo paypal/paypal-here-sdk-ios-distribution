@@ -7,6 +7,8 @@
 #import <Foundation/Foundation.h>
 #import <AvailabilityMacros.h>
 
+#import "PPHAmount.h"
+
 @class SellableItem;
 
 /*!
@@ -77,5 +79,10 @@
  * @param representation The dictionary from the server
  */
 -(id)initWithDictionary:(NSDictionary *)representation;
+
+/*!
+ * Calculate the rounded total based on the quantity and unitPrice
+ */
+-(PPHAmount *)roundedTotalInCurrency:(NSString *)currency;
 
 @end

@@ -43,6 +43,11 @@ PPHLoggingDelegate
     self.refundableRecords = [[NSMutableArray alloc] init];
     self.authorizedRecords = [[NSMutableArray alloc] init];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *taxRate = ([defaults objectForKey:@"taxRate"]) ? [defaults objectForKey:@"taxRate"] : @".10";
+    [defaults setObject:taxRate forKey:@"taxRate"];
+    [defaults synchronize];
+    
 	NSLog(@"This is our Bundle Identifier Key: [%@]", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey]);
 
     
@@ -50,21 +55,8 @@ PPHLoggingDelegate
     
     /*
      * How to configure the SDK to use Live vs Sandbox
-     *
-     * Examples:
-     *   To run against Live:
-     *   [PayPalHereSDK setBaseAPIURL:nil];   OR don't call setBaseAPIURL at all.
-     *
-     *   To run against Sandbox:
-     *   [PayPalHereSDK setBaseAPIURL:@"https://www.sandbox.paypal.com/webapps/"];
-     *
-     *   To run against a stage:
-     *   [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:@"https://www.stage2pph10.stage.paypal.com/webapps/"]];
      */
-    
-    //Default to using a stage.  The login sample UI will change this value.
-
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:STAGE]];
+     [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
    
     /* By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
      * diagnosing issues, but is obviously up to you as to whether you want to do remote logging, or perhaps you
@@ -85,6 +77,9 @@ PPHLoggingDelegate
     // Either the app, or the SDK must requrest location access if we'd like
     // the SDK to take payments.
     [PayPalHereSDK askForLocationAccess];
+    
+    // We keep track of the user's preference for sample app's payment flow.  Either Authorize-Only or Full-Capture
+    self.paymentFlowIsAuthOnly = [[NSUserDefaults standardUserDefaults] boolForKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
     
     return YES;
 }
@@ -115,6 +110,15 @@ PPHLoggingDelegate
 	}
 
 	return YES;
+}
+
+- (void) setPaymentFlowIsAuthOnly:(BOOL)paymentFlowIsAuthOnly {
+    [[NSUserDefaults standardUserDefaults] setBool:paymentFlowIsAuthOnly forKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
+    [[NSUserDefaults standardUserDefaults]  synchronize];
+}
+
+- (BOOL) paymentFlowIsAuthOnly {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
 }
 
 // Let's intercept the logging messages of the SDK

@@ -8,6 +8,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
+#import "AuthorizationCompleteViewController.h"
 #import "STServices.h"
 #import "STAppDelegate.h"
 
@@ -31,15 +32,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.processingTransactionSpinny.hidden=YES;
     
     self.fillInCardInfoButton.layer.cornerRadius = 10;
     self.clearCardInfoButton.layer.cornerRadius = 10;
     
-    NSString *buttonText = @"Process";
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    NSString *buttonText = appDelegate.paymentFlowIsAuthOnly ? @"Authorize" : @"Process";
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:buttonText
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick:)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    
+    UIToolbar* numberToolbar = [[UIToolbar alloc]init];
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed:)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Purchase!" style:UIBarButtonItemStyleDone target:self action:@selector(purchaseButtonPressed:)],
+                           nil];
+    [numberToolbar sizeToFit];
+    self.cardNumber.inputAccessoryView = numberToolbar;
+    self.expMonth.inputAccessoryView = numberToolbar;
+    self.expYear.inputAccessoryView = numberToolbar;
+    self.cvv2.inputAccessoryView = numberToolbar;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,10 +64,10 @@
 
 -(IBAction)fillInCardInfo:(id)sender
 {
-    [self.cardNumber setText:@"4111111111111111"];
-    [self.expMonth setText:@"09"];
-    [self.expYear setText:@"2019"];
-    [self.cvv2 setText:@"408"];
+    [self.cardNumber setText:@"5428370024365363"];
+    [self.expMonth setText:@"02"];
+    [self.expYear setText:@"2020"];
+    [self.cvv2 setText:@"838"];
 }
 
 -(IBAction)clearCardInfo:(id)sender
@@ -64,6 +78,22 @@
     [self.cvv2 setText:@""];
 }
 
+-(void)cancelButtonPressed:(id)sender {
+    [self.cardNumber resignFirstResponder];
+    [self.expMonth resignFirstResponder];
+    [self.expYear resignFirstResponder];
+    [self.cvv2 resignFirstResponder];
+    
+}
+
+-(void)purchaseButtonPressed:(id) sender {
+    [self.cardNumber resignFirstResponder];
+    [self.expMonth resignFirstResponder];
+    [self.expYear resignFirstResponder];
+    [self.cvv2 resignFirstResponder];
+    
+    [self onDoneButtonClick:sender];
+}
 
 -(NSString*) getCurrentYear
 {
@@ -89,8 +119,20 @@
         return;
     }
     
-    self.processingTransactionSpinny.hidden=NO;
-    [self.processingTransactionSpinny startAnimating];
+    
+    UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinny setFrame:CGRectMake(0, 0, 100, 100)];
+    [spinny startAnimating];
+    UIBarButtonItem *loading = [[UIBarButtonItem alloc] initWithCustomView:spinny];
+    self.navigationItem.rightBarButtonItem = loading;
+    
+    [self.fillInCardInfoButton setEnabled:NO];
+    [self.clearCardInfoButton setEnabled:NO];
+    [self.cvv2 setEnabled:NO];
+    [self.expYear setEnabled:NO];
+    [self.expMonth setEnabled:NO];
+    [self.cardNumber setEnabled:NO];
+    
     
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setMonth:[expMonthStr integerValue]];
@@ -106,12 +148,26 @@
     
     tm.manualEntryOrScannedCardData = manualCardData;
     
-    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    BOOL authOnly = appDelegate.paymentFlowIsAuthOnly;
+    
+    if (authOnly) {
+        [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodKey
+                                                            withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                                self.transactionResponse = response;
+                                                                [self showAuthorizationCompeleteView];
+                                                            }];
+        
+    }
+    else {
+    
+        [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
                 withTransactionController:self
                         completionHandler:^(PPHTransactionResponse *record) {
                             self.transactionResponse = record;
                             [self showPaymentCompeleteView];
                         }];
+    }
 
 }
 
@@ -127,6 +183,23 @@
     PaymentCompleteViewController* paymentCompleteViewController = [[PaymentCompleteViewController alloc]                                                                                         initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
     
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES]; 
+}
+
+-(void) showAuthorizationCompeleteView
+{
+    if (_transactionResponse.record != nil) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.authorizedRecords addObject:_transactionResponse.record];
+    }
+    
+    AuthorizationCompleteViewController* vc = [[AuthorizationCompleteViewController alloc]
+                                               initWithNibName:@"AuthorizationCompleteViewController"
+                                               bundle:nil
+                                               forAuthResponse:_transactionResponse];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark PPHTransactionControllerDelegate

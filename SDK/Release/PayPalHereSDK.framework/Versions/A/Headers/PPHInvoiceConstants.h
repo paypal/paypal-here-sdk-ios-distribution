@@ -24,6 +24,7 @@ typedef enum
     ePPHPaymentMethodCheck,
     ePPHPaymentMethodCash,
     ePPHPaymentMethodChipCard,
+    ePPHPaymentMethodEmvSwipe,
     ePPHPaymentMethodOther
 } PPHPaymentMethod;
 
@@ -103,6 +104,12 @@ typedef enum
  * @param method the payment method
  */
 + (BOOL)paymentMethodIsCreditCard:(PPHPaymentMethod)method;
+/*!
+ * Does the payment method put the invoice in a MarkedAsPaid state
+ * (i.e. is it cash or check)
+ * @param method the payment method
+ */
++ (BOOL)paymentMethodMarksAsPaid:(PPHPaymentMethod)method;
 /*!
  * Determine whether this invoice status means that the invoice was paid at some point
  * (i.e. is it paid, refunded, or partially refunded)

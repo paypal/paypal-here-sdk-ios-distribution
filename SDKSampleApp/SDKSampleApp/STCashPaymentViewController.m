@@ -30,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.doneButton.layer.cornerRadius = 10;
+    _activity.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,13 +41,10 @@
 
 -(IBAction)doneButtonPressed:(id)sender{
     [sender setEnabled:NO];
-    CGRect frame = [(UIButton *)sender frame];
     
-    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [activity setFrame:CGRectMake(frame.size.width/2.0-10, frame.size.height/2.0-10, 20, 20)];
-    [activity startAnimating];
+    _activity.hidden = NO;
+    [_activity startAnimating];
     
-    [sender addSubview:activity];
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
@@ -55,7 +53,8 @@
             withTransactionController:nil
                     completionHandler:^(PPHTransactionResponse *record) {
                         // finished processing
-                        [activity stopAnimating];
+                        _activity.hidden = YES;
+                        [_activity stopAnimating];
 
                         PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:record];
                         
