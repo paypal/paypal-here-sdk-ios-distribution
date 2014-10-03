@@ -29,12 +29,6 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
     ePPHReaderErrorTransactionNotValid = 5
 };
 
-typedef NS_ENUM(NSInteger, PPHEMVTransactionType) {
-    ePPHEMVTransactionTypeInvalid,
-    ePPHEMVTransactionTypeSale,
-    ePPHEMVTransactionTypeRefund
-};
-
 @class PPHChipAndPinDecisionEvent;
 @class PPHChipAndPinAuthResponse;
 @class PPHError;

@@ -20,6 +20,7 @@
 #import "ManualCardEntryViewController.h"
 #import "CCCustomInputViewController.h"
 #import "STAppDelegate.h"
+#import "AuthorizationCompleteViewController.h"
 #import "InvoicesManager.h"
 #import "CCSwipersTableTableViewController.h"
 
@@ -172,6 +173,23 @@ enum swiperState : NSUInteger {
     PaymentCompleteViewController *paymentCompleteViewController = [[PaymentCompleteViewController alloc] initWithNibName:@"PaymentCompleteViewController" bundle:nil forResponse:_transactionResponse];
     
     [self.navigationController pushViewController:paymentCompleteViewController animated:YES];
+}
+
+-(void) showAuthorizationCompeleteView
+{
+    if (_transactionResponse.record != nil) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.authorizedRecords addObject:_transactionResponse.record];
+    }
+    
+    AuthorizationCompleteViewController* vc = [[AuthorizationCompleteViewController alloc]
+                                               initWithNibName:@"AuthorizationCompleteViewController"
+                                               bundle:nil
+                                               forAuthResponse:_transactionResponse];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(IBAction)payWithCheckedInClient:(id)sender

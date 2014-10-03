@@ -12,6 +12,7 @@
 #import "CCSwipersTableTableViewController.h"
 #import "STServices.h"
 #import "STAppDelegate.h"
+#import "AuthorizationCompleteViewController.h"
 #import "PaymentCompleteViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
@@ -44,6 +45,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) showAuthorizationCompeleteView: (PPHTransactionResponse *)response
+{
+    if (response.record != nil) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.authorizedRecords addObject:response.record];
+    }
+    
+    AuthorizationCompleteViewController* vc = [[AuthorizationCompleteViewController alloc]
+                                               initWithNibName:@"AuthorizationCompleteViewController"
+                                               bundle:nil
+                                               forAuthResponse:response];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void) showPaymentCompeleteView : (PPHTransactionResponse *) response
@@ -89,14 +107,24 @@
     
     [[PayPalHereSDK sharedTransactionManager] setEncryptedCardData:card];
     
-    [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.paymentFlowIsAuthOnly) {
+        
+        [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                            withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                                [self showAuthorizationCompeleteView:response];
+                                                                [[PayPalHereSDK sharedCardReaderManager] endMonitoring:YES];
+                                                            }];
+    } else {
+        [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                       withTransactionController:nil
                                                               completionHandler:^(PPHTransactionResponse *response) {
                                                                   [self showPaymentCompeleteView:response];
                                                                   [[PayPalHereSDK sharedCardReaderManager] endMonitoring:YES];
 
                                                               }];
-    
+    }
 }
 
 -(void)didFailToReadCard {

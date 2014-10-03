@@ -13,6 +13,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface SettingsViewController ()
+@property (nonatomic, retain) IBOutlet UITextField *taxRateTextField;
 @property (nonatomic,strong) PPHCardReaderBasicInformation *readerInfo;
 @property (nonatomic,strong) PPHCardReaderMetadata *readerMetadata;
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
@@ -53,6 +54,9 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
+    
+    self.taxRateTextField.delegate = self;
+    self.taxRateTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"taxRate"];
     NSLog(@"In settings view controller");
 }
 
@@ -86,6 +90,10 @@
     
     self.sdkVersion.text = [PayPalHereSDK sdkVersion];
     self.sampleAppVersion.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    
+    _paymentFlowType.hidden = NO;
+    
+    [self configureAuthType];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -150,6 +158,54 @@
 	[self.navigationController pushViewController:readerInfoVC animated:YES];
     
     
+}
+
+/*
+ * Handle the Payment Flow stle.
+ *
+ * The sample app's payment flow has two flavors.  The first is called 'full process payment', the second is
+ * called 'Auth Only'.   
+ *
+ * When we're in Full Process Payment mode we'll ask the SDK to 'processPayment', which
+ * means we'll attempt to capture and finalize your money from the customer when you tap Purchase.
+ *
+ * When we're in Auth Only mode we'll follow a different flow.  We'll authorize the card you've
+ * swiped or entered for 115% of the purchase total.   Once authorized we'll end the transcation flow so you
+ * can take a new payment.  Later you can visit the Authorized Invoices screen and select invoices to capture
+ * payment on.  At that time you can enter the tip and capture payment, or reauthorize the invoice for a 
+ * different amount, or void the transaction, or just capture payment on the invoice without adding a tip.
+ *
+ * Note that these modes only affect swipe and manual card payments.  For Cash or checkin payments we
+ * won't attempt an authorize but instead will just call processPayment - which for Checkin payments will
+ * capture your money right away and for cash payments will simply record the invoice as having been
+ * paid in cash.
+ */
+#define kAuthOnlySegment 0
+#define kFullProcessPaymentSegment 1
+
+- (IBAction)onPaymentFlowTypePressed:(id)sender {
+    UISegmentedControl *segControl = (UISegmentedControl *) sender;
+    NSInteger index = segControl.selectedSegmentIndex;
+    
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.paymentFlowIsAuthOnly = (index == kAuthOnlySegment);
+    [self displayCaptureTolerance:appDelegate.paymentFlowIsAuthOnly];
+}
+
+- (void)configureAuthType {
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _paymentFlowType.selectedSegmentIndex = appDelegate.paymentFlowIsAuthOnly ? kAuthOnlySegment : kFullProcessPaymentSegment;
+    [self displayCaptureTolerance:appDelegate.paymentFlowIsAuthOnly];
+}
+
+-(void)displayCaptureTolerance:(BOOL)display {
+    if(display) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.captureTolerance.text = [NSString stringWithFormat:@"Maximum Capture Limit: %@ %%", [appDelegate captureTolerance]];
+        self.captureTolerance.hidden = NO;
+    } else {
+        self.captureTolerance.hidden = YES;
+    }
 }
 
 #pragma mark -
@@ -294,4 +350,31 @@
         }];
     }];
 }
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.taxRateTextField) {
+        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:@"taxRate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // Update the string in the text input
+    NSMutableString* currentString = [NSMutableString stringWithString:textField.text];
+    [currentString replaceCharactersInRange:range withString:string];
+    // Strip out the decimal separator
+    [currentString replaceOccurrencesOfString:@"." withString:@""
+                                      options:NSLiteralSearch range:NSMakeRange(0, [currentString length])];
+    // Generate a new string for the text input
+    int currentValue = [currentString intValue];
+    NSString* format = [NSString stringWithFormat:@"%%.%df", 2];
+    double minorUnitsPerMajor = 100.0;
+    NSString* newString = [NSString stringWithFormat:format, currentValue/minorUnitsPerMajor];
+    textField.text = newString;
+    return NO;
+}
+
 @end

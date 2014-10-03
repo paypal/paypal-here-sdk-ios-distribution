@@ -11,19 +11,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
-/**
- * The TransactionController defines an interface that can be used by the application to install a callback
- * object that is used to customize behavior.
- * TransactionControllers are set on the TransactionManager on a per transaction basis. Unlike persistent
- * listeners that are registered with the manager object, TransactionControllers are "forgotten" by the
- * SDK at the end of each transaction (regardless of success or failure).
- * TransactionControllers interact with the SDK by using the TransactionControlAction and also via the parameters
- * passed into the callbacks. For example, the value HANDLED indicates that the application has taken over processing
- * and that the SDK should stop processing this particular transaction at this state.
- * The CONTINUE flag indicates that the application has either made changes to the input object or left everything untouched
- * and that the SDK should continue processing the transaction.
- *
- */
+
 @class PPHTransactionControllerWatcher;
 @class PPHInvoice;
 
@@ -41,6 +29,19 @@ typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
     ePPHTransactionType_Continue
 };
 
+/**
+ * The TransactionController defines an interface that can be used by the application to install a callback
+ * object that is used to customize behavior.
+ * TransactionControllers are set on the TransactionManager on a per transaction basis. Unlike persistent
+ * listeners that are registered with the manager object, TransactionControllers are "forgotten" by the
+ * SDK at the end of each transaction (regardless of success or failure).
+ * TransactionControllers interact with the SDK by using the TransactionControlAction and also via the parameters
+ * passed into the callbacks. For example, the value HANDLED indicates that the application has taken over processing
+ * and that the SDK should stop processing this particular transaction at this state.
+ * The CONTINUE flag indicates that the application has either made changes to the input object or left everything untouched
+ * and that the SDK should continue processing the transaction.
+ *
+ */
 @protocol PPHTransactionControllerDelegate <NSObject>
 
 /*!

@@ -20,7 +20,7 @@ the sample server included in this SDK to store your app secret server-side (onl
 and we&apos;ll verify PayPal Here setup and save their credentials.</Abstract>
 			<DeclaredIn>PPHAccessController.h</DeclaredIn>
 			
-			<Declaration>- (void)setupMerchant:(PPHAccessAccount *)account completionHandler:(PPHAccessCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)setupMerchant:(id)account completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>account</Name>
@@ -41,7 +41,7 @@ and we&apos;ll verify PayPal Here setup and save their credentials.</Abstract>
 will be updated</Abstract>
 			<DeclaredIn>PPHAccessController.h</DeclaredIn>
 			
-			<Declaration>- (void)refresh:(PPHAccessAccount *)account completionHandler:(PPHAccessTokenRefreshHandler)completionHandler</Declaration>
+			<Declaration>- (void)refresh:(id)account completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>account</Name>
@@ -56,6 +56,7 @@ will be updated</Abstract>
             <NodeRef refid="2"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

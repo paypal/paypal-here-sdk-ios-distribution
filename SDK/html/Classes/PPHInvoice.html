@@ -51,8 +51,6 @@
 	
 	<option value="//api/name/customAmountValue">&nbsp;&nbsp;&nbsp;&nbsp;customAmountValue</option>
 	
-	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;description</option>
-	
 	<option value="//api/name/discountAmount">&nbsp;&nbsp;&nbsp;&nbsp;discountAmount</option>
 	
 	<option value="//api/name/discountPercentage">&nbsp;&nbsp;&nbsp;&nbsp;discountPercentage</option>
@@ -212,8 +210,6 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customAmountName">customAmountName</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customAmountValue">customAmountValue</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/discountAmount">discountAmount</a></span></li>
 	
@@ -687,12 +683,6 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/description">&nbsp;&nbsp;description</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/itemCount">&nbsp;&nbsp;itemCount</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -1024,47 +1014,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The amount of a custom value entered on an invoice from the website.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PPHInvoice.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/description" title="description"></a>
-	<h3 class="subsubtitle method-title">description</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>A dump of the dictionary representation of the invoice</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *description</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>A dump of the dictionary representation of the invoice</p>
 	</div>
 	
 	
@@ -2495,7 +2444,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)downloadInvoiceForInvoiceId:(NSString *)<em>invoiceId</em> context:(PPHInvoiceItemContext *)<em>context</em> completionHandler:(PPHInvoiceLoadCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)downloadInvoiceForInvoiceId:(id)<em>invoiceId</em> context:(id)<em>context</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -2514,7 +2463,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceLoadCompletionHandler.html">PPHInvoiceLoadCompletionHandler</a> The block to invoke and retuirn the newly created invoice once the load is complete.</p></dd>
 		</dl>
 		
 	</div>
@@ -2556,7 +2505,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)downloadInvoiceForMerchantReferenceNumber:(NSString *)<em>referenceNumber</em> context:(PPHInvoiceItemContext *)<em>context</em> completionHandler:(PPHInvoiceLoadCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)downloadInvoiceForMerchantReferenceNumber:(id)<em>referenceNumber</em> context:(id)<em>context</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -2575,7 +2524,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceLoadCompletionHandler.html">PPHInvoiceLoadCompletionHandler</a> The block to invoke and retuirn the newly created invoice once the load is complete.</p></dd>
 		</dl>
 		
 	</div>
@@ -2625,7 +2574,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)addItemWithId:(NSString *)<em>itemId</em> detailId:(NSString *)<em>detailId</em> name:(NSString *)<em>name</em> quantity:(NSDecimalNumber *)<em>quantity</em> unitPrice:(NSDecimalNumber *)<em>unitPrice</em> taxRate:(NSDecimalNumber *)<em>taxRate</em> taxRateName:(NSString *)<em>taxRateName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)addItemWithId:(id)<em>itemId</em> detailId:(id)<em>detailId</em> name:(id)<em>name</em> quantity:(id)<em>quantity</em> unitPrice:(id)<em>unitPrice</em> taxRate:(id)<em>taxRate</em> taxRateName:(id)<em>taxRateName</em></code></div>
 
     
 	
@@ -2711,7 +2660,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)addItemWithId:(NSString *)<em>itemId</em> name:(NSString *)<em>name</em> quantity:(NSDecimalNumber *)<em>quantity</em> unitPrice:(NSDecimalNumber *)<em>unitPrice</em> taxRate:(NSDecimalNumber *)<em>taxRate</em> taxRateName:(NSString *)<em>taxRateName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)addItemWithId:(id)<em>itemId</em> name:(id)<em>name</em> quantity:(id)<em>quantity</em> unitPrice:(id)<em>unitPrice</em> taxRate:(id)<em>taxRate</em> taxRateName:(id)<em>taxRateName</em></code></div>
 
     
 	
@@ -2838,7 +2787,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)cancel:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)cancel:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -2847,7 +2796,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceBasicCompletionHandler.html">PPHInvoiceBasicCompletionHandler</a> The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
 		</dl>
 		
 	</div>
@@ -2932,7 +2881,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deleteInvoice:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)deleteInvoice:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -2941,7 +2890,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceBasicCompletionHandler.html">PPHInvoiceBasicCompletionHandler</a> The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
 		</dl>
 		
 	</div>
@@ -2983,7 +2932,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)getRefundDetails:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)getRefundDetails:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -2992,7 +2941,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceBasicCompletionHandler.html">PPHInvoiceBasicCompletionHandler</a> The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
 		</dl>
 		
 	</div>
@@ -3034,7 +2983,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)incrementInvoiceItem:(PPHInvoiceItem *)<em>item</em> byQuantity:(NSDecimalNumber *)<em>quantity</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)incrementInvoiceItem:(id)<em>item</em> byQuantity:(id)<em>quantity</em></code></div>
 
     
 	
@@ -3090,7 +3039,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -3146,7 +3095,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(NSDictionary *)<em>representation</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(id)<em>representation</em></code></div>
 
     
 	
@@ -3202,7 +3151,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(NSDictionary *)<em>representation</em> context:(PPHInvoiceItemContext *)<em>context</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(id)<em>representation</em> context:(id)<em>context</em></code></div>
 
     
 	
@@ -3263,7 +3212,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(NSDictionary *)<em>representation</em> invoiceId:(NSString *)<em>invoiceId</em> context:(PPHInvoiceItemContext *)<em>context</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(id)<em>representation</em> invoiceId:(id)<em>invoiceId</em> context:(id)<em>context</em></code></div>
 
     
 	
@@ -3329,7 +3278,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithItem:(NSString *)<em>item</em> forAmount:(PPHAmount *)<em>amount</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithItem:(id)<em>item</em> forAmount:(id)<em>amount</em></code></div>
 
     
 	
@@ -3338,7 +3287,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>item</em></dt>
-			<dd><p>Item name or <a href="#//api/name/description">description</a></p></dd>
+			<dd><p>Item name or description</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -3385,7 +3334,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)<em>itemId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)invoiceItemWithId:(id)<em>itemId</em></code></div>
 
     
 	
@@ -3431,7 +3380,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)<em>itemId</em> detailId:(NSString *)<em>detailId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHInvoiceItem *)invoiceItemWithId:(id)<em>itemId</em> detailId:(id)<em>detailId</em></code></div>
 
     
 	
@@ -3492,7 +3441,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSDecimalNumber *)quantityByItemId:(NSString *)<em>itemId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSDecimalNumber *)quantityByItemId:(id)<em>itemId</em></code></div>
 
     
 	
@@ -3543,7 +3492,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)readDictionary:(NSDictionary *)<em>dictionary</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)readDictionary:(id)<em>dictionary</em></code></div>
 
     
 	
@@ -3594,7 +3543,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)refreshInvoice:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)refreshInvoice:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -3603,7 +3552,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceBasicCompletionHandler.html">PPHInvoiceBasicCompletionHandler</a> The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
 		</dl>
 		
 	</div>
@@ -3686,7 +3635,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)save:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)save:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -3695,7 +3644,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceBasicCompletionHandler.html">PPHInvoiceBasicCompletionHandler</a> The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
 		</dl>
 		
 	</div>
@@ -3737,7 +3686,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)send:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)send:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -3746,7 +3695,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completionHandler</em></dt>
-			<dd><p>PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
+			<dd><p><a href="../Blocks/PPHInvoiceBasicCompletionHandler.html">PPHInvoiceBasicCompletionHandler</a> The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</p></dd>
 		</dl>
 		
 	</div>
@@ -3781,6 +3730,9 @@ This copies everything except the data that defines it as a unique invoice to Pa
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -3791,7 +3743,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-08-04)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-10-02)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
