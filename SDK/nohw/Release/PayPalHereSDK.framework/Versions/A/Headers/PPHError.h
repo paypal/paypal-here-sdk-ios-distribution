@@ -93,10 +93,28 @@ typedef NS_ENUM(NSInteger, PPHErrorCategory) {
 
 /*! Read a PPHError from a dictionary created by NSDictionary */
 - (id) initWithDictionary: (NSDictionary *) dictionary;
+
+/*! For creating local errors with a developer facing message 
+ * @param domain The domain of the error
+ * @param code The error code
+ * @param devMessage  The developer facing message
+ */
+- (id) initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage;
+
+/*! For creating local errors with a developer facing message and a more friendly
+ * user facing message.
+ * @param domain The domain of the error
+ * @param code The error code
+ * @param devMessage  The developer facing message
+ * @param userMessage A user / merchant friendly message to emit via localizableDescription
+ */
+- (id) initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString*)userMessage;
+
 @end
 
 #define kPPHLocalErrorDomain        @"PPHLocal"
 #define kPPHHTTPErrorDomain         @"PPHHTTP"
 #define kPPHInvoiceErrorDomain      @"PPHInvoice"
 #define kPPHServerErrorDomain       @"PPHServer"
+#define kPPHPayPalAccessDomain      @"PayPalAccess"
 
