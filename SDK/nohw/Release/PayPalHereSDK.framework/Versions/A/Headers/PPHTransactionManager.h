@@ -12,6 +12,7 @@
 #import "PPHCardNotPresentData.h"
 #import "PPHInvoice.h"
 #import "PPHCardReaderManager.h"
+#import "PPHLocalErrors.h"
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
@@ -27,28 +28,6 @@
 @class PPHLocationCheckin;
 @class PPHTransactionControllerWatcher;
 @class PPHReceiptDestination;
-
-// The set of local payment errors that might be generated.
-// TODO: check the -2000 number space to ensure we're not colliding with something else.
-#define kPPHLocalErrorBadConfigurationNoCheckedInClient -2000
-#define kPPHLocalErrorBadConfigurationNoCardData -2001
-#define kPPHLocalErrorBadConfigurationNoManualCardData -2002
-#define kPPHLocalErrorBadConfigurationNoMerchant -2003
-#define kPPHLocalErrorBadConfigurationNoRecord -2004
-#define kPPHLocalErrorBadConfigurationInvalidState -2005
-#define kPPHLocalErrorBadConfigurationMerchantAccountNotActivatedForPayments -2006
-#define kPPHLocalErrorBadConfigurationInvalidParameters -2007
-#define kPPHLocalErrorBadConfigurationNoCurrentInvoice -2008
-#define kPPHLocalErrorBadConfigurationInvoiceAlreadyPaid -2009
-#define kPPHLocalErrorBadConfigurationAuthForProvidedPaymentMethodNotSupported -  2010
-#define kPPHLocalErrorBadConfigurationNoInvoiceInTransactionRecord - 2011
-#define kPPHLocalErrorBadConfigurationNoTransactionIdInTransactionRecord - 2012
-#define kPPHLocalErrorBadConfigurationNoPaymentData - 2013
-#define kPPHLocalErrorBadConfigurationNotYetImplemented -2014
-#define kPPHLocalErrorBadConfigurationNegativeRefundAmountNotAllowed -2015
-#define kPPHLocalErrorBadConfigurationInvalidPermissionsForProvidedPaymentType -2016
-#define kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds -2017
-#define kPPHLocalErrorBadConfigurationNoAuthorizationIdInTransactionRecord - 2018
 
 // Mapping the different API's in Transaction Manager to key's
 // used in saving of invoice, and can be extended for other future use cases
@@ -383,6 +362,47 @@
                       completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
 
+/*!
+ * Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+ * This version will cause the SDK to show UI during the payment flow.
+ *
+ * Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).
+ *
+ * Processing a payment for swipe or key-in or checkin-in payments will
+ * actually capture that payment.  For Cash or Check, this call will simply
+ * record the invoice into the paypal system for record-keeping purposes.
+ *
+ * @param paymentType : The type of payment to collect.  You'll get an error back if you
+ *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
+ *                    checkedInClient property.  Likewise with the cardData member and
+ *                    specifying ePPHPaymentMethodSwipe.
+ *
+ * @param vc : The current or active view controller.
+ *
+ * @param controller :  Can be nil.  If provided, the transaction manager will call the callbacks
+ *                    defined in the PPHTransactionControllerDelegate.
+ * @param completionHandler : called when the action has completed
+ */
+-(void) processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType
+                       withTransactionController:(id<PPHTransactionControllerDelegate>)controller withViewController: (UIViewController *)vc
+                               completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
+
+/*!
+  * Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+  * This version will cause the SDK to show UI during the refund flow.
+  *
+  * Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).
+  *
+  * @param paymentType the type on which the refund would be performed.  You'll get an error back if you
+  *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
+  *                    checkedInClient property.  Likewise with the cardData member and
+  *                    specifying ePPHPaymentMethodSwipe.
+  *
+  * @param vc : The current or active view controller.
+  *
+  * @param completionHandler called when the action has completed
+  */
+-(void) beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType withViewController: (UIViewController *)vc record:(PPHTransactionRecord *)record amount:(PPHAmount*)amount completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
