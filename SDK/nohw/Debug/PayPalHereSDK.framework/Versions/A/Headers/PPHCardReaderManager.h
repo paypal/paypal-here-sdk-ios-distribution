@@ -110,6 +110,17 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
  */
 -(void)beginUpgrade: (PPHCardReaderBasicInformation*) reader;
 
+/*!
+ * Perform a software update on the EMV terminal.
+ * This version will cause the SDK to show UI during the update flow.
+ *
+ * @param vc : The current or active view controller.
+ *
+ * @param completionHandler called when the action has completed
+ */
+-(void) beginReaderUpdateUsingSDKUI_WithViewController: (UIViewController *)vc completionHandler:(void(^)(BOOL success, NSString *message))completionHandler;
+
+
 @property (nonatomic,readonly) BOOL isInPinRetryMode;
 
 @end

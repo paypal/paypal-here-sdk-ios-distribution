@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1982EE8819A266DB00CF0A35 /* EMVSalesHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */; };
+		803E61041959FBC400E4BFDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803E61021959FBC400E4BFDE /* InfoPlist.strings */; };
+		803E61061959FBC400E4BFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61051959FBC400E4BFDE /* main.m */; };
+		803E610A1959FBC400E4BFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61091959FBC400E4BFDE /* AppDelegate.m */; };
+		803E61131959FBC400E4BFDE /* EMVOauthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61121959FBC400E4BFDE /* EMVOauthLoginViewController.m */; };
+		803E61151959FBC400E4BFDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 803E61141959FBC400E4BFDE /* Images.xcassets */; };
+		803E611C1959FBC400E4BFDE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E611B1959FBC400E4BFDE /* XCTest.framework */; };
+		803E611D1959FBC400E4BFDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60F91959FBC400E4BFDE /* Foundation.framework */; };
+		803E611E1959FBC400E4BFDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FD1959FBC400E4BFDE /* UIKit.framework */; };
+		803E61261959FBC400E4BFDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803E61241959FBC400E4BFDE /* InfoPlist.strings */; };
+		803E61281959FBC400E4BFDE /* EMVAccreditationSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61271959FBC400E4BFDE /* EMVAccreditationSampleAppTests.m */; };
+		803E61321959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803E61311959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib */; };
+		803E6136195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803E6135195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib */; };
+		803E6138195A04E600E4BFDE /* pp_m_rgb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 803E6137195A04E600E4BFDE /* pp_m_rgb.jpg */; };
+		803E6159195A3EEB00E4BFDE /* PPSCryptoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6158195A3EEB00E4BFDE /* PPSCryptoUtils.m */; };
+		803E6165195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803E6164195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib */; };
+		803E6168195A47E700E4BFDE /* EMVTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6167195A47E700E4BFDE /* EMVTransactionViewController.m */; };
+		804C305D195A82E8006ABECA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6177195A4A3100E4BFDE /* libsqlite3.dylib */; };
+		804C305E195A82F0006ABECA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6179195A4A3C00E4BFDE /* libz.dylib */; };
+		804C305F195A82F8006ABECA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E617B195A4A4200E4BFDE /* QuartzCore.framework */; };
+		804C3060195A82FF006ABECA /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E617D195A4A4C00E4BFDE /* CoreBluetooth.framework */; };
+		804C3061195A830D006ABECA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E617F195A4A5800E4BFDE /* libxml2.dylib */; };
+		804C3062195A8318006ABECA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6181195A4A6300E4BFDE /* MobileCoreServices.framework */; };
+		804C3063195A8322006ABECA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6183195A4A6A00E4BFDE /* Security.framework */; };
+		804C3064195A8330006ABECA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6185195A4A7400E4BFDE /* CFNetwork.framework */; };
+		804C3065195A8338006ABECA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6187195A4A7E00E4BFDE /* CoreLocation.framework */; };
+		804C3066195A8348006ABECA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6189195A4A8C00E4BFDE /* AudioToolbox.framework */; };
+		804C3067195A8350006ABECA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E618B195A4A9500E4BFDE /* AVFoundation.framework */; };
+		804C3068195A8358006ABECA /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E618D195A4A9C00E4BFDE /* ExternalAccessory.framework */; };
+		804C3069195A8360006ABECA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E618F195A4AB400E4BFDE /* SystemConfiguration.framework */; };
+		804C306A195A8369006ABECA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6191195A4ABB00E4BFDE /* MediaPlayer.framework */; };
+		804C306B195A8370006ABECA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6193195A4AC200E4BFDE /* CoreTelephony.framework */; };
+		804C306C195A837A006ABECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FD1959FBC400E4BFDE /* UIKit.framework */; };
+		804C306D195A837E006ABECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60F91959FBC400E4BFDE /* Foundation.framework */; };
+		804C306E195A8388006ABECA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6195195A4ADB00E4BFDE /* libc++.dylib */; };
+		804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */; };
+		9D04789A19F5E9F0007499BA /* PPSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6162195A3F5200E4BFDE /* PPSPreferences.m */; };
+		9D04789C19F5EB3D007499BA /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D04789B19F5EB3D007499BA /* PayPalHereSDK.bundle */; };
+		9D04789D19F5EB49007499BA /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B62C9419F5C9FF0024291A /* PayPalHereSDK.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		803E611F1959FBC400E4BFDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 803E60EE1959FBC400E4BFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 803E60F51959FBC400E4BFDE;
+			remoteInfo = EMVAccreditationSampleApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1982EE8519A266DB00CF0A35 /* EMVSalesHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVSalesHistoryViewController.h; sourceTree = "<group>"; };
+		1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVSalesHistoryViewController.m; sourceTree = "<group>"; };
+		19B62C9219F5C9E80024291A /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/nohw/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
+		19B62C9419F5C9FF0024291A /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../../SDK/nohw/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
+		803E60F61959FBC400E4BFDE /* EMVAccreditationSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMVAccreditationSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		803E60F91959FBC400E4BFDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		803E60FD1959FBC400E4BFDE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		803E61011959FBC400E4BFDE /* EMVAccreditationSampleApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMVAccreditationSampleApp-Info.plist"; sourceTree = "<group>"; };
+		803E61031959FBC400E4BFDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		803E61051959FBC400E4BFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		803E61071959FBC400E4BFDE /* EMVAccreditationSampleApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EMVAccreditationSampleApp-Prefix.pch"; sourceTree = "<group>"; };
+		803E61081959FBC400E4BFDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		803E61091959FBC400E4BFDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		803E61111959FBC400E4BFDE /* EMVOauthLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMVOauthLoginViewController.h; sourceTree = "<group>"; };
+		803E61121959FBC400E4BFDE /* EMVOauthLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVOauthLoginViewController.m; sourceTree = "<group>"; };
+		803E61141959FBC400E4BFDE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		803E611A1959FBC400E4BFDE /* EMVAccreditationSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EMVAccreditationSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		803E611B1959FBC400E4BFDE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		803E61231959FBC400E4BFDE /* EMVAccreditationSampleAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMVAccreditationSampleAppTests-Info.plist"; sourceTree = "<group>"; };
+		803E61251959FBC400E4BFDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		803E61271959FBC400E4BFDE /* EMVAccreditationSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVAccreditationSampleAppTests.m; sourceTree = "<group>"; };
+		803E61311959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMVOauthLoginViewController_iPad.xib; sourceTree = "<group>"; };
+		803E6135195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMVOauthLoginViewController_iPhone.xib; sourceTree = "<group>"; };
+		803E6137195A04E600E4BFDE /* pp_m_rgb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pp_m_rgb.jpg; sourceTree = "<group>"; };
+		803E6157195A3EEB00E4BFDE /* PPSCryptoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSCryptoUtils.h; sourceTree = "<group>"; };
+		803E6158195A3EEB00E4BFDE /* PPSCryptoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSCryptoUtils.m; sourceTree = "<group>"; };
+		803E6161195A3F5200E4BFDE /* PPSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSPreferences.h; sourceTree = "<group>"; };
+		803E6162195A3F5200E4BFDE /* PPSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSPreferences.m; sourceTree = "<group>"; };
+		803E6164195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMVTransactionViewController_iPhone.xib; sourceTree = "<group>"; };
+		803E6166195A47E700E4BFDE /* EMVTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVTransactionViewController.h; sourceTree = "<group>"; };
+		803E6167195A47E700E4BFDE /* EMVTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVTransactionViewController.m; sourceTree = "<group>"; };
+		803E6177195A4A3100E4BFDE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		803E6179195A4A3C00E4BFDE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		803E617B195A4A4200E4BFDE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		803E617D195A4A4C00E4BFDE /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		803E617F195A4A5800E4BFDE /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		803E6181195A4A6300E4BFDE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		803E6183195A4A6A00E4BFDE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		803E6185195A4A7400E4BFDE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		803E6187195A4A7E00E4BFDE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		803E6189195A4A8C00E4BFDE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		803E618B195A4A9500E4BFDE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		803E618D195A4A9C00E4BFDE /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		803E618F195A4AB400E4BFDE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		803E6191195A4ABB00E4BFDE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		803E6193195A4AC200E4BFDE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		803E6195195A4ADB00E4BFDE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalBeacon.a; path = "../../SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos/libPayPalBeacon.a"; sourceTree = "<group>"; };
+		9D04789B19F5EB3D007499BA /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/nohw/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		803E60F31959FBC400E4BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D04789D19F5EB49007499BA /* PayPalHereSDK.framework in Frameworks */,
+				804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */,
+				804C306E195A8388006ABECA /* libc++.dylib in Frameworks */,
+				804C306D195A837E006ABECA /* Foundation.framework in Frameworks */,
+				804C306C195A837A006ABECA /* UIKit.framework in Frameworks */,
+				804C306B195A8370006ABECA /* CoreTelephony.framework in Frameworks */,
+				804C306A195A8369006ABECA /* MediaPlayer.framework in Frameworks */,
+				804C3069195A8360006ABECA /* SystemConfiguration.framework in Frameworks */,
+				804C3068195A8358006ABECA /* ExternalAccessory.framework in Frameworks */,
+				804C3067195A8350006ABECA /* AVFoundation.framework in Frameworks */,
+				804C3066195A8348006ABECA /* AudioToolbox.framework in Frameworks */,
+				804C3065195A8338006ABECA /* CoreLocation.framework in Frameworks */,
+				804C3064195A8330006ABECA /* CFNetwork.framework in Frameworks */,
+				804C3063195A8322006ABECA /* Security.framework in Frameworks */,
+				804C3062195A8318006ABECA /* MobileCoreServices.framework in Frameworks */,
+				804C3061195A830D006ABECA /* libxml2.dylib in Frameworks */,
+				804C3060195A82FF006ABECA /* CoreBluetooth.framework in Frameworks */,
+				804C305F195A82F8006ABECA /* QuartzCore.framework in Frameworks */,
+				804C305E195A82F0006ABECA /* libz.dylib in Frameworks */,
+				804C305D195A82E8006ABECA /* libsqlite3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803E61171959FBC400E4BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				803E611C1959FBC400E4BFDE /* XCTest.framework in Frameworks */,
+				803E611E1959FBC400E4BFDE /* UIKit.framework in Frameworks */,
+				803E611D1959FBC400E4BFDE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		803E60ED1959FBC400E4BFDE = {
+			isa = PBXGroup;
+			children = (
+				9D04789B19F5EB3D007499BA /* PayPalHereSDK.bundle */,
+				803E60FF1959FBC400E4BFDE /* EMVAccreditationSampleApp */,
+				803E61211959FBC400E4BFDE /* EMVAccreditationSampleAppTests */,
+				803E60F81959FBC400E4BFDE /* Frameworks */,
+				803E60F71959FBC400E4BFDE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		803E60F71959FBC400E4BFDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				803E60F61959FBC400E4BFDE /* EMVAccreditationSampleApp.app */,
+				803E611A1959FBC400E4BFDE /* EMVAccreditationSampleAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		803E60F81959FBC400E4BFDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19B62C9219F5C9E80024291A /* PayPalHereSDK.bundle */,
+				19B62C9419F5C9FF0024291A /* PayPalHereSDK.framework */,
+				804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */,
+				803E6195195A4ADB00E4BFDE /* libc++.dylib */,
+				803E6193195A4AC200E4BFDE /* CoreTelephony.framework */,
+				803E6191195A4ABB00E4BFDE /* MediaPlayer.framework */,
+				803E618F195A4AB400E4BFDE /* SystemConfiguration.framework */,
+				803E618D195A4A9C00E4BFDE /* ExternalAccessory.framework */,
+				803E618B195A4A9500E4BFDE /* AVFoundation.framework */,
+				803E6189195A4A8C00E4BFDE /* AudioToolbox.framework */,
+				803E6187195A4A7E00E4BFDE /* CoreLocation.framework */,
+				803E6185195A4A7400E4BFDE /* CFNetwork.framework */,
+				803E6183195A4A6A00E4BFDE /* Security.framework */,
+				803E6181195A4A6300E4BFDE /* MobileCoreServices.framework */,
+				803E617F195A4A5800E4BFDE /* libxml2.dylib */,
+				803E617D195A4A4C00E4BFDE /* CoreBluetooth.framework */,
+				803E617B195A4A4200E4BFDE /* QuartzCore.framework */,
+				803E6179195A4A3C00E4BFDE /* libz.dylib */,
+				803E6177195A4A3100E4BFDE /* libsqlite3.dylib */,
+				803E60F91959FBC400E4BFDE /* Foundation.framework */,
+				803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */,
+				803E60FD1959FBC400E4BFDE /* UIKit.framework */,
+				803E611B1959FBC400E4BFDE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		803E60FF1959FBC400E4BFDE /* EMVAccreditationSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				803E61081959FBC400E4BFDE /* AppDelegate.h */,
+				803E61091959FBC400E4BFDE /* AppDelegate.m */,
+				803E61111959FBC400E4BFDE /* EMVOauthLoginViewController.h */,
+				803E61121959FBC400E4BFDE /* EMVOauthLoginViewController.m */,
+				803E6166195A47E700E4BFDE /* EMVTransactionViewController.h */,
+				803E6167195A47E700E4BFDE /* EMVTransactionViewController.m */,
+				803E6157195A3EEB00E4BFDE /* PPSCryptoUtils.h */,
+				803E6158195A3EEB00E4BFDE /* PPSCryptoUtils.m */,
+				803E6161195A3F5200E4BFDE /* PPSPreferences.h */,
+				803E6162195A3F5200E4BFDE /* PPSPreferences.m */,
+				803E61311959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib */,
+				803E6135195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib */,
+				803E6164195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib */,
+				803E61141959FBC400E4BFDE /* Images.xcassets */,
+				803E61001959FBC400E4BFDE /* Supporting Files */,
+				1982EE8519A266DB00CF0A35 /* EMVSalesHistoryViewController.h */,
+				1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */,
+			);
+			path = EMVAccreditationSampleApp;
+			sourceTree = "<group>";
+		};
+		803E61001959FBC400E4BFDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				803E6137195A04E600E4BFDE /* pp_m_rgb.jpg */,
+				803E61011959FBC400E4BFDE /* EMVAccreditationSampleApp-Info.plist */,
+				803E61021959FBC400E4BFDE /* InfoPlist.strings */,
+				803E61051959FBC400E4BFDE /* main.m */,
+				803E61071959FBC400E4BFDE /* EMVAccreditationSampleApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		803E61211959FBC400E4BFDE /* EMVAccreditationSampleAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				803E61271959FBC400E4BFDE /* EMVAccreditationSampleAppTests.m */,
+				803E61221959FBC400E4BFDE /* Supporting Files */,
+			);
+			path = EMVAccreditationSampleAppTests;
+			sourceTree = "<group>";
+		};
+		803E61221959FBC400E4BFDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				803E61231959FBC400E4BFDE /* EMVAccreditationSampleAppTests-Info.plist */,
+				803E61241959FBC400E4BFDE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		803E60F51959FBC400E4BFDE /* EMVAccreditationSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 803E612B1959FBC400E4BFDE /* Build configuration list for PBXNativeTarget "EMVAccreditationSampleApp" */;
+			buildPhases = (
+				803E60F21959FBC400E4BFDE /* Sources */,
+				803E60F31959FBC400E4BFDE /* Frameworks */,
+				803E60F41959FBC400E4BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EMVAccreditationSampleApp;
+			productName = EMVAccreditationSampleApp;
+			productReference = 803E60F61959FBC400E4BFDE /* EMVAccreditationSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		803E61191959FBC400E4BFDE /* EMVAccreditationSampleAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 803E612E1959FBC400E4BFDE /* Build configuration list for PBXNativeTarget "EMVAccreditationSampleAppTests" */;
+			buildPhases = (
+				803E61161959FBC400E4BFDE /* Sources */,
+				803E61171959FBC400E4BFDE /* Frameworks */,
+				803E61181959FBC400E4BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				803E61201959FBC400E4BFDE /* PBXTargetDependency */,
+			);
+			name = EMVAccreditationSampleAppTests;
+			productName = EMVAccreditationSampleAppTests;
+			productReference = 803E611A1959FBC400E4BFDE /* EMVAccreditationSampleAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		803E60EE1959FBC400E4BFDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "___FULLUSERNAME___";
+				TargetAttributes = {
+					803E60F51959FBC400E4BFDE = {
+						DevelopmentTeam = Z3Q667VWSP;
+					};
+					803E61191959FBC400E4BFDE = {
+						DevelopmentTeam = Z3Q667VWSP;
+						TestTargetID = 803E60F51959FBC400E4BFDE;
+					};
+				};
+			};
+			buildConfigurationList = 803E60F11959FBC400E4BFDE /* Build configuration list for PBXProject "EMVAccreditationSampleApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 803E60ED1959FBC400E4BFDE;
+			productRefGroup = 803E60F71959FBC400E4BFDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				803E60F51959FBC400E4BFDE /* EMVAccreditationSampleApp */,
+				803E61191959FBC400E4BFDE /* EMVAccreditationSampleAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		803E60F41959FBC400E4BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D04789C19F5EB3D007499BA /* PayPalHereSDK.bundle in Resources */,
+				803E6165195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib in Resources */,
+				803E61321959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib in Resources */,
+				803E61151959FBC400E4BFDE /* Images.xcassets in Resources */,
+				803E6138195A04E600E4BFDE /* pp_m_rgb.jpg in Resources */,
+				803E6136195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib in Resources */,
+				803E61041959FBC400E4BFDE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803E61181959FBC400E4BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				803E61261959FBC400E4BFDE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		803E60F21959FBC400E4BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D04789A19F5E9F0007499BA /* PPSPreferences.m in Sources */,
+				803E6159195A3EEB00E4BFDE /* PPSCryptoUtils.m in Sources */,
+				1982EE8819A266DB00CF0A35 /* EMVSalesHistoryViewController.m in Sources */,
+				803E6168195A47E700E4BFDE /* EMVTransactionViewController.m in Sources */,
+				803E61131959FBC400E4BFDE /* EMVOauthLoginViewController.m in Sources */,
+				803E610A1959FBC400E4BFDE /* AppDelegate.m in Sources */,
+				803E61061959FBC400E4BFDE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803E61161959FBC400E4BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				803E61281959FBC400E4BFDE /* EMVAccreditationSampleAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		803E61201959FBC400E4BFDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 803E60F51959FBC400E4BFDE /* EMVAccreditationSampleApp */;
+			targetProxy = 803E611F1959FBC400E4BFDE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		803E61021959FBC400E4BFDE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				803E61031959FBC400E4BFDE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		803E61241959FBC400E4BFDE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				803E61251959FBC400E4BFDE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		803E61291959FBC400E4BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		803E612A1959FBC400E4BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		803E612C1959FBC400E4BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"$(inherited)",
+					/Users/schandrashekar/Desktop/oct20_test_1.4.1/SDK/nohw/Debug,
+					/Users/vinodhs/projects/ios/release_test_1.4.1/SDK/nohw/Debug,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRC_ROOT)/../SDK/nohw/Debug/**",
+				);
+				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/vinodhs/projects/ios/sampleapp_may16/SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-stdlib=libstdc++",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		803E612D1959FBC400E4BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"$(inherited)",
+					/Users/schandrashekar/Desktop/oct20_test_1.4.1/SDK/nohw/Debug,
+					/Users/vinodhs/projects/ios/release_test_1.4.1/SDK/nohw/Debug,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRC_ROOT)/../SDK/nohw/Debug/**",
+				);
+				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/vinodhs/projects/ios/sampleapp_may16/SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-stdlib=libstdc++",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		803E612F1959FBC400E4BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EMVAccreditationSampleApp.app/EMVAccreditationSampleApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "EMVAccreditationSampleAppTests/EMVAccreditationSampleAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		803E61301959FBC400E4BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EMVAccreditationSampleApp.app/EMVAccreditationSampleApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				INFOPLIST_FILE = "EMVAccreditationSampleAppTests/EMVAccreditationSampleAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		803E60F11959FBC400E4BFDE /* Build configuration list for PBXProject "EMVAccreditationSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803E61291959FBC400E4BFDE /* Debug */,
+				803E612A1959FBC400E4BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		803E612B1959FBC400E4BFDE /* Build configuration list for PBXNativeTarget "EMVAccreditationSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803E612C1959FBC400E4BFDE /* Debug */,
+				803E612D1959FBC400E4BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		803E612E1959FBC400E4BFDE /* Build configuration list for PBXNativeTarget "EMVAccreditationSampleAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803E612F1959FBC400E4BFDE /* Debug */,
+				803E61301959FBC400E4BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 803E60EE1959FBC400E4BFDE /* Project object */;
+}

@@ -10,6 +10,13 @@
 
 @class PPHPaymentLimits;
 
+
+/*!
+ * Used for network requests (provided for cancellation purposes)
+ */
+#define kPPHMerchantActivityKey @"PPH.MerchantInfo"
+
+
 /*!
  * Information about the merchant's preferences such as currency and invoice header information.
  */
@@ -44,5 +51,18 @@
  * Terms set by merchant in business info, currently return policy
  */
 @property (nonatomic,strong) NSString* terms;
+
+/*!
+ * To save the merchant preferences. Currently it stores taxID & ccStatementName both of which are shown in the 
+ * receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account
+ */
+
+-(void) saveMerchantPreferencesWithTaxID:(NSString*)taxID ccStatementName:(NSString *)ccStatementName completionHandler:(void (^) (BOOL success)) completionHandler;
+
+/*!
+ * To get the merchant preferences. Currenlty it returns taxID & ccStatementName both of which are set using saveMerchantPreferencesWithTaxID API
+ * or through PayPal website.
+ */
+-(void) getMerchantPreferencesWithCompletionHandler:(void (^) (NSString* taxID, NSString* ccStatementName))completionHandler;
 
 @end

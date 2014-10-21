@@ -104,3 +104,12 @@ immediately if something is going wrong in the SDK instances.
  [Bug Fix] Fix a crash in the SDK re checked in clients with tip.
  finalizePaymentForTransaction in PPHTransactionManager.h is now fully deprecated. This has instead been replaced by provideSignature API in the same class
  Here And There Sample app is now deprecated as well. All of this functionality and more is now demonstrated in the SDKSampleApp
+
+ 1.4.1
+  What's new:
+
+  Chip and Pin payments API is now available.
+  Bug fix to PPHError; in some cases empty error messages were bubbled up. This has been fixed
+  Bug fix in the SDK for better instrumentation and better error reporting
+  Fixed a bug related to min/max payments limits
+  iOS 8 + iPhone 6 caused some issues with Magtek swiper functionality. This update has some fixes
