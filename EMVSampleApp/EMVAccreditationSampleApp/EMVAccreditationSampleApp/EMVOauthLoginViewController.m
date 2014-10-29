@@ -69,7 +69,7 @@
                                          initWithString:@"http://hidden-spire-8232.herokuapp.com/server"]];
     
     self.sdkBaseUrlDict = [[NSMutableDictionary alloc] init];
-    [self.sdkBaseUrlDict setValue:[NSNull null] forKey:kLive];
+    [self.sdkBaseUrlDict setValue:@"https://www.paypal.com/webapps/" forKey:kLive];
     [self.sdkBaseUrlDict setValue:@"https://www.sandbox.paypal.com/webapps/" forKey:kSandbox];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb001.stage.paypal.com/webapps/" forKey:kStage2mb001];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb006];
