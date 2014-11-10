@@ -548,7 +548,7 @@
     
     self.pickerURLArray =
     @[
-      @"http://hidden-spire-8232.herokuapp.com/server",
+      @"http://sdk-sample-server.herokuapp.com/server",
       @"http://desolate-wave-3684.herokuapp.com",
       @"http://stormy-hollows-1584.herokuapp.com"
       ];
