@@ -190,7 +190,30 @@
     _captureAddItemButton.enabled = NO;
     _actionLabel.text = @"Capturing payment ...";
     
-    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_transactionRecord
+    // Lets try to perform the capture a little differently in this flow.
+    // Assume, if the app is unable to save the entire transaction record but,
+    // is only able to store minimalistic details such as authId and invoiceId.
+    // We would want use this info and try to recreate the transaction record object,
+    // which would then be fed into the capture API.
+    
+    NSString *authId = self.transactionRecord.authorizationId;
+    NSString *invoiceId = self.transactionRecord.payPalInvoiceId?:self.transactionRecord.invoice.paypalInvoiceId;
+    
+    [PPHInvoice downloadInvoiceForInvoiceId:invoiceId
+                                    context:nil
+                          completionHandler:^(PPHInvoice *invoice, PPHError *error) {
+
+                              if (!error) {
+                                  PPHTransactionRecord *record = [[PPHTransactionRecord alloc] initWithAuthorizationId:authId andWithInvoice:invoice];
+                                  [self performCaptureWithTransactionRecord:record];
+                              } else {
+                                  [self captureStatusWithText:@"Failed to download the invoice."];
+                              }
+                          }];
+}
+
+-(void)performCaptureWithTransactionRecord:(PPHTransactionRecord *)record {
+    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:record
                                                        withCompletionHandler:^(PPHTransactionResponse *response) {
                                                            [_activitySpinner stopAnimating];
                                                            _activitySpinner.hidden = YES;
@@ -213,15 +236,18 @@
                                                                [appDelegate.refundableRecords addObject:response.record];
                                                            }
                                                            else {
-                                                               _actionLabel.text = @"Capture Failed";
-                                                               _voidButton.enabled = YES;
-                                                               _captureOrigAmountButton.enabled = YES;
-                                                               _captureNewAmountButton.enabled = YES;
-                                                               _captureAddItemButton.enabled = YES;
-
+                                                               [self captureStatusWithText:@"Capture Failed"];
+                                                               
                                                            }
                                                        }];
+}
 
+-(void)captureStatusWithText:(NSString *)status {
+    self.actionLabel.text = status;
+    self.voidButton.enabled = YES;
+    self.captureOrigAmountButton.enabled = YES;
+    self.captureNewAmountButton.enabled = YES;
+    self.captureAddItemButton.enabled = YES;
 }
 
 - (NSDecimalNumber *)formatNumber:(NSString *)value
