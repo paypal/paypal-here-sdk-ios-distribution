@@ -196,8 +196,8 @@
     // We would want use this info and try to recreate the transaction record object,
     // which would then be fed into the capture API.
     
-    NSString *authId = _transactionRecord.authorizationId;
-    NSString *invoiceId = _transactionRecord.payPalInvoiceId?:_transactionRecord.invoice.paypalInvoiceId;
+    NSString *authId = self.transactionRecord.authorizationId;
+    NSString *invoiceId = self.transactionRecord.payPalInvoiceId?:self.transactionRecord.invoice.paypalInvoiceId;
     
     [PPHInvoice downloadInvoiceForInvoiceId:invoiceId
                                     context:nil
@@ -243,11 +243,11 @@
 }
 
 -(void)captureStatusWithText:(NSString *)status {
-    _actionLabel.text = status;
-    _voidButton.enabled = YES;
-    _captureOrigAmountButton.enabled = YES;
-    _captureNewAmountButton.enabled = YES;
-    _captureAddItemButton.enabled = YES;
+    self.actionLabel.text = status;
+    self.voidButton.enabled = YES;
+    self.captureOrigAmountButton.enabled = YES;
+    self.captureNewAmountButton.enabled = YES;
+    self.captureAddItemButton.enabled = YES;
 }
 
 - (NSDecimalNumber *)formatNumber:(NSString *)value
