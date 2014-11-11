@@ -475,6 +475,21 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
             <NodeRef refid="44"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/initWithAuthorizationId:andWithInvoice:</TokenIdentifier>
+			<Abstract type="html">Create a PPHTransactionRecord with an authorization id and an invoice. This would mainly be used in case of the auth-capture flow.
+Upon a successful auth, the corresponding transaction record would contain an authorizationId along with other details such as invoice,
+card information, etc. The application could choose to just save the authorizationId and the invoiceId.
+In order to perform a capture, this API could be used in conjuction with the &quot;downloadInvoiceForInvoiceId&quot; API to recreate the transaction record.</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithAuthorizationId:(id)authorizationId andWithInvoice:(id)invoice</Declaration>
+			
+			
+			<Anchor>//api/name/initWithAuthorizationId:andWithInvoice:</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
         
         
 	</File>

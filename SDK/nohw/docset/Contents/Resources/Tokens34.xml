@@ -231,6 +231,32 @@ default currency of the account.</Abstract>
             <NodeRef refid="34"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</TokenIdentifier>
+			<Abstract type="html">To save the merchant preferences. Currently it stores taxID &amp;amp; ccStatementName both of which are shown in the
+receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>- (void)saveMerchantPreferencesWithTaxID:(id)taxID ccStatementName:(id)ccStatementName completionHandler:(id)completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/getMerchantPreferencesWithCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">To get the merchant preferences. Currenlty it returns taxID &amp;amp; ccStatementName both of which are set using saveMerchantPreferencesWithTaxID API
+or through PayPal website.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>- (void)getMerchantPreferencesWithCompletionHandler:(id)completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getMerchantPreferencesWithCompletionHandler:</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
         
         
 	</File>

@@ -359,6 +359,56 @@ on paypal.com and updated periodically.</Abstract>
             <NodeRef refid="21"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/initWithDomain:code:devMessage:</TokenIdentifier>
+			<Abstract type="html">For creating local errors with a developer facing message</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDomain:(id)domain code:(id)code devMessage:(id)devMessage</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>domain</Name>
+					<Abstract type="html">The domain of the error</Abstract>
+				</Parameter><Parameter>
+					<Name>code</Name>
+					<Abstract type="html">The error code</Abstract>
+				</Parameter><Parameter>
+					<Name>devMessage</Name>
+					<Abstract type="html">The developer facing message</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithDomain:code:devMessage:</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/initWithDomain:code:devMessage:userMessage:</TokenIdentifier>
+			<Abstract type="html">For creating local errors with a developer facing message and a more friendly
+user facing message.</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDomain:(id)domain code:(id)code devMessage:(id)devMessage userMessage:(id)userMessage</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>domain</Name>
+					<Abstract type="html">The domain of the error</Abstract>
+				</Parameter><Parameter>
+					<Name>code</Name>
+					<Abstract type="html">The error code</Abstract>
+				</Parameter><Parameter>
+					<Name>devMessage</Name>
+					<Abstract type="html">The developer facing message</Abstract>
+				</Parameter><Parameter>
+					<Name>userMessage</Name>
+					<Abstract type="html">A user / merchant friendly message to emit via localizableDescription</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithDomain:code:devMessage:userMessage:</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
         
         
 	</File>
