@@ -1,5 +1,5 @@
 PayPalHere SDK Releases
-These are the version numbers of the PayPalHere SDK and 
+These are the version numbers of the PayPalHere SDK and
 what is new in this release.
 
 1.0
@@ -20,7 +20,7 @@ immediately if something is going wrong in the SDK instances.
  What's new:
   - Periodic device battery level sampling.
   - New features around invoice fees.
-  - Fixes a bug in the issue monitoring system. 
+  - Fixes a bug in the issue monitoring system.
   - Fixes a bug related to sending of receipts.
   - Internal thinning of network requests by removing unneeded headers.
   - Fixes a bug in merchant location management.  When you save a new PPHLocation
@@ -28,7 +28,7 @@ immediately if something is going wrong in the SDK instances.
   - More descriptive developer facing error messages for some PPHTransactionManager operations.
   - Fixes a bug in discount rounding.
   - PPHLocation object can now specify a gratuityType.
- 
+
 1.3.2
  What's new:
   - Fix a bug in the no-hw version of the SDK when taking key-in payment and you
@@ -51,9 +51,9 @@ immediately if something is going wrong in the SDK instances.
 
 1.3.5
  What's new:
-  - Fixing bug in TransactionManager state machine and currentInvoice object. Now you can 
+  - Fixing bug in TransactionManager state machine and currentInvoice object. Now you can
     repay the currentInvoice object in case you made mistakes like entering in the wrong card number.
-  - Improved Transaction Manager local error handling in use cases such as not having an active merchant set 
+  - Improved Transaction Manager local error handling in use cases such as not having an active merchant set
     or having a nil invoice object.
   - Added internal header file for PPHInvoice to allow SDK to set the read-only currency attribute without having
     to re-invoke constructor.
@@ -61,7 +61,7 @@ immediately if something is going wrong in the SDK instances.
 
 1.3.6
  What's new:
-  - CardType property is available through PPHCardSwipeData. This now allows you to determine the card brand such as 
+  - CardType property is available through PPHCardSwipeData. This now allows you to determine the card brand such as
     VISA, MASTER, AMEX etc when a card is swiped.
   - PPHAccountStatus enum has more fine grained description of Merchant account’s status such as whether merchant is
     eligible, ineligible, restricted etc.
@@ -81,4 +81,43 @@ immediately if something is going wrong in the SDK instances.
 
 1.3.9
  What's new:
- - A hotfix for the earlier 1.3.8 release.  Fixes a crash related to checked in clients who specify a tip
+ - A hotfix for the earlier 1.3.8 release.  Fixes a crash related to checked in clients who specify a tip.
+
+1.4.0
+ What's new:
+
+ -Auth and Capture implementation.
+
+ Following bug fixes and optimizations are included in this release:
+ [SDKLogging] Fix missing correlationIds in CAL logs with PPH app.
+ [Auth and Capture] Adding a new property "AuthorizationId" within the transaction record.
+ [Bug Fix] catching and returning a valid error when the provided signature is nil.
+ [PP LOG] Improper formatting usage when invoking PP_LOG calls.
+ [SDKTESTING] Test SDK against checkin tips with bad percentage JSON
+ [Bug Fix] Show the active merchant's 'terms' on printed receipts.
+ [Location] Location authorization fixes for iOS 8.
+ [Bug Fix] fixed parsing of PPHPaymentResponse incorrectly checking for NSNull.
+ [SDKBugFix] Fixed bug related to providing signature from within the completion block.
+ [receipts] unified item rounded total and using that in receipts
+ [XCode Fixes] Fix NSData declared as NSMutableData that causes build error in XCode 6.
+ [XCode Fixes] Remove unnecessary 'description' property definition that causes build error in XCode 6.
+ [Bug Fix] Fix a crash in the SDK re checked in clients with tip.
+ finalizePaymentForTransaction in PPHTransactionManager.h is now fully deprecated. This has instead been replaced by provideSignature API in the same class
+ Here And There Sample app is now deprecated as well. All of this functionality and more is now demonstrated in the SDKSampleApp
+
+ 1.4.1
+  What's new:
+
+  Chip and Pin payments API is now available.
+  Bug fix to PPHError; in some cases empty error messages were bubbled up. This has been fixed
+  Bug fix in the SDK for better instrumentation and better error reporting
+  Fixed a bug related to min/max payments limits
+  iOS 8 + iPhone 6 caused some issues with Magtek swiper functionality. This update has some fixes
+
+1.4.2
+  What's new:
+
+  Updating the Roam library SDK to 4.7.2.
+  Add armv7s to the architectures list because xcode 6 does not have it by default.
+  Adding the ability to download the invoice based off an invoiceId.
+  Adding another constructor/initter in the PPHTransactionRecord that would allow us to construct a transaction record by providing a transactionId and an Invoice. This would aid in the auth and capture use case.
