@@ -63,4 +63,11 @@
 /*! Create a PPHTransactionRecord with a transactionId and a payPalInvoiceId.  This can be used with sendReceipt */
 -(id) initWithTransactionId:(NSString *)transactionId andWithPayPalInvoiceId:(NSString *)payPalInvoiceId;
 
+/*! Create a PPHTransactionRecord with an authorization id and an invoice. This would mainly be used in case of the auth-capture flow.
+ * Upon a successful auth, the corresponding transaction record would contain an authorizationId along with other details such as invoice,
+ * card information, etc. The application could choose to just save the authorizationId and the invoiceId.
+ * In order to perform a capture, this API could be used in conjuction with the "downloadInvoiceForInvoiceId" API to recreate the transaction record.
+ */
+-(id) initWithAuthorizationId:(NSString *)authorizationId andWithInvoice:(PPHInvoice *)invoice;
+
 @end

@@ -70,9 +70,13 @@
 	
 	<option value="//api/name/beginRefund:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefund:forAmount:completionHandler:</option>
 	
+	<option value="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</option>
+	
 	<option value="//api/name/cancelPayment">&nbsp;&nbsp;&nbsp;&nbsp;- cancelPayment</option>
 	
 	<option value="//api/name/capturePaymentForAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- capturePaymentForAuthorization:withCompletionHandler:</option>
+	
+	<option value="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</option>
 	
 	<option value="//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentWithPaymentType:withTransactionController:completionHandler:</option>
 	
@@ -138,9 +142,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefund:forAmount:completionHandler:">beginRefund:forAmount:completionHandler:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelPayment">cancelPayment</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capturePaymentForAuthorization:withCompletionHandler:">capturePaymentForAuthorization:withCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">processPaymentWithPaymentType:withTransactionController:completionHandler:</a></span></li>
 	
@@ -432,6 +440,18 @@ Here's an example of capturing payment with a tip.
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&ndash;&nbsp;processPaymentWithPaymentType:withTransactionController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&ndash;&nbsp;processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&ndash;&nbsp;beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></code>
 	</span>
 	
 	
@@ -1054,6 +1074,74 @@ by beginRefund.</p></dd>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:" title="beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginRefundUsingSDKUI_WithPaymentType:(id)<em>paymentType</em> withViewController:(id)<em>vc</em> record:(id)<em>record</em> amount:(id)<em>amount</em> completionHandler:(id)<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>the type on which the refund would be performed.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vc</em></dt>
+			<dd><p>: The current or active view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</p>
+
+<p>Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/cancelPayment" title="cancelPayment"></a>
 	<h3 class="subsubtitle method-title">cancelPayment</h3>
 	
@@ -1146,6 +1234,84 @@ then the PPHTransactionRecord&rsquo;s error object will be non nil.</p></dd>
 from the invoice contained in the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you pass in.  If you don&rsquo;t wish to add
 a gratutity or change line items just supply the transactionRecord you received when you
 authorized the transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:" title="processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)processPaymentUsingSDKUI_WithPaymentType:(id)<em>paymentType</em> withTransactionController:(id)<em>controller</em> withViewController:(id)<em>vc</em> completionHandler:(id)<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>: The type of payment to collect.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd><p>:  Can be nil.  If provided, the transaction manager will call the callbacks
+defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHTransactionControllerDelegate</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vc</em></dt>
+			<dd><p>: The current or active view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</p>
+
+<p>Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).</p>
+
+<p>Processing a payment for swipe or key-in or checkin-in payments will
+actually capture that payment.  For Cash or Check, this call will simply
+record the invoice into the paypal system for record-keeping purposes.</p>
 	</div>
 	
 	
@@ -1436,7 +1602,7 @@ error object will be non nil.  Otherwise it will contain a <a href="../Classes/P
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-10-02)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-11-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
