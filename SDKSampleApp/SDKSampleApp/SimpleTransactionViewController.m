@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.description.numberOfLines = 0;
+    self.labelDescription.numberOfLines = 0;
     self.navigationItem.title = @"Simple Transaction";
     self.purchase.layer.cornerRadius = 10;
     

@@ -49,6 +49,7 @@
 		191DB94E18C8440F005C0FC8 /* ReceiptInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DB94718C8440F005C0FC8 /* ReceiptInfoViewController.xib */; };
 		197ADB1D18D2483600C22D2A /* RefundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197ADB1B18D2483600C22D2A /* RefundViewController.m */; };
 		197ADB1E18D2483600C22D2A /* RefundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 197ADB1C18D2483600C22D2A /* RefundViewController.xib */; };
+		1991CC601A12F398006C826A /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1991CC5F1A12F398006C826A /* PayPalHereSDK.bundle */; };
 		522456EE195CCEC5003B0C85 /* STCashPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522456E1195CCEC5003B0C85 /* STCashPaymentViewController.m */; };
 		522456EF195CCEC5003B0C85 /* STCashPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522456E2195CCEC5003B0C85 /* STCashPaymentViewController.xib */; };
 		522456F0195CCEC5003B0C85 /* STManualPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522456E4195CCEC5003B0C85 /* STManualPaymentViewController.m */; };
@@ -165,6 +166,7 @@
 		197ADB1A18D2483600C22D2A /* RefundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefundViewController.h; path = SDKSampleApp/Screens/Transaction/RefundViewController.h; sourceTree = SOURCE_ROOT; };
 		197ADB1B18D2483600C22D2A /* RefundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RefundViewController.m; path = SDKSampleApp/Screens/Transaction/RefundViewController.m; sourceTree = SOURCE_ROOT; };
 		197ADB1C18D2483600C22D2A /* RefundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefundViewController.xib; path = SDKSampleApp/Screens/Transaction/RefundViewController.xib; sourceTree = SOURCE_ROOT; };
+		1991CC5F1A12F398006C826A /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../SDK/nohw/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		522456E0195CCEC5003B0C85 /* STCashPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCashPaymentViewController.h; path = SDKSampleApp/STCashPaymentViewController.h; sourceTree = SOURCE_ROOT; };
 		522456E1195CCEC5003B0C85 /* STCashPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCashPaymentViewController.m; path = SDKSampleApp/STCashPaymentViewController.m; sourceTree = SOURCE_ROOT; };
 		522456E2195CCEC5003B0C85 /* STCashPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STCashPaymentViewController.xib; path = SDKSampleApp/STCashPaymentViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -498,6 +500,7 @@
 		99D9816F1835995000D234A1 = {
 			isa = PBXGroup;
 			children = (
+				1991CC5F1A12F398006C826A /* PayPalHereSDK.bundle */,
 				99D981811835995100D234A1 /* SimplerTransaction */,
 				99D9817A1835995100D234A1 /* Frameworks */,
 				99D981791835995100D234A1 /* Products */,
@@ -656,6 +659,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1991CC601A12F398006C826A /* PayPalHereSDK.bundle in Resources */,
 				00A2F00E1924080C00C20037 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
 				00A2F0061923F05600C20037 /* AuthorizedPaymentsViewController.xib in Resources */,
 				00A2F0001922C46A00C20037 /* AuthorizationCompleteViewController.xib in Resources */,
@@ -822,7 +826,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"../SDK/nohw/Debug\"/**",
+					"\"$(SRCROOT)/../SDK/nohw/Debug\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
@@ -831,7 +835,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					./,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -854,7 +857,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"../SDK/nohw/Release\"/**",
+					"\"$(SRCROOT)/../SDK/nohw/Debug\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
@@ -863,7 +866,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					./,
 				);
 				OTHER_LDFLAGS = (
 					"-lstdc++",

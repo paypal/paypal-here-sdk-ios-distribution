@@ -75,6 +75,10 @@
 	
 	<option value="//api/name/initWithDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDictionary:</option>
 	
+	<option value="//api/name/initWithDomain:code:devMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDomain:code:devMessage:</option>
+	
+	<option value="//api/name/initWithDomain:code:devMessage:userMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDomain:code:devMessage:userMessage:</option>
+	
 	<option value="//api/name/isCancelError">&nbsp;&nbsp;&nbsp;&nbsp;- isCancelError</option>
 	
 	
@@ -138,6 +142,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorCategory">errorCategory</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDictionary:">initWithDictionary:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDomain:code:devMessage:">initWithDomain:code:devMessage:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDomain:code:devMessage:userMessage:">initWithDomain:code:devMessage:userMessage:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isCancelError">isCancelError</a></span></li>
 	
@@ -275,6 +283,18 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithDictionary:">&ndash;&nbsp;initWithDictionary:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDomain:code:devMessage:">&ndash;&nbsp;initWithDomain:code:devMessage:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDomain:code:devMessage:userMessage:">&ndash;&nbsp;initWithDomain:code:devMessage:userMessage:</a></code>
 	</span>
 	
 	
@@ -859,6 +879,135 @@ on paypal.com and updated periodically.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/initWithDomain:code:devMessage:" title="initWithDomain:code:devMessage:"></a>
+	<h3 class="subsubtitle method-title">initWithDomain:code:devMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>For creating local errors with a developer facing message</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithDomain:(id)<em>domain</em> code:(id)<em>code</em> devMessage:(id)<em>devMessage</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>domain</em></dt>
+			<dd><p>The domain of the error</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>code</em></dt>
+			<dd><p>The error code</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>devMessage</em></dt>
+			<dd><p>The developer facing message</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For creating local errors with a developer facing message</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithDomain:code:devMessage:userMessage:" title="initWithDomain:code:devMessage:userMessage:"></a>
+	<h3 class="subsubtitle method-title">initWithDomain:code:devMessage:userMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>For creating local errors with a developer facing message and a more friendly
+user facing message.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithDomain:(id)<em>domain</em> code:(id)<em>code</em> devMessage:(id)<em>devMessage</em> userMessage:(id)<em>userMessage</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>domain</em></dt>
+			<dd><p>The domain of the error</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>code</em></dt>
+			<dd><p>The error code</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>devMessage</em></dt>
+			<dd><p>The developer facing message</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>userMessage</em></dt>
+			<dd><p>A user / merchant friendly message to emit via localizableDescription</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For creating local errors with a developer facing message and a more friendly
+user facing message.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/isCancelError" title="isCancelError"></a>
 	<h3 class="subsubtitle method-title">isCancelError</h3>
 	
@@ -917,7 +1066,7 @@ on paypal.com and updated periodically.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-10-02)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-11-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

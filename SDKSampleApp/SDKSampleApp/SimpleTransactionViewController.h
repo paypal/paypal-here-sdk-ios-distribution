@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SimpleTransactionViewController : UIViewController <UITextFieldDelegate>
-@property (nonatomic, retain) IBOutlet UILabel *description;
+
 @property (nonatomic, retain) IBOutlet UIButton *purchase;
 @property (nonatomic, retain) IBOutlet UITextField *price;
+@property (nonatomic, retain) IBOutlet UILabel *labelDescription;
+
 @end

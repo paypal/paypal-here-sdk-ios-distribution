@@ -21,7 +21,7 @@ static void (^connectionChangedBlock)(BOOL);
         [mtSCRALib listenForEvents:(TRANS_EVENT_OK|TRANS_EVENT_START|TRANS_EVENT_ERROR)];
         
         //Audio
-        [mtSCRALib setDeviceType:(MAGTEKAUDIOREADER)];
+        [mtSCRALib setDeviceType:(MAGTEKAUDIOREADER | MAGTEKIDYNAMO)];
         [[NSNotificationCenter defaultCenter] addObserver:[self class] selector:@selector(dataEvent:) name:@"trackDataReadyNotification" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:[self class] selector:@selector(devConnStatusChange) name:@"devConnectionNotification" object:nil];
 

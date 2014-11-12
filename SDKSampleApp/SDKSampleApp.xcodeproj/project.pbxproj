@@ -831,21 +831,20 @@
 		99D9819F1835995100D234A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"../SDK/Debug\"/**",
+					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"/Users/sjerome/Documents/Developments/ios-here-sdk-dist/SDK/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
 				INFOPLIST_FILE = "SDKSampleApp/SimplerTransaction-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lstdc++",
 					"-stdlib=libstdc++",
@@ -861,16 +860,14 @@
 		99D981A01835995100D234A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"../SDK/Release\"/**",
+					"\"$(SRCROOT)/../SDK/Debug\"/**",
+					"/Users/sjerome/Documents/Developments/ios-here-sdk-dist/SDK/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDKSampleApp//SimplerTransaction-Prefix.pch";
