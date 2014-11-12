@@ -443,7 +443,7 @@
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:_passwordField.text];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2pph10"];
+    [loginRequestPostString appendString:@"stage2mb023"];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -465,7 +465,7 @@
     [loginRequestPostString appendString:@"&ticket="];
     [loginRequestPostString appendString:ticket];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2pph10"];
+    [loginRequestPostString appendString:@"stage2mb023"];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -548,7 +548,7 @@
     
     self.pickerURLArray =
     @[
-      @"http://hidden-spire-8232.herokuapp.com/server",
+      @"http://sdk-sample-server.herokuapp.com/server",
       @"http://desolate-wave-3684.herokuapp.com",
       @"http://stormy-hollows-1584.herokuapp.com"
       ];

@@ -463,6 +463,65 @@ defined in the PPHTransactionControllerDelegate.</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)processPaymentUsingSDKUI_WithPaymentType:(id)paymentType withTransactionController:(id)controller withViewController:(id)vc completionHandler:(id)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>paymentType</Name>
+					<Abstract type="html">: The type of payment to collect.  You&apos;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&apos;t set the
+checkedInClient property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</Abstract>
+				</Parameter><Parameter>
+					<Name>controller</Name>
+					<Abstract type="html">:  Can be nil.  If provided, the transaction manager will call the callbacks
+defined in the PPHTransactionControllerDelegate.</Abstract>
+				</Parameter><Parameter>
+					<Name>vc</Name>
+					<Abstract type="html">: The current or active view controller.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>- (void)beginRefundUsingSDKUI_WithPaymentType:(id)paymentType withViewController:(id)vc record:(id)record amount:(id)amount completionHandler:(id)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>paymentType</Name>
+					<Abstract type="html">the type on which the refund would be performed.  You&apos;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&apos;t set the
+checkedInClient property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</Abstract>
+				</Parameter><Parameter>
+					<Name>vc</Name>
+					<Abstract type="html">: The current or active view controller.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed
+  </Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/provideSignature:forTransaction:completionHandler:</TokenIdentifier>
 			<Abstract type="html">Used to capture the signature of the customer if it already hasn&apos;t been captured in the processPayment call
 and complete the transaction.</Abstract>
