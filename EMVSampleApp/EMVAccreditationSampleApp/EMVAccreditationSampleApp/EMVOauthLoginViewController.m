@@ -66,7 +66,7 @@
                                          initWithString:@"http://desolate-wave-3684.herokuapp.com"]];
     
     [self.serviceHostUrlArray addObject:[[NSMutableString alloc]
-                                         initWithString:@"http://hidden-spire-8232.herokuapp.com/server"]];
+                                         initWithString:@"http://sdk-sample-server.herokuapp.com/server"]];
     
     self.sdkBaseUrlDict = [[NSMutableDictionary alloc] init];
     [self.sdkBaseUrlDict setValue:[NSNull null] forKey:kLive];
