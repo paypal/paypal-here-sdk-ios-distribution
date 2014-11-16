@@ -23,9 +23,8 @@
 
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
-@property (nonatomic, strong) NSArray *pickerURLArray;
-@property (nonatomic, strong) NSArray *serviceArray;
 @property (nonatomic, strong) NSString *serviceHost;
+@property (nonatomic, strong) NSString *selectedEnv;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *pphLogoImageView;
 @end
@@ -104,9 +103,9 @@
 	[self createPicker];    // This is the barrel roller which allows selection of Live, Sandbox, and Stage
     
 	// Initialize the URL label to the currently selected Service:
-	NSString *initialServiceHost = [self.pickerURLArray objectAtIndex:[self.pickerView selectedRowInComponent:0]];
-	self.serviceURLLabel.text = initialServiceHost;
-	self.serviceHost = initialServiceHost;
+	self.serviceURLLabel.text = MID_TIER_SERVER_URL;
+	self.serviceHost = MID_TIER_SERVER_URL;
+    self.selectedEnv = STAGE;
     
     // Make the merchant checked in flag to false, since if we are in login screen then this should be the starting poing
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -443,7 +442,7 @@
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:_passwordField.text];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb023"];
+    [loginRequestPostString appendString:_selectedEnv];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -465,7 +464,7 @@
     [loginRequestPostString appendString:@"&ticket="];
     [loginRequestPostString appendString:ticket];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb023"];
+    [loginRequestPostString appendString:_selectedEnv];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -546,20 +545,6 @@
       @"Live"
       ];
     
-    self.pickerURLArray =
-    @[
-      @"http://sdk-sample-server.herokuapp.com/server",
-      @"http://desolate-wave-3684.herokuapp.com",
-      @"http://stormy-hollows-1584.herokuapp.com"
-      ];
-    
-    self.serviceArray =
-    @[
-      [NSURL URLWithString:STAGE],
-      [NSURL URLWithString:SANDBOX],
-      [NSNull null]
-      ];
-    
     // note we are using CGRectZero for the dimensions of our picker view,
     // this is because picker views have a built in optimum size,
     // you just need to set the correct origin in your view.
@@ -588,26 +573,11 @@
  */
 -(void)configureServers:(UIPickerView *)pickerView {
     int index = [pickerView selectedRowInComponent:0];
+    NSString *env = [NSString stringWithFormat:@"%@", [self.pickerViewArray objectAtIndex:index]];
+    self.selectedEnv = env;
+    NSLog(@"%@", env);
     
-    NSLog(@"%@",
-		  [NSString stringWithFormat:@"%@",
-           [self.pickerViewArray objectAtIndex:index]]);
-    
-	NSString *serviceURL = [self.pickerURLArray objectAtIndex:index];
-	self.serviceURLLabel.text = serviceURL;
-	self.serviceHost = serviceURL;
-    
-    NSURL *testBaseUrlForTheSDKToUse = [self.serviceArray objectAtIndex:index];
-    
-    
-    //If we want Live then use nil as the base URL.
-    if ([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
-        testBaseUrlForTheSDKToUse = nil;
-    }
-    
-    NSLog(@"urlForTheSDKToUse: %@", testBaseUrlForTheSDKToUse);
-    
-    /*
+	/*
      * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
      */
     [PayPalHereSDK setBaseAPIURL:nil];  //Clear out any stage URL we might have set.
@@ -624,7 +594,8 @@
         /*
          * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
          */
-        [PayPalHereSDK setBaseAPIURL:testBaseUrlForTheSDKToUse];
+        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:STAGE_URL]];
+        self.selectedEnv = STAGE;
         return;
     }
 }
