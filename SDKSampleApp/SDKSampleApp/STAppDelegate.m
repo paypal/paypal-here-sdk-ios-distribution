@@ -81,6 +81,9 @@ PPHLoggingDelegate
     // We keep track of the user's preference for sample app's payment flow.  Either Authorize-Only or Full-Capture
     self.paymentFlowIsAuthOnly = [[NSUserDefaults standardUserDefaults] boolForKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
     
+    // Lets set the default stage in here
+    self.selectedStage = DEFAULT_STAGE;
+    
     return YES;
 }
 
