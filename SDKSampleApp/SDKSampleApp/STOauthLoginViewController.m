@@ -283,6 +283,21 @@
     
 }
 
+- (void)loadMerchantObjectFromPPAccessResponseObject:(PPHAccessAccount *)accountResp {
+    
+    NSDictionary *responseDict = accountResp.extraInfo;
+    NSDictionary *addressInformation = [responseDict objectForKey:@"address"];
+    self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
+                                        initWithCountryCode: [addressInformation objectForKey:@"country"]
+                                        city: [addressInformation objectForKey:@"locality"]
+                                        addressLineOne: [addressInformation objectForKey:@"street_address"]];
+    
+    self.merchant.invoiceContactInfo.businessName = [responseDict objectForKey:@"businessName"];
+    self.merchant.invoiceContactInfo.state = [addressInformation objectForKey:@"region"];
+    self.merchant.invoiceContactInfo.postalCode = [addressInformation objectForKey:@"postal_code"];
+    self.merchant.currencyCode = accountResp.currencyCode;
+}
+
 /*
  * Called when we have JSON that contains an access token.  Which this is
  * the case we'll attempt to decrypt the access token and configure the SDK
@@ -347,15 +362,25 @@
                        
                        self.loginButton.enabled = YES;
                        if (status == ePPHAccessResultSuccess) {
-                           // Login complete!
                            
+                           //Login complete!
                            // Save the capture tolerance, which we might need to display for this merchant on the settings page.
                            STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
                            appDelegate.captureTolerance = [[account paymentLimits] captureTolerance];
                            
-                           // Time to show the sample app UI!
-                           //
-                           [self transitionToTransactionViewController];
+                           //Let's update our Merchant object, then refeed it into the SDK
+                           //when that thread comes back with a success we can transition to the
+                           //next View Controller..
+                           //TO DO: Make Heroku App return the correct merchant data...
+                           
+                           [self loadMerchantObjectFromPPAccessResponseObject:account];
+                           [PayPalHereSDK setActiveMerchant:self.merchant withMerchantId:self.merchant.invoiceContactInfo.businessName completionHandler:^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
+                               
+                               if (status == ePPHAccessResultSuccess) {
+                                   [self transitionToTransactionViewController];
+                               }
+                               
+                           }];
                        }
                        
                        else {
