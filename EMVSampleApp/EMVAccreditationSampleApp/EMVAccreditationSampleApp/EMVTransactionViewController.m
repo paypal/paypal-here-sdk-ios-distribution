@@ -11,8 +11,10 @@
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import "AppDelegate.h"
 
-@interface EMVTransactionViewController ()
+@interface EMVTransactionViewController ()<UIAlertViewDelegate>
 @property (strong, nonatomic) PPHCardReaderWatcher *cardReaderWatcher;
+@property (nonatomic, assign) BOOL isUpdateRequired;
+@property (nonatomic, strong) UIAlertView *updateRequiredAlertDialog;
 @end
 
 @implementation EMVTransactionViewController
@@ -28,6 +30,7 @@
         self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
         self.emvMetaData = nil;
         self.currentDeviceInfo = nil;
+        self.isUpdateRequired = NO;
     }
     
     return self;
@@ -40,6 +43,8 @@
     self.transactionAmountField.delegate = self;
     self.chargeButton.layer.cornerRadius = 10;
     self.salesHistoryButton.layer.cornerRadius = 10;
+    self.updateTerminalButton.layer.cornerRadius = 10;
+    [self enableUpdateTerminalButton:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -77,21 +82,19 @@
 
 -(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
 {
-    self.emvConnectionStatus.textColor = [UIColor blueColor];
-    self.emvConnectionStatus.text = @"EMV device connected";
+   [self displayConnectionStatusWithText:@"EMV device connected" andStatus:YES];
     self.emvMetaData = metadata;
 }
 
 -(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader
 {
-    self.emvConnectionStatus.textColor = [UIColor blueColor];
-    self.emvConnectionStatus.text = @"EMV device connected";
+    [self displayConnectionStatusWithText:@"EMV device connected" andStatus:YES];
     self.currentDeviceInfo = reader;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
-    if (self.emvMetaData) {
+    if ([self canPerformTransaction]) {
         return YES;
     }
     
@@ -109,7 +112,7 @@
     
     [_transactionAmountField resignFirstResponder];
     
-    if (self.emvMetaData) {
+    if ([self canPerformTransaction]) {
         
         if (self.transactionAmountField.text) {
             
@@ -168,7 +171,7 @@
         }
     
     } else {
-        [self showAlertWithTitle:@"No EMV Data" andMessage:@"Please make sure your EMV device is paired"];
+        [self showAlertWithTitle:@"No EMV Data" andMessage:@"Please make sure your EMV device is ready to take payments."];
     }
     
 }
@@ -196,5 +199,79 @@
     vc.title = @"Sales History";
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+-(void)displayConnectionStatusWithText:(NSString *)statusText andStatus:(BOOL)ready {
+    if (ready) {
+        self.emvConnectionStatus.textColor = [UIColor blueColor];
+    } else {
+        self.emvConnectionStatus.textColor = [UIColor redColor];
+    }
+    self.emvConnectionStatus.text = statusText;
+}
+
+-(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial withEstimatedDuration: (NSTimeInterval) estimatedDuration {
+    self.isUpdateRequired = required;
+}
+
+-(void)enableUpdateTerminalButton:(BOOL) enable {
+    self.updateTerminalButton.hidden = !enable;
+    self.updateTerminalButton.enabled = enable;
+}
+
+-(void)didFinishUpgradePreparations {
+    
+    if (self.isUpdateRequired) {
+        [self showUpdateRequiredAlertDialog];
+    } else {
+        [self displayConnectionStatusWithText:@"EMV device connected and ready!" andStatus:YES];
+    }
+}
+
+-(void)showUpdateRequiredAlertDialog {
+    self.updateRequiredAlertDialog = [[UIAlertView alloc] initWithTitle:@"Software Update Required"
+                                                                message:@"Update Now?"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Not Now"
+                                                      otherButtonTitles:@"OK", nil];
+    
+    [self.updateRequiredAlertDialog show];
+}
+
+-(IBAction)updateTerminalButtonPressed:(id)sender {
+    [self beginReaderUpdate];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (alertView == self.updateRequiredAlertDialog) {
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            [self displayConnectionStatusWithText:@"Update card reader!" andStatus:NO];
+            [self enableUpdateTerminalButton:YES];
+        } else {
+            [self beginReaderUpdate];
+        }
+    }
+}
+
+-(void)beginReaderUpdate {
+    [[PayPalHereSDK sharedCardReaderManager] beginReaderUpdateUsingSDKUI_WithViewController:self
+                                                                          completionHandler:^(BOOL success, NSString *message) {
+                                                                              
+                                                                              [self softwareUpdateCompleteWithStatus:success andMessage:message];
+                                                                          }];
+    
+    
+}
+
+-(void)softwareUpdateCompleteWithStatus:(BOOL)success andMessage:(NSString *)message {
+    self.isUpdateRequired = !success;
+    [self enableUpdateTerminalButton:!success];
+    [self showAlertWithTitle:[NSString stringWithFormat:@"Software Update %@", (success)? @"Complete" : @"Failed"] andMessage:message];
+}
+
+-(BOOL)canPerformTransaction {
+   return self.emvMetaData && !self.isUpdateRequired;
+}
+
 
 @end
