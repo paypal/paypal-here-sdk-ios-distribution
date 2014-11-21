@@ -126,7 +126,7 @@
                 return;
             }
             
-            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"GBP"];
+            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount];
             [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
         
             PPHAvailablePaymentTypes paymentPermissions = [[PayPalHereSDK activeMerchant] payPalAccount].availablePaymentTypes;

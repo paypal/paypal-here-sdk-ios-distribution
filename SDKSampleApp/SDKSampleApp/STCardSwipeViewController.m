@@ -38,7 +38,7 @@
     
     // Beginning the transaction allows the swiper to listen for swipes. 
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
+    PPHAmount *total = [PPHAmount amountWithString:self.amount];
     tm.ignoreHardwareReaders = NO;
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     
