@@ -126,7 +126,8 @@
                 return;
             }
             
-            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:@"GBP"];
+            NSString *currencyCode = [[PayPalHereSDK activeMerchant] currencyCode];
+            PPHAmount *amount = [PPHAmount amountWithDecimal:decimalAmount inCurrency:currencyCode];
             [tm beginPaymentWithAmount:amount andName:@"accreditationTestTransactionItem"];
         
             PPHAvailablePaymentTypes paymentPermissions = [[PayPalHereSDK activeMerchant] payPalAccount].availablePaymentTypes;
