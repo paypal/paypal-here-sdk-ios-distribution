@@ -19,10 +19,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UILabel *serviceURLLabel;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UILabel *selectedStage;
+@property (weak, nonatomic) IBOutlet UIView *selectedStageView;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @property (nonatomic) IBOutlet PPHMerchantInfo *merchant;
 
 - (IBAction)loginPressed:(id)sender;
+- (IBAction)settingsPressed:(id)sender;
 
 - (void) setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON;
 @end
