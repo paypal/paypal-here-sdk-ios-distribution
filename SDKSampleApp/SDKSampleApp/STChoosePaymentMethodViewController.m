@@ -91,7 +91,7 @@
     }
     
     NSString *interfaceName = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? @"CheckedInCustomerViewController_iPhone" : @"CheckedInCustomerViewController_iPad";
-    [[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:self.amount inCurrency:@"USD"] andName:@"FixedAmount"];
+    [[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:self.amount] andName:@"FixedAmount"];
     
     CheckedInCustomerViewController *vc = [[CheckedInCustomerViewController alloc] initWithNibName:interfaceName bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
