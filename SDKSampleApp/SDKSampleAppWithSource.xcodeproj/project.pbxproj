@@ -27,6 +27,8 @@
 		001569F6188E02230023053A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 001569F4188E02230023053A /* InfoPlist.strings */; };
 		001569F9188F25D60023053A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 001569F8188F25D60023053A /* libxml2.dylib */; };
 		007DE86218A0144A004D8847 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007DE86018A0144A004D8847 /* SettingsViewController.m */; };
+		199F47791A1D5C4600515662 /* STSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199F47771A1D5C4600515662 /* STSettingsViewController.m */; };
+		199F477A1A1D5C4600515662 /* STSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199F47781A1D5C4600515662 /* STSettingsViewController.xib */; };
 		526348261952605500237D06 /* InvoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 526348251952605500237D06 /* InvoicesManager.m */; };
 		5263482F1952607A00237D06 /* STTransactionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5263482E1952607A00237D06 /* STTransactionsTableViewController.m */; };
 		528DE49B1951F137006E5CEE /* STManualPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DE4991951F137006E5CEE /* STManualPaymentViewController.m */; };
@@ -204,6 +206,9 @@
 		001569F8188F25D60023053A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		007DE85F18A0144A004D8847 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = SDKSampleApp/Screens/Settings/SettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		007DE86018A0144A004D8847 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = SDKSampleApp/Screens/Settings/SettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		199F47761A1D5C4600515662 /* STSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STSettingsViewController.h; path = SDKSampleApp/STSettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		199F47771A1D5C4600515662 /* STSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STSettingsViewController.m; path = SDKSampleApp/STSettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		199F47781A1D5C4600515662 /* STSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STSettingsViewController.xib; path = SDKSampleApp/STSettingsViewController.xib; sourceTree = SOURCE_ROOT; };
 		526348251952605500237D06 /* InvoicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoicesManager.m; sourceTree = SOURCE_ROOT; };
 		5263482C1952605B00237D06 /* InvoicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoicesManager.h; sourceTree = SOURCE_ROOT; };
 		5263482D1952607400237D06 /* STTransactionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTransactionsTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -357,6 +362,16 @@
 				9DB2DFA7192ABB6600FFB6A8 /* SettingsViewController.xib */,
 				007DE85F18A0144A004D8847 /* SettingsViewController.h */,
 				007DE86018A0144A004D8847 /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		199F476F1A1D5BA800515662 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				199F47761A1D5C4600515662 /* STSettingsViewController.h */,
+				199F47771A1D5C4600515662 /* STSettingsViewController.m */,
+				199F47781A1D5C4600515662 /* STSettingsViewController.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -586,6 +601,7 @@
 		99D981811835995100D234A1 /* SimplerTransaction */ = {
 			isa = PBXGroup;
 			children = (
+				199F476F1A1D5BA800515662 /* Settings */,
 				99859E4A183C38DA00AB3FE1 /* Login */,
 				52EEFDAD1958FB560040BBD6 /* STConstants.h */,
 				52FEBCE81954B145001FFD57 /* STServices.h */,
@@ -789,6 +805,7 @@
 				001569A8188E01270023053A /* apple.jpg in Resources */,
 				9DB2DF60192AB99E00FFB6A8 /* CheckedInCustomerViewController_iPhone.xib in Resources */,
 				52FC086A1952352C004C3342 /* swipe.jpg in Resources */,
+				199F477A1A1D5C4600515662 /* STSettingsViewController.xib in Resources */,
 				001569CA188E01C60023053A /* ReaderInfoViewController_iPad.xib in Resources */,
 				9DB2DFA1192ABAE400FFB6A8 /* AuthorizedInvoiceInspectorViewController.xib in Resources */,
 				9DB2DF96192ABA9600FFB6A8 /* TransactionViewController_iPad.xib in Resources */,
@@ -859,6 +876,7 @@
 				9DB2DF8A192AB9B000FFB6A8 /* ReceiptInfoViewController.m in Sources */,
 				001569B4188E01720023053A /* STAppDelegate.m in Sources */,
 				9DB2DF61192AB99E00FFB6A8 /* CheckedInCustomerViewController.m in Sources */,
+				199F47791A1D5C4600515662 /* STSettingsViewController.m in Sources */,
 				9DB2DFA0192ABAE400FFB6A8 /* AuthorizedInvoiceInspectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
