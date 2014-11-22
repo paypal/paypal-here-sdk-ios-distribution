@@ -173,9 +173,9 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.serviceURL = self.serviceHost;
     
-    NSMutableURLRequest *request = [self createLoginRequest];
-    
     [self configureServers:_pickerView];
+    
+    NSMutableURLRequest *request = [self createLoginRequest];
     
     // Execute that /login call
     [NSURLConnection sendAsynchronousRequest:request
@@ -472,6 +472,7 @@
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:_passwordField.text];
     [loginRequestPostString appendString:@"&servername="];
+    NSLog(@"logging into environment: %@", _selectedEnv);
     [loginRequestPostString appendString:_selectedEnv];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -592,8 +593,10 @@
         /*
          * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
          */
-        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:CONSTRUCT_STAGE_URL(self.selectedStage.text)]];
-        self.selectedEnv = self.selectedStage.text;
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:CONSTRUCT_STAGE_URL(appDelegate.selectedStage)]];
+        self.selectedEnv = appDelegate.selectedStage;
         [self showSelectedStageText:YES];
         return;
     }
