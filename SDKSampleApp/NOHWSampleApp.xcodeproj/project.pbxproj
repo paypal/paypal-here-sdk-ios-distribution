@@ -47,6 +47,8 @@
 		191DB94C18C8440F005C0FC8 /* PaymentCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DB94418C8440F005C0FC8 /* PaymentCompleteViewController.xib */; };
 		191DB94D18C8440F005C0FC8 /* ReceiptInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191DB94618C8440F005C0FC8 /* ReceiptInfoViewController.m */; };
 		191DB94E18C8440F005C0FC8 /* ReceiptInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DB94718C8440F005C0FC8 /* ReceiptInfoViewController.xib */; };
+		1942300B1A200EE0007B278E /* STSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194230091A200EE0007B278E /* STSettingsViewController.m */; };
+		1942300C1A200EE0007B278E /* STSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1942300A1A200EE0007B278E /* STSettingsViewController.xib */; };
 		197ADB1D18D2483600C22D2A /* RefundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197ADB1B18D2483600C22D2A /* RefundViewController.m */; };
 		197ADB1E18D2483600C22D2A /* RefundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 197ADB1C18D2483600C22D2A /* RefundViewController.xib */; };
 		522456EE195CCEC5003B0C85 /* STCashPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522456E1195CCEC5003B0C85 /* STCashPaymentViewController.m */; };
@@ -162,6 +164,9 @@
 		191DB94518C8440F005C0FC8 /* ReceiptInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiptInfoViewController.h; path = SDKSampleApp/Screens/Transaction/ReceiptInfoViewController.h; sourceTree = SOURCE_ROOT; };
 		191DB94618C8440F005C0FC8 /* ReceiptInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptInfoViewController.m; path = SDKSampleApp/Screens/Transaction/ReceiptInfoViewController.m; sourceTree = SOURCE_ROOT; };
 		191DB94718C8440F005C0FC8 /* ReceiptInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiptInfoViewController.xib; path = SDKSampleApp/Screens/Transaction/ReceiptInfoViewController.xib; sourceTree = SOURCE_ROOT; };
+		194230081A200EE0007B278E /* STSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STSettingsViewController.h; path = SDKSampleApp/STSettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		194230091A200EE0007B278E /* STSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STSettingsViewController.m; path = SDKSampleApp/STSettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		1942300A1A200EE0007B278E /* STSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STSettingsViewController.xib; path = SDKSampleApp/STSettingsViewController.xib; sourceTree = SOURCE_ROOT; };
 		197ADB1A18D2483600C22D2A /* RefundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefundViewController.h; path = SDKSampleApp/Screens/Transaction/RefundViewController.h; sourceTree = SOURCE_ROOT; };
 		197ADB1B18D2483600C22D2A /* RefundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RefundViewController.m; path = SDKSampleApp/Screens/Transaction/RefundViewController.m; sourceTree = SOURCE_ROOT; };
 		197ADB1C18D2483600C22D2A /* RefundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefundViewController.xib; path = SDKSampleApp/Screens/Transaction/RefundViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -316,6 +321,16 @@
 			name = AuthorizedPayments;
 			sourceTree = "<group>";
 		};
+		194230071A200ECC007B278E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				194230081A200EE0007B278E /* STSettingsViewController.h */,
+				194230091A200EE0007B278E /* STSettingsViewController.m */,
+				1942300A1A200EE0007B278E /* STSettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		522456F6195CCEDB003B0C85 /* PaymentTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +470,7 @@
 		99859E4A183C38DA00AB3FE1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				194230071A200ECC007B278E /* Settings */,
 				001569B5188E018D0023053A /* STOauthLoginViewController_iPad.xib */,
 				001569B6188E018D0023053A /* STOauthLoginViewController_iPhone.xib */,
 				001569B7188E018D0023053A /* STOauthLoginViewController.h */,
@@ -630,7 +646,7 @@
 				ORGANIZATIONNAME = PayPalHereSDK;
 				TargetAttributes = {
 					99D981771835995100D234A1 = {
-						DevelopmentTeam = Z3Q667VWSP;
+						DevelopmentTeam = G66JN7GPGU;
 					};
 				};
 			};
@@ -692,6 +708,7 @@
 				529B7EEA1989845100363790 /* PaymentMethodViewController_iPad.xib in Resources */,
 				001569BA188E018D0023053A /* STOauthLoginViewController_iPhone.xib in Resources */,
 				001569B9188E018D0023053A /* STOauthLoginViewController_iPad.xib in Resources */,
+				1942300C1A200EE0007B278E /* STSettingsViewController.xib in Resources */,
 				522456EF195CCEC5003B0C85 /* STCashPaymentViewController.xib in Resources */,
 				52245703195CCF4F003B0C85 /* TransactionViewController_iPad.xib in Resources */,
 				001569C4188E01B20023053A /* TransactionViewController_iPhone.xib in Resources */,
@@ -730,6 +747,7 @@
 				5224571E195CD7F8003B0C85 /* CCCFSPaymentDelegate.m in Sources */,
 				DE4CBABA18D7AC0B009854BD /* ManualCardEntryViewController.m in Sources */,
 				00A2F0051923F05600C20037 /* AuthorizedPaymentsViewController.m in Sources */,
+				1942300B1A200EE0007B278E /* STSettingsViewController.m in Sources */,
 				001569C5188E01B20023053A /* TransactionViewController.m in Sources */,
 				007DE87B18A062DC004D8847 /* SignatureViewController.m in Sources */,
 				5239A69C1989616000FA0397 /* NoHWCardReaderManager.m in Sources */,
