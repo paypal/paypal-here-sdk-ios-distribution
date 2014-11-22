@@ -22,8 +22,8 @@
 
 @interface STOauthLoginViewController ()
 
-@property (nonatomic, strong) NSString *serviceHost;
-@property (nonatomic, strong) NSString *selectedEnv;
+@property (nonatomic, copy) NSString *serviceHost;
+@property (nonatomic, copy) NSString *selectedEnv;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *pphLogoImageView;
 @end

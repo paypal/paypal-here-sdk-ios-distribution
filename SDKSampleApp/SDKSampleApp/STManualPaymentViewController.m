@@ -13,7 +13,7 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface STManualPaymentViewController ()
-@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, copy) NSString *amount;
 
 
 @property (retain, nonatomic) IBOutlet UIButton *fillInCardInfo;

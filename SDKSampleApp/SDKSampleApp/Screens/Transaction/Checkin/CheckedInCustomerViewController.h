@@ -19,7 +19,7 @@ PPHTransactionControllerDelegate
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSString *checkinLocationId;
+@property (nonatomic,copy) NSString *checkinLocationId;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *processingTransactionSpinny;
 
 @end
