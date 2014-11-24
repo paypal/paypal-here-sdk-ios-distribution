@@ -20,7 +20,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UIButton *cashButton;
 @property (nonatomic, retain) IBOutlet UIButton *swipeButton;
-@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, copy) NSString *amount;
 @property BOOL waitingForCardSwipe;
 @end
 
