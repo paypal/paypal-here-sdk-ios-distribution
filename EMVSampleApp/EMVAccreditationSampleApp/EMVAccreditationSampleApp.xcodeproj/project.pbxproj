@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19422FEF1A1FF006007B278E /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19422FEE1A1FF006007B278E /* PayPalHereSDK.bundle */; };
+		19422FF01A1FF036007B278E /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */; };
 		1982EE8819A266DB00CF0A35 /* EMVSalesHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */; };
 		803E61041959FBC400E4BFDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803E61021959FBC400E4BFDE /* InfoPlist.strings */; };
 		803E61061959FBC400E4BFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E61051959FBC400E4BFDE /* main.m */; };
@@ -22,6 +24,7 @@
 		803E6136195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803E6135195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib */; };
 		803E6138195A04E600E4BFDE /* pp_m_rgb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 803E6137195A04E600E4BFDE /* pp_m_rgb.jpg */; };
 		803E6159195A3EEB00E4BFDE /* PPSCryptoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6158195A3EEB00E4BFDE /* PPSCryptoUtils.m */; };
+		803E6163195A3F5200E4BFDE /* PPSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6162195A3F5200E4BFDE /* PPSPreferences.m */; };
 		803E6165195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803E6164195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib */; };
 		803E6168195A47E700E4BFDE /* EMVTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6167195A47E700E4BFDE /* EMVTransactionViewController.m */; };
 		804C305D195A82E8006ABECA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6177195A4A3100E4BFDE /* libsqlite3.dylib */; };
@@ -43,9 +46,6 @@
 		804C306D195A837E006ABECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60F91959FBC400E4BFDE /* Foundation.framework */; };
 		804C306E195A8388006ABECA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6195195A4ADB00E4BFDE /* libc++.dylib */; };
 		804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */; };
-		9D04789A19F5E9F0007499BA /* PPSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E6162195A3F5200E4BFDE /* PPSPreferences.m */; };
-		9D04789C19F5EB3D007499BA /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D04789B19F5EB3D007499BA /* PayPalHereSDK.bundle */; };
-		9D04789D19F5EB49007499BA /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B62C9419F5C9FF0024291A /* PayPalHereSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19422FEE1A1FF006007B278E /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		1982EE8519A266DB00CF0A35 /* EMVSalesHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVSalesHistoryViewController.h; sourceTree = "<group>"; };
 		1982EE8619A266DB00CF0A35 /* EMVSalesHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVSalesHistoryViewController.m; sourceTree = "<group>"; };
-		19B62C9219F5C9E80024291A /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/nohw/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
-		19B62C9419F5C9FF0024291A /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../../SDK/nohw/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
 		803E60F61959FBC400E4BFDE /* EMVAccreditationSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMVAccreditationSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		803E60F91959FBC400E4BFDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,7 +107,7 @@
 		803E6193195A4AC200E4BFDE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		803E6195195A4ADB00E4BFDE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalBeacon.a; path = "../../SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos/libPayPalBeacon.a"; sourceTree = "<group>"; };
-		9D04789B19F5EB3D007499BA /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../../SDK/nohw/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
+		F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../../SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D04789D19F5EB49007499BA /* PayPalHereSDK.framework in Frameworks */,
+				19422FF01A1FF036007B278E /* PayPalHereSDK.framework in Frameworks */,
 				804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */,
 				804C306E195A8388006ABECA /* libc++.dylib in Frameworks */,
 				804C306D195A837E006ABECA /* Foundation.framework in Frameworks */,
@@ -155,7 +154,7 @@
 		803E60ED1959FBC400E4BFDE = {
 			isa = PBXGroup;
 			children = (
-				9D04789B19F5EB3D007499BA /* PayPalHereSDK.bundle */,
+				19422FEE1A1FF006007B278E /* PayPalHereSDK.bundle */,
 				803E60FF1959FBC400E4BFDE /* EMVAccreditationSampleApp */,
 				803E61211959FBC400E4BFDE /* EMVAccreditationSampleAppTests */,
 				803E60F81959FBC400E4BFDE /* Frameworks */,
@@ -175,8 +174,7 @@
 		803E60F81959FBC400E4BFDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				19B62C9219F5C9E80024291A /* PayPalHereSDK.bundle */,
-				19B62C9419F5C9FF0024291A /* PayPalHereSDK.framework */,
+				F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */,
 				804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */,
 				803E6195195A4ADB00E4BFDE /* libc++.dylib */,
 				803E6193195A4AC200E4BFDE /* CoreTelephony.framework */,
@@ -303,6 +301,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 				TargetAttributes = {
+					803E60F51959FBC400E4BFDE = {
+						DevelopmentTeam = G66JN7GPGU;
+					};
 					803E61191959FBC400E4BFDE = {
 						DevelopmentTeam = G66JN7GPGU;
 						TestTargetID = 803E60F51959FBC400E4BFDE;
@@ -333,7 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D04789C19F5EB3D007499BA /* PayPalHereSDK.bundle in Resources */,
+				19422FEF1A1FF006007B278E /* PayPalHereSDK.bundle in Resources */,
 				803E6165195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib in Resources */,
 				803E61321959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib in Resources */,
 				803E61151959FBC400E4BFDE /* Images.xcassets in Resources */,
@@ -358,9 +359,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D04789A19F5E9F0007499BA /* PPSPreferences.m in Sources */,
 				803E6159195A3EEB00E4BFDE /* PPSCryptoUtils.m in Sources */,
 				1982EE8819A266DB00CF0A35 /* EMVSalesHistoryViewController.m in Sources */,
+				803E6163195A3F5200E4BFDE /* PPSPreferences.m in Sources */,
 				803E6168195A47E700E4BFDE /* EMVTransactionViewController.m in Sources */,
 				803E61131959FBC400E4BFDE /* EMVOauthLoginViewController.m in Sources */,
 				803E610A1959FBC400E4BFDE /* AppDelegate.m in Sources */,
@@ -485,19 +486,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../SDK/Debug\"/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../SDK/Debug\"/**",
+					"$(inherited)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRC_ROOT)/../SDK/nohw/Debug/**",
-				);
 				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/vinodhs/projects/ios/sampleapp_may16/SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lstdc++",
@@ -518,19 +514,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../SDK/Debug\"/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../SDK/Debug\"/**",
+					"$(inherited)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRC_ROOT)/../SDK/nohw/Debug/**",
-				);
 				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/vinodhs/projects/ios/sampleapp_may16/SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lstdc++",

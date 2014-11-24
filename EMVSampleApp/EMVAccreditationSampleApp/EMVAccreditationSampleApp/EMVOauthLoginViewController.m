@@ -17,6 +17,7 @@
 #define kStage2mb001 @"stage2mb001"
 #define kStage2mb006 @"stage2mb006"
 #define kStageNameArray @[kStage2mb001, kStage2mb006]
+#define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
 
 @interface EMVOauthLoginViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
@@ -56,20 +57,9 @@
 - (void)setUpSegmentedControlAndServiceUrls {
     
     [self.segControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    
-    self.serviceHostUrlArray = [[NSMutableArray alloc] init];
-    
-    [self.serviceHostUrlArray addObject:[[NSMutableString alloc]
-                                         initWithString:@"http://stormy-hollows-1584.herokuapp.com"]];
-    
-    [self.serviceHostUrlArray addObject:[[NSMutableString alloc]
-                                         initWithString:@"http://desolate-wave-3684.herokuapp.com"]];
-    
-    [self.serviceHostUrlArray addObject:[[NSMutableString alloc]
-                                         initWithString:@"http://sdk-sample-server.herokuapp.com/server"]];
-    
+    self.serviceHostUrl = kMidTierServerUrl;
     self.sdkBaseUrlDict = [[NSMutableDictionary alloc] init];
-    [self.sdkBaseUrlDict setValue:[NSNull null] forKey:kLive];
+    [self.sdkBaseUrlDict setValue:@"https://www.paypal.com/webapps/" forKey:kLive];
     [self.sdkBaseUrlDict setValue:@"https://www.sandbox.paypal.com/webapps/" forKey:kSandbox];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb001.stage.paypal.com/webapps/" forKey:kStage2mb001];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb006];
@@ -126,20 +116,17 @@
     
     if (self.segControl.selectedSegmentIndex == 0) {
         self.activeServer = kLive;
-        self.serviceHostUrl = [self.serviceHostUrlArray objectAtIndex:0];
         self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kLive];
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
     }
     
     else if (self.segControl.selectedSegmentIndex == 1) {
         self.activeServer = kSandbox;
-        self.serviceHostUrl = [self.serviceHostUrlArray objectAtIndex:1];
         self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kSandbox];
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
     }
     
     else {
-        self.serviceHostUrl = [self.serviceHostUrlArray objectAtIndex:2];
         [self.stageSelectedActionSheet showInView:self.view];
     }
     

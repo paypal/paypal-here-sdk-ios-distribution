@@ -46,7 +46,7 @@
     [_activity startAnimating];
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
+    PPHAmount *total = [PPHAmount amountWithString:self.amount];
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     
     [tm processPaymentWithPaymentType:ePPHPaymentMethodCash
