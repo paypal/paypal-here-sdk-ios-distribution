@@ -88,7 +88,7 @@
     us to start scanning for swipes from any attached reader.
  
     -(void) onPurchaseButtonClicked {
-        PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00" inCurrency:@"USD"];
+        PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00"];
         [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@"FixedAmount"];
     }
  
@@ -119,7 +119,7 @@
     is made we'll then stop scanning for swipes.
  
     -(void) onPurchaseButtonClicked {
-        PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00" inCurrency:@"USD"];
+        PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00"];
         NSDateComponents *comps = [[NSDateComponents alloc] init];
         [comps setMonth:9];
         [comps setYear:2019];
@@ -148,7 +148,7 @@
     Here is an example of an authorization on a credit card:
  
     -(void) onPurchaseButtonClicked {
-        PPHAmount *twentyDollarAmount = [PPHAmount [PPHAmount amountWithString:@"20.00" inCurrency:@"USD"];
+        PPHAmount *twentyDollarAmount = [PPHAmount [PPHAmount amountWithString:@"20.00"];
         [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:twentyDollarAmount withName:@"FixedAmount"];
     }
  
