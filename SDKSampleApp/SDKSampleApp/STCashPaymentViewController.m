@@ -10,7 +10,7 @@
 #import "PaymentCompleteViewController.h"
 
 @interface STCashPaymentViewController ()
-@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, copy) NSString *amount;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
 @end
 

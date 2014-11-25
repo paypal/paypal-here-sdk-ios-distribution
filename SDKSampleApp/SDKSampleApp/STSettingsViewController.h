@@ -11,7 +11,8 @@
 @interface STSettingsViewController : UIViewController
 <
 UIPickerViewDataSource,
-UIPickerViewDelegate
+UIPickerViewDelegate,
+UITextFieldDelegate
 >
 
 @property (nonatomic, weak) IBOutlet UIPickerView *stagePicker;

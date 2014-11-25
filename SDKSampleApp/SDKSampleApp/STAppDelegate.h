@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSMutableArray *authorizedRecords;
 @property (assign, nonatomic) BOOL paymentFlowIsAuthOnly;
 @property (strong, nonatomic) NSDecimalNumber *captureTolerance;
-@property (strong, nonatomic) NSString *serviceURL;
-@property (strong, nonatomic) NSString *selectedStage;
+@property (copy, nonatomic) NSString *serviceURL;
+@property (copy, nonatomic) NSString *selectedStage;
 
 @end
