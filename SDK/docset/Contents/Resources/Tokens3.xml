@@ -13,6 +13,23 @@
 		
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/localeCodeFromCountry:</TokenIdentifier>
+			<Abstract type="html">Get the locale code for a given country</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)localeCodeFromCountry:(id)country</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>countryCode</Name>
+					<Abstract type="html">two letter ISO country code</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/localeCodeFromCountry:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/defaultCurrencyCodeInCountry:</TokenIdentifier>
 			<Abstract type="html">Get the default currency code given an ISO country code</Abstract>
 			<DeclaredIn>PPHAmount.h</DeclaredIn>
@@ -26,6 +43,42 @@
 			</Parameters>
 			
 			<Anchor>//api/name/defaultCurrencyCodeInCountry:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/amountWithString:</TokenIdentifier>
+			<Abstract type="html">Create a PPHAmount given a decimal in a string.</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>+ (PPHAmount *)amountWithString:(id)stringValue</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>stringValue</Name>
+					<Abstract type="html">The amount, as a string and not including currency symbol
+NOTE: The currency information is deduced via the active merchant set within the SDK.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/amountWithString:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHAmount/amountWithDecimal:</TokenIdentifier>
+			<Abstract type="html">Create a PPHAmount given a decimal.</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>+ (PPHAmount *)amountWithDecimal:(id)amount</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">The amount in decimal.
+NOTE: The currency information is deduced via the active merchant set within the SDK.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/amountWithDecimal:</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		

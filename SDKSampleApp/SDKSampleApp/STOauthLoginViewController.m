@@ -13,6 +13,7 @@
 #import "TransactionViewController.h"
 #import "STAppDelegate.h"
 #import "DemosTableViewController.h"
+#import "STSettingsViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHPaymentLimits.h>
@@ -21,11 +22,8 @@
 
 @interface STOauthLoginViewController ()
 
-@property (nonatomic, strong) UIPickerView *pickerView;
-@property (nonatomic, strong) NSArray *pickerViewArray;
-@property (nonatomic, strong) NSArray *pickerURLArray;
-@property (nonatomic, strong) NSArray *serviceArray;
-@property (nonatomic, strong) NSString *serviceHost;
+@property (nonatomic, copy) NSString *serviceHost;
+@property (nonatomic, copy) NSString *selectedEnv;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *pphLogoImageView;
 @end
@@ -95,21 +93,22 @@
 	self.title = @"Merchant Login";
 	self.usernameField.delegate = self;
 	self.passwordField.delegate = self;
-    self.loginButton.layer.cornerRadius = 10.0;
+    //self.loginButton.layer.cornerRadius = 10.0;
 	[self.scrollView
      setContentSize:CGSizeMake(CGRectGetWidth(self.scrollView.frame),
                                CGRectGetHeight(self.scrollView.frame)
                                )];
     
-	[self createPicker];    // This is the barrel roller which allows selection of Live, Sandbox, and Stage
-    
+	
 	// Initialize the URL label to the currently selected Service:
-	NSString *initialServiceHost = [self.pickerURLArray objectAtIndex:[self.pickerView selectedRowInComponent:0]];
-	self.serviceURLLabel.text = initialServiceHost;
-	self.serviceHost = initialServiceHost;
+    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+	self.serviceURLLabel.text = MID_TIER_SERVER_URL;
+	self.serviceHost = MID_TIER_SERVER_URL;
+    self.selectedEnv = appDelegate.selectedStage;
+    [self showSelectedStageText:YES];
     
     // Make the merchant checked in flag to false, since if we are in login screen then this should be the starting poing
-    STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.isMerchantCheckedin = NO;
     appDelegate.merchantLocation = nil;
     
@@ -122,7 +121,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [self showSelectedStageText:YES];
     // Did we successfully log in in the past?  If so, let's prefill the username box with
     // that last-good user name.
     NSString *lastGoodUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastgoodusername"];
@@ -174,9 +173,9 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.serviceURL = self.serviceHost;
     
-    NSMutableURLRequest *request = [self createLoginRequest];
-    
     [self configureServers:_pickerView];
+    
+    NSMutableURLRequest *request = [self createLoginRequest];
     
     // Execute that /login call
     [NSURLConnection sendAsynchronousRequest:request
@@ -262,6 +261,11 @@
     
 }
 
+- (IBAction)settingsPressed:(id)sender {
+    STSettingsViewController *settingsVC = [[STSettingsViewController alloc] init];
+    [self.navigationController pushViewController:settingsVC animated:YES];
+}
+
 - (void)loadMerchantObjectFromHerokuResponse:(NSDictionary *)responseDict {
     
     NSDictionary *yourMerchant = [responseDict objectForKey:@"merchant"];
@@ -277,6 +281,21 @@
     self.merchant.invoiceContactInfo.postalCode = [yourMerchant objectForKey:@"postalCode"];
     self.merchant.currencyCode = [yourMerchant objectForKey:@"currency"];
     
+}
+
+- (void)loadMerchantObjectFromPPAccessResponseObject:(PPHAccessAccount *)accountResp {
+    
+    NSDictionary *responseDict = accountResp.extraInfo;
+    NSDictionary *addressInformation = [responseDict objectForKey:@"address"];
+    self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
+                                        initWithCountryCode: [addressInformation objectForKey:@"country"]
+                                        city: [addressInformation objectForKey:@"locality"]
+                                        addressLineOne: [addressInformation objectForKey:@"street_address"]];
+    
+    self.merchant.invoiceContactInfo.businessName = [responseDict objectForKey:@"businessName"];
+    self.merchant.invoiceContactInfo.state = [addressInformation objectForKey:@"region"];
+    self.merchant.invoiceContactInfo.postalCode = [addressInformation objectForKey:@"postal_code"];
+    self.merchant.currencyCode = accountResp.currencyCode;
 }
 
 /*
@@ -343,15 +362,25 @@
                        
                        self.loginButton.enabled = YES;
                        if (status == ePPHAccessResultSuccess) {
-                           // Login complete!
                            
+                           //Login complete!
                            // Save the capture tolerance, which we might need to display for this merchant on the settings page.
                            STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
                            appDelegate.captureTolerance = [[account paymentLimits] captureTolerance];
                            
-                           // Time to show the sample app UI!
-                           //
-                           [self transitionToTransactionViewController];
+                           //Let's update our Merchant object, then refeed it into the SDK
+                           //when that thread comes back with a success we can transition to the
+                           //next View Controller..
+                           //TO DO: Make Heroku App return the correct merchant data...
+                           
+                           [self loadMerchantObjectFromPPAccessResponseObject:account];
+                           [PayPalHereSDK setActiveMerchant:self.merchant withMerchantId:self.merchant.invoiceContactInfo.businessName completionHandler:^(PPHAccessResultType status, PPHAccessAccount *account, NSDictionary *extraInfo) {
+                               
+                               if (status == ePPHAccessResultSuccess) {
+                                   [self transitionToTransactionViewController];
+                               }
+                               
+                           }];
                        }
                        
                        else {
@@ -443,7 +472,8 @@
     [loginRequestPostString appendString:@"&password="];
     [loginRequestPostString appendString:_passwordField.text];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb023"];
+    NSLog(@"logging into environment: %@", _selectedEnv);
+    [loginRequestPostString appendString:_selectedEnv];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -465,7 +495,7 @@
     [loginRequestPostString appendString:@"&ticket="];
     [loginRequestPostString appendString:ticket];
     [loginRequestPostString appendString:@"&servername="];
-    [loginRequestPostString appendString:@"stage2mb023"];
+    [loginRequestPostString appendString:_selectedEnv];
     
     [loginRequest setHTTPBody:[loginRequestPostString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -532,54 +562,6 @@
 #define liveIndex 2
 
 /*
- * There are currently 3 sample servers (based on the SDK's included node sample-server) for
- * this sample app to login against.  If you stand up your own version of the sample-server you
- * can modify this data to include your own server.  If you're running the sample-server on your
- * own laptop you can create a localhost entry as well.
- */
-- (void)createPicker
-{
-    self.pickerViewArray =
-    @[
-      @"Stage",
-      @"Sandbox",
-      @"Live"
-      ];
-    
-    self.pickerURLArray =
-    @[
-      @"http://sdk-sample-server.herokuapp.com/server",
-      @"http://desolate-wave-3684.herokuapp.com",
-      @"http://stormy-hollows-1584.herokuapp.com"
-      ];
-    
-    self.serviceArray =
-    @[
-      [NSURL URLWithString:STAGE],
-      [NSURL URLWithString:SANDBOX],
-      [NSNull null]
-      ];
-    
-    // note we are using CGRectZero for the dimensions of our picker view,
-    // this is because picker views have a built in optimum size,
-    // you just need to set the correct origin in your view.
-    //
-    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
-    
-    [self.pickerView sizeToFit];
-    
-    self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
-    self.pickerView.showsSelectionIndicator = YES;    // note this is defaulted to NO
-    
-    // this view controller is the data source and delegate
-    self.pickerView.delegate = self;
-    self.pickerView.dataSource = self;
-    
-    [self.scrollView addSubview:self.pickerView];
-}
-
-/*
  * When we change what service we're using we need to
  * tell the SDK.  That way the SDK knows what URL base
  * to use for all its calls.   Whenever the user scrolls
@@ -588,44 +570,45 @@
  */
 -(void)configureServers:(UIPickerView *)pickerView {
     int index = [pickerView selectedRowInComponent:0];
+    NSString *env = [NSString stringWithFormat:@"%@", ENVIRONMENTS[index]];
+    self.selectedEnv = env;
+    NSLog(@"%@", env);
     
-    NSLog(@"%@",
-		  [NSString stringWithFormat:@"%@",
-           [self.pickerViewArray objectAtIndex:index]]);
-    
-	NSString *serviceURL = [self.pickerURLArray objectAtIndex:index];
-	self.serviceURLLabel.text = serviceURL;
-	self.serviceHost = serviceURL;
-    
-    NSURL *testBaseUrlForTheSDKToUse = [self.serviceArray objectAtIndex:index];
-    
-    
-    //If we want Live then use nil as the base URL.
-    if ([[NSNull null] isEqual:testBaseUrlForTheSDKToUse]) {
-        testBaseUrlForTheSDKToUse = nil;
-    }
-    
-    NSLog(@"urlForTheSDKToUse: %@", testBaseUrlForTheSDKToUse);
-    
-    /*
+	/*
      * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
      */
     [PayPalHereSDK setBaseAPIURL:nil];  //Clear out any stage URL we might have set.
     
     if(index == liveIndex) {
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
+        [self showSelectedStageText:NO];
         return;
     }
     else if(index == sandboxIndex) {
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
+        [self showSelectedStageText:NO];
         return;
     }
     else if(index == stageIndex) {
         /*
          * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
          */
-        [PayPalHereSDK setBaseAPIURL:testBaseUrlForTheSDKToUse];
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:CONSTRUCT_STAGE_URL(appDelegate.selectedStage)]];
+        self.selectedEnv = appDelegate.selectedStage;
+        [self showSelectedStageText:YES];
         return;
+    }
+}
+
+-(void)showSelectedStageText:(BOOL)show {
+    if (show) {
+        STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.selectedStage.text = appDelegate.selectedStage;
+        self.selectedStageView.hidden = NO;
+    } else {
+        self.selectedStageView.hidden = YES;
     }
 }
 
@@ -642,19 +625,19 @@
 {
     NSMutableAttributedString *attrTitle = nil;
     
-	NSString *title = [self.pickerViewArray objectAtIndex:row];
+    NSString *title = ENVIRONMENTS[row];
 	attrTitle = [[NSMutableAttributedString alloc] initWithString:title];
 	[attrTitle addAttribute:NSForegroundColorAttributeName
                       value:[UIColor blackColor]
                       range:NSMakeRange(0, [attrTitle length])];
     
-	return attrTitle;
+    return attrTitle;
     
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-	return [self.pickerViewArray objectAtIndex:row];
+    return ENVIRONMENTS[row];
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
@@ -669,7 +652,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {   
-    return [self.pickerViewArray count];
+    return [ENVIRONMENTS count];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

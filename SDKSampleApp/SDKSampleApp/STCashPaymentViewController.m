@@ -10,7 +10,7 @@
 #import "PaymentCompleteViewController.h"
 
 @interface STCashPaymentViewController ()
-@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, copy) NSString *amount;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
 @end
 
@@ -46,7 +46,7 @@
     [_activity startAnimating];
     
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
+    PPHAmount *total = [PPHAmount amountWithString:self.amount];
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     
     [tm processPaymentWithPaymentType:ePPHPaymentMethodCash

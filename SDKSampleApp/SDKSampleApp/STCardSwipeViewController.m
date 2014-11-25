@@ -15,7 +15,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *iphoneImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *swiperImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *cardImageView;
-@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, copy) NSString *amount;
 @property (nonatomic, strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe; // Used to only accept first valid swipe.
 @end
@@ -38,7 +38,7 @@
     
     // Beginning the transaction allows the swiper to listen for swipes. 
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    PPHAmount *total = [PPHAmount amountWithString:self.amount inCurrency:@"USD"];
+    PPHAmount *total = [PPHAmount amountWithString:self.amount];
     tm.ignoreHardwareReaders = NO;
     [tm beginPaymentWithAmount:total andName:@"simplePayment"];
     

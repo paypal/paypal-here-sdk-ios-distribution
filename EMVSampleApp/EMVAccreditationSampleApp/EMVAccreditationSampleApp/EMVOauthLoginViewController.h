@@ -12,9 +12,8 @@
 @interface EMVOauthLoginViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property(nonatomic, strong) PPHMerchantInfo *merchant;
-@property(nonatomic, strong) NSMutableString *serviceHostUrl;
+@property(nonatomic, strong) NSString *serviceHostUrl;
 @property(nonatomic, strong) NSMutableString *urlForTheSdkToUse;
-@property(nonatomic, strong) NSMutableArray *serviceHostUrlArray;
 @property(nonatomic, strong) NSDictionary *sdkBaseUrlDict;
 
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
