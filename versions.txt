@@ -129,3 +129,6 @@ immediately if something is going wrong in the SDK instances.
   - [BUG FIX] EMV sample app can now perform AU EMV transactions.
   - [BUG FIX] UK and AU merchants can now perform Key-In based transactions.
   - Improved EMV SDK UI for payment flows.
+
+1.4.4
+Bug fix: Fixing the AU country code check, that was wrongly setting the available payment options to "chip" for non AU merchants and was throwing the -2016 error.
