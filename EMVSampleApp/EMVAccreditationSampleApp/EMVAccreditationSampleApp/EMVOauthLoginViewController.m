@@ -22,7 +22,7 @@
 @interface EMVOauthLoginViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @property (nonatomic, strong) UIActionSheet *stageSelectedActionSheet;
-@property (nonatomic, strong) NSString *activeServer;
+@property (nonatomic, copy) NSString *activeServer;
 @end
 
 @implementation EMVOauthLoginViewController

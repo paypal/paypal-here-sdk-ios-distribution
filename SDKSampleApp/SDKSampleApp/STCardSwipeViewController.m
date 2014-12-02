@@ -15,7 +15,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *iphoneImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *swiperImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *cardImageView;
-@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, copy) NSString *amount;
 @property (nonatomic, strong) PPHTransactionWatcher *transactionWatcher;
 @property BOOL waitingForCardSwipe; // Used to only accept first valid swipe.
 @end

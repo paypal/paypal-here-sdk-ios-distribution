@@ -121,3 +121,11 @@ immediately if something is going wrong in the SDK instances.
   Add armv7s to the architectures list because xcode 6 does not have it by default.
   Adding the ability to download the invoice based off an invoiceId.
   Adding another constructor/initter in the PPHTransactionRecord that would allow us to construct a transaction record by providing a transactionId and an Invoice. This would aid in the auth and capture use case.
+
+1.4.3
+  What's new:
+  - Adding two new init APIs in PPHAmount.
+  - All the sample apps are now pointing to one and the same instance of the mid-tier server.
+  - [BUG FIX] EMV sample app can now perform AU EMV transactions.
+  - [BUG FIX] UK and AU merchants can now perform Key-In based transactions.
+  - Improved EMV SDK UI for payment flows.

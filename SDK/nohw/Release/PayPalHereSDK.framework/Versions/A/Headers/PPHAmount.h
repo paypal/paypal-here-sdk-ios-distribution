@@ -16,10 +16,30 @@
 @interface PPHAmount : NSObject
 
 /*!
+ * Get the locale code for a given country
+ * @param countryCode two letter ISO country code
+ */
++(NSString *)localeCodeFromCountry:(NSString *)country;
+
+/*!
  * Get the default currency code given an ISO country code
  * @param countryCode two letter ISO country code
  */
 +(NSString*)defaultCurrencyCodeInCountry: (NSString*) countryCode;
+
+/*!
+ * Create a PPHAmount given a decimal in a string.
+ * @param stringValue The amount, as a string and not including currency symbol
+ * NOTE: The currency information is deduced via the active merchant set within the SDK.
+ */
++(PPHAmount*)amountWithString: (NSString*) stringValue;
+
+/*!
+ * Create a PPHAmount given a decimal.
+ * @param amount The amount in decimal.
+ * NOTE: The currency information is deduced via the active merchant set within the SDK.
+ */
++(PPHAmount*)amountWithDecimal: (NSDecimalNumber*) amount;
 
 /*!
  * Create a PPHAmount given a decimal and a currency

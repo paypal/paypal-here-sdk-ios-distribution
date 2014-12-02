@@ -25,6 +25,9 @@ PPHLoggingDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Lets set the default stage in here
+    self.selectedStage = DEFAULT_STAGE;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -81,8 +84,7 @@ PPHLoggingDelegate
     // We keep track of the user's preference for sample app's payment flow.  Either Authorize-Only or Full-Capture
     self.paymentFlowIsAuthOnly = [[NSUserDefaults standardUserDefaults] boolForKey:kSDKSampleApp_paymentFlow_authOnlyBool_Key];
     
-    // Lets set the default stage in here
-    self.selectedStage = DEFAULT_STAGE;
+
     
     return YES;
 }
