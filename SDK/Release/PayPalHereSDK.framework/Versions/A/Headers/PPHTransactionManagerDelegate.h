@@ -26,15 +26,44 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
     ePPHTransactionType_GettingPaymentInfo,
     
     /*!
+     * This event will be triggered in cases where reader detection takes a while, such as for
+     * the audio readers. It presents an opportunity to show UI indicating that you are "working on it"
+     */
+    ePPHTransactionType_DidStartReaderDetection,
+    
+    /*!
+     * A fully working reader was detected and is available
+     */
+    ePPHTransactionType_DidDetectReaderDevice,
+    
+    /*!
+     * A reader device has been removed from the system
+     */
+    ePPHTransactionType_DidRemoveReader,
+    
+    /*!
+     * Something has occurred in the read head of the reader. Since processing can take a second or so,
+     * this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+     * will hurt success rate.
+     */
+    ePPHTransactionType_CardReadBegun,
+    
+    /*!
      * Card data received.  The transaction manager has received card data.
      */
     ePPHTransactionType_CardDataReceived,
+    
+    /*!
+     * A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.
+     */
+    ePPHTransactionType_FailedToReadCard,
     
     /*!
      * The TransactionManager has entered a state where it is communicating with the backend servers to collect a payment.
      * It is now too late to cancel the payment.
      */
     ePPHTransactionType_ProcessingPayment,
+    
     /*!
      * The TransactionManager has entered a state where it has completed the transaction successfully and is
      * waiting for the app to collect a signature from the customer and call the finalizePayment API.

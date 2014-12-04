@@ -23,7 +23,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log a message considered to be indicative of an error.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereError:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereError:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -40,7 +40,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log a message considered to be a potential issue affecting proper function.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereWarning:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereWarning:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -57,7 +57,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log informational events.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereInfo:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereInfo:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -74,7 +74,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log fxn tracing events.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereTrace:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereTrace:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -91,7 +91,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log debug/verbose events.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereDebug:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereDebug:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -108,7 +108,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log a message considered to be indicative of an error for hardware interactions.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereHardwareError:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereHardwareError:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -125,7 +125,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log a message considered to be a potential issue affecting proper function for hardware interactions.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereHardwareWarning:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereHardwareWarning:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -142,7 +142,7 @@ mean it, not just on a whim.</Abstract>
 			<Abstract type="html">Log informational events for hardware interactions.</Abstract>
 			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereHardwareInfo:(id)message</Declaration>
+			<Declaration>- (void)logPayPalHereHardwareInfo:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -166,7 +166,6 @@ mean it, not just on a whim.</Abstract>
             <NodeRef refid="52"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

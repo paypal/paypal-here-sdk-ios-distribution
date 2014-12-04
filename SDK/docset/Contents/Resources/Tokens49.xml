@@ -18,7 +18,7 @@
 NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didDetectUpgradeableReader:(id)reader withMessage:(id)message isRequired:(id)required isInitial:(id)initial withEstimatedDuration:(id)estimatedDuration</Declaration>
+			<Declaration>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)reader withMessage:(NSString *)message isRequired:(BOOL)required isInitial:(BOOL)initial withEstimatedDuration:(NSTimeInterval)estimatedDuration</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
@@ -60,7 +60,7 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 			<Abstract type="html">A reader upgrade was successful</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didUpgradeReader:(id)successful withMessage:(id)message</Declaration>
+			<Declaration>- (void)didUpgradeReader:(BOOL)successful withMessage:(NSString *)message</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>successful</Name>
@@ -80,7 +80,7 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 			<Abstract type="html">There is a status update to the current ongoing reader upgrade</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didReceiveReaderUpgradeStatusWithMessage:(id)message currentStep:(id)currentStep totalSteps:(id)totalSteps completion:(id)completion</Declaration>
+			<Declaration>- (void)didReceiveReaderUpgradeStatusWithMessage:(NSString *)message currentStep:(NSInteger)currentStep totalSteps:(NSInteger)totalSteps completion:(float)completion</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>message</Name>
@@ -106,7 +106,7 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 			<Abstract type="html">Called when an event related to chip &amp;amp; pin transactions has occurred on the reader</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didReceiveChipAndPinEvent:(id)event</Declaration>
+			<Declaration>- (void)didReceiveChipAndPinEvent:(PPHChipAndPinEvent *)event</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>event</Name>
@@ -118,7 +118,6 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
             <NodeRef refid="49"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

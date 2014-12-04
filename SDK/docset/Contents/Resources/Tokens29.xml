@@ -341,7 +341,7 @@
 			<Abstract type="html">Initialize and compute totals for an invoice</Abstract>
 			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithInvoice:(id)invoice</Declaration>
+			<Declaration>- (id)initWithInvoice:(PPHInvoice *)invoice</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>invoice</Name>
@@ -358,7 +358,7 @@
 			<Abstract type="html">Retrieve the total using a custom composition</Abstract>
 			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>- (NSDecimalNumber *)totalWithParts:(id)composition</Declaration>
+			<Declaration>- (NSDecimalNumber *)totalWithParts:(PPHInvoiceTotalParts)composition</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>composition</Name>
@@ -370,7 +370,6 @@
             <NodeRef refid="29"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

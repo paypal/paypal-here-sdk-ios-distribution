@@ -19,7 +19,7 @@ this object can be saved to persistent storage.</Abstract>
 			<Abstract type="html">Initialize a PPHAccessAccount from details</Abstract>
 			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithAccessToken:(id)accessToken expires_in:(id)seconds refreshUrl:(id)refreshUrl details:(id)paypalAccessResponse</Declaration>
+			<Declaration>- (id)initWithAccessToken:(NSString *)accessToken expires_in:(NSString *)seconds refreshUrl:(NSString *)refreshUrl details:(NSDictionary *)paypalAccessResponse</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>accessToken</Name>
@@ -524,7 +524,6 @@ if and when the PayPal Access process is repeated</Abstract>
             <NodeRef refid="1"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>
