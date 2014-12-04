@@ -845,7 +845,7 @@ payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authoriz
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)authorizePaymentWithPaymentType:(id)<em>paymentMethod</em> withCompletionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)<em>paymentMethod</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
 
     
 	
@@ -963,7 +963,7 @@ the fixed amount item.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginPaymentWithAmount:(id)<em>amount</em> andName:(id)<em>itemName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginPaymentWithAmount:(PPHAmount *)<em>amount</em> andName:(NSString *)<em>itemName</em></code></div>
 
     
 	
@@ -1021,7 +1021,7 @@ the fixed amount item.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(id)<em>previousTransaction</em> forAmount:(id)<em>amountOrNil</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(PPHTransactionRecord *)<em>previousTransaction</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
 
     
 	
@@ -1086,7 +1086,7 @@ This version will cause the SDK to show UI during the refund flow.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginRefundUsingSDKUI_WithPaymentType:(id)<em>paymentType</em> withViewController:(id)<em>vc</em> record:(id)<em>record</em> amount:(id)<em>amount</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withViewController:(UIViewController *)<em>vc</em> record:(PPHTransactionRecord *)<em>record</em> amount:(PPHAmount *)<em>amount</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
 
     
 	
@@ -1194,7 +1194,7 @@ This version will cause the SDK to show UI during the refund flow.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)capturePaymentForAuthorization:(id)<em>authorizedTransactionRecord</em> withCompletionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)capturePaymentForAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
 
     
 	
@@ -1263,7 +1263,7 @@ This version will cause the SDK to show UI during the payment flow.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)processPaymentUsingSDKUI_WithPaymentType:(id)<em>paymentType</em> withTransactionController:(id)<em>controller</em> withViewController:(id)<em>vc</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)<em>controller</em> withViewController:(UIViewController *)<em>vc</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
 
     
 	
@@ -1340,7 +1340,7 @@ record the invoice into the paypal system for record-keeping purposes.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)processPaymentWithPaymentType:(id)<em>paymentType</em> withTransactionController:(id)<em>controller</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)processPaymentWithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)<em>controller</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
 
     
 	
@@ -1410,7 +1410,7 @@ and complete the transaction.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(id)<em>signature</em> forTransaction:(id)<em>previousTransaction</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHTransactionRecord *)<em>previousTransaction</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
 
     
 	
@@ -1476,7 +1476,7 @@ After an authorization you can provide the signature either before or after a ca
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)sendReceipt:(id)<em>previousTransaction</em> toRecipient:(id)<em>destination</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)sendReceipt:(PPHTransactionRecord *)<em>previousTransaction</em> toRecipient:(PPHReceiptDestination *)<em>destination</em> completionHandler:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
 
     
 	
@@ -1543,7 +1543,7 @@ which we should send the receipt.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)voidAuthorization:(id)<em>authorizedTransactionRecord</em> withCompletionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)voidAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
 
     
 	
@@ -1589,9 +1589,6 @@ error object will be non nil.  Otherwise it will contain a <a href="../Classes/P
 					
                     
                     
-                    
-                    
-
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1602,7 +1599,7 @@ error object will be non nil.  Otherwise it will contain a <a href="../Classes/P
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-11-24)</span><br />
+						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-12-04)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

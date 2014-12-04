@@ -19,7 +19,7 @@ and could be used by the application to display appropriate text, image or UI on
 			<Abstract type="html">onPaymentEvent</Abstract>
 			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)onPaymentEvent:(id)event</Declaration>
+			<Declaration>- (void)onPaymentEvent:(PPHTransactionManagerEvent *)event</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>event</Name>
@@ -31,7 +31,6 @@ and could be used by the application to display appropriate text, image or UI on
             <NodeRef refid="57"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>
