@@ -11,6 +11,7 @@
 
 @interface STCardSwipeViewController : UIViewController <PPHTransactionManagerDelegate>
 @property(nonatomic, weak) IBOutlet UIActivityIndicatorView *activity;
+@property(nonatomic, weak) IBOutlet UILabel *swiperActivityLabel;
 
 - (id)initWithAmount: (NSString *)amount nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 @end
