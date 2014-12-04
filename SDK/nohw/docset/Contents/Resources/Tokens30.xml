@@ -17,7 +17,7 @@
 			<Abstract type="html">Get an object that will notify delegate of new and removed checkins from customers</Abstract>
 			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
 			
-			<Declaration>- (PPHLocationWatcher *)watcherForLocationId:(id)locationId withDelegate:(id)delegate</Declaration>
+			<Declaration>- (PPHLocationWatcher *)watcherForLocationId:(NSString *)locationId withDelegate:(id&lt;PPHLocationWatcherDelegate&gt;)delegate</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>locationId</Name>
@@ -39,7 +39,7 @@ to call update: manually</Abstract>
 			<Abstract type="html">Kick off a request to get all merchant locations for the currently active merchant</Abstract>
 			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginGetLocations:(id)handler</Declaration>
+			<Declaration>- (void)beginGetLocations:(void ( ^ ) ( PPHError *error , NSArray *locations ))handler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>handler</Name>
@@ -51,7 +51,6 @@ to call update: manually</Abstract>
             <NodeRef refid="30"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>
