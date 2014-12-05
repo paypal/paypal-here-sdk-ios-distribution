@@ -191,8 +191,7 @@
         checkedInCustomerView = [[CheckedInCustomerViewController alloc]
                          initWithNibName:@"CheckedInCustomerViewController_iPhone"
                          bundle:nil];
-    }
-    else {
+    } else {
         checkedInCustomerView = [[CheckedInCustomerViewController alloc]
                          initWithNibName:@"CheckedInCustomerViewController_iPad"
                          bundle:nil];
@@ -249,20 +248,15 @@
     if (event.eventType == ePPHTransactionType_Idle) {
         [self.processingTransactionSpinny stopAnimating];
         self.processingTransactionSpinny.hidden = YES;
-    }
-    else if(event.eventType == ePPHTransactionType_CardReadBegun) {
+    } else if (event.eventType == ePPHTransactionType_CardReadBegun) {
         _swiperActivityLabel.text = @"Detecting a swipe...";
-    }
-    else if(event.eventType == ePPHTransactionType_DidStartReaderDetection) {
+    } else if (event.eventType == ePPHTransactionType_DidStartReaderDetection) {
         _swiperActivityLabel.text = @"Detecting a reader...";
-    }
-    else if(event.eventType == ePPHTransactionType_DidDetectReaderDevice) {
+    } else if (event.eventType == ePPHTransactionType_DidDetectReaderDevice) {
         _swiperActivityLabel.text = @"Successfully detected a swiper";
-    }
-    else if(event.eventType == ePPHTransactionType_DidRemoveReader) {
+    } else if (event.eventType == ePPHTransactionType_DidRemoveReader) {
         _swiperActivityLabel.text = @"You removed the reader";
-    }
-    else if(event.eventType == ePPHTransactionType_FailedToReadCard) {
+    } else if (event.eventType == ePPHTransactionType_FailedToReadCard) {
         _swiperActivityLabel.text = @"Swipe Failed.  Please try again";
     }
      
@@ -285,8 +279,7 @@
                                                                      self.transactionResponse = response;
                                                                      [self showAuthorizationCompeleteView];
                                                                  }];
-         }
-         else {
+         } else {
              //Now ask to authorize (and take) payment all in one shot.
              [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
                                                        withTransactionController:self
@@ -294,14 +287,12 @@
                                                                    self.transactionResponse = response;
                                                                    if (response.error) {
                                                                        [self showPaymentCompeleteView];
-                                                                   }
-                                                                   else {
+                                                                   } else {
                                                                        // Is a signature required for this payment?  If so
                                                                        // then let's collect a signature and provide it to the SDK.
                                                                        if (response.isSignatureRequiredToFinalize) {
                                                                            [self collectSignatureAndFinalizePurchaseWithRecord];
-                                                                       }
-                                                                       else {
+                                                                       } else {
                                                                            // All done.  Tell the user the good news.
                                                                            //Let's exit the payment screen once they hit OK
                                                                            _doneWithPayScreen = YES;
@@ -322,8 +313,7 @@
                     initWithNibName:@"SignatureViewController_iPhone"
                     bundle:nil
                     transactionResponse:_transactionResponse];
-    }
-    else {
+    } else {
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPad"
                     bundle:nil

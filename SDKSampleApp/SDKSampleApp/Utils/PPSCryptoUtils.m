@@ -366,9 +366,7 @@ char *NewBase64Encode(
                                            | ((inputBuffer[i + 1] & 0xF0) >> 4)];
 		outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i + 1] & 0x0F) << 2];
 		outputBuffer[j++] =	'=';
-	}
-	else if (i < length)
-	{
+	} else if (i < length) {
 		//
 		// Handle the double '=' case
 		//

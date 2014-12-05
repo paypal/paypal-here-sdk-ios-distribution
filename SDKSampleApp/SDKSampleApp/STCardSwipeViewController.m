@@ -90,20 +90,15 @@
 {
     if(event.eventType == ePPHTransactionType_CardReadBegun) {
         _swiperActivityLabel.text = @"Detecting a swipe...";
-    }
-    else if(event.eventType == ePPHTransactionType_FailedToReadCard) {
+    } else if (event.eventType == ePPHTransactionType_FailedToReadCard) {
         _swiperActivityLabel.text = @"Swipe Failed.  Please try again";
-    }
-    else if(event.eventType == ePPHTransactionType_DidStartReaderDetection) {
+    } else if (event.eventType == ePPHTransactionType_DidStartReaderDetection) {
         _swiperActivityLabel.text = @"Detecting a reader...";
-    }
-    else if(event.eventType == ePPHTransactionType_DidDetectReaderDevice) {
+    } else if (event.eventType == ePPHTransactionType_DidDetectReaderDevice) {
         _swiperActivityLabel.text = @"Successfully detected a swiper";
-    }
-    else if(event.eventType == ePPHTransactionType_DidRemoveReader) {
+    } else if (event.eventType == ePPHTransactionType_DidRemoveReader) {
         _swiperActivityLabel.text = @"You removed the reader";
-    }
-    else if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
+    } else if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
           self.waitingForCardSwipe = NO;
         _swiperActivityLabel.text = @"Swipe Success!";
         

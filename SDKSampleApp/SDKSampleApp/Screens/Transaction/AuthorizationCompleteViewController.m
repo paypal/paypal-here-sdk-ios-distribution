@@ -54,8 +54,7 @@
         } else {
             _invoiceNumberLabel.text = [NSString stringWithFormat: @"Invoice Id : %@", _authResponse.record.payPalInvoiceId];
         }
-    }
-    else {
+    } else {
         //self.authResultLabel.text = @"Authorization Declined";
         self.authResultLabel.text = [NSString stringWithFormat: @"Authorization Declined With Error : %@", _authResponse.error.description];
     }
@@ -106,8 +105,7 @@
                                                                
                                                                //Place this capture record in the list of records that are refundable
                                                                [appDelegate.refundableRecords addObject:response.record];
-                                                           }
-                                                           else {
+                                                           } else {
                                                                self.authResultLabel.text = @"Capture Failed";
                                                                _captureButton.enabled = YES;
                                                            }

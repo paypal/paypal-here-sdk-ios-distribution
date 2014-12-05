@@ -210,8 +210,7 @@ enum swiperState : NSUInteger {
         checkedInCustomerView = [[CheckedInCustomerViewController alloc]
                                  initWithNibName:@"CheckedInCustomerViewController_iPhone"
                                  bundle:nil];
-    }
-    else {
+    } else {
         checkedInCustomerView = [[CheckedInCustomerViewController alloc]
                                  initWithNibName:@"CheckedInCustomerViewController_iPad"
                                  bundle:nil];
@@ -273,8 +272,7 @@ enum swiperState : NSUInteger {
     if (event.eventType == ePPHTransactionType_Idle) {
         [self.processingTransactionSpinny stopAnimating];
         self.processingTransactionSpinny.hidden = YES;
-    }
-    else {
+    } else {
         [self.processingTransactionSpinny startAnimating];
         self.processingTransactionSpinny.hidden = NO;
     }
@@ -288,8 +286,7 @@ enum swiperState : NSUInteger {
                     initWithNibName:@"SignatureViewController_iPhone"
                     bundle:nil
                     transactionResponse:_transactionResponse];
-    }
-    else {
+    } else {
         settings = [[SignatureViewController alloc]
                     initWithNibName:@"SignatureViewController_iPad"
                     bundle:nil

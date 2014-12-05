@@ -218,9 +218,7 @@ static NSLock *sKeychainLock = nil;
 	if ([self searchKeychainMatching:identifier] != nil)
     {
 		return [self updateKeychainValue:data forIdentifier:identifier];
-    }
-	else
-    {
+    } else {
 		return [self createKeychainValue:data forIdentifier:identifier];
     }
 }
