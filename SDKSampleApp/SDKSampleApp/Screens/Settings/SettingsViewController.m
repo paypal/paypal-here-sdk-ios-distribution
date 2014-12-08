@@ -44,7 +44,7 @@
     STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (appDelegate.isMerchantCheckedin){
         [self.checkinSwitch setOn:YES animated:YES];
-    }else{
+    } else{
         [self.checkinSwitch setOn:NO animated:YES];
     }
     self.checkinMerchantSpinny.hidden = YES;
@@ -81,8 +81,7 @@
     
     if ([[[PayPalHereSDK sharedCardReaderManager] availableDevices] count] > 0) {
 		self.readerDetectedButton.enabled = YES;
-	}
-	else {
+	} else {
 		self.readerDetectedButton.enabled = NO;
 	}
     
@@ -112,10 +111,10 @@
             self.checkinMerchantSpinny.hidden = NO;
             [self.checkinMerchantSpinny startAnimating];
             [self getMerchantCheckin:self.merchantLocation];
-        }else{
+        } else {
             self.isMerchantCheckinPending = TRUE;
         }
-    }else{
+    } else {
         NSLog(@"In Check In Switch Off");
         [self.checkinSwitch setOn:NO animated:YES];
         STAppDelegate *appDelegate = (STAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -339,7 +338,7 @@
                 appDelegate.merchantLocation = myLocation;
                 appDelegate.isMerchantCheckedin = YES;
                 [self.checkinSwitch setOn:YES animated:YES];
-            }else{
+            } else {
                 NSLog(@"Oops.. We got error while saving the location. Error Code: %ld Error Description: %@",(long)error.code, error.description);
                 [self.checkinSwitch setOn:NO animated:YES];
             }

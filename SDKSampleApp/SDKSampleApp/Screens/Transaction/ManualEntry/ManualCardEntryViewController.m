@@ -158,8 +158,7 @@
                                                                 [self showAuthorizationCompeleteView];
                                                             }];
         
-    }
-    else {
+    } else {
     
         [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
                 withTransactionController:self

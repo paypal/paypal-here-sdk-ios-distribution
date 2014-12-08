@@ -47,6 +47,11 @@
     _activity.hidden = YES;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _swiperActivityLabel.text = @"";
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self animateCard];
@@ -83,8 +88,19 @@
  */
 -(void)onPaymentEvent:(PPHTransactionManagerEvent *) event
 {
-    if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
+    if(event.eventType == ePPHTransactionType_CardReadBegun) {
+        _swiperActivityLabel.text = @"Detecting a swipe...";
+    } else if (event.eventType == ePPHTransactionType_FailedToReadCard) {
+        _swiperActivityLabel.text = @"Swipe Failed.  Please try again";
+    } else if (event.eventType == ePPHTransactionType_DidStartReaderDetection) {
+        _swiperActivityLabel.text = @"Detecting a reader...";
+    } else if (event.eventType == ePPHTransactionType_DidDetectReaderDevice) {
+        _swiperActivityLabel.text = @"Successfully detected a swiper";
+    } else if (event.eventType == ePPHTransactionType_DidRemoveReader) {
+        _swiperActivityLabel.text = @"You removed the reader";
+    } else if (event.eventType == ePPHTransactionType_CardDataReceived && self.waitingForCardSwipe)  {
           self.waitingForCardSwipe = NO;
+        _swiperActivityLabel.text = @"Swipe Success!";
         
         _activity.hidden = NO;
         [_activity startAnimating];

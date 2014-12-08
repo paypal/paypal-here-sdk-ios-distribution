@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="STCardSwipeViewController">
@@ -10,6 +10,7 @@
                 <outlet property="activity" destination="BxJ-Ee-jre" id="s8h-MX-DOO"/>
                 <outlet property="cardImageView" destination="Zp2-qS-CLu" id="uwK-ep-wQ3"/>
                 <outlet property="iphoneImageView" destination="qJX-Am-5fO" id="X7N-Gd-lsM"/>
+                <outlet property="swiperActivityLabel" destination="1x9-pY-9te" id="kbO-8u-aQf"/>
                 <outlet property="swiperImageView" destination="xbl-mE-Lvs" id="Oan-qr-u03"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,11 +22,9 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-Og-X6M">
                     <rect key="frame" x="12" y="40" width="297" height="488"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VISA350x220.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Zp2-qS-CLu">
                             <rect key="frame" x="20" y="47" width="92" height="55"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="CWy-Ml-sC1"/>
                                 <constraint firstAttribute="width" constant="92" id="iVv-8z-lwW"/>
@@ -33,7 +32,6 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypalhere.png" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-mE-Lvs">
                             <rect key="frame" x="65" y="61" width="121" height="52"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="V7Q-Fg-1mR"/>
                                 <constraint firstAttribute="width" constant="121" id="cUA-ys-6r9"/>
@@ -41,19 +39,15 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone.png" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-Am-5fO">
                             <rect key="frame" x="71" y="110" width="154" height="340"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNO-kC-FZU">
                             <rect key="frame" x="87" y="157" width="122" height="184"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pp_v_rgb.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-lA-HAR">
                                     <rect key="frame" x="24" y="22" width="78" height="87"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Swipe Now!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="91" translatesAutoresizingMaskIntoConstraints="NO" id="i2Y-H8-5rf">
                                     <rect key="frame" x="18" y="106" width="91" height="64"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="G5a-Lj-DQP"/>
                                     </constraints>
@@ -73,11 +67,16 @@
                         </view>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-Ee-jre">
                             <rect key="frame" x="130" y="344" width="37" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="37" id="Gr1-AP-L9a"/>
                             </constraints>
                         </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1x9-pY-9te">
+                            <rect key="frame" x="20" y="458" width="269" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -105,8 +104,6 @@
                 <constraint firstItem="nzn-Og-X6M" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="QEY-MW-abd"/>
                 <constraint firstItem="nzn-Og-X6M" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bGV-jj-8DL"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
@@ -115,4 +112,9 @@
         <image name="paypalhere.png" width="630" height="215"/>
         <image name="pp_v_rgb.png" width="1180" height="1164"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

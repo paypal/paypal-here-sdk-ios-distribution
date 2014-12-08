@@ -63,8 +63,7 @@
         if ([_transactionResponse.record encryptedCardData]) {
             self.paymentDetails.text = [NSString stringWithFormat:@"%@\n Card-Type is %@", self.paymentDetails.text, [self stringFromCardType:_transactionResponse.record.encryptedCardData.cardType]];
         }
-    }
-    else {
+    } else {
         self.paymentStatus.text = @"Payment Declined";
         self.paymentDetails.text = [NSString stringWithFormat: @"Error : %@", _transactionResponse.error.description];
     }
