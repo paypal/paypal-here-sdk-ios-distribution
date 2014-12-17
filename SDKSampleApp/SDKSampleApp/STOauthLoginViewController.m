@@ -558,7 +558,7 @@
  * called.
  */
 -(void)configureServers:(UIPickerView *)pickerView {
-    int index = [pickerView selectedRowInComponent:0];
+    NSInteger index = [pickerView selectedRowInComponent:0];
     NSString *env = [NSString stringWithFormat:@"%@", ENVIRONMENTS[index]];
     self.selectedEnv = env;
     NSLog(@"%@", env);
