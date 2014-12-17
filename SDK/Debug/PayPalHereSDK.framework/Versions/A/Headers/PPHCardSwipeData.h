@@ -24,6 +24,16 @@
 -(id)initWithTrack1: (NSString*) track1 track2: (NSString*) track2 readerSerial: (NSString*) serial withType: (NSString*) readerType andExtraInfo: (NSDictionary*) extraInfo;
 
 /*!
+ * Initialize card swipe data from a non-PayPalHere compatible card reader.
+ * @param encryptedTrack1 The encrypted data from track1, if any
+ * @param encryptedTrack2 The encrypted data from track2, if any
+ * @param serial The serial number of the reader
+ * @param ksn The Key serial number of the reader, if any
+ * @param readerType the type of reader, such as MAGTEK, ROAM or MIURA_(SWIPE|FB_SWIPE)
+ */
+-(id)initWithEncryptedTrack1: (NSString*) encryptedTrack1 encryptedTrack2: (NSString*) encryptedTrack2 readerSerial: (NSString*) serial keySerial: (NSString*) ksn withType: (NSString*) readerType;
+
+/*!
  * The masked card number, if available. Usually includes first four and last four
  */
 @property (nonatomic,strong) NSString *maskedCardNumber;
@@ -58,6 +68,16 @@
 @property (nonatomic,strong) NSDictionary *extraData;
 
 /*!
+ * Key serial number of the reader.
+ */
+@property (nonatomic, strong) NSString *ksn;
+
+/*!
+ * Serial number of the reader.
+ */
+@property (nonatomic, strong) NSString *serial;
+
+/*!
  * Set this property to YES before beginning payment is we have, or will collect a signature
  * for this payment. Beginning a payment with a signature will automatically set this value to YES.
  */
@@ -68,6 +88,13 @@
  * @param track1AndOr2 whatever was received from the card reader
  */
 -(BOOL)parseTracks:(NSString*)track1AndOr2;
+
+/*!
+ * Parse raw track data for name, account number, etc.
+ * @param maskedTrack1 The masked track1 information obtained from the card reader.
+ * @param maskedTrack2 The masked track2 information obtained from the card reader.
+ */
+-(BOOL)parseTracksWithMaskedTrack1:(NSString*)maskedTrack1 maskedTrack2:(NSString *)maskedTrack2;
 
 /*!
  * The card reader on which the swipe occurred.

@@ -258,6 +258,32 @@
  */
 @property (nonatomic, assign) BOOL ignoreHardwareReaders;
 
+/**
+ * Configure the Transaction Manager to ignore OR obey PayPal's backend-based signature required above "x" amount configuration,
+ * (also referred to as the default signature setting) which could also be obtained via the "TransactionResponse.isSignatureRequiredToFinalize" property.
+ *
+ * When the application invokes the "setActiveMerchant" API, the SDK would go ahead and fetch various configuration and properties 
+ * for this merchant.
+ *
+ * One of the properties provided to the SDK would include the minimum amount above which a signature is required.
+ *
+ * This enables the transaction manager to move to a " Waiting For Signature " state and expects the application
+ * to invoke the "provideSignature" API after the completion of the 'ProcessPayment" API (when an amount > minimum required for signature).
+ *
+ * If the app chooses to override this behavior and not collect a signature for ANY amount, they must set this property as YES. This would enable
+ * the transaction manager to ignore the backend-based (a.k.a isSignatureRequiredToFinalize) setting and move to an idle state once the payment is
+ * complete.
+ *
+ * If set to NO, in conjunction with the backend-based setting (a.k.a isSignatureRequiredToFinalize), the SDK would expect the application to invoke the
+ * "provideSignature" API after the completion of the "processPayment" API.
+ *
+ * Default value set to NO.
+ *
+ * NOTE : This property would ONLY be applicable for Swipe based transactions and will not be considered while performing any EMV related transactions.
+ *
+ */
+@property (nonatomic, assign) BOOL shouldAppOverrideDefaultSignatureSetting;
+
 /*! beginPayment puts us in a state to take a payment.  
  * You can now set the shoppingCart, signature, and extras 
  */
@@ -280,7 +306,11 @@
 - (void) beginPaymentWithAmount:(PPHAmount*) amount andName:(NSString *)itemName;
 
 /*! 
- * give up on the current payment if possible (if not already capturing payment).   Clears state members. 
+ * Clears the current state of the transaction, including current invoice, card data, etc, thus 
+ * returning back to an Idle state.
+ *
+ * Returns an error if unable to clear the states. This could happen if we are in the middle of processing 
+ * a transaction. Else, returns nil.
  */
 -(PPHError *) cancelPayment;
 
