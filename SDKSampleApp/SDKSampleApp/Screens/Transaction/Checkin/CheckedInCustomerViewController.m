@@ -195,7 +195,7 @@
 #pragma mark PPHLocationWatcherDelegate
 -(void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified
 {
-    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %d",[openTabs count]);
+    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %ld", (unsigned long)[openTabs count]);
     self.checkedInClients = [[NSMutableArray alloc] initWithArray:openTabs];
     [self.tableView reloadData];
 }

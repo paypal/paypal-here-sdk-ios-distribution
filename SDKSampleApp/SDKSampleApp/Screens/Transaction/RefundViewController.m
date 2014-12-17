@@ -56,7 +56,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int numTransactions = [self.transactionRecords count];
+    NSUInteger numTransactions = [self.transactionRecords count];
     if (numTransactions == 0) {
         numTransactions += 1;
         _showingNoneAvailable = YES;
