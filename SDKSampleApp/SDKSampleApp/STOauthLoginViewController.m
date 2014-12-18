@@ -154,11 +154,9 @@
     
     if (!self.usernameField.text.length) {
         [self.usernameField becomeFirstResponder];
-    }
-    else if (!self.passwordField.text.length) {
+    } else if (!self.passwordField.text.length) {
         [self.passwordField becomeFirstResponder];
-    }
-    else {
+    } else {
         [self dismissKeyboard];
     }
     
@@ -227,8 +225,7 @@
                                    if (ticket == nil) {
                                        [self showAlertWithTitle:@"Missing PayPal Login Info"
                                                      andMessage:@"Logging in to PayPal requires a non-nil ticket token, but OAuth returned a nil ticket."];
-                                   }
-                                   else {
+                                   } else {
                                        
                                        // We've got a ticket, we've got a merchant - let's fill out our merchant object which we'll
                                        // give to the SDK once we complete the login process.
@@ -240,15 +237,13 @@
                                            // the sample server.  Let's give these credentials to the SDK and conclude
                                            // the login process.
                                            [self setActiveMerchantWithAccessTokenDict:jsonResponse];
-                                       }
-                                       else {
+                                       } else {
                                            // We don't have an access_token?  Then we need to login to PayPal's oauth process.
                                            // Let's procede to that step.
                                            [self loginToPayPal:ticket];
                                        }
                                    }
-                               }
-                               else {
+                               } else {
                                    self.merchant = nil;
                                    
                                    [self showAlertWithTitle:@"Heroku Login Failed"
@@ -381,9 +376,7 @@
                                }
                                
                            }];
-                       }
-                       
-                       else {
+                       } else {
                            
                            NSLog(@"We have FAILED to setActiveMerchant from setActiveMerchantWithAccessTokenDict, showing error Alert.");
                            
@@ -430,14 +423,12 @@
                 NSString *url = [jsonResponse objectForKey:@"url"];
                 NSLog(@"Pointing Safari at URL [%@]", url);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-			}
-            else if ([jsonResponse objectForKey:@"access_token"]) {
+			} else if ([jsonResponse objectForKey:@"access_token"]) {
                 // The access token exists!   The user must have previously logged into
                 // the sample server.  Let's give these credentials to the SDK and conclude
                 // the login process.
                 [self setActiveMerchantWithAccessTokenDict:jsonResponse];
-            }
-			else {
+            } else {
                 
                 // UH-OH - NO URL FOR SAFARI TO FOLLOW, NO ACCESS TOKEN FOR YOU. FAIL.
                 // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
@@ -448,8 +439,7 @@
                 
 			}
             
-        }
-        else {
+        } else {
             [self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response was ambiguous"];
         }
     }];
@@ -546,8 +536,7 @@
 {
     if ([self.usernameField isFirstResponder]) {
         [self.passwordField becomeFirstResponder];
-    }
-    else {
+    } else {
         [self dismissKeyboard];
     }
     
@@ -569,7 +558,7 @@
  * called.
  */
 -(void)configureServers:(UIPickerView *)pickerView {
-    int index = [pickerView selectedRowInComponent:0];
+    NSInteger index = [pickerView selectedRowInComponent:0];
     NSString *env = [NSString stringWithFormat:@"%@", ENVIRONMENTS[index]];
     self.selectedEnv = env;
     NSLog(@"%@", env);
@@ -583,13 +572,11 @@
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
         [self showSelectedStageText:NO];
         return;
-    }
-    else if(index == sandboxIndex) {
+    } else if (index == sandboxIndex) {
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
         [self showSelectedStageText:NO];
         return;
-    }
-    else if(index == stageIndex) {
+    } else if (index == stageIndex) {
         /*
          * Deprecated.  Only used when dealing with test stages.  In a shipping app don't call it.
          */

@@ -107,8 +107,7 @@
                         if (record.error) {
                             NSString *message = [NSString stringWithFormat:@"Payment using checkin Failed with an error: %@", record.error.apiMessage];
                             [self showAlertWithTitle:@"Payment Failed" andMessage:message];
-                        }
-                        else {
+                        } else {
                             self.transactionResponse = record;
                             [self showPaymentCompeleteView];
                         }
@@ -188,7 +187,7 @@
     if (nil != client){
         NSLog(@"Calling takePaymentUsingCheckinClient with the checkedin client: %@",client.customerName);
         [self takePaymentUsingCheckinClient:client];
-    }else{
+    } else {
         NSLog(@"Oops! Selected row has no checkeding client..");
     }
 }
@@ -196,7 +195,7 @@
 #pragma mark PPHLocationWatcherDelegate
 -(void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified
 {
-    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %d",[openTabs count]);
+    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %ld", (unsigned long)[openTabs count]);
     self.checkedInClients = [[NSMutableArray alloc] initWithArray:openTabs];
     [self.tableView reloadData];
 }

@@ -38,10 +38,68 @@ signatures, and other data related to this payment.
         </Token>
         
         <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_DidStartReaderDetection</TokenIdentifier>
+            <Abstract type="html">This event will be triggered in cases where reader detection takes a while, such as for
+the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;
+     </Abstract>
+            <Declaration>ePPHTransactionType_DidStartReaderDetection</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="76"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_DidDetectReaderDevice</TokenIdentifier>
+            <Abstract type="html">A fully working reader was detected and is available
+     </Abstract>
+            <Declaration>ePPHTransactionType_DidDetectReaderDevice</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="76"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_DidRemoveReader</TokenIdentifier>
+            <Abstract type="html">A reader device has been removed from the system
+     </Abstract>
+            <Declaration>ePPHTransactionType_DidRemoveReader</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="76"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_CardReadBegun</TokenIdentifier>
+            <Abstract type="html">Something has occurred in the read head of the reader. Since processing can take a second or so,
+this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+will hurt success rate.
+     </Abstract>
+            <Declaration>ePPHTransactionType_CardReadBegun</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="76"/>
+        </Token>
+        
+        <Token>
             <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_CardDataReceived</TokenIdentifier>
             <Abstract type="html">Card data received.  The transaction manager has received card data.
      </Abstract>
             <Declaration>ePPHTransactionType_CardDataReceived</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="76"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_FailedToReadCard</TokenIdentifier>
+            <Abstract type="html">A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.
+     </Abstract>
+            <Declaration>ePPHTransactionType_FailedToReadCard</Declaration>
             
             <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
             

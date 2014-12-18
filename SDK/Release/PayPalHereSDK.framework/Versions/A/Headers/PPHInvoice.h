@@ -227,11 +227,11 @@
 
 /*!
  Creates an invoice item with the given parameters an returns a pointer to it.
- @param itemId NSString The itemId for the new invoice item. Must be unique to other invoice items which don't have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don't call reconcileInContext.
+ @param itemId NSString The itemId for the new invoice item. Must be unique to other invoice items which don't have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don't call reconcileInContext. If the itemId is not unique this method will return nil. Also, if you pass in a nil itemId this method will also return nil.
  @param name NSString The item name.
- @param quantity NSDecimalNumber The number of the items to put in the cart.
- @param unitPrice NSDecimalNumber The price of a single one of these items.
- @param taxRate NSDecimalNumber The tax to be applied to this item.
+ @param quantity NSDecimalNumber The number of the items to put in the cart. This value must not be negative, if a negative quantity is passed in this method will return nil.
+ @param unitPrice NSDecimalNumber The price of a single one of these items. This value must not be negative, if a negative unitPrice is passed in this method will return nil.
+ @param taxRate NSDecimalNumber The tax to be applied to this item. This value must not be negative, if a negative taxRate is passed in this method will return nil.
  @param taxRateName NSString The name for the tax rate given to this item.
  @return PPHInvoiceItem The newly created item.
  */

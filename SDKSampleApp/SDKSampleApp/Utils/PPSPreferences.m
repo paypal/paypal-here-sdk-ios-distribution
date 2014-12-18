@@ -180,7 +180,7 @@ static NSLock *sKeychainLock = nil;
 	if ( status != noErr )
 	{
         if (status != -25300) {
-            NSLog(@"Could not find %@ in keychain (result code = %ld)", identifier, status);
+            NSLog(@"Could not find %@ in keychain (result code = %ld)", identifier, (long)status);
         }
 		return nil;
 	}
@@ -218,9 +218,7 @@ static NSLock *sKeychainLock = nil;
 	if ([self searchKeychainMatching:identifier] != nil)
     {
 		return [self updateKeychainValue:data forIdentifier:identifier];
-    }
-	else
-    {
+    } else {
 		return [self createKeychainValue:data forIdentifier:identifier];
     }
 }

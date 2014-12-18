@@ -94,8 +94,7 @@
                                                                        break;
                                                                    }
                                                                }
-                                                           }
-                                                           else {
+                                                           } else {
                                                                _actionLabel.text = @"Void Failed";
                                                                _voidButton.enabled = YES;
                                                                _captureOrigAmountButton.enabled = YES;
@@ -234,8 +233,7 @@
                                                                
                                                                //Place this capture record in the list of records that are refundable
                                                                [appDelegate.refundableRecords addObject:response.record];
-                                                           }
-                                                           else {
+                                                           } else {
                                                                [self captureStatusWithText:@"Capture Failed"];
                                                                
                                                            }

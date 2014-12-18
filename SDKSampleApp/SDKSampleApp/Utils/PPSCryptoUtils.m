@@ -112,7 +112,7 @@ char *NewBase64Encode(const void *buffer, size_t length, bool separateLines, siz
   
   // Now SHA1 Hash the key to get the HMAC key
   unsigned char hashKey[CC_SHA1_DIGEST_LENGTH];
-  if (!CC_SHA1(key.bytes, key.length, hashKey)) {
+  if (!CC_SHA1(key.bytes, (unsigned int) key.length, hashKey)) {
     return nil;
   }
   
@@ -366,9 +366,7 @@ char *NewBase64Encode(
                                            | ((inputBuffer[i + 1] & 0xF0) >> 4)];
 		outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i + 1] & 0x0F) << 2];
 		outputBuffer[j++] =	'=';
-	}
-	else if (i < length)
-	{
+	} else if (i < length) {
 		//
 		// Handle the double '=' case
 		//

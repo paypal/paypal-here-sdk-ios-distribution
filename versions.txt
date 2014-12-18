@@ -132,3 +132,14 @@ immediately if something is going wrong in the SDK instances.
 
 1.4.4
 Bug fix: Fixing the AU country code check, that was wrongly setting the available payment options to "chip" for non AU merchants and was throwing the -2016 error.
+
+1.4.5
+  What’s new:
+  - Fully compliant with arm64 requirements as specified by Apple.
+  - Contains additional logging and instrumentation for better error reporting
+  - Updated the Magtek swiper library to version 120.01.
+  - A bug fix inside the PPHCardReaderManager class that was causing some swipes to be considered as failed swipes
+  - Bug fixes to the UI flow for EMV (Chip & PIN cases)
+  - Some changes to the Invoicing code and return values to handle bad input values better. Please refer to documentation for more details
+  - Fixed an issue in the TransactionManager state machine related to not being able to process new transaction when the transaction manager was waiting for signature
+  - Fixed a bug related to sending receipts in the Chip & PIN workflow

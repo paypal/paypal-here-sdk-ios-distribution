@@ -1695,19 +1695,19 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Parameters>
 				<Parameter>
 					<Name>itemId</Name>
-					<Abstract type="html">NSString The itemId for the new invoice item. Must be unique to other invoice items which don&apos;t have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don&apos;t call reconcileInContext.</Abstract>
+					<Abstract type="html">NSString The itemId for the new invoice item. Must be unique to other invoice items which don&apos;t have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don&apos;t call reconcileInContext. If the itemId is not unique this method will return nil. Also, if you pass in a nil itemId this method will also return nil.</Abstract>
 				</Parameter><Parameter>
 					<Name>name</Name>
 					<Abstract type="html">NSString The item name.</Abstract>
 				</Parameter><Parameter>
 					<Name>quantity</Name>
-					<Abstract type="html">NSDecimalNumber The number of the items to put in the cart.</Abstract>
+					<Abstract type="html">NSDecimalNumber The number of the items to put in the cart. This value must not be negative, if a negative quantity is passed in this method will return nil.</Abstract>
 				</Parameter><Parameter>
 					<Name>unitPrice</Name>
-					<Abstract type="html">NSDecimalNumber The price of a single one of these items.</Abstract>
+					<Abstract type="html">NSDecimalNumber The price of a single one of these items. This value must not be negative, if a negative unitPrice is passed in this method will return nil.</Abstract>
 				</Parameter><Parameter>
 					<Name>taxRate</Name>
-					<Abstract type="html">NSDecimalNumber The tax to be applied to this item.</Abstract>
+					<Abstract type="html">NSDecimalNumber The tax to be applied to this item. This value must not be negative, if a negative taxRate is passed in this method will return nil.</Abstract>
 				</Parameter><Parameter>
 					<Name>taxRateName</Name>
 					<Abstract type="html">NSString The name for the tax rate given to this item.</Abstract>

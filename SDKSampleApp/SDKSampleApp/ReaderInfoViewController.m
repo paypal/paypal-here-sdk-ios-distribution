@@ -82,9 +82,8 @@
 	const NSInteger kZero = 0;
 
 	if (metadata.batteryLevel != kZero) {
-		self.batteryLevel = [NSString stringWithFormat:@"%d", metadata.batteryLevel];
-	}
-	else {
+		self.batteryLevel = [NSString stringWithFormat:@"%ld", (long)metadata.batteryLevel];
+	} else {
 		self.batteryLevel = nil;
 	}
 
@@ -100,8 +99,7 @@
 		self.serialNumberLabel.hidden = NO;
 		self.serialNumberLabelLabel.hidden = NO;
 		self.serialNumberLabel.text = self.serialNumber;
-	}
-	else {
+	} else {
 		self.serialNumberLabel.hidden = YES;
 		self.serialNumberLabelLabel.hidden = YES;
 	}
@@ -110,8 +108,7 @@
 		self.firmwareRevisionLabel.hidden = NO;
 		self.firmwareRevisionLabelLabel.hidden = NO;
 		self.firmwareRevisionLabel.text = self.firmwareRevision;
-	}
-	else {
+	} else {
 		self.firmwareRevisionLabel.hidden = YES;
 		self.firmwareRevisionLabelLabel.hidden = YES;
 	}
@@ -120,8 +117,7 @@
 		self.batteryLevelLabel.hidden = NO;
 		self.batteryLevelLabelLabel.hidden = NO;
 		self.batteryLevelLabel.text = self.batteryLevel;
-	}
-	else {
+	} else {
 		self.batteryLevelLabel.hidden = YES;
 		self.batteryLevelLabelLabel.hidden = YES;
 	}

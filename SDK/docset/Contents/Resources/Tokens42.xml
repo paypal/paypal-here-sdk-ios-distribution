@@ -323,6 +323,45 @@ be attached.</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/setShouldAppOverrideDefaultSignatureSetting:</TokenIdentifier>
+			<Abstract type="html">Configure the Transaction Manager to ignore OR obey PayPal&apos;s backend-based signature required above &quot;x&quot; amount configuration,
+(also referred to as the default signature setting) which could also be obtained via the &quot;TransactionResponse.isSignatureRequiredToFinalize&quot; property.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldAppOverrideDefaultSignatureSetting</Declaration>
+			
+			
+			<Anchor>//api/name/shouldAppOverrideDefaultSignatureSetting</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/shouldAppOverrideDefaultSignatureSetting</TokenIdentifier>
+			<Abstract type="html">Configure the Transaction Manager to ignore OR obey PayPal&apos;s backend-based signature required above &quot;x&quot; amount configuration,
+(also referred to as the default signature setting) which could also be obtained via the &quot;TransactionResponse.isSignatureRequiredToFinalize&quot; property.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldAppOverrideDefaultSignatureSetting</Declaration>
+			
+			
+			<Anchor>//api/name/shouldAppOverrideDefaultSignatureSetting</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionManager/shouldAppOverrideDefaultSignatureSetting</TokenIdentifier>
+			<Abstract type="html">Configure the Transaction Manager to ignore OR obey PayPal&apos;s backend-based signature required above &quot;x&quot; amount configuration,
+(also referred to as the default signature setting) which could also be obtained via the &quot;TransactionResponse.isSignatureRequiredToFinalize&quot; property.</Abstract>
+			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldAppOverrideDefaultSignatureSetting</Declaration>
+			
+			
+			<Anchor>//api/name/shouldAppOverrideDefaultSignatureSetting</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/beginPayment</TokenIdentifier>
 			<Abstract type="html">Used to begin all types of payment (check-in, card present, manual entry, cash, etc)
 This call causes the hardware enabled version of the SDK to start scanning for card swipes.
@@ -360,7 +399,8 @@ the fixed amount item.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionManager/cancelPayment</TokenIdentifier>
-			<Abstract type="html">give up on the current payment if possible (if not already capturing payment).   Clears state members.</Abstract>
+			<Abstract type="html">Clears the current state of the transaction, including current invoice, card data, etc, thus
+returning back to an Idle state.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
 			<Declaration>- (PPHError *)cancelPayment</Declaration>

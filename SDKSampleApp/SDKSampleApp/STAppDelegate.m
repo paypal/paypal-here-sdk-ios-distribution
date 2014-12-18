@@ -109,8 +109,7 @@ PPHLoggingDelegate
 			[self.viewController setActiveMerchantWithAccessTokenDict:query];
 		}
 
-	}
-	else {
+	} else {
 		NSLog(@"%s url.host is NOT \"oauth\" so we're leaving without doing anything!", __FUNCTION__);	
 	}
 
