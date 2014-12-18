@@ -17,7 +17,7 @@
 			<Abstract type="html">Start an analytics session - create any sort of visitor/device identifiers etc.</Abstract>
 			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)beginSession:(NSDictionary *)properties</Declaration>
+			<Declaration>- (void)beginSession:(id)properties</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>properties</Name>
@@ -34,7 +34,7 @@
 			<Abstract type="html">Update session information of an in progress session</Abstract>
 			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)amendSession:(NSDictionary *)properties</Declaration>
+			<Declaration>- (void)amendSession:(id)properties</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>properties</Name>
@@ -63,7 +63,7 @@
 			<Abstract type="html">Log an analytics event</Abstract>
 			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)queueEvent:(PPHAnalyticsEventName)event withType:(PPHAnalyticsEventType)type andInfo:(NSDictionary *)info</Declaration>
+			<Declaration>- (void)queueEvent:(id)event withType:(id)type andInfo:(id)info</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>event</Name>
@@ -81,6 +81,7 @@
             <NodeRef refid="48"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

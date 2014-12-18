@@ -237,7 +237,7 @@ default currency of the account.</Abstract>
 receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account</Abstract>
 			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)saveMerchantPreferencesWithTaxID:(NSString *)taxID ccStatementName:(NSString *)ccStatementName completionHandler:(void ( ^ ) ( BOOL success ))completionHandler</Declaration>
+			<Declaration>- (void)saveMerchantPreferencesWithTaxID:(id)taxID ccStatementName:(id)ccStatementName completionHandler:(id)completionHandler</Declaration>
 			
 			
 			<Anchor>//api/name/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</Anchor>
@@ -250,13 +250,14 @@ receipts if they are set. One way of setting these is through this API and the o
 or through PayPal website.</Abstract>
 			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)getMerchantPreferencesWithCompletionHandler:(void ( ^ ) ( NSString *taxID , NSString *ccStatementName ))completionHandler</Declaration>
+			<Declaration>- (void)getMerchantPreferencesWithCompletionHandler:(id)completionHandler</Declaration>
 			
 			
 			<Anchor>//api/name/getMerchantPreferencesWithCompletionHandler:</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

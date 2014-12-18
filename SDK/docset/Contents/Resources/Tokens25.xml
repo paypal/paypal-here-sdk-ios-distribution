@@ -19,7 +19,7 @@ are typically hosted by PayPal, but this class is mainly useful for producing pr
 a fixed width font</Abstract>
 			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)formattedStringForInvoice:(PPHInvoice *)invoice withFormatData:(PPHInvoiceFormatterData *)data</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(id)invoice withFormatData:(id)data</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>invoice</Name>
@@ -37,7 +37,7 @@ a fixed width font</Abstract>
 a fixed width font</Abstract>
 			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)formattedStringForInvoice:(PPHInvoice *)invoice</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(id)invoice</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>invoice</Name>
@@ -56,7 +56,7 @@ and height depending on the number of items on the invoice. This is essentially 
 method and rendering it down to an image for you.</Abstract>
 			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>- (UIImage *)formattedImageForInvoice:(PPHInvoice *)invoice withWidth:(NSInteger)widthInPixels</Declaration>
+			<Declaration>- (UIImage *)formattedImageForInvoice:(id)invoice withWidth:(id)widthInPixels</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>invoice</Name>
@@ -71,6 +71,7 @@ method and rendering it down to an image for you.</Abstract>
             <NodeRef refid="25"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

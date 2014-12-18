@@ -30,7 +30,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 			<Abstract type="html">Begin monitoring the device for connection and removal of the specified reader types.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (PPHReaderError)beginMonitoring:(PPHReaderTypeMask)readerTypes</Declaration>
+			<Declaration>- (PPHReaderError)beginMonitoring:(id)readerTypes</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>readerTypes</Name>
@@ -47,7 +47,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 			<Abstract type="html">Stop reacting to events around device connection and removal.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (void)endMonitoring:(BOOL)unregisterForLocalNotifications</Declaration>
+			<Declaration>- (void)endMonitoring:(id)unregisterForLocalNotifications</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>unregisterForLocalNotifications</Name>
@@ -65,7 +65,7 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (PPHReaderError)activateReader:(PPHCardReaderBasicInformation *)readerOrNil</Declaration>
+			<Declaration>- (PPHReaderError)activateReader:(id)readerOrNil</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>readerOrNil</Name>
@@ -84,7 +84,7 @@ or stop feeding power via the audio jack. In the case of bluetooth or feature po
 disconnect the reader.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (void)deactivateReader:(PPHCardReaderBasicInformation *)readerOrNil</Declaration>
+			<Declaration>- (void)deactivateReader:(id)readerOrNil</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>readerOrNil</Name>
@@ -108,7 +108,7 @@ that. IMPORTANT: You still need to add the protocol to your application&apos;s p
 (under supported accessories) in order for this to work.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (void)setPreferenceOrder:(NSArray *)arrayOfCardReaderBasicInfo</Declaration>
+			<Declaration>- (void)setPreferenceOrder:(id)arrayOfCardReaderBasicInfo</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>arrayOfCardReaderBasicInfo</Name>
@@ -141,7 +141,7 @@ paired devices that are currently within range/connectable.</Abstract>
 for the target reader.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginUpgrade:(PPHCardReaderBasicInformation *)reader</Declaration>
+			<Declaration>- (void)beginUpgrade:(id)reader</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
@@ -159,7 +159,7 @@ for the target reader.</Abstract>
 This version will cause the SDK to show UI during the update flow.</Abstract>
 			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginReaderUpdateUsingSDKUI_WithViewController:(UIViewController *)vc completionHandler:(void ( ^ ) ( BOOL success , NSString *message ))completionHandler</Declaration>
+			<Declaration>- (void)beginReaderUpdateUsingSDKUI_WithViewController:(id)vc completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>vc</Name>
@@ -210,6 +210,7 @@ This version will cause the SDK to show UI during the update flow.</Abstract>
             <NodeRef refid="7"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

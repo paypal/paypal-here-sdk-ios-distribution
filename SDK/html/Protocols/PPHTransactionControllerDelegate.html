@@ -182,7 +182,7 @@ and that the SDK should continue processing the transaction.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)onPostAuthorize:(BOOL)<em>didFail</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)onPostAuthorize:(id)<em>didFail</em></code></div>
 
     
 	
@@ -243,7 +243,7 @@ this call is invoked in the appropriate thread.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)<em>inv</em> withPreAuthJSON:(NSMutableDictionary *)<em>preAuthJSON</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(id)<em>inv</em> withPreAuthJSON:(id)<em>preAuthJSON</em></code></div>
 
     
 	
@@ -310,6 +310,9 @@ this call is invoked in the appropriate thread.</p>
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>

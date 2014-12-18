@@ -17,7 +17,7 @@
 			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithTrack1:(NSString *)track1 track2:(NSString *)track2 readerSerial:(NSString *)serial withType:(NSString *)readerType andExtraInfo:(NSDictionary *)extraInfo</Declaration>
+			<Declaration>- (id)initWithTrack1:(id)track1 track2:(id)track2 readerSerial:(id)serial withType:(id)readerType andExtraInfo:(id)extraInfo</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>track1</Name>
@@ -47,7 +47,7 @@ ksn (key serial number)</Abstract>
 			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithEncryptedTrack1:(NSString *)encryptedTrack1 encryptedTrack2:(NSString *)encryptedTrack2 readerSerial:(NSString *)serial keySerial:(NSString *)ksn withType:(NSString *)readerType</Declaration>
+			<Declaration>- (id)initWithEncryptedTrack1:(id)encryptedTrack1 encryptedTrack2:(id)encryptedTrack2 readerSerial:(id)serial keySerial:(id)ksn withType:(id)readerType</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>encryptedTrack1</Name>
@@ -442,7 +442,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)parseTracks:(NSString *)track1AndOr2</Declaration>
+			<Declaration>- (BOOL)parseTracks:(id)track1AndOr2</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>track1AndOr2</Name>
@@ -459,7 +459,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)parseTracksWithMaskedTrack1:(NSString *)maskedTrack1 maskedTrack2:(NSString *)maskedTrack2</Declaration>
+			<Declaration>- (BOOL)parseTracksWithMaskedTrack1:(id)maskedTrack1 maskedTrack2:(id)maskedTrack2</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>maskedTrack1</Name>
@@ -558,6 +558,7 @@ for this payment. Beginning a payment with a signature will automatically set th
             <NodeRef refid="10"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

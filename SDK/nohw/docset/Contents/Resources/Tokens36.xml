@@ -18,7 +18,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 			<Abstract type="html">Issue a refund against a previously successful PayPal transaction.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginRefund:(NSString *)transactionId forAmount:(PPHAmount *)amountOrNil completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginRefund:(id)transactionId forAmount:(id)amountOrNil completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>transactionId</Name>
@@ -41,7 +41,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 			<Abstract type="html">Issue a refund against a previously successful non-PayPal transaction.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginNonPayPalRefundWithInvoiceId:(NSString *)invoiceId forAmount:(PPHAmount *)amountOrNil completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginNonPayPalRefundWithInvoiceId:(id)invoiceId forAmount:(id)amountOrNil completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>invoiceId</Name>
@@ -64,7 +64,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 			<Abstract type="html">Capture funds against an open checkin from PPHLocalManager and PPHLocationWatcher</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCheckinPayment:(PPHLocationCheckin *)checkin forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginCheckinPayment:(id)checkin forInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>checkin</Name>
@@ -88,7 +88,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Authorize a chip and pin card after pin has been validated</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent *)auth forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHChipAndPinAuthResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginChipAndPinAuthorization:(id)auth forInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>auth</Name>
@@ -112,7 +112,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Collect funds against a card that has been passed through a reader and for which magstripe data is available.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCardPresentChargeAttempt:(PPHCardSwipeData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice withSignature:(UIImage *)signature completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginCardPresentChargeAttempt:(id)card forInvoice:(id)invoice withSignature:(id)signature completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -140,7 +140,7 @@ with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
 			<Abstract type="html">Authorize funds against a card that has been passed through a reader and for which magstripe data is available.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCardPresentAuthorizationAttempt:(PPHCardSwipeData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginCardPresentAuthorizationAttempt:(id)card forInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -165,7 +165,7 @@ with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
 			<Abstract type="html">Collect funds against a card that has been manually entered.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCardNotPresentChargeAttempt:(PPHCardNotPresentData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginCardNotPresentChargeAttempt:(id)card forInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -189,7 +189,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Authorize funds against a card that has been passed in via manual entry, or user key-in.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginCardNotPresentAuthorizationAttempt:(id)card forInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -213,7 +213,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Capture funds against an authorization.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginCaptureForTransactionId:(NSString *)txId withAmount:(PPHAmount *)amount andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice asFinal:(BOOL)finalCapture withCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginCaptureForTransactionId:(id)txId withAmount:(id)amount andInvoice:(id)invoice asFinal:(id)finalCapture withCompletionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>txId</Name>
@@ -242,7 +242,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Void an existing authorization.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginVoidForTransactionId:(NSString *)txId withInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice andCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Declaration>- (void)beginVoidForTransactionId:(id)txId withInvoice:(id)invoice andCompletionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>txId</Name>
@@ -265,7 +265,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Mark an invoice as having been paid by an external payment type such as Cash or Check.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginRecordingExternalPayment:(PPHPaymentMethod)paymentType withNote:(NSString *)note forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHPaymentResponse *response ))completionHandler</Declaration>
+			<Declaration>- (void)beginRecordingExternalPayment:(id)paymentType withNote:(id)note forInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>paymentType</Name>
@@ -292,7 +292,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Provide a signature record for a previously successful charge.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)provideSignature:(UIImage *)signature forTransaction:(PPHCardChargeResponse *)response andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
+			<Declaration>- (void)provideSignature:(id)signature forTransaction:(id)response andInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>signature</Name>
@@ -318,7 +318,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Check if the given swipe data is for the same card that the invoice was paid with</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)card andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Declaration>- (void)checkRefundEligibilityForCardPresent:(id)card andInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -341,7 +341,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Check if the given chip+pin card data is for the same card that the invoice was paid with</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent *)auth andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Declaration>- (void)checkRefundEligibilityForChipAndPin:(id)auth andInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>auth</Name>
@@ -364,7 +364,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Check if the given event contains the same EMV data as the card that the invoice was paid with</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv *)event andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Declaration>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(id)event andInvoice:(id)invoice completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>event</Name>
@@ -387,7 +387,7 @@ attempting to collect payment.</Abstract>
 			<Abstract type="html">Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</Abstract>
 			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
 			
-			<Declaration>- (void)beginSendReceipt:(PPHPaymentResponse *)payment to:(PPHReceiptDestination *)destination completionHandler:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)beginSendReceipt:(id)payment to:(id)destination completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>payment</Name>
@@ -406,6 +406,7 @@ values of this object, so you can make one up with that data.</Abstract>
             <NodeRef refid="36"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>
