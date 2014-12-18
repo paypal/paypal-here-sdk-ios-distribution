@@ -17,7 +17,7 @@
 			<Abstract type="html">Finds the invoice with the specified PayPal Invoice ID (a guid-like value starting with INV)</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>+ (void)downloadInvoiceForInvoiceId:(NSString *)invoiceId context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler</Declaration>
+			<Declaration>+ (void)downloadInvoiceForInvoiceId:(id)invoiceId context:(id)context completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>invoiceId</Name>
@@ -40,7 +40,7 @@
 			<Abstract type="html">Finds the invoice with the specified merchant reference number</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>+ (void)downloadInvoiceForMerchantReferenceNumber:(NSString *)referenceNumber context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler</Declaration>
+			<Declaration>+ (void)downloadInvoiceForMerchantReferenceNumber:(id)referenceNumber context:(id)context completionHandler:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>referenceNumber</Name>
@@ -63,7 +63,7 @@
 			<Abstract type="html">Initialize the invoice with just a currency. The go to way to make a brand new invoice</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithCurrency:(NSString *)currency</Declaration>
+			<Declaration>- (id)initWithCurrency:(id)currency</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>currency</Name>
@@ -80,7 +80,7 @@
 			<Abstract type="html">Initialize the invoice with data received from the server in the past.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)representation</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>representation</Name>
@@ -97,7 +97,7 @@
 			<Abstract type="html">Initialize the invoice with data received from the server in the past and reconcile its items with the given context.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation context:(PPHInvoiceItemContext *)context</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)representation context:(id)context</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>representation</Name>
@@ -117,7 +117,7 @@
 			<Abstract type="html">Initialize the invoice with data received from the server in the past give it the invoice ID specified and reconcile its items with the given context. You MUST use this initialization method if you have an invoice ID that you want to give to an invoice, otherwise the invoice will get a new one when saving for the first time.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation invoiceId:(NSString *)invoiceId context:(PPHInvoiceItemContext *)context</Declaration>
+			<Declaration>- (id)initWithDictionary:(id)representation invoiceId:(id)invoiceId context:(id)context</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>representation</Name>
@@ -140,7 +140,7 @@
 			<Abstract type="html">Initialize a simple invoice with one item and an amount.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithItem:(NSString *)item forAmount:(PPHAmount *)amount</Declaration>
+			<Declaration>- (id)initWithItem:(id)item forAmount:(id)amount</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>item</Name>
@@ -185,7 +185,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Reloads an invoice&apos;s data using a dictionary previously received from the server.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)readDictionary:(NSDictionary *)dictionary</Declaration>
+			<Declaration>- (void)readDictionary:(id)dictionary</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>dictionary</Name>
@@ -1606,7 +1606,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Get the quantity of an item currently on the order.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (NSDecimalNumber *)quantityByItemId:(NSString *)itemId</Declaration>
+			<Declaration>- (NSDecimalNumber *)quantityByItemId:(id)itemId</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>itemId</Name>
@@ -1659,7 +1659,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Fetches an invoice item that corresponds to an itemId with no detailId.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)itemId</Declaration>
+			<Declaration>- (PPHInvoiceItem *)invoiceItemWithId:(id)itemId</Declaration>
 			
 			<ReturnValue><Abstract type="html">PPHInvoiceItem The invoice item that was found. If there was none nil is returned.</Abstract></ReturnValue>
 			<Anchor>//api/name/invoiceItemWithId:</Anchor>
@@ -1671,7 +1671,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Fetches an invoice item that corresponds to an itemId and detailId.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)itemId detailId:(NSString *)detailId</Declaration>
+			<Declaration>- (PPHInvoiceItem *)invoiceItemWithId:(id)itemId detailId:(id)detailId</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>itemId</Name>
@@ -1691,7 +1691,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Creates an invoice item with the given parameters an returns a pointer to it.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (PPHInvoiceItem *)addItemWithId:(NSString *)itemId name:(NSString *)name quantity:(NSDecimalNumber *)quantity unitPrice:(NSDecimalNumber *)unitPrice taxRate:(NSDecimalNumber *)taxRate taxRateName:(NSString *)taxRateName</Declaration>
+			<Declaration>- (PPHInvoiceItem *)addItemWithId:(id)itemId name:(id)name quantity:(id)quantity unitPrice:(id)unitPrice taxRate:(id)taxRate taxRateName:(id)taxRateName</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>itemId</Name>
@@ -1723,7 +1723,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such items to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item&apos;s itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (PPHInvoiceItem *)addItemWithId:(NSString *)itemId detailId:(NSString *)detailId name:(NSString *)name quantity:(NSDecimalNumber *)quantity unitPrice:(NSDecimalNumber *)unitPrice taxRate:(NSDecimalNumber *)taxRate taxRateName:(NSString *)taxRateName</Declaration>
+			<Declaration>- (PPHInvoiceItem *)addItemWithId:(id)itemId detailId:(id)detailId name:(id)name quantity:(id)quantity unitPrice:(id)unitPrice taxRate:(id)taxRate taxRateName:(id)taxRateName</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>itemId</Name>
@@ -1758,7 +1758,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Adds the specified quantity to the specified InvoiceItem in the invoice, you may pass a negative quantity value to decrement the item. Calling increment on an InvoiceItem that does not exist in the invoice will cause the item to be added with the desired quantity.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)incrementInvoiceItem:(PPHInvoiceItem *)item byQuantity:(NSDecimalNumber *)quantity</Declaration>
+			<Declaration>- (void)incrementInvoiceItem:(id)item byQuantity:(id)quantity</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>item</Name>
@@ -1790,7 +1790,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Enqueues a network action to synchronize the invoice with the server&apos;s representation of it.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)refreshInvoice:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)refreshInvoice:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -1807,7 +1807,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Enqueues a network action to save the invoice.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)save:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)save:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -1824,7 +1824,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Enqueues a network action to send the invoice. A save is performed if the invoice has changed.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)send:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)send:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -1841,7 +1841,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Enqueues a network action to cancel the invoice.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)cancel:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)cancel:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -1858,7 +1858,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Enqueues a network action to get refund details</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)getRefundDetails:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)getRefundDetails:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -1875,7 +1875,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 			<Abstract type="html">Enqueues a network action to delete the invoice.</Abstract>
 			<DeclaredIn>PPHInvoice.h</DeclaredIn>
 			
-			<Declaration>- (void)deleteInvoice:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Declaration>- (void)deleteInvoice:(id)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -1887,6 +1887,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
             <NodeRef refid="22"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

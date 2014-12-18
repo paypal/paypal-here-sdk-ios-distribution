@@ -20,7 +20,7 @@ a payment is going to need all of these.</Abstract>
 the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didStartReaderDetection:(PPHCardReaderBasicInformation *)reader</Declaration>
+			<Declaration>- (void)didStartReaderDetection:(id)reader</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
@@ -37,7 +37,7 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 			<Abstract type="html">A fully working reader was detected and is available</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader</Declaration>
+			<Declaration>- (void)didDetectReaderDevice:(id)reader</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>reader</Name>
@@ -54,7 +54,7 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 			<Abstract type="html">A reader device has been removed from the system</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didRemoveReader:(PPHReaderType)readerType</Declaration>
+			<Declaration>- (void)didRemoveReader:(id)readerType</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>readerType</Name>
@@ -85,7 +85,7 @@ will hurt success rate.</Abstract>
 			<Abstract type="html">A card swipe has succeeded</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didCompleteCardSwipe:(PPHCardSwipeData *)card</Declaration>
+			<Declaration>- (void)didCompleteCardSwipe:(id)card</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>card</Name>
@@ -114,7 +114,7 @@ will hurt success rate.</Abstract>
 			<Abstract type="html">Serial number and other related information is available for the card reader.</Abstract>
 			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata</Declaration>
+			<Declaration>- (void)didReceiveCardReaderMetadata:(id)metadata</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>metadata</Name>
@@ -126,6 +126,7 @@ will hurt success rate.</Abstract>
             <NodeRef refid="55"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

@@ -18,7 +18,7 @@ and errors occur.</Abstract>
 			<Abstract type="html">A new checkin has been opened since the last update</Abstract>
 			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectNewTab:(PPHLocationCheckin *)checkin</Declaration>
+			<Declaration>- (void)locationWatcher:(id)watcher didDetectNewTab:(id)checkin</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>watcher</Name>
@@ -38,7 +38,7 @@ and errors occur.</Abstract>
 			<Abstract type="html">A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</Abstract>
 			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectRemovedTab:(PPHLocationCheckin *)checkin</Declaration>
+			<Declaration>- (void)locationWatcher:(id)watcher didDetectRemovedTab:(id)checkin</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>watcher</Name>
@@ -58,7 +58,7 @@ and errors occur.</Abstract>
 			<Abstract type="html">An error has occurred trying to update checkin information</Abstract>
 			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didReceiveError:(PPHError *)error</Declaration>
+			<Declaration>- (void)locationWatcher:(id)watcher didReceiveError:(id)error</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>watcher</Name>
@@ -78,7 +78,7 @@ and errors occur.</Abstract>
 			<Abstract type="html">A request for updated checkin information has completed successfully.</Abstract>
 			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified</Declaration>
+			<Declaration>- (void)locationWatcher:(id)watcher didCompleteUpdate:(id)openTabs wasModified:(id)wasModified</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>watcher</Name>
@@ -96,6 +96,7 @@ and errors occur.</Abstract>
             <NodeRef refid="51"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

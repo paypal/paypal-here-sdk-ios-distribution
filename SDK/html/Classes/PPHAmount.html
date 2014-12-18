@@ -547,7 +547,7 @@ so that we don&rsquo;t break intermediate values.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(NSDecimalNumber *)<em>amount</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(id)<em>amount</em></code></div>
 
     
 	
@@ -599,7 +599,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(NSDecimalNumber *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithDecimal:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -655,7 +655,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(NSString *)<em>stringValue</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(id)<em>stringValue</em></code></div>
 
     
 	
@@ -707,7 +707,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(NSString *)<em>stringValue</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (PPHAmount *)amountWithString:(id)<em>stringValue</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -763,7 +763,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (NSString *)defaultCurrencyCodeInCountry:(NSString *)<em>countryCode</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)defaultCurrencyCodeInCountry:(id)<em>countryCode</em></code></div>
 
     
 	
@@ -814,7 +814,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (NSString *)localeCodeFromCountry:(NSString *)<em>country</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)localeCodeFromCountry:(id)<em>country</em></code></div>
 
     
 	
@@ -873,7 +873,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)add:(NSDecimalNumber *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)add:(id)<em>operand</em></code></div>
 
     
 	
@@ -924,7 +924,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)addAmount:(PPHAmount *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)addAmount:(id)<em>operand</em></code></div>
 
     
 	
@@ -1139,7 +1139,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideBy:(NSDecimalNumber *)<em>divisor</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideBy:(id)<em>divisor</em></code></div>
 
     
 	
@@ -1190,7 +1190,7 @@ NOTE: The currency information is deduced via the active merchant set within the
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideByAmount:(PPHAmount *)<em>divisor</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)divideByAmount:(id)<em>divisor</em></code></div>
 
     
 	
@@ -1283,7 +1283,7 @@ in USD which is a 2 digit currency, passing 12345 will return 123.45</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithPadding:(NSString *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithPadding:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -1341,7 +1341,7 @@ For example in USD passing 1.232 would return 1.23</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithRounding:(NSDecimalNumber *)<em>amount</em> inCurrency:(NSString *)<em>currency</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithRounding:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
 
     
 	
@@ -1480,7 +1480,7 @@ For example in USD passing 1.232 would return 1.23</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiply:(NSDecimalNumber *)<em>multiple</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiply:(id)<em>multiple</em></code></div>
 
     
 	
@@ -1531,7 +1531,7 @@ For example in USD passing 1.232 would return 1.23</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiplyByAmount:(PPHAmount *)<em>multiple</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)multiplyByAmount:(id)<em>multiple</em></code></div>
 
     
 	
@@ -1748,7 +1748,7 @@ separator always set to &ldquo;.&rdquo;</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtract:(NSDecimalNumber *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtract:(id)<em>operand</em></code></div>
 
     
 	
@@ -1799,7 +1799,7 @@ separator always set to &ldquo;.&rdquo;</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtractAmount:(PPHAmount *)<em>operand</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHAmount *)subtractAmount:(id)<em>operand</em></code></div>
 
     
 	
@@ -1843,6 +1843,9 @@ separator always set to &ldquo;.&rdquo;</p>
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
