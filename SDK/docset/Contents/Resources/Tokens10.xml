@@ -43,6 +43,35 @@ ksn (key serial number)</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/initWithEncryptedTrack1:encryptedTrack2:readerSerial:keySerial:withType:</TokenIdentifier>
+			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithEncryptedTrack1:(NSString *)encryptedTrack1 encryptedTrack2:(NSString *)encryptedTrack2 readerSerial:(NSString *)serial keySerial:(NSString *)ksn withType:(NSString *)readerType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>encryptedTrack1</Name>
+					<Abstract type="html">The encrypted data from track1, if any</Abstract>
+				</Parameter><Parameter>
+					<Name>encryptedTrack2</Name>
+					<Abstract type="html">The encrypted data from track2, if any</Abstract>
+				</Parameter><Parameter>
+					<Name>serial</Name>
+					<Abstract type="html">The serial number of the reader</Abstract>
+				</Parameter><Parameter>
+					<Name>ksn</Name>
+					<Abstract type="html">The Key serial number of the reader, if any</Abstract>
+				</Parameter><Parameter>
+					<Name>readerType</Name>
+					<Abstract type="html">the type of reader, such as MAGTEK, ROAM or MIURA(SWIPE|FBSWIPE)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithEncryptedTrack1:encryptedTrack2:readerSerial:keySerial:withType:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setMaskedCardNumber:</TokenIdentifier>
 			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
@@ -298,6 +327,78 @@ and last name, so those fields may or may not be filled out.</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setKsn:</TokenIdentifier>
+			<Abstract type="html">Key serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ksn</Declaration>
+			
+			
+			<Anchor>//api/name/ksn</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/ksn</TokenIdentifier>
+			<Abstract type="html">Key serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ksn</Declaration>
+			
+			
+			<Anchor>//api/name/ksn</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/ksn</TokenIdentifier>
+			<Abstract type="html">Key serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ksn</Declaration>
+			
+			
+			<Anchor>//api/name/ksn</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setSerial:</TokenIdentifier>
+			<Abstract type="html">Serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serial</Declaration>
+			
+			
+			<Anchor>//api/name/serial</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/serial</TokenIdentifier>
+			<Abstract type="html">Serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serial</Declaration>
+			
+			
+			<Anchor>//api/name/serial</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/serial</TokenIdentifier>
+			<Abstract type="html">Serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serial</Declaration>
+			
+			
+			<Anchor>//api/name/serial</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setSignaturePresent:</TokenIdentifier>
 			<Abstract type="html">Set this property to YES before beginning payment is we have, or will collect a signature
 for this payment. Beginning a payment with a signature will automatically set this value to YES.</Abstract>
@@ -350,6 +451,26 @@ for this payment. Beginning a payment with a signature will automatically set th
 			</Parameters>
 			
 			<Anchor>//api/name/parseTracks:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/parseTracksWithMaskedTrack1:maskedTrack2:</TokenIdentifier>
+			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)parseTracksWithMaskedTrack1:(NSString *)maskedTrack1 maskedTrack2:(NSString *)maskedTrack2</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>maskedTrack1</Name>
+					<Abstract type="html">The masked track1 information obtained from the card reader.</Abstract>
+				</Parameter><Parameter>
+					<Name>maskedTrack2</Name>
+					<Abstract type="html">The masked track2 information obtained from the card reader.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/parseTracksWithMaskedTrack1:maskedTrack2:</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
