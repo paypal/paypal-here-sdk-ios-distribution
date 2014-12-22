@@ -110,7 +110,7 @@
  * add a tip or add/remove any line items.
  */
 - (IBAction)onCapture:(id)sender {
-    [self capture];
+    [self downloadInvoiceAndPerformCapture];
 }
 
 /* 
@@ -181,6 +181,13 @@
 }
 
 - (void)capture {
+    
+    [self updateUI];
+    [self performCaptureWithTransactionRecord:self.transactionRecord];
+    
+}
+
+- (void)updateUI {
     _activitySpinner.hidden = NO;
     [_activitySpinner startAnimating];
     _voidButton.enabled = NO;
@@ -188,6 +195,11 @@
     _captureNewAmountButton.enabled = NO;
     _captureAddItemButton.enabled = NO;
     _actionLabel.text = @"Capturing payment ...";
+}
+
+- (void)downloadInvoiceAndPerformCapture {
+    
+    [self updateUI];
     
     // Lets try to perform the capture a little differently in this flow.
     // Assume, if the app is unable to save the entire transaction record but,
@@ -201,7 +213,7 @@
     [PPHInvoice downloadInvoiceForInvoiceId:invoiceId
                                     context:nil
                           completionHandler:^(PPHInvoice *invoice, PPHError *error) {
-
+                              
                               if (!error) {
                                   PPHTransactionRecord *record = [[PPHTransactionRecord alloc] initWithAuthorizationId:authId andWithInvoice:invoice];
                                   [self performCaptureWithTransactionRecord:record];
