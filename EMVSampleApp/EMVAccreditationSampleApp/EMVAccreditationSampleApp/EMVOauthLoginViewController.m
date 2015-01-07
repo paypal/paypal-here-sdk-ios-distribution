@@ -16,7 +16,8 @@
 #define kSandbox @"Sandbox"
 #define kStage2mb001 @"stage2mb001"
 #define kStage2mb006 @"stage2mb006"
-#define kStageNameArray @[kStage2mb001, kStage2mb006]
+#define kStage2mb023 @"stage2mb023"
+#define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023]
 #define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
 
 @interface EMVOauthLoginViewController ()
@@ -63,6 +64,7 @@
     [self.sdkBaseUrlDict setValue:@"https://www.sandbox.paypal.com/webapps/" forKey:kSandbox];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb001.stage.paypal.com/webapps/" forKey:kStage2mb001];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb006];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2mb023.stage.paypal.com/webapps/" forKey:kStage2mb023];
     
 }
 
@@ -71,7 +73,7 @@
                                                                 delegate:self
                                                        cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
-                                                       otherButtonTitles:kStage2mb001, kStage2mb006,nil];
+                                                       otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, nil];
 }
 
 - (void)setUpSpinnerAndTitle {
