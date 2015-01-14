@@ -213,7 +213,7 @@ they login, and are then redirected back to a URL you control with an "oauth tok
 an "access token" which can be used to make API calls on the merchant's behalf. Additionally, a "refresh token" is
 returned in that exchange that allows you to get a new access token at some point in the future without merchant
 interaction. All of this is based on two pieces of data from your application - an app id and a secret. You can setup
-PayPal Access and/or create an application via the [devportal](https://developer.paypal.com/). As of this writing your application will still need to be specifically enabled for the PayPal Here scope, please contact us at <DL-PayPal-Here-SDK@ebay.com>. 
+PayPal Access and/or create an application via the [devportal](https://developer.paypal.com/). As of this writing your application will still need to be specifically enabled for the PayPal Here scope. To enable the PayPal Here scopes please contact us at <DL-PayPal-Here-SDK@ebay.com>. 
 You'll note that it asks you for a Return URL, and that this Return URL must be http or https. This means you can't
 redirect directly back to your mobile app after a login. But the good news is this would be a terrible idea anyways.
 You never want to store your application secret on a mobile device - you can't be sure it isn't jailbroken or
