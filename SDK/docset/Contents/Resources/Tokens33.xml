@@ -140,7 +140,7 @@ So for example, if it calls twice in the minimumUpdateInterval and the tabs have
 maximumUpdateIntervalSeconds. When results change, it will come back towards minimumUpdateIntervalSeconds.</Abstract>
 			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)updatePeriodically:(id)minimumUpdateIntervalSeconds withMaximumInterval:(id)maximumUpdateIntervalSeconds</Declaration>
+			<Declaration>- (void)updatePeriodically:(NSInteger)minimumUpdateIntervalSeconds withMaximumInterval:(NSInteger)maximumUpdateIntervalSeconds</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>minimumUpdateIntervalSeconds</Name>
@@ -167,7 +167,6 @@ maximumUpdateIntervalSeconds. When results change, it will come back towards min
             <NodeRef refid="33"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>
