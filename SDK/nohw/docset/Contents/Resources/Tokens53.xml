@@ -17,7 +17,7 @@
 			<Abstract type="html">Add a request to be sent over the network.</Abstract>
 			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)beginRequest:(id)inRequest withID:(id)identifier withHandler:(id)handler</Declaration>
+			<Declaration>- (BOOL)beginRequest:(NSMutableURLRequest *)inRequest withID:(NSString *)identifier withHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error , NSData *data ))handler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>inRequest</Name>
@@ -40,7 +40,7 @@
 			<Abstract type="html">Cancel all active operations with the given identifier</Abstract>
 			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)cancelOperationsForID:(id)identifier</Declaration>
+			<Declaration>- (void)cancelOperationsForID:(NSString *)identifier</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>identifier</Name>
@@ -57,7 +57,7 @@
 			<Abstract type="html">If you just need to modify a request but not &quot;handle&quot; it, you can implement this selector.</Abstract>
 			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)modifyRequest:(id)inRequest</Declaration>
+			<Declaration>- (void)modifyRequest:(NSMutableURLRequest *)inRequest</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>inRequest</Name>
@@ -74,7 +74,7 @@
 			<Abstract type="html">We&apos;ll call you when a response is received. This is most useful for logging.</Abstract>
 			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)requestCompleted:(id)inRequest withResponse:(id)inResponse data:(id)data andError:(id)error</Declaration>
+			<Declaration>- (void)requestCompleted:(NSURLRequest *)inRequest withResponse:(NSHTTPURLResponse *)inResponse data:(NSData *)data andError:(NSError *)error</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>inRequest</Name>
@@ -95,7 +95,6 @@
             <NodeRef refid="53"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

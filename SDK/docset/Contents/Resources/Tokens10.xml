@@ -14,29 +14,19 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/initWithTrack1:track2:readerSerial:withType:andExtraInfo:</TokenIdentifier>
-			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
+			<Abstract type="html">* Initialize card swipe data from a non-PayPalHere compatible card reader.
+* @param track1 The data from track1, if any
+* @param track2 The data from track2, if any
+* @param serial The serial number of the reader
+* @param readerType the type of reader, such as MAGTEK, ROAM or MIURA(SWIPE|FBSWIPE)
+* @param extraInfo Any extra information necessary to interpret and process the track data, such as
+* ksn (key serial number)
+*
+ NOTE :  API DEPRECATED **: Please use the new init API:</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithTrack1:(id)track1 track2:(id)track2 readerSerial:(id)serial withType:(id)readerType andExtraInfo:(id)extraInfo</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>track1</Name>
-					<Abstract type="html">The data from track1, if any</Abstract>
-				</Parameter><Parameter>
-					<Name>track2</Name>
-					<Abstract type="html">The data from track2, if any</Abstract>
-				</Parameter><Parameter>
-					<Name>serial</Name>
-					<Abstract type="html">The serial number of the reader</Abstract>
-				</Parameter><Parameter>
-					<Name>readerType</Name>
-					<Abstract type="html">the type of reader, such as MAGTEK, ROAM or MIURA(SWIPE|FBSWIPE)</Abstract>
-				</Parameter><Parameter>
-					<Name>extraInfo</Name>
-					<Abstract type="html">Any extra information necessary to interpret and process the track data, such as
-ksn (key serial number)</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (id)initWithTrack1:(NSString *)track1 track2:(NSString *)track2 readerSerial:(NSString *)serial withType:(NSString *)readerType andExtraInfo:(NSDictionary *)extraInfo</Declaration>
+			
 			
 			<Anchor>//api/name/initWithTrack1:track2:readerSerial:withType:andExtraInfo:</Anchor>
             <NodeRef refid="10"/>
@@ -47,7 +37,7 @@ ksn (key serial number)</Abstract>
 			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithEncryptedTrack1:(id)encryptedTrack1 encryptedTrack2:(id)encryptedTrack2 readerSerial:(id)serial keySerial:(id)ksn withType:(id)readerType</Declaration>
+			<Declaration>- (id)initWithEncryptedTrack1:(NSString *)encryptedTrack1 encryptedTrack2:(NSString *)encryptedTrack2 readerSerial:(NSString *)serial keySerial:(NSString *)ksn withType:(NSString *)readerType</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>encryptedTrack1</Name>
@@ -442,7 +432,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)parseTracks:(id)track1AndOr2</Declaration>
+			<Declaration>- (BOOL)parseTracks:(NSString *)track1AndOr2</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>track1AndOr2</Name>
@@ -459,14 +449,18 @@ for this payment. Beginning a payment with a signature will automatically set th
 			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
 			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)parseTracksWithMaskedTrack1:(id)maskedTrack1 maskedTrack2:(id)maskedTrack2</Declaration>
+			<Declaration>- (BOOL)parseTracksWithMaskedTrack1:(NSString *)maskedTrack1OrNil maskedTrack2:(NSString *)maskedTrack2OrNil</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>maskedTrack1</Name>
-					<Abstract type="html">The masked track1 information obtained from the card reader.</Abstract>
+					<Name>maskedTrack1OrNil</Name>
+					<Abstract type="html">The masked track1 information obtained from the card reader, if any.</Abstract>
 				</Parameter><Parameter>
-					<Name>maskedTrack2</Name>
-					<Abstract type="html">The masked track2 information obtained from the card reader.</Abstract>
+					<Name>maskedTrack2OrNil</Name>
+					<Abstract type="html">The masked track2 information obtained from the card reader, if any.
+
+Returns NO if neither maskedTrack1 nor maskedTrack2 is passed in, or, while there was an error during parsing.
+Returns YES if the masked information was parsed successfully while extracting the masked card number,
+expiration date and card holder name.</Abstract>
 				</Parameter>
 			</Parameters>
 			
@@ -558,7 +552,6 @@ for this payment. Beginning a payment with a signature will automatically set th
             <NodeRef refid="10"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

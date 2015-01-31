@@ -382,7 +382,7 @@ TransactionManager&apos;s invoice object becomes primed with an invoice containi
 the fixed amount item.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginPaymentWithAmount:(id)amount andName:(id)itemName</Declaration>
+			<Declaration>- (void)beginPaymentWithAmount:(PPHAmount *)amount andName:(NSString *)itemName</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>amount</Name>
@@ -416,7 +416,7 @@ returning back to an Idle state.</Abstract>
 payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)authorizePaymentWithPaymentType:(id)paymentMethod withCompletionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)paymentMethod withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>paymentMethod</Name>
@@ -440,7 +440,7 @@ later pass into voidAuthoriztion or capturePaymentForAuthorization</Abstract>
 @param authorizedTransactionRecord</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)voidAuthorization:(id)authorizedTransactionRecord withCompletionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)voidAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -458,7 +458,7 @@ error object will be non nil.  Otherwise it will contain a PPHTransactionRecord 
 			<Abstract type="html">Captures a prevoisly authorized payment.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)capturePaymentForAuthorization:(id)authorizedTransactionRecord withCompletionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)capturePaymentForAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>authorizedTransactionRecord</Name>
@@ -480,7 +480,7 @@ then the PPHTransactionRecord&apos;s error object will be non nil.</Abstract>
 			<Abstract type="html">Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)processPaymentWithPaymentType:(id)paymentType withTransactionController:(id)controller completionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)processPaymentWithPaymentType:(PPHPaymentMethod)paymentType withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)controller completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>paymentType</Name>
@@ -508,7 +508,7 @@ defined in the PPHTransactionControllerDelegate.</Abstract>
 This version will cause the SDK to show UI during the payment flow.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)processPaymentUsingSDKUI_WithPaymentType:(id)paymentType withTransactionController:(id)controller withViewController:(id)vc completionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod)paymentType withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)controller withViewController:(UIViewController *)vc completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>paymentType</Name>
@@ -539,7 +539,7 @@ defined in the PPHTransactionControllerDelegate.</Abstract>
 This version will cause the SDK to show UI during the refund flow.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginRefundUsingSDKUI_WithPaymentType:(id)paymentType withViewController:(id)vc record:(id)record amount:(id)amount completionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod)paymentType withViewController:(UIViewController *)vc record:(PPHTransactionRecord *)record amount:(PPHAmount *)amount completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>paymentType</Name>
@@ -567,7 +567,7 @@ specifying ePPHPaymentMethodSwipe.</Abstract>
 and complete the transaction.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)provideSignature:(id)signature forTransaction:(id)previousTransaction completionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)provideSignature:(UIImage *)signature forTransaction:(PPHTransactionRecord *)previousTransaction completionHandler:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>signature</Name>
@@ -590,7 +590,7 @@ and complete the transaction.</Abstract>
 			<Abstract type="html">Issue a refund against a previously successful PayPal transaction.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)beginRefund:(id)previousTransaction forAmount:(id)amountOrNil completionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)beginRefund:(PPHTransactionRecord *)previousTransaction forAmount:(PPHAmount *)amountOrNil completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>previousTransaction</Name>
@@ -616,7 +616,7 @@ by beginRefund.</Abstract>
 			<Abstract type="html">Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.</Abstract>
 			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
 			
-			<Declaration>- (void)sendReceipt:(id)previousTransaction toRecipient:(id)destination completionHandler:(id)completionHandler</Declaration>
+			<Declaration>- (void)sendReceipt:(PPHTransactionRecord *)previousTransaction toRecipient:(PPHReceiptDestination *)destination completionHandler:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>previousTransaction</Name>
@@ -639,7 +639,6 @@ which we should send the receipt.</Abstract>
             <NodeRef refid="42"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

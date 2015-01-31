@@ -18,7 +18,7 @@
 code.</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>
 			
-			<Declaration>+ (PPHError *)pphErrorWithNSError:(id)error</Declaration>
+			<Declaration>+ (PPHError *)pphErrorWithNSError:(NSError *)error</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>error</Name>
@@ -352,7 +352,7 @@ on paypal.com and updated periodically.</Abstract>
 			<Abstract type="html">Read a PPHError from a dictionary created by NSDictionary</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(id)dictionary</Declaration>
+			<Declaration>- (id)initWithDictionary:(NSDictionary *)dictionary</Declaration>
 			
 			
 			<Anchor>//api/name/initWithDictionary:</Anchor>
@@ -364,7 +364,7 @@ on paypal.com and updated periodically.</Abstract>
 			<Abstract type="html">For creating local errors with a developer facing message</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDomain:(id)domain code:(id)code devMessage:(id)devMessage</Declaration>
+			<Declaration>- (id)initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>domain</Name>
@@ -388,7 +388,7 @@ on paypal.com and updated periodically.</Abstract>
 user facing message.</Abstract>
 			<DeclaredIn>PPHError.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDomain:(id)domain code:(id)code devMessage:(id)devMessage userMessage:(id)userMessage</Declaration>
+			<Declaration>- (id)initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString *)userMessage</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>domain</Name>
@@ -409,7 +409,6 @@ user facing message.</Abstract>
             <NodeRef refid="21"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>

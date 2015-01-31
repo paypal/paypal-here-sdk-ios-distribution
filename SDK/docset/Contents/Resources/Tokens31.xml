@@ -18,7 +18,7 @@ many locations, some of which are open at a particular time and able to accept n
 			<Abstract type="html">Read a PPHLocation from the server</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(id)dictionary</Declaration>
+			<Declaration>- (id)initWithDictionary:(NSDictionary *)dictionary</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>dictionary</Name>
@@ -36,7 +36,7 @@ many locations, some of which are open at a particular time and able to accept n
 and the locationId parameter will become set.  Otherwise it will update an existing location.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
-			<Declaration>- (void)save:(id)completionHandler</Declaration>
+			<Declaration>- (void)save:(void ( ^ ) ( PPHError *error ))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -53,7 +53,7 @@ and the locationId parameter will become set.  Otherwise it will update an exist
 			<Abstract type="html">Delete a PPHLocation.</Abstract>
 			<DeclaredIn>PPHLocation.h</DeclaredIn>
 			
-			<Declaration>- (void)deleteLocation:(id)completionHandler</Declaration>
+			<Declaration>- (void)deleteLocation:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>completionHandler</Name>
@@ -662,7 +662,6 @@ or when the checkin is used in a payment—whichever occurs first. Minimum of 15
             <NodeRef refid="31"/>
 		</Token>
 		
-        
         
 	</File>
 </Tokens>
