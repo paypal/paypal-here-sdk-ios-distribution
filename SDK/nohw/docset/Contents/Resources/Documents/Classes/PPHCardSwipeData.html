@@ -939,7 +939,18 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initialize card swipe data from a non-PayPalHere compatible card <a href="#//api/name/reader">reader</a>.</p>
+		<ul>
+<li>Initialize card swipe data from a non-PayPalHere compatible card <a href="#//api/name/reader">reader</a>.</li>
+<li>@param track1 The data from track1, if any</li>
+<li>@param track2 The data from track2, if any</li>
+<li>@param <a href="#//api/name/serial">serial</a> The <a href="#//api/name/serial">serial</a> number of the <a href="#//api/name/reader">reader</a></li>
+<li>@param readerType the type of <a href="#//api/name/reader">reader</a>, such as MAGTEK, ROAM or MIURA_(SWIPE|FB_SWIPE)</li>
+<li>@param extraInfo Any extra information necessary to interpret and process the track data, such as</li>
+<li><a href="#//api/name/ksn">ksn</a> (key <a href="#//api/name/serial">serial</a> number)
+*</li>
+<li>NOTE : <strong><strong> API DEPRECATED </strong></strong>*: Please use the new init API:</li>
+</ul>
+
 	</div>		
 	
     
@@ -947,37 +958,6 @@ for this payment. Beginning a payment with a signature will automatically set th
 	<div class="method-subsection method-declaration"><code>- (id)initWithTrack1:(id)<em>track1</em> track2:(id)<em>track2</em> readerSerial:(id)<em>serial</em> withType:(id)<em>readerType</em> andExtraInfo:(id)<em>extraInfo</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>track1</em></dt>
-			<dd><p>The data from track1, if any</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>track2</em></dt>
-			<dd><p>The data from track2, if any</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>serial</em></dt>
-			<dd><p>The <a href="#//api/name/serial">serial</a> number of the <a href="#//api/name/reader">reader</a></p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>readerType</em></dt>
-			<dd><p>the type of <a href="#//api/name/reader">reader</a>, such as MAGTEK, ROAM or MIURA_(SWIPE|FB_SWIPE)</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>extraInfo</em></dt>
-			<dd><p>Any extra information necessary to interpret and process the track data, such as
-<a href="#//api/name/ksn">ksn</a> (key <a href="#//api/name/serial">serial</a> number)</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -987,7 +967,20 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initialize card swipe data from a non-PayPalHere compatible card <a href="#//api/name/reader">reader</a>.</p>
+		<ul>
+<li>Initialize card swipe data from a non-PayPalHere compatible card <a href="#//api/name/reader">reader</a>.</li>
+<li>@param track1 The data from track1, if any</li>
+<li>@param track2 The data from track2, if any</li>
+<li>@param <a href="#//api/name/serial">serial</a> The <a href="#//api/name/serial">serial</a> number of the <a href="#//api/name/reader">reader</a></li>
+<li>@param readerType the type of <a href="#//api/name/reader">reader</a>, such as MAGTEK, ROAM or MIURA_(SWIPE|FB_SWIPE)</li>
+<li>@param extraInfo Any extra information necessary to interpret and process the track data, such as</li>
+<li><a href="#//api/name/ksn">ksn</a> (key <a href="#//api/name/serial">serial</a> number)
+*</li>
+<li>NOTE : <strong><strong> API DEPRECATED </strong></strong>*: Please use the new init API:</li>
+</ul>
+
+
+<p>-(id)initWithEncryptedTrack1: (NSString<em>) encryptedTrack1 encryptedTrack2: (NSString</em>) encryptedTrack2 readerSerial: (NSString<em>) <a href="#//api/name/serial">serial</a> keySerial: (NSString</em>) <a href="#//api/name/ksn">ksn</a> withType: (NSString*) readerType;</p>
 	</div>
 	
 	
@@ -1067,7 +1060,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)parseTracksWithMaskedTrack1:(id)<em>maskedTrack1</em> maskedTrack2:(id)<em>maskedTrack2</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)parseTracksWithMaskedTrack1:(id)<em>maskedTrack1OrNil</em> maskedTrack2:(id)<em>maskedTrack2OrNil</em></code></div>
 
     
 	
@@ -1075,13 +1068,17 @@ for this payment. Beginning a payment with a signature will automatically set th
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>maskedTrack1</em></dt>
-			<dd><p>The masked track1 information obtained from the card <a href="#//api/name/reader">reader</a>.</p></dd>
+			<dt><em>maskedTrack1OrNil</em></dt>
+			<dd><p>The masked track1 information obtained from the card <a href="#//api/name/reader">reader</a>, if any.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>maskedTrack2</em></dt>
-			<dd><p>The masked track2 information obtained from the card <a href="#//api/name/reader">reader</a>.</p></dd>
+			<dt><em>maskedTrack2OrNil</em></dt>
+			<dd><p>The masked track2 information obtained from the card <a href="#//api/name/reader">reader</a>, if any.</p>
+
+<p>Returns NO if neither maskedTrack1 nor maskedTrack2 is passed in, or, while there was an error during parsing.
+Returns YES if the masked information was parsed successfully while extracting the masked card number,
+expiration date and card holder name.</p></dd>
 		</dl>
 		
 	</div>
@@ -1129,7 +1126,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 PayPal. All rights reserved. (Last updated: 2014-12-17)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-02-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

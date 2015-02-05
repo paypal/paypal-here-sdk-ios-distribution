@@ -20,6 +20,11 @@
  * @param readerType the type of reader, such as MAGTEK, ROAM or MIURA_(SWIPE|FB_SWIPE)
  * @param extraInfo Any extra information necessary to interpret and process the track data, such as
  * ksn (key serial number)
+ *
+ * NOTE : **** API DEPRECATED *****: Please use the new init API:
+
+ -(id)initWithEncryptedTrack1: (NSString*) encryptedTrack1 encryptedTrack2: (NSString*) encryptedTrack2 readerSerial: (NSString*) serial keySerial: (NSString*) ksn withType: (NSString*) readerType;
+
  */
 -(id)initWithTrack1: (NSString*) track1 track2: (NSString*) track2 readerSerial: (NSString*) serial withType: (NSString*) readerType andExtraInfo: (NSDictionary*) extraInfo;
 
@@ -91,10 +96,14 @@
 
 /*!
  * Parse raw track data for name, account number, etc.
- * @param maskedTrack1 The masked track1 information obtained from the card reader.
- * @param maskedTrack2 The masked track2 information obtained from the card reader.
+ * @param maskedTrack1OrNil The masked track1 information obtained from the card reader, if any.
+ * @param maskedTrack2OrNil The masked track2 information obtained from the card reader, if any.
+ *
+ * Returns NO if neither maskedTrack1 nor maskedTrack2 is passed in, or, while there was an error during parsing.
+ * Returns YES if the masked information was parsed successfully while extracting the masked card number, 
+ * expiration date and card holder name.
  */
--(BOOL)parseTracksWithMaskedTrack1:(NSString*)maskedTrack1 maskedTrack2:(NSString *)maskedTrack2;
+-(BOOL)parseTracksWithMaskedTrack1:(NSString*)maskedTrack1OrNil maskedTrack2:(NSString *)maskedTrack2OrNil;
 
 /*!
  * The card reader on which the swipe occurred.
