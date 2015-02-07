@@ -39,6 +39,11 @@
 
 @property (nonatomic,strong,readonly) NSString *correlationId;
 
+/*! CustomerId and receiptPreferences information used for sending a receipt */
+@property (nonatomic,copy,readonly) NSString *customerId;
+
+@property (nonatomic,copy,readonly) NSString *receiptPreferenceToken;
+
 /*! Was the invoice paid on PayPal.com? */
 @property (nonatomic,readonly) BOOL paidWithPayPal;
 

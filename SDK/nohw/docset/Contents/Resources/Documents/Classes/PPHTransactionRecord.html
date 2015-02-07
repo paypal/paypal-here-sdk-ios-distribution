@@ -45,6 +45,8 @@
 	
 	<option value="//api/name/correlationId">&nbsp;&nbsp;&nbsp;&nbsp;correlationId</option>
 	
+	<option value="//api/name/customerId">&nbsp;&nbsp;&nbsp;&nbsp;customerId</option>
+	
 	<option value="//api/name/date">&nbsp;&nbsp;&nbsp;&nbsp;date</option>
 	
 	<option value="//api/name/encryptedCardData">&nbsp;&nbsp;&nbsp;&nbsp;encryptedCardData</option>
@@ -58,6 +60,8 @@
 	<option value="//api/name/paymentMethod">&nbsp;&nbsp;&nbsp;&nbsp;paymentMethod</option>
 	
 	<option value="//api/name/paymentMethodDetail">&nbsp;&nbsp;&nbsp;&nbsp;paymentMethodDetail</option>
+	
+	<option value="//api/name/receiptPreferenceToken">&nbsp;&nbsp;&nbsp;&nbsp;receiptPreferenceToken</option>
 	
 	<option value="//api/name/transactionHandle">&nbsp;&nbsp;&nbsp;&nbsp;transactionHandle</option>
 	
@@ -106,6 +110,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/correlationId">correlationId</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customerId">customerId</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/date">date</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/encryptedCardData">encryptedCardData</a></span></li>
@@ -119,6 +125,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentMethod">paymentMethod</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentMethodDetail">paymentMethodDetail</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptPreferenceToken">receiptPreferenceToken</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transactionHandle">transactionHandle</a></span></li>
 	
@@ -228,6 +236,18 @@ record the SDK can differentiate and tell whether it represents an authorization
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/correlationId">&nbsp;&nbsp;correlationId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/customerId">&nbsp;&nbsp;customerId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptPreferenceToken">&nbsp;&nbsp;receiptPreferenceToken</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -389,6 +409,47 @@ record the SDK can differentiate and tell whether it represents an authorization
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *correlationId</code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/customerId" title="customerId"></a>
+	<h3 class="subsubtitle method-title">customerId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>CustomerId and receiptPreferences information used for sending a receipt</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *customerId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>CustomerId and receiptPreferences information used for sending a receipt</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionRecord.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -646,6 +707,17 @@ record the SDK can differentiate and tell whether it represents an authorization
 	</div>				
 	
 	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptPreferenceToken" title="receiptPreferenceToken"></a>
+	<h3 class="subsubtitle method-title">receiptPreferenceToken</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
