@@ -314,7 +314,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCaptureForTransactionId:(NSString *)<em>txId</em> withAmount:(PPHAmount *)<em>amount</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> asFinal:(BOOL)<em>finalCapture</em> withCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCaptureForTransactionId:(id)<em>txId</em> withAmount:(id)<em>amount</em> andInvoice:(id)<em>invoice</em> asFinal:(id)<em>finalCapture</em> withCompletionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -385,7 +385,7 @@ It supports card swipes, manually entered card data, chip and pin, and checkin/t
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentAuthorizationAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -447,7 +447,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentChargeAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentChargeAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -509,7 +509,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentAuthorizationAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentAuthorizationAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -572,7 +572,7 @@ with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionH
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentChargeAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> withSignature:(UIImage *)<em>signature</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCardPresentChargeAttempt:(id)<em>card</em> forInvoice:(id)<em>invoice</em> withSignature:(id)<em>signature</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -640,7 +640,7 @@ with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionH
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginCheckinPayment:(PPHLocationCheckin *)<em>checkin</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginCheckinPayment:(id)<em>checkin</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -702,7 +702,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent *)<em>auth</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHChipAndPinAuthResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginChipAndPinAuthorization:(id)<em>auth</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -764,7 +764,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginNonPayPalRefundWithInvoiceId:(NSString *)<em>invoiceId</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginNonPayPalRefundWithInvoiceId:(id)<em>invoiceId</em> forAmount:(id)<em>amountOrNil</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -825,7 +825,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginRecordingExternalPayment:(PPHPaymentMethod)<em>paymentType</em> withNote:(NSString *)<em>note</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *response ))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginRecordingExternalPayment:(id)<em>paymentType</em> withNote:(id)<em>note</em> forInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -892,7 +892,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(NSString *)<em>transactionId</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(id)<em>transactionId</em> forAmount:(id)<em>amountOrNil</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -953,7 +953,7 @@ attempting to collect payment.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginSendReceipt:(PPHPaymentResponse *)<em>payment</em> to:(PPHReceiptDestination *)<em>destination</em> completionHandler:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginSendReceipt:(id)<em>payment</em> to:(id)<em>destination</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1015,7 +1015,7 @@ values of this object, so you can make one up with that data.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginVoidForTransactionId:(NSString *)<em>txId</em> withInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> andCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginVoidForTransactionId:(id)<em>txId</em> withInvoice:(id)<em>invoice</em> andCompletionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1076,7 +1076,7 @@ values of this object, so you can make one up with that data.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)<em>card</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForCardPresent:(id)<em>card</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1137,7 +1137,7 @@ values of this object, so you can make one up with that data.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent *)<em>auth</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForChipAndPin:(id)<em>auth</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1198,7 +1198,7 @@ values of this object, so you can make one up with that data.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv *)<em>event</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForDeclinedCardWithEvent:(id)<em>event</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1259,7 +1259,7 @@ values of this object, so you can make one up with that data.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHCardChargeResponse *)<em>response</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(id)<em>signature</em> forTransaction:(id)<em>response</em> andInvoice:(id)<em>invoice</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -1318,6 +1318,9 @@ values of this object, so you can make one up with that data.</p></dd>
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1328,7 +1331,7 @@ values of this object, so you can make one up with that data.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-02-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

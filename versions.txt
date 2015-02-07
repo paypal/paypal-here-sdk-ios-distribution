@@ -156,3 +156,9 @@ Bug fix: Fixing the AU country code check, that was wrongly setting the availabl
   What's new:
   - Fix missing Magtek swiper symbols.  
 
+1.4.9
+  What's new:
+  - Fixed a bug that caused the SDK to stall/lock up during initial connection with a chip and pin reader
+  - Fixed an issue related to being able to retry a PIN after incorrect entry (chip and pin flow)
+  - Fixed a UI bug that caused the screen to be incorrect when in landscape mode
+  - Introduced additional instrumentation to track an issue related to bad requests being formed during certain flows

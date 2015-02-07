@@ -236,6 +236,78 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setCustomerId:</TokenIdentifier>
+			<Abstract type="html">CustomerId and receiptPreferences information used for sending a receipt</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy, readonly) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/customerId</TokenIdentifier>
+			<Abstract type="html">CustomerId and receiptPreferences information used for sending a receipt</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy, readonly) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/customerId</TokenIdentifier>
+			<Abstract type="html">CustomerId and receiptPreferences information used for sending a receipt</Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy, readonly) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setReceiptPreferenceToken:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="44"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setPaidWithPayPal:</TokenIdentifier>
 			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
@@ -456,7 +528,7 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 			<Abstract type="html">Create a PPHTransactionRecord with a transactionId.  This can be used with beginRefund</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithTransactionId:(NSString *)transactionId</Declaration>
+			<Declaration>- (id)initWithTransactionId:(id)transactionId</Declaration>
 			
 			
 			<Anchor>//api/name/initWithTransactionId:</Anchor>
@@ -468,7 +540,7 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 			<Abstract type="html">Create a PPHTransactionRecord with a transactionId and a payPalInvoiceId.  This can be used with sendReceipt</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithTransactionId:(NSString *)transactionId andWithPayPalInvoiceId:(NSString *)payPalInvoiceId</Declaration>
+			<Declaration>- (id)initWithTransactionId:(id)transactionId andWithPayPalInvoiceId:(id)payPalInvoiceId</Declaration>
 			
 			
 			<Anchor>//api/name/initWithTransactionId:andWithPayPalInvoiceId:</Anchor>
@@ -483,13 +555,14 @@ card information, etc. The application could choose to just save the authorizati
 In order to perform a capture, this API could be used in conjuction with the &quot;downloadInvoiceForInvoiceId&quot; API to recreate the transaction record.</Abstract>
 			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithAuthorizationId:(NSString *)authorizationId andWithInvoice:(PPHInvoice *)invoice</Declaration>
+			<Declaration>- (id)initWithAuthorizationId:(id)authorizationId andWithInvoice:(id)invoice</Declaration>
 			
 			
 			<Anchor>//api/name/initWithAuthorizationId:andWithInvoice:</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>
