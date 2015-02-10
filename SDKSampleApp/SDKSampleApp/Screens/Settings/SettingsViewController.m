@@ -14,7 +14,7 @@
 
 @interface SettingsViewController ()
 @property (nonatomic, retain) IBOutlet UITextField *taxRateTextField;
-@property (nonatomic,strong) PPHCardReaderBasicInformation *readerInfo;
+@property (nonatomic,strong) PPHCardReaderMetadata *readerInfo;
 @property (nonatomic,strong) PPHCardReaderMetadata *readerMetadata;
 @property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
 @property (nonatomic,strong) CLLocationManager *locationManager;
@@ -210,13 +210,13 @@
 #pragma mark -
 #pragma mark PPHSimpleCardReaderDelegate
 
--(void)didStartReaderDetection:(PPHCardReaderBasicInformation *)readerType {
+-(void)didStartReaderDetection:(PPHCardReaderMetadata *)readerType {
     NSLog(@"Detecting Device");
     self.detectingReaderSpinny.hidden = NO;
     [self.detectingReaderSpinny startAnimating];
 }
 
--(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader {
+-(void)didDetectReaderDevice:(PPHCardReaderMetadata *)reader {
     NSLog(@"%@", [NSString stringWithFormat:@"Detected %@", reader.friendlyName]);
     self.detectingReaderSpinny.hidden = YES;
     [self.detectingReaderSpinny stopAnimating];

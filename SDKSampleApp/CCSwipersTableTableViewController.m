@@ -80,7 +80,7 @@
 
 
 
--(void)didDetectReaderDevice: (PPHCardReaderBasicInformation*) reader {
+-(void)didDetectReaderDevice: (PPHCardReaderMetadata*) reader {
     self.availableDevices = [[PayPalHereSDK sharedCardReaderManager] availableDevices];
     [self.tableView reloadData];
 }

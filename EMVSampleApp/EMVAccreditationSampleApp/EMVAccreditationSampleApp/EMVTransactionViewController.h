@@ -22,7 +22,7 @@ UITextFieldDelegate
 @property(weak, nonatomic) IBOutlet UIButton *salesHistoryButton;
 @property(weak, nonatomic) IBOutlet UIButton *updateTerminalButton;
 
-@property(strong, nonatomic) PPHCardReaderBasicInformation *currentDeviceInfo;
+@property(strong, nonatomic) PPHCardReaderMetadata *currentDeviceInfo;
 @property(strong, nonatomic) PPHCardReaderMetadata *emvMetaData;
 
 -(IBAction)transactionAmountFieldReturned:(id)sender;
