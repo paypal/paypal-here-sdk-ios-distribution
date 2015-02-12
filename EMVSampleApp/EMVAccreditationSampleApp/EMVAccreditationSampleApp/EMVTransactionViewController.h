@@ -12,7 +12,9 @@
 
 @interface EMVTransactionViewController : UIViewController <
 PPHCardReaderDelegate,
-UITextFieldDelegate
+UITextFieldDelegate,
+PPHTransactionControllerDelegate,
+UIAlertViewDelegate
 >
 
 @property(weak, nonatomic) IBOutlet UILabel *emvConnectionStatus;
@@ -21,9 +23,6 @@ UITextFieldDelegate
 @property(weak, nonatomic) IBOutlet UIButton *chargeButton;
 @property(weak, nonatomic) IBOutlet UIButton *salesHistoryButton;
 @property(weak, nonatomic) IBOutlet UIButton *updateTerminalButton;
-
-@property(strong, nonatomic) PPHCardReaderMetadata *currentDeviceInfo;
-@property(strong, nonatomic) PPHCardReaderMetadata *emvMetaData;
 
 -(IBAction)transactionAmountFieldReturned:(id)sender;
 -(IBAction)chargeButtonPressed:(id)sender;

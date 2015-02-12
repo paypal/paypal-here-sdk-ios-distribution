@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EMVSalesHistoryViewController : UITableViewController<
-UIAlertViewDelegate,
-UIActionSheetDelegate
->
+@interface EMVSalesHistoryViewController : UITableViewController
 
 @end
