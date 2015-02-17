@@ -86,7 +86,7 @@
     self.emvMetaData = metadata;
 }
 
--(void)didDetectReaderDevice:(PPHCardReaderBasicInformation *)reader
+-(void)didDetectReaderDevice:(PPHCardReaderMetadata *)reader
 {
     [self displayConnectionStatusWithText:@"EMV device connected" andStatus:YES];
     self.currentDeviceInfo = reader;
@@ -209,7 +209,7 @@
     self.emvConnectionStatus.text = statusText;
 }
 
--(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial withEstimatedDuration: (NSTimeInterval) estimatedDuration {
+-(void)didDetectUpgradeableReader: (PPHCardReaderMetadata*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial withEstimatedDuration: (NSTimeInterval) estimatedDuration {
     self.isUpdateRequired = required;
 }
 
