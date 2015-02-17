@@ -174,15 +174,16 @@
         return;
     }
 
-
     if (!([PayPalHereSDK activeMerchant].payPalAccount.availablePaymentTypes & ePPHAvailablePaymentTypeChip)) {
         [self showAlertWithTitle:@"Payment Failure" andMessage:@"Unfortunately you can not take EMV payments, please call PayPal and get the appropriate permissions."];
         return;
     }
+
     __weak typeof(self) weakSelf = self;
-    [[PayPalHereSDK sharedTransactionManager] processPaymentUsingWithPaymentType:ePPHPaymentMethodChipCard completionHandler:^(PPHTransactionResponse *response) {
+    [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodChipCard completionHandler:^(PPHTransactionResponse *response) {
         if(response) {
             if (!response.error && response.record.transactionId) {
+                weakSelf.transactionAmountField.text = @"";
                 [weakSelf saveTransactionRecordForRefund:response.record];
             }
             else if(response.error.code == kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds)  {
