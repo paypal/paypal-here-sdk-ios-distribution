@@ -14,6 +14,8 @@
 @interface EMVTransactionViewController ()
 @property (strong, nonatomic) PPHCardReaderWatcher *cardReaderWatcher;
 @property (strong, nonatomic) UIAlertView *updateRequiredAlertDialog;
+@property (nonatomic) BOOL showReaderUpdateAlert;
+
 @end
 
 @implementation EMVTransactionViewController
@@ -95,20 +97,13 @@
     self.emvConnectionStatus.text = @"No EMV device paired, please connect one before transacting";
 }
 
--(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata {
-    [self displayConnectionStatusWithText:@"EMV device connected" andStatus:YES];
-}
-
 -(void)didDetectReaderDevice:(PPHCardReaderMetadata *)reader {
-    [self displayConnectionStatusWithText:@"EMV device connected" andStatus:YES];
+    self.showReaderUpdateAlert = YES;
+    [self updateStatusText];
 }
 
--(void)didFinishUpgradePreparations {
-    if ([self isUpdateRequired]) {
-        [self showUpdateRequiredAlertDialog];
-    } else {
-        [self displayConnectionStatusWithText:@"EMV device connected and ready!" andStatus:YES];
-    }
+-(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata {
+    [self updateStatusText];
 }
 
 #pragma mark -
@@ -134,6 +129,18 @@
 
 #pragma mark -
 #pragma mark Helpers
+
+- (void)updateStatusText {
+    if ([self isUpdateRequired]) {
+        if (self.showReaderUpdateAlert) {
+            [self showUpdateRequiredAlertDialog];
+        }
+        [self displayConnectionStatusWithText:@"Update card reader!" andStatus:NO];
+        [self enableUpdateTerminalButton:YES];
+    } else {
+        [self displayConnectionStatusWithText:@"EMV device connected and ready!" andStatus:YES];
+    }
+}
 
 - (void)updatePaymentFlow {
     PPHInvoice *invoice = [self invoiceFromAmountString:self.transactionAmountField.text];
@@ -239,6 +246,7 @@
 
 
 -(void)showUpdateRequiredAlertDialog {
+    self.showReaderUpdateAlert = NO;
     self.updateRequiredAlertDialog = [[UIAlertView alloc] initWithTitle:@"Software Update Required"
                                                                 message:@"Update Now?"
                                                                delegate:self
@@ -251,10 +259,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView == self.updateRequiredAlertDialog) {
-        if (buttonIndex == alertView.cancelButtonIndex) {
-            [self displayConnectionStatusWithText:@"Update card reader!" andStatus:NO];
-            [self enableUpdateTerminalButton:YES];
-        } else {
+        if (buttonIndex != alertView.cancelButtonIndex) {
             [self beginReaderUpdate];
         }
 
