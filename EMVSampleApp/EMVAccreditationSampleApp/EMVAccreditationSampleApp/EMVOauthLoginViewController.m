@@ -49,20 +49,6 @@
     [self clearTextFields];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.usernameField.text = @"mpavlinsky";
-        self.passwordField.text = @"11111111";
-        self.segControl.selectedSegmentIndex = 2;
-        self.activeServer = kStageNameArray[2];
-        self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[2]];
-        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
-
-        [self loginPressed:self];
-    });
-}
 
 - (void)didReceiveMemoryWarning
 {
