@@ -196,6 +196,84 @@ For the auth and capture use case, this would house the final capture Id as well
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setCustomerId:</TokenIdentifier>
+			<Abstract type="html">A customerId and receipt preference token used for account lookup
+when sending receipts. Resolves customerId with preference level, even if you have
+a guest account the backend uses these two pieces of information to send your receipt over.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/customerId</TokenIdentifier>
+			<Abstract type="html">A customerId and receipt preference token used for account lookup
+when sending receipts. Resolves customerId with preference level, even if you have
+a guest account the backend uses these two pieces of information to send your receipt over.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/customerId</TokenIdentifier>
+			<Abstract type="html">A customerId and receipt preference token used for account lookup
+when sending receipts. Resolves customerId with preference level, even if you have
+a guest account the backend uses these two pieces of information to send your receipt over.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setReceiptPreferenceToken:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setIsPaymentAuthorization:</TokenIdentifier>
 			<Abstract type="html">Whether this was an authorization rather than a sale. In this context,
 authorization means a &quot;complete transaction and verification of funds&quot;
