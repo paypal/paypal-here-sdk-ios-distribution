@@ -46,6 +46,7 @@
 		804C306D195A837E006ABECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60F91959FBC400E4BFDE /* Foundation.framework */; };
 		804C306E195A8388006ABECA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6195195A4ADB00E4BFDE /* libc++.dylib */; };
 		804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */; };
+		F11FF8EB1A97FBA800DAA59D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11FF8EA1A97FBA800DAA59D /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		803E6193195A4AC200E4BFDE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		803E6195195A4ADB00E4BFDE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalBeacon.a; path = "../../SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos/libPayPalBeacon.a"; sourceTree = "<group>"; };
+		F11FF8EA1A97FBA800DAA59D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../../SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				804C3066195A8348006ABECA /* AudioToolbox.framework in Frameworks */,
 				804C3065195A8338006ABECA /* CoreLocation.framework in Frameworks */,
 				804C3064195A8330006ABECA /* CFNetwork.framework in Frameworks */,
+				F11FF8EB1A97FBA800DAA59D /* Crashlytics.framework in Frameworks */,
 				804C3063195A8322006ABECA /* Security.framework in Frameworks */,
 				804C3062195A8318006ABECA /* MobileCoreServices.framework in Frameworks */,
 				804C3061195A830D006ABECA /* libxml2.dylib in Frameworks */,
@@ -174,6 +177,7 @@
 		803E60F81959FBC400E4BFDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F11FF8EA1A97FBA800DAA59D /* Crashlytics.framework */,
 				F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */,
 				804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */,
 				803E6195195A4ADB00E4BFDE /* libc++.dylib */,
@@ -489,6 +493,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../SDK/Debug\"/**",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
@@ -517,6 +522,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../SDK/Debug\"/**",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
