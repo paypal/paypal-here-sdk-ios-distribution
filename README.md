@@ -7,6 +7,15 @@ which allows you to take card and checkin payments from your mobile merchant app
 Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
 
 
+App Review Information
+=====================
+This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
+This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
+This iOS application uses the jp.star-m.starpro protocol for Bluetooth printing: [SM-S220i PPID] 121976-0002 
+This iOS application uses the com.epson.escpos protocol for Bluetooth printing: MFI PPID 107611-0002
+This iOS application uses the com.bsmartdev.printer protocol for the BEE SMART, INC accessory PPID 129170-0002
+This iOS application uses the com.woosim.wspr240 protocol for the Woosim Printer PPID 122202-0001
+
 Code Worth Looking At
 =====================
 
