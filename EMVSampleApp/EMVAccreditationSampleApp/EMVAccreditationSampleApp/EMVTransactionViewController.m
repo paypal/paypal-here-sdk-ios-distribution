@@ -53,6 +53,14 @@
     [super viewDidAppear:animated];
 }
 
+- (BOOL)isAmountValid {
+    NSCharacterSet *blockedChars = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if ([self.transactionAmountField.text rangeOfCharacterFromSet:blockedChars].location != NSNotFound) {
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark -
 #pragma mark IBActions
 
@@ -66,7 +74,11 @@
 
 - (IBAction)chargeButtonPressed:(id)sender {
     [_transactionAmountField resignFirstResponder];
-    [self processPayment];
+    if ([self getDecimalAmountFromString:self.transactionAmountField.text]) {
+        [self processPayment];
+    } else {
+        [self showAlertWithTitle:@"Invalid Amount" andMessage:@"Please enter a valid numerical amount."];
+    }
 }
 
 - (IBAction)salesHistoryButtonPressed:(id)sender {
@@ -76,9 +88,6 @@
 
 - (IBAction)updateTerminalButtonPressed:(id)sender {
     [self beginReaderUpdate];
-}
-
-- (IBAction)transactionAmountFieldUpdated:(id)sender {
 }
 
 
@@ -129,9 +138,6 @@
     [self processPayment];
 }
 
--(void)onReadyForRefund {
-}
-
 #pragma mark -
 #pragma mark Helpers
 
@@ -153,17 +159,14 @@
 
     if (invoice) {
         [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:invoice transactionController:self];
-    } else {
-        [self showAlertWithTitle:@"Invoice update failed" andMessage:@"Please provide a valid numeric amount"];
     }
 
 }
 
 - (PPHInvoice *)invoiceFromAmountString:(NSString *)amountString {
-    NSDecimalNumber *decimalAmount = [[NSDecimalNumber alloc]
-                                      initWithString:amountString];
-
-    if(NSOrderedSame == [[NSDecimalNumber notANumber] compare: decimalAmount]) {
+    
+    NSDecimalNumber *decimalAmount = [self getDecimalAmountFromString:amountString];
+    if (!decimalAmount) {
         return nil;
     }
 
@@ -177,6 +180,16 @@
                    taxRate:nil taxRateName:nil];
 
     return invoice;
+}
+
+- (NSDecimalNumber *)getDecimalAmountFromString:(NSString *)amountStr {
+    NSDecimalNumber *decimalAmount = [[NSDecimalNumber alloc]
+                                      initWithString:amountStr];
+    
+    if(NSOrderedSame == [[NSDecimalNumber notANumber] compare: decimalAmount]) {
+        return nil;
+    }
+    return decimalAmount;
 }
 
 - (void)processPayment {
