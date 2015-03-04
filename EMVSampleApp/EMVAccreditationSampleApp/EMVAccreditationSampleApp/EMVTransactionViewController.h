@@ -28,5 +28,6 @@ UIAlertViewDelegate
 -(IBAction)chargeButtonPressed:(id)sender;
 -(IBAction)salesHistoryButtonPressed:(id)sender;
 -(IBAction)updateTerminalButtonPressed:(id)sender;
+-(IBAction)transactionAmountFieldUpdated:(id)sender;
 
 @end
