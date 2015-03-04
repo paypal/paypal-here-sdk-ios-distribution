@@ -51,12 +51,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    [self updatePaymentFlow];
 }
 
 #pragma mark -
 #pragma mark IBActions
+
+-(IBAction)transactionAmountFieldUpdated:(id)sender {
+    [self updatePaymentFlow];
+}
 
 - (IBAction)transactionAmountFieldReturned:(id)sender {
     [sender resignFirstResponder];
@@ -74,6 +76,9 @@
 
 - (IBAction)updateTerminalButtonPressed:(id)sender {
     [self beginReaderUpdate];
+}
+
+- (IBAction)transactionAmountFieldUpdated:(id)sender {
 }
 
 
@@ -143,11 +148,15 @@
 }
 
 - (void)updatePaymentFlow {
+    
     PPHInvoice *invoice = [self invoiceFromAmountString:self.transactionAmountField.text];
 
     if (invoice) {
         [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:invoice transactionController:self];
+    } else {
+        [self showAlertWithTitle:@"Invoice update failed" andMessage:@"Please provide a valid numeric amount"];
     }
+
 }
 
 - (PPHInvoice *)invoiceFromAmountString:(NSString *)amountString {
