@@ -240,12 +240,10 @@
 
                 [weakSelf showAlertWithTitle:@"Amount is out of bounds" andMessage:nil];
                 weakSelf.transactionAmountField.text = @"";
-                self.currentInvoice = nil;
-
-            } else if (response.error) {
-                self.currentInvoice = nil;
             }
+            
         }
+        self.currentInvoice = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf updatePaymentFlow];
         });
