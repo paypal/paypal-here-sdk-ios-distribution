@@ -156,11 +156,8 @@
 }
 
 - (void)updatePaymentFlow {
-    
-    //we don't want to keep creating a new invoice everytime there is a change in the amount. Plus,
-    //there is only one item in the invoice at all times because we just have a text field for entering
-    //amount
-    
+    //Let's update our single item invoice with the new amount if updated. Storing the shopping cart
+    //invoice as a property
     if (self.currentInvoice == nil) {
         self.currentInvoice = [self invoiceFromAmountString:self.transactionAmountField.text];
         [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:self.currentInvoice transactionController:self];
