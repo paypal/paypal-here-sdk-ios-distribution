@@ -244,9 +244,15 @@
             
         }
         self.currentInvoice = nil;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf updatePaymentFlow];
-        });
+        if (response.error || !(response.record && response.record.transactionId)) {
+            //if we had a successful transaction then wait for the user to either enter a new amount or hit charge
+            //before doing a new transaction start. Other wise, when the user selects refund, we have to cancel
+            //the transaction which gets ugly
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf updatePaymentFlow];
+            });
+            
+        }
     }];
 }
 
