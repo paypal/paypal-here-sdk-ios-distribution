@@ -414,7 +414,7 @@
                          bundle:nil];
     
     transactionVC.title = @"Order Entry";
-    self.navigationController.viewControllers = @[transactionVC];
+    [self.navigationController pushViewController:transactionVC animated:YES];
 }
 
 -(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {

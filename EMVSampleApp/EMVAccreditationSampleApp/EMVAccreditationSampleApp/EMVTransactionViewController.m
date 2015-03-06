@@ -15,6 +15,7 @@
 @property (strong, nonatomic) PPHCardReaderWatcher *cardReaderWatcher;
 @property (strong, nonatomic) UIAlertView *updateRequiredAlertDialog;
 @property (nonatomic) BOOL showReaderUpdateAlert;
+@property (nonatomic, strong) PPHInvoice *currentInvoice;
 
 @end
 
@@ -27,6 +28,7 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
     }
+    self.currentInvoice = nil;
     
     return self;
 }
@@ -154,11 +156,16 @@
 }
 
 - (void)updatePaymentFlow {
-    
-    PPHInvoice *invoice = [self invoiceFromAmountString:self.transactionAmountField.text];
-
-    if (invoice) {
-        [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:invoice transactionController:self];
+    //Let's update our single item invoice with the new amount if updated. Storing the shopping cart
+    //invoice as a property
+    if (self.currentInvoice == nil) {
+        self.currentInvoice = [self invoiceFromAmountString:self.transactionAmountField.text];
+        [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:self.currentInvoice transactionController:self];
+    } else {
+        //just update the invoice
+        PPHAmount *amount = [PPHAmount amountWithString:self.transactionAmountField.text];
+        [self.currentInvoice removeAllItems];
+        [self.currentInvoice addItemWithId:@"Purchase" detailId:@"" name:@"accreditationTestTransactionItem" quantity:[NSDecimalNumber one] unitPrice:amount.amount taxRate:nil taxRateName:nil];
     }
 
 }
@@ -214,6 +221,7 @@
             if (!response.error && response.record.transactionId) {
                 weakSelf.transactionAmountField.text = @"";
                 [weakSelf saveTransactionRecordForRefund:response.record];
+                self.currentInvoice = nil;
             }
             else if(response.error.code == kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds)  {
                 // This happens when the user is attempting to charge an amount that's outside
@@ -228,11 +236,20 @@
                 NSLog(@"Dev Message: %@", [response.error.userInfo objectForKey:@"DevMessage"]);
 
                 [weakSelf showAlertWithTitle:@"Amount is out of bounds" andMessage:nil];
+                weakSelf.transactionAmountField.text = @"";
             }
+            
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf updatePaymentFlow];
-        });
+        self.currentInvoice = nil;
+        if (response.error || !(response.record && response.record.transactionId)) {
+            //if we had a successful transaction then wait for the user to either enter a new amount or hit charge
+            //before doing a new transaction start. Other wise, when the user selects refund, we have to cancel
+            //the transaction which gets ugly
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf updatePaymentFlow];
+            });
+            
+        }
     }];
 }
 
