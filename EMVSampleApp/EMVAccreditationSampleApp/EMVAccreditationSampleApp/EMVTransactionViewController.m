@@ -159,13 +159,19 @@
     //Let's update our single item invoice with the new amount if updated. Storing the shopping cart
     //invoice as a property
     if (self.currentInvoice == nil) {
-        self.currentInvoice = [self invoiceFromAmountString:self.transactionAmountField.text];
-        [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:self.currentInvoice transactionController:self];
+        if (![self.transactionAmountField.text isEqualToString:@""]) {
+            self.currentInvoice = [self invoiceFromAmountString:self.transactionAmountField.text];
+            [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:self.currentInvoice transactionController:self];
+        }
     } else {
-        //just update the invoice
-        PPHAmount *amount = [PPHAmount amountWithString:self.transactionAmountField.text];
-        [self.currentInvoice removeAllItems];
-        [self.currentInvoice addItemWithId:@"Purchase" detailId:@"" name:@"accreditationTestTransactionItem" quantity:[NSDecimalNumber one] unitPrice:amount.amount taxRate:nil taxRateName:nil];
+        if (![self.transactionAmountField.text isEqualToString:@""]) {
+            PPHAmount *amount = [PPHAmount amountWithString:self.transactionAmountField.text];
+            [self.currentInvoice removeAllItems];
+            [self.currentInvoice addItemWithId:@"Purchase" detailId:@"" name:@"accreditationTestTransactionItem" quantity:[NSDecimalNumber one] unitPrice:amount.amount taxRate:nil taxRateName:nil];
+        } else {
+            //user emptied out field so nil out the invoice
+            self.currentInvoice = nil;
+        }
     }
 
 }
