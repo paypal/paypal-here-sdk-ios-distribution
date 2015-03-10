@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIAlertView *updateRequiredAlertDialog;
 @property (nonatomic) BOOL showReaderUpdateAlert;
 @property (nonatomic, strong) PPHInvoice *currentInvoice;
+@property (nonatomic, strong) PPHTransactionManager *transactionManager;
 
 @end
 
@@ -40,15 +41,11 @@
     self.salesHistoryButton.layer.cornerRadius = 10;
     self.updateTerminalButton.layer.cornerRadius = 10;
     [self enableUpdateTerminalButton:NO];
+    self.transactionManager = [PayPalHereSDK sharedTransactionManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    if (tm.hasActiveTransaction) {
-        [tm cancelPayment];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -161,7 +158,7 @@
     if (self.currentInvoice == nil) {
         if (![self.transactionAmountField.text isEqualToString:@""]) {
             self.currentInvoice = [self invoiceFromAmountString:self.transactionAmountField.text];
-            [[PayPalHereSDK sharedTransactionManager] beginPaymentWithInvoice:self.currentInvoice transactionController:self];
+            [self.transactionManager beginPaymentWithInvoice:self.currentInvoice transactionController:self];
         }
     } else {
         if (![self.transactionAmountField.text isEqualToString:@""]) {
@@ -222,7 +219,7 @@
     }
 
     __weak typeof(self) weakSelf = self;
-    [[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodChipCard completionHandler:^(PPHTransactionResponse *response) {
+    [self.transactionManager processPaymentWithPaymentType:ePPHPaymentMethodChipCard completionHandler:^(PPHTransactionResponse *response) {
         if(response) {
             if (!response.error && response.record.transactionId) {
                 weakSelf.transactionAmountField.text = @"";
