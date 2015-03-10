@@ -44,15 +44,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    if (tm.hasActiveTransaction) {
-        [tm cancelPayment];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    if (tm.hasActiveTransaction) {
+        [tm cancelPayment];
+    }
 }
 
 - (BOOL)isAmountValid {
