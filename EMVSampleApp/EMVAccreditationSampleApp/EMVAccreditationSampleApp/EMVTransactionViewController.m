@@ -41,7 +41,7 @@
     self.salesHistoryButton.layer.cornerRadius = 10;
     self.updateTerminalButton.layer.cornerRadius = 10;
     [self enableUpdateTerminalButton:NO];
-    self.transactionManager = self.transactionManager;
+    self.transactionManager = [PayPalHereSDK sharedTransactionManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
