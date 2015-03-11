@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -7,9 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EMVOauthLoginViewController">
             <connections>
+                <outlet property="currentSoftwareRepo" destination="IAI-gj-t3t" id="1tc-Yx-3bW"/>
                 <outlet property="loginButton" destination="0tJ-ql-TZJ" id="xgC-Ot-I3H"/>
                 <outlet property="passwordField" destination="ALc-Xu-2ub" id="afN-AB-oae"/>
                 <outlet property="segControl" destination="xDH-55-WEF" id="2sm-Cx-aAy"/>
+                <outlet property="selectSoftwareRepoButton" destination="Bgj-A1-uB4" id="UBm-VW-Czs"/>
                 <outlet property="spinner" destination="Kul-7c-55f" id="0iv-i0-lTm"/>
                 <outlet property="usernameField" destination="itM-fS-OMo" id="JLh-6y-H8T"/>
                 <outlet property="view" destination="iN0-l3-epB" id="h1b-mW-4HT"/>
@@ -24,46 +26,8 @@
                     <rect key="frame" x="29" y="43" width="263" height="424"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pp_m_rgb.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-VR-YjB">
-                            <rect key="frame" x="90" y="32" width="83" height="82"/>
+                            <rect key="frame" x="90" y="13" width="83" height="82"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="itM-fS-OMo">
-                            <rect key="frame" x="47" y="174" width="168" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            <connections>
-                                <action selector="usernameFieldReturned:" destination="-1" eventType="editingDidEndOnExit" id="ch1-Uk-Sdw"/>
-                            </connections>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ALc-Xu-2ub">
-                            <rect key="frame" x="47" y="212" width="168" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <action selector="passwordFieldReturned:" destination="-1" eventType="editingDidEndOnExit" id="cIC-28-7JJ"/>
-                            </connections>
-                        </textField>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xDH-55-WEF">
-                            <rect key="frame" x="18" y="260" width="225" height="29"/>
-                            <segments>
-                                <segment title="Live"/>
-                                <segment title="SandBox"/>
-                                <segment title="Stage"/>
-                            </segments>
-                            <connections>
-                                <action selector="serviceHostSegmentedControlChanged:" destination="-1" eventType="valueChanged" id="Hfu-a6-Yeb"/>
-                            </connections>
-                        </segmentedControl>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tJ-ql-TZJ">
-                            <rect key="frame" x="47" y="309" width="168" height="30"/>
-                            <color key="backgroundColor" red="0.30850147649999998" green="0.75958320889999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="Login">
-                                <color key="titleColor" red="0.056836874920000002" green="0.13570878889999999" blue="0.62215523100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="WCQ-o5-XQL"/>
-                            </connections>
-                        </button>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Kul-7c-55f">
                             <rect key="frame" x="121" y="202" width="20" height="20"/>
                         </activityIndicatorView>
@@ -74,12 +38,66 @@
                         <constraint firstAttribute="height" constant="424" id="qtE-s9-Mdm"/>
                     </constraints>
                 </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="itM-fS-OMo">
+                    <rect key="frame" x="71" y="174" width="168" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                    <connections>
+                        <action selector="usernameFieldReturned:" destination="-1" eventType="editingDidEndOnExit" id="ch1-Uk-Sdw"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ALc-Xu-2ub">
+                    <rect key="frame" x="71" y="223" width="168" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="passwordFieldReturned:" destination="-1" eventType="editingDidEndOnExit" id="cIC-28-7JJ"/>
+                    </connections>
+                </textField>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xDH-55-WEF">
+                    <rect key="frame" x="48" y="276" width="225" height="29"/>
+                    <segments>
+                        <segment title="Live"/>
+                        <segment title="SandBox"/>
+                        <segment title="Stage"/>
+                    </segments>
+                    <connections>
+                        <action selector="serviceHostSegmentedControlChanged:" destination="-1" eventType="valueChanged" id="Hfu-a6-Yeb"/>
+                    </connections>
+                </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tJ-ql-TZJ">
+                    <rect key="frame" x="76" y="321" width="168" height="30"/>
+                    <color key="backgroundColor" red="0.30850147649999998" green="0.75958320889999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" red="0.056836874920000002" green="0.13570878889999999" blue="0.62215523100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="WCQ-o5-XQL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgj-A1-uB4">
+                    <rect key="frame" x="92" y="416" width="149" height="30"/>
+                    <state key="normal" title="Select Software Repo">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onSoftwareRepoSelection:" destination="-1" eventType="touchUpInside" id="ntu-H2-iby"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Software Repo: dev-stage-2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAI-gj-t3t">
+                    <rect key="frame" x="92" y="379" width="173" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="qcz-PB-9de" secondAttribute="centerY" id="4b7-OO-SpT"/>
                 <constraint firstAttribute="centerX" secondItem="qcz-PB-9de" secondAttribute="centerX" id="Tbg-Ud-K4M"/>
             </constraints>
+            <point key="canvasLocation" x="127" y="224"/>
         </view>
     </objects>
     <resources>

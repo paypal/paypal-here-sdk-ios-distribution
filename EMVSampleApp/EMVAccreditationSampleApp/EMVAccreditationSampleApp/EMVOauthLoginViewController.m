@@ -21,13 +21,28 @@
 #define kStage2pph24 @"stage2pph24"
 #define kStage2mb024 @"stage2mb024"
 
+#define kDevStage1 @"dev-stage-1"
+#define kDevStage2 @"dev-stage-2"
+#define kDevStage3 @"dev-stage-3"
+#define kQaStage1 @"qa-stage-1"
+#define kQaStage2 @"qa-stage-2"
+#define kQaStage3 @"qa-stage-3"
+#define kProdStage @"prod-stage"
+#define kProd @"liveprod"
+#define kSoftwareRepoArray @[kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3,kProdStage, kProd]
+
+
 #define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024]
 #define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
 
 @interface EMVOauthLoginViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @property (nonatomic, strong) UIActionSheet *stageSelectedActionSheet;
+@property (nonatomic, strong) UIActionSheet *selectSoftwareRepoActionSheet;
+@property (weak, nonatomic) IBOutlet UILabel *currentSoftwareRepo;
 @property (nonatomic, copy) NSString *activeServer;
+- (IBAction)onSoftwareRepoSelection:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *selectSoftwareRepoButton;
 @end
 
 @implementation EMVOauthLoginViewController
@@ -44,13 +59,14 @@
     [self setUpSpinnerAndTitle];
     [self setUpTextFields];
     [self stageSelectionActionSheet];
+    [self softwareRepoSelectionActionSheet];
     self.loginButton.layer.cornerRadius = 10;
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [self clearTextFields];
+    //[self clearTextFields];
 }
 
 
@@ -84,6 +100,14 @@
                                                        otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, nil];
 }
 
+-(void)softwareRepoSelectionActionSheet {
+    self.selectSoftwareRepoActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a software repo:"
+                                                                delegate:self
+                                                       cancelButtonTitle:nil
+                                                  destructiveButtonTitle:nil
+                                                       otherButtonTitles:kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3, kProdStage, kProd, nil];
+}
+
 - (void)setUpSpinnerAndTitle {
     self.spinner.hidesWhenStopped = YES;
     self.title = @"Emv Sample App";
@@ -93,6 +117,7 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     self.passwordField.secureTextEntry = YES;
+
 }
 
 - (void)clearTextFields {
@@ -151,10 +176,16 @@
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    self.activeServer = kStageNameArray[buttonIndex];
-    self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[buttonIndex]];
-    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
-    NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
+    if ([actionSheet.title isEqualToString:@"Select a software repo:"]) {
+        self.currentSoftwareRepo.text = [@"Software Repo: " stringByAppendingString:kSoftwareRepoArray[buttonIndex]];
+        [[NSUserDefaults standardUserDefaults] setObject:kSoftwareRepoArray[buttonIndex] forKey:@"deviceSoftwareRepo"];
+        
+    } else {
+        self.activeServer = kStageNameArray[buttonIndex];
+        self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[buttonIndex]];
+        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
+        NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
+    }
 }
 
 - (IBAction)loginPressed:(id)sender {
@@ -446,4 +477,7 @@
 }
 
 
+- (IBAction)onSoftwareRepoSelection:(id)sender {
+    [self.selectSoftwareRepoActionSheet showInView:self.view];
+}
 @end
