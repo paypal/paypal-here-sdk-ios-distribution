@@ -220,11 +220,15 @@
 
     __weak typeof(self) weakSelf = self;
     [self.transactionManager processPaymentWithPaymentType:ePPHPaymentMethodChipCard completionHandler:^(PPHTransactionResponse *response) {
+        
+        //Whether we get a transaction response or not, lets get the EMVSDK rolling fresh
+        //again, clear out out our current invoice and get rid of the current amount.
+        weakSelf.currentInvoice = nil;
+        weakSelf.transactionAmountField.text = @"";
+        
         if(response) {
             if (!response.error && response.record.transactionId) {
-                weakSelf.transactionAmountField.text = @"";
                 [weakSelf saveTransactionRecordForRefund:response.record];
-                self.currentInvoice = nil;
             }
             else if(response.error.code == kPPHLocalErrorBadConfigurationPaymentAmountOutOfBounds)  {
                 // This happens when the user is attempting to charge an amount that's outside
@@ -234,23 +238,10 @@
                 // Your app can check these bounds before kicking off the payment (and eventually
                 // getting this error).  To do that, please check the PPHPaymentLimits object found
                 // via [[[PayPalHereSDK activeMerchant] payPalAccount] paymentLimits].
-
                 NSLog(@"The app attempted to charge an out of bounds amount.");
                 NSLog(@"Dev Message: %@", [response.error.userInfo objectForKey:@"DevMessage"]);
-
                 [weakSelf showAlertWithTitle:@"Amount is out of bounds" andMessage:nil];
-                weakSelf.transactionAmountField.text = @"";
             }
-            
-        }
-        self.currentInvoice = nil;
-        if (response.error || !(response.record && response.record.transactionId)) {
-            //if we had a successful transaction then wait for the user to either enter a new amount or hit charge
-            //before doing a new transaction start. Other wise, when the user selects refund, we have to cancel
-            //the transaction which gets ugly
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf updatePaymentFlow];
-            });
             
         }
     }];
