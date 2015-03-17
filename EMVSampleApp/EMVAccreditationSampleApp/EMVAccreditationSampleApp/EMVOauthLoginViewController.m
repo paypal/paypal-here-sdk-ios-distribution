@@ -506,13 +506,17 @@
 
 - (void)saveUserChoices {
     [[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"username"];
+#ifdef DEBUG
     [[NSUserDefaults standardUserDefaults] setObject:self.passwordField.text forKey:@"password"];
+#endif
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)loadRecentUserChoices {
     self.usernameField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+#ifdef DEBUG
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"password"];
+#endif
     
     NSNumber *devStageButtonIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"desiredDevStage"];
     [self selectDevStageGivenIndex:[devStageButtonIndex intValue]];
