@@ -1,8 +1,9 @@
 ios-here-sdk-dist
 =================
 
-This is the sample application and SDK distribution package for the PayPal Here iOS SDK,
-which allows you to take card and checkin payments from your mobile merchant application.
+The PayPal Here SDK enables iOS apps to interact with credit card swipers so that merchants can process in-person credit card transactions using a mobile app. The native libraries of the PayPal Here SDK enable you to:
+* Interact with PayPal Hardware—Detect, connect to, and listen for events coming from PayPal Here audio jack-based card swipers.
+* Process Card-Present payments—When you swipe a card through a PayPal Here swiper, card data is immediately encrypted. The encrypted package can be sent to PayPal alongside the transaction data for processing.
 
 Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
 
