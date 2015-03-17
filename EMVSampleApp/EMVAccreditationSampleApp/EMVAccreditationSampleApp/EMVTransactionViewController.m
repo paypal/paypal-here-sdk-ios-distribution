@@ -17,7 +17,7 @@
 @property (nonatomic) BOOL showReaderUpdateAlert;
 @property (nonatomic, strong) PPHInvoice *currentInvoice;
 @property (nonatomic, strong) PPHTransactionManager *transactionManager;
-
+@property (nonatomic, assign) PPHPaymentMethod paymentMethod;
 @end
 
 @implementation EMVTransactionViewController
@@ -74,7 +74,7 @@
 - (IBAction)chargeButtonPressed:(id)sender {
     [_transactionAmountField resignFirstResponder];
     if ([self getDecimalAmountFromString:self.transactionAmountField.text]) {
-        [self processPayment];
+        [[PayPalHereSDK sharedTransactionManager] activateReaderForPayment];    //Start scanning for contactless and other 'active' types of payments
     } else {
         [self showAlertWithTitle:@"Invalid Amount" andMessage:@"Please enter a valid numerical amount."];
     }
@@ -133,7 +133,14 @@
     return self;
 }
 
--(void)onReadyForPayment {
+- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentMethod {
+    self.paymentMethod = paymentMethod;
+    
+    // Note that many EMV applications do not collect tip once the user
+    // has tapped their card.  However, for card inserts or swipes asking
+    // for a tip is then more popular.  Consider this when designing your application.
+    
+    // For this demo, let's just trigger the capture of payment.
     [self processPayment];
 }
 
@@ -158,7 +165,7 @@
     if (self.currentInvoice == nil) {
         if (![self.transactionAmountField.text isEqualToString:@""]) {
             self.currentInvoice = [self invoiceFromAmountString:self.transactionAmountField.text];
-            [self.transactionManager beginPaymentWithInvoice:self.currentInvoice transactionController:self];
+            [self.transactionManager beginPaymentUsingSDKUIWithInvoice:self.currentInvoice transactionController:self];
         }
     } else {
         if (![self.transactionAmountField.text isEqualToString:@""]) {
@@ -208,10 +215,7 @@
         return;
     }
 
-    if (!self.transactionAmountField.text || self.transactionAmountField.text.length == 0) {
-        [self showAlertWithTitle:@"Please enter a transaction amount." andMessage:nil];
-        return;
-    }
+    
 
     if (!([PayPalHereSDK activeMerchant].payPalAccount.availablePaymentTypes & ePPHAvailablePaymentTypeChip)) {
         [self showAlertWithTitle:@"Payment Failure" andMessage:@"Unfortunately you can not take EMV payments, please call PayPal and get the appropriate permissions."];
@@ -219,7 +223,7 @@
     }
 
     __weak typeof(self) weakSelf = self;
-    [self.transactionManager processPaymentWithPaymentType:ePPHPaymentMethodChipCard completionHandler:^(PPHTransactionResponse *response) {
+    [self.transactionManager processPaymentUsingSDKUIWithPaymentType:self.paymentMethod completionHandler:^(PPHTransactionResponse *response) {
         
         //Whether we get a transaction response or not, lets get the EMVSDK rolling fresh
         //again, clear out out our current invoice and get rid of the current amount.
