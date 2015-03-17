@@ -106,12 +106,12 @@ UIActionSheetDelegate
 
 }
 
-- (void)onReadyForPayment {
-
+- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentMethod {
+    
 }
 
-- (void)onReadyForRefund {
-
+- (void)onUserRefundMethodSelected:(PPHPaymentMethod) paymentMethod {
+    
 }
 
 - (UIViewController *)getCurrentViewController {
@@ -137,8 +137,8 @@ UIActionSheetDelegate
 
 - (void)performRefundWithRecord {
     // call SDK UI for refund
-    [[PayPalHereSDK sharedTransactionManager] beginRefundWithInvoice:self.record.invoice transactionController:self];
-    [[PayPalHereSDK sharedTransactionManager] processRefundWithAmount:self.amount completionHandler:^(PPHTransactionResponse *response) {
+    [[PayPalHereSDK sharedTransactionManager] beginRefundUsingSDKUIWithInvoice:self.record.invoice transactionController:self];
+    [[PayPalHereSDK sharedTransactionManager] processRefundUsingSDKUIWithAmount:self.amount completionHandler:^(PPHTransactionResponse *response) {
         NSLog(@"Refund completed.");
         
         if(response) {

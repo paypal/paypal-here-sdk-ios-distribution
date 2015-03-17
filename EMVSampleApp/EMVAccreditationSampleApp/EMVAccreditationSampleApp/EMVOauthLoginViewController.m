@@ -40,9 +40,12 @@
 @property (nonatomic, strong) UIActionSheet *stageSelectedActionSheet;
 @property (nonatomic, strong) UIActionSheet *selectSoftwareRepoActionSheet;
 @property (weak, nonatomic) IBOutlet UILabel *currentSoftwareRepo;
+@property (weak, nonatomic) IBOutlet UILabel *currentStage;
 @property (nonatomic, copy) NSString *activeServer;
-- (IBAction)onSoftwareRepoSelection:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *selectSoftwareRepoButton;
+
+- (IBAction)onSoftwareRepoSelection:(id)sender;
+
 @end
 
 @implementation EMVOauthLoginViewController
@@ -67,8 +70,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     //[self clearTextFields];
+    [self loadRecentUserChoices];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -169,24 +172,42 @@
         [self.stageSelectedActionSheet showInView:self.view];
     }
     
+    NSNumber *number = [NSNumber numberWithInt:self.segControl.selectedSegmentIndex];
+    [[NSUserDefaults standardUserDefaults] setObject:number forKey:@"liveSandboxOrStage"];             //Tell the SDK
+
+    
     NSLog(@"Service Host Url we will use for login %@", self.serviceHostUrl);
     NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
     
 }
 
+- (void)selectDevStageGivenIndex:(NSInteger)buttonIndex {
+    self.currentSoftwareRepo.text = [@"Software Repo: " stringByAppendingString:kSoftwareRepoArray[buttonIndex]];
+    [[NSUserDefaults standardUserDefaults] setObject:kSoftwareRepoArray[buttonIndex] forKey:@"deviceSoftwareRepo"];             //Tell the SDK
+}
+
+- (void)selectActiveServerGivenIndex:(NSInteger)buttonIndex {
+    self.activeServer = kStageNameArray[buttonIndex];
+    self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[buttonIndex]];
+    self.currentStage.text = [@"Current Server: " stringByAppendingString:kStageNameArray[buttonIndex]];
+
+    [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
+    NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
+}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([actionSheet.title isEqualToString:@"Select a software repo:"]) {
-        self.currentSoftwareRepo.text = [@"Software Repo: " stringByAppendingString:kSoftwareRepoArray[buttonIndex]];
-        [[NSUserDefaults standardUserDefaults] setObject:kSoftwareRepoArray[buttonIndex] forKey:@"deviceSoftwareRepo"];
+        [self selectDevStageGivenIndex:buttonIndex];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:buttonIndex] forKey:@"desiredDevStage"]; //Save for next samp app restart
         
     } else {
-        self.activeServer = kStageNameArray[buttonIndex];
-        self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[buttonIndex]];
-        [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
-        NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
+        [self selectActiveServerGivenIndex:buttonIndex];
+        NSNumber *stageIndex = [NSNumber numberWithInt:buttonIndex];
+        [[NSUserDefaults standardUserDefaults] setObject:stageIndex forKey:@"activeServerButtonIndex"]; //Save for next samp app restart
+
     }
 }
+
 
 - (IBAction)loginPressed:(id)sender {
     
@@ -195,6 +216,8 @@
         [self.view endEditing:YES];
         [self resetTextFieldOffset];
         [self.spinner startAnimating];
+        
+        [self saveUserChoices];
         
         NSMutableURLRequest *request = [self createLoginRequest];
         
@@ -480,4 +503,28 @@
 - (IBAction)onSoftwareRepoSelection:(id)sender {
     [self.selectSoftwareRepoActionSheet showInView:self.view];
 }
+
+- (void)saveUserChoices {
+    [[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.passwordField.text forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)loadRecentUserChoices {
+    self.usernameField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+    self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"password"];
+    
+    NSNumber *devStageButtonIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"desiredDevStage"];
+    [self selectDevStageGivenIndex:[devStageButtonIndex intValue]];
+    
+    NSNumber *stageButtonIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"activeServerButtonIndex"];
+    [self selectActiveServerGivenIndex:[stageButtonIndex intValue]];
+    
+    NSNumber *liveSandboxOrStage = [[NSUserDefaults standardUserDefaults] objectForKey:@"liveSandboxOrStage"];
+    self.segControl.selectedSegmentIndex = [liveSandboxOrStage intValue];
+
+    
+    
+}
+
 @end
