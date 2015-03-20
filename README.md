@@ -33,6 +33,35 @@ With the Sample App, you can view code that:
 * Send an email/SMS receipt 
 
 
+Get Started
+===========
+The first thing you need to do is set up your app to start using the SDK.  
+* Initialize the SDK (each time the app starts) 
+* Authenticate the merchant and pass the merchant’s credentials (Access Token) to the SDK [(more on PayPal oAuth)](/docs/PayPal%20Access%20oAuth.md)
+* Set the merchant’s location (any time the merchant’s location changes) 
+* Start monitoring the card reader for events (for card present transactions)
+
+You initialize the SDK by sending a selectEnvironmentWithType message to PayPalHereSDK: 
+```objectivec
+	[PayPalHereSDK selectEnvironmentWithType:environment_type] 
+```
+* *environment_type* is **ePPHSDKServiceType_Sandbox** for the Sandbox environment, or **ePPHSDKServiceType_Live** for the live environment.
+
+With an authenticated merchant, it calls PayPalHereSDK.setActiveMerchant to set the merchant for which transactions will be executed. 
+```objectivec
+	[PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHander:handler] 
+```
+* *merchant* is an instance of the PPHMerchantInfo represeting a merchant object
+* *merchantId* is an id for the merchant. It is defined by agreement between the back-end server and the app (not by the SDK), and must be unique among the merchants that use the back-end server and the app.
+* *handler* is an id for a completion handler to be called when merchant setup is completed.
+
+Now, monitor the card reader for events like reader connections, removals, and swipes. Invoke the  API
+(SettingsViewController.m). 
+```objectivec
+	[[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
+```
+
+
 App Review Information
 =====================
 * This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
@@ -225,6 +254,7 @@ completes (error handling in the below example is omitted for readability).
         }];
 ```
 
+<!---
 PayPal Access
 =============
 
@@ -293,6 +323,7 @@ should see useful log messages to the console. The server advertises itself usin
 should find it automatically. But again, the return URL in PayPal Access is harder to automate, so you'll need to
 configure that once. One instance of the sample server can serve all your developers in theory, so it's easiest to
 run it on some shared or external resource.
+-->
 
 Opening Consumer Tabs
 =====================
