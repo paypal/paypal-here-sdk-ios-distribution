@@ -116,7 +116,7 @@ UIActionSheetDelegate
         } else if (buttonIndex == 2){
             self.isFullRefund = YES;
             self.amountToRefund = self.record.invoice.totalAmount;
-            [self performRefundWithRecord];
+            [self beginRefundWithRecord];
         }
         
     } else if (alertView.tag == kRefundAmountDialog) {
@@ -143,7 +143,7 @@ UIActionSheetDelegate
                         [appDelegate.refunds replaceObjectAtIndex:self.tableIndex withObject:newRefundAmount];
                     }
                     
-                    [self performRefundWithRecord];
+                    [self beginRefundWithRecord];
                 
                 //Refunds outside acceptable range
                 } else {
@@ -177,12 +177,8 @@ UIActionSheetDelegate
 
 }
 
-- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentMethod {
-    
-}
-
 - (void)onUserRefundMethodSelected:(PPHPaymentMethod) paymentMethod {
-    
+    [self processRefund];
 }
 
 - (UIViewController *)getCurrentViewController {
@@ -241,9 +237,12 @@ UIActionSheetDelegate
     [partialAmountDialog show];
 }
 
-- (void)performRefundWithRecord {
-    // call SDK UI for refund
+- (void)beginRefundWithRecord {
     [[PayPalHereSDK sharedTransactionManager] beginRefundUsingSDKUIWithInvoice:self.record.invoice transactionController:self];
+}
+
+- (void)processRefund {
+    // call SDK UI for refund
     [[PayPalHereSDK sharedTransactionManager] processRefundUsingSDKUIWithAmount:self.amountToRefund completionHandler:^(PPHTransactionResponse *response) {
         NSLog(@"Refund completed.");
         
