@@ -255,6 +255,8 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Add the record into an array so that we can issue a refund later.
     [appDelegate.transactionRecords addObject:record];
+    PPHAmount *zeroRefund = [PPHAmount amountWithString:@"0" inCurrency:record.invoice.totalAmount.stringValue];
+    [appDelegate.refunds addObject:zeroRefund];
 }
 
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
