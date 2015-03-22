@@ -81,14 +81,24 @@ UIActionSheetDelegate
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // Lets set the record and the selected table index for now.
-    // We would need to set the amount a bit later, based on the user's selection of either a full or a partial refund.
+    //Lets clear out our property variables and reset them based on the clicked
+    //table view cell..
+    [self resetRefundAndCellData];
     self.record = [appDelegate.transactionRecords objectAtIndex:indexPath.row];
     self.targetCurrency = self.record.invoice.totalAmount.currencyCode;
     self.tableIndex = indexPath.row;
     self.collectedRefundForRecord = [appDelegate.refunds objectAtIndex:indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self showRefundOptionsAlertDialog];
+}
+
+- (void)resetRefundAndCellData {
+    self.record = nil;
+    self.collectedRefundForRecord = nil;
+    self.targetCurrency = nil;
+    self.amountToRefund = nil;
+    self.tableIndex = 0;
+    self.isFullRefund = NO;
 }
 
 - (NSDecimalNumber *)getDecimalAmountFromString:(NSString *)amountStr {
@@ -173,8 +183,16 @@ UIActionSheetDelegate
     return ePPHTransactionType_Continue;
 }
 
-- (void)onPostAuthorize:(BOOL)didFail {
+- (NSArray *)getReceiptOptions {
+    return nil;
+}
 
+- (void)onPostAuthorize:(BOOL)didFail {
+    //DO NOTHING
+}
+
+- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentOption {
+    //DO NOTHING
 }
 
 - (void)onUserRefundMethodSelected:(PPHPaymentMethod) paymentMethod {
