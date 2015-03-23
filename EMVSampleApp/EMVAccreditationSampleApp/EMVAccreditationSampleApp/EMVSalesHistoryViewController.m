@@ -146,13 +146,7 @@ UIActionSheetDelegate
                     
                     if (fullRefundContribution == totalTransactionAmount) {
                         self.isFullRefund = YES;
-                    } else {
-                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                        NSDecimalNumber *newRefund = [self.amountToRefund.amount decimalNumberByAdding:self.collectedRefundForRecord.amount];
-                        PPHAmount *newRefundAmount = [PPHAmount amountWithDecimal:newRefund inCurrency:self.targetCurrency];
-                        [appDelegate.refunds replaceObjectAtIndex:self.tableIndex withObject:newRefundAmount];
                     }
-                    
                     [self beginRefundWithRecord];
                 
                 //Refunds outside acceptable range
@@ -281,6 +275,10 @@ UIActionSheetDelegate
     if (self.isFullRefund) {
         [appDelegate.transactionRecords removeObjectAtIndex:objectToModify];
         [appDelegate.refunds removeObjectAtIndex:objectToModify];
+    } else {
+        NSDecimalNumber *newRefund = [self.amountToRefund.amount decimalNumberByAdding:self.collectedRefundForRecord.amount];
+        PPHAmount *newRefundAmount = [PPHAmount amountWithDecimal:newRefund inCurrency:self.targetCurrency];
+        [appDelegate.refunds replaceObjectAtIndex:self.tableIndex withObject:newRefundAmount];
     }
     [self.tableView reloadData];
 }
