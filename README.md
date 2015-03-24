@@ -41,11 +41,11 @@ The first thing you need to do is set up your app to start using the SDK.
 * Set the merchant’s location (any time the merchant’s location changes) 
 * Start monitoring the card reader for events (for card present transactions)
 
-You initialize the SDK by sending a selectEnvironmentWithType message to PayPalHereSDK: 
+If you want to start with test transactions (generally a good idea), you can optionally send a selectEnvironmentWithType message to PayPalHereSDK: 
 ```objectivec
 	[PayPalHereSDK selectEnvironmentWithType:environment_type] 
 ```
-* *environment_type* is **ePPHSDKServiceType_Sandbox** for the Sandbox environment, or **ePPHSDKServiceType_Live** for the live environment.
+* *environment_type* is **ePPHSDKServiceType_Sandbox** for the Sandbox environment, or **ePPHSDKServiceType_Live** for the live environment (default).
 
 With an authenticated merchant, it calls PayPalHereSDK.setActiveMerchant to set the merchant for which transactions will be executed. 
 ```objectivec
