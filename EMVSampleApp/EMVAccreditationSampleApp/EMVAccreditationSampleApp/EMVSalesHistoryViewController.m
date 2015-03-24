@@ -12,6 +12,17 @@
 
 #define kRefundOptionsDialog 1
 #define kRefundAmountDialog 2
+#define kRefundAmountInvalidDialog 3
+#define kRefundRecordAlreadyRefundedDialog 4
+
+#define kRecordAlreadyRefundedServerError @"The request was refused.This transaction has already been fully refunded"
+
+typedef NS_ENUM(NSInteger, InvalidRefundAmountReason) {
+    InvalidRefundAmountReasonOutsideRange,
+    InvalidRefundAmountReasonNegativeNumber,
+    InvalidRefundAmountReasonZero,
+    InvalidRefundAmountReasonNAN
+};
 
 
 @interface EMVSalesHistoryViewController () <
@@ -21,7 +32,9 @@ UIActionSheetDelegate
 >
 
 @property (nonatomic, strong) PPHTransactionRecord *record;
-@property (nonatomic, strong) PPHAmount *amount;
+@property (nonatomic, strong) PPHAmount *collectedRefundForRecord;
+@property (nonatomic, copy) NSString *targetCurrency;
+@property (nonatomic, strong) PPHAmount *amountToRefund;
 @property (nonatomic, assign) NSUInteger tableIndex;
 @property (nonatomic, assign) BOOL isFullRefund;
 @end
@@ -30,7 +43,6 @@ UIActionSheetDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.title = @"Sales History";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"reuseIdentifier"];
 }
@@ -39,10 +51,21 @@ UIActionSheetDelegate
 #pragma mark UITableViewDelegate and UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"reuseIdentifier"];
+    
     PPHTransactionRecord *record = [appDelegate.transactionRecords objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", record.payPalInvoiceId ? record.payPalInvoiceId : record.invoice.paypalInvoiceId, [record.invoice.totalAmount stringValue]];
+    PPHAmount *partialRefund = [appDelegate.refunds objectAtIndex:indexPath.row];
+    
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    [cell.textLabel setFont:[UIFont systemFontOfSize:13]];
+    cell.textLabel.textColor = [UIColor blueColor];
+    cell.textLabel.text = [NSString stringWithFormat:@"Txn #%d | %@", indexPath.row + 1, record.invoice.totalAmount.stringValue];
+    
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+    cell.detailTextLabel.textColor = [UIColor redColor];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Refunded Amount: +%@", partialRefund.stringValue];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -58,30 +81,52 @@ UIActionSheetDelegate
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // Lets set the record and the selected table index for now.
-    // We would need to set the amount a bit later, based on the user's selection of either a full or a partial refund.
+    //Lets clear out our property variables and reset them based on the clicked
+    //table view cell..
+    [self resetRefundAndCellData];
     self.record = [appDelegate.transactionRecords objectAtIndex:indexPath.row];
+    self.targetCurrency = self.record.invoice.totalAmount.currencyCode;
     self.tableIndex = indexPath.row;
-    
+    self.collectedRefundForRecord = [appDelegate.refunds objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self showRefundOptionsAlertDialog];
+}
+
+- (void)resetRefundAndCellData {
+    self.record = nil;
+    self.collectedRefundForRecord = nil;
+    self.targetCurrency = nil;
+    self.amountToRefund = nil;
+    self.tableIndex = 0;
+    self.isFullRefund = NO;
+}
+
+- (NSDecimalNumber *)getDecimalAmountFromString:(NSString *)amountStr {
+    NSDecimalNumber *decimalAmount = [[NSDecimalNumber alloc]
+                                      initWithString:amountStr];
+    
+    if(NSOrderedSame == [[NSDecimalNumber notANumber] compare: decimalAmount]) {
+        return nil;
+    }
+    return decimalAmount;
 }
 
 #pragma mark -
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == kRefundOptionsDialog) {
+    
+    if (alertView.tag == kRefundRecordAlreadyRefundedDialog) {
+        self.isFullRefund = YES;
+        [self updateSalesHistoryTable:self.tableIndex];
+    } else if (alertView.tag == kRefundOptionsDialog) {
         if(buttonIndex == alertView.cancelButtonIndex) {
-            // Clear the alert view
         } else if (buttonIndex == 1) {
-            // Full amount refund.
-            self.isFullRefund = YES;
-            self.amount = self.record.invoice.totalAmount;
-            [self performRefundWithRecord];
-            
-        } else if (buttonIndex == 2){
-            // Partial amount refund.
             [self showEnterAmountTextDialog];
+        } else if (buttonIndex == 2){
+            self.isFullRefund = YES;
+            self.amountToRefund = self.record.invoice.totalAmount;
+            [self beginRefundWithRecord];
         }
         
     } else if (alertView.tag == kRefundAmountDialog) {
@@ -89,8 +134,38 @@ UIActionSheetDelegate
             // Clear the alert view
         } else if (buttonIndex == 0) {
             UITextField * amountTextField = [alertView textFieldAtIndex:0];
-            self.amount = [PPHAmount amountWithString:amountTextField.text inCurrency:@"GBP"];
-            [self performRefundWithRecord];
+            if ([self getDecimalAmountFromString:amountTextField.text]) {
+                self.amountToRefund = [PPHAmount amountWithString:amountTextField.text inCurrency:self.targetCurrency];
+                NSInteger currentRefundAmount = self.amountToRefund.amountInCents;
+                NSInteger collectedRefundAmount = self.collectedRefundForRecord.amountInCents;
+                NSInteger fullRefundContribution = currentRefundAmount + collectedRefundAmount;
+                NSInteger totalTransactionAmount = self.record.invoice.totalAmount.amountInCents;
+                
+                //Refund within acceptable range: [0, totalTransactionAmount)
+                if (fullRefundContribution <= totalTransactionAmount && fullRefundContribution > 0) {
+                    
+                    if (fullRefundContribution == totalTransactionAmount) {
+                        self.isFullRefund = YES;
+                    }
+                    [self beginRefundWithRecord];
+                
+                //Refunds outside acceptable range
+                } else {
+                    
+                    if (currentRefundAmount < 0) {
+                        [self showInvalidRefundAmountDialogForReason:InvalidRefundAmountReasonNegativeNumber];
+                    }
+                    else if (currentRefundAmount == 0) {
+                        [self showInvalidRefundAmountDialogForReason:InvalidRefundAmountReasonZero];
+                    } else {
+                        [self showInvalidRefundAmountDialogForReason:InvalidRefundAmountReasonOutsideRange];
+                    }
+                
+                }
+                
+            } else {
+                [self showInvalidRefundAmountDialogForReason:InvalidRefundAmountReasonNAN];
+            }
         }
     }
 }
@@ -102,16 +177,20 @@ UIActionSheetDelegate
     return ePPHTransactionType_Continue;
 }
 
-- (void)onPostAuthorize:(BOOL)didFail {
-
+- (NSArray *)getReceiptOptions {
+    return nil;
 }
 
-- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentMethod {
-    
+- (void)onPostAuthorize:(BOOL)didFail {
+    //DO NOTHING
+}
+
+- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentOption {
+    //DO NOTHING
 }
 
 - (void)onUserRefundMethodSelected:(PPHPaymentMethod) paymentMethod {
-    
+    [self processRefund];
 }
 
 - (UIViewController *)getCurrentViewController {
@@ -121,11 +200,46 @@ UIActionSheetDelegate
 #pragma mark -
 #pragma mark Helpers
 
+- (void)showInvalidRefundAmountDialogForReason:(InvalidRefundAmountReason)reason {
+    NSString *failureMessage = nil;
+    switch (reason) {
+        case InvalidRefundAmountReasonOutsideRange:
+            failureMessage = @"You are attempting to refund for an amount greater than the original payment";
+            break;
+        case InvalidRefundAmountReasonNegativeNumber:
+            failureMessage = @"You can not refund for a negative amount.";
+            break;
+        case InvalidRefundAmountReasonNAN:
+            failureMessage = @"Please make sure you enter a valid numerical amount";
+            break;
+        case InvalidRefundAmountReasonZero:
+            failureMessage = @"You can not refund for zero dollars, please enter an amount greater than zero";
+            break;
+        default:
+            break;
+    }
+    
+    UIAlertView *failureRefundAmountView = [[UIAlertView alloc] initWithTitle:@"Invalid refund amount" message:failureMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    failureRefundAmountView.tag = kRefundAmountInvalidDialog;
+    [failureRefundAmountView show];
+}
+
+- (void)showRecordAlreadyRefundedAlert {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Transaction already refunded" message:@"Sorry our stages are really slow, but this transaction has already been completely refunded." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    alert.tag = kRefundRecordAlreadyRefundedDialog;
+    [alert show];
+}
+
 - (void)showRefundOptionsAlertDialog {
-    UIAlertView *refundOptionAlertDialog = [[UIAlertView alloc] initWithTitle:@"Refund" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Refund full amount", @"Refund partial amount", nil];
+    UIAlertView *refundOptionAlertDialog = [[UIAlertView alloc] initWithTitle:@"Refund" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Refund partial amount", nil];
+    AppDelegate *appDelegate = ((AppDelegate *)[[UIApplication sharedApplication] delegate]);
+    PPHAmount *refundAmountForTransaction = [appDelegate.refunds objectAtIndex:self.tableIndex];
+    if ([refundAmountForTransaction.amount compare:[NSDecimalNumber zero]] == NSOrderedSame) {
+        [refundOptionAlertDialog addButtonWithTitle:@"Refund full amount"];
+    }
+    
     refundOptionAlertDialog.tag = kRefundOptionsDialog;
     [refundOptionAlertDialog show];
-    
 }
 
 - (void)showEnterAmountTextDialog {
@@ -135,24 +249,37 @@ UIActionSheetDelegate
     [partialAmountDialog show];
 }
 
-- (void)performRefundWithRecord {
-    // call SDK UI for refund
+- (void)beginRefundWithRecord {
     [[PayPalHereSDK sharedTransactionManager] beginRefundUsingSDKUIWithInvoice:self.record.invoice transactionController:self];
-    [[PayPalHereSDK sharedTransactionManager] processRefundUsingSDKUIWithAmount:self.amount completionHandler:^(PPHTransactionResponse *response) {
+}
+
+- (void)processRefund {
+    // call SDK UI for refund
+    [[PayPalHereSDK sharedTransactionManager] processRefundUsingSDKUIWithAmount:self.amountToRefund completionHandler:^(PPHTransactionResponse *response) {
         NSLog(@"Refund completed.");
         
         if(response) {
-            if(self.isFullRefund && response.record && !response.error) {
+            if(response.record && !response.error) {
                 [self updateSalesHistoryTable:self.tableIndex];
+            } else {
+                if ([response.error.apiShortMessage isEqualToString:kRecordAlreadyRefundedServerError]) {
+                    [self showRecordAlreadyRefundedAlert];
+                }
             }
-            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }];
 }
 
-- (void)updateSalesHistoryTable:(NSUInteger)objectToRemove {
+- (void)updateSalesHistoryTable:(NSUInteger)objectToModify {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.transactionRecords removeObjectAtIndex:objectToRemove];
+    if (self.isFullRefund) {
+        [appDelegate.transactionRecords removeObjectAtIndex:objectToModify];
+        [appDelegate.refunds removeObjectAtIndex:objectToModify];
+    } else {
+        NSDecimalNumber *newRefund = [self.amountToRefund.amount decimalNumberByAdding:self.collectedRefundForRecord.amount];
+        PPHAmount *newRefundAmount = [PPHAmount amountWithDecimal:newRefund inCurrency:self.targetCurrency];
+        [appDelegate.refunds replaceObjectAtIndex:self.tableIndex withObject:newRefundAmount];
+    }
     [self.tableView reloadData];
 }
 

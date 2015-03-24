@@ -29,6 +29,7 @@
     [Crashlytics startWithAPIKey:@"6fdee2cd3d6cb98362060d0ac0be20ef1c386ef3"];
     
     self.transactionRecords = [[NSMutableArray alloc] init];
+    self.refunds = [[NSMutableArray alloc] init];
     
     [PayPalHereSDK askForLocationAccess];
     
