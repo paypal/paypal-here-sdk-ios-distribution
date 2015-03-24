@@ -2,10 +2,64 @@ ios-here-sdk-dist
 =================
 
 The PayPal Here SDK enables iOS apps to interact with credit card swipers so that merchants can process in-person credit card transactions using a mobile app. The native libraries of the PayPal Here SDK enable you to:
-* Interact with PayPal Hardware—Detect, connect to, and listen for events coming from PayPal Here audio jack-based card swipers.
-* Process Card-Present payments—When you swipe a card through a PayPal Here swiper, card data is immediately encrypted. The encrypted package can be sent to PayPal alongside the transaction data for processing.
+* **Interact with PayPal Hardware** — Detect, connect to, and listen for events coming from PayPal Here audio jack-based card swipers.
+* **Process Card-Present payments** — When you swipe a card through a PayPal Here swiper, card data is immediately encrypted. The encrypted package can be sent to PayPal alongside the transaction data for processing.
 
 Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
+
+
+Prerequisites For Using The SDK
+===============================
+
+In order to start using the PayPal Here SDK, you need the following:
+
+1. A developer-enabled PayPal account ([sign up here](https://developer.paypal.com/webapps/developer/applications/myapps)).  This is the account you use to register your app.  You will receive an App ID & Secret to use with the SDK.
+2. A PayPal Here business account ([sign up here] (https://www.paypal.com/us/webapps/mobilemerchant/page/mpa/ob/geturl?onbver=2.0&amp;country.x=US&productIntentID=mobile_payment_acceptance&referringpage=ios_sdk_github&hs=login)).  This is the account that the end merchant uses, and will be the destination account of funds received. A single app can be associated with/used by one or many merchant accounts – including the developer-enabled account.  You will receive an Access Token and Refresh URL for each merchant that grants permission to your app.
+3. A PayPal Here swiper.  You can get one shipped to you when you create a business account in step (2), or via retailers like [Staples](http://www.staples.com/PayPal-Here-trade-Mobile-Card-Reader/product_1421621).
+4. Apple development tools: Xcode 5.1, and an Apple developer account.
+
+The Sample App
+==============
+To make it easier to see and understand how to best use the capabilities of the SDK, we’ve designed a sample/reference application.  To make the app functional, there is some minimal UI code that can be ignored – the point is to show how to use the SDK API’s.
+
+With the Sample App, you can view code that:
+* Initializes the SDK
+* Authenticates the merchant
+* Updates the merchant location
+* Creates & adds items to an invoice
+* Takes a payment with the card reader
+* Takes a keyed-in card transaction
+* Add a signature to finalize a payment
+* Send an email/SMS receipt 
+
+
+Get Started
+===========
+The first thing you need to do is set up your app to start using the SDK.  
+* Initialize the SDK (each time the app starts) 
+* Authenticate the merchant and pass the merchant’s credentials (Access Token) to the SDK [(more on PayPal oAuth)](/docs/PayPal%20Access%20oAuth.md)
+* Set the merchant’s location (any time the merchant’s location changes) 
+* Start monitoring the card reader for events (for card present transactions)
+
+If you want to start with test transactions (generally a good idea), you can optionally send a selectEnvironmentWithType message to PayPalHereSDK: 
+```objectivec
+	[PayPalHereSDK selectEnvironmentWithType:environment_type] 
+```
+* *environment_type* is **ePPHSDKServiceType_Sandbox** for the Sandbox environment, or **ePPHSDKServiceType_Live** for the live environment (default).
+
+With an authenticated merchant, it calls PayPalHereSDK.setActiveMerchant to set the merchant for which transactions will be executed. 
+```objectivec
+	[PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHander:handler] 
+```
+* *merchant* is an instance of the PPHMerchantInfo represeting a merchant object
+* *merchantId* is an id for the merchant. It is defined by agreement between the back-end server and the app (not by the SDK), and must be unique among the merchants that use the back-end server and the app.
+* *handler* is an id for a completion handler to be called when merchant setup is completed.
+
+Now, monitor the card reader for events like reader connections, removals, and swipes. Invoke the  API
+(SettingsViewController.m). 
+```objectivec
+	[[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
+```
 
 
 App Review Information
@@ -19,11 +73,6 @@ App Review Information
 
 Code Worth Looking At
 =====================
-
-We've attempted to design the sample app to be a realistic but simple application that uses the SDK.
-Unfortunately on iOS there's still a fair amount of boilerplate and UI code that is required to make
-this real, and while we've tried to make it super awesome, it's not the point of the sample application.
-
 Card reader interaction is established by calling
 ```objectivec
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
@@ -205,6 +254,7 @@ completes (error handling in the below example is omitted for readability).
         }];
 ```
 
+<!---
 PayPal Access
 =============
 
@@ -273,6 +323,7 @@ should see useful log messages to the console. The server advertises itself usin
 should find it automatically. But again, the return URL in PayPal Access is harder to automate, so you'll need to
 configure that once. One instance of the sample server can serve all your developers in theory, so it's easiest to
 run it on some shared or external resource.
+-->
 
 Opening Consumer Tabs
 =====================
