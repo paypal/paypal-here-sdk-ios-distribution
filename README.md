@@ -61,58 +61,48 @@ Now, monitor the card reader for events like reader connections, removals, and s
 	[[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
 ```
 
-
-App Review Information
-=====================
-* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
-* This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
-* This iOS application uses the jp.star-m.starpro protocol for Bluetooth printing: [SM-S220i PPID] 121976-0002 
-* This iOS application uses the com.epson.escpos protocol for Bluetooth printing: MFI PPID 107611-0002
-* This iOS application uses the com.bsmartdev.printer protocol for the BEE SMART, INC accessory PPID 129170-0002
-* This iOS application uses the com.woosim.wspr240 protocol for the Woosim Printer PPID 122202-0001
-
-Code Worth Looking At
-=====================
-Card reader interaction is established by calling
+Interacting With The Card Reader
+================================
+Card reader interaction is established by calling:
 ```objectivec
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
 ```
-which will monitor for all card reader types. If you want to monitor for a subset of types - such as audio 
-readers only, use the beginMonitoring overload that takes a PPHReaderTypeMask.
+which will monitor for all card reader types.
 
 Once you've begun monitoring, the SDK will start firing notification center events for relevant card events.
 However, we recommend you do not monitor the notification center directly, but instead use our class that
 will translate untyped notification center calls to typed delegate calls. You do this by simply storing an
-instance of PPHCardReaderWatcher in your class and implementing the PPHCardReaderDelegate protocol.
+instance of PPHCardReaderWatcher in your class and implementing the PPHCardReaderDelegate protocol:
 ```objectivec
     self.readerWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate: self];
 ```
-If you're not using EMV readers, the events are very simple:
+The events are very simple:
 
 ```objectivec
--(void)didStartReaderDetection: (PPHReaderType) readerType;
--(void)didDetectReaderDevice: (PPHCardReaderBasicInformation*) reader;
--(void)didReceiveCardReaderMetadata: (PPHCardReaderMetadata*) metadata;
--(void)didRemoveReader: (PPHReaderType) readerType;
+-(void)didStartReaderDetection: (PPHReaderType) readerType; //Indicates a reader (or something else) was inserted into the headphone jack
+-(void)didDetectReaderDevice: (PPHCardReaderBasicInformation*) reader; //Indicates that a PayPal reader was detected
+-(void)didReceiveCardReaderMetadata: (PPHCardReaderMetadata*) metadata; //Includes additional data about the PayPal reader, like reader type and serial number
+-(void)didRemoveReader: (PPHReaderType) readerType; //Indicates the reader was removed
 
--(void)didDetectCardSwipeAttempt;
--(void)didCompleteCardSwipe:(PPHCardSwipeData*)card;
--(void)didFailToReadCard;
+-(void)didDetectCardSwipeAttempt; //Indicates that something (e.g. a card, a piece of paper) was swiped through the reader
+-(void)didCompleteCardSwipe:(PPHCardSwipeData*)card; //Indicates a successful read of the card, with data
+-(void)didFailToReadCard; //Indicates a failed read (e.g. this wasn't a credit card)
 ```
 
-The first four relate to the insertion, removal and detection of the card reader, the other three are in
-the context of a transaction, which you must "begin" by telling the card reader manager you're ready to
-receive a swipe. Because some readers (namely audio jack readers) have batteries in them, you MUST
-be careful about when you activate the reader. In the PayPal Here app, for example, we activate the reader
-when there is a non-zero value in the "cart" or active order. If you have a view or step which expresses clear
-intent to take a charge, that's a good time to activate the reader. To activate the reader, call beginTransaction:
+The first four relate to the insertion, removal and detection of the card reader, the other three are in the context of a transaction, which you must "begin" by telling the card reader manager you're ready to receive a swipe. Because some readers (namely audio jack readers) have batteries in them, you MUST be careful about when you activate the reader. In the PayPal Here app, for example, we activate the reader when there is a non-zero value in the "cart" or active order. If you have a view or step which expresses clear intent to take a charge, that's a good time to activate the reader. 
 
-    [[PayPalHereSDK sharedCardReaderManager] beginTransaction: invoice];
 
-The invoice is a PPHInvoice, and doesn't need to have been saved to the PayPal backend to begin watching
-for card swipes. It will need to be saved before attempting a charge, but you can do this in parallel with
-receiving swipe data. To create an invoice, just set up a currency, add one or more items, and set tax or other
-information:
+Build & Complete a Transaction
+===================
+In order to process a payment, there needs to be an amount to charge.  PayPal creates Invoices to represent each transaction to be paid.  Invoices can be extremely simple (a simple amount), or complex with details on item names, taxes, tips, and/or discounts.  The basic order of operations:
+* Start a new invoice
+* Add item data to the invoice (optional)
+* Begin a purchase event and collect card data
+* Collect a signature for the transaction
+
+**Start a new invoice**
+
+The invoice is a PPHInvoice, and doesn't need to have been saved to the PayPal backend to begin watching for card swipes. It will need to be saved before attempting a charge, but you can do this in parallel with receiving swipe data. To create an invoice, just set up a currency, add one or more items, and set tax or other information:
 
 ```objectivec
 PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:self.currencyField.text];
@@ -125,55 +115,42 @@ PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:self.currencyField.te
             taxRateName: nil];
 ```
 
-You should add details about each item on the receipt if possible. To save an invoice, just call save and provide
-a completion handler. Typically you would show some progress UI while doing this, unless it's being done in the
-background:
+**Add item data**
 
+You should add details about each item on the receipt if possible. To save an invoice, just call save and provide a completion handler. Typically you would show some progress UI while doing this, unless it's being done in the background:
+
+```objectivec
         [invoice save:^(PPHError *error) {
           // If error is non-nil, something bad happened. Else, invoice has been updated with server info
           // such as PayPal invoice id, auto-generated merchant reference number, etc.
         }
-
-This must be done before you pay an invoice. To pay an invoice with the result of a card
-swipe, you must first gather the signature image (the PPHSignatureView can be placed in a view controller of your
-own design and it will provide an image which can be sent to the API). At the moment, for historical reasons,
-the signature must be captured BEFORE submitting the transaction for payment. We are actively attempting to fix this.
-
-```objectivec
-[[PayPalHereSDK sharedPaymentProcessor]
-        beginCardPresentChargeAttempt: card
-                           forInvoice: invoice
-                        withSignature: signatureView
-                        completionHandler: ^(PPHCardChargeResponse* response) {
-                            // if response.error is nil, the charge worked and you can store the
-                            // response.transactionId for correlation later (and refunds)
-                        }];
 ```
 
-
-
-The PPHTransactionManager - the Composition Layer
-=================================================
-
-   A payment API is also provided called the PPHTransactionManager.
-The PPHTransactionManager takes care of some details for you - it's possible to take a card swipe payment without having to explicitly save the invoice or to use the card reader API to capture card events.   This comes at the cost of less control over the step by step process.  
-   If you do want to see all the card swiper events you still can create a card watcher and get all the card events while using the PPHTransactionManager at the same time.
-
-How to use it?
-
-First, create a PPHTransactionWatcher object so you can get notified when the transaction manager does something.  Retain this object for the lifetime over which you would like to interact with the PPHTransactionManager:
+And then, get the invoice ready for payment:
 ```objectivec
-PPHTransactionWatcher *transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
+// Begin the purchase and forward to payment method
+ PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+ tm.ignoreHardwareReaders = NO;
+ [tm beginPayment];
+ tm.currentInvoice = invoice;
+```
+(SimpleFSPaymentDelegate.m)
+
+**Begin a purchase event**
+
+The PPHTransactionManager takes care of most details for you - it's even possible to take a card swipe payment without having to explicitly save the invoice or to use the card reader API to capture card events. Of course, this comes at the cost of less control over the step by step process.  If you do want to see all the card swiper events you still can create a card watcher and get all the card events while using the PPHTransactionManager at the same time.
+
+In order to start processing card payments, use the “PPHTransactionManagerDelegate”. This protocol receives events (via the “onPaymentEvent” method) from the SDK.  In order to implement the above “onPaymentEvent” method and receive events off it, init an instance of the “PPHTransactionWatcher” class:
+```objectivec
+[[PPHTransactionWatcher alloc] initWithDelegate:self];
 ```
 
 Second, start your payment.  Here's an example of taking a payment for a fixed amount ($5):
-
 ```objectivec
 [[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:amountString inCurrency:@"USD"] andName:@"FixedAmountPayment"];
 ```
 
-
-Then … wait for the user to swipe a card.   You do that by capturing the ePPHTransactionType_CardDataReceived event from the PPHTransacitonWatcher:
+Then, wait for the user to swipe a card.   You do that by capturing the ePPHTransactionType_CardDataReceived event from the PPHTransacitonWatcher:
 
 ```objectivec
 #pragma mark my PPHTransactionManagerDelegate overrides
@@ -202,29 +179,33 @@ if(response.isSignatureRequiredToFinalize) {
                           }];
 ```
 
-If you would like to supply a signature you can do so after the processPayment's completion handler successfully returns:
+
+
+**Add a signature**
+
+The PPHTransactionManager can inform you if a signature is required for the payment that is being processed (common, as signatures are usually required for transactions). When the processPayment method's completion handler is called you can check the isSignatureRequiredToFinalize member of the PPHTransactionResponse object that is provided to the completion handler. 
 
 ```objectivec
-UIImage *image = [UIImage imageWithData:imageData];                              
-PPHTransactionRecord *transactionRecord = self.successfulResponse.record;
-UIImage *signature = [self mySignatureImage];
-
-[[PayPalHereSDK sharedTransactionManager] finalizePaymentForTransaction:transactionRecord                                                           withSignature:image  
-completionHandler:^(PPHError *error) {
-                                                             
-if(error == nil) {
-   NSLog(@"signature successfully sent.");
-															}
-}];
+[[PayPalHereSDK sharedTransactionManager] provideSignature:self.signature.printableImage
+ forTransaction:_capturedPaymentResponse.record
+ completionHandler:^(PPHError *error) {
+ [self showPaymentCompeleteView:_capturedPaymentResponse];
+ }];
 ```
-
-Required signatures and the PPHTransactionManager
-=================================================
-
-Some transactions require a signature.  This may happen for several reasons.  The transaction amount might be over a certain limit, or the card swiper / chip & pin reader hardware may require it based on a variety of reasons.   The PPHTransactionManager can inform you if a signature is required for the payment that is being processed. 
-When the processPayment method's completion handler is called you can check the isSignatureRequiredToFinalize member of the PPHTransactionResponse object that is provided to the completion handler. 
+(SignatureViewController.m)
 
 
+App Review Information
+======================
+* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
+* This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
+* This iOS application uses the jp.star-m.starpro protocol for Bluetooth printing: [SM-S220i PPID] 121976-0002 
+* This iOS application uses the com.epson.escpos protocol for Bluetooth printing: MFI PPID 107611-0002
+* This iOS application uses the com.bsmartdev.printer protocol for the BEE SMART, INC accessory PPID 129170-0002
+* This iOS application uses the com.woosim.wspr240 protocol for the Woosim Printer PPID 122202-0001
+
+
+<!--- Removing references to checkin/location management
 Location Management
 ===================
 
@@ -253,6 +234,7 @@ completes (error handling in the below example is omitted for readability).
 
         }];
 ```
+--->
 
 <!---
 PayPal Access
@@ -325,6 +307,7 @@ configure that once. One instance of the sample server can serve all your develo
 run it on some shared or external resource.
 -->
 
+<!--- Removing references to checkin
 Opening Consumer Tabs
 =====================
 To checkin consumers to merchants, use the checkin.js script in the scripts directory. For example:
@@ -337,3 +320,4 @@ node checkin.js -m selleraccount@paypal.com -c buyeraccount@paypal.com -i tombra
 
 Use -i to add an image for the buyer - this only needs to be done once. Sometimes it takes a few runs to get through,
 and images tend to be very finicky in staging.
+--->
