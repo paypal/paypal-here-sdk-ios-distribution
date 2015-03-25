@@ -6,7 +6,7 @@ The PayPal Here SDK enables iOS apps to interact with credit card swipers so tha
 * **Process Card-Present payments** — When you swipe a card through a PayPal Here swiper, card data is immediately encrypted. The encrypted package can be sent to PayPal alongside the transaction data for processing.
 
 Developers should use the PayPal Here SDK to get world-class payment process with extremely simple integration.  Some of the main benefits include
-* **Low, transparent pricing:** Merchants pay just 2.7% per transaction (or 3.5% + $0.15 for keyed in transactions), including cards like American Express, with no additional hidden/monthly costs.
+* **Low, transparent pricing:** US Merchants pay just 2.7% per transaction (or 3.5% + $0.15 for keyed in transactions), including cards like American Express, with no additional hidden/monthly costs.
 * **Safety & Security:** PayPal's solution uses encrypted swipers, such that card data is never made available to merchants or anyone else.
 * **Live customer support:** Whenever you need support, we’re available to help with our customer support team.
 [Visit our website](https://www.paypal.com/webapps/mpp/credit-card-reader) for more information about PayPal Here.
@@ -203,7 +203,7 @@ The PPHTransactionManager can inform you if a signature is required for the paym
 
 More Stuff to Look At
 =====================
-We've just scratched the surface of what's available in the PayPal Here SDK.  More detail is available in our [developer documentation](/docs/DeveloperGuide_iOS.pdf) to show other capabilities.  These include:
+There is a lot more available in the PayPal Here SDK.  More detail is available in our [developer documentation](/docs/DeveloperGuide_iOS.pdf) to show other capabilities.  These include:
 * **Auth/Capture:** Rather than a one-time sale, authorize a payment with a card swipe, and complete the transaction at a later time.  This is common when adding tips after the transaction is complete (e.g. at a restaurant).
 * **Refunds:** Use the SDK to refund a transaction
 * **Send Receipts:** You can use services through the SDK to send email or SMS receipts to customers
