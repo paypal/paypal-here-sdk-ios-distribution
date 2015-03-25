@@ -194,6 +194,17 @@ The PPHTransactionManager can inform you if a signature is required for the paym
 ```
 (SignatureViewController.m)
 
+More Stuff to Look At
+=====================
+We've just scratched the surface of what's available in the PayPal Here SDK.  More detail is available in our [developer documentation](/docs/DeveloperGuide_iOS.pdf) to show other capabilities.  These include:
+* **Auth/Capture:** Rather than a one-time sale, authorize a payment with a card swipe, and complete the transaction at a later time.  This is common when adding tips after the transaction is complete (e.g. at a restaurant).
+* **Refunds:** Use the SDK to refund a transaction
+* **Send Receipts:** You can use services through the SDK to send email or SMS receipts to customers
+* **Key-in:** Most applications need to let users key in card numbers directly, in case the card's magstripe data can no longer be read.
+* **CashierID:** Include your own unique user identifier to track a merchant's employee usage
+* **Error Handling:** See more detail about the different types of errors that can be returned
+
+
 
 App Review Information
 ======================
