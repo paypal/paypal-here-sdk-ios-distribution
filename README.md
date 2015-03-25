@@ -5,6 +5,13 @@ The PayPal Here SDK enables iOS apps to interact with credit card swipers so tha
 * **Interact with PayPal Hardware** — Detect, connect to, and listen for events coming from PayPal Here audio jack-based card swipers.
 * **Process Card-Present payments** — When you swipe a card through a PayPal Here swiper, card data is immediately encrypted. The encrypted package can be sent to PayPal alongside the transaction data for processing.
 
+Developers should use the PayPal Here SDK to get world-class payment process with extremely simple integration.  Some of the main benefits include
+* **Low, transparent pricing:** Merchants pay just 2.7% per transaction (or 3.5% + $0.15 for keyed in transactions), including cards like American Express, with no additional hidden/monthly costs.
+* **Safety & Security:** PayPal's solution uses encrypted swipers, such that card data is never made available to merchants or anyone else.
+* **Live customer support:** Whenever you need support, we’re available to help with our customer support team.
+[Visit our website](https://www.paypal.com/webapps/mpp/credit-card-reader) for more information about PayPal Here.
+
+
 Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
 
 
