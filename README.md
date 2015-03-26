@@ -14,6 +14,7 @@ Developers should use the PayPal Here SDK to get world-class payment process wit
 
 Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
 
+As an alternative to the SDK, a developer can also use a URI framework that lets one app (or mobile webpage) link directly to the PayPal Here app to complete a payment.  Using this method, the merchant will tap a button or link in one app, which will open the pre-installed PayPal Here app on their device, with the PayPal Here app pre-populating the original order information, collect a payment (card swipe) in the PayPal Here app, and return the merchant to the original app/webpage. This is available for US, UK, Austalia, and Japan for iOS & Android.  See the [Sideloader API](https://github.com/paypal/here-sideloader-api-samples) on Github.
 
 Prerequisites For Using The SDK
 ===============================
