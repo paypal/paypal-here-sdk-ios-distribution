@@ -51,13 +51,13 @@ The first thing you need to do is set up your app to start using the SDK.
 
 If you want to start with test transactions (generally a good idea), you can optionally send a selectEnvironmentWithType message to PayPalHereSDK: 
 ```objectivec
-	[PayPalHereSDK selectEnvironmentWithType:environment_type] 
+	[PayPalHereSDK selectEnvironmentWithType:environment_type];
 ```
 * *environment_type* is **ePPHSDKServiceType_Sandbox** for the Sandbox environment, or **ePPHSDKServiceType_Live** for the live environment (default).
 
 With an authenticated merchant, it calls PayPalHereSDK.setActiveMerchant to set the merchant for which transactions will be executed. 
 ```objectivec
-	[PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHander:handler] 
+	[PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHander:handler];
 ```
 * *merchant* is an instance of the PPHMerchantInfo represeting a merchant object
 * *merchantId* is an id for the merchant. It is defined by agreement between the back-end server and the app (not by the SDK), and must be unique among the merchants that use the back-end server and the app.
@@ -131,7 +131,7 @@ You should add details about each item on the receipt if possible. To save an in
         [invoice save:^(PPHError *error) {
           // If error is non-nil, something bad happened. Else, invoice has been updated with server info
           // such as PayPal invoice id, auto-generated merchant reference number, etc.
-        }
+        }];
 ```
 
 And then, get the invoice ready for payment:
