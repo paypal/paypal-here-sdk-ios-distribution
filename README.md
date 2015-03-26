@@ -216,12 +216,10 @@ There is a lot more available in the PayPal Here SDK.  More detail is available 
 
 App Review Information
 ======================
+When you submit your app, you will need to refer to MFI ID's for the hardware that you can interact with through our app.  Be sure to include the following into your app store review notes:
 * This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
 * This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
-* This iOS application uses the jp.star-m.starpro protocol for Bluetooth printing: [SM-S220i PPID] 121976-0002 
-* This iOS application uses the com.epson.escpos protocol for Bluetooth printing: MFI PPID 107611-0002
-* This iOS application uses the com.bsmartdev.printer protocol for the BEE SMART, INC accessory PPID 129170-0002
-* This iOS application uses the com.woosim.wspr240 protocol for the Woosim Printer PPID 122202-0001
+
 
 
 <!--- Removing references to checkin/location management
