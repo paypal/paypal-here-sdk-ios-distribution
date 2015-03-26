@@ -20,6 +20,7 @@
 #define kStage2pph11 @"stage2pph11"
 #define kStage2pph24 @"stage2pph24"
 #define kStage2mb024 @"stage2mb024"
+#define kStage2pph05 @"stage2pph05"
 
 #define kDevStage1 @"dev-stage-1"
 #define kDevStage2 @"dev-stage-2"
@@ -32,7 +33,7 @@
 #define kSoftwareRepoArray @[kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3,kProdStage, kProd]
 
 
-#define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024]
+#define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05]
 #define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
 
 @interface EMVOauthLoginViewController ()
@@ -55,7 +56,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     [self setUpSegmentedControlAndServiceUrls];
@@ -64,7 +65,7 @@
     [self stageSelectionActionSheet];
     [self softwareRepoSelectionActionSheet];
     self.loginButton.layer.cornerRadius = 10;
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,6 +93,7 @@
     [self.sdkBaseUrlDict setValue:@"https://www.stage2pph11.stage.paypal.com/webapps/" forKey:kStage2pph11];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2pph24.stage.paypal.com/webapps/" forKey:kStage2pph24];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb024.stage.paypal.com/webapps/" forKey:kStage2mb024];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2pph05.stage.paypal.com/webapps/" forKey:kStage2pph05];
     
 }
 
@@ -100,15 +102,15 @@
                                                                 delegate:self
                                                        cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
-                                                       otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, nil];
+                                                       otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05, nil];
 }
 
 -(void)softwareRepoSelectionActionSheet {
     self.selectSoftwareRepoActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a software repo:"
-                                                                delegate:self
-                                                       cancelButtonTitle:nil
-                                                  destructiveButtonTitle:nil
-                                                       otherButtonTitles:kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3, kProdStage, kProd, nil];
+                                                                     delegate:self
+                                                            cancelButtonTitle:nil
+                                                       destructiveButtonTitle:nil
+                                                            otherButtonTitles:kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3, kProdStage, kProd, nil];
 }
 
 - (void)setUpSpinnerAndTitle {
@@ -120,7 +122,7 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     self.passwordField.secureTextEntry = YES;
-
+    
 }
 
 - (void)clearTextFields {
@@ -174,7 +176,7 @@
     
     NSNumber *number = [NSNumber numberWithInt:self.segControl.selectedSegmentIndex];
     [[NSUserDefaults standardUserDefaults] setObject:number forKey:@"liveSandboxOrStage"];             //Tell the SDK
-
+    
     
     NSLog(@"Service Host Url we will use for login %@", self.serviceHostUrl);
     NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
@@ -190,7 +192,7 @@
     self.activeServer = kStageNameArray[buttonIndex];
     self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kStageNameArray[buttonIndex]];
     self.currentStage.text = [@"Current Server: " stringByAppendingString:kStageNameArray[buttonIndex]];
-
+    
     [PayPalHereSDK setBaseAPIURL:[NSURL URLWithString:self.urlForTheSdkToUse]];
     NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
 }
@@ -204,7 +206,7 @@
         [self selectActiveServerGivenIndex:buttonIndex];
         NSNumber *stageIndex = [NSNumber numberWithInt:buttonIndex];
         [[NSUserDefaults standardUserDefaults] setObject:stageIndex forKey:@"activeServerButtonIndex"]; //Save for next samp app restart
-
+        
     }
 }
 
@@ -230,9 +232,9 @@
             
             NSError *error = nil;
             NSDictionary* jsonResponse = [NSJSONSerialization
-                                  JSONObjectWithData:data
-                                  options:kNilOptions
-                                  error:&error];
+                                          JSONObjectWithData:data
+                                          options:kNilOptions
+                                          error:&error];
             
             if (!jsonResponse || ![jsonResponse objectForKey:@"merchant"]) {
                 [self showAlertWithTitle:@"Login Failed." andMessage:@"The Heroku sample server returned an ambiguous response."];
@@ -280,7 +282,7 @@
 #pragma mark - PayPal Login, and Merchant Initialize Functions
 - (void) loginToPayPal:(NSString *)ticket
 {
-  	NSLog(@"Logging in to PayPal...");
+    NSLog(@"Logging in to PayPal...");
     
     NSMutableURLRequest *request = [self createGoPayPalRequest:ticket];
     
@@ -293,8 +295,8 @@
                                       error:&error];
         
         if (jsonResponse) {
-			
-			if ([jsonResponse objectForKey:@"url"] && [[jsonResponse objectForKey:@"url"] isKindOfClass:[NSString class]]) {
+            
+            if ([jsonResponse objectForKey:@"url"] && [[jsonResponse objectForKey:@"url"] isKindOfClass:[NSString class]]) {
                 
                 // FIRE UP SAFARI TO LOGIN TO PAYPAL
                 // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
@@ -302,22 +304,22 @@
                 NSLog(@"Pointing Safari at URL [%@]", url);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
                 
-			} else if ([jsonResponse objectForKey:@"access_token"]) {
+            } else if ([jsonResponse objectForKey:@"access_token"]) {
                 
                 [self setActiveMerchantWithAccessTokenDict:jsonResponse];
             }
-			else {
+            else {
                 
                 // UH-OH - NO URL FOR SAFARI TO FOLLOW, NO ACCESS TOKEN FOR YOU. FAIL.
                 // \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_ \_\_
                 NSLog(@"FAILURE! Got neither a URL to point Safari to, nor an Access Token - Huh?");
                 [self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response was ambiguous"];
                 [self.spinner stopAnimating];
-			}
+            }
             
         }
         else {
-			[self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response was ambiguous"];
+            [self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response was ambiguous"];
             [self.spinner stopAnimating];
         }
         
@@ -327,29 +329,29 @@
 
 - (void) setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON
 {
-	NSString* key = [PPSPreferences currentTicket]; // The sample server encrypted the access token using the 'ticket' it returned in step 1 (the /login call)
-	NSString* access_token = [JSON objectForKey:@"access_token"];
-	NSString* access = [PPSCryptoUtils AES256Decrypt:access_token  withPassword:key];
+    NSString* key = [PPSPreferences currentTicket]; // The sample server encrypted the access token using the 'ticket' it returned in step 1 (the /login call)
+    NSString* access_token = [JSON objectForKey:@"access_token"];
+    NSString* access = [PPSCryptoUtils AES256Decrypt:access_token  withPassword:key];
     
-	if (key == nil || access == nil) {
+    if (key == nil || access == nil) {
         
-		NSLog(@"Bailing because couldn't decrypt access_code.   key: %@   access: %@   access_token: %@", key, access, access_token);
+        NSLog(@"Bailing because couldn't decrypt access_code.   key: %@   access: %@   access_token: %@", key, access, access_token);
         
         [self showAlertWithTitle:@"Login Failed." andMessage:@"Ticket decryption failure."];
         
-		return;
-	}
+        return;
+    }
     
-	PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
+    PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
                                                                    expires_in:[JSON objectForKey:@"expires_in"]
                                                                    refreshUrl:[JSON objectForKey:@"refresh_url"] details:JSON];
     self.merchant.payPalAccount = account;
     
     [[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"lastgoodusername"];
     
-	[PayPalHereSDK setActiveMerchant:self.merchant
+    [PayPalHereSDK setActiveMerchant:self.merchant
                       withMerchantId:self.merchant.invoiceContactInfo.businessName
-				   completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo) {
+                   completionHandler: ^(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo) {
                        
                        if (status == ePPHAccessResultSuccess) {
                            
@@ -463,9 +465,9 @@
 
 - (void)transitionToTheNextViewController
 {
-	EMVTransactionViewController *transactionVC = [[EMVTransactionViewController alloc]
-                         initWithNibName:@"EMVTransactionViewController_iPhone"
-                         bundle:nil];
+    EMVTransactionViewController *transactionVC = [[EMVTransactionViewController alloc]
+                                                   initWithNibName:@"EMVTransactionViewController_iPhone"
+                                                   bundle:nil];
     
     transactionVC.title = @"Order Entry";
     [self.navigationController pushViewController:transactionVC animated:YES];
@@ -493,10 +495,10 @@
 }
 
 -(void)resetTextFieldOffset {
-        [UIView animateWithDuration:.4 animations:^{
-            [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        }];
-        [UIView commitAnimations];
+    [UIView animateWithDuration:.4 animations:^{
+        [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    }];
+    [UIView commitAnimations];
 }
 
 
@@ -526,7 +528,7 @@
     
     NSNumber *liveSandboxOrStage = [[NSUserDefaults standardUserDefaults] objectForKey:@"liveSandboxOrStage"];
     self.segControl.selectedSegmentIndex = [liveSandboxOrStage intValue];
-
+    
     
     
 }
