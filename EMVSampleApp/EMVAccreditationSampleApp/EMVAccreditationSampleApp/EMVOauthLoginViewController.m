@@ -20,6 +20,7 @@
 #define kStage2pph11 @"stage2pph11"
 #define kStage2pph24 @"stage2pph24"
 #define kStage2mb024 @"stage2mb024"
+#define kStage2pph05 @"stage2pph05"
 
 #define kDevStage1 @"dev-stage-1"
 #define kDevStage2 @"dev-stage-2"
@@ -32,7 +33,7 @@
 #define kSoftwareRepoArray @[kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3,kProdStage, kProd]
 
 
-#define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024]
+#define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05]
 #define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
 
 @interface EMVOauthLoginViewController ()
@@ -92,6 +93,7 @@
     [self.sdkBaseUrlDict setValue:@"https://www.stage2pph11.stage.paypal.com/webapps/" forKey:kStage2pph11];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2pph24.stage.paypal.com/webapps/" forKey:kStage2pph24];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb024.stage.paypal.com/webapps/" forKey:kStage2mb024];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2pph05.stage.paypal.com/webapps/" forKey:kStage2pph05];
     
 }
 
@@ -100,7 +102,7 @@
                                                                 delegate:self
                                                        cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
-                                                       otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, nil];
+                                                       otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05, nil];
 }
 
 -(void)softwareRepoSelectionActionSheet {
