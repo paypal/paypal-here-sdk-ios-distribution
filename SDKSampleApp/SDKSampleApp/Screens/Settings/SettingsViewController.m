@@ -10,7 +10,7 @@
 #import "ReaderInfoViewController.h"
 #import "STAppDelegate.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 @interface SettingsViewController ()
 @property (nonatomic, retain) IBOutlet UITextField *taxRateTextField;

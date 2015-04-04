@@ -6,11 +6,7 @@
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHLocationCheckin.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PPHTransactionWatcher.h>
-
+#import "PayPalHereSDK.h"
 
 #import "CheckedInCustomerViewController.h"
 #import "PaymentCompleteViewController.h"

@@ -162,11 +162,26 @@
 /*!
  * Authorize a chip and pin card after pin has been validated
  * @param auth from PPHCardReaderManager auth event.
+ * @param isContactless did this chipNpin auth request come from a contactless tap?
+ * @param isSale is this a sale?  If NO then we'll assume it's a normal auth.
  * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
  * attempting to collect payment.
  * @param completionHandler called when the action has completed
  */
--(void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent*) auth forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHChipAndPinAuthResponse *response)) completionHandler;
+-(void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent*)auth
+                      isContactless:(BOOL)isContactless
+                withContactlessType:(PPHContactlessTransactionType)contactlessType
+         isBelowContactlessCVMLimit:(BOOL)isBelowContactlessCVMLimit
+             withBondReaderMetaData:(PPHCardReaderMetadata *)metaData
+                         forInvoice:(id<PPHInvoiceProtocol>)invoice
+                  completionHandler:(void (^)(PPHChipAndPinAuthResponse *response))completionHandler;
+
+-(void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent *)auth
+                      isContactless:(BOOL)isContactless
+                withContactlessType:(PPHContactlessTransactionType)contactlessType
+         isBelowContactlessCVMLimit:(BOOL)isBelowContactlessCVMLimit
+                         forInvoice:(id<PPHInvoiceProtocol>)invoice
+                  completionHandler:(void (^)(PPHChipAndPinAuthResponse *))completionHandler;
 
 /*!
  * Collect funds against a card that has been passed through a reader and for which magstripe data is available.

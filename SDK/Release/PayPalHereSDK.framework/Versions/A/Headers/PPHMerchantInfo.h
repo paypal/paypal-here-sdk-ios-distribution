@@ -53,6 +53,11 @@
 @property (nonatomic,strong) NSString* terms;
 
 /*!
+ * Terms set by merchant in business info, currently return policy
+ */
+@property (nonatomic,strong) NSString* customReceiptText;
+
+/*!
  * To save the merchant preferences. Currently it stores taxID & ccStatementName both of which are shown in the 
  * receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account
  */

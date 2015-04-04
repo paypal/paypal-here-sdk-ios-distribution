@@ -5,15 +5,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHAccessAccount.h>
-#import <PayPalHereSDK/PPHAccessResultType.h>
+#import "PPHAccessAccount.h"
+#import "PPHAccessResultType.h"
 
 @class PPHError;
 
 // ATTENTION - this interface will become private very soon.
 
 typedef void (^PPHAccessTokenRefreshHandler)(PPHAccessResultType status, PPHError *error);
+typedef void (^PPHAccessCompletionHandler)(PPHAccessResultType status, PPHAccessAccount* account, NSDictionary* extraInfo);
 
 /*!
  * PPHAccessController helps you build OAuth authentication into your app. PLEASE NOTE:

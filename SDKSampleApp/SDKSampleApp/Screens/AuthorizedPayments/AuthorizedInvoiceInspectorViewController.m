@@ -7,8 +7,7 @@
 //
 
 #import "AuthorizedInvoiceInspectorViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
+#import "PayPalHereSDK.h"
 #import "STAppDelegate.h"
 
 @interface AuthorizedInvoiceInspectorViewController ()

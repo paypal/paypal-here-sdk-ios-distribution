@@ -7,11 +7,6 @@
 //
 
 
-
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PPHTransactionWatcher.h>
-
 #import "PaymentMethodViewController.h"
 #import "SignatureViewController.h"
 #import "CheckedInCustomerCell.h"

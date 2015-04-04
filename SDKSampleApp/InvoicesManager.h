@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PayPalHereSDK/PPHInvoice.h>
+#import "PayPalHereSDK.h"
+
 @interface InvoicesManager : NSObject
 
 +(NSMutableArray *) getCurrentTransactions;

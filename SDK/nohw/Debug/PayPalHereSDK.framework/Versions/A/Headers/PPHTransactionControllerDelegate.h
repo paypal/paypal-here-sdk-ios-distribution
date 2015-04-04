@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#import "PPHInvoiceConstants.h"
 
 @class PPHTransactionControllerWatcher;
 @class PPHInvoice;
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
      */
     ePPHTransactionType_Continue
 };
+
 
 /**
  * The TransactionController defines an interface that can be used by the application to install a callback
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
  * Return CONTINUE if you wish the SDK to continue processing this transaction.
  *
  */
--(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON;
+- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON;
 
 /*!
  * onPostAuthorize 
@@ -80,5 +82,21 @@ typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
  *
  */
 -(void)onPostAuthorize:(BOOL)didFail;
+
+/*!
+ * onUserPaymentOptionSelected
+ *
+ * This function will be called by SDK when ever user taps or inserts the card into the connected EMV Reader. 
+ *
+ * @param paymentOption the type of payment option user selected.
+ */
+- (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentOption;
+
+- (void)onUserRefundMethodSelected:(PPHPaymentMethod) paymentOption;
+
+
+-(UIViewController *)getCurrentViewController;
+
+- (NSArray *)getReceiptOptions;
 
 @end
