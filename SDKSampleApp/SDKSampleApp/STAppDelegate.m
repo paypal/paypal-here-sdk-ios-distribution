@@ -9,7 +9,7 @@
 #import "STAppDelegate.h"
 
 #import "STOauthLoginViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 #define kSDKSampleApp_paymentFlow_authOnlyBool_Key @"SDKSampleApp.paymentFlow.authOnlyBool"
 

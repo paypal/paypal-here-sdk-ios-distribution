@@ -7,10 +7,7 @@
 //
 
 #import "ReceiptInfoViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PPHReceiptDestination.h>
+#import "PayPalHereSDK.h"
 
 @interface ReceiptInfoViewController ()
 

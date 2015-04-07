@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <PayPalHereSDK/PPHLocation.h>
+#import "PayPalHereSDK.h"
 
 
 @class STOauthLoginViewController;

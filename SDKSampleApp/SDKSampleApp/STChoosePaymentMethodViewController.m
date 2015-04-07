@@ -13,7 +13,7 @@
 #import "STCardSwipeViewController.h"
 #import "CheckedInCustomerViewController.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 @interface STChoosePaymentMethodViewController ()
 @property (nonatomic, retain) IBOutlet UILabel *amountLabel;
 @property (nonatomic, retain) IBOutlet UIButton *manualButton;

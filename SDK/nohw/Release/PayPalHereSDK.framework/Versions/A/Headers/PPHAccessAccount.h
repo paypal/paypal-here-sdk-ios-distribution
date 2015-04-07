@@ -20,7 +20,9 @@ typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
     ePPHAvailablePaymentTypeNone = 0,
     ePPHAvailablePaymentTypeCard = 1,
     ePPHAvailablePaymentTypeCheckin = 1 << 1,
-    ePPHAvailablePaymentTypeChip = 1 << 2
+    ePPHAvailablePaymentTypeChip = 1 << 2,
+    ePPHAvailablePaymentTypeContactlessMSD = 1 << 3,
+    ePPHAvailablePaymentTypeContactlessEMV = 1 << 4
 };
 
 /*!

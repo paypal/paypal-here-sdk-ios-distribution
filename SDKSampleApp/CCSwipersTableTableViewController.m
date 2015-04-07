@@ -15,7 +15,7 @@
 #import "AuthorizationCompleteViewController.h"
 #import "PaymentCompleteViewController.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 @interface CCSwipersTableTableViewController ()
 @property (nonatomic, strong) PPHCardReaderWatcher *cardWatcher;

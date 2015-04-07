@@ -9,7 +9,7 @@
 #import "InvoicesManager.h"
 #import "STTransactionsTableViewController.h"
 #import "PaymentMethodViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 @interface STTransactionsTableViewController ()
 

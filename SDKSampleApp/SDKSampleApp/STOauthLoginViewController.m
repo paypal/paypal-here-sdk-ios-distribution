@@ -15,8 +15,7 @@
 #import "DemosTableViewController.h"
 #import "STSettingsViewController.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHPaymentLimits.h>
+#import "PayPalHereSDK.h"
 
 #import <Foundation/NSUrlConnection.h>
 

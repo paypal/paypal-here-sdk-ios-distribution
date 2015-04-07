@@ -6,10 +6,7 @@
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHInvoice.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
+#import "PayPalHereSDK.h"
 #import "RefundViewController.h"
 #import "STAppDelegate.h"
 

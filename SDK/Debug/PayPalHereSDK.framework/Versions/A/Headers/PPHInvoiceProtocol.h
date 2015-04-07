@@ -4,7 +4,7 @@
 //  Copyright (c) 2012 PayPal. All rights reserved.
 //
 
-#import <PayPalHereSDK/PPHAmount.h>
+#import "PPHAmount.h"
 
 /*!
  * The minimal set of information required to take payment on an invoice

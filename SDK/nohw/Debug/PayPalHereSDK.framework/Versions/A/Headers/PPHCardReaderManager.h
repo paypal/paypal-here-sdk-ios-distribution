@@ -3,11 +3,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PayPalHereSDK/PPHReaderType.h>
-#import <PayPalHereSDK/PPHCardReaderDelegate.h>
-#import <PayPalHereSDK/PPHCardReaderWatcher.h>
-#import <PayPalHereSDK/PPHCardReaderMetadata.h>
-#import <PayPalHereSDK/PPHInvoiceProtocol.h>
+#import "PPHReaderType.h"
+#import "PPHCardReaderDelegate.h"
+#import "PPHCardReaderWatcher.h"
+#import "PPHCardReaderMetadata.h"
+#import "PPHInvoiceProtocol.h"
 
 typedef NS_OPTIONS(NSInteger, PPHReaderError) {
     ePPHReaderErrorNone = 0,
@@ -32,7 +32,7 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
 @class PPHChipAndPinDecisionEvent;
 @class PPHChipAndPinAuthResponse;
 @class PPHError;
-@class PPHCardReaderBasicInformation;
+@class PPHCardReaderMetadata;
 
 /*!
  * The card reader manager handles all interaction with card and chip&pin hardware devices.
@@ -69,7 +69,7 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
  * in other cases this will connect to the bluetooth or feature port accessory or do similar activities.
  * @param readerOrNil The reader to activate or nil for the default/only reader.
  */
--(PPHReaderError)activateReader: (PPHCardReaderBasicInformation*) readerOrNil;
+-(PPHReaderError)activateReader: (PPHCardReaderMetadata*) readerOrNil;
 
 /*!
  * Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
@@ -77,7 +77,7 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
  * disconnect the reader.
  * @param readerOrNil The reader to deactivate or nil for the default/only reader.
  */
--(void)deactivateReader: (PPHCardReaderBasicInformation*) readerOrNil;
+-(void)deactivateReader: (PPHCardReaderMetadata*) readerOrNil;
 
 /*!
  * For accessory based readers, there is the possibility that multiple capable devices may
@@ -99,16 +99,16 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
  * An array of known available devices. For example with bluetooth devices this will include
  * paired devices that are currently within range/connectable.
  *
- * @returns NSArray(PPHCardReaderBasicInformation)
+ * @returns NSArray(PPHCardReaderMetadata)
  */
 -(NSArray*) availableDevices;
 
 /*!
- * In the case of readers requiring further setup, call this method with the PPHCardReaderBasicInformation
+ * In the case of readers requiring further setup, call this method with the PPHCardReaderMetadata
  * for the target reader.
  * @param reader the reader to upgrade
  */
--(void)beginUpgrade: (PPHCardReaderBasicInformation*) reader;
+-(void)beginUpgrade: (PPHCardReaderMetadata*) reader;
 
 /*!
  * Perform a software update on the EMV terminal.
