@@ -318,10 +318,10 @@
 			children = (
 				804C3049195A8140006ABECA /* libPayPalHereSDK.a */,
 				804C304B195A8140006ABECA /* PayPalHereSDK.bundle */,
-				804C304D195A8140006ABECA /* libPayPalHereSDK.a */,
 				804C304F195A8140006ABECA /* PPHSDKTests.xctest */,
 				804C3051195A8140006ABECA /* PPHSDKIntegrationTests.octest */,
 				19CA808C199D20F2001909BE /* PPHSDKIntegrationTests copy.octest */,
+				804C304D195A8140006ABECA /* libPayPalHereSDK.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,7 +336,6 @@
 				803E60F21959FBC400E4BFDE /* Sources */,
 				803E60F31959FBC400E4BFDE /* Frameworks */,
 				803E60F41959FBC400E4BFDE /* Resources */,
-				F11FF8E11A97EB6700DAA59D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -478,22 +477,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F11FF8E11A97EB6700DAA59D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 6fdee2cd3d6cb98362060d0ac0be20ef1c386ef3 6433aedee380716633b2a5bd673fc67f3db127246f294751de258f2d95ce7bc3";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		803E60F21959FBC400E4BFDE /* Sources */ = {
@@ -644,6 +627,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"../../SDK/Source/**",
+				);
 				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
@@ -673,6 +661,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"../../SDK/Source/**",
+				);
 				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;

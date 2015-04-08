@@ -8,7 +8,7 @@
 
 #import "EMVTransactionViewController.h"
 #import "EMVSalesHistoryViewController.h"
-#import <PayPalHereSDK/PPHTransactionManager.h>
+#import "PayPalHereSDK.h"
 #import "AppDelegate.h"
 
 @interface EMVTransactionViewController ()
