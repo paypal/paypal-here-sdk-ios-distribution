@@ -307,14 +307,25 @@
     [self.updateRequiredAlertDialog show];
 }
 
-
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView == self.updateRequiredAlertDialog) {
         if (buttonIndex != alertView.cancelButtonIndex) {
             [self beginReaderUpdate];
         }
-
+        
         self.updateRequiredAlertDialog = nil;
+    }
+    else if (alertView == self.retryContactlessAlertDialog) {
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            self.timeoutCompletionHandler(ePPHContactlessTimeoutActionCancelTransaction);
+        } else {
+            if (buttonIndex == 1) {
+                self.timeoutCompletionHandler(ePPHContactlessTimeoutActionContinueWithContactless);
+            }
+            if (buttonIndex == 2) {
+                self.timeoutCompletionHandler(ePPHContactlessTimeoutActionContinueWithContact);
+            }
+        }
     }
 }
 
