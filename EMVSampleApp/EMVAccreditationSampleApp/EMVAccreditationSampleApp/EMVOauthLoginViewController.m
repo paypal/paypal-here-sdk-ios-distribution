@@ -10,7 +10,7 @@
 #import "EMVTransactionViewController.h"
 #import "PPSPreferences.h"
 #import "PPSCryptoUtils.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 #define kLive @"Live"
 #define kSandbox @"Sandbox"

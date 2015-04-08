@@ -7,7 +7,7 @@
 //
 
 #import "EMVSalesHistoryViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 #import "AppDelegate.h"
 
 #define kRefundOptionsDialog 1

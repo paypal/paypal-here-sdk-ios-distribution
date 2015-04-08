@@ -80,7 +80,6 @@
 		803E61231959FBC400E4BFDE /* EMVAccreditationSampleAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMVAccreditationSampleAppTests-Info.plist"; sourceTree = "<group>"; };
 		803E61251959FBC400E4BFDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		803E61271959FBC400E4BFDE /* EMVAccreditationSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVAccreditationSampleAppTests.m; sourceTree = "<group>"; };
-		803E61311959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMVOauthLoginViewController_iPad.xib; sourceTree = "<group>"; };
 		803E6135195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMVOauthLoginViewController_iPhone.xib; sourceTree = "<group>"; };
 		803E6137195A04E600E4BFDE /* pp_m_rgb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pp_m_rgb.jpg; sourceTree = "<group>"; };
 		803E6157195A3EEB00E4BFDE /* PPSCryptoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSCryptoUtils.h; sourceTree = "<group>"; };
@@ -216,7 +215,6 @@
 				803E6158195A3EEB00E4BFDE /* PPSCryptoUtils.m */,
 				803E6161195A3F5200E4BFDE /* PPSPreferences.h */,
 				803E6162195A3F5200E4BFDE /* PPSPreferences.m */,
-				803E61311959FC2600E4BFDE /* EMVOauthLoginViewController_iPad.xib */,
 				803E6135195A029F00E4BFDE /* EMVOauthLoginViewController_iPhone.xib */,
 				803E6164195A471B00E4BFDE /* EMVTransactionViewController_iPhone.xib */,
 				803E61141959FBC400E4BFDE /* Images.xcassets */,
@@ -495,6 +493,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"../../SDK\"",
+				);
 				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
@@ -524,6 +527,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"../../SDK\"",
+				);
 				INFOPLIST_FILE = "EMVAccreditationSampleApp/EMVAccreditationSampleApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
