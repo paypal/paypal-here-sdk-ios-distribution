@@ -7,10 +7,7 @@
 //
 
 #import "AuthorizedPaymentsViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHInvoice.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
+#import "PayPalHereSDK.h"
 
 #import "AuthorizedInvoiceInspectorViewController.h"
 

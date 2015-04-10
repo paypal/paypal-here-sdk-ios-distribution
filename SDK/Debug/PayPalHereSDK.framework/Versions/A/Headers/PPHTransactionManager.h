@@ -13,6 +13,7 @@
 #import "PPHInvoice.h"
 #import "PPHCardReaderManager.h"
 #import "PPHLocalErrors.h"
+#import "PPHReceiptTransactionStatus.h"
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
@@ -198,13 +199,16 @@
     }
  */
 
+typedef void (^PPHTransactionCompletionHandler) (PPHTransactionResponse *response);
+typedef void (^PPHReceiptCompletionHandler) ();
+
+
 @interface PPHTransactionManager : NSObject
 
 
 
 /*! The invoice used for this transaction. */
 @property (nonatomic, strong) PPHInvoice *currentInvoice;
-
 /*!
  * Card swipe data we'll use if the PaymentType is CardReader.
  */
@@ -259,30 +263,23 @@
 @property (nonatomic, assign) BOOL ignoreHardwareReaders;
 
 /**
- * Configure the Transaction Manager to ignore OR obey PayPal's backend-based signature required above "x" amount configuration,
- * (also referred to as the default signature setting) which could also be obtained via the "TransactionResponse.isSignatureRequiredToFinalize" property.
+ * Determines if the current transaction will request a signature or not for a given amount.
  *
- * When the application invokes the "setActiveMerchant" API, the SDK would go ahead and fetch various configuration and properties 
- * for this merchant.
+ * If amountOrNil is nil, the current invoice total will be used.
+ */
+- (BOOL)transactionRequiresSignatureForAmount:(PPHAmount *)amountOrNil;
+
+/**
+ * Determines if we can bypass signature if it is not essential to the payment environment.
  *
- * One of the properties provided to the SDK would include the minimum amount above which a signature is required.
+ * If YES then we always request a signature when it would normally be optional (swipe, contactless MSD)
  *
- * This enables the transaction manager to move to a " Waiting For Signature " state and expects the application
- * to invoke the "provideSignature" API after the completion of the 'ProcessPayment" API (when an amount > minimum required for signature).
+ * If NO we will respect the directions from the EMV chip or from the payment limits account configuration when determining when to request a signature
  *
- * If the app chooses to override this behavior and not collect a signature for ANY amount, they must set this property as YES. This would enable
- * the transaction manager to ignore the backend-based (a.k.a isSignatureRequiredToFinalize) setting and move to an idle state once the payment is
- * complete.
- *
- * If set to NO, in conjunction with the backend-based setting (a.k.a isSignatureRequiredToFinalize), the SDK would expect the application to invoke the
- * "provideSignature" API after the completion of the "processPayment" API.
- *
- * Default value set to NO.
- *
- * NOTE : This property would ONLY be applicable for Swipe based transactions and will not be considered while performing any EMV related transactions.
+ * Default value is NO
  *
  */
-@property (nonatomic, assign) BOOL shouldAppOverrideDefaultSignatureSetting;
+@property (nonatomic, assign) BOOL requireSignatureWhenApplicable;
 
 /*! beginPayment puts us in a state to take a payment.  
  * You can now set the shoppingCart, signature, and extras 
@@ -293,7 +290,7 @@
  * This call causes the hardware enabled version of the SDK to start scanning for card swipes.
  * the currentInvoice is initialized with an empty inventory for you to add items to.
  */
--(void)beginPayment;
+- (void)beginPayment;
 
 /*!
  * Begin a fixed amount payment.  Similar to beginPayment except this time the 
@@ -303,16 +300,23 @@
  * @param amount the amount to charge the customer.
  * @param itemName the name for this item.  Will be stored in the invoice.
  */
-- (void) beginPaymentWithAmount:(PPHAmount*) amount andName:(NSString *)itemName;
+- (void)beginPaymentWithAmount:(PPHAmount*) amount andName:(NSString *)itemName;
 
-/*! 
+/*!
+ * Begin a payment use a given invoice.
+ *
+ * @param invoice the invoice which is tracking the current purchase.
+ */
+- (void)beginPaymentWithInvoice:(PPHInvoice*) invoice;
+
+/*!
  * Clears the current state of the transaction, including current invoice, card data, etc, thus 
  * returning back to an Idle state.
  *
  * Returns an error if unable to clear the states. This could happen if we are in the middle of processing 
  * a transaction. Else, returns nil.
  */
--(PPHError *) cancelPayment;
+- (PPHError *)cancelPayment;
 
 
 /*!
@@ -337,8 +341,8 @@
  * error object will be non nil.  Otherwise it will contain a PPHTransactionRecord which you can 
  * later pass into voidAuthoriztion or capturePaymentForAuthorization
  */
-- (void) authorizePaymentWithPaymentType:(PPHPaymentMethod)paymentMethod
-                   withCompletionHandler:(void (^)(PPHTransactionResponse *))completionHandler;
+- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)paymentMethod
+                   withCompletionHandler:(PPHTransactionCompletionHandler)completionHandler;
 
 /*!
  * Allows you to void a previously authorized payment.  
@@ -346,8 +350,8 @@
  * @param completionHandler will return a PPHTransactionResponse.  If there's an error then the PPHTransactionRecord's
  * error object will be non nil.  Otherwise it will contain a PPHTransactionRecord for this void action.
  */
-- (void) voidAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord
-     withCompletionHandler:(void (^)(PPHTransactionResponse *))completionHandler;
+- (void)voidAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord
+     withCompletionHandler:(PPHTransactionCompletionHandler)completionHandler;
 
 /*!
  * Captures a prevoisly authorized payment.  
@@ -368,8 +372,8 @@
  * @param completionHandler : Will return a PPHTransactionResponse.  If there's an error 
  * then the PPHTransactionRecord's error object will be non nil.
  */
-- (void) capturePaymentForAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord
-                  withCompletionHandler:(void (^)(PPHTransactionResponse *))completionHandler;
+- (void)capturePaymentForAuthorization:(PPHTransactionRecord *)authorizedTransactionRecord
+                  withCompletionHandler:(PPHTransactionCompletionHandler)completionHandler;
 
 /*!
  * Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
@@ -387,52 +391,13 @@
  *                    defined in the PPHTransactionControllerDelegate.
  * @param completionHandler called when the action has completed
  */
--(void) processPaymentWithPaymentType:(PPHPaymentMethod) paymentType
+- (void)processPaymentWithPaymentType:(PPHPaymentMethod) paymentType
               withTransactionController:(id<PPHTransactionControllerDelegate>)controller
-                      completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
+                      completionHandler:(PPHTransactionCompletionHandler) completionHandler;
 
 
-/*!
- * Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
- * This version will cause the SDK to show UI during the payment flow.
- *
- * Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).
- *
- * Processing a payment for swipe or key-in or checkin-in payments will
- * actually capture that payment.  For Cash or Check, this call will simply
- * record the invoice into the paypal system for record-keeping purposes.
- *
- * @param paymentType : The type of payment to collect.  You'll get an error back if you
- *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
- *                    checkedInClient property.  Likewise with the cardData member and
- *                    specifying ePPHPaymentMethodSwipe.
- *
- * @param vc : The current or active view controller.
- *
- * @param controller :  Can be nil.  If provided, the transaction manager will call the callbacks
- *                    defined in the PPHTransactionControllerDelegate.
- * @param completionHandler : called when the action has completed
- */
--(void) processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType
-                       withTransactionController:(id<PPHTransactionControllerDelegate>)controller withViewController: (UIViewController *)vc
-                               completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
 
-/*!
-  * Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
-  * This version will cause the SDK to show UI during the refund flow.
-  *
-  * Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).
-  *
-  * @param paymentType the type on which the refund would be performed.  You'll get an error back if you
-  *                    specify ePPHPaymentTypesCheckedInPayment and haven't set the
-  *                    checkedInClient property.  Likewise with the cardData member and
-  *                    specifying ePPHPaymentMethodSwipe.
-  *
-  * @param vc : The current or active view controller.
-  *
-  * @param completionHandler called when the action has completed
-  */
--(void) beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod) paymentType withViewController: (UIViewController *)vc record:(PPHTransactionRecord *)record amount:(PPHAmount*)amount completionHandler:(void (^)(PPHTransactionResponse *record)) completionHandler;
+
 
 /*!
  * Used to capture the signature of the customer if it already hasn't been captured in the processPayment call
@@ -446,7 +411,7 @@
  * @param previousTransaction : The transaction record object that is returned back from the processPayment call.
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
  */
--(void)provideSignature:(UIImage *)signature forTransaction:(PPHTransactionRecord *)previousTransaction completionHandler: (void (^)(PPHError *))completionHandler;
+- (void)provideSignature:(UIImage *)signature forTransaction:(PPHTransactionRecord *)previousTransaction completionHandler: (void (^)(PPHError *))completionHandler;
 
 
 /*!
@@ -459,7 +424,7 @@
  * @param amountOrNil           Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it's a full refund.
  * @param completionHandler     Called when the action has completed
  */
--(void)beginRefund:(PPHTransactionRecord*) previousTransaction forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
+- (void)beginRefund:(PPHTransactionRecord*) previousTransaction forAmount: (PPHAmount*) amountOrNil completionHandler: (void(^)(PPHPaymentResponse*)) completionHandler;
 
 /*!
  * Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.
@@ -473,6 +438,34 @@
  *                      which we should send the receipt.
  * @param completionHandler : A response handler that would be invoked by the SDK in case of a success or a failure.
  */
--(void)sendReceipt:(PPHTransactionRecord*) previousTransaction toRecipient:(PPHReceiptDestination*)destination completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
+- (void)sendReceipt:(PPHTransactionRecord*) previousTransaction toRecipient:(PPHReceiptDestination*)destination completionHandler: (PPHInvoiceBasicCompletionHandler) completionHandler;
+
+
+/**
+ * This api is used to activate the EMV reader to look for the payments (Can be contact or contact less)
+ */
+//- (void)activateReaderForPayment:(PPHInitiateTransactionType) transactionType;
+- (void)activateReaderForPayment;
+
+
+/**
+ * This api is used to stop the EMV reader from looking for payments.
+ */
+- (void)deActivateReaderForPayment;
+
+
+
+@end
+
+@interface PPHTransactionManager (UI)
+
+- (void)beginPaymentUsingSDKUIWithInvoice:(PPHInvoice*) invoice transactionController: (id<PPHTransactionControllerDelegate>)controller;
+- (void)processPaymentUsingSDKUIWithPaymentType:(PPHPaymentMethod) paymentType completionHandler:(PPHTransactionCompletionHandler) completionHandler;
+
+- (void)beginRefundUsingSDKUIWithInvoice:(PPHInvoice*) invoice transactionController: (id<PPHTransactionControllerDelegate>)controller;
+- (void)processRefundUsingSDKUIWithAmount:(PPHAmount *) amount completionHandler:(PPHTransactionCompletionHandler) completionHandler;
+
+- (void)sendReceiptUsingSDKUIWithTransactionStatus:(PPHReceiptTransactionStatus)transactionStatus transactionRecord:(PPHTransactionRecord *)record amount:(PPHAmount *)transactionAmount transactionController:(id<PPHTransactionControllerDelegate>)transactionController completionHandler:(PPHReceiptCompletionHandler)completionHandler;
+
 
 @end

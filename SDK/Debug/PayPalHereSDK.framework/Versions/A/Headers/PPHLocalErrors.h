@@ -30,6 +30,7 @@
 #define kPPHLocalErrorBadConfigurationPaymentBelowAllowedLimit -2019
 #define kPPHLocalErrorBadConfigurationPaymentAboveAllowedLimit -2020
 #define kPPHLocalErrorBadConfigurationInvalidSDKVersion -2021
+#define kPPHLocalErrorFlowControllerTransactionFailed -2022
 
 
 

@@ -5,13 +5,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PayPalHereSDK/PPHReaderType.h>
+#import "PPHReaderType.h"
+#import "PPHCardReaderCapabilities.h"
+#import "PPHReaderDisplayFormatter.h"
 
 /*!
- * PPHCardReaderBasicInformation represents what can be determined about a connected
+ * PPHCardReaderMetadata represents what can be determined about a connected
  * card reader device without actually connecting or talking to it.
  */
-@interface PPHCardReaderBasicInformation : NSObject <NSCoding>
+@interface PPHCardReaderMetadata : NSObject <NSCoding>
+/*!
+ * When specifying a preference order for readers, use the anyReader value at the
+ * end of the list to allow a reader outside of the preference set to be chosen.
+ */
++(PPHCardReaderMetadata*)anyReader;
+
 /*!
  * The type of reader this metadata is for
  */
@@ -34,23 +42,20 @@
 @property (nonatomic,strong) NSString *protocolName;
 
 /*!
- * When specifying a preference order for readers, use the anyReader value at the
- * end of the list to allow a reader outside of the preference set to be chosen.
+ * A device specific model number that should never change for the same device
  */
-+(PPHCardReaderBasicInformation*)anyReader;
-@end
-
-/*!
- * More complete information about a card reader which may not be available until
- * activity (such as a swipe) has occurred
- */
-@interface PPHCardReaderMetadata : PPHCardReaderBasicInformation
-
+@property (nonatomic, strong) NSString *modelNo;
+                              
 /*!
  * A device-specific serial number that should not change for the same 
  * device and should not be the same for any other device with the same family.
  */
 @property (nonatomic,strong) NSString *serialNumber;
+
+/*!
+ * The device OS version, if available
+ */
+@property (nonatomic,strong) NSString *osRevision;
 
 /*!
  * The device software version, if available
@@ -62,5 +67,57 @@
  * the battery level, this will be non-zero
  */
 @property (nonatomic) NSInteger batteryLevel;
+
+/*!
+ * More complete information on the capabilities of the card reader device. Such as
+ * the different forms of payments it accepts and etc..
+ * If no capability information can be determined this object returned will be nil.
+ */
+-(PPHCardReaderCapabilities *)capabilities;
+
+/*!
+ * Is there a card currently dipped in the reader?
+ */
+- (BOOL)cardIsInserted;
+
+/*!
+ * Is the device prepared to take a transaction
+ */
+- (BOOL)isReadyToTransact;
+
+/*!
+ * Is there a software update available for the reader?
+ */
+- (BOOL)upgradeIsAvailable;
+
+/*!
+ * Are the upgrade files downloaded and ready to be applied?
+ */
+- (BOOL)upgradeIsReady;
+
+/*!
+ * Does the reader need to upgraded before taking a payment?
+ */
+- (BOOL)upgradeIsManadatory;
+
+/*!
+ * Does the available upgrade contain the initial setup of the reader?
+ */
+- (BOOL)upgradeIsInitialSetup;
+
+/*!
+ * Is the battery level low enough to warrant warning the user?
+ */
+- (BOOL)batteryIsLow;
+
+/*!
+ * Is the battery level too low to take a payment?
+ */
+- (BOOL)batteryIsCritical;
+
+/*!
+ * Is the battery too low to start a reader upgrade?
+ */
+- (BOOL)batteryIsCriticalForUpgrade;
 
 @end

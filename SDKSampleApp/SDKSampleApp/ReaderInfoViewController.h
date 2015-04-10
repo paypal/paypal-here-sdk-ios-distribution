@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHCardReaderDelegate.h>
+#import "PayPalHereSDK.h"
 
 @interface ReaderInfoViewController : UIViewController <
   	PPHSimpleCardReaderDelegate

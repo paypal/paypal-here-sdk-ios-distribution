@@ -10,7 +10,7 @@
 @class PPHCardSwipeData;
 @class PPHCardReaderMetadata;
 @class PPHChipAndPinEvent;
-@class PPHCardReaderBasicInformation;
+@class PPHCardReaderMetadata;
 
 /*!
  * Basic events for audio, feature port, and EMV readers. While methods are marked optional for cases where you
@@ -26,13 +26,13 @@
  * the audio readers. It presents an opportunity to show UI indicating that you are "working on it"
  * @param reader the basic information about reader that is actively being "verified"
  */
--(void)didStartReaderDetection: (PPHCardReaderBasicInformation*) reader;
+-(void)didStartReaderDetection: (PPHCardReaderMetadata*) reader;
 
 /*!
  * A fully working reader was detected and is available
  * @param reader the reader that was detected
  */
--(void)didDetectReaderDevice: (PPHCardReaderBasicInformation*) reader;
+-(void)didDetectReaderDevice: (PPHCardReaderMetadata*) reader;
 
 /*!
  * A reader device has been removed from the system
@@ -72,17 +72,6 @@
 @protocol PPHCardReaderDelegate <PPHSimpleCardReaderDelegate>
 
 @optional
-
-/*!
- * Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
- * NOT receive didDetectReaderDevice until the condition is resolved.
- * @param reader the reader that has an available upgrade
- * @param message the reason or explanation for the upgrade
- * @param required whether the reader can proceed without an upgrade
- * @param initial whether this is the initial upgrade to the reader
- * @param estimatedDuration the estimated time the update will take to apply in total
- */
--(void)didDetectUpgradeableReader: (PPHCardReaderBasicInformation*) reader withMessage: (NSString*) message isRequired: (BOOL) required isInitial: (BOOL) initial withEstimatedDuration: (NSTimeInterval) estimatedDuration;
 
 /*!
  * The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work

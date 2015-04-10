@@ -5,7 +5,7 @@
 //  Created by Yarlagadda, Harish on 3/10/14.
 //  Copyright (c) 2014 PayPalHereSDK. All rights reserved.
 //
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 #import "ManualCardEntryViewController.h"
 #import "PaymentCompleteViewController.h"
 #import "AuthorizationCompleteViewController.h"

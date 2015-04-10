@@ -116,6 +116,11 @@
 @property (nonatomic, readonly) PPHCreditCardType cardType;
 
 /*!
+ * Wether the card allows swipe data to be used.
+ */
+@property (nonatomic, readonly) BOOL cardAllowsSwipe;
+
+/*!
  * Return the swipe data as a dictionary suitable for submission to PayPal
  */
 -(NSDictionary*) asDictionary;
