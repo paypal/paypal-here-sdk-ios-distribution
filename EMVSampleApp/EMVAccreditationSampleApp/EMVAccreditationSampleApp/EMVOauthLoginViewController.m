@@ -14,6 +14,7 @@
 
 #define kLive @"Live"
 #define kSandbox @"Sandbox"
+#define kMock @"Mock"
 #define kStage2mb001 @"stage2mb001"
 #define kStage2mb006 @"stage2mb006"
 #define kStage2mb023 @"stage2mb023"
@@ -87,7 +88,7 @@
     self.sdkBaseUrlDict = [[NSMutableDictionary alloc] init];
     [self.sdkBaseUrlDict setValue:@"https://www.paypal.com/webapps/" forKey:kLive];
     [self.sdkBaseUrlDict setValue:@"https://www.sandbox.paypal.com/webapps/" forKey:kSandbox];
-    [self.sdkBaseUrlDict setValue:@"https://www.stage2mb001.stage.paypal.com/webapps/" forKey:kStage2mb001];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb001];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb006];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb023.stage.paypal.com/webapps/" forKey:kStage2mb023];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2pph11.stage.paypal.com/webapps/" forKey:kStage2pph11];
@@ -161,21 +162,26 @@
     if (self.segControl.selectedSegmentIndex == 0) {
         self.activeServer = kLive;
         self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kLive];
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live andCountryCodeOrNil:nil];
+        self.currentStage.text = @"Current Server: Live";
     }
     
     else if (self.segControl.selectedSegmentIndex == 1) {
         self.activeServer = kSandbox;
         self.urlForTheSdkToUse = [self.sdkBaseUrlDict valueForKey:kSandbox];
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
-    }
-    
-    else {
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox andCountryCodeOrNil:nil];
+        self.currentStage.text = @"Current Server: Sandbox";
+    } else if (self.segControl.selectedSegmentIndex == 3) {
+        self.activeServer = kMock;
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Mock andCountryCodeOrNil:@"GB"];
+        self.currentStage.text = @"Current Server: Mock";
+    } else {
         [self.stageSelectedActionSheet showInView:self.view];
     }
     
     NSNumber *number = [NSNumber numberWithInt:self.segControl.selectedSegmentIndex];
     [[NSUserDefaults standardUserDefaults] setObject:number forKey:@"liveSandboxOrStage"];             //Tell the SDK
+    [[NSUserDefaults standardUserDefaults] setObject:self.activeServer forKey:@"activeServer"];
     
     
     NSLog(@"Service Host Url we will use for login %@", self.serviceHostUrl);
@@ -220,6 +226,19 @@
         [self.spinner startAnimating];
         
         [self saveUserChoices];
+        
+        if ([self.activeServer isEqualToString:kMock]) {
+            //if we are mocking the flows there is no need to perform any login
+            NSString *accessToken = @"SDK_SIMULATOR_ACCESS_TOKEN_UK_ACCOUNT";
+            
+            //VS TODO: if the user selected a country code for the mock setting then modify this access token accordingly
+            [PayPalHereSDK setupWithCredentials:accessToken refreshUrl:@"https://arbitrary-refresh-url.com" tokenExpiryOrNil:nil thenCompletionHandler:^(PPHInitResultType status, PPHError *error, PPHMerchantInfo *info) {
+                if (status == ePPHInitResultSuccess) {
+                    [self transitionToTheNextViewController];
+                }
+            }];
+            
+        } else {
         
         NSMutableURLRequest *request = [self createLoginRequest];
         
@@ -270,6 +289,7 @@
             
         }];
         
+    }
     }
     
     else {
@@ -470,7 +490,9 @@
                                                    bundle:nil];
     
     transactionVC.title = @"Order Entry";
+    
     [self.navigationController pushViewController:transactionVC animated:YES];
+    [self.navigationController removeFromParentViewController];
 }
 
 -(void) showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
@@ -529,8 +551,29 @@
     NSNumber *liveSandboxOrStage = [[NSUserDefaults standardUserDefaults] objectForKey:@"liveSandboxOrStage"];
     self.segControl.selectedSegmentIndex = [liveSandboxOrStage intValue];
     
-    
-    
+    switch(self.segControl.selectedSegmentIndex) {
+        case 1:
+            [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox andCountryCodeOrNil:nil];
+            self.currentStage.text = @"Current Server: Sandbox";
+            self.activeServer = kSandbox;
+            break;
+            
+        case 3:
+            [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Mock andCountryCodeOrNil:@"GB"];
+            self.currentStage.text = @"Current Server: Mock";
+            self.activeServer = kMock;
+            break;
+            
+        case 2:
+            break;
+            
+        case 0:
+        default:
+            [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live andCountryCodeOrNil:nil];
+            self.currentStage.text = @"Current Server: Live";
+            self.activeServer = kLive;
+            break;
+    }
 }
 
 @end
