@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
+#import "PayPalHereSDK.h"
 
 @interface ManualCardEntryViewController : UIViewController
 <

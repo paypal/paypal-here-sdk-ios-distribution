@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <PayPalHereSDK/PPHLocationWatcher.h>
-#import <PayPalHereSDK/PPHLocation.h>
+#import "PPHLocationWatcher.h"
+#import "PPHLocation.h"
 
 @class PPHError;
 

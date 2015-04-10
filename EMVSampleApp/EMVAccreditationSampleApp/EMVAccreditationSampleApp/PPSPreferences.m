@@ -8,7 +8,7 @@
 
 #import "PPSPreferences.h"
 #import "PPSCryptoUtils.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 static NSString *sServiceName = @"com.paypal.hereandthere";
 static NSLock *sKeychainLock = nil;

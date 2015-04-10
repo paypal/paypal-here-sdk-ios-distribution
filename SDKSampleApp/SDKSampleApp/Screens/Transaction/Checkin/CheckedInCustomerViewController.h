@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHLocationWatcher.h>
+#import "PayPalHereSDK.h"
 
 @interface CheckedInCustomerViewController : UIViewController
 <

@@ -25,6 +25,8 @@ typedef enum
     ePPHPaymentMethodCash,
     ePPHPaymentMethodChipCard,
     ePPHPaymentMethodEmvSwipe,
+    ePPHPaymentMethodContactlessMSD,
+    ePPHPaymentMethodContactlessEMV,
     ePPHPaymentMethodOther
 } PPHPaymentMethod;
 
@@ -98,7 +100,11 @@ typedef enum
  */
 + (NSString*)stringFromPaymentMethodDetail:(PPHPaymentMethodDetail)type;
 
-
+/*!
+ * Is the payment method a type of Contactless payment?
+ * @param method the payment method
+ */
++ (BOOL)paymentMethodIsContactless:(PPHPaymentMethod)method;
 /*!
  * Is the payment method a type of Credit Card payment?
  * @param method the payment method

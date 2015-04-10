@@ -7,9 +7,7 @@
 //
 
 #import "AuthorizationCompleteViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PPHInvoice.h>
+#import "PayPalHereSDK.h"
 #import "STAppDelegate.h"
 
 @interface AuthorizationCompleteViewController ()

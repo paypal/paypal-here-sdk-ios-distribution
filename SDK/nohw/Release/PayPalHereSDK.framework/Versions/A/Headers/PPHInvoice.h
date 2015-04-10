@@ -166,6 +166,8 @@
 @property (nonatomic,readonly) BOOL originatedOnWeb;
 /*! The terms associated with the invoice, such as return policy */
 @property (nonatomic,strong) NSString *terms;
+/*! The custom receipt text associated with the invoice */
+@property (nonatomic,strong) NSString *customReceiptText;
 
 #pragma mark -
 #pragma mark Calculated values

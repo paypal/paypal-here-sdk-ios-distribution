@@ -7,10 +7,7 @@
 //
 
 #import "CCCFSPaymentMethodViewController.h"
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PPHTransactionWatcher.h>
-#import <PayPalHereSDK/PPHCardReaderManager.h>
+#import "PayPalHereSDK.h"
 
 #import "PaymentMethodViewController.h"
 #import "SignatureViewController.h"

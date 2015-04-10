@@ -11,6 +11,7 @@
 #import "PPHInvoiceConstants.h"
 #import "PPHCardSwipeData.h"
 
+@class PPHTokenizedCustomerInformation;
 @class PPHCardChargeResponse;
 
 /*! The PPHTransactionRecord is an artifact of payment calls made to PayPal's backend - example of payment
@@ -62,6 +63,9 @@
 /*! The Chip n Pin transaction handle (if applicable) */
 @property (nonatomic,strong,readonly) NSString *transactionHandle;
 
+/*! Customer info associated to the given payment (if applicable) */
+@property (nonatomic,strong,readonly) PPHTokenizedCustomerInformation *customerInfo;
+
 /*! Create a PPHTransactionRecord with a transactionId.  This can be used with beginRefund */
 -(id) initWithTransactionId:(NSString *)transactionId;
 
@@ -74,5 +78,8 @@
  * In order to perform a capture, this API could be used in conjuction with the "downloadInvoiceForInvoiceId" API to recreate the transaction record.
  */
 -(id) initWithAuthorizationId:(NSString *)authorizationId andWithInvoice:(PPHInvoice *)invoice;
+
+/*! Create a PPHTransactionRecord with an invoice.  This can be used with beginRefund */
+-(id) initWithInvoice:(PPHInvoice *)invoice;
 
 @end

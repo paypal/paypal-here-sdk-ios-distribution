@@ -9,7 +9,7 @@
 #import "SimpleTransactionViewController.h"
 #import "STChoosePaymentMethodViewController.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 @interface SimpleTransactionViewController ()
 @property (nonatomic, strong) NSArray *paymentTypesNames;
 

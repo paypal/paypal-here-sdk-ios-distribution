@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHInvoice.h>
+#import "PayPalHereSDK.h"
+
 
 @protocol InvoicesProtocal <NSObject>
 @required

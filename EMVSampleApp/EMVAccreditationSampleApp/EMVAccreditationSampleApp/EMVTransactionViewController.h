@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
+#import "PayPalHereSDK.h"
 
 @interface EMVTransactionViewController : UIViewController <
 PPHCardReaderDelegate,

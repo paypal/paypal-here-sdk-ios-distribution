@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHCardReaderDelegate.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
+#import "PayPalHereSDK.h"
 #import "STServices.h"
 
 @interface SettingsViewController : UIViewController <

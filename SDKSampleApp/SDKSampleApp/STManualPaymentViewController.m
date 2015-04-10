@@ -10,7 +10,7 @@
 #import "PaymentCompleteViewController.h"
 #import "STServices.h"
 
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 
 @interface STManualPaymentViewController ()
 @property (nonatomic, copy) NSString *amount;

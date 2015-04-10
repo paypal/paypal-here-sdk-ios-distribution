@@ -10,10 +10,8 @@
 #import "ReceiptInfoViewController.h"
 #import "InvoicesManager.h"
 
-#import <PayPalHereSDK/PPHCardEnums.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PPHError.h>
+#import "PayPalHereSDK.h"
+
 
 @interface PaymentCompleteViewController ()
 @property (strong, nonatomic) PPHTransactionResponse *transactionResponse;

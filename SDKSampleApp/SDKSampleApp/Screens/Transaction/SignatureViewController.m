@@ -7,8 +7,7 @@
 //
 
 #import "SignatureViewController.h"
-#import <PayPalHereSDK/PPHTransactionRecord.h>
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 #import "PaymentCompleteViewController.h"
 
 @interface SignatureViewController () <

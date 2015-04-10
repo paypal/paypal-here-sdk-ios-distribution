@@ -29,6 +29,14 @@
 @property (nonatomic, strong) NSDecimalNumber *signatureRequiredAbove;
 
 /*!
+ * Amount over which contactless transactions such as contactless cards and Apple Pay are
+ * disallowed by our EMV hardware. Any contactless transaction performed above this limit
+ * should be a swipe or chip and pin transaction if allowed and applicable.
+ * This is an inclusive limit so your comparisons should be <=
+ */
+@property (nonatomic, strong) NSDecimalNumber *contactlessTransactionLimit;
+
+/*!
  * In the Auth-Capture use case, for a given merchant account, this method provides the
  * maximum allowed capture percentage for every authorization.
  *

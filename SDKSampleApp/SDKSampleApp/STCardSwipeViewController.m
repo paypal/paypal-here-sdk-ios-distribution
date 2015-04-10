@@ -9,7 +9,8 @@
 #import "STCardSwipeViewController.h"
 #import "PaymentCompleteViewController.h"
 #import "SignatureViewController.h"
-#import <PayPalHereSDK/PPHTransactionWatcher.h>
+#import "PayPalHereSDK.h"
+
 
 @interface STCardSwipeViewController ()
 @property (nonatomic, retain) IBOutlet UIImageView *iphoneImageView;

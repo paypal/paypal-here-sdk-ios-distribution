@@ -6,115 +6,58 @@
 
 #import <Foundation/Foundation.h>
 
-/*!
- * The error category is useful for understanding what action should be taken in response to a particular
- * domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
- * on paypal.com and updated periodically.
- */
-typedef NS_ENUM(NSInteger, PPHErrorCategory) {
-    /*!
-     * No additional information is available about the error.
-     */
-    ePPHErrorCategoryUnknown,
-    /*!
-     * The error indicates a PayPal or dependent system outage of some variety.
-     */
-    ePPHErrorCategoryOutage,
-    /*!
-     * The error is likely transient and a retry may be successful.
-     */
-    ePPHErrorCategoryRetry,
-    /*!
-     * The error indicates the buyer's request to pay was declined and retry is unlikely to succeed without some
-     * external change such as the credit card company releasing a hold or PayPal funding sources changing (just as examples)
-     */
-    ePPHErrorCategoryBuyerDeclined,
-    /*!
-     * The error indicates there is a problem with the merchant account such as a restriction or account capability error.
-     */
-    ePPHErrorCategorySellerDeclined,
-    /*!
-     * The error is known to have multiple causes from the category list and we can't be sure which one caused this occurrence.
-     */
-    ePPHErrorCategoryAmbiguous,
-    /*!
-     * The error indicates there was a problem with the data submitted such as an invalid checkin or card number/expiration, etc.
-     */
-    ePPHErrorCategoryData
-};
-
+#define kPPHLocalErrorDomain        @"PPHLocal"
+#define kPPHHTTPErrorDomain         @"PPHHTTP"
+#define kPPHInvoiceErrorDomain      @"PPHInvoice"
+#define kPPHServerErrorDomain       @"PPHServer"
+#define kPPHPayPalAccessDomain      @"PayPalAccess"
 
 /*!
  * A customized error class for additional PayPal information such as a correlation id
  */
 @interface PPHError : NSError
 
-/*!
- * "Upgrade" an NSError to a PPHError for consistency of errors sent from our SDK to your
- * code.
- * @param error the source NSError
- */
+/*! Stores the last five error objects created, for easier debugging and reporting when problems occur */
++ (NSArray*)recentErrors;
+
+/*! * "Upgrade" an NSError to a PPHError */
 + (PPHError *)pphErrorWithNSError:(NSError *)error;
 
++ (instancetype) errorWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage;
+
++ (instancetype) errorWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString*)userMessage;
+
+- (instancetype) initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString*)userMessage userInfo:(NSDictionary*)userInfo NS_DESIGNATED_INITIALIZER;
+
 /*! The message returned from the server */
-@property (nonatomic, strong) NSString *apiMessage;
+- (NSString *)apiMessage;
+
 /*! A short version of the message returned from the server */
-@property (nonatomic, strong) NSString *apiShortMessage;
+- (NSString *)apiShortMessage;
+
+/*! A mapped mesage with more detailed information */
+- (NSString *)mappedMessage;
+
 /*! If the error refers to a particular parameter of your request, this value will be non-nil */
-@property (nonatomic, strong) NSArray *parameter;
+- (NSArray *)parameter;
+
 /*! An alphanumeric id that is useful for PayPal support to diagnose problems */
-@property (nonatomic, strong) NSString *correlationId;
-/*! The precise date at which the error occurred */
-@property (nonatomic, strong) NSDate *date;
-/*! A mapped mesage with more detailed information that PPH app and our partners can use */
-@property (nonatomic, readonly) NSString *mappedMessage;
-/*! A message for developers of 3rd party apps who are using the SDK.  May contain useful information or
- *  suggestions about how this error came about or how to avoid it. */
-@property (nonatomic, readonly) NSString *devMessage;
+- (NSString *)correlationId;
+
+/*! The date at which the error occurred */
+- (NSDate *)date;
+
+/*! 
+ * A message for developers of 3rd party apps who are using the SDK. May contain useful information or
+ * suggestions about how this error came about or how to avoid it. 
+ */
+- (NSString *)devMessage;
 
 /*! YES if this error is the result of the user pressing cancel (e.g. on a network request) */
-- (BOOL) isCancelError;
-
-/*!
- * The error category is useful for understanding what action should be taken in response to a particular
- * domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
- * on paypal.com and updated periodically.
- */
-- (PPHErrorCategory) errorCategory;
-
-/*! Stores the last five error objects created, for easier debugging and reporting when problems occur */
-+(NSArray*)recentErrors;
+- (BOOL)isCancelError;
 
 /*! Generate an NSDictionary representing this error object, typically for writing to JSON */
 - (NSDictionary *) asDictionary;
 
-/*! Generates the read-only mappedMessage by running a best guess hueristic algorithm */
-- (void) createMappedMessage;
-
-/*! Read a PPHError from a dictionary created by NSDictionary */
-- (id) initWithDictionary: (NSDictionary *) dictionary;
-
-/*! For creating local errors with a developer facing message 
- * @param domain The domain of the error
- * @param code The error code
- * @param devMessage  The developer facing message
- */
-- (id) initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage;
-
-/*! For creating local errors with a developer facing message and a more friendly
- * user facing message.
- * @param domain The domain of the error
- * @param code The error code
- * @param devMessage  The developer facing message
- * @param userMessage A user / merchant friendly message to emit via localizableDescription
- */
-- (id) initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString*)userMessage;
-
 @end
-
-#define kPPHLocalErrorDomain        @"PPHLocal"
-#define kPPHHTTPErrorDomain         @"PPHHTTP"
-#define kPPHInvoiceErrorDomain      @"PPHInvoice"
-#define kPPHServerErrorDomain       @"PPHServer"
-#define kPPHPayPalAccessDomain      @"PayPalAccess"
 

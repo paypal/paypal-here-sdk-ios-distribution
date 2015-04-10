@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PPHSignatureView.h>
+#import "PayPalHereSDK.h"
 
 @class PPHTransactionResponse;
 

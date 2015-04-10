@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PayPalHereSDK/PayPalHereSDK.h>
+#import "PayPalHereSDK.h"
 #import "STServices.h"
 
 @protocol PaymentProtocol <NSObject>
