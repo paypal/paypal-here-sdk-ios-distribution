@@ -14,10 +14,12 @@
 @interface EMVTransactionViewController ()
 @property (strong, nonatomic) PPHCardReaderWatcher *cardReaderWatcher;
 @property (strong, nonatomic) UIAlertView *updateRequiredAlertDialog;
+@property (strong, nonatomic) UIAlertView *retryContactlessAlertDialog;
 @property (nonatomic) BOOL showReaderUpdateAlert;
 @property (nonatomic, strong) PPHInvoice *currentInvoice;
 @property (nonatomic, strong) PPHTransactionManager *transactionManager;
 @property (nonatomic, assign) PPHPaymentMethod paymentMethod;
+@property (copy) PPHContactlessListenerTimeoutHandler timeoutCompletionHandler;
 @end
 
 @implementation EMVTransactionViewController
@@ -122,6 +124,11 @@
 #pragma mark -
 #pragma mark PPHTransactionControllerDelegate
 
+-(void)onContactlessListenerTimeout:(PPHContactlessListenerTimeoutHandler)completionHandler {
+    self.timeoutCompletionHandler = completionHandler;
+    [self showContactlessTimeoutRetryAlertDialog];
+}
+
 -(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON {
     return ePPHTransactionType_Continue;
 }
@@ -146,6 +153,11 @@
 
 #pragma mark -
 #pragma mark Helpers
+
+-(void)showContactlessTimeoutRetryAlertDialog {
+    self.retryContactlessAlertDialog = [[UIAlertView alloc] initWithTitle:@"Contactless Timed Out" message:nil delegate:self cancelButtonTitle:@"Cancel Transaction" otherButtonTitles:@"Retry", @"Insert,Swipe", nil];
+    [self.retryContactlessAlertDialog show];
+}
 
 - (void)updateStatusText {
     if ([self isUpdateRequired]) {
@@ -295,14 +307,25 @@
     [self.updateRequiredAlertDialog show];
 }
 
-
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView == self.updateRequiredAlertDialog) {
         if (buttonIndex != alertView.cancelButtonIndex) {
             [self beginReaderUpdate];
         }
-
+        
         self.updateRequiredAlertDialog = nil;
+    }
+    else if (alertView == self.retryContactlessAlertDialog) {
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            self.timeoutCompletionHandler(ePPHContactlessTimeoutActionCancelTransaction);
+        } else {
+            if (buttonIndex == 1) {
+                self.timeoutCompletionHandler(ePPHContactlessTimeoutActionContinueWithContactless);
+            }
+            if (buttonIndex == 2) {
+                self.timeoutCompletionHandler(ePPHContactlessTimeoutActionContinueWithContact);
+            }
+        }
     }
 }
 
