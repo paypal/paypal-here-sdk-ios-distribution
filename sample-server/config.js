@@ -15,7 +15,7 @@ exports.MY_PORT = 5000;
 exports.MY_APP_URL = "hereandthere://oauth";
 
 // In case you want more info, modify this
-exports.PAYPAL_SCOPES = "https://uri.paypal.com/services/paypalhere openid email profile";
+exports.PAYPAL_SCOPES = "https://uri.paypal.com/services/paypalhere openid email phone profile address https://uri.paypal.com/services/paypalattributes/business";
 
 // Live or stage?
 exports.PAYPAL_ACCESS_BASEURL = "https://www.stage2md030.stage.paypal.com/webapps/";
