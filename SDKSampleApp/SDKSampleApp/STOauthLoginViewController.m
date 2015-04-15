@@ -320,7 +320,7 @@
     // Let's package them up the credentails into a PPHAccessAcount object and set that
     // object into the PPHMerchant object we're building.
 	PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
-                                                                   expires_in:[JSON objectForKey:@"expires_in"]
+                                                                   expires_in:@"1" /*[JSON objectForKey:@"expires_in"]*/
                                                                    refreshUrl:[JSON objectForKey:@"refresh_url"] details:JSON];
 	self.merchant.payPalAccount = account;  // Set the credentails into the merchant object.
     
@@ -568,11 +568,11 @@
     [PayPalHereSDK setBaseAPIURL:nil];  //Clear out any stage URL we might have set.
     
     if(index == liveIndex) {
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live andCountryCodeOrNil:nil];
         [self showSelectedStageText:NO];
         return;
     } else if (index == sandboxIndex) {
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox andCountryCodeOrNil:nil];
         [self showSelectedStageText:NO];
         return;
     } else if (index == stageIndex) {
