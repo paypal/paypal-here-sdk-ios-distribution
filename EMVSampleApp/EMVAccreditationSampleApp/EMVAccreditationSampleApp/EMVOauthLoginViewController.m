@@ -344,6 +344,13 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         NSError *error = nil;
+        
+        if(!response || !data) {
+            [self showAlertWithTitle:@"Login failed." andMessage:@"We attempted to communicate PayPal's login servers, but their response contained no data"];
+            [self.spinner stopAnimating];
+            return;
+        }
+        
         NSDictionary *jsonResponse = [NSJSONSerialization
                                       JSONObjectWithData:data
                                       options:kNilOptions
