@@ -320,7 +320,7 @@
     // Let's package them up the credentails into a PPHAccessAcount object and set that
     // object into the PPHMerchant object we're building.
 	PPHAccessAccount *account = [[PPHAccessAccount alloc] initWithAccessToken:access
-                                                                   expires_in:@"1" /*[JSON objectForKey:@"expires_in"]*/
+                                                                   expires_in:[JSON objectForKey:@"expires_in"]
                                                                    refreshUrl:[JSON objectForKey:@"refresh_url"] details:JSON];
 	self.merchant.payPalAccount = account;  // Set the credentails into the merchant object.
     
