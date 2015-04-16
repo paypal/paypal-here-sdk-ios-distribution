@@ -15,6 +15,15 @@
 #define kLive @"Live"
 #define kSandbox @"Sandbox"
 #define kMock @"Mock"
+
+#define kActionSheetTagMockCountrySelection 1
+#define kActionSheetTagRepoSelection        2
+#define kActionSheetTagStageSelection       3
+
+#define kMockCountryAU @"AU"
+#define kMockCountryUK @"UK"
+#define kMockCountryUS @"US"
+
 #define kStage2mb001 @"stage2mb001"
 #define kStage2mb006 @"stage2mb006"
 #define kStage2mb023 @"stage2mb023"
@@ -31,15 +40,17 @@
 #define kQaStage3 @"qa-stage-3"
 #define kProdStage @"prod-stage"
 #define kProd @"liveprod"
+
 #define kSoftwareRepoArray @[kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3,kProdStage, kProd]
-
-
 #define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05]
+#define kMockCountryArray @[kMockCountryAU, kMockCountryUK, kMockCountryUS]
+
 #define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
 
 @interface EMVOauthLoginViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @property (nonatomic, strong) UIActionSheet *stageSelectedActionSheet;
+@property (nonatomic, strong) UIActionSheet *mockCountryAccountActionSheet;
 @property (nonatomic, strong) UIActionSheet *selectSoftwareRepoActionSheet;
 @property (weak, nonatomic) IBOutlet UILabel *currentSoftwareRepo;
 @property (weak, nonatomic) IBOutlet UILabel *currentStage;
@@ -65,6 +76,7 @@
     [self setUpTextFields];
     [self stageSelectionActionSheet];
     [self softwareRepoSelectionActionSheet];
+    [self createMockCountryAccountActionSheet];
     self.loginButton.layer.cornerRadius = 10;
     
 }
@@ -98,12 +110,22 @@
     
 }
 
+-(void)createMockCountryAccountActionSheet {
+    self.mockCountryAccountActionSheet = [[UIActionSheet alloc] initWithTitle:@"Mock country:"
+                                                                     delegate:self
+                                                            cancelButtonTitle:nil
+                                                       destructiveButtonTitle:nil
+                                                            otherButtonTitles:kMockCountryAU, kMockCountryUK, kMockCountryUS, nil];
+    self.mockCountryAccountActionSheet.tag = kActionSheetTagMockCountrySelection;
+}
+
 -(void)stageSelectionActionSheet {
     self.stageSelectedActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a stage:"
                                                                 delegate:self
                                                        cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
                                                        otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05, nil];
+    self.stageSelectedActionSheet.tag = kActionSheetTagStageSelection;
 }
 
 -(void)softwareRepoSelectionActionSheet {
@@ -112,6 +134,7 @@
                                                             cancelButtonTitle:nil
                                                        destructiveButtonTitle:nil
                                                             otherButtonTitles:kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3, kProdStage, kProd, nil];
+    self.selectSoftwareRepoActionSheet.tag = kActionSheetTagRepoSelection;
 }
 
 - (void)setUpSpinnerAndTitle {
@@ -172,9 +195,7 @@
         [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox andCountryCodeOrNil:nil];
         self.currentStage.text = @"Current Server: Sandbox";
     } else if (self.segControl.selectedSegmentIndex == 3) {
-        self.activeServer = kMock;
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Mock andCountryCodeOrNil:@"GB"];
-        self.currentStage.text = @"Current Server: Mock";
+        [self.mockCountryAccountActionSheet showInView:self.view];
     } else {
         [self.stageSelectedActionSheet showInView:self.view];
     }
@@ -203,16 +224,30 @@
     NSLog(@"Url the PayPal Here SDK will be using: %@", self.urlForTheSdkToUse);
 }
 
+- (void)selectMockCountryEnvironmentGivenIndex:(NSInteger)buttonIndex {
+    self.activeServer = kMock;
+    [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Mock andCountryCodeOrNil:kMockCountryArray[buttonIndex]];
+    self.currentStage.text = @"Current Server: Mock";
+    NSLog(@"Country we are mocking: %@", kMockCountryArray[buttonIndex]);
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if ([actionSheet.title isEqualToString:@"Select a software repo:"]) {
-        [self selectDevStageGivenIndex:buttonIndex];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:buttonIndex] forKey:@"desiredDevStage"]; //Save for next samp app restart
-        
-    } else {
-        [self selectActiveServerGivenIndex:buttonIndex];
-        NSNumber *stageIndex = [NSNumber numberWithInt:buttonIndex];
-        [[NSUserDefaults standardUserDefaults] setObject:stageIndex forKey:@"activeServerButtonIndex"]; //Save for next samp app restart
-        
+    switch (actionSheet.tag) {
+        case kActionSheetTagRepoSelection: {
+            [self selectDevStageGivenIndex:buttonIndex];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:buttonIndex] forKey:@"desiredDevStage"];
+            break;
+        }
+        case kActionSheetTagStageSelection: {
+            [self selectActiveServerGivenIndex:buttonIndex];
+            NSNumber *stageIndex = [NSNumber numberWithInt:buttonIndex];
+            [[NSUserDefaults standardUserDefaults] setObject:stageIndex forKey:@"activeServerButtonIndex"];
+            break;
+        }
+        case kActionSheetTagMockCountrySelection: {
+            [self selectMockCountryEnvironmentGivenIndex:buttonIndex];
+            break;
+        }
     }
 }
 
