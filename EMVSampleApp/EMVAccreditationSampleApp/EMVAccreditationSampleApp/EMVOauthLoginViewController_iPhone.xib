@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EMVOauthLoginViewController">
@@ -68,11 +68,12 @@
                     </connections>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xDH-55-WEF">
-                    <rect key="frame" x="48" y="276" width="225" height="29"/>
+                    <rect key="frame" x="30" y="276" width="279" height="29"/>
                     <segments>
                         <segment title="Live"/>
                         <segment title="SandBox"/>
                         <segment title="Stage"/>
+                        <segment title="Mock"/>
                     </segments>
                     <connections>
                         <action selector="serviceHostSegmentedControlChanged:" destination="-1" eventType="valueChanged" id="Hfu-a6-Yeb"/>

@@ -59,7 +59,7 @@ PPHLoggingDelegate
     /*
      * How to configure the SDK to use Live vs Sandbox
      */
-     [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
+    [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox andCountryCodeOrNil:nil];
    
     /* By default, the SDK has a remote logging facility for warnings and errors. This helps PayPal immensely in
      * diagnosing issues, but is obviously up to you as to whether you want to do remote logging, or perhaps you
