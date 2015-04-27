@@ -26,7 +26,7 @@
     
     [self.window makeKeyAndVisible];
     
-    [Crashlytics startWithAPIKey:@"6fdee2cd3d6cb98362060d0ac0be20ef1c386ef3"];
+    [Crashlytics startWithAPIKey:@"73ee029f854e3d127150ac339406079809f96561"];
     
     self.transactionRecords = [[NSMutableArray alloc] init];
     self.refunds = [[NSMutableArray alloc] init];

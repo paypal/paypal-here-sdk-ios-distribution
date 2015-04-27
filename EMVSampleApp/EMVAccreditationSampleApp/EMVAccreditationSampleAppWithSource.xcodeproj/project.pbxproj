@@ -336,6 +336,7 @@
 				803E60F21959FBC400E4BFDE /* Sources */,
 				803E60F31959FBC400E4BFDE /* Frameworks */,
 				803E60F41959FBC400E4BFDE /* Resources */,
+				88CAB8931AE96385007BA93D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -477,6 +478,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		88CAB8931AE96385007BA93D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 73ee029f854e3d127150ac339406079809f96561 d4bbbe0e2586aa3209a3cbadf4026d0bc66ee2da1a0b0d68ee6e793d6fb3f592";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		803E60F21959FBC400E4BFDE /* Sources */ = {
@@ -620,6 +637,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../SDK/Debug\"/**",
 					"$(inherited)",
@@ -654,6 +672,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../SDK/Debug\"/**",
 					"$(inherited)",
