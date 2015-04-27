@@ -568,11 +568,11 @@
     [PayPalHereSDK setBaseAPIURL:nil];  //Clear out any stage URL we might have set.
     
     if(index == liveIndex) {
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live andCountryCodeOrNil:nil];
         [self showSelectedStageText:NO];
         return;
     } else if (index == sandboxIndex) {
-        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
+        [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox andCountryCodeOrNil:nil];
         [self showSelectedStageText:NO];
         return;
     } else if (index == stageIndex) {
