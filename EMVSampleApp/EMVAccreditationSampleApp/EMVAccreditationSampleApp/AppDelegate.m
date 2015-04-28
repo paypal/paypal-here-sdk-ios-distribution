@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "EMVOauthLoginViewController.h"
-#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -25,8 +24,6 @@
 	[self.window addSubview:self.navigationController.view];
     
     [self.window makeKeyAndVisible];
-    
-    [Crashlytics startWithAPIKey:@"6fdee2cd3d6cb98362060d0ac0be20ef1c386ef3"];
     
     self.transactionRecords = [[NSMutableArray alloc] init];
     self.refunds = [[NSMutableArray alloc] init];
