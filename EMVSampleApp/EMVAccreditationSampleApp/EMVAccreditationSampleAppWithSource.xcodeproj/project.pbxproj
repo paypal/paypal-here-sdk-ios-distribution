@@ -45,7 +45,6 @@
 		804C306E195A8388006ABECA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E6195195A4ADB00E4BFDE /* libc++.dylib */; };
 		804C306F195A8390006ABECA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803E60FB1959FBC400E4BFDE /* CoreGraphics.framework */; };
 		80841AED1AEB257900DB6C0D /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80841AEC1AEB257900DB6C0D /* PayPalHereSDK.bundle */; };
-		F11FF8E91A97EBE100DAA59D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11FF8E81A97EBE100DAA59D /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,7 +162,6 @@
 		804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalBeacon.a; path = "../../SDK/source/contrib/BLEHere/PayPalBeaconLib/build/Debug-iphoneos/libPayPalBeacon.a"; sourceTree = "<group>"; };
 		804C303E195A8140006ABECA /* PayPalHereSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PayPalHereSDK.xcodeproj; path = ../../SDK/source/PayPalHereSDK.xcodeproj; sourceTree = "<group>"; };
 		80841AEC1AEB257900DB6C0D /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PayPalHereSDK.bundle; sourceTree = "<group>"; };
-		F11FF8E81A97EBE100DAA59D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../../SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,7 +183,6 @@
 				804C3066195A8348006ABECA /* AudioToolbox.framework in Frameworks */,
 				804C3065195A8338006ABECA /* CoreLocation.framework in Frameworks */,
 				804C3064195A8330006ABECA /* CFNetwork.framework in Frameworks */,
-				F11FF8E91A97EBE100DAA59D /* Crashlytics.framework in Frameworks */,
 				804C3063195A8322006ABECA /* Security.framework in Frameworks */,
 				804C3062195A8318006ABECA /* MobileCoreServices.framework in Frameworks */,
 				804C3061195A830D006ABECA /* libxml2.dylib in Frameworks */,
@@ -236,7 +233,6 @@
 				F15D6C4C1A0052E500047628 /* PayPalHereSDK.framework */,
 				804C2FF2195A7B70006ABECA /* libPayPalBeacon.a */,
 				803E6195195A4ADB00E4BFDE /* libc++.dylib */,
-				F11FF8E81A97EBE100DAA59D /* Crashlytics.framework */,
 				803E6193195A4AC200E4BFDE /* CoreTelephony.framework */,
 				803E6191195A4ABB00E4BFDE /* MediaPlayer.framework */,
 				803E618F195A4AB400E4BFDE /* SystemConfiguration.framework */,
@@ -336,7 +332,6 @@
 				803E60F21959FBC400E4BFDE /* Sources */,
 				803E60F31959FBC400E4BFDE /* Frameworks */,
 				803E60F41959FBC400E4BFDE /* Resources */,
-				88CAB8931AE96385007BA93D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -478,22 +473,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		88CAB8931AE96385007BA93D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 73ee029f854e3d127150ac339406079809f96561 d4bbbe0e2586aa3209a3cbadf4026d0bc66ee2da1a0b0d68ee6e793d6fb3f592";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		803E60F21959FBC400E4BFDE /* Sources */ = {
