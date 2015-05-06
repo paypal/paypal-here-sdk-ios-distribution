@@ -136,8 +136,8 @@
 -(void)onPostAuthorize:(BOOL)didFail {
 }
 
--(UIViewController *)getCurrentViewController {
-    return self;
+-(UINavigationController *)getCurrentNavigationController {
+    return self.navigationController;
 }
 
 - (void)onUserPaymentMethodSelected:(PPHPaymentMethod) paymentMethod {
@@ -260,6 +260,7 @@
             }
             
         }
+        [weakSelf.navigationController popToViewController:weakSelf animated:YES];
     }];
 }
 

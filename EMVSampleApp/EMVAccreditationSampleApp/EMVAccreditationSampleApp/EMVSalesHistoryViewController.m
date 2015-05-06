@@ -193,8 +193,8 @@ UIActionSheetDelegate
     [self processRefund];
 }
 
-- (UIViewController *)getCurrentViewController {
-    return self;
+- (UINavigationController *)getCurrentNavigationController {
+    return self.navigationController;
 }
 
 #pragma mark -
@@ -254,19 +254,21 @@ UIActionSheetDelegate
 }
 
 - (void)processRefund {
-    // call SDK UI for refund
+    
+    __weak typeof(self) weakSelf = self;
     [[PayPalHereSDK sharedTransactionManager] processRefundUsingSDKUIWithAmount:self.amountToRefund completionHandler:^(PPHTransactionResponse *response) {
         NSLog(@"Refund completed.");
         
         if(response) {
             if(response.record && !response.error) {
-                [self updateSalesHistoryTable:self.tableIndex];
+                [weakSelf updateSalesHistoryTable:self.tableIndex];
             } else {
                 if ([response.error.apiShortMessage isEqualToString:kRecordAlreadyRefundedServerError]) {
-                    [self showRecordAlreadyRefundedAlert];
+                    [weakSelf showRecordAlreadyRefundedAlert];
                 }
             }
         }
+        [weakSelf.navigationController popToViewController:weakSelf animated:YES];
     }];
 }
 
