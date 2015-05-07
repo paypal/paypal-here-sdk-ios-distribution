@@ -19,6 +19,7 @@
     self.viewController = [[EMVOauthLoginViewController alloc] initWithNibName:@"EMVOauthLoginViewController_iPhone" bundle:nil];
     
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.navigationController.navigationBar.translucent = NO;
     self.window.rootViewController = self.navigationController;
     
 	[self.window addSubview:self.navigationController.view];
