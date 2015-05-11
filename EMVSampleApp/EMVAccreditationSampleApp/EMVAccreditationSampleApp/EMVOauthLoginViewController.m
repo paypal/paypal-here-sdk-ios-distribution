@@ -24,6 +24,8 @@
 #define kMockCountryUK @"UK"
 #define kMockCountryUS @"US"
 
+#define kStage2d0018 @"stage2d0018"
+#define kStage2d0020 @"stage2d0020"
 #define kStage2mb001 @"stage2mb001"
 #define kStage2mb006 @"stage2mb006"
 #define kStage2mb023 @"stage2mb023"
@@ -31,6 +33,7 @@
 #define kStage2pph24 @"stage2pph24"
 #define kStage2mb024 @"stage2mb024"
 #define kStage2pph05 @"stage2pph05"
+
 
 #define kDevStage1 @"dev-stage-1"
 #define kDevStage2 @"dev-stage-2"
@@ -42,7 +45,7 @@
 #define kProd @"liveprod"
 
 #define kSoftwareRepoArray @[kDevStage1, kDevStage2, kDevStage3, kQaStage1, kQaStage2, kQaStage3,kProdStage, kProd]
-#define kStageNameArray @[kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05]
+#define kStageNameArray @[kStage2d0018, kStage2d0020, kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05]
 #define kMockCountryArray @[kMockCountryAU, kMockCountryUK, kMockCountryUS]
 
 #define kMidTierServerUrl @"http://sdk-sample-server.herokuapp.com/server"
@@ -100,6 +103,8 @@
     self.sdkBaseUrlDict = [[NSMutableDictionary alloc] init];
     [self.sdkBaseUrlDict setValue:@"https://www.paypal.com/webapps/" forKey:kLive];
     [self.sdkBaseUrlDict setValue:@"https://www.sandbox.paypal.com/webapps/" forKey:kSandbox];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2d0018.stage.paypal.com/webapps/" forKey:kStage2d0018];
+    [self.sdkBaseUrlDict setValue:@"https://www.stage2d0020.stage.paypal.com/webapps/" forKey:kStage2d0020];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb001];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb006.stage.paypal.com/webapps/" forKey:kStage2mb006];
     [self.sdkBaseUrlDict setValue:@"https://www.stage2mb023.stage.paypal.com/webapps/" forKey:kStage2mb023];
@@ -124,7 +129,7 @@
                                                                 delegate:self
                                                        cancelButtonTitle:nil
                                                   destructiveButtonTitle:nil
-                                                       otherButtonTitles:kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05, nil];
+                                                       otherButtonTitles:kStage2d0018, kStage2d0020,kStage2mb001, kStage2mb006, kStage2mb023, kStage2pph11, kStage2pph24, kStage2mb024, kStage2pph05, nil];
     self.stageSelectedActionSheet.tag = kActionSheetTagStageSelection;
 }
 
