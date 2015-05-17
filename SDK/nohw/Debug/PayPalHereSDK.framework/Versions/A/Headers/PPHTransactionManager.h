@@ -48,6 +48,14 @@
 @property (nonatomic,strong) PPHTransactionRecord* record;  //correlation id, transaction id, etc.
 
 /*!
+ * This flag indicates whether the customer asked for a print receipt at the end of the SDK flow.
+ * The SDK itself does not support any printers or printer integration; instead it is up to the
+ * integrating application to provide print receipts based on feedback available in the transaction
+ * response and this flag
+ */
+@property (nonatomic,assign) BOOL didRequestPrintReceipt;
+
+/*!
  *  If YES then the app should supply a signature image using the finalizePaymentForTransaction call
  */
 @property (nonatomic,assign) BOOL isSignatureRequiredToFinalize;
