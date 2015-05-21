@@ -20,6 +20,8 @@
 @property (nonatomic, strong) PPHTransactionManager *transactionManager;
 @property (nonatomic, assign) PPHPaymentMethod paymentMethod;
 @property (copy) PPHContactlessListenerTimeoutHandler timeoutCompletionHandler;
+@property (nonatomic, assign) BOOL cardInserted;
+@property (nonatomic, assign) BOOL chargeButtonPressed;
 @end
 
 @implementation EMVTransactionViewController
@@ -32,6 +34,7 @@
         self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
     }
     self.currentInvoice = nil;
+    [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     
     return self;
 }
@@ -74,11 +77,18 @@
 }
 
 - (IBAction)chargeButtonPressed:(id)sender {
+    self.chargeButtonPressed = YES;
     [_transactionAmountField resignFirstResponder];
-    if ([self getDecimalAmountFromString:self.transactionAmountField.text]) {
-        [[PayPalHereSDK sharedTransactionManager] activateReaderForPayment];    //Start scanning for contactless and other 'active' types of payments
+    if (self.cardInserted) {
+        self.cardInserted = NO;
+        self.paymentMethod = ePPHPaymentMethodChipCard;
+        [self processPayment];
     } else {
-        [self showAlertWithTitle:@"Invalid Amount" andMessage:@"Please enter a valid numerical amount."];
+        if ([self getDecimalAmountFromString:self.transactionAmountField.text]) {
+            [[PayPalHereSDK sharedTransactionManager] activateReaderForPayment];    //Start scanning for contactless and other 'active' types of payments
+        } else {
+            [self showAlertWithTitle:@"Invalid Amount" andMessage:@"Please enter a valid numerical amount."];
+        }
     }
 }
 
@@ -121,6 +131,16 @@
     [self updateStatusText];
 }
 
+-(void) didReceiveChipAndPinEvent:(PPHChipAndPinEvent *)event {
+    switch (event.eventType) {
+        case ePPHChipAndPinEventCardInserted:
+            self.cardInserted = YES;
+            break;
+            
+        default:
+            break;
+    }
+}
 #pragma mark -
 #pragma mark PPHTransactionControllerDelegate
 
@@ -148,7 +168,10 @@
     // for a tip is then more popular.  Consider this when designing your application.
     
     // For this demo, let's just trigger the capture of payment.
-    [self processPayment];
+    if (self.chargeButtonPressed) {
+        self.chargeButtonPressed = NO;
+        [self processPayment];
+    }
 }
 
 #pragma mark -
