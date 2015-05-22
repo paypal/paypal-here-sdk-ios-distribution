@@ -162,3 +162,10 @@ Bug fix: Fixing the AU country code check, that was wrongly setting the availabl
   - Fixed an issue related to being able to retry a PIN after incorrect entry (chip and pin flow)
   - Fixed a UI bug that caused the screen to be incorrect when in landscape mode
   - Introduced additional instrumentation to track an issue related to bad requests being formed during certain flows
+
+1.5.0
+  What's new:
+  - [EMV flow] Fixed a bug where the alert view never goes away when a transaction is canceled before card is inserted
+  - [EMV flow] Making sure error messages bubble all the way up to the app when failures are encountered during payment
+  - [EMV flow] Added a didRequestPrintReceipt flag to indicate whether flow was completed with a request to print receipts.
+    The SDK does not support receipt printing - it is up to the application to determine how to handle the request.
