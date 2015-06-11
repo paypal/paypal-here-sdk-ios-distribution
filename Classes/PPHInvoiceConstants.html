@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHInvoiceConstants Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -51,6 +50,10 @@
 	<option value="//api/name/paymentMethodDetailFromString:">&nbsp;&nbsp;&nbsp;&nbsp;+ paymentMethodDetailFromString:</option>
 	
 	<option value="//api/name/paymentMethodFromString:">&nbsp;&nbsp;&nbsp;&nbsp;+ paymentMethodFromString:</option>
+	
+	<option value="//api/name/paymentMethodIsCreditCard:">&nbsp;&nbsp;&nbsp;&nbsp;+ paymentMethodIsCreditCard:</option>
+	
+	<option value="//api/name/paymentMethodMarksAsPaid:">&nbsp;&nbsp;&nbsp;&nbsp;+ paymentMethodMarksAsPaid:</option>
 	
 	<option value="//api/name/stringFromInvoiceStatus:">&nbsp;&nbsp;&nbsp;&nbsp;+ stringFromInvoiceStatus:</option>
 	
@@ -96,6 +99,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentMethodFromString:">paymentMethodFromString:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentMethodIsCreditCard:">paymentMethodIsCreditCard:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentMethodMarksAsPaid:">paymentMethodMarksAsPaid:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringFromInvoiceStatus:">stringFromInvoiceStatus:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringFromPaymentMethod:">stringFromPaymentMethod:</a></span></li>
@@ -135,8 +142,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -160,58 +167,60 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/paymentMethodFromString:">+&nbsp;paymentMethodFromString:</a></code>
-		<span class="tooltip"><p>Return a payment method given the corresponding non-localized string</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/paymentMethodDetailFromString:">+&nbsp;paymentMethodDetailFromString:</a></code>
-		<span class="tooltip"><p>Return payment method detail given the corresponding non-localized string</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/invoiceStatusFromString:">+&nbsp;invoiceStatusFromString:</a></code>
-		<span class="tooltip"><p>Return an invoice status given the non-localized string</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stringFromPaymentMethod:">+&nbsp;stringFromPaymentMethod:</a></code>
-		<span class="tooltip"><p>Turn a payment method enum into a string</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stringFromInvoiceStatus:">+&nbsp;stringFromInvoiceStatus:</a></code>
-		<span class="tooltip"><p>Turn an invoice status into a string</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stringFromPaymentMethodDetail:">+&nbsp;stringFromPaymentMethodDetail:</a></code>
-		<span class="tooltip"><p>Turn a payment method detail into a string</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/paymentMethodIsCreditCard:">+&nbsp;paymentMethodIsCreditCard:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/paymentMethodMarksAsPaid:">+&nbsp;paymentMethodMarksAsPaid:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/invoiceStatusIsPaid:">+&nbsp;invoiceStatusIsPaid:</a></code>
-		<span class="tooltip"><p>Determine whether this invoice status means that the invoice was paid at some point
-(i.e. is it paid, refunded, or partially refunded)</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/invoiceStatusIsRefunded:">+&nbsp;invoiceStatusIsRefunded:</a></code>
-		<span class="tooltip"><p>Determine whether this invoice status means the invoice was refunded at some point
-(i.e. refunded or partially refunded)</p></span>
 	</span>
 	
 	
@@ -490,6 +499,110 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/paymentMethodIsCreditCard:" title="paymentMethodIsCreditCard:"></a>
+	<h3 class="subsubtitle method-title">paymentMethodIsCreditCard:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Is the payment method a type of Credit Card payment?</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)paymentMethodIsCreditCard:(PPHPaymentMethod)<em>method</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>method</em></dt>
+			<dd><p>the payment method</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Is the payment method a type of Credit Card payment?</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoiceConstants.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/paymentMethodMarksAsPaid:" title="paymentMethodMarksAsPaid:"></a>
+	<h3 class="subsubtitle method-title">paymentMethodMarksAsPaid:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Does the payment method put the invoice in a MarkedAsPaid state
+(i.e. is it cash or check)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)paymentMethodMarksAsPaid:(PPHPaymentMethod)<em>method</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>method</em></dt>
+			<dd><p>the payment method</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Does the payment method put the invoice in a MarkedAsPaid state
+(i.e. is it cash or check)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoiceConstants.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/stringFromInvoiceStatus:" title="stringFromInvoiceStatus:"></a>
 	<h3 class="subsubtitle method-title">stringFromInvoiceStatus:</h3>
 	
@@ -647,6 +760,8 @@
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -657,9 +772,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-14)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>
