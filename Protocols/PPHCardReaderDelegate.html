@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHCardReaderDelegate Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -44,7 +43,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectUpgradeableReader:withMessage:isRequired:isInitial:</option>
+	<option value="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</option>
 	
 	<option value="//api/name/didFinishUpgradePreparations">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishUpgradePreparations</option>
 	
@@ -82,7 +81,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:">didDetectUpgradeableReader:withMessage:isRequired:isInitial:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:">didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishUpgradePreparations">didFinishUpgradePreparations</a></span></li>
 	
@@ -123,8 +122,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -147,38 +146,31 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:">&ndash;&nbsp;didDetectUpgradeableReader:withMessage:isRequired:isInitial:</a></code>
-		<span class="tooltip"><p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
-NOT receive didDetectReaderDevice until the condition is resolved.</p></span>
+		<code><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:">&ndash;&nbsp;didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/didFinishUpgradePreparations">&ndash;&nbsp;didFinishUpgradePreparations</a></code>
-		<span class="tooltip"><p>The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
-to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/didUpgradeReader:withMessage:">&ndash;&nbsp;didUpgradeReader:withMessage:</a></code>
-		<span class="tooltip"><p>A reader upgrade was successful</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">&ndash;&nbsp;didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</a></code>
-		<span class="tooltip"><p>There is a status update to the current ongoing reader upgrade</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/didReceiveChipAndPinEvent:">&ndash;&nbsp;didReceiveChipAndPinEvent:</a></code>
-		<span class="tooltip"><p>Called when an event related to chip &amp; pin transactions has occurred on the reader</p></span>
 	</span>
 	
 	
@@ -200,8 +192,8 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:" title="didDetectUpgradeableReader:withMessage:isRequired:isInitial:"></a>
-	<h3 class="subsubtitle method-title">didDetectUpgradeableReader:withMessage:isRequired:isInitial:</h3>
+	<a name="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:" title="didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:"></a>
+	<h3 class="subsubtitle method-title">didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</h3>
 	
 	
 	
@@ -212,7 +204,7 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)<em>reader</em> withMessage:(NSString *)<em>message</em> isRequired:(BOOL)<em>required</em> isInitial:(BOOL)<em>initial</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didDetectUpgradeableReader:(PPHCardReaderBasicInformation *)<em>reader</em> withMessage:(NSString *)<em>message</em> isRequired:(BOOL)<em>required</em> isInitial:(BOOL)<em>initial</em> withEstimatedDuration:(NSTimeInterval)<em>estimatedDuration</em></code></div>
 
     
 	
@@ -237,6 +229,11 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 		<dl class="argument-def parameter-def">
 			<dt><em>initial</em></dt>
 			<dd><p>whether this is the initial upgrade to the reader</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>estimatedDuration</em></dt>
+			<dd><p>the estimated time the update will take to apply in total</p></dd>
 		</dl>
 		
 	</div>
@@ -486,6 +483,8 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -496,9 +495,9 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-14)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

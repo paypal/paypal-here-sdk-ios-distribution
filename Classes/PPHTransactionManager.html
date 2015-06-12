@@ -1,0 +1,1779 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>PPHTransactionManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PayPalHereSDK </a></h1>
+				<a id="developerHome" href="../index.html">PayPal</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">PPHTransactionManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/cardReaderMonitorEnabled">&nbsp;&nbsp;&nbsp;&nbsp;cardReaderMonitorEnabled</option>
+	
+	<option value="//api/name/checkedInClient">&nbsp;&nbsp;&nbsp;&nbsp;checkedInClient</option>
+	
+	<option value="//api/name/currentInvoice">&nbsp;&nbsp;&nbsp;&nbsp;currentInvoice</option>
+	
+	<option value="//api/name/encryptedCardData">&nbsp;&nbsp;&nbsp;&nbsp;encryptedCardData</option>
+	
+	<option value="//api/name/hasActiveTransaction">&nbsp;&nbsp;&nbsp;&nbsp;hasActiveTransaction</option>
+	
+	<option value="//api/name/ignoreHardwareReaders">&nbsp;&nbsp;&nbsp;&nbsp;ignoreHardwareReaders</option>
+	
+	<option value="//api/name/isProcessingPayment">&nbsp;&nbsp;&nbsp;&nbsp;isProcessingPayment</option>
+	
+	<option value="//api/name/manualEntryOrScannedCardData">&nbsp;&nbsp;&nbsp;&nbsp;manualEntryOrScannedCardData</option>
+	
+	<option value="//api/name/shouldAppOverrideDefaultSignatureSetting">&nbsp;&nbsp;&nbsp;&nbsp;shouldAppOverrideDefaultSignatureSetting</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- authorizePaymentWithPaymentType:withCompletionHandler:</option>
+	
+	<option value="//api/name/beginPayment">&nbsp;&nbsp;&nbsp;&nbsp;- beginPayment</option>
+	
+	<option value="//api/name/beginPaymentWithAmount:andName:">&nbsp;&nbsp;&nbsp;&nbsp;- beginPaymentWithAmount:andName:</option>
+	
+	<option value="//api/name/beginRefund:forAmount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefund:forAmount:completionHandler:</option>
+	
+	<option value="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</option>
+	
+	<option value="//api/name/cancelPayment">&nbsp;&nbsp;&nbsp;&nbsp;- cancelPayment</option>
+	
+	<option value="//api/name/capturePaymentForAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- capturePaymentForAuthorization:withCompletionHandler:</option>
+	
+	<option value="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</option>
+	
+	<option value="//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- processPaymentWithPaymentType:withTransactionController:completionHandler:</option>
+	
+	<option value="//api/name/provideSignature:forTransaction:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- provideSignature:forTransaction:completionHandler:</option>
+	
+	<option value="//api/name/sendReceipt:toRecipient:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- sendReceipt:toRecipient:completionHandler:</option>
+	
+	<option value="//api/name/voidAuthorization:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- voidAuthorization:withCompletionHandler:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cardReaderMonitorEnabled">cardReaderMonitorEnabled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/checkedInClient">checkedInClient</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentInvoice">currentInvoice</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/encryptedCardData">encryptedCardData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasActiveTransaction">hasActiveTransaction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ignoreHardwareReaders">ignoreHardwareReaders</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isProcessingPayment">isProcessingPayment</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manualEntryOrScannedCardData">manualEntryOrScannedCardData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldAppOverrideDefaultSignatureSetting">shouldAppOverrideDefaultSignatureSetting</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">authorizePaymentWithPaymentType:withCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginPayment">beginPayment</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginPaymentWithAmount:andName:">beginPaymentWithAmount:andName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefund:forAmount:completionHandler:">beginRefund:forAmount:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelPayment">cancelPayment</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capturePaymentForAuthorization:withCompletionHandler:">capturePaymentForAuthorization:withCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">processPaymentWithPaymentType:withTransactionController:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/provideSignature:forTransaction:completionHandler:">provideSignature:forTransaction:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendReceipt:toRecipient:completionHandler:">sendReceipt:toRecipient:completionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/voidAuthorization:withCompletionHandler:">voidAuthorization:withCompletionHandler:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="PPHTransactionManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">PPHTransactionManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">PPHTransactionManager.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A stateful transaction (payment &amp; refunds) processor.
+    Here are some usage examples:</p>
+
+<pre><code>Already have a PPHInvoice filled out and want to take payment with a card reader?
+
+First, call beginPayment.  This will cause
+us to start scanning for swipes from any attached reader.
+
+-(void) onPurchaseButtonClicked {
+    [[PayPalHereSDK sharedTransactionmanager] beginPayment];
+}
+
+If your class has implemented the PPHTransactionManagerDelegate protocol and
+created a PPHTransactionWatcher then your onPaymentEvent method will be called when
+the user swipes their card.
+Now we can ask the TransactionManager to take payment using the card data:
+
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+    if (event.eventType == ePPHTransactionType_CardDataReceived) {
+
+      [[PayPalHereSDK sharedTransactionmanager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                  withTransactionController:nil
+                                                          completionHandler:^(PPHTransactionResponse *record) {
+              NSLog(@"Transaction Finished! Success: %@", record.error ? @"NO" : @"YES");
+              //Now that the transaction is complete the PPHTransactionManager will stop scanning for card swipes.
+      }];
+}
+
+Usage for a fixed amount payment with a card reader:
+
+Let's charge this user $5.  First, call beginPaymentWithAmount.  This will cause
+us to start scanning for swipes from any attached reader.
+
+-(void) onPurchaseButtonClicked {
+    PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00"];
+    [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@"FixedAmount"];
+}
+
+If your class has implemented the PPHTransactionManagerDelegate protocol and
+created a PPHTransactionWatcher then your onPaymentEvent method will be called when
+the user swipes their card.
+Now we can ask the TransactionManager to take payment using the card data:
+
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+
+    if (event.eventType == ePPHTransactionType_CardDataReceived) {
+
+      [[PayPalHereSDK sharedTransactionmanager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                  withTransactionController:nil
+                                                          completionHandler:^(PPHTransactionResponse *record) {
+              NSLog(@"Transaction Finished! Success: %@", record.error ? @"NO" : @"YES");
+              //Now that the transaction is complete the PPHTransactionManager will stop scanning for card swipes.
+      }];
+}
+
+
+Usage for a fixed amount payment with a manually entered card:
+
+Let's charge this user $5.  First, call beginPaymentWithAmount.  Then we can immediatly set
+the manually entered card data and authorize (take) the payment.
+Note that the SDK will start scanning for card swipes after the call to beginPaymentWithAmount
+even if you eventually intend to take a manual payment.   Once your call to processPaymentWithPaymentType
+is made we'll then stop scanning for swipes.
+
+-(void) onPurchaseButtonClicked {
+    PPHAmount *fiveDollarAmount = [PPHAmount [PPHAmount amountWithString:@"5.00"];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMonth:9];
+    [comps setYear:2019];
+
+    PPHCardNotPresentData *manualCardData = [[PPHCardNotPresentData alloc] init];
+    manualCardData.cardNumber = @"4111111111111111";
+    manualCardData.cvv2 = @"408";
+    manualCardData.expirationDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+
+    [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:fiveDollarAmount withName:@"FixedAmount"];  // We start scanning for swipes
+    [PayPalHereSDK sharedTransactionmanager].manualEntryOrScannedCardData = manualCardData;
+    [tm processPaymentWithPaymentType:ePPHPaymentMethodKey
+            withTransactionController:nil
+                    completionHandler:^(PPHTransactionResponse *record) {
+                               NSLog("Payment Completed"); // We now stop scanning for swipes.
+    }];
+}
+
+AUTH &amp; CAPTURE
+
+The SDK allows you to authorize an amount on a credit card.  Then, later, you can make a follow
+up call to capture that amount.  If the customer added a tip you can also capture with the additional
+tip.  You can also void the authorization.  You can also capture with not just the addition of a
+tip, but also with the addition of invoice items.
+
+Here is an example of an authorization on a credit card:
+
+-(void) onPurchaseButtonClicked {
+    PPHAmount *twentyDollarAmount = [PPHAmount [PPHAmount amountWithString:@"20.00"];
+    [[PayPalHereSDK sharedTransactionmanager] beginPaymentWithAmount:twentyDollarAmount withName:@"FixedAmount"];
+}
+
+-(void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
+
+    if (event.eventType == ePPHTransactionType_CardDataReceived) {
+
+        Let's authorize the $20 payment for the card that was swiped.
+        This causes the SDK to stop monitoring for swipes.
+
+       [[PayPalHereSDK sharedTransactionManager] authorizePaymentWithPaymentType:ePPHPaymentMethodSwipe
+                                                   withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           // Authorization complete!  (well, check response.error first!)
+                                                           // Save the PPHTransactionResponse for later use during the capture.
+                                                           self.myAuthorizedPaymentTransactionResponse = response;
+
+       }];
+    }
+}
+
+
+
+Here is an example of capturing payment on a previously completed authorization
+
+- (void) capturePaymentButtonPressed {
+    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_myAuthorizedPaymentTransactionResponse.record
+                                                     withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           if(!response.error) {
+                                                               NSLog(@"Payment captured!");
+    }
+}
+
+
+Here's an example of capturing payment with a tip.
+
+- (void) capturePaymentButtonPressed {
+
+    NSDecimalNumber *gratuityToAdd = self.gratuityEnteredByCustomer; // Let's use the gratuity your customer entered via your UI
+
+    _myAuthorizedPaymentTransactionResponse.record.invoice.gratuity = gratuityToAdd;
+
+    [[PayPalHereSDK sharedTransactionManager] capturePaymentForAuthorization:_myAuthorizedPaymentTransactionResponse.record
+                                                     withCompletionHandler:^(PPHTransactionResponse *response) {
+                                                           if(!response.error) {
+                                                               NSLog(@"Payment captured with Tip!");
+    }
+}
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentInvoice">&nbsp;&nbsp;currentInvoice</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/encryptedCardData">&nbsp;&nbsp;encryptedCardData</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manualEntryOrScannedCardData">&nbsp;&nbsp;manualEntryOrScannedCardData</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/checkedInClient">&nbsp;&nbsp;checkedInClient</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isProcessingPayment">&nbsp;&nbsp;isProcessingPayment</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasActiveTransaction">&nbsp;&nbsp;hasActiveTransaction</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cardReaderMonitorEnabled">&nbsp;&nbsp;cardReaderMonitorEnabled</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ignoreHardwareReaders">&nbsp;&nbsp;ignoreHardwareReaders</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldAppOverrideDefaultSignatureSetting">&nbsp;&nbsp;shouldAppOverrideDefaultSignatureSetting</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginPayment">&ndash;&nbsp;beginPayment</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginPaymentWithAmount:andName:">&ndash;&nbsp;beginPaymentWithAmount:andName:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancelPayment">&ndash;&nbsp;cancelPayment</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authorizePaymentWithPaymentType:withCompletionHandler:">&ndash;&nbsp;authorizePaymentWithPaymentType:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/voidAuthorization:withCompletionHandler:">&ndash;&nbsp;voidAuthorization:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/capturePaymentForAuthorization:withCompletionHandler:">&ndash;&nbsp;capturePaymentForAuthorization:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:">&ndash;&nbsp;processPaymentWithPaymentType:withTransactionController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:">&ndash;&nbsp;processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:">&ndash;&nbsp;beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/provideSignature:forTransaction:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginRefund:forAmount:completionHandler:">&ndash;&nbsp;beginRefund:forAmount:completionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendReceipt:toRecipient:completionHandler:">&ndash;&nbsp;sendReceipt:toRecipient:completionHandler:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cardReaderMonitorEnabled" title="cardReaderMonitorEnabled"></a>
+	<h3 class="subsubtitle method-title">cardReaderMonitorEnabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure the TransactionManager to start and stop listening for card swipes while performing a
+transaction. By default, the TransactionManager performs this action but, if the application would
+like to take control of this, set the boolean param to false. This would expect the application to
+make use of CardReaderManager&rsquo;s WaitForAuthorization and CancelWaitForAuthorization
+APIs to start and stop listening for card swipes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL cardReaderMonitorEnabled</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configure the TransactionManager to start and stop listening for card swipes while performing a
+transaction. By default, the TransactionManager performs this action but, if the application would
+like to take control of this, set the boolean param to false. This would expect the application to
+make use of CardReaderManager&rsquo;s WaitForAuthorization and CancelWaitForAuthorization
+APIs to start and stop listening for card swipes.</p>
+
+<p>Set to NO if the application would like to make use of the CardReaderManager&rsquo;s API to start and
+stop listening for card swipes.</p>
+
+<p>Set to YES if the apps wants the SDK (TransactionManager) to automatically start and stop listening
+for card swipes. This is the default behavior.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/checkedInClient" title="checkedInClient"></a>
+	<h3 class="subsubtitle method-title">checkedInClient</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) PPHLocationCheckin *checkedInClient</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentInvoice" title="currentInvoice"></a>
+	<h3 class="subsubtitle method-title">currentInvoice</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The invoice used for this transaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) PPHInvoice *currentInvoice</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The invoice used for this transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/encryptedCardData" title="encryptedCardData"></a>
+	<h3 class="subsubtitle method-title">encryptedCardData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Card swipe data we&rsquo;ll use if the PaymentType is CardReader.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) PPHCardSwipeData *encryptedCardData</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Card swipe data we&rsquo;ll use if the PaymentType is CardReader.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hasActiveTransaction" title="hasActiveTransaction"></a>
+	<h3 class="subsubtitle method-title">hasActiveTransaction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Discover if we&rsquo;re currently handling a transaction.  While handling a transaction
+we can accept an invoice.  If configured to work with the hardware scanners (the
+default) we will also be scanning for card swipes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL hasActiveTransaction</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>a boolean value.  Returns true if we&rsquo;re currently handling a transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Discover if we&rsquo;re currently handling a transaction.  While handling a transaction
+we can accept an invoice.  If configured to work with the hardware scanners (the
+default) we will also be scanning for card swipes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/ignoreHardwareReaders" title="ignoreHardwareReaders"></a>
+	<h3 class="subsubtitle method-title">ignoreHardwareReaders</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure the TransactionManager to ignore OR work with any payment readers that might
+be attached.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL ignoreHardwareReaders</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configure the TransactionManager to ignore OR work with any payment readers that might
+be attached.</p>
+
+<p>The default behavior is for the TransactionManager to work with attached payment readers.  If
+that is the desired behavior there is no need to call this method.</p>
+
+<p>It is not legal to call this method during a transaction.  Complete your transaction first, then
+change this setting.   Calling setIgnoreHardwareReaders during a transaction will have no effect.</p>
+
+<p>Pass YES to ignore readers, NO to include them</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isProcessingPayment" title="isProcessingPayment"></a>
+	<h3 class="subsubtitle method-title">isProcessingPayment</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Discover if we&rsquo;re busy processing a payment we the back end.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isProcessingPayment</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>a boolean value.  Returns true if we&rsquo;re currently processing a finalizePayment</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Discover if we&rsquo;re busy processing a payment we the back end.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/manualEntryOrScannedCardData" title="manualEntryOrScannedCardData"></a>
+	<h3 class="subsubtitle method-title">manualEntryOrScannedCardData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Card swipe data we&rsquo;ll use if the PaymentType is ManualEntry</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) PPHCardNotPresentData *manualEntryOrScannedCardData</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Card swipe data we&rsquo;ll use if the PaymentType is ManualEntry</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shouldAppOverrideDefaultSignatureSetting" title="shouldAppOverrideDefaultSignatureSetting"></a>
+	<h3 class="subsubtitle method-title">shouldAppOverrideDefaultSignatureSetting</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure the Transaction Manager to ignore OR obey PayPal&rsquo;s backend-based signature required above &ldquo;x&rdquo; amount configuration,
+(also referred to as the default signature setting) which could also be obtained via the &ldquo;TransactionResponse.isSignatureRequiredToFinalize&rdquo; property.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL shouldAppOverrideDefaultSignatureSetting</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configure the Transaction Manager to ignore OR obey PayPal&rsquo;s backend-based signature required above &ldquo;x&rdquo; amount configuration,
+(also referred to as the default signature setting) which could also be obtained via the &ldquo;TransactionResponse.isSignatureRequiredToFinalize&rdquo; property.</p>
+
+<p>When the application invokes the &ldquo;setActiveMerchant&rdquo; API, the SDK would go ahead and fetch various configuration and properties
+for this merchant.</p>
+
+<p>One of the properties provided to the SDK would include the minimum amount above which a signature is required.</p>
+
+<p>This enables the transaction manager to move to a &ldquo; Waiting For Signature &rdquo; state and expects the application
+to invoke the &ldquo;provideSignature&rdquo; API after the completion of the &lsquo;ProcessPayment" API (when an amount > minimum required for signature).</p>
+
+<p>If the app chooses to override this behavior and not collect a signature for ANY amount, they must set this property as YES. This would enable
+the transaction manager to ignore the backend-based (a.k.a isSignatureRequiredToFinalize) setting and move to an idle state once the payment is
+complete.</p>
+
+<p>If set to NO, in conjunction with the backend-based setting (a.k.a isSignatureRequiredToFinalize), the SDK would expect the application to invoke the
+&ldquo;provideSignature&rdquo; API after the completion of the &ldquo;processPayment&rdquo; API.</p>
+
+<p>Default value set to NO.</p>
+
+<p>NOTE : This property would ONLY be applicable for Swipe based transactions and will not be considered while performing any EMV related transactions.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/authorizePaymentWithPaymentType:withCompletionHandler:" title="authorizePaymentWithPaymentType:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">authorizePaymentWithPaymentType:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Authorize a payment.  Used with either Checkin (ePPHPaymentMethodPaypal) or a card
+payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)authorizePaymentWithPaymentType:(PPHPaymentMethod)<em>paymentMethod</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentMethod</em></dt>
+			<dd><p>What type of authorization we are doing.  Can be ePPHPaymentMethodPaypal (checkin)
+or ePPHPaymentMethodSwipe or ePPHPaymentMethodKey</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>Will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error then the PPHTransactionRecord&rsquo;s
+error object will be non nil.  Otherwise it will contain a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> which you can
+later pass into voidAuthoriztion or capturePaymentForAuthorization</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Authorize a payment.  Used with either Checkin (ePPHPaymentMethodPaypal) or a card
+payment (ePPHPaymentMethodSwipe, ePPHPaymentMethodKey).   Allows you to authorize an amount.</p>
+
+<p>Once authorized you can be confident that PayPal will allow capture on up to 115% of the amount
+authorized (allows for later adding of tips or later adding of some line items just prior to
+capturing the payment.</p>
+
+<p>However, if the merchant&rsquo;s account is so enabled, this capture limit can be upto 500%   See
+<a href="../Classes/PPHPaymentLimits.html">PPHPaymentLimits</a>.captureTolerance for more information</p>
+
+<p>After authorization is successful you can then, at a later time or immediately afterwards, call
+capturePaymentForAuthorization to actually capture your money or you can call voidAuthorization
+to discard the payment.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginPayment" title="beginPayment"></a>
+	<h3 class="subsubtitle method-title">beginPayment</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Used to begin all types of payment (check-in, card present, manual entry, cash, etc)
+This call causes the hardware enabled version of the SDK to start scanning for card swipes.
+the <a href="#//api/name/currentInvoice">currentInvoice</a> is initialized with an empty inventory for you to add items to.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginPayment</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used to begin all types of payment (check-in, card present, manual entry, cash, etc)
+This call causes the hardware enabled version of the SDK to start scanning for card swipes.
+the <a href="#//api/name/currentInvoice">currentInvoice</a> is initialized with an empty inventory for you to add items to.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginPaymentWithAmount:andName:" title="beginPaymentWithAmount:andName:"></a>
+	<h3 class="subsubtitle method-title">beginPaymentWithAmount:andName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Begin a fixed amount payment.  Similar to <a href="#//api/name/beginPayment">beginPayment</a> except this time the
+TransactionManager&rsquo;s invoice object becomes primed with an invoice containing
+the fixed amount item.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginPaymentWithAmount:(PPHAmount *)<em>amount</em> andName:(NSString *)<em>itemName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amount</em></dt>
+			<dd><p>the amount to charge the customer.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>itemName</em></dt>
+			<dd><p>the name for this item.  Will be stored in the invoice.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Begin a fixed amount payment.  Similar to <a href="#//api/name/beginPayment">beginPayment</a> except this time the
+TransactionManager&rsquo;s invoice object becomes primed with an invoice containing
+the fixed amount item.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginRefund:forAmount:completionHandler:" title="beginRefund:forAmount:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginRefund:forAmount:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Issue a refund against a previously successful PayPal transaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginRefund:(PPHTransactionRecord *)<em>previousTransaction</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previousTransaction</em></dt>
+			<dd><p>The transaction identifier for the original payment transaction.
+If you want to send a receipt and you don&rsquo;t have a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you can construct one.  Just make
+sure it at least has the transactionId set.  Other params being set is ok, they will not be accessed
+by beginRefund.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amountOrNil</em></dt>
+			<dd><p>Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&rsquo;s a full refund.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>Called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Issue a refund against a previously successful PayPal transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:" title="beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginRefundUsingSDKUI_WithPaymentType:withViewController:record:amount:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)beginRefundUsingSDKUI_WithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withViewController:(UIViewController *)<em>vc</em> record:(PPHTransactionRecord *)<em>record</em> amount:(PPHAmount *)<em>amount</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>the type on which the refund would be performed.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vc</em></dt>
+			<dd><p>: The current or active view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Refund a payment given a type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the refund flow.</p>
+
+<p>Currently only supported for when taking an EMV refund (ePPHPaymentMethodChipCard).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cancelPayment" title="cancelPayment"></a>
+	<h3 class="subsubtitle method-title">cancelPayment</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Clears the current state of the transaction, including current invoice, card data, etc, thus
+returning back to an Idle state.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHError *)cancelPayment</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Clears the current state of the transaction, including current invoice, card data, etc, thus
+returning back to an Idle state.</p>
+
+<p>Returns an error if unable to clear the states. This could happen if we are in the middle of processing
+a transaction. Else, returns nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/capturePaymentForAuthorization:withCompletionHandler:" title="capturePaymentForAuthorization:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">capturePaymentForAuthorization:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Captures a prevoisly authorized payment.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)capturePaymentForAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authorizedTransactionRecord</em></dt>
+			<dd><p>This is the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you received in the
+authorizePayment call.  This tells the SDK what auth you&rsquo;d like to capture.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: Will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error
+then the PPHTransactionRecord&rsquo;s error object will be non nil.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Captures a prevoisly authorized payment.</p>
+
+<p>In most cases you can capture at 115% of what was previously authorized.</p>
+
+<p>However, if the merchant&rsquo;s account is so enabled, this capture limit can be upto 500%   See
+<a href="../Classes/PPHPaymentLimits.html">PPHPaymentLimits</a>.captureTolerance for more information</p>
+
+<p>To capture more or less than was authorized you can add a gratutity or add/remove line items
+from the invoice contained in the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you pass in.  If you don&rsquo;t wish to add
+a gratutity or change line items just supply the transactionRecord you received when you
+authorized the transaction.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:" title="processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">processPaymentUsingSDKUI_WithPaymentType:withTransactionController:withViewController:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)processPaymentUsingSDKUI_WithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)<em>controller</em> withViewController:(UIViewController *)<em>vc</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>: The type of payment to collect.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd><p>:  Can be nil.  If provided, the transaction manager will call the callbacks
+defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHTransactionControllerDelegate</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vc</em></dt>
+			<dd><p>: The current or active view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.
+This version will cause the SDK to show UI during the payment flow.</p>
+
+<p>Currently only supported for when taking an EMV payment (ePPHPaymentMethodChipCard).</p>
+
+<p>Processing a payment for swipe or key-in or checkin-in payments will
+actually capture that payment.  For Cash or Check, this call will simply
+record the invoice into the paypal system for record-keeping purposes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/processPaymentWithPaymentType:withTransactionController:completionHandler:" title="processPaymentWithPaymentType:withTransactionController:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">processPaymentWithPaymentType:withTransactionController:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)processPaymentWithPaymentType:(PPHPaymentMethod)<em>paymentType</em> withTransactionController:(id&lt;PPHTransactionControllerDelegate&gt;)<em>controller</em> completionHandler:(void ( ^ ) ( PPHTransactionResponse *record ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentType</em></dt>
+			<dd><p>the type of payment to collect.  You&rsquo;ll get an error back if you
+specify ePPHPaymentTypesCheckedInPayment and haven&rsquo;t set the
+<a href="#//api/name/checkedInClient">checkedInClient</a> property.  Likewise with the cardData member and
+specifying ePPHPaymentMethodSwipe.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd><p>Can be nil.  If provided, the transaction manager will call the callbacks
+defined in the <a href="../Protocols/PPHTransactionControllerDelegate.html">PPHTransactionControllerDelegate</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>called when the action has completed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Process a payment given a payment type of card, cash, cheque, checked-In-Client, etc.</p>
+
+<p>Processing a payment for swipe or key-in or checkin-in payments will
+actually capture that payment.  For Cash or Check, this call will simply
+record the invoice into the paypal system for record-keeping purposes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/provideSignature:forTransaction:completionHandler:" title="provideSignature:forTransaction:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">provideSignature:forTransaction:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
+and complete the transaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHTransactionRecord *)<em>previousTransaction</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>signature</em></dt>
+			<dd><p>: A UIImage contining the signature of the customer.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previousTransaction</em></dt>
+			<dd><p>: The transaction record object that is returned back from the processPayment call.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: A response handler that would be invoked by the SDK in case of a success or a failure.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used to capture the signature of the customer if it already hasn&rsquo;t been captured in the processPayment call
+and complete the transaction.</p>
+
+<p>Can be used to provide a signature in both the sale (processPayment) and auto/capture flows.
+After processPayment returns you can then provide a signature using the <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> returned by processPayment.
+After an authorization you can provide the signature either before or after a capture.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendReceipt:toRecipient:completionHandler:" title="sendReceipt:toRecipient:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">sendReceipt:toRecipient:completionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)sendReceipt:(PPHTransactionRecord *)<em>previousTransaction</em> toRecipient:(PPHReceiptDestination *)<em>destination</em> completionHandler:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previousTransaction</em></dt>
+			<dd><p>: The transaction record object that is returned back from the processPayment call. This will
+contain the invoice id and transaction id etc needed to send the receipt.</p>
+
+<p>If you want to send a receipt and you don&rsquo;t have a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> you can construct one.  Just make
+sure it has BOTH the transactionId and payPalInvoiceId properties set.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>destination</em></dt>
+			<dd><p>: A <a href="../Classes/PPHReceiptDestination.html">PPHReceiptDestination</a> object which describes either the email address or phone number to
+which we should send the receipt.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>: A response handler that would be invoked by the SDK in case of a success or a failure.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used to send the receipt of a transaction to a customer based on the email address or the phone number provided.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/voidAuthorization:withCompletionHandler:" title="voidAuthorization:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">voidAuthorization:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Allows you to void a previously authorized payment.
+@param authorizedTransactionRecord</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)voidAuthorization:(PPHTransactionRecord *)<em>authorizedTransactionRecord</em> withCompletionHandler:(void ( ^ ) ( PPHTransactionResponse *))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>will return a <a href="../Classes/PPHTransactionResponse.html">PPHTransactionResponse</a>.  If there&rsquo;s an error then the PPHTransactionRecord&rsquo;s
+error object will be non nil.  Otherwise it will contain a <a href="../Classes/PPHTransactionRecord.html">PPHTransactionRecord</a> for this void action.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Allows you to void a previously authorized payment.
+@param authorizedTransactionRecord</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

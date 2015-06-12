@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHPaymentLimits Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -39,6 +38,8 @@
 	
 	
 	<option value="properties">Properties</option>
+	
+	<option value="//api/name/captureTolerance">&nbsp;&nbsp;&nbsp;&nbsp;captureTolerance</option>
 	
 	<option value="//api/name/maximumCardChargeAllowed">&nbsp;&nbsp;&nbsp;&nbsp;maximumCardChargeAllowed</option>
 	
@@ -73,6 +74,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/captureTolerance">captureTolerance</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/maximumCardChargeAllowed">maximumCardChargeAllowed</a></span></li>
 	
@@ -115,8 +118,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -140,21 +143,24 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/minimumCardChargeAllowed">&nbsp;&nbsp;minimumCardChargeAllowed</a></code>
-		<span class="tooltip"><p>The smallest amount you can successfully charge with a card.  If nil then the value is unknown.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/maximumCardChargeAllowed">&nbsp;&nbsp;maximumCardChargeAllowed</a></code>
-		<span class="tooltip"><p>The largest amount you can successfully charge with a card.  If nil then the value is unknown.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/signatureRequiredAbove">&nbsp;&nbsp;signatureRequiredAbove</a></code>
-		<span class="tooltip"><p>Amount over which this merchant requires a signature.  If nil then the value is unknown.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/captureTolerance">&nbsp;&nbsp;captureTolerance</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -170,6 +176,60 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/captureTolerance" title="captureTolerance"></a>
+	<h3 class="subsubtitle method-title">captureTolerance</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>In the Auth-Capture use case, for a given merchant account, this method provides the
+maximum allowed capture percentage for every authorization.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSDecimalNumber *captureTolerance</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>In the Auth-Capture use case, for a given merchant account, this method provides the
+maximum allowed capture percentage for every authorization.</p>
+
+<p>The application/merchant can use this information to validate the capture amount entered on their
+UI and throw a local error in case an invalid amount is being set.</p>
+
+<p>For example, if the value returned by this method is, lets say 120, if the merchant performs
+an authorization for an invoice for an amount, lets say $100 then, while performing a capture,
+the maximum amount that the merchant is allowed to capture would be $120 (120% of the original authorized amount).
+If the merchant tries to capture more than the capture tolerance, it would result in an error sent by the PayPal
+backend.</p>
+
+<p>NOTE: Currently applicable for US based merchants ONLY.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHPaymentLimits.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/maximumCardChargeAllowed" title="maximumCardChargeAllowed"></a>
@@ -301,6 +361,8 @@
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -311,9 +373,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-14)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

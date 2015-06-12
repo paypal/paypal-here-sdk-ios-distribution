@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PPHInvoicePayment Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -41,6 +40,14 @@
 	<option value="properties">Properties</option>
 	
 	<option value="//api/name/amount">&nbsp;&nbsp;&nbsp;&nbsp;amount</option>
+	
+	<option value="//api/name/cashTendered">&nbsp;&nbsp;&nbsp;&nbsp;cashTendered</option>
+	
+	<option value="//api/name/creditCardApplicationName">&nbsp;&nbsp;&nbsp;&nbsp;creditCardApplicationName</option>
+	
+	<option value="//api/name/creditCardLastFourDigits">&nbsp;&nbsp;&nbsp;&nbsp;creditCardLastFourDigits</option>
+	
+	<option value="//api/name/creditCardType">&nbsp;&nbsp;&nbsp;&nbsp;creditCardType</option>
 	
 	<option value="//api/name/date">&nbsp;&nbsp;&nbsp;&nbsp;date</option>
 	
@@ -98,6 +105,14 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/amount">amount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cashTendered">cashTendered</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/creditCardApplicationName">creditCardApplicationName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/creditCardLastFourDigits">creditCardLastFourDigits</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/creditCardType">creditCardType</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/date">date</a></span></li>
 	
@@ -162,8 +177,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -188,91 +203,102 @@ and other related information. There can be at most one payment against an invoi
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithTransaction:forAmount:withMethod:andDetail:onDate:">&ndash;&nbsp;initWithTransaction:forAmount:withMethod:andDetail:onDate:</a></code>
-		<span class="tooltip"><p>Create a payment record manually</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithDictionary:">&ndash;&nbsp;initWithDictionary:</a></code>
-		<span class="tooltip"><p>Create a payment record from the server information</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/asDictionary">&ndash;&nbsp;asDictionary</a></code>
-		<span class="tooltip"><p>Render the payment information to a dictioary (mainly useful for local caching/storing)</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/paymentMethod">&nbsp;&nbsp;paymentMethod</a></code>
-		<span class="tooltip"><p>The high level method of payment</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/paymentMethodDetail">&nbsp;&nbsp;paymentMethodDetail</a></code>
-		<span class="tooltip"><p>Additional data related to the payment method, such as the source of the funds if known</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/transactionId">&nbsp;&nbsp;transactionId</a></code>
-		<span class="tooltip"><p>For PayPal balance-affecting transactions (cc, checkin) &ndash; the tx id of the payment</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/amount">&nbsp;&nbsp;amount</a></code>
-		<span class="tooltip"><p>The amount of the payment or refund.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/date">&nbsp;&nbsp;date</a></code>
-		<span class="tooltip"><p>The date on which the payment or refund occurred</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/paidWithPayPal">&nbsp;&nbsp;paidWithPayPal</a></code>
-		<span class="tooltip"><p>Was the invoice paid on PayPal.com?</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/latitude">&nbsp;&nbsp;latitude</a></code>
-		<span class="tooltip"><p>The coordinates of the location where the payment was taken.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/longitude">&nbsp;&nbsp;longitude</a></code>
-		<span class="tooltip"><p>The coordinates of the location where the payment was taken.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/details">&nbsp;&nbsp;details</a></code>
-		<span class="tooltip"><p>Additional information about the payment such as the <a href="#//api/name/amount">amount</a> of cash tendered, etc. TODO put this in separate fields</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/creditCardType">&nbsp;&nbsp;creditCardType</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/creditCardLastFourDigits">&nbsp;&nbsp;creditCardLastFourDigits</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/creditCardApplicationName">&nbsp;&nbsp;creditCardApplicationName</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fee">&nbsp;&nbsp;fee</a></code>
-		<span class="tooltip"><p>PayPal fee, if applicable and known &ndash; this is typically only filled out when reading payment <a href="#//api/name/details">details</a> from transaction <a href="#//api/name/details">details</a> APIs</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cashTendered">&nbsp;&nbsp;cashTendered</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -314,6 +340,170 @@ and other related information. There can be at most one payment against an invoi
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The amount of the payment or refund.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoicePayment.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cashTendered" title="cashTendered"></a>
+	<h3 class="subsubtitle method-title">cashTendered</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If this payment was made with cash and we know the <a href="#//api/name/amount">amount</a> tendered, this will be non-nil</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSDecimalNumber *cashTendered</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If this payment was made with cash and we know the <a href="#//api/name/amount">amount</a> tendered, this will be non-nil</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoicePayment.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/creditCardApplicationName" title="creditCardApplicationName"></a>
+	<h3 class="subsubtitle method-title">creditCardApplicationName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If this payment was made with a credit card this is the discrete application of that card that was used, if available.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSString *creditCardApplicationName</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If this payment was made with a credit card this is the discrete application of that card that was used, if available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoicePayment.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/creditCardLastFourDigits" title="creditCardLastFourDigits"></a>
+	<h3 class="subsubtitle method-title">creditCardLastFourDigits</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If this payment was made with a credit card this is the last four digits of the card number.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSString *creditCardLastFourDigits</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If this payment was made with a credit card this is the last four digits of the card number.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoicePayment.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/creditCardType" title="creditCardType"></a>
+	<h3 class="subsubtitle method-title">creditCardType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If this payment was made with a credit card this is the type of that card.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) PPHCreditCardType creditCardType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If this payment was made with a credit card this is the type of that card.</p>
 	</div>
 	
 	
@@ -419,7 +609,7 @@ and other related information. There can be at most one payment against an invoi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>PayPal fee, if applicable and known &ndash; this is typically only filled out when reading payment <a href="#//api/name/details">details</a> from transaction <a href="#//api/name/details">details</a> APIs</p>
+		<p>PayPal fee, if applicable and known - this is typically only filled out when reading payment <a href="#//api/name/details">details</a> from transaction <a href="#//api/name/details">details</a> APIs</p>
 	</div>		
 	
     
@@ -436,7 +626,7 @@ and other related information. There can be at most one payment against an invoi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>PayPal fee, if applicable and known &ndash; this is typically only filled out when reading payment <a href="#//api/name/details">details</a> from transaction <a href="#//api/name/details">details</a> APIs</p>
+		<p>PayPal fee, if applicable and known - this is typically only filled out when reading payment <a href="#//api/name/details">details</a> from transaction <a href="#//api/name/details">details</a> APIs</p>
 	</div>
 	
 	
@@ -665,7 +855,7 @@ and other related information. There can be at most one payment against an invoi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>For PayPal balance-affecting transactions (cc, checkin) &ndash; the tx id of the payment</p>
+		<p>For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</p>
 	</div>		
 	
     
@@ -682,7 +872,7 @@ and other related information. There can be at most one payment against an invoi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>For PayPal balance-affecting transactions (cc, checkin) &ndash; the tx id of the payment</p>
+		<p>For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</p>
 	</div>
 	
 	
@@ -875,6 +1065,8 @@ and other related information. There can be at most one payment against an invoi
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -885,9 +1077,9 @@ and other related information. There can be at most one payment against an invoi
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 PayPal. All rights reserved. (Last updated: 2013-09-14)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>
