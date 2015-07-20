@@ -1,17 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHInvoiceItemContext.html">
+	<File path="Classes/PPHInvoiceConstants.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceItemContext</TokenIdentifier>
-			<Abstract type="html">TODO... This context will be used to resolve items on an invoice to your
-item library and data store</Abstract>
-			<DeclaredIn>PPHInvoiceItemContext.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceConstants</TokenIdentifier>
+			<Abstract type="html">Convenience methods for dealing with the various invoice enumerations</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
             
 			
 			<NodeRef refid="27"/>
 		</Token>
 		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/paymentMethodFromString:</TokenIdentifier>
+			<Abstract type="html">Return a payment method given the corresponding non-localized string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHPaymentMethod)paymentMethodFromString:(id)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodFromString:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/paymentMethodDetailFromString:</TokenIdentifier>
+			<Abstract type="html">Return payment method detail given the corresponding non-localized string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHPaymentMethodDetail)paymentMethodDetailFromString:(id)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the payment detail</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodDetailFromString:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusFromString:</TokenIdentifier>
+			<Abstract type="html">Return an invoice status given the non-localized string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHInvoiceStatus)invoiceStatusFromString:(id)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the invoice status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/invoiceStatusFromString:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/stringFromPaymentMethod:</TokenIdentifier>
+			<Abstract type="html">Turn a payment method enum into a string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromPaymentMethod:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/stringFromPaymentMethod:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/stringFromInvoiceStatus:</TokenIdentifier>
+			<Abstract type="html">Turn an invoice status into a string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromInvoiceStatus:(id)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">the invoice status enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/stringFromInvoiceStatus:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/stringFromPaymentMethodDetail:</TokenIdentifier>
+			<Abstract type="html">Turn a payment method detail into a string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromPaymentMethodDetail:(id)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">the payment method detail enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/stringFromPaymentMethodDetail:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/paymentMethodIsCreditCard:</TokenIdentifier>
+			<Abstract type="html">Is the payment method a type of Credit Card payment?</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsCreditCard:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsCreditCard:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/paymentMethodMarksAsPaid:</TokenIdentifier>
+			<Abstract type="html">Does the payment method put the invoice in a MarkedAsPaid state
+(i.e. is it cash or check)</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodMarksAsPaid:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodMarksAsPaid:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusIsPaid:</TokenIdentifier>
+			<Abstract type="html">Determine whether this invoice status means that the invoice was paid at some point
+(i.e. is it paid, refunded, or partially refunded)</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)invoiceStatusIsPaid:(id)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">the invoice status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/invoiceStatusIsPaid:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusIsRefunded:</TokenIdentifier>
+			<Abstract type="html">Determine whether this invoice status means the invoice was refunded at some point
+(i.e. refunded or partially refunded)</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)invoiceStatusIsRefunded:(id)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">the invoice status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/invoiceStatusIsRefunded:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
 		
         
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHCardReaderDelegate.html">
+	<File path="Classes/PPHTokenizedCustomerInformation.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHCardReaderDelegate</TokenIdentifier>
-			<Abstract type="html">Additional events for EMV aka Chip &amp;amp; Pin readers</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTokenizedCustomerInformation</TokenIdentifier>
+			<Abstract type="html">PayPal card processing returns some extremely useful data for receipts and/or loyalty programs. (Checkin has this stuff built in)</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
             
 			
 			<NodeRef refid="49"/>
@@ -13,108 +13,149 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</TokenIdentifier>
-			<Abstract type="html">Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
-NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setCustomerId:</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)didDetectUpgradeableReader:(id)reader withMessage:(id)message isRequired:(id)required isInitial:(id)initial withEstimatedDuration:(id)estimatedDuration</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">the reader that has an available upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>message</Name>
-					<Abstract type="html">the reason or explanation for the upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>required</Name>
-					<Abstract type="html">whether the reader can proceed without an upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>initial</Name>
-					<Abstract type="html">whether this is the initial upgrade to the reader</Abstract>
-				</Parameter><Parameter>
-					<Name>estimatedDuration</Name>
-					<Abstract type="html">the estimated time the update will take to apply in total</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
-			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</Anchor>
+			
+			<Anchor>//api/name/customerId</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didFinishUpgradePreparations</TokenIdentifier>
-			<Abstract type="html">The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
-to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/customerId</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)didFinishUpgradePreparations</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
 			
-			<Anchor>//api/name/didFinishUpgradePreparations</Anchor>
+			<Anchor>//api/name/customerId</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didUpgradeReader:withMessage:</TokenIdentifier>
-			<Abstract type="html">A reader upgrade was successful</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/customerId</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)didUpgradeReader:(id)successful withMessage:(id)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>successful</Name>
-					<Abstract type="html">whether the upgrade succeeded</Abstract>
-				</Parameter><Parameter>
-					<Name>message</Name>
-					<Abstract type="html">Additional details about the upgrade (if it failed)</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
-			<Anchor>//api/name/didUpgradeReader:withMessage:</Anchor>
+			
+			<Anchor>//api/name/customerId</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</TokenIdentifier>
-			<Abstract type="html">There is a status update to the current ongoing reader upgrade</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setMaskedEmailAddress:</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)didReceiveReaderUpgradeStatusWithMessage:(id)message currentStep:(id)currentStep totalSteps:(id)totalSteps completion:(id)completion</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">Details about the current upgrade status</Abstract>
-				</Parameter><Parameter>
-					<Name>currentStep</Name>
-					<Abstract type="html">The number of the current upgrade step from 1 to totalSteps</Abstract>
-				</Parameter><Parameter>
-					<Name>totalSteps</Name>
-					<Abstract type="html">The total number of steps in the upgrade</Abstract>
-				</Parameter><Parameter>
-					<Name>completion</Name>
-					<Abstract type="html">The progress of the upgrade from 0.0 to 1.0</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
 			
-			<Anchor>//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</Anchor>
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveChipAndPinEvent:</TokenIdentifier>
-			<Abstract type="html">Called when an event related to chip &amp;amp; pin transactions has occurred on the reader</Abstract>
-			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/maskedEmailAddress</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)didReceiveChipAndPinEvent:(id)event</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">the event that has occurred</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
 			
-			<Anchor>//api/name/didReceiveChipAndPinEvent:</Anchor>
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/maskedEmailAddress</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setMaskedMobileNumber:</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/maskedMobileNumber</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/maskedMobileNumber</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setReceiptPreferenceToken:</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		

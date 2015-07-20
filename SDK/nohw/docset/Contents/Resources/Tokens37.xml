@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHPaymentResponse.html">
+	<File path="Classes/PPHLocationCheckin.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHPaymentResponse</TokenIdentifier>
-			<Abstract type="html">Generic base class for payment attempt response data from PayPal services</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHLocationCheckin</TokenIdentifier>
+			<Abstract type="html">Details about a checkin created by a customer at a merchant location.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
             
 			
 			<NodeRef refid="37"/>
@@ -13,196 +13,47 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setError:</TokenIdentifier>
-			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setCheckinId:</TokenIdentifier>
+			<Abstract type="html">The server identifier for this checkin</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *checkinId</Declaration>
 			
 			
-			<Anchor>//api/name/error</Anchor>
+			<Anchor>//api/name/checkinId</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/error</TokenIdentifier>
-			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/checkinId</TokenIdentifier>
+			<Abstract type="html">The server identifier for this checkin</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *checkinId</Declaration>
 			
 			
-			<Anchor>//api/name/error</Anchor>
+			<Anchor>//api/name/checkinId</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/error</TokenIdentifier>
-			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/checkinId</TokenIdentifier>
+			<Abstract type="html">The server identifier for this checkin</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *checkinId</Declaration>
 			
 			
-			<Anchor>//api/name/error</Anchor>
+			<Anchor>//api/name/checkinId</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setTransactionId:</TokenIdentifier>
-			<Abstract type="html">Non-nil if the transaction has succeeded and has a reference number.
-For the auth and capture use case, this would house the final capture Id as well.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setCustomerId:</TokenIdentifier>
+			<Abstract type="html">The ID for this customer; this ID is unique to your merchant account</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/transactionId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/transactionId</TokenIdentifier>
-			<Abstract type="html">Non-nil if the transaction has succeeded and has a reference number.
-For the auth and capture use case, this would house the final capture Id as well.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/transactionId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/transactionId</TokenIdentifier>
-			<Abstract type="html">Non-nil if the transaction has succeeded and has a reference number.
-For the auth and capture use case, this would house the final capture Id as well.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/transactionId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setAuthorizationId:</TokenIdentifier>
-			<Abstract type="html">Non-nil if the authorization has succeeded and has a reference number.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *authorizationId</Declaration>
-			
-			
-			<Anchor>//api/name/authorizationId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/authorizationId</TokenIdentifier>
-			<Abstract type="html">Non-nil if the authorization has succeeded and has a reference number.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *authorizationId</Declaration>
-			
-			
-			<Anchor>//api/name/authorizationId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/authorizationId</TokenIdentifier>
-			<Abstract type="html">Non-nil if the authorization has succeeded and has a reference number.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *authorizationId</Declaration>
-			
-			
-			<Anchor>//api/name/authorizationId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setPaypalInvoiceId:</TokenIdentifier>
-			<Abstract type="html">The invoiceId of the invoice this payment was made against.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *paypalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/paypalInvoiceId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/paypalInvoiceId</TokenIdentifier>
-			<Abstract type="html">The invoiceId of the invoice this payment was made against.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *paypalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/paypalInvoiceId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/paypalInvoiceId</TokenIdentifier>
-			<Abstract type="html">The invoiceId of the invoice this payment was made against.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *paypalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/paypalInvoiceId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setCorrelationId:</TokenIdentifier>
-			<Abstract type="html">The correlation ID of the transaction attempt.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *correlationId</Declaration>
-			
-			
-			<Anchor>//api/name/correlationId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/correlationId</TokenIdentifier>
-			<Abstract type="html">The correlation ID of the transaction attempt.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *correlationId</Declaration>
-			
-			
-			<Anchor>//api/name/correlationId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/correlationId</TokenIdentifier>
-			<Abstract type="html">The correlation ID of the transaction attempt.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *correlationId</Declaration>
-			
-			
-			<Anchor>//api/name/correlationId</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setCustomerId:</TokenIdentifier>
-			<Abstract type="html">A customerId and receipt preference token used for account lookup
-when sending receipts. Resolves customerId with preference level, even if you have
-a guest account the backend uses these two pieces of information to send your receipt over.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) NSString *customerId</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *customerId</Declaration>
 			
 			
 			<Anchor>//api/name/customerId</Anchor>
@@ -210,13 +61,11 @@ a guest account the backend uses these two pieces of information to send your re
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/customerId</TokenIdentifier>
-			<Abstract type="html">A customerId and receipt preference token used for account lookup
-when sending receipts. Resolves customerId with preference level, even if you have
-a guest account the backend uses these two pieces of information to send your receipt over.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/customerId</TokenIdentifier>
+			<Abstract type="html">The ID for this customer; this ID is unique to your merchant account</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSString *customerId</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *customerId</Declaration>
 			
 			
 			<Anchor>//api/name/customerId</Anchor>
@@ -224,13 +73,11 @@ a guest account the backend uses these two pieces of information to send your re
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/customerId</TokenIdentifier>
-			<Abstract type="html">A customerId and receipt preference token used for account lookup
-when sending receipts. Resolves customerId with preference level, even if you have
-a guest account the backend uses these two pieces of information to send your receipt over.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/customerId</TokenIdentifier>
+			<Abstract type="html">The ID for this customer; this ID is unique to your merchant account</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSString *customerId</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *customerId</Declaration>
 			
 			
 			<Anchor>//api/name/customerId</Anchor>
@@ -238,115 +85,290 @@ a guest account the backend uses these two pieces of information to send your re
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setReceiptPreferenceToken:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setCustomerName:</TokenIdentifier>
+			<Abstract type="html">The display name of this customer. Will not be their full name.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSString *receiptPreferenceToken</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *customerName</Declaration>
 			
 			
-			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+			<Anchor>//api/name/customerName</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/receiptPreferenceToken</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/customerName</TokenIdentifier>
+			<Abstract type="html">The display name of this customer. Will not be their full name.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSString *receiptPreferenceToken</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *customerName</Declaration>
 			
 			
-			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+			<Anchor>//api/name/customerName</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/receiptPreferenceToken</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/customerName</TokenIdentifier>
+			<Abstract type="html">The display name of this customer. Will not be their full name.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSString *receiptPreferenceToken</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSString *customerName</Declaration>
 			
 			
-			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+			<Anchor>//api/name/customerName</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/setIsPaymentAuthorization:</TokenIdentifier>
-			<Abstract type="html">Whether this was an authorization rather than a sale. In this context,
-authorization means a &quot;complete transaction and verification of funds&quot;
-that provides a token that can be captured at a future time. Note that
-this is NOT the same as an &quot;EMV authorization&quot; which is a part of the
-transaction flow for EMV.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setCreateDate:</TokenIdentifier>
+			<Abstract type="html">The date this checkin was created</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL isPaymentAuthorization</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *createDate</Declaration>
 			
 			
-			<Anchor>//api/name/isPaymentAuthorization</Anchor>
+			<Anchor>//api/name/createDate</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/isPaymentAuthorization</TokenIdentifier>
-			<Abstract type="html">Whether this was an authorization rather than a sale. In this context,
-authorization means a &quot;complete transaction and verification of funds&quot;
-that provides a token that can be captured at a future time. Note that
-this is NOT the same as an &quot;EMV authorization&quot; which is a part of the
-transaction flow for EMV.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/createDate</TokenIdentifier>
+			<Abstract type="html">The date this checkin was created</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL isPaymentAuthorization</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *createDate</Declaration>
 			
 			
-			<Anchor>//api/name/isPaymentAuthorization</Anchor>
+			<Anchor>//api/name/createDate</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHPaymentResponse/isPaymentAuthorization</TokenIdentifier>
-			<Abstract type="html">Whether this was an authorization rather than a sale. In this context,
-authorization means a &quot;complete transaction and verification of funds&quot;
-that provides a token that can be captured at a future time. Note that
-this is NOT the same as an &quot;EMV authorization&quot; which is a part of the
-transaction flow for EMV.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/createDate</TokenIdentifier>
+			<Abstract type="html">The date this checkin was created</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL isPaymentAuthorization</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *createDate</Declaration>
 			
 			
-			<Anchor>//api/name/isPaymentAuthorization</Anchor>
+			<Anchor>//api/name/createDate</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/asDictionary</TokenIdentifier>
-			<Abstract type="html">Return this object as a dictionary (for example for JSON serialization)</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setUpdateDate:</TokenIdentifier>
+			<Abstract type="html">The date this checkin was last updated.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *updateDate</Declaration>
 			
 			
-			<Anchor>//api/name/asDictionary</Anchor>
+			<Anchor>//api/name/updateDate</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentResponse/initWithDictionary:</TokenIdentifier>
-			<Abstract type="html">Create a payment response from an NSDictionary that was generated with asDictionary</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/updateDate</TokenIdentifier>
+			<Abstract type="html">The date this checkin was last updated.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDictionary:(id)dictionary</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>dictionary</Name>
-					<Abstract type="html">: dictionary to be converted to a payment response object.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *updateDate</Declaration>
 			
-			<Anchor>//api/name/initWithDictionary:</Anchor>
+			
+			<Anchor>//api/name/updateDate</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/updateDate</TokenIdentifier>
+			<Abstract type="html">The date this checkin was last updated.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *updateDate</Declaration>
+			
+			
+			<Anchor>//api/name/updateDate</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setExpirationDate:</TokenIdentifier>
+			<Abstract type="html">The date this checkin will expire.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *expirationDate</Declaration>
+			
+			
+			<Anchor>//api/name/expirationDate</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/expirationDate</TokenIdentifier>
+			<Abstract type="html">The date this checkin will expire.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *expirationDate</Declaration>
+			
+			
+			<Anchor>//api/name/expirationDate</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/expirationDate</TokenIdentifier>
+			<Abstract type="html">The date this checkin will expire.</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *expirationDate</Declaration>
+			
+			
+			<Anchor>//api/name/expirationDate</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setPhotoUrl:</TokenIdentifier>
+			<Abstract type="html">The buyer&apos;s photo for verification</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSURL *photoUrl</Declaration>
+			
+			
+			<Anchor>//api/name/photoUrl</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/photoUrl</TokenIdentifier>
+			<Abstract type="html">The buyer&apos;s photo for verification</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSURL *photoUrl</Declaration>
+			
+			
+			<Anchor>//api/name/photoUrl</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/photoUrl</TokenIdentifier>
+			<Abstract type="html">The buyer&apos;s photo for verification</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSURL *photoUrl</Declaration>
+			
+			
+			<Anchor>//api/name/photoUrl</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setStatus:</TokenIdentifier>
+			<Abstract type="html">The status of the checkin</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHLocationCheckinStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/status</TokenIdentifier>
+			<Abstract type="html">The status of the checkin</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHLocationCheckinStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/status</TokenIdentifier>
+			<Abstract type="html">The status of the checkin</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHLocationCheckinStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setGratuityAmount:</TokenIdentifier>
+			<Abstract type="html">If the buyer has set a gratuity preference as a fixed amount, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAmount *gratuityAmount</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityAmount</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/gratuityAmount</TokenIdentifier>
+			<Abstract type="html">If the buyer has set a gratuity preference as a fixed amount, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAmount *gratuityAmount</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityAmount</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/gratuityAmount</TokenIdentifier>
+			<Abstract type="html">If the buyer has set a gratuity preference as a fixed amount, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAmount *gratuityAmount</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityAmount</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/setGratuityPercentage:</TokenIdentifier>
+			<Abstract type="html">If the buyer has set a gratuity preference as a percentage, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDecimalNumber *gratuityPercentage</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityPercentage</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationCheckin/gratuityPercentage</TokenIdentifier>
+			<Abstract type="html">If the buyer has set a gratuity preference as a percentage, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDecimalNumber *gratuityPercentage</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityPercentage</Anchor>
+            <NodeRef refid="37"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationCheckin/gratuityPercentage</TokenIdentifier>
+			<Abstract type="html">If the buyer has set a gratuity preference as a percentage, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDecimalNumber *gratuityPercentage</Declaration>
+			
+			
+			<Anchor>//api/name/gratuityPercentage</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		

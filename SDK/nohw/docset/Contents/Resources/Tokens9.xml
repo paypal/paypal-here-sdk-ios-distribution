@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHCardReaderWatcher.html">
+	<File path="Classes/PPHCardReaderKeyPad.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderWatcher</TokenIdentifier>
-			<Abstract type="html">The CardReaderWatcher basically translates between untyped NotificationCenter events
-and a clean delegate interface without sacrificing the ability to have multiple listeners</Abstract>
-			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderKeyPad</TokenIdentifier>
+			<Abstract type="html">PPHCardReaderKeyPad represents a card reader keypad. If the card reader device does not have
+a keypad, this object will be nil. Query this object for more detailed information on the keypad</Abstract>
+			<DeclaredIn>PPHCardReaderKeyPad.h</DeclaredIn>
             
 			
 			<NodeRef refid="9"/>
@@ -14,36 +14,38 @@ and a clean delegate interface without sacrificing the ability to have multiple 
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderWatcher/initWithDelegate:</TokenIdentifier>
-			<Abstract type="html">Initialize a watcher to send events to the delegate</Abstract>
-			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderKeyPad/setBackLightPresent:</TokenIdentifier>
+			<Abstract type="html">Indicates whether the card reader keypad has a backlight or not.</Abstract>
+			<DeclaredIn>PPHCardReaderKeyPad.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithDelegate:(id)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">the receiver of card reader events</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, readonly) BOOL backLightPresent</Declaration>
 			
-			<Anchor>//api/name/initWithDelegate:</Anchor>
+			
+			<Anchor>//api/name/backLightPresent</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderWatcher/initWithSimpleDelegate:</TokenIdentifier>
-			<Abstract type="html">Initialize a watcher to send events to the delegate (for &quot;simple&quot; card reader events)</Abstract>
-			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderKeyPad/backLightPresent</TokenIdentifier>
+			<Abstract type="html">Indicates whether the card reader keypad has a backlight or not.</Abstract>
+			<DeclaredIn>PPHCardReaderKeyPad.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithSimpleDelegate:(id)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">the receiver of card reader events</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, readonly) BOOL backLightPresent</Declaration>
 			
-			<Anchor>//api/name/initWithSimpleDelegate:</Anchor>
+			
+			<Anchor>//api/name/backLightPresent</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderKeyPad/backLightPresent</TokenIdentifier>
+			<Abstract type="html">Indicates whether the card reader keypad has a backlight or not.</Abstract>
+			<DeclaredIn>PPHCardReaderKeyPad.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL backLightPresent</Declaration>
+			
+			
+			<Anchor>//api/name/backLightPresent</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		

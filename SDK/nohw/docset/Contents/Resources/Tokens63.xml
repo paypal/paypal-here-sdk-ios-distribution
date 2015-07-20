@@ -1,187 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHChipAndPinEventType.html">
+	<File path="Protocols/PPHSimpleCardReaderDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHChipAndPinEventType</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSimpleCardReaderDelegate</TokenIdentifier>
+			<Abstract type="html">Basic events for audio, feature port, and EMV readers. While methods are marked optional for cases where you
+just want to see certain events (like reader software upgrade), the delegate that&apos;s actually looking to complete
+a payment is going to need all of these.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="63"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventApproved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventApproved</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didStartReaderDetection:</TokenIdentifier>
+			<Abstract type="html">This event will be triggered in cases where reader detection takes a while, such as for
+the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didStartReaderDetection:(id)reader</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>reader</Name>
+					<Abstract type="html">the basic information about reader that is actively being &quot;verified&quot;</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didStartReaderDetection:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventDeclined</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventDeclined</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didDetectReaderDevice:</TokenIdentifier>
+			<Abstract type="html">A fully working reader was detected and is available</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didDetectReaderDevice:(id)reader</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>reader</Name>
+					<Abstract type="html">the reader that was detected</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didDetectReaderDevice:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventAuthRequired</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventAuthRequired</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didRemoveReader:</TokenIdentifier>
+			<Abstract type="html">A reader device has been removed from the system</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didRemoveReader:(id)readerType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>readerType</Name>
+					<Abstract type="html">the type of reader that was removed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didRemoveReader:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventFailed</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventFailed</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didDetectCardSwipeAttempt</TokenIdentifier>
+			<Abstract type="html">Something has occurred in the read head of the reader. Since processing can take a second or so,
+this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+will hurt success rate.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didDetectCardSwipeAttempt</Declaration>
+			
+			
+			<Anchor>//api/name/didDetectCardSwipeAttempt</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCancelled</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCancelled</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didCompleteCardSwipe:</TokenIdentifier>
+			<Abstract type="html">A card swipe has succeeded</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didCompleteCardSwipe:(id)card</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">Encrypted and masked data about the card</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didCompleteCardSwipe:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinVerified</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinVerified</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didFailToReadCard</TokenIdentifier>
+			<Abstract type="html">A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didFailToReadCard</Declaration>
+			
+			
+			<Anchor>//api/name/didFailToReadCard</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinIncorrect</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinIncorrect</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSimpleCardReaderDelegate/didReceiveCardReaderMetadata:</TokenIdentifier>
+			<Abstract type="html">Serial number and other related information is available for the card reader.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didReceiveCardReaderMetadata:(id)metadata</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>metadata</Name>
+					<Abstract type="html">the available data about the reader</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didReceiveCardReaderMetadata:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventWaitingForPin</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventWaitingForPin</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinBlocked</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinBlocked</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinDigitPressed</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinDigitPressed</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardBlocked</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardBlocked</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardInserted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardInserted</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardRemoved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardRemoved</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardInvalid</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardInvalid</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardDeclined</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardDeclined</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardChipBroken</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardChipBroken</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventDecisionRequired</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventDecisionRequired</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

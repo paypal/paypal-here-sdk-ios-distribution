@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHChipAndPinAuthResponse.html">
+	<File path="Classes/PPHCardReaderStateMonitor.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinAuthResponse</TokenIdentifier>
-			<Abstract type="html">Additional response data for chip&amp;amp;pin payment attempts</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderStateMonitor</TokenIdentifier>
+			<Abstract type="html">/////////////////////////////////////////////////////////////////////////////////////////////////l</Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
             
 			
 			<NodeRef refid="12"/>
@@ -13,146 +13,182 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/setAuthCode:</TokenIdentifier>
-			<Abstract type="html">Data to be sent to the terminal.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/availableReader</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *authCode</Declaration>
+			<Declaration>- (PPHCardReaderMetadata *)availableReader</Declaration>
 			
 			
-			<Anchor>//api/name/authCode</Anchor>
+			<Anchor>//api/name/availableReader</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/authCode</TokenIdentifier>
-			<Abstract type="html">Data to be sent to the terminal.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/lastConnectedReader</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *authCode</Declaration>
+			<Declaration>- (PPHCardReaderMetadata *)lastConnectedReader</Declaration>
 			
 			
-			<Anchor>//api/name/authCode</Anchor>
+			<Anchor>//api/name/lastConnectedReader</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinAuthResponse/authCode</TokenIdentifier>
-			<Abstract type="html">Data to be sent to the terminal.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/resetReaderEvents</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *authCode</Declaration>
+			<Declaration>- (void)resetReaderEvents</Declaration>
 			
 			
-			<Anchor>//api/name/authCode</Anchor>
+			<Anchor>//api/name/resetReaderEvents</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/setTransactionHandle:</TokenIdentifier>
-			<Abstract type="html">An identifier for this &quot;leg&quot; of the transaction</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/didReadChip</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *transactionHandle</Declaration>
+			<Declaration>- (BOOL)didReadChip</Declaration>
 			
 			
-			<Anchor>//api/name/transactionHandle</Anchor>
+			<Anchor>//api/name/didReadChip</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/transactionHandle</TokenIdentifier>
-			<Abstract type="html">An identifier for this &quot;leg&quot; of the transaction</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/chipIsBroken</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *transactionHandle</Declaration>
+			<Declaration>- (BOOL)chipIsBroken</Declaration>
 			
 			
-			<Anchor>//api/name/transactionHandle</Anchor>
+			<Anchor>//api/name/chipIsBroken</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinAuthResponse/transactionHandle</TokenIdentifier>
-			<Abstract type="html">An identifier for this &quot;leg&quot; of the transaction</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/fallbackIsEnabled</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *transactionHandle</Declaration>
+			<Declaration>- (BOOL)fallbackIsEnabled</Declaration>
 			
 			
-			<Anchor>//api/name/transactionHandle</Anchor>
+			<Anchor>//api/name/fallbackIsEnabled</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/setWarnings:</TokenIdentifier>
-			<Abstract type="html">Non-fatal warnings about the transaction attempt</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/isWaitingForPin</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSArray *warnings</Declaration>
+			<Declaration>- (BOOL)isWaitingForPin</Declaration>
 			
 			
-			<Anchor>//api/name/warnings</Anchor>
+			<Anchor>//api/name/isWaitingForPin</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/warnings</TokenIdentifier>
-			<Abstract type="html">Non-fatal warnings about the transaction attempt</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/isLastPINAttempt</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSArray *warnings</Declaration>
+			<Declaration>- (BOOL)isLastPINAttempt</Declaration>
 			
 			
-			<Anchor>//api/name/warnings</Anchor>
+			<Anchor>//api/name/isLastPINAttempt</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinAuthResponse/warnings</TokenIdentifier>
-			<Abstract type="html">Non-fatal warnings about the transaction attempt</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/chipRequiresPIN</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSArray *warnings</Declaration>
+			<Declaration>- (BOOL)chipRequiresPIN</Declaration>
 			
 			
-			<Anchor>//api/name/warnings</Anchor>
+			<Anchor>//api/name/chipRequiresPIN</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/setResponseCode:</TokenIdentifier>
-			<Abstract type="html">Processor response code.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/chipRequiresSignature</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *responseCode</Declaration>
+			<Declaration>- (BOOL)chipRequiresSignature</Declaration>
 			
 			
-			<Anchor>//api/name/responseCode</Anchor>
+			<Anchor>//api/name/chipRequiresSignature</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinAuthResponse/responseCode</TokenIdentifier>
-			<Abstract type="html">Processor response code.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/emvData</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *responseCode</Declaration>
+			<Declaration>- (NSData *)emvData</Declaration>
 			
 			
-			<Anchor>//api/name/responseCode</Anchor>
+			<Anchor>//api/name/emvData</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinAuthResponse/responseCode</TokenIdentifier>
-			<Abstract type="html">Processor response code.</Abstract>
-			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/terminalId</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *responseCode</Declaration>
+			<Declaration>- (NSString *)terminalId</Declaration>
 			
 			
-			<Anchor>//api/name/responseCode</Anchor>
+			<Anchor>//api/name/terminalId</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/authEvent</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
+			
+			<Declaration>- (PPHChipAndPinAuthEvent *)authEvent</Declaration>
+			
+			
+			<Anchor>//api/name/authEvent</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/approvalEvent</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
+			
+			<Declaration>- (PPHChipAndPinEventWithEmv *)approvalEvent</Declaration>
+			
+			
+			<Anchor>//api/name/approvalEvent</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderStateMonitor/decisionEvent</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHCardReaderStateMonitor.h</DeclaredIn>
+			
+			<Declaration>- (PPHChipAndPinDecisionEvent *)decisionEvent</Declaration>
+			
+			
+			<Anchor>//api/name/decisionEvent</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		

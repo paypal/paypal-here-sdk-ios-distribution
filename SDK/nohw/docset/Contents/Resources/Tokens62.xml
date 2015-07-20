@@ -1,57 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHAvailablePaymentTypes.html">
+	<File path="Protocols/PPHSignatureViewDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHAvailablePaymentTypes</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSignatureViewDelegate</TokenIdentifier>
+			<Abstract type="html">A delegate that receives events related to buyer signatures in the PPHSignatureView</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
             
 			
 			<NodeRef refid="62"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAvailablePaymentTypeNone</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAvailablePaymentTypeNone</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureTouchesBegan</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has begun, so that you can hide potentially conflicting UI</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureTouchesBegan</Declaration>
+			
+			
+			<Anchor>//api/name/signatureTouchesBegan</Anchor>
             <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAvailablePaymentTypeCard</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAvailablePaymentTypeCard</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureUpdated:</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has completed. Note that it may &quot;begin again&quot; such as a
+disconnected gesture for last name.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureUpdated:(id)isEmpty</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>isEmpty</Name>
+					<Abstract type="html">whether the new signature is empty</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/signatureUpdated:</Anchor>
             <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAvailablePaymentTypeCheckin</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAvailablePaymentTypeCheckin</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAvailablePaymentTypeChip</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAvailablePaymentTypeChip</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHTransactionManagerDelegate.html">
+	<File path="Protocols/PPHCardReaderDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionManagerDelegate</TokenIdentifier>
-			<Abstract type="html">The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various
-messages throughout the payment flow. These messages reflect the different stages of a transaction
-and could be used by the application to display appropriate text, image or UI on the screen.</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHCardReaderDelegate</TokenIdentifier>
+			<Abstract type="html">Additional events for EMV aka Chip &amp;amp; Pin readers</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="57"/>
@@ -15,19 +13,108 @@ and could be used by the application to display appropriate text, image or UI on
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionManagerDelegate/onPaymentEvent:</TokenIdentifier>
-			<Abstract type="html">onPaymentEvent</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</TokenIdentifier>
+			<Abstract type="html">Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
+NOT receive didDetectReaderDevice until the condition is resolved.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)onPaymentEvent:(id)event</Declaration>
+			<Declaration>- (void)didDetectUpgradeableReader:(id)reader withMessage:(id)message isRequired:(id)required isInitial:(id)initial withEstimatedDuration:(id)estimatedDuration</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">: A PaymentEvent object the contains information about the event.</Abstract>
+					<Name>reader</Name>
+					<Abstract type="html">the reader that has an available upgrade</Abstract>
+				</Parameter><Parameter>
+					<Name>message</Name>
+					<Abstract type="html">the reason or explanation for the upgrade</Abstract>
+				</Parameter><Parameter>
+					<Name>required</Name>
+					<Abstract type="html">whether the reader can proceed without an upgrade</Abstract>
+				</Parameter><Parameter>
+					<Name>initial</Name>
+					<Abstract type="html">whether this is the initial upgrade to the reader</Abstract>
+				</Parameter><Parameter>
+					<Name>estimatedDuration</Name>
+					<Abstract type="html">the estimated time the update will take to apply in total</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/onPaymentEvent:</Anchor>
+			<Anchor>//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</Anchor>
+            <NodeRef refid="57"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didFinishUpgradePreparations</TokenIdentifier>
+			<Abstract type="html">The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
+to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didFinishUpgradePreparations</Declaration>
+			
+			
+			<Anchor>//api/name/didFinishUpgradePreparations</Anchor>
+            <NodeRef refid="57"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didUpgradeReader:withMessage:</TokenIdentifier>
+			<Abstract type="html">A reader upgrade was successful</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didUpgradeReader:(id)successful withMessage:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>successful</Name>
+					<Abstract type="html">whether the upgrade succeeded</Abstract>
+				</Parameter><Parameter>
+					<Name>message</Name>
+					<Abstract type="html">Additional details about the upgrade (if it failed)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didUpgradeReader:withMessage:</Anchor>
+            <NodeRef refid="57"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</TokenIdentifier>
+			<Abstract type="html">There is a status update to the current ongoing reader upgrade</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didReceiveReaderUpgradeStatusWithMessage:(id)message currentStep:(id)currentStep totalSteps:(id)totalSteps completion:(id)completion</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">Details about the current upgrade status</Abstract>
+				</Parameter><Parameter>
+					<Name>currentStep</Name>
+					<Abstract type="html">The number of the current upgrade step from 1 to totalSteps</Abstract>
+				</Parameter><Parameter>
+					<Name>totalSteps</Name>
+					<Abstract type="html">The total number of steps in the upgrade</Abstract>
+				</Parameter><Parameter>
+					<Name>completion</Name>
+					<Abstract type="html">The progress of the upgrade from 0.0 to 1.0</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</Anchor>
+            <NodeRef refid="57"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveChipAndPinEvent:</TokenIdentifier>
+			<Abstract type="html">Called when an event related to chip &amp;amp; pin transactions has occurred on the reader</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didReceiveChipAndPinEvent:(id)event</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>event</Name>
+					<Abstract type="html">the event that has occurred</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didReceiveChipAndPinEvent:</Anchor>
             <NodeRef refid="57"/>
 		</Token>
 		

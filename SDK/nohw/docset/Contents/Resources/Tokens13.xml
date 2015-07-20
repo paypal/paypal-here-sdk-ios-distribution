@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHChipAndPinCancelEvent.html">
+	<File path="Classes/PPHCardReaderWatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinCancelEvent</TokenIdentifier>
-			<Abstract type="html">Fired when the transaction PIN entry is canceled by pressing
-the cancel button or removing the card.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderWatcher</TokenIdentifier>
+			<Abstract type="html">The CardReaderWatcher basically translates between untyped NotificationCenter events
+and a clean delegate interface without sacrificing the ability to have multiple listeners</Abstract>
+			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
             
 			
 			<NodeRef refid="13"/>
@@ -14,38 +14,36 @@ the cancel button or removing the card.</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinCancelEvent/setCardRemoved:</TokenIdentifier>
-			<Abstract type="html">Whether the card has been removed as well</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderWatcher/initWithDelegate:</TokenIdentifier>
+			<Abstract type="html">Initialize a watcher to send events to the delegate</Abstract>
+			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL cardRemoved</Declaration>
+			<Declaration>- (id)initWithDelegate:(id)delegate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>delegate</Name>
+					<Abstract type="html">the receiver of card reader events</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/cardRemoved</Anchor>
+			<Anchor>//api/name/initWithDelegate:</Anchor>
             <NodeRef refid="13"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinCancelEvent/cardRemoved</TokenIdentifier>
-			<Abstract type="html">Whether the card has been removed as well</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderWatcher/initWithSimpleDelegate:</TokenIdentifier>
+			<Abstract type="html">Initialize a watcher to send events to the delegate (for &quot;simple&quot; card reader events)</Abstract>
+			<DeclaredIn>PPHCardReaderWatcher.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL cardRemoved</Declaration>
+			<Declaration>- (id)initWithSimpleDelegate:(id)delegate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>delegate</Name>
+					<Abstract type="html">the receiver of card reader events</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/cardRemoved</Anchor>
-            <NodeRef refid="13"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinCancelEvent/cardRemoved</TokenIdentifier>
-			<Abstract type="html">Whether the card has been removed as well</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL cardRemoved</Declaration>
-			
-			
-			<Anchor>//api/name/cardRemoved</Anchor>
+			<Anchor>//api/name/initWithSimpleDelegate:</Anchor>
             <NodeRef refid="13"/>
 		</Token>
 		

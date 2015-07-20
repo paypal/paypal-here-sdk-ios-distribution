@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHTransactionResponse.html">
+	<File path="Classes/PPHReceiptDestination.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionResponse</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHReceiptDestination</TokenIdentifier>
+			<Abstract type="html">Receipts can be sent to email addresses or mobile phone numbers. At some point in the near future, you will also receive
+&quot;tokens&quot; back from payment operations that allow you to send receipts to the email address or phone number on file for
+the card.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
             
 			
 			<NodeRef refid="45"/>
@@ -13,155 +15,74 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/setError:</TokenIdentifier>
-			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/setDestinationAddress:</TokenIdentifier>
+			<Abstract type="html">The email address, phone number, or &quot;tokenized&quot; email/phone.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *destinationAddress</Declaration>
 			
 			
-			<Anchor>//api/name/error</Anchor>
+			<Anchor>//api/name/destinationAddress</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/error</TokenIdentifier>
-			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/destinationAddress</TokenIdentifier>
+			<Abstract type="html">The email address, phone number, or &quot;tokenized&quot; email/phone.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *destinationAddress</Declaration>
 			
 			
-			<Anchor>//api/name/error</Anchor>
+			<Anchor>//api/name/destinationAddress</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionResponse/error</TokenIdentifier>
-			<Abstract type="html">Non-nil if an error has occurred in processing the payment.</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHReceiptDestination/destinationAddress</TokenIdentifier>
+			<Abstract type="html">The email address, phone number, or &quot;tokenized&quot; email/phone.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHError *error</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *destinationAddress</Declaration>
 			
 			
-			<Anchor>//api/name/error</Anchor>
+			<Anchor>//api/name/destinationAddress</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/setRecord:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/setIsEmail:</TokenIdentifier>
+			<Abstract type="html">YES if this destination is an email address, NO if it&apos;s a phone number</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHTransactionRecord *record</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL isEmail</Declaration>
 			
 			
-			<Anchor>//api/name/record</Anchor>
+			<Anchor>//api/name/isEmail</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/record</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/isEmail</TokenIdentifier>
+			<Abstract type="html">YES if this destination is an email address, NO if it&apos;s a phone number</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHTransactionRecord *record</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL isEmail</Declaration>
 			
 			
-			<Anchor>//api/name/record</Anchor>
+			<Anchor>//api/name/isEmail</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionResponse/record</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHReceiptDestination/isEmail</TokenIdentifier>
+			<Abstract type="html">YES if this destination is an email address, NO if it&apos;s a phone number</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHTransactionRecord *record</Declaration>
-			
-			
-			<Anchor>//api/name/record</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/setDidRequestPrintReceipt:</TokenIdentifier>
-			<Abstract type="html">This flag indicates whether the customer asked for a print receipt at the end of the SDK flow.
-The SDK itself does not support any printers or printer integration; instead it is up to the
-integrating application to provide print receipts based on feedback available in the transaction
-response and this flag</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL didRequestPrintReceipt</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL isEmail</Declaration>
 			
 			
-			<Anchor>//api/name/didRequestPrintReceipt</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/didRequestPrintReceipt</TokenIdentifier>
-			<Abstract type="html">This flag indicates whether the customer asked for a print receipt at the end of the SDK flow.
-The SDK itself does not support any printers or printer integration; instead it is up to the
-integrating application to provide print receipts based on feedback available in the transaction
-response and this flag</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL didRequestPrintReceipt</Declaration>
-			
-			
-			<Anchor>//api/name/didRequestPrintReceipt</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionResponse/didRequestPrintReceipt</TokenIdentifier>
-			<Abstract type="html">This flag indicates whether the customer asked for a print receipt at the end of the SDK flow.
-The SDK itself does not support any printers or printer integration; instead it is up to the
-integrating application to provide print receipts based on feedback available in the transaction
-response and this flag</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL didRequestPrintReceipt</Declaration>
-			
-			
-			<Anchor>//api/name/didRequestPrintReceipt</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/setIsSignatureRequiredToFinalize:</TokenIdentifier>
-			<Abstract type="html">If YES then the app should supply a signature image using the finalizePaymentForTransaction call</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL isSignatureRequiredToFinalize</Declaration>
-			
-			
-			<Anchor>//api/name/isSignatureRequiredToFinalize</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionResponse/isSignatureRequiredToFinalize</TokenIdentifier>
-			<Abstract type="html">If YES then the app should supply a signature image using the finalizePaymentForTransaction call</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL isSignatureRequiredToFinalize</Declaration>
-			
-			
-			<Anchor>//api/name/isSignatureRequiredToFinalize</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionResponse/isSignatureRequiredToFinalize</TokenIdentifier>
-			<Abstract type="html">If YES then the app should supply a signature image using the finalizePaymentForTransaction call</Abstract>
-			<DeclaredIn>PPHTransactionManager.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL isSignatureRequiredToFinalize</Declaration>
-			
-			
-			<Anchor>//api/name/isSignatureRequiredToFinalize</Anchor>
+			<Anchor>//api/name/isEmail</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		

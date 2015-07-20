@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHMerchantInfo.html">
+	<File path="Classes/PPHInvoiceTotals.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHMerchantInfo</TokenIdentifier>
-			<Abstract type="html">Information about the merchant&apos;s preferences such as currency and invoice header information.</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceTotals</TokenIdentifier>
+			<Abstract type="html">A class to help with all the different ways one computes the totals of an invoice</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
             
 			
 			<NodeRef refid="34"/>
@@ -13,247 +13,360 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceLogoUrl:</TokenIdentifier>
-			<Abstract type="html">The image to be displayed on invoices</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setTotal:</TokenIdentifier>
+			<Abstract type="html">The honest to goodness total that is expected to be paid against this invoice.</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *total</Declaration>
 			
 			
-			<Anchor>//api/name/invoiceLogoUrl</Anchor>
+			<Anchor>//api/name/total</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
-			<Abstract type="html">The image to be displayed on invoices</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/total</TokenIdentifier>
+			<Abstract type="html">The honest to goodness total that is expected to be paid against this invoice.</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *total</Declaration>
 			
 			
-			<Anchor>//api/name/invoiceLogoUrl</Anchor>
+			<Anchor>//api/name/total</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
-			<Abstract type="html">The image to be displayed on invoices</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/total</TokenIdentifier>
+			<Abstract type="html">The honest to goodness total that is expected to be paid against this invoice.</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *total</Declaration>
 			
 			
-			<Anchor>//api/name/invoiceLogoUrl</Anchor>
+			<Anchor>//api/name/total</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceContactInfo:</TokenIdentifier>
-			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setSubTotal:</TokenIdentifier>
+			<Abstract type="html">Total before taxes, discounts and tips</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *subTotal</Declaration>
 			
 			
-			<Anchor>//api/name/invoiceContactInfo</Anchor>
+			<Anchor>//api/name/subTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
-			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/subTotal</TokenIdentifier>
+			<Abstract type="html">Total before taxes, discounts and tips</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *subTotal</Declaration>
 			
 			
-			<Anchor>//api/name/invoiceContactInfo</Anchor>
+			<Anchor>//api/name/subTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
-			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/subTotal</TokenIdentifier>
+			<Abstract type="html">Total before taxes, discounts and tips</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *subTotal</Declaration>
 			
 			
-			<Anchor>//api/name/invoiceContactInfo</Anchor>
+			<Anchor>//api/name/subTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setCurrencyCode:</TokenIdentifier>
-			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
-default currency of the account.</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setItemTaxTotal:</TokenIdentifier>
+			<Abstract type="html">Tax from the items</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *itemTaxTotal</Declaration>
 			
 			
-			<Anchor>//api/name/currencyCode</Anchor>
+			<Anchor>//api/name/itemTaxTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/currencyCode</TokenIdentifier>
-			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
-default currency of the account.</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/itemTaxTotal</TokenIdentifier>
+			<Abstract type="html">Tax from the items</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *itemTaxTotal</Declaration>
 			
 			
-			<Anchor>//api/name/currencyCode</Anchor>
+			<Anchor>//api/name/itemTaxTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/currencyCode</TokenIdentifier>
-			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
-default currency of the account.</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/itemTaxTotal</TokenIdentifier>
+			<Abstract type="html">Tax from the items</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *itemTaxTotal</Declaration>
 			
 			
-			<Anchor>//api/name/currencyCode</Anchor>
+			<Anchor>//api/name/itemTaxTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTaxId:</TokenIdentifier>
-			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setTaxTotal:</TokenIdentifier>
+			<Abstract type="html">Item tax + shipping tax</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *taxTotal</Declaration>
 			
 			
-			<Anchor>//api/name/taxId</Anchor>
+			<Anchor>//api/name/taxTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/taxId</TokenIdentifier>
-			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/taxTotal</TokenIdentifier>
+			<Abstract type="html">Item tax + shipping tax</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *taxTotal</Declaration>
 			
 			
-			<Anchor>//api/name/taxId</Anchor>
+			<Anchor>//api/name/taxTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/taxId</TokenIdentifier>
-			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/taxTotal</TokenIdentifier>
+			<Abstract type="html">Item tax + shipping tax</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *taxTotal</Declaration>
 			
 			
-			<Anchor>//api/name/taxId</Anchor>
+			<Anchor>//api/name/taxTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setPayPalAccount:</TokenIdentifier>
-			<Abstract type="html">Access credentials from PayPal Access</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setDiscountsTotal:</TokenIdentifier>
+			<Abstract type="html">Total of discounts on the order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *discountsTotal</Declaration>
 			
 			
-			<Anchor>//api/name/payPalAccount</Anchor>
+			<Anchor>//api/name/discountsTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/payPalAccount</TokenIdentifier>
-			<Abstract type="html">Access credentials from PayPal Access</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/discountsTotal</TokenIdentifier>
+			<Abstract type="html">Total of discounts on the order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *discountsTotal</Declaration>
 			
 			
-			<Anchor>//api/name/payPalAccount</Anchor>
+			<Anchor>//api/name/discountsTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/payPalAccount</TokenIdentifier>
-			<Abstract type="html">Access credentials from PayPal Access</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/discountsTotal</TokenIdentifier>
+			<Abstract type="html">Total of discounts on the order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *discountsTotal</Declaration>
 			
 			
-			<Anchor>//api/name/payPalAccount</Anchor>
+			<Anchor>//api/name/discountsTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTerms:</TokenIdentifier>
-			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setGratuityTotal:</TokenIdentifier>
+			<Abstract type="html">Tip added to the order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *gratuityTotal</Declaration>
 			
 			
-			<Anchor>//api/name/terms</Anchor>
+			<Anchor>//api/name/gratuityTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/terms</TokenIdentifier>
-			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/gratuityTotal</TokenIdentifier>
+			<Abstract type="html">Tip added to the order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *gratuityTotal</Declaration>
 			
 			
-			<Anchor>//api/name/terms</Anchor>
+			<Anchor>//api/name/gratuityTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/terms</TokenIdentifier>
-			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/gratuityTotal</TokenIdentifier>
+			<Abstract type="html">Tip added to the order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *gratuityTotal</Declaration>
 			
 			
-			<Anchor>//api/name/terms</Anchor>
+			<Anchor>//api/name/gratuityTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</TokenIdentifier>
-			<Abstract type="html">To save the merchant preferences. Currently it stores taxID &amp;amp; ccStatementName both of which are shown in the
-receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setShippingTotal:</TokenIdentifier>
+			<Abstract type="html">Shipping charge (not common for in person transactions obviously)</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>- (void)saveMerchantPreferencesWithTaxID:(id)taxID ccStatementName:(id)ccStatementName completionHandler:(id)completionHandler</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *shippingTotal</Declaration>
 			
 			
-			<Anchor>//api/name/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</Anchor>
+			<Anchor>//api/name/shippingTotal</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/getMerchantPreferencesWithCompletionHandler:</TokenIdentifier>
-			<Abstract type="html">To get the merchant preferences. Currenlty it returns taxID &amp;amp; ccStatementName both of which are set using saveMerchantPreferencesWithTaxID API
-or through PayPal website.</Abstract>
-			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/shippingTotal</TokenIdentifier>
+			<Abstract type="html">Shipping charge (not common for in person transactions obviously)</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
 			
-			<Declaration>- (void)getMerchantPreferencesWithCompletionHandler:(id)completionHandler</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *shippingTotal</Declaration>
 			
 			
-			<Anchor>//api/name/getMerchantPreferencesWithCompletionHandler:</Anchor>
+			<Anchor>//api/name/shippingTotal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/shippingTotal</TokenIdentifier>
+			<Abstract type="html">Shipping charge (not common for in person transactions obviously)</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *shippingTotal</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTotal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setRefundTotal:</TokenIdentifier>
+			<Abstract type="html">Refunds against this invoice, only relevant when read from the server</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *refundTotal</Declaration>
+			
+			
+			<Anchor>//api/name/refundTotal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/refundTotal</TokenIdentifier>
+			<Abstract type="html">Refunds against this invoice, only relevant when read from the server</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *refundTotal</Declaration>
+			
+			
+			<Anchor>//api/name/refundTotal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/refundTotal</TokenIdentifier>
+			<Abstract type="html">Refunds against this invoice, only relevant when read from the server</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *refundTotal</Declaration>
+			
+			
+			<Anchor>//api/name/refundTotal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setTaxDetails:</TokenIdentifier>
+			<Abstract type="html">Details for each tax rate on this order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *taxDetails</Declaration>
+			
+			
+			<Anchor>//api/name/taxDetails</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/taxDetails</TokenIdentifier>
+			<Abstract type="html">Details for each tax rate on this order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *taxDetails</Declaration>
+			
+			
+			<Anchor>//api/name/taxDetails</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/taxDetails</TokenIdentifier>
+			<Abstract type="html">Details for each tax rate on this order</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *taxDetails</Declaration>
+			
+			
+			<Anchor>//api/name/taxDetails</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/initWithInvoice:</TokenIdentifier>
+			<Abstract type="html">Initialize and compute totals for an invoice</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithInvoice:(id)invoice</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice on which to compute totals</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithInvoice:</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/totalWithParts:</TokenIdentifier>
+			<Abstract type="html">Retrieve the total using a custom composition</Abstract>
+			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			
+			<Declaration>- (NSDecimalNumber *)totalWithParts:(id)composition</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>composition</Name>
+					<Abstract type="html">Which parts should be included in the total</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/totalWithParts:</Anchor>
             <NodeRef refid="34"/>
 		</Token>
 		

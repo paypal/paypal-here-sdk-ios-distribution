@@ -169,3 +169,8 @@ Bug fix: Fixing the AU country code check, that was wrongly setting the availabl
   - [EMV flow] Making sure error messages bubble all the way up to the app when failures are encountered during payment
   - [EMV flow] Added a didRequestPrintReceipt flag to indicate whether flow was completed with a request to print receipts.
     The SDK does not support receipt printing - it is up to the application to determine how to handle the request.
+
+1.5.1
+  What's new:
+  - [EMV Flow] Fixed a bug related to how we handle broken chip cards or when chip is not readable and user resorts to using swipe
+  - [EMV Flow] Fixed a bug related to a specific payment declined message that was not parsed correctly by the SDK

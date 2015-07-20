@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHSignatureView.html">
+	<File path="Classes/PPHPaymentConstants.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHSignatureView</TokenIdentifier>
-			<Abstract type="html">A UIView subclass that will record user touches into a signature image.
-Generally should be used &quot;full-ish&quot; screen.</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHPaymentConstants</TokenIdentifier>
+			<Abstract type="html">Convenience methods for dealing with payments
+and their enumerations</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
             
 			
 			<NodeRef refid="40"/>
@@ -14,75 +14,173 @@ Generally should be used &quot;full-ish&quot; screen.</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/setDelegate:</TokenIdentifier>
-			<Abstract type="html">A receiver of events on the signature view</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodFromString:</TokenIdentifier>
+			<Abstract type="html">Return a payment method given the corresponding non-localized string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
+			<Declaration>+ (PPHPaymentMethod)paymentMethodFromString:(id)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the payment method</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/delegate</Anchor>
+			<Anchor>//api/name/paymentMethodFromString:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/delegate</TokenIdentifier>
-			<Abstract type="html">A receiver of events on the signature view</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodDetailFromString:</TokenIdentifier>
+			<Abstract type="html">Return payment method detail given the corresponding non-localized string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
+			<Declaration>+ (PPHPaymentMethodDetail)paymentMethodDetailFromString:(id)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the payment detail</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/delegate</Anchor>
+			<Anchor>//api/name/paymentMethodDetailFromString:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHSignatureView/delegate</TokenIdentifier>
-			<Abstract type="html">A receiver of events on the signature view</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromPaymentMethod:</TokenIdentifier>
+			<Abstract type="html">Turn a payment method enum into a string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
+			<Declaration>+ (NSString *)stringFromPaymentMethod:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/delegate</Anchor>
+			<Anchor>//api/name/stringFromPaymentMethod:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/isEmptySignature</TokenIdentifier>
-			<Abstract type="html">Is the current signature considered empty?</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromPaymentMethodDetail:</TokenIdentifier>
+			<Abstract type="html">Turn a payment method detail into a string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isEmptySignature</Declaration>
+			<Declaration>+ (NSString *)stringFromPaymentMethodDetail:(id)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">the payment method detail enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/isEmptySignature</Anchor>
+			<Anchor>//api/name/stringFromPaymentMethodDetail:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/printableImage</TokenIdentifier>
-			<Abstract type="html">Get the signature image for printing or upload purposes</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsContactless:</TokenIdentifier>
+			<Abstract type="html">Is the payment method a type of Contactless payment?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Declaration>- (UIImage *)printableImage</Declaration>
+			<Declaration>+ (BOOL)paymentMethodIsContactless:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/printableImage</Anchor>
+			<Anchor>//api/name/paymentMethodIsContactless:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/clearSignaturePad</TokenIdentifier>
-			<Abstract type="html">Clear the current signature. It&apos;s good practice to do this after you&apos;re done with it as well
-to avoid memory usage and potential data exposure.</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsCardPresent:</TokenIdentifier>
+			<Abstract type="html">Check whether the payment method is a form of card present payment</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Declaration>- (void)clearSignaturePad</Declaration>
+			<Declaration>+ (BOOL)paymentMethodIsCardPresent:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
 			
+			<Anchor>//api/name/paymentMethodIsCardPresent:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsEmv:</TokenIdentifier>
+			<Abstract type="html">Check whether the payment method is a form of EMV payments</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
 			
-			<Anchor>//api/name/clearSignaturePad</Anchor>
+			<Declaration>+ (BOOL)paymentMethodIsEmv:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsEmv:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsCreditCard:</TokenIdentifier>
+			<Abstract type="html">Is the payment method a type of Credit Card payment?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsCreditCard:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsCreditCard:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodMarksAsPaid:</TokenIdentifier>
+			<Abstract type="html">Does the payment method put the invoice in a MarkedAsPaid state
+(i.e. is it cash or check)</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodMarksAsPaid:(id)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodMarksAsPaid:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodForContactlessTransactionType:</TokenIdentifier>
+			<Abstract type="html">Return a payment method given a contactless transaction type.</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHPaymentMethod)paymentMethodForContactlessTransactionType:(id)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>the</Name>
+					<Abstract type="html">contactless transaction type such as EMV or MSD.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodForContactlessTransactionType:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
