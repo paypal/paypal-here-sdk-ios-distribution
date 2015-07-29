@@ -156,6 +156,8 @@
                                                        NSLog(@"Dev Message: %@", [record.error.userInfo objectForKey:@"DevMessage"]);
                                                        
                                                        [self showAlertWithTitle:@"Amount is out of bounds" andMessage:nil];
+                                                   } else if (record.error.code == kPPHLocalErrorBadConfigurationNoEMVReaderConnected) {
+                                                       [self showAlertWithTitle:@"Cannot perform transaction" andMessage:@"Connect the Chip & PIN reader before attempting payment"];
                                                    }
                                                }
 

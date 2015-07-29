@@ -174,3 +174,8 @@ Bug fix: Fixing the AU country code check, that was wrongly setting the availabl
   What's new:
   - [EMV Flow] Fixed a bug related to how we handle broken chip cards or when chip is not readable and user resorts to using swipe
   - [EMV Flow] Fixed a bug related to a specific payment declined message that was not parsed correctly by the SDK
+
+1.5.2
+  What's new:
+  - [EMV Flow] Updated the SDK behavior when the processPaymentWithSDKUI is invoked before a chip & pin reader is connected over bluetooth. The
+               will now throw an error kPPHLocalErrorBadConfigurationNoEMVReaderConnected if a reader is not connected
