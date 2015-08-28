@@ -14,193 +14,167 @@ Developers should use the PayPal Here SDK to get world-class payment process wit
 
 Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
 
-As an alternative to the SDK, a developer can also use a URI framework that lets one app (or mobile webpage) link directly to the PayPal Here app to complete a payment.  Using this method, the merchant will tap a button or link in one app, which will open the pre-installed PayPal Here app on their device, with the PayPal Here app pre-populating the original order information, collect a payment (card swipe) in the PayPal Here app, and return the merchant to the original app/webpage. This is available for US, UK, Austalia, and Japan for iOS & Android.  See the [Sideloader API](https://github.com/paypal/here-sideloader-api-samples) on Github.
+As an alternative to the SDK, a developer can also use a URI framework that lets one app (or mobile webpage) link directly to the PayPal Here app to complete a payment.  Using this method, the merchant will tap a button or link in one app, which will open the pre-installed PayPal Here app on their device, with the PayPal Here app pre-populating the original order information, collect a payment (card swipe) in the PayPal Here app, and return the merchant to the original app/webpage. This is available for US, UK, Australia, and Japan for iOS & Android.  See the [Sideloader API](https://github.com/paypal/here-sideloader-api-samples) on Github.
 
-Prerequisites For Using The SDK
-===============================
+Project Configuration
+==============
 
-In order to start using the PayPal Here SDK, you need the following:
-
-1. A developer-enabled PayPal account ([sign up here](https://developer.paypal.com/webapps/developer/applications/myapps)).  This is the account you use to register your app.  You will receive an App ID & Secret to use with the SDK.
-2. A PayPal Here business account ([sign up here] (https://www.paypal.com/us/webapps/mobilemerchant/page/mpa/ob/geturl?onbver=2.0&amp;country.x=US&productIntentID=mobile_payment_acceptance&referringpage=ios_sdk_github&hs=login)).  This is the account that the end merchant uses, and will be the destination account of funds received. A single app can be associated with/used by one or many merchant accounts – including the developer-enabled account.  You will receive an Access Token and Refresh URL for each merchant that grants permission to your app. (*See our [Onboarding guide](/docs/Merchant%20Onboarding.pdf) for suggestions on how to help your merchants sign up for PayPal business accounts*)
-3. A PayPal Here swiper.  You can get one shipped to you when you create a business account in step (2), or via retailers like [Staples](http://www.staples.com/PayPal-Here-trade-Mobile-Card-Reader/product_1421621).
-4. Apple development tools: Xcode 5.1, and an Apple developer account.
+Please follow the steps in the [project configuration guide](/docs/ProjectConfiguration.md) to properly set up your application for use with the PayPalHereSDK.
 
 The Sample App
 ==============
-To make it easier to see and understand how to best use the capabilities of the SDK, we’ve designed a sample/reference application.  To make the app functional, there is some minimal UI code that can be ignored – the point is to show how to use the SDK API’s.
 
-With the Sample App, you can view code that:
-* Initializes the SDK
-* Authenticates the merchant
-* Updates the merchant location
-* Creates & adds items to an invoice
-* Takes a payment with the card reader
-* Takes a keyed-in card transaction
-* Add a signature to finalize a payment
-* Send an email/SMS receipt 
+Please see and modify the sample app availble in this repo to experiment and learn more about the SDK and it's capabilities.
 
+Authentication
+===============================
 
-Get Started
-===========
-The first thing you need to do is set up your app to start using the SDK.  
-* Initialize the SDK (each time the app starts) 
-* Authenticate the merchant and pass the merchant’s credentials (Access Token) to the SDK [(more on PayPal oAuth)](/docs/PayPal%20Access%20oAuth.md)
-* Set the merchant’s location (any time the merchant’s location changes) 
-* Start monitoring the card reader for events (for card present transactions)
+1. Set up a PayPal developer account ([sign up here](https://developer.paypal.com/developer/applications/)) and configure an application to be used with the PayPal Here SDK.  Refer to the [PayPal Here SDK integration Document](https://developer.paypal.com/docs/integration/mobile/pph-sdk-overview/) for information on how to properly configure your app.
 
-If you want to start with test transactions (generally a good idea), you can optionally send a selectEnvironmentWithType message to PayPalHereSDK: 
-```objectivec
-	[PayPalHereSDK selectEnvironmentWithType:environment_type];
-```
-* *environment_type* is **ePPHSDKServiceType_Sandbox** for the Sandbox environment, or **ePPHSDKServiceType_Live** for the live environment (default).
+2. Deploy and configure the [Retail SDK Authentication Server](https://github.com/djMax/paypal-retail-node) OR manually negotiate the [PayPal oAuth2 flow](https://developer.paypal.com/docs/integration/direct/paypal-oauth2/) to obtain the tokens required for login.
 
-With an authenticated merchant, it calls PayPalHereSDK.setActiveMerchant to set the merchant for which transactions will be executed. 
-```objectivec
-	[PayPalHereSDK setActiveMerchant:merchant withMerchantId:merchantId completionHander:handler];
-```
-* *merchant* is an instance of the PPHMerchantInfo represeting a merchant object
-* *merchantId* is an id for the merchant. It is defined by agreement between the back-end server and the app (not by the SDK), and must be unique among the merchants that use the back-end server and the app.
-* *handler* is an id for a completion handler to be called when merchant setup is completed.
+See our [Merchant Onboarding Guide](docs/Merchant%20Onboarding%20Guide.pdf) for suggestions on how to help your merchants sign up for PayPal business accounts and link them in your back-office software.
 
-Now, monitor the card reader for events like reader connections, removals, and swipes. Invoke the  API
-(SettingsViewController.m). 
-```objectivec
-	[[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
+SDK Initialization
+==================
+
+* Configure the environment if you wish to use sandbox.  Consult the [sandbox overview](https://developer.paypal.com/docs/classic/lifecycle/sb_overview/) for more information about the PayPal sandbox environment.
+
+```objc
+[PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
 ```
 
-Interacting With The Card Reader
+* Setup the SDK merchant with your credentials.
+
+```objc
+// Either with raw tokens...
+[PayPalHereSDK setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:];
+
+// Or by digesting the response from paypal-retail-node...
+[PayPalHereSDK setupWithCompositeTokenString:thenCompletionHandler:];
+```
+
+Invoices
 ================================
-Card reader interaction is established by calling:
-```objectivec
-    [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
-```
-which will monitor for all card reader types.
 
-Once you've begun monitoring, the SDK will start firing notification center events for relevant card events.
-However, we recommend you do not monitor the notification center directly, but instead use our class that
-will translate untyped notification center calls to typed delegate calls. You do this by simply storing an
-instance of PPHCardReaderWatcher in your class and implementing the PPHCardReaderDelegate protocol:
-```objectivec
-    self.readerWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate: self];
-```
-The events are very simple:
+Invoices in the PayPalHereSDK define the order which we are interacting with using the PayPal APIs. They provide synchronization with the website, total calculation and many more powerful features.
 
-```objectivec
--(void)didStartReaderDetection: (PPHReaderType) readerType; //Indicates a reader (or something else) was inserted into the headphone jack
--(void)didDetectReaderDevice: (PPHCardReaderBasicInformation*) reader; //Indicates that a PayPal reader was detected
--(void)didReceiveCardReaderMetadata: (PPHCardReaderMetadata*) metadata; //Includes additional data about the PayPal reader, like reader type and serial number
--(void)didRemoveReader: (PPHReaderType) readerType; //Indicates the reader was removed
+To take a payment we must first create an invoice which can be as simple or complex as your use case demands. The simplest use case is to create an invoice for a single non-itemized amount:
 
--(void)didDetectCardSwipeAttempt; //Indicates that something (e.g. a card, a piece of paper) was swiped through the reader
--(void)didCompleteCardSwipe:(PPHCardSwipeData*)card; //Indicates a successful read of the card, with data
--(void)didFailToReadCard; //Indicates a failed read (e.g. this wasn't a credit card)
+```objc
+PPHInvoice *myOneDollarInvoice = [[PPHInvoice alloc] initWithItem:@"Total" forAmount:[PPHAmount amountWithDecimal:[NSDecimalNumber one]]];
 ```
 
-The first four relate to the insertion, removal and detection of the card reader, the other three are in the context of a transaction, which you must "begin" by telling the card reader manager you're ready to receive a swipe. Because some readers (namely audio jack readers) have batteries in them, you MUST be careful about when you activate the reader. In the PayPal Here app, for example, we activate the reader when there is a non-zero value in the "cart" or active order. If you have a view or step which expresses clear intent to take a charge, that's a good time to activate the reader. 
-
-
-Build & Complete a Transaction
-===================
-In order to process a payment, there needs to be an amount to charge.  PayPal creates Invoices to represent each transaction to be paid.  Invoices can be extremely simple (a simple amount), or complex with details on item names, taxes, tips, and/or discounts.  The basic order of operations:
-* Start a new invoice
-* Add item data to the invoice (optional)
-* Begin a purchase event and collect card data
-* Collect a signature for the transaction
-
-**Start a new invoice**
-
-The invoice is a PPHInvoice, and doesn't need to have been saved to the PayPal backend to begin watching for card swipes. It will need to be saved before attempting a charge, but you can do this in parallel with receiving swipe data. To create an invoice, just set up a currency, add one or more items, and set tax or other information:
-
-```objectivec
-PPHInvoice *invoice = [[PPHInvoice alloc] initWithCurrency:self.currencyField.text];
-
-[invoice addItemWithId: @"Item"
-                   name: @"Purchase"
-               quantity: [NSDecimalNumber one]
-              unitPrice: [PPHAmount amountWithString:self.amountField.text inCurrency:self.currencyField.text].amount
-                taxRate: nil
-            taxRateName: nil];
+Or if you perhaps have an for a stand that sells hamburgers and hotdogs
+```objc
 ```
 
-**Add item data**
+Taking Payments
+================================
 
-You should add details about each item on the receipt if possible. To save an invoice, just call save and provide a completion handler. Typically you would show some progress UI while doing this, unless it's being done in the background:
+The PayPalHere SDK offers several different ways to accept payments. This document will only cover the use of the "UI" methods of `PPHTransactionManager`. These methods have handle many aspects of the payment process for you automatically including:
 
-```objectivec
-        [invoice save:^(PPHError *error) {
-          // If error is non-nil, something bad happened. Else, invoice has been updated with server info
-          // such as PayPal invoice id, auto-generated merchant reference number, etc.
-        }];
-```
+* Reader connection and activation
+* Listening for card events
+* Complicated EMV flows
+* Signature entry UI and transmission
+* Receipt destination UI and transmission
 
-And then, get the invoice ready for payment:
-```objectivec
-// Begin the purchase and forward to payment method
- PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
- tm.ignoreHardwareReaders = NO;
- [tm beginPayment];
- tm.currentInvoice = invoice;
-```
-(SimpleFSPaymentDelegate.m)
+The steps to execute a card present transaction using these APIs are simple:
 
-**Begin a purchase event**
+1. Implement the `PPHTransactionControllerDelegate` protocol
+2. Call `[[PayPalHereSDK sharedTransactionManager] beginPaymentUsingUIWithInvoice:transactionController:];` to enable the card reader, begin watching the invoice, and begin receiving updates on the `PPHTransactionControllerDelegate` you implemented.
+3. Call `[[[PayPalHereSDK sharedTransactionManager] activateReaderForPayments:]` if and when you wish to enable NFC payments.
+4. When the reader detects a card has been presented `userDidSelectPaymentMethod:;` will be called on your `PPHTransactionControllerDelegate`. You may use this opportunity to make any changes before authorizing the payment (e.g. asking a user for a tip).
+5. Call `[[PayPalHereSDK sharedTransactionManager] processPaymentUsingUIWithPaymentType:completionHandler:]` to authorize the payment.
+6. Reset the navigation stack when your completion handler is called.
 
-The PPHTransactionManager takes care of most details for you - it's even possible to take a card swipe payment without having to explicitly save the invoice or to use the card reader API to capture card events. Of course, this comes at the cost of less control over the step by step process.  If you do want to see all the card swiper events you still can create a card watcher and get all the card events while using the PPHTransactionManager at the same time.
+A sample implementation of this would look like:
 
-In order to start processing card payments, use the “PPHTransactionManagerDelegate”. This protocol receives events (via the “onPaymentEvent” method) from the SDK.  In order to implement the above “onPaymentEvent” method and receive events off it, init an instance of the “PPHTransactionWatcher” class:
-```objectivec
-[[PPHTransactionWatcher alloc] initWithDelegate:self];
-```
+```objc
+////////////////////////////////////////////////////////////////////////////////////////////////////
+@implementation MyTransactionViewController
 
-Second, start your payment.  Here's an example of taking a payment for a fixed amount ($5):
-```objectivec
-[[PayPalHereSDK sharedTransactionManager] beginPaymentWithAmount:[PPHAmount amountWithString:amountString inCurrency:@"USD"] andName:@"FixedAmountPayment"];
-```
-
-Then, wait for the user to swipe a card.   You do that by capturing the ePPHTransactionType_CardDataReceived event from the PPHTransacitonWatcher:
-
-```objectivec
-#pragma mark my PPHTransactionManagerDelegate overrides
-- (void)onPaymentEvent:(PPHTransactionManagerEvent *) event {
-  if(event.eventType == ePPHTransactionType_CardDataReceived) {
-      NSLog(@"The transaction manager has card data!");
-      // We're now clear to process the payment
-  }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+ 
+    PPHInvoice *sampleInvoice = [[PPHInvoice alloc] initWithItem:@"Falcon Punch!" forAmount:[PPHAmount amountWithString:@"1.00"]];
+    [[PayPalHereSDK sharedTransactionManager] beginPaymentUsingUIWithInvoice:sampleInvoice
+                                                       transactionController:self];
 }
+
+
+- (void)userDidSelectPaymentMethod:(PPHPaymentMethod) paymentOption {
+    [[PayPalHereSDK sharedTransactionManager] processPaymentUsingUIWithPaymentType:paymentOption
+                                                                 completionHandler:^(PPHTransactionResponse *response) {
+                                                                     if (response.error) {
+                                                                         NSLog(@"Transaction failed!");
+                                                                     } else {
+                                                                         NSLog(@"Transaction successful!");
+                                                                     }
+                                                                     
+                                                                     [self.navigationController popToViewController:self animated:YES];
+                                                                 }];
+}
+
+- (void)userDidSelectRefundMethod:(PPHPaymentMethod) refundOption {
+    
+}
+
+- (UINavigationController *)getCurrentNavigationController {
+    return self.navigationController;
+}
+
+@end
 ```
 
-Now that you know the card has been captured you can ask the PPHTransactionWatcher to process the payment:
-```objectivec
-[[PayPalHereSDK sharedTransactionManager] processPaymentWithPaymentType:ePPHPaymentMethodSwipe
-                  withTransactionController:nil
-                          completionHandler:^(PPHTransactionResponse *response) {
-                              if(!record.error) {
-                                  self.successfulResponse = response;
-                                  NSLog(@"Payment captured successfully!  We now have the money in our account!");
+You may implement the various optional methods of `PPHTransactionControllerDelegate` to influence the payment flow where appropriate.
 
-if(response.isSignatureRequiredToFinalize) {
-   NSLog(@"This payment requires a signature.  Let's provide one via the finalizePayment method");
+The approach for taking a refund is very similar.
 
-}                              
-                              }
-                          }];
+If you are coming from a previous implementation of the PayPalHereSDK please see our [migration guide](/docs/1.5-1.6_MigrationGuide.md).
+
+For more information please consult the [full API documentation](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
+
+Card Readers
+================================
+
+Although `PPHTransactionManager` is capable of managing card readers by itself there may be times when you require more information about the card reader or more granular control over card readers. This functionality is provided by `PPHCardReaderManager`.
+
+**Card Reader Metadata**
+
+Information on past and present card reader types, capabilities, names, and more can be accessed in the form of `PPHCardReaderMetadata` objects.
+
+```objc
+NSLog(@"The active card reader's type is: %d", [[PayPalHereSDK sharedCardReaderManager] activeReader].readerType);
+
+NSLog(@"The last bluetooth reader that was available was named %@", [[PayPalHereSDK sharedCardReaderManager] lastAvailableReaderOfType:ePPHReaderTypeChipAndPinBluetooth].friendlyName);
+
+NSLog(@"The active card reader has %d%% battery remaining.", [[PayPalHereSDK sharedCardReaderManager] activeReader].batteryInfo.level);
 ```
 
+**Card Reader Events**
+
+If you wish to monitor the events of a card reader such as connection, metadata updates, and magstripe interactions doing so is as simple as implementing the various `PPHCardReaderDelegate` protocol methods and allocating a `PPHCardReaderWatcher`.
+
+```objc
+@implementation MyCardReaderDelegate
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
+    }
+
+    return self;
+}
+
+-(void)didDetectReaderDevice:(PPHCardReaderMetadata *)reader {
+    NSLog(@"Reader with name %@ detected!", reader.friendlyName);
+}
 
 
-**Add a signature**
-
-The PPHTransactionManager can inform you if a signature is required for the payment that is being processed (common, as signatures are usually required for transactions). When the processPayment method's completion handler is called you can check the isSignatureRequiredToFinalize member of the PPHTransactionResponse object that is provided to the completion handler. 
-
-```objectivec
-[[PayPalHereSDK sharedTransactionManager] provideSignature:self.signature.printableImage
- forTransaction:_capturedPaymentResponse.record
- completionHandler:^(PPHError *error) {
- [self showPaymentCompeleteView:_capturedPaymentResponse];
- }];
+@end
 ```
-(SignatureViewController.m)
 
 More Stuff to Look At
 =====================
@@ -222,120 +196,3 @@ When you submit your app, you will need to refer to MFI ID's for the hardware th
 * This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
 
 
-
-<!--- Removing references to checkin/location management
-Location Management
-===================
-
-The SDK also presents an interface for managing PayPal tab payments (aka Checkin) and the merchant locations
-associated with those payments. You can create a location from scratch, or get current locations and modify
-properties (such as latitude and longitude, whether it's open, and etc.). You can watch for open tabs on a
-location (by polling) using the PPHLocalManager watcherForLocationId:withDelegate: method. The code below fetches
-the list of locations and modifies the first location. Then, it creates and saves a location watcher, which
-will monitor the location for new tabs. As of this writing, there is no automatic polling, so the update
-method must be called to trigger a check for new tabs, and events will be fired as appropriate when that update
-completes (error handling in the below example is omitted for readability).
-
-```objectivec
-        [[PayPalHereSDK sharedLocalManager] beginGetLocations:^(PPHError *error, NSArray *locations) {
-            PPHLocation *l = [locations objectAtIndex:0];
-
-            l.contactInfo.lineOne = @"1 International Place";
-            l.contactInfo.city = @"Boston";
-            l.contactInfo.state = "MA";
-            l.contactInfo.countryCode = @"US";
-            l.tabExtensionType = ePPHTabExtensionTypeNone;
-            [l save:^(PPHError *error) {
-                self.locationWatcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:l.locationId withDelegate:self];
-                [self.locationWatcher update];
-            }];
-
-        }];
-```
---->
-
-<!---
-PayPal Access
-=============
-
-In order to authenticate merchants to PayPal and to issue API calls on their behalf for processing payment, you use
-PayPal Access, which uses standard OAuth protocols. Basically, you send the merchant to a web page on paypal.com,
-they login, and are then redirected back to a URL you control with an "oauth token." That token is then exchanged for
-an "access token" which can be used to make API calls on the merchant's behalf. Additionally, a "refresh token" is
-returned in that exchange that allows you to get a new access token at some point in the future without merchant
-interaction. All of this is based on two pieces of data from your application - an app id and a secret. You can setup
-PayPal Access and/or create an application via the [devportal](https://developer.paypal.com/). As of this writing your application will still need to be specifically enabled for the PayPal Here scope. To enable the PayPal Here scopes please contact us at <DL-PayPal-Here-SDK@ebay.com>. 
-You'll note that it asks you for a Return URL, and that this Return URL must be http or https. This means you can't
-redirect directly back to your mobile app after a login. But the good news is this would be a terrible idea anyways.
-You never want to store your application secret on a mobile device - you can't be sure it isn't jailbroken or
-otherwise compromised and once it's out there you don't have many good options for updating all your users.
-So instead, you need a backend server to host this secret and control the applications usage of OAuth on
-behalf of your merchants. While you can use PayPal Access as your sole point of authentication, you likely have an
-existing account system of some sort, so you would first authenticate your users to your system, then send them to
-PayPal and link up the accounts on their return.
-
-The other good news is that we've included a simple sample implementation of a back end server with the SDK, written
-in Node.js which most people should be able to read reasonably easily. The sample server implements four REST service
-endpoints:
-
-1. /login - a dummy version of your user authentication. It returns a "secret ticket" that can be used in place of a
-password to reassure you that the person you're getting future requests from is the same person that typed in their
-password to your application.
-2. /goPayPal - validates the ticket and returns a URL which your mobile application can open in Safari to start
-the PayPal access flow. This method specifies the OAuth scopes you're interested in, which must include the PayPal
-Here scope (https://uri.paypal.com/services/paypalhere) if you want to use PayPal Here APIs.
-3. /goApp - when PayPal Access completes and the merchant grants you access, PayPal will return them to this
-endpoint, and this endpoint will inspect the result and redirect back to your application. First, the code calls PayPal
-to exchange the OAuth token for the access token. The request to do the exchange looks like this:
-```javascript
-    request.post({
-      url:config.PAYPAL_ACCESS_BASEURL + "auth/protocol/openidconnect/v1/tokenservice",
-        auth:{
-          user:config.PAYPAL_APP_ID,
-          pass:config.PAYPAL_SECRET,
-          sendImmediately:true
-        },
-        form:{
-          grant_type:"authorization_code",
-          code:req.query.code
-        }
-    }, function (error, response, body) {
-    });
-```
-Now comes the important part. The server encrypts the access token received from PayPal using the client ticket so that
-even if someone has hijacked your application's URL handler, the data will be meaningless since it wasn't the one that
-sent the merchant to the PayPal Access flow anyways (this implies you chose your ticket well - the sample server doesn't
-really do this because there's no backend to speak of, it's just a flat file database). Secondly, it returns a URL
-to your mobile application that allows it to generate a refresh token. This URL is to the /refresh handler and
-includes the refresh token issued by PayPal encrypted with an "account specific server secret." The refresh token is
-never stored on the server, and is not stored in a directly usable form on the client either. This minimizes the value
-of centralized data on your server, and allows you to cutoff refresh tokens at will in cases of client compromise.
-4. /refresh/username/token - This handler decrypts the refresh token and calls the token service to get a new
-access token given that refresh token.
-
-To setup the server you need to setup your ReturnURL in PayPal Access to point to your instance of the sample server.
-Assuming you want to test on a device, this URL needs to work on that device and on your simulator typically, meaning
-you need a "real" DNS entry somewhere. Hopefully you can do this on your office router, or buy a cheap travel router
-and do it there. Alternatively, you could stick the server on heroku or some such. See config.js in the sample-server
-directory for the variables you need to set to run the sample server. To run the sample server, after modifying
-config.js, install Node.js and run "npm install" in the sample-server directory. Then run "node server.js" and you
-should see useful log messages to the console. The server advertises itself using Bonjour/zeroconf, so the sample app
-should find it automatically. But again, the return URL in PayPal Access is harder to automate, so you'll need to
-configure that once. One instance of the sample server can serve all your developers in theory, so it's easiest to
-run it on some shared or external resource.
--->
-
-<!--- Removing references to checkin
-Opening Consumer Tabs
-=====================
-To checkin consumers to merchants, use the checkin.js script in the scripts directory. For example:
-
-```
-npm install
-node checkin.js --help
-node checkin.js -m selleraccount@paypal.com -c buyeraccount@paypal.com -i tombrady.png
-```
-
-Use -i to add an image for the buyer - this only needs to be done once. Sometimes it takes a few runs to get through,
-and images tend to be very finicky in staging.
---->
