@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPHCardReaderMetadata.h"
 
 @class PPHTransactionManager;
 
@@ -49,9 +50,14 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
     ePPHTransactionType_CardReadBegun,
     
     /*!
-     * Card data received.  The transaction manager has received card data.
+     * Card data received. The transaction manager has received card data, and it can be processed
      */
     ePPHTransactionType_CardDataReceived,
+
+    /*!
+     * Card data received. The transaction manager has received card data, but it is not allowed to process it
+     */
+    ePPHTransactionType_ReadCardNotAllowed,
     
     /*!
      * A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.
@@ -80,7 +86,12 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
      * Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal 
      * declines the transaction for some reason.
      */
-    ePPHTransactionType_TransactionDeclined
+    ePPHTransactionType_TransactionDeclined,
+
+    /*!
+     * The gratuity on the invoice has been updated (typically by terminal entry)
+     */
+    ePPHTransactionType_GratuityUpdated
     
 };
 
@@ -94,6 +105,9 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
 
 /*! The type of event that occurred */
 @property (nonatomic) PPHTransactionEventType eventType;
+
+/*! The reader relevant to the event if applicable */
+@property (nonatomic, strong) PPHCardReaderMetadata *reader;
 
 @end
 

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHAnalyticsDelegate.html">
+	<File path="Classes/PPHReceiptDestination.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHAnalyticsDelegate</TokenIdentifier>
-			<Abstract type="html">PPHAnalyticsDelegate is in charge of delivering analytics events to a server</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHReceiptDestination</TokenIdentifier>
+			<Abstract type="html">Receipts can be sent to email addresses or mobile phone numbers. At some point in the near future, you will also receive
+&quot;tokens&quot; back from payment operations that allow you to send receipts to the email address or phone number on file for
+the card.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
             
 			
 			<NodeRef refid="48"/>
@@ -13,74 +15,78 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/beginSession:</TokenIdentifier>
-			<Abstract type="html">Start an analytics session - create any sort of visitor/device identifiers etc.</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/setDestinationAddress:</TokenIdentifier>
+			<Abstract type="html">The email address, phone number, or &quot;tokenized&quot; email/phone.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>- (void)beginSession:(NSDictionary *)properties</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>properties</Name>
-					<Abstract type="html">session-wide information about the session</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *destinationAddress</Declaration>
 			
-			<Anchor>//api/name/beginSession:</Anchor>
+			
+			<Anchor>//api/name/destinationAddress</Anchor>
             <NodeRef refid="48"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/amendSession:</TokenIdentifier>
-			<Abstract type="html">Update session information of an in progress session</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/destinationAddress</TokenIdentifier>
+			<Abstract type="html">The email address, phone number, or &quot;tokenized&quot; email/phone.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>- (void)amendSession:(NSDictionary *)properties</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>properties</Name>
-					<Abstract type="html">session-wide information about the session</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *destinationAddress</Declaration>
 			
-			<Anchor>//api/name/amendSession:</Anchor>
+			
+			<Anchor>//api/name/destinationAddress</Anchor>
             <NodeRef refid="48"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/endSession</TokenIdentifier>
-			<Abstract type="html">End an analytics session - clear any identifiers</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHReceiptDestination/destinationAddress</TokenIdentifier>
+			<Abstract type="html">The email address, phone number, or &quot;tokenized&quot; email/phone.</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>- (void)endSession</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *destinationAddress</Declaration>
 			
 			
-			<Anchor>//api/name/endSession</Anchor>
+			<Anchor>//api/name/destinationAddress</Anchor>
             <NodeRef refid="48"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/queueEvent:withType:andInfo:</TokenIdentifier>
-			<Abstract type="html">Log an analytics event</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/setIsEmail:</TokenIdentifier>
+			<Abstract type="html">YES if this destination is an email address, NO if it&apos;s a phone number</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
 			
-			<Declaration>- (void)queueEvent:(PPHAnalyticsEventName)event withType:(PPHAnalyticsEventType)type andInfo:(NSDictionary *)info</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">the name of the event that has occurred</Abstract>
-				</Parameter><Parameter>
-					<Name>type</Name>
-					<Abstract type="html">the type of event that has occurred</Abstract>
-				</Parameter><Parameter>
-					<Name>info</Name>
-					<Abstract type="html">additional information about the event</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, assign) BOOL isEmail</Declaration>
 			
-			<Anchor>//api/name/queueEvent:withType:andInfo:</Anchor>
+			
+			<Anchor>//api/name/isEmail</Anchor>
             <NodeRef refid="48"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReceiptDestination/isEmail</TokenIdentifier>
+			<Abstract type="html">YES if this destination is an email address, NO if it&apos;s a phone number</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL isEmail</Declaration>
+			
+			
+			<Anchor>//api/name/isEmail</Anchor>
+            <NodeRef refid="48"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHReceiptDestination/isEmail</TokenIdentifier>
+			<Abstract type="html">YES if this destination is an email address, NO if it&apos;s a phone number</Abstract>
+			<DeclaredIn>PPHReceiptDestination.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL isEmail</Declaration>
+			
+			
+			<Anchor>//api/name/isEmail</Anchor>
+            <NodeRef refid="48"/>
+		</Token>
+		
+        
         
 	</File>
 </Tokens>

@@ -1,67 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHAccountStatus.html">
+	<File path="Protocols/PPHTransactionManagerDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHAccountStatus</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionManagerDelegate</TokenIdentifier>
+			<Abstract type="html">The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various
+messages throughout the payment flow. These messages reflect the different stages of a transaction
+and could be used by the application to display appropriate text, image or UI on the screen.</Abstract>
+			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="67"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusUnknown</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAccountStatusUnknown</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionManagerDelegate/onPaymentEvent:</TokenIdentifier>
+			<Abstract type="html">onPaymentEvent</Abstract>
+			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onPaymentEvent:(id)event</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>event</Name>
+					<Abstract type="html">: A PaymentEvent object the contains information about the event.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onPaymentEvent:</Anchor>
             <NodeRef refid="67"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusReady</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAccountStatusReady</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
-            <NodeRef refid="67"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusRestricted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAccountStatusRestricted</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
-            <NodeRef refid="67"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusEligible</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAccountStatusEligible</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
-            <NodeRef refid="67"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusIneligible</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAccountStatusIneligible</Declaration>
-            
-            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
-            
-            <NodeRef refid="67"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHLocationCheckinStatus.html">
+	<File path="Constants/PPHAccessResultType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHLocationCheckinStatus</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHAccessResultType</TokenIdentifier>
+			<Abstract type="html">Indicates whether all the information regarding the logged in merchant was
+successfully retrieved by the backend and the merchant setup was succcessful.</Abstract>
+			<DeclaredIn>PPHAccessResultType.h</DeclaredIn>
             
 			
 			<NodeRef refid="68"/>
@@ -14,74 +15,27 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusUnknown</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusUnknown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccessResultSuccess</TokenIdentifier>
+            <Abstract type="html">If the merchant setup was successful.
+     </Abstract>
+            <Declaration>ePPHAccessResultSuccess</Declaration>
             
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusActive</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusActive</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+            <DeclaredIn>PPHAccessResultType.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusCancelled</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusCancelled</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccessResultFailed</TokenIdentifier>
+            <Abstract type="html">If the merchant setup encountered an error.
+     </Abstract>
+            <Declaration>ePPHAccessResultFailed</Declaration>
             
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusExpired</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusExpired</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+            <DeclaredIn>PPHAccessResultType.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>
         
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusPaid</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusPaid</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusLeft</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusLeft</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusDeleted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusDeleted</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
         
 	</File>
 </Tokens>

@@ -16,28 +16,6 @@ typedef void (^PPHInvoiceLoadCompletionHandler) (PPHInvoice *invoice, PPHError *
 
 typedef enum
 {
-    ePPHPaymentMethodUnknown = 0,
-    ePPHPaymentMethodKey,
-    ePPHPaymentMethodScan,
-    ePPHPaymentMethodSwipe,
-    ePPHPaymentMethodPaypal,
-    ePPHPaymentMethodCheck,
-    ePPHPaymentMethodCash,
-    ePPHPaymentMethodChipCard,
-    ePPHPaymentMethodEmvSwipe,
-    ePPHPaymentMethodOther
-} PPHPaymentMethod;
-
-typedef enum
-{
-    ePPHPaymentMethodDetailNone = 0,
-    ePPHPaymentMethodDetailBankTransfer = 5,
-    ePPHPaymentMethodDetailDebitCard = 6,
-    ePPHPaymentMethodDetailWireTransfer = 7,
-} PPHPaymentMethodDetail;
-
-typedef enum
-{
     ePPHInvoiceStatusUnknown = 0,
     ePPHInvoiceStatusDraft = 1,
     ePPHInvoiceStatusSent = 2,
@@ -67,55 +45,24 @@ typedef enum
 @interface PPHInvoiceConstants : NSObject
 
 /*!
- * Return a payment method given the corresponding non-localized string
- * @param string String representation of the payment method
- */
-+ (PPHPaymentMethod)paymentMethodFromString:(NSString*)string;
-/*!
- * Return payment method detail given the corresponding non-localized string
- * @param string String representation of the payment detail
- */
-+ (PPHPaymentMethodDetail)paymentMethodDetailFromString:(NSString*)string;
-/*!
  * Return an invoice status given the non-localized string
  * @param string String representation of the invoice status
  */
 + (PPHInvoiceStatus)invoiceStatusFromString:(NSString*)string;
 
 /*!
- * Turn a payment method enum into a string
- * @param method the payment method enumeration value
- */
-+ (NSString*)stringFromPaymentMethod:(PPHPaymentMethod)method;
-/*!
  * Turn an invoice status into a string
  * @param status the invoice status enumeration value
  */
 + (NSString*)stringFromInvoiceStatus:(PPHInvoiceStatus)status;
-/*!
- * Turn a payment method detail into a string
- * @param type the payment method detail enumeration value
- */
-+ (NSString*)stringFromPaymentMethodDetail:(PPHPaymentMethodDetail)type;
 
-
-/*!
- * Is the payment method a type of Credit Card payment?
- * @param method the payment method
- */
-+ (BOOL)paymentMethodIsCreditCard:(PPHPaymentMethod)method;
-/*!
- * Does the payment method put the invoice in a MarkedAsPaid state
- * (i.e. is it cash or check)
- * @param method the payment method
- */
-+ (BOOL)paymentMethodMarksAsPaid:(PPHPaymentMethod)method;
 /*!
  * Determine whether this invoice status means that the invoice was paid at some point
  * (i.e. is it paid, refunded, or partially refunded)
  * @param status the invoice status
  */
 + (BOOL)invoiceStatusIsPaid:(PPHInvoiceStatus)status;
+
 /*! Determine whether this invoice status means the invoice was refunded at some point
  * (i.e. refunded or partially refunded)
  * @param status the invoice status

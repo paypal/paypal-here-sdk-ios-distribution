@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHTransactionRecord.html">
+	<File path="Classes/PPHTokenizedCustomerInformation.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionRecord</TokenIdentifier>
-			<Abstract type="html">The PPHTransactionRecord is an artifact of payment calls made to PayPal&apos;s backend - example of payment
-calls include making a sale transaction, getting an authorization, capturing a previous authorization and
-refunding a transaction. The exact details returned in each of these calls might be different but the Here
-SDK abstracts this away so application developers can deal with these as opaque objects. Given a transaction
-record the SDK can differentiate and tell whether it represents an authorization or a sale or a refund etc</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTokenizedCustomerInformation</TokenIdentifier>
+			<Abstract type="html">PayPal card processing returns some extremely useful data for receipts and/or loyalty programs. (Checkin has this stuff built in)</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
             
 			
 			<NodeRef refid="52"/>
@@ -17,230 +13,11 @@ record the SDK can differentiate and tell whether it represents an authorization
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setInvoice:</TokenIdentifier>
-			<Abstract type="html">The invoice that was used for this purchase</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setCustomerId:</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) PPHInvoice *invoice</Declaration>
-			
-			
-			<Anchor>//api/name/invoice</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/invoice</TokenIdentifier>
-			<Abstract type="html">The invoice that was used for this purchase</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) PPHInvoice *invoice</Declaration>
-			
-			
-			<Anchor>//api/name/invoice</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/invoice</TokenIdentifier>
-			<Abstract type="html">The invoice that was used for this purchase</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) PPHInvoice *invoice</Declaration>
-			
-			
-			<Anchor>//api/name/invoice</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setDate:</TokenIdentifier>
-			<Abstract type="html">The date on which the payment or refund occurred</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSDate *date</Declaration>
-			
-			
-			<Anchor>//api/name/date</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/date</TokenIdentifier>
-			<Abstract type="html">The date on which the payment or refund occurred</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSDate *date</Declaration>
-			
-			
-			<Anchor>//api/name/date</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/date</TokenIdentifier>
-			<Abstract type="html">The date on which the payment or refund occurred</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSDate *date</Declaration>
-			
-			
-			<Anchor>//api/name/date</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setTransactionId:</TokenIdentifier>
-			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
-In case of Auth and Capture, Holds the final capture id.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/transactionId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/transactionId</TokenIdentifier>
-			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
-In case of Auth and Capture, Holds the final capture id.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/transactionId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/transactionId</TokenIdentifier>
-			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment.
-In case of Auth and Capture, Holds the final capture id.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/transactionId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setAuthorizationId:</TokenIdentifier>
-			<Abstract type="html">The authorization id of the payment. Only for AUTH &amp;amp; CAPTURE use case.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *authorizationId</Declaration>
-			
-			
-			<Anchor>//api/name/authorizationId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/authorizationId</TokenIdentifier>
-			<Abstract type="html">The authorization id of the payment. Only for AUTH &amp;amp; CAPTURE use case.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *authorizationId</Declaration>
-			
-			
-			<Anchor>//api/name/authorizationId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/authorizationId</TokenIdentifier>
-			<Abstract type="html">The authorization id of the payment. Only for AUTH &amp;amp; CAPTURE use case.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *authorizationId</Declaration>
-			
-			
-			<Anchor>//api/name/authorizationId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setPayPalInvoiceId:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *payPalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/payPalInvoiceId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/payPalInvoiceId</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *payPalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/payPalInvoiceId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/payPalInvoiceId</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *payPalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/payPalInvoiceId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setCorrelationId:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *correlationId</Declaration>
-			
-			
-			<Anchor>//api/name/correlationId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/correlationId</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *correlationId</Declaration>
-			
-			
-			<Anchor>//api/name/correlationId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/correlationId</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *correlationId</Declaration>
-			
-			
-			<Anchor>//api/name/correlationId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setCustomerId:</TokenIdentifier>
-			<Abstract type="html">CustomerId and receiptPreferences information used for sending a receipt</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy, readonly) NSString *customerId</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
 			
 			<Anchor>//api/name/customerId</Anchor>
@@ -248,23 +25,11 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/customerId</TokenIdentifier>
-			<Abstract type="html">CustomerId and receiptPreferences information used for sending a receipt</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/customerId</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy, readonly) NSString *customerId</Declaration>
-			
-			
-			<Anchor>//api/name/customerId</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/customerId</TokenIdentifier>
-			<Abstract type="html">CustomerId and receiptPreferences information used for sending a receipt</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy, readonly) NSString *customerId</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
 			
 			<Anchor>//api/name/customerId</Anchor>
@@ -272,11 +37,96 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setReceiptPreferenceToken:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/customerId</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
+			
+			
+			<Anchor>//api/name/customerId</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setMaskedEmailAddress:</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/maskedEmailAddress</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/maskedEmailAddress</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setMaskedMobileNumber:</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/maskedMobileNumber</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/maskedMobileNumber</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setReceiptPreferenceToken:</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
 			
 			
 			<Anchor>//api/name/receiptPreferenceToken</Anchor>
@@ -284,23 +134,12 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/receiptPreferenceToken</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</Declaration>
-			
-			
-			<Anchor>//api/name/receiptPreferenceToken</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/receiptPreferenceToken</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
 			
 			
 			<Anchor>//api/name/receiptPreferenceToken</Anchor>
@@ -308,257 +147,15 @@ In case of Auth and Capture, Holds the final capture id.</Abstract>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setPaidWithPayPal:</TokenIdentifier>
-			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL paidWithPayPal</Declaration>
-			
-			
-			<Anchor>//api/name/paidWithPayPal</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/paidWithPayPal</TokenIdentifier>
-			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL paidWithPayPal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
 			
 			
-			<Anchor>//api/name/paidWithPayPal</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/paidWithPayPal</TokenIdentifier>
-			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL paidWithPayPal</Declaration>
-			
-			
-			<Anchor>//api/name/paidWithPayPal</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setPaymentMethod:</TokenIdentifier>
-			<Abstract type="html">The high level method of payment</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHPaymentMethod paymentMethod</Declaration>
-			
-			
-			<Anchor>//api/name/paymentMethod</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/paymentMethod</TokenIdentifier>
-			<Abstract type="html">The high level method of payment</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHPaymentMethod paymentMethod</Declaration>
-			
-			
-			<Anchor>//api/name/paymentMethod</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/paymentMethod</TokenIdentifier>
-			<Abstract type="html">The high level method of payment</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHPaymentMethod paymentMethod</Declaration>
-			
-			
-			<Anchor>//api/name/paymentMethod</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setPaymentMethodDetail:</TokenIdentifier>
-			<Abstract type="html">Additional data related to the payment method, such as the source of the funds if known</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHPaymentMethodDetail paymentMethodDetail</Declaration>
-			
-			
-			<Anchor>//api/name/paymentMethodDetail</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/paymentMethodDetail</TokenIdentifier>
-			<Abstract type="html">Additional data related to the payment method, such as the source of the funds if known</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHPaymentMethodDetail paymentMethodDetail</Declaration>
-			
-			
-			<Anchor>//api/name/paymentMethodDetail</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/paymentMethodDetail</TokenIdentifier>
-			<Abstract type="html">Additional data related to the payment method, such as the source of the funds if known</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHPaymentMethodDetail paymentMethodDetail</Declaration>
-			
-			
-			<Anchor>//api/name/paymentMethodDetail</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setEncryptedCardData:</TokenIdentifier>
-			<Abstract type="html">The card that was used for this transaction (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) PPHCardSwipeData *encryptedCardData</Declaration>
-			
-			
-			<Anchor>//api/name/encryptedCardData</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/encryptedCardData</TokenIdentifier>
-			<Abstract type="html">The card that was used for this transaction (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) PPHCardSwipeData *encryptedCardData</Declaration>
-			
-			
-			<Anchor>//api/name/encryptedCardData</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/encryptedCardData</TokenIdentifier>
-			<Abstract type="html">The card that was used for this transaction (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) PPHCardSwipeData *encryptedCardData</Declaration>
-			
-			
-			<Anchor>//api/name/encryptedCardData</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setAuthCode:</TokenIdentifier>
-			<Abstract type="html">The Chip n Pin data sent to the reader (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *authCode</Declaration>
-			
-			
-			<Anchor>//api/name/authCode</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/authCode</TokenIdentifier>
-			<Abstract type="html">The Chip n Pin data sent to the reader (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *authCode</Declaration>
-			
-			
-			<Anchor>//api/name/authCode</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/authCode</TokenIdentifier>
-			<Abstract type="html">The Chip n Pin data sent to the reader (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *authCode</Declaration>
-			
-			
-			<Anchor>//api/name/authCode</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/setTransactionHandle:</TokenIdentifier>
-			<Abstract type="html">The Chip n Pin transaction handle (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionHandle</Declaration>
-			
-			
-			<Anchor>//api/name/transactionHandle</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/transactionHandle</TokenIdentifier>
-			<Abstract type="html">The Chip n Pin transaction handle (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionHandle</Declaration>
-			
-			
-			<Anchor>//api/name/transactionHandle</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHTransactionRecord/transactionHandle</TokenIdentifier>
-			<Abstract type="html">The Chip n Pin transaction handle (if applicable)</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionHandle</Declaration>
-			
-			
-			<Anchor>//api/name/transactionHandle</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/initWithTransactionId:</TokenIdentifier>
-			<Abstract type="html">Create a PPHTransactionRecord with a transactionId.  This can be used with beginRefund</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithTransactionId:(id)transactionId</Declaration>
-			
-			
-			<Anchor>//api/name/initWithTransactionId:</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/initWithTransactionId:andWithPayPalInvoiceId:</TokenIdentifier>
-			<Abstract type="html">Create a PPHTransactionRecord with a transactionId and a payPalInvoiceId.  This can be used with sendReceipt</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithTransactionId:(id)transactionId andWithPayPalInvoiceId:(id)payPalInvoiceId</Declaration>
-			
-			
-			<Anchor>//api/name/initWithTransactionId:andWithPayPalInvoiceId:</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionRecord/initWithAuthorizationId:andWithInvoice:</TokenIdentifier>
-			<Abstract type="html">Create a PPHTransactionRecord with an authorization id and an invoice. This would mainly be used in case of the auth-capture flow.
-Upon a successful auth, the corresponding transaction record would contain an authorizationId along with other details such as invoice,
-card information, etc. The application could choose to just save the authorizationId and the invoiceId.
-In order to perform a capture, this API could be used in conjuction with the &quot;downloadInvoiceForInvoiceId&quot; API to recreate the transaction record.</Abstract>
-			<DeclaredIn>PPHTransactionRecord.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithAuthorizationId:(id)authorizationId andWithInvoice:(id)invoice</Declaration>
-			
-			
-			<Anchor>//api/name/initWithAuthorizationId:andWithInvoice:</Anchor>
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		

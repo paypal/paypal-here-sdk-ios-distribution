@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHPaymentConstants.html">
+	<File path="Classes/PPHMerchantInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHPaymentConstants</TokenIdentifier>
-			<Abstract type="html">Convenience methods for dealing with payments
-and their enumerations</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHMerchantInfo</TokenIdentifier>
+			<Abstract type="html">Information about the merchant&apos;s preferences such as currency and invoice header information.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="40"/>
@@ -14,173 +13,283 @@ and their enumerations</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodFromString:</TokenIdentifier>
-			<Abstract type="html">Return a payment method given the corresponding non-localized string</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceLogoUrl:</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (PPHPaymentMethod)paymentMethodFromString:(id)string</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>string</Name>
-					<Abstract type="html">String representation of the payment method</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
-			<Anchor>//api/name/paymentMethodFromString:</Anchor>
+			
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodDetailFromString:</TokenIdentifier>
-			<Abstract type="html">Return payment method detail given the corresponding non-localized string</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (PPHPaymentMethodDetail)paymentMethodDetailFromString:(id)string</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>string</Name>
-					<Abstract type="html">String representation of the payment detail</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
-			<Anchor>//api/name/paymentMethodDetailFromString:</Anchor>
+			
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromPaymentMethod:</TokenIdentifier>
-			<Abstract type="html">Turn a payment method enum into a string</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (NSString *)stringFromPaymentMethod:(id)method</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>method</Name>
-					<Abstract type="html">the payment method enumeration value</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
-			<Anchor>//api/name/stringFromPaymentMethod:</Anchor>
+			
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromPaymentMethodDetail:</TokenIdentifier>
-			<Abstract type="html">Turn a payment method detail into a string</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceContactInfo:</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (NSString *)stringFromPaymentMethodDetail:(id)type</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>type</Name>
-					<Abstract type="html">the payment method detail enumeration value</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
-			<Anchor>//api/name/stringFromPaymentMethodDetail:</Anchor>
+			
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsContactless:</TokenIdentifier>
-			<Abstract type="html">Is the payment method a type of Contactless payment?</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (BOOL)paymentMethodIsContactless:(id)method</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>method</Name>
-					<Abstract type="html">the payment method</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
-			<Anchor>//api/name/paymentMethodIsContactless:</Anchor>
+			
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsCardPresent:</TokenIdentifier>
-			<Abstract type="html">Check whether the payment method is a form of card present payment</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (BOOL)paymentMethodIsCardPresent:(id)method</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>method</Name>
-					<Abstract type="html">the payment method</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
-			<Anchor>//api/name/paymentMethodIsCardPresent:</Anchor>
+			
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsEmv:</TokenIdentifier>
-			<Abstract type="html">Check whether the payment method is a form of EMV payments</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setCurrencyCode:</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (BOOL)paymentMethodIsEmv:(id)method</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>method</Name>
-					<Abstract type="html">the payment method</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
 			
-			<Anchor>//api/name/paymentMethodIsEmv:</Anchor>
+			
+			<Anchor>//api/name/currencyCode</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsCreditCard:</TokenIdentifier>
-			<Abstract type="html">Is the payment method a type of Credit Card payment?</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/currencyCode</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (BOOL)paymentMethodIsCreditCard:(id)method</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>method</Name>
-					<Abstract type="html">the payment method</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
 			
-			<Anchor>//api/name/paymentMethodIsCreditCard:</Anchor>
+			
+			<Anchor>//api/name/currencyCode</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodMarksAsPaid:</TokenIdentifier>
-			<Abstract type="html">Does the payment method put the invoice in a MarkedAsPaid state
-(i.e. is it cash or check)</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/currencyCode</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (BOOL)paymentMethodMarksAsPaid:(id)method</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>method</Name>
-					<Abstract type="html">the payment method</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
 			
-			<Anchor>//api/name/paymentMethodMarksAsPaid:</Anchor>
+			
+			<Anchor>//api/name/currencyCode</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodForContactlessTransactionType:</TokenIdentifier>
-			<Abstract type="html">Return a payment method given a contactless transaction type.</Abstract>
-			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTaxId:</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>+ (PPHPaymentMethod)paymentMethodForContactlessTransactionType:(id)type</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>the</Name>
-					<Abstract type="html">contactless transaction type such as EMV or MSD.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
 			
-			<Anchor>//api/name/paymentMethodForContactlessTransactionType:</Anchor>
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/taxId</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/taxId</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setPayPalAccount:</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/payPalAccount</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/payPalAccount</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTerms:</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/terms</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/terms</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setCustomReceiptText:</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/customReceiptText</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/customReceiptText</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</TokenIdentifier>
+			<Abstract type="html">To save the merchant preferences. Currently it stores taxID &amp;amp; ccStatementName both of which are shown in the
+receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>- (void)saveMerchantPreferencesWithTaxID:(id)taxID ccStatementName:(id)ccStatementName completionHandler:(id)completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/getMerchantPreferencesWithCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">To get the merchant preferences. Currenlty it returns taxID &amp;amp; ccStatementName both of which are set using saveMerchantPreferencesWithTaxID API
+or through PayPal website.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>- (void)getMerchantPreferencesWithCompletionHandler:(id)completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getMerchantPreferencesWithCompletionHandler:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		

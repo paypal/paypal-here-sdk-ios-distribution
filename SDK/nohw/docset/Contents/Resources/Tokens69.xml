@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHAnalyticsEventType.html">
+	<File path="Constants/PPHAccountStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHAnalyticsEventType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHAccountStatus</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
             
 			
 			<NodeRef refid="69"/>
@@ -14,31 +14,51 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeNone</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusUnknown</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEventTypeNone</Declaration>
+            <Declaration>ePPHAccountStatusUnknown</Declaration>
             
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="69"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeNormal</TokenIdentifier>
-            <Abstract type="html">A &quot;normal&quot; event meant to help discern what features are being used in you&apos;re app, what situations are being encountered, etc.</Abstract>
-            <Declaration>ePPHAnalyticsEventTypeNormal</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
             
             <NodeRef refid="69"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeLog</TokenIdentifier>
-            <Abstract type="html">A &quot;log&quot; message that is not as useful for aggregation but more for individual session debugging and troubleshooting</Abstract>
-            <Declaration>ePPHAnalyticsEventTypeLog</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusReady</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHAccountStatusReady</Declaration>
             
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+            
+            <NodeRef refid="69"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusRestricted</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHAccountStatusRestricted</Declaration>
+            
+            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+            
+            <NodeRef refid="69"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusEligible</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHAccountStatusEligible</Declaration>
+            
+            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+            
+            <NodeRef refid="69"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccountStatusIneligible</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ePPHAccountStatusIneligible</Declaration>
+            
+            <DeclaredIn>PPHAccessAccount.h</DeclaredIn>
             
             <NodeRef refid="69"/>
         </Token>

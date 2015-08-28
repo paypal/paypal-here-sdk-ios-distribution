@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHLocalManager.html">
+	<File path="Classes/PPHInvoiceFormatter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHLocalManager</TokenIdentifier>
-			<Abstract type="html">PPHLocalManager provides a &quot;jumping off point&quot; for manipulating merchant locations and watching open and closed checkins</Abstract>
-			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceFormatter</TokenIdentifier>
+			<Abstract type="html">PPHInvoiceFormatter is capable of rendering the details of invoices for receipt purposes. Online receipts
+are typically hosted by PayPal, but this class is mainly useful for producing printable receipts.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
             
 			
 			<NodeRef refid="30"/>
@@ -13,44 +14,64 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocalManager/watcherForLocationId:withDelegate:</TokenIdentifier>
-			<Abstract type="html">Get an object that will notify delegate of new and removed checkins from customers</Abstract>
-			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:withFormatData:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings with the given properties and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>- (PPHLocationWatcher *)watcherForLocationId:(NSString *)locationId withDelegate:(id&lt;PPHLocationWatcherDelegate&gt;)delegate</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(id)invoice withFormatData:(id)data</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>locationId</Name>
-					<Abstract type="html">the locationId of the merchant location as returned by the beginGetLocations method (or stored in
-some preference based on a previous return of beginGetLocations)</Abstract>
-				</Parameter><Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">the object that will be notified when checkins are opened or closed. Note that at the moment you have
-to call update: manually</Abstract>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/watcherForLocationId:withDelegate:</Anchor>
+			<Anchor>//api/name/formattedStringForInvoice:withFormatData:</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHLocalManager/beginGetLocations:</TokenIdentifier>
-			<Abstract type="html">Kick off a request to get all merchant locations for the currently active merchant</Abstract>
-			<DeclaredIn>PPHLocalManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>- (void)beginGetLocations:(void ( ^ ) ( PPHError *error , NSArray *locations ))handler</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(id)invoice</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>handler</Name>
-					<Abstract type="html">called on completion of the request</Abstract>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/beginGetLocations:</Anchor>
+			<Anchor>//api/name/formattedStringForInvoice:</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedImageForInvoice:withWidth:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return an image with the specified width
+and height depending on the number of items on the invoice. This is essentially using the htmlStringForInvoice
+method and rendering it down to an image for you.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
+			
+			<Declaration>- (UIImage *)formattedImageForInvoice:(id)invoice withWidth:(id)widthInPixels</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter><Parameter>
+					<Name>widthInPixels</Name>
+					<Abstract type="html">The width of the returned image - height will be determined based on this</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/formattedImageForInvoice:withWidth:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+        
         
 	</File>
 </Tokens>

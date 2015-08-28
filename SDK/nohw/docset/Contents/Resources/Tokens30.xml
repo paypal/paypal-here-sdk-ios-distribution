@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHInvoiceFormatterData.html">
+	<File path="Classes/PPHInvoiceFormatter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceFormatterData</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceFormatter</TokenIdentifier>
+			<Abstract type="html">PPHInvoiceFormatter is capable of rendering the details of invoices for receipt purposes. Online receipts
+are typically hosted by PayPal, but this class is mainly useful for producing printable receipts.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
             
 			
 			<NodeRef refid="30"/>
@@ -13,230 +14,60 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/setFormat:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:withFormatData:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings with the given properties and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) PPHPrinterFormat format</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(id)invoice withFormatData:(id)data</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/format</Anchor>
+			<Anchor>//api/name/formattedStringForInvoice:withFormatData:</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/format</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) PPHPrinterFormat format</Declaration>
+			<Declaration>- (NSString *)formattedStringForInvoice:(id)invoice</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/format</Anchor>
+			<Anchor>//api/name/formattedStringForInvoice:</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatterData/format</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedImageForInvoice:withWidth:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return an image with the specified width
+and height depending on the number of items on the invoice. This is essentially using the htmlStringForInvoice
+method and rendering it down to an image for you.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) PPHPrinterFormat format</Declaration>
+			<Declaration>- (UIImage *)formattedImageForInvoice:(id)invoice withWidth:(id)widthInPixels</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter><Parameter>
+					<Name>widthInPixels</Name>
+					<Abstract type="html">The width of the returned image - height will be determined based on this</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/format</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/setLineWidth:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSUInteger lineWidth</Declaration>
-			
-			
-			<Anchor>//api/name/lineWidth</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/lineWidth</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSUInteger lineWidth</Declaration>
-			
-			
-			<Anchor>//api/name/lineWidth</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatterData/lineWidth</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSUInteger lineWidth</Declaration>
-			
-			
-			<Anchor>//api/name/lineWidth</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/setReceiptType:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</Declaration>
-			
-			
-			<Anchor>//api/name/receiptType</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/receiptType</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</Declaration>
-			
-			
-			<Anchor>//api/name/receiptType</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatterData/receiptType</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) PPHInvoiceReceiptType receiptType</Declaration>
-			
-			
-			<Anchor>//api/name/receiptType</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/setTxnStatus:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) PPHReceiptTransactionStatus txnStatus</Declaration>
-			
-			
-			<Anchor>//api/name/txnStatus</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/txnStatus</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) PPHReceiptTransactionStatus txnStatus</Declaration>
-			
-			
-			<Anchor>//api/name/txnStatus</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatterData/txnStatus</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) PPHReceiptTransactionStatus txnStatus</Declaration>
-			
-			
-			<Anchor>//api/name/txnStatus</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/setReturnPolicy:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *returnPolicy</Declaration>
-			
-			
-			<Anchor>//api/name/returnPolicy</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/returnPolicy</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *returnPolicy</Declaration>
-			
-			
-			<Anchor>//api/name/returnPolicy</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatterData/returnPolicy</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *returnPolicy</Declaration>
-			
-			
-			<Anchor>//api/name/returnPolicy</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/setFooterText:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *footerText</Declaration>
-			
-			
-			<Anchor>//api/name/footerText</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/footerText</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *footerText</Declaration>
-			
-			
-			<Anchor>//api/name/footerText</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceFormatterData/footerText</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *footerText</Declaration>
-			
-			
-			<Anchor>//api/name/footerText</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatterData/initWithFormat:lineWidth:receiptType:txnStatus:returnPolicy:footerText:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHInvoiceFormatterData.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithFormat:(id)format lineWidth:(id)lineWidth receiptType:(id)receiptType txnStatus:(id)txnStatus returnPolicy:(id)returnPolicy footerText:(id)footerText</Declaration>
-			
-			
-			<Anchor>//api/name/initWithFormat:lineWidth:receiptType:txnStatus:returnPolicy:footerText:</Anchor>
+			<Anchor>//api/name/formattedImageForInvoice:withWidth:</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		

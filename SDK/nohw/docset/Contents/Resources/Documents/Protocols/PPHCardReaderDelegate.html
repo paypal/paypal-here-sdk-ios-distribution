@@ -43,13 +43,25 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</option>
+	<option value="//api/name/activeReaderChangedFrom:to:">&nbsp;&nbsp;&nbsp;&nbsp;- activeReaderChangedFrom:to:</option>
 	
-	<option value="//api/name/didFinishUpgradePreparations">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishUpgradePreparations</option>
+	<option value="//api/name/didCompleteCardSwipe:">&nbsp;&nbsp;&nbsp;&nbsp;- didCompleteCardSwipe:</option>
 	
-	<option value="//api/name/didReceiveChipAndPinEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveChipAndPinEvent:</option>
+	<option value="//api/name/didDetectCardSwipeAttempt">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectCardSwipeAttempt</option>
 	
-	<option value="//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</option>
+	<option value="//api/name/didDetectReaderDevice:">&nbsp;&nbsp;&nbsp;&nbsp;- didDetectReaderDevice:</option>
+	
+	<option value="//api/name/didFailToReadCard">&nbsp;&nbsp;&nbsp;&nbsp;- didFailToReadCard</option>
+	
+	<option value="//api/name/didFindAvailableReaderDevice:">&nbsp;&nbsp;&nbsp;&nbsp;- didFindAvailableReaderDevice:</option>
+	
+	<option value="//api/name/didReceiveCardReaderMetadata:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveCardReaderMetadata:</option>
+	
+	<option value="//api/name/didRemoveCard">&nbsp;&nbsp;&nbsp;&nbsp;- didRemoveCard</option>
+	
+	<option value="//api/name/didRemoveReader:">&nbsp;&nbsp;&nbsp;&nbsp;- didRemoveReader:</option>
+	
+	<option value="//api/name/didStartReaderDetection:">&nbsp;&nbsp;&nbsp;&nbsp;- didStartReaderDetection:</option>
 	
 	<option value="//api/name/didUpgradeReader:withMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- didUpgradeReader:withMessage:</option>
 	
@@ -81,13 +93,25 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:">didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activeReaderChangedFrom:to:">activeReaderChangedFrom:to:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishUpgradePreparations">didFinishUpgradePreparations</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didCompleteCardSwipe:">didCompleteCardSwipe:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveChipAndPinEvent:">didReceiveChipAndPinEvent:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectCardSwipeAttempt">didDetectCardSwipeAttempt</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didDetectReaderDevice:">didDetectReaderDevice:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFailToReadCard">didFailToReadCard</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFindAvailableReaderDevice:">didFindAvailableReaderDevice:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveCardReaderMetadata:">didReceiveCardReaderMetadata:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didRemoveCard">didRemoveCard</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didRemoveReader:">didRemoveReader:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didStartReaderDetection:">didStartReaderDetection:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didUpgradeReader:withMessage:">didUpgradeReader:withMessage:</a></span></li>
 	
@@ -115,7 +139,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/PPHSimpleCardReaderDelegate.html">PPHSimpleCardReaderDelegate</a></td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">PPHCardReaderDelegate.h</td>
@@ -128,7 +152,9 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Additional events for EMV aka Chip &amp; Pin readers</p>
+						<p>Basic events for audio, feature port, and EMV readers. While methods are marked optional for cases where you
+just want to see certain events (like reader software upgrade), the delegate that&rsquo;s actually looking to complete
+a payment is going to need all of these.</p>
 					</div>
 					
 					
@@ -146,13 +172,55 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:">&ndash;&nbsp;didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</a></code>
+		<code><a href="#//api/name/didFindAvailableReaderDevice:">&ndash;&nbsp;didFindAvailableReaderDevice:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didFinishUpgradePreparations">&ndash;&nbsp;didFinishUpgradePreparations</a></code>
+		<code><a href="#//api/name/didStartReaderDetection:">&ndash;&nbsp;didStartReaderDetection:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didDetectReaderDevice:">&ndash;&nbsp;didDetectReaderDevice:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didRemoveReader:">&ndash;&nbsp;didRemoveReader:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didDetectCardSwipeAttempt">&ndash;&nbsp;didDetectCardSwipeAttempt</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didCompleteCardSwipe:">&ndash;&nbsp;didCompleteCardSwipe:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didFailToReadCard">&ndash;&nbsp;didFailToReadCard</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didReceiveCardReaderMetadata:">&ndash;&nbsp;didReceiveCardReaderMetadata:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activeReaderChangedFrom:to:">&ndash;&nbsp;activeReaderChangedFrom:to:</a></code>
 	</span>
 	
 	
@@ -164,13 +232,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:">&ndash;&nbsp;didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didReceiveChipAndPinEvent:">&ndash;&nbsp;didReceiveChipAndPinEvent:</a></code>
+		<code><a href="#//api/name/didRemoveCard">&ndash;&nbsp;didRemoveCard</a></code>
 	</span>
 	
 	
@@ -192,19 +254,170 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:" title="didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:"></a>
-	<h3 class="subsubtitle method-title">didDetectUpgradeableReader:withMessage:isRequired:isInitial:withEstimatedDuration:</h3>
+	<a name="//api/name/activeReaderChangedFrom:to:" title="activeReaderChangedFrom:to:"></a>
+	<h3 class="subsubtitle method-title">activeReaderChangedFrom:to:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
-NOT receive didDetectReaderDevice until the condition is resolved.</p>
+		<p>A new reader has been set as active and is now the only one eligible for payment.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didDetectUpgradeableReader:(id)<em>reader</em> withMessage:(id)<em>message</em> isRequired:(id)<em>required</em> isInitial:(id)<em>initial</em> withEstimatedDuration:(id)<em>estimatedDuration</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)activeReaderChangedFrom:(id)<em>previousReader</em> to:(id)<em>currentReader</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>previousReader</em></dt>
+			<dd><p>the reader that was active</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currentReader</em></dt>
+			<dd><p>the reader that is active</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A new reader has been set as active and is now the only one eligible for payment.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didCompleteCardSwipe:" title="didCompleteCardSwipe:"></a>
+	<h3 class="subsubtitle method-title">didCompleteCardSwipe:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A card swipe has succeeded</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didCompleteCardSwipe:(id)<em>card</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>card</em></dt>
+			<dd><p>Encrypted and masked data about the card</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A card swipe has succeeded</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didDetectCardSwipeAttempt" title="didDetectCardSwipeAttempt"></a>
+	<h3 class="subsubtitle method-title">didDetectCardSwipeAttempt</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Something has occurred in the read head of the reader. Since processing can take a second or so,
+this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+will hurt success rate.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didDetectCardSwipeAttempt</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Something has occurred in the read head of the reader. Since processing can take a second or so,
+this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+will hurt success rate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didDetectReaderDevice:" title="didDetectReaderDevice:"></a>
+	<h3 class="subsubtitle method-title">didDetectReaderDevice:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A fully working reader was detected and is available</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didDetectReaderDevice:(id)<em>reader</em></code></div>
 
     
 	
@@ -213,27 +426,7 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>reader</em></dt>
-			<dd><p>the reader that has an available upgrade</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>message</em></dt>
-			<dd><p>the reason or explanation for the upgrade</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>required</em></dt>
-			<dd><p>whether the reader can proceed without an upgrade</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>initial</em></dt>
-			<dd><p>whether this is the initial upgrade to the reader</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>estimatedDuration</em></dt>
-			<dd><p>the estimated time the update will take to apply in total</p></dd>
+			<dd><p>the reader that was detected</p></dd>
 		</dl>
 		
 	</div>
@@ -246,8 +439,7 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Certain reader types are field upgradeable with things like keys and software updates. If you get this message, you will
-NOT receive didDetectReaderDevice until the condition is resolved.</p>
+		<p>A fully working reader was detected and is available</p>
 	</div>
 	
 	
@@ -265,19 +457,18 @@ NOT receive didDetectReaderDevice until the condition is resolved.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didFinishUpgradePreparations" title="didFinishUpgradePreparations"></a>
-	<h3 class="subsubtitle method-title">didFinishUpgradePreparations</h3>
+	<a name="//api/name/didFailToReadCard" title="didFailToReadCard"></a>
+	<h3 class="subsubtitle method-title">didFailToReadCard</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
-to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</p>
+		<p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didFinishUpgradePreparations</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didFailToReadCard</code></div>
 
     
 	
@@ -289,8 +480,7 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The pending reader upgrade has been prepared this includes downloading necessary files and doing any other work
-to pave the way for a successful upgrade. This signals that the upgrade is ready to be applied.</p>
+		<p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p>
 	</div>
 	
 	
@@ -308,18 +498,18 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didReceiveChipAndPinEvent:" title="didReceiveChipAndPinEvent:"></a>
-	<h3 class="subsubtitle method-title">didReceiveChipAndPinEvent:</h3>
+	<a name="//api/name/didFindAvailableReaderDevice:" title="didFindAvailableReaderDevice:"></a>
+	<h3 class="subsubtitle method-title">didFindAvailableReaderDevice:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Called when an event related to chip &amp; pin transactions has occurred on the reader</p>
+		<p>A potential reader has been found.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didReceiveChipAndPinEvent:(id)<em>event</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didFindAvailableReaderDevice:(id)<em>reader</em></code></div>
 
     
 	
@@ -327,8 +517,8 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>event</em></dt>
-			<dd><p>the event that has occurred</p></dd>
+			<dt><em>reader</em></dt>
+			<dd><p>the reader that was found</p></dd>
 		</dl>
 		
 	</div>
@@ -341,7 +531,7 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Called when an event related to chip &amp; pin transactions has occurred on the reader</p>
+		<p>A potential reader has been found.</p>
 	</div>
 	
 	
@@ -359,18 +549,18 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:" title="didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:"></a>
-	<h3 class="subsubtitle method-title">didReceiveReaderUpgradeStatusWithMessage:currentStep:totalSteps:completion:</h3>
+	<a name="//api/name/didReceiveCardReaderMetadata:" title="didReceiveCardReaderMetadata:"></a>
+	<h3 class="subsubtitle method-title">didReceiveCardReaderMetadata:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>There is a status update to the current ongoing reader upgrade</p>
+		<p>Serial number and other related information is available for the card reader.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didReceiveReaderUpgradeStatusWithMessage:(id)<em>message</em> currentStep:(id)<em>currentStep</em> totalSteps:(id)<em>totalSteps</em> completion:(id)<em>completion</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didReceiveCardReaderMetadata:(id)<em>metadata</em></code></div>
 
     
 	
@@ -378,23 +568,8 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>message</em></dt>
-			<dd><p>Details about the current upgrade status</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>currentStep</em></dt>
-			<dd><p>The number of the current upgrade step from 1 to totalSteps</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>totalSteps</em></dt>
-			<dd><p>The total number of steps in the upgrade</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completion</em></dt>
-			<dd><p>The progress of the upgrade from 0.0 to 1.0</p></dd>
+			<dt><em>metadata</em></dt>
+			<dd><p>the available data about the reader</p></dd>
 		</dl>
 		
 	</div>
@@ -407,7 +582,152 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>There is a status update to the current ongoing reader upgrade</p>
+		<p>Serial number and other related information is available for the card reader.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didRemoveCard" title="didRemoveCard"></a>
+	<h3 class="subsubtitle method-title">didRemoveCard</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when a card is that was inserted into the reader has been removed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didRemoveCard</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Called when a card is that was inserted into the reader has been removed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didRemoveReader:" title="didRemoveReader:"></a>
+	<h3 class="subsubtitle method-title">didRemoveReader:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A reader device has been removed from the system</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didRemoveReader:(id)<em>readerType</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>readerType</em></dt>
+			<dd><p>the type of reader that was removed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A reader device has been removed from the system</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didStartReaderDetection:" title="didStartReaderDetection:"></a>
+	<h3 class="subsubtitle method-title">didStartReaderDetection:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This event will be triggered in cases where reader detection takes a while, such as for
+the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didStartReaderDetection:(id)<em>reader</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>reader</em></dt>
+			<dd><p>the basic information about reader that is actively being &ldquo;verified&rdquo;</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This event will be triggered in cases where reader detection takes a while, such as for
+the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p>
 	</div>
 	
 	
@@ -498,7 +818,7 @@ to pave the way for a successful upgrade. This signals that the upgrade is ready
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-07-20)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

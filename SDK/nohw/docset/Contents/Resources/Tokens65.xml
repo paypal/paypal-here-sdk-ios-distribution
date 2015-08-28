@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHTransactionManagerDelegate.html">
+	<File path="Protocols/PPHSignatureViewDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionManagerDelegate</TokenIdentifier>
-			<Abstract type="html">The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various
-messages throughout the payment flow. These messages reflect the different stages of a transaction
-and could be used by the application to display appropriate text, image or UI on the screen.</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSignatureViewDelegate</TokenIdentifier>
+			<Abstract type="html">A delegate that receives events related to buyer signatures in the PPHSignatureView</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
             
 			
 			<NodeRef refid="65"/>
@@ -15,19 +13,32 @@ and could be used by the application to display appropriate text, image or UI on
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionManagerDelegate/onPaymentEvent:</TokenIdentifier>
-			<Abstract type="html">onPaymentEvent</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureTouchesBegan</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has begun, so that you can hide potentially conflicting UI</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
 			
-			<Declaration>- (void)onPaymentEvent:(id)event</Declaration>
+			<Declaration>- (void)signatureTouchesBegan</Declaration>
+			
+			
+			<Anchor>//api/name/signatureTouchesBegan</Anchor>
+            <NodeRef refid="65"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureUpdated:</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has completed. Note that it may &quot;begin again&quot; such as a
+disconnected gesture for last name.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureUpdated:(id)isEmpty</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">: A PaymentEvent object the contains information about the event.</Abstract>
+					<Name>isEmpty</Name>
+					<Abstract type="html">whether the new signature is empty</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/onPaymentEvent:</Anchor>
+			<Anchor>//api/name/signatureUpdated:</Anchor>
             <NodeRef refid="65"/>
 		</Token>
 		

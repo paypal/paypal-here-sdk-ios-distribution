@@ -158,16 +158,6 @@
 
 #pragma mark - Card related payment options
 
-// TODO move this to private, because beginTransaction will be the app entry point for EMV
-/*!
- * Authorize a chip and pin card after pin has been validated
- * @param auth from PPHCardReaderManager auth event.
- * @param invoice the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
- * attempting to collect payment.
- * @param completionHandler called when the action has completed
- */
--(void)beginChipAndPinAuthorization:(PPHChipAndPinAuthEvent*) auth forInvoice: (id<PPHInvoiceProtocol>) invoice completionHandler: (void (^)(PPHChipAndPinAuthResponse *response)) completionHandler;
-
 /*!
  * Collect funds against a card that has been passed through a reader and for which magstripe data is available.
  * @param card from PPCardReaderManager swipe event
@@ -246,31 +236,22 @@
 -(void)provideSignature: (UIImage *)signature forTransaction: (PPHCardChargeResponse *)response andInvoice: (id<PPHInvoiceProtocol>)invoice completionHandler: (void (^)(PPHError *))completionHandler;
 
 
+
+#pragma mark - Refund Eligibility
+
 /*!
- * Check if the given swipe data is for the same card that the invoice was paid with
+ * Check if the given swipe card data was the same card used to pay the transaction
  * @param card the card data to be checked
- * @param invoice the invoice against which to check the card
- * @param completionHandler called when the action has completed
+ * @param record the transaction record against which to check the card
+ * @param completionHandler handler to call when the action has completed
  */
--(void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData*)card andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
+-(void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData*)card
+                          transactionRecord:(PPHTransactionRecord *)record
+                          completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
 
-/*!
- * Check if the given chip+pin card data is for the same card that the invoice was paid with
- * @param auth the chip+pin card data to be checked
- * @param invoice the invoice against which to check the card
- * @param completionHandler called when the action has completed
- */
--(void)checkRefundEligibilityForChipAndPin:(PPHChipAndPinAuthEvent*)auth andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
 
-/*!
- * Check if the given event contains the same EMV data as the card that the invoice was paid with
- * @param event the terminal decline event that contains EMV data
- * @param invoice the invoice against which to check the card
- * @param completionHandler called when the action has completed
- */
--(void)checkRefundEligibilityForDeclinedCardWithEvent:(PPHChipAndPinEventWithEmv*)event andInvoice:(id<PPHInvoiceProtocol>)invoice completionHandler:(void(^)(PPHRefundEligibilityResponse*))completionHandler;
-
+#pragma mark - Receipts
 /*!
  * Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.
  * @param payment the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId

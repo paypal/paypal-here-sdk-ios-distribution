@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHCardReaderCapabilities.html">
+	<File path="Classes/PPHCardReaderDisplayScreen.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderCapabilities</TokenIdentifier>
-			<Abstract type="html">PPHCardReaderCapabilities represents the different capabilities a connected
-card reader device has such as whether the device accepts contactless payments,
-has a keypad, has a display screen and etc. We determine this advanced information
-upon connection to the card reader and present it as a queriable object.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderDisplayScreen</TokenIdentifier>
+			<Abstract type="html">PPHCardReaderDisplay represents LED display screen capabilities of a card reader device.
+Please query this object for more detailed information on the current card reader&apos;s
+display screen. This object will be nil if the current card reader does not have a display</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
             
 			
 			<NodeRef refid="7"/>
@@ -16,83 +15,83 @@ upon connection to the card reader and present it as a queriable object.</Abstra
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderCapabilities/display</TokenIdentifier>
-			<Abstract type="html">Information on the display screen capabilities of a card reader device. If the card reader
-has no LED display screen the object returned will be nil.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderDisplayScreen/setBackLightPresent:</TokenIdentifier>
+			<Abstract type="html">Indicates whether the CardReaderDisplay has a backlight or not. Set to true if it does,
+false otherwise.</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
 			
-			<Declaration>- (PPHCardReaderDisplayScreen *)display</Declaration>
+			<Declaration>@property (nonatomic, readonly) BOOL backLightPresent</Declaration>
 			
 			
-			<Anchor>//api/name/display</Anchor>
+			<Anchor>//api/name/backLightPresent</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderCapabilities/inputKeyPad</TokenIdentifier>
-			<Abstract type="html">Detailed information on the keypad of a card reader device if the card reader supports it.
-If a keypad is not present/unsupported the object returned will be nil.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderDisplayScreen/backLightPresent</TokenIdentifier>
+			<Abstract type="html">Indicates whether the CardReaderDisplay has a backlight or not. Set to true if it does,
+false otherwise.</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
 			
-			<Declaration>- (PPHCardReaderKeyPad *)inputKeyPad</Declaration>
+			<Declaration>@property (nonatomic, readonly) BOOL backLightPresent</Declaration>
 			
 			
-			<Anchor>//api/name/inputKeyPad</Anchor>
+			<Anchor>//api/name/backLightPresent</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderCapabilities/paymentCapabilities</TokenIdentifier>
-			<Abstract type="html">Detailed information on the different types of payment interfaces a card reader device contains.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderDisplayScreen/backLightPresent</TokenIdentifier>
+			<Abstract type="html">Indicates whether the CardReaderDisplay has a backlight or not. Set to true if it does,
+false otherwise.</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
 			
-			<Declaration>- (PPHSupportedPaymentInterfaces *)paymentCapabilities</Declaration>
+			<Declaration>@property (nonatomic, readonly) BOOL backLightPresent</Declaration>
 			
 			
-			<Anchor>//api/name/paymentCapabilities</Anchor>
+			<Anchor>//api/name/backLightPresent</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderCapabilities/beeperPresent</TokenIdentifier>
-			<Abstract type="html">Indicates the presence of audio/sound beeper capabilities on the device.
-Returns YES if an audio beeper is available, NO otherwise.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderDisplayScreen/setResolutionDimensions:</TokenIdentifier>
+			<Abstract type="html">Query the width and height variables of this CGSize struct to get resolution dimensions
+of the card reader LED screen. If width and height are 0 this means resolution information
+could not be determined.</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)beeperPresent</Declaration>
+			<Declaration>@property (nonatomic, readonly) CGSize resolutionDimensions</Declaration>
 			
 			
-			<Anchor>//api/name/beeperPresent</Anchor>
+			<Anchor>//api/name/resolutionDimensions</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderCapabilities/builtInPrinter</TokenIdentifier>
-			<Abstract type="html">Indicates whether the card reader has a built in printer or not.
-Returns YES if a built-in printer exists, NO otherwise.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderDisplayScreen/resolutionDimensions</TokenIdentifier>
+			<Abstract type="html">Query the width and height variables of this CGSize struct to get resolution dimensions
+of the card reader LED screen. If width and height are 0 this means resolution information
+could not be determined.</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)builtInPrinter</Declaration>
+			<Declaration>@property (nonatomic, readonly) CGSize resolutionDimensions</Declaration>
 			
 			
-			<Anchor>//api/name/builtInPrinter</Anchor>
+			<Anchor>//api/name/resolutionDimensions</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderCapabilities/extraCapabilityInfo</TokenIdentifier>
-			<Abstract type="html">The dictionary returned contains any extra capabilities we determined the card reader has. Each key in the
-the dictionary is a NSString representing a capability. Bound to each key is a value, this value is also
-an NSString representing more information on the capability. If the value string is empty, this indicates
-the capability is supported but no further details on the capability could be found. Nil returned if no
-capabilities were discovered at all. You can process this info however you wish.. Suggestions would be for
-tracking, logging, or just blind data dumping onto a text field.</Abstract>
-			<DeclaredIn>PPHCardReaderCapabilities.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderDisplayScreen/resolutionDimensions</TokenIdentifier>
+			<Abstract type="html">Query the width and height variables of this CGSize struct to get resolution dimensions
+of the card reader LED screen. If width and height are 0 this means resolution information
+could not be determined.</Abstract>
+			<DeclaredIn>PPHCardReaderDisplayScreen.h</DeclaredIn>
 			
-			<Declaration>- (NSDictionary *)extraCapabilityInfo</Declaration>
+			<Declaration>@property (nonatomic, readonly) CGSize resolutionDimensions</Declaration>
 			
 			
-			<Anchor>//api/name/extraCapabilityInfo</Anchor>
+			<Anchor>//api/name/resolutionDimensions</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		

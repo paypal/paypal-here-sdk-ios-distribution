@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHNetworkRequestDelegate.html">
+	<File path="Protocols/PPHInvoiceProtocol.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHNetworkRequestDelegate</TokenIdentifier>
-			<Abstract type="html">A protocol for objects wishing to manage network requests for the PayPal Here SDK</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHInvoiceProtocol</TokenIdentifier>
+			<Abstract type="html">The minimal set of information required to take payment on an invoice</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
             
 			
 			<NodeRef refid="61"/>
@@ -13,85 +13,62 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/beginRequest:withID:withHandler:</TokenIdentifier>
-			<Abstract type="html">Add a request to be sent over the network.</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/currency</TokenIdentifier>
+			<Abstract type="html">The currency type used by this invoice</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)beginRequest:(id)inRequest withID:(id)identifier withHandler:(id)handler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>inRequest</Name>
-					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
-				</Parameter><Parameter>
-					<Name>identifier</Name>
-					<Abstract type="html">an identifier which is used to cancel a request or group of requests sharing the same identifier</Abstract>
-				</Parameter><Parameter>
-					<Name>handler</Name>
-					<Abstract type="html">called when the request completes with success or failure</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">YES if you handled the request, NO if you did not and we should process it ourselves.</Abstract></ReturnValue>
-			<Anchor>//api/name/beginRequest:withID:withHandler:</Anchor>
+			<Declaration>- (NSString *)currency</Declaration>
+			
+			
+			<Anchor>//api/name/currency</Anchor>
             <NodeRef refid="61"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/cancelOperationsForID:</TokenIdentifier>
-			<Abstract type="html">Cancel all active operations with the given identifier</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/totalAmount</TokenIdentifier>
+			<Abstract type="html">The total amount due on the invoice</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
 			
-			<Declaration>- (void)cancelOperationsForID:(id)identifier</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>identifier</Name>
-					<Abstract type="html">the value passed to addRequest</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (PPHAmount *)totalAmount</Declaration>
 			
-			<Anchor>//api/name/cancelOperationsForID:</Anchor>
+			
+			<Anchor>//api/name/totalAmount</Anchor>
             <NodeRef refid="61"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/modifyRequest:</TokenIdentifier>
-			<Abstract type="html">If you just need to modify a request but not &quot;handle&quot; it, you can implement this selector.</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/paypalInvoiceId</TokenIdentifier>
+			<Abstract type="html">The unique identifier for the invoice received when creating the invoice on the network</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
 			
-			<Declaration>- (void)modifyRequest:(id)inRequest</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>inRequest</Name>
-					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (NSString *)paypalInvoiceId</Declaration>
 			
-			<Anchor>//api/name/modifyRequest:</Anchor>
+			
+			<Anchor>//api/name/paypalInvoiceId</Anchor>
             <NodeRef refid="61"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/requestCompleted:withResponse:data:andError:</TokenIdentifier>
-			<Abstract type="html">We&apos;ll call you when a response is received. This is most useful for logging.</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/asDictionary</TokenIdentifier>
+			<Abstract type="html">Compile the invoice&apos;s data to a format that is ready to save as an InvoiceType parameter to an API call.</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
 			
-			<Declaration>- (void)requestCompleted:(id)inRequest withResponse:(id)inResponse data:(id)data andError:(id)error</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>inRequest</Name>
-					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
-				</Parameter><Parameter>
-					<Name>inResponse</Name>
-					<Abstract type="html">the response received from the server</Abstract>
-				</Parameter><Parameter>
-					<Name>data</Name>
-					<Abstract type="html">the data received with the response</Abstract>
-				</Parameter><Parameter>
-					<Name>error</Name>
-					<Abstract type="html">the raw error received, if any</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
 			
-			<Anchor>//api/name/requestCompleted:withResponse:data:andError:</Anchor>
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="61"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/payerEmail</TokenIdentifier>
+			<Abstract type="html">The buyer&apos;s email address if known. Often noreply@here.paypal.com</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)payerEmail</Declaration>
+			
+			
+			<Anchor>//api/name/payerEmail</Anchor>
             <NodeRef refid="61"/>
 		</Token>
 		

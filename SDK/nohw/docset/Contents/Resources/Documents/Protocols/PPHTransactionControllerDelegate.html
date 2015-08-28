@@ -43,9 +43,21 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/onPostAuthorize:">&nbsp;&nbsp;&nbsp;&nbsp;- onPostAuthorize:</option>
+	<option value="//api/name/contactlessListenerDidTimeout:">&nbsp;&nbsp;&nbsp;&nbsp;- contactlessListenerDidTimeout:</option>
 	
-	<option value="//api/name/onPreAuthorizeForInvoice:withPreAuthJSON:">&nbsp;&nbsp;&nbsp;&nbsp;- onPreAuthorizeForInvoice:withPreAuthJSON:</option>
+	<option value="//api/name/getCurrentNavigationController">&nbsp;&nbsp;&nbsp;&nbsp;- getCurrentNavigationController</option>
+	
+	<option value="//api/name/getReceiptOptions">&nbsp;&nbsp;&nbsp;&nbsp;- getReceiptOptions</option>
+	
+	<option value="//api/name/readerDidActivateForPayments">&nbsp;&nbsp;&nbsp;&nbsp;- readerDidActivateForPayments</option>
+	
+	<option value="//api/name/readerDidDeactivateForPayments">&nbsp;&nbsp;&nbsp;&nbsp;- readerDidDeactivateForPayments</option>
+	
+	<option value="//api/name/receiptOptionsWillAppearWithContext:">&nbsp;&nbsp;&nbsp;&nbsp;- receiptOptionsWillAppearWithContext:</option>
+	
+	<option value="//api/name/userDidSelectPaymentMethod:">&nbsp;&nbsp;&nbsp;&nbsp;- userDidSelectPaymentMethod:</option>
+	
+	<option value="//api/name/userDidSelectRefundMethod:">&nbsp;&nbsp;&nbsp;&nbsp;- userDidSelectRefundMethod:</option>
 	
 	
 	
@@ -75,9 +87,21 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onPostAuthorize:">onPostAuthorize:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contactlessListenerDidTimeout:">contactlessListenerDidTimeout:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onPreAuthorizeForInvoice:withPreAuthJSON:">onPreAuthorizeForInvoice:withPreAuthJSON:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCurrentNavigationController">getCurrentNavigationController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getReceiptOptions">getReceiptOptions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readerDidActivateForPayments">readerDidActivateForPayments</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readerDidDeactivateForPayments">readerDidDeactivateForPayments</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptOptionsWillAppearWithContext:">receiptOptionsWillAppearWithContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userDidSelectPaymentMethod:">userDidSelectPaymentMethod:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userDidSelectRefundMethod:">userDidSelectRefundMethod:</a></span></li>
 	
 </ul></li>
 
@@ -117,15 +141,12 @@
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>The TransactionController defines an interface that can be used by the application to install a callback
-object that is used to customize behavior.
+object that is used to customize behavior and the payment experience.
 TransactionControllers are set on the TransactionManager on a per transaction basis. Unlike persistent
 listeners that are registered with the manager object, TransactionControllers are &ldquo;forgotten&rdquo; by the
 SDK at the end of each transaction (regardless of success or failure).
-TransactionControllers interact with the SDK by using the TransactionControlAction and also via the parameters
-passed into the callbacks. For example, the value HANDLED indicates that the application has taken over processing
-and that the SDK should stop processing this particular transaction at this state.
-The CONTINUE flag indicates that the application has either made changes to the input object or left everything untouched
-and that the SDK should continue processing the transaction.</p>
+TransactionControllers are also used to call out important transaction related events to the app
+such as contactless payment listener timeouts.</p>
 					</div>
 					
 					
@@ -143,16 +164,52 @@ and that the SDK should continue processing the transaction.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/onPreAuthorizeForInvoice:withPreAuthJSON:">&ndash;&nbsp;onPreAuthorizeForInvoice:withPreAuthJSON:</a></code>
+		<code><a href="#//api/name/userDidSelectPaymentMethod:">&ndash;&nbsp;userDidSelectPaymentMethod:</a></code>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/onPostAuthorize:">&ndash;&nbsp;onPostAuthorize:</a></code>
+		<code><a href="#//api/name/userDidSelectRefundMethod:">&ndash;&nbsp;userDidSelectRefundMethod:</a></code>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCurrentNavigationController">&ndash;&nbsp;getCurrentNavigationController</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getReceiptOptions">&ndash;&nbsp;getReceiptOptions</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptOptionsWillAppearWithContext:">&ndash;&nbsp;receiptOptionsWillAppearWithContext:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contactlessListenerDidTimeout:">&ndash;&nbsp;contactlessListenerDidTimeout:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readerDidActivateForPayments">&ndash;&nbsp;readerDidActivateForPayments</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readerDidDeactivateForPayments">&ndash;&nbsp;readerDidDeactivateForPayments</a></code>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -171,18 +228,21 @@ and that the SDK should continue processing the transaction.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/onPostAuthorize:" title="onPostAuthorize:"></a>
-	<h3 class="subsubtitle method-title">onPostAuthorize:</h3>
+	<a name="//api/name/contactlessListenerDidTimeout:" title="contactlessListenerDidTimeout:"></a>
+	<h3 class="subsubtitle method-title">contactlessListenerDidTimeout:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>onPostAuthorize</p>
+		<p>After starting a contactless transaction, if no contactless card is presented to the terminal a
+timeout occurs. Implement this method if you want to handle this scenario as the calling application.
+If implemented, it is your responsibility to invoke the completionHandler to give control back to the
+EMVSDK when ready. You will notify the EMVSDK of the action it must take.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)onPostAuthorize:(id)<em>didFail</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)contactlessListenerDidTimeout:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -190,12 +250,8 @@ and that the SDK should continue processing the transaction.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>didFail</em></dt>
-			<dd><ul>
-<li>indicates whether the authorization failed. A true indicates that the authorization itself failed. A false indicates
-that the authorization did not fail. It however, DOES NOT indicate that the transaction was successful.</li>
-</ul>
-</dd>
+			<dt><em>completionHandler:</em></dt>
+			<dd><p>A completion handler that should be invoked by the receiving delegate.</p></dd>
 		</dl>
 		
 	</div>
@@ -208,10 +264,10 @@ that the authorization did not fail. It however, DOES NOT indicate that the tran
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>onPostAuthorize</p>
-
-<p>This callback is invoked by the TransactionManager once authorization is complete. Note that authorization
-complete does not indicate success. The input parameter indicates whether or not the authorization failed.</p>
+		<p>After starting a contactless transaction, if no contactless card is presented to the terminal a
+timeout occurs. Implement this method if you want to handle this scenario as the calling application.
+If implemented, it is your responsibility to invoke the completionHandler to give control back to the
+EMVSDK when ready. You will notify the EMVSDK of the action it must take.</p>
 	</div>
 	
 	
@@ -229,55 +285,23 @@ complete does not indicate success. The input parameter indicates whether or not
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/onPreAuthorizeForInvoice:withPreAuthJSON:" title="onPreAuthorizeForInvoice:withPreAuthJSON:"></a>
-	<h3 class="subsubtitle method-title">onPreAuthorizeForInvoice:withPreAuthJSON:</h3>
+	<a name="//api/name/getCurrentNavigationController" title="getCurrentNavigationController"></a>
+	<h3 class="subsubtitle method-title">getCurrentNavigationController</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>onPreAuthorize This callback is invoked by the TransactionManager in response to a call to
-the processPayment() API in the TransactionManager. As soon as the TransactionManager is ready
-to perform the authorization this callback is invoked. The SDK is responsible for ensuring that
-this call is invoked in the appropriate thread.</p>
+		<p>Mandatory if you are using the EMVSDK. Returns a reference to a
+navigation controller we drive UI off of.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHTransactionControlActionType)onPreAuthorizeForInvoice:(id)<em>inv</em> withPreAuthJSON:(id)<em>preAuthJSON</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getCurrentNavigationController</code></div>
 
     
 	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>inv</em></dt>
-			<dd><p>This is the Invoice object against which the authorization will be performed. At this point
-the application can choose to make some changes to the invoice. For example, a tip could
-be added to an Invoice at this time or an item could be removed etc.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>preAuthJSON</em></dt>
-			<dd><p>A dictionary ready for json conversion and shipment to the paypal service
-that represents the request payload. This is the request data that will
-be sent to the backend and the application is allowed to modify this data.
-CAUTION: Modifying the data incorrectly could cause your transaction to fail. Ensure that any changes by the app
-will not introduce errors and that you handle the error cases appropriately. More documentation on what
-the server expects in the payload can be found in the documentation.</p></dd>
-		</dl>
-		
-	</div>
 	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>TransactionControlAction. Return HANDLED if you want the SDK to stop processing the transaction at this point
-If HANDLED is returned, then the Transaction will be canceled but the application is free to keep the invoice around
-if it so wishes. If the invoice is not required then use the cancel method defined on the Invoice to cancel it.
-Return CONTINUE if you wish the SDK to continue processing this transaction.</p>
-	</div>
 	
 	
 	
@@ -285,10 +309,306 @@ Return CONTINUE if you wish the SDK to continue processing this transaction.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>onPreAuthorize This callback is invoked by the TransactionManager in response to a call to
-the processPayment() API in the TransactionManager. As soon as the TransactionManager is ready
-to perform the authorization this callback is invoked. The SDK is responsible for ensuring that
-this call is invoked in the appropriate thread.</p>
+		<p>Mandatory if you are using the EMVSDK. Returns a reference to a
+navigation controller we drive UI off of.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionControllerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getReceiptOptions" title="getReceiptOptions"></a>
+	<h3 class="subsubtitle method-title">getReceiptOptions</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Custom receipt options we display as part of the EMVSDK receipt screen.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)getReceiptOptions</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Custom receipt options we display as part of the EMVSDK receipt screen.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionControllerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readerDidActivateForPayments" title="readerDidActivateForPayments"></a>
+	<h3 class="subsubtitle method-title">readerDidActivateForPayments</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets called when the reader has been activated for payments and is ready to process card present data.
+Handle any non-EMV SDK related processing once this comes back.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)readerDidActivateForPayments</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Gets called when the reader has been activated for payments and is ready to process card present data.
+Handle any non-EMV SDK related processing once this comes back.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionControllerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readerDidDeactivateForPayments" title="readerDidDeactivateForPayments"></a>
+	<h3 class="subsubtitle method-title">readerDidDeactivateForPayments</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets called when the reader has been de-activated for payments.
+We have not dropped connection with the reader, but our reader will not process any card present data.
+To enable the reader for payments again, just call activateReaderForPayments when you are ready and take
+a payment against the current TM invoice, or simply start a new transaction.
+Deactivation can occur if a user presses cancel on the terminal before presenting their card to the terminal.
+Deactivation can also occur if you have explicitly called deActivateReaderForPayment.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)readerDidDeactivateForPayments</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Gets called when the reader has been de-activated for payments.
+We have not dropped connection with the reader, but our reader will not process any card present data.
+To enable the reader for payments again, just call activateReaderForPayments when you are ready and take
+a payment against the current TM invoice, or simply start a new transaction.
+Deactivation can occur if a user presses cancel on the terminal before presenting their card to the terminal.
+Deactivation can also occur if you have explicitly called deActivateReaderForPayment.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionControllerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptOptionsWillAppearWithContext:" title="receiptOptionsWillAppearWithContext:"></a>
+	<h3 class="subsubtitle method-title">receiptOptionsWillAppearWithContext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This message is sent to the delegate right before the receipt options screen appears.
+If your app does automatic receipt printing, this is a good place to do it.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)receiptOptionsWillAppearWithContext:(id)<em>receiptContext</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>receiptContext:</em></dt>
+			<dd><p>An object containing information about the transaction record &amp; receipt status.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This message is sent to the delegate right before the receipt options screen appears.
+If your app does automatic receipt printing, this is a good place to do it.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionControllerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userDidSelectPaymentMethod:" title="userDidSelectPaymentMethod:"></a>
+	<h3 class="subsubtitle method-title">userDidSelectPaymentMethod:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This delegate method will be called by the EMVSDK whenever a user selects a payment method by
+presenting their card. Mandatory if your app would like to take custom action such as handling tips
+before letting the EMVSDK continue. Gives you a chance to modify the transaction total.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)userDidSelectPaymentMethod:(id)<em>paymentOption</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>paymentOption</em></dt>
+			<dd><p>the type of payment option the user selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This delegate method will be called by the EMVSDK whenever a user selects a payment method by
+presenting their card. Mandatory if your app would like to take custom action such as handling tips
+before letting the EMVSDK continue. Gives you a chance to modify the transaction total.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionControllerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userDidSelectRefundMethod:" title="userDidSelectRefundMethod:"></a>
+	<h3 class="subsubtitle method-title">userDidSelectRefundMethod:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This delegate method will be called by the EMVSDK whenever a user selects a refund method by
+presenting their card. Mandatory if your app would like to take custom action before letting
+the EMVSDK continue. Gives you a chance to modify the transaction total.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)userDidSelectRefundMethod:(id)<em>refundOption</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>refundOption</em></dt>
+			<dd><p>the type of refund payment option user selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This delegate method will be called by the EMVSDK whenever a user selects a refund method by
+presenting their card. Mandatory if your app would like to take custom action before letting
+the EMVSDK continue. Gives you a chance to modify the transaction total.</p>
 	</div>
 	
 	
@@ -323,7 +643,7 @@ this call is invoked in the appropriate thread.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-07-20)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

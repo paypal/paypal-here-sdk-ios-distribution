@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPHAmount.h"
 
 /*!
  * A container for various limits and rules around payments
+ * consisting of useful properties and convenience methods
  */
 @interface PPHPaymentLimits : NSObject
 
@@ -27,6 +29,12 @@
  * Amount over which this merchant requires a signature.  If nil then the value is unknown.
  */
 @property (nonatomic, strong) NSDecimalNumber *signatureRequiredAbove;
+
+/*!
+ * The largest amount at which you can successfully charge for a contactless payment (both 
+ * card and on-device such as Apple Pay).
+ */
+@property (nonatomic, strong) NSDecimalNumber *contactlessTransactionLimit;
 
 /*!
  * In the Auth-Capture use case, for a given merchant account, this method provides the

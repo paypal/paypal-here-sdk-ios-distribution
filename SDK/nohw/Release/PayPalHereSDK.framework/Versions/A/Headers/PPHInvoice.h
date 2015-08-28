@@ -112,11 +112,11 @@
 /*! The amount the payer decided to tip (or the default tip) */
 @property (strong,nonatomic) NSDecimalNumber *gratuity;
 /*! e.g. DueOnReceipt,Net30 */
-@property (strong,nonatomic) NSString *paymentTerms;
+@property (copy,nonatomic) NSString *paymentTerms;
 /*! Custom due date */
 @property (strong,nonatomic) NSDate *dueDate;
 /*! Often noreply@here.paypal.com */
-@property (nonatomic,strong) NSString *payerEmail;
+@property (nonatomic,copy) NSString *payerEmail;
 /*! Billing address information */
 @property (strong,nonatomic,readonly) PPHInvoiceContactInfo *billingInfo;
 /*! Shipping address information */
@@ -126,24 +126,24 @@
 /*! The actual percentage tax rate applied to the shipping */
 @property (strong,nonatomic) NSDecimalNumber *shippingTaxRate;
 /*! The name of the tax rate applied to the shipping cost */
-@property (strong,nonatomic) NSString *shippingTaxRateName;
+@property (copy,nonatomic) NSString *shippingTaxRateName;
 /*! Is the tax included in the subtotal? */
 @property (nonatomic) BOOL taxInclusive;
 /*! Is the discount to be subtracted before tax? */
 @property (nonatomic) BOOL taxCalculatedAfterDiscount;
 /*! The name of a custom value entered on an invoice from the website. */
-@property (strong,nonatomic) NSString *customAmountName;
+@property (copy,nonatomic) NSString *customAmountName;
 /*! The amount of a custom value entered on an invoice from the website. */
 @property (strong,nonatomic) NSDecimalNumber *customAmountValue;
 /*! Referrer code - used to track source of invoice creation beyond just "API/Web" */
-@property (strong,nonatomic) NSString *referrerCode;
+@property (copy,nonatomic) NSString *referrerCode;
 /*! Cashier ID - Indicate the merchant's sub-user (e.g. Cashier) that is responsible for a transaction. */
-@property (strong,nonatomic) NSString *cashierId;
+@property (copy,nonatomic) NSString *cashierId;
 
 #pragma mark -
 #pragma mark Read only fields
 /*! The currency type used by this invoice */
-@property (strong,nonatomic,readonly) NSString *currency;
+@property (copy,nonatomic,readonly) NSString *currency;
 
 
 #pragma mark -
@@ -165,7 +165,9 @@
 /*! YES if invoice origin is Web */
 @property (nonatomic,readonly) BOOL originatedOnWeb;
 /*! The terms associated with the invoice, such as return policy */
-@property (nonatomic,strong) NSString *terms;
+@property (nonatomic,copy) NSString *terms;
+/*! The custom receipt text associated with the invoice */
+@property (nonatomic,copy) NSString *customReceiptText;
 
 #pragma mark -
 #pragma mark Calculated values
@@ -208,8 +210,21 @@
 #pragma mark -
 #pragma mark Invoice Manipulation
 
+/**
+ * phoneNumber will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+ * If set, it will take precedence over any phone number from the server
+ */
+@property (nonatomic, copy) NSString *receiptPhoneNumber;
+
+/**
+ * emailAddress will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+ * If set, it will take precedence over any email from the server
+ */
+@property (nonatomic, copy) NSString *receiptEmailAddress;
+
+
 /*! A note that can be used when marking as paid if no other is specified. */
-@property (strong,nonatomic) NSString *note;
+@property (copy,nonatomic) NSString *note;
 
 /*!
  Fetches an invoice item that corresponds to an itemId with no detailId.

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHAnalyticsEventName.html">
+	<File path="Constants/PPHAccessResultType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHAnalyticsEventName</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHAccessResultType</TokenIdentifier>
+			<Abstract type="html">Indicates whether all the information regarding the logged in merchant was
+successfully retrieved by the backend and the merchant setup was succcessful.</Abstract>
+			<DeclaredIn>PPHAccessResultType.h</DeclaredIn>
             
 			
 			<NodeRef refid="68"/>
@@ -14,91 +15,23 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_None</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_None</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccessResultSuccess</TokenIdentifier>
+            <Abstract type="html">If the merchant setup was successful.
+     </Abstract>
+            <Declaration>ePPHAccessResultSuccess</Declaration>
             
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_ReaderInserted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_ReaderInserted</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+            <DeclaredIn>PPHAccessResultType.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_ReaderRemoved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_ReaderRemoved</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAccessResultFailed</TokenIdentifier>
+            <Abstract type="html">If the merchant setup encountered an error.
+     </Abstract>
+            <Declaration>ePPHAccessResultFailed</Declaration>
             
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_AudioSwiperError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_AudioSwiperError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_AudioSwipeSuccessful</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_AudioSwipeSuccessful</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_DockPortSwiperError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_DockPortSwiperError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_DockPortSwipeSuccessful</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_DockPortSwipeSuccessful</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_SoftwareUpdateError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_SoftwareUpdateError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_SoftwareUpdateRestartReader</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_SoftwareUpdateRestartReader</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+            <DeclaredIn>PPHAccessResultType.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>

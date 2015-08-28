@@ -135,6 +135,27 @@ NOTE: The currency information is deduced via the active merchant set within the
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/initWithAmount:inCurrency:</TokenIdentifier>
+			<Abstract type="html">Designated initializer
+Initialize an amount with the currency.</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithAmount:(id)amount inCurrency:(id)currency</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">the amount to initialize</Abstract>
+				</Parameter><Parameter>
+					<Name>currency</Name>
+					<Abstract type="html">the currency for the amount</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithAmount:inCurrency:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/initWithPadding:inCurrency:</TokenIdentifier>
 			<Abstract type="html">Initialize an amount with the appropriate padding for a currency. For example,
 in USD which is a 2 digit currency, passing 12345 will return 123.45</Abstract>
@@ -260,6 +281,54 @@ so that we don&apos;t break intermediate values.</Abstract>
 			
 			
 			<Anchor>//api/name/isValid</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/isAmountEqualToZero</TokenIdentifier>
+			<Abstract type="html">YES if the amount is equal to zero</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isAmountEqualToZero</Declaration>
+			
+			
+			<Anchor>//api/name/isAmountEqualToZero</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/isAmountAboveCardPresentMinimum</TokenIdentifier>
+			<Abstract type="html">YES if the amount is greater than or equal to the minimum value for cardPresent transactions</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isAmountAboveCardPresentMinimum</Declaration>
+			
+			
+			<Anchor>//api/name/isAmountAboveCardPresentMinimum</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/isAmountBelowCardPresentMaximum</TokenIdentifier>
+			<Abstract type="html">YES if the amount is less than or equal to the max value for cardPresent transactions</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isAmountBelowCardPresentMaximum</Declaration>
+			
+			
+			<Anchor>//api/name/isAmountBelowCardPresentMaximum</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAmount/isAmountAcceptedForContactless</TokenIdentifier>
+			<Abstract type="html">YES if the amount can be used for contactless payments</Abstract>
+			<DeclaredIn>PPHAmount.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isAmountAcceptedForContactless</Declaration>
+			
+			
+			<Anchor>//api/name/isAmountAcceptedForContactless</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		

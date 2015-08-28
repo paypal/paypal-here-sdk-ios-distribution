@@ -39,7 +39,7 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/isInPinRetryMode">&nbsp;&nbsp;&nbsp;&nbsp;isInPinRetryMode</option>
+	<option value="//api/name/monitoringForTypes">&nbsp;&nbsp;&nbsp;&nbsp;monitoringForTypes</option>
 	
 	
 	
@@ -50,21 +50,27 @@
 	
 	<option value="//api/name/activateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- activateReader:</option>
 	
-	<option value="//api/name/availableDevices">&nbsp;&nbsp;&nbsp;&nbsp;- availableDevices</option>
+	<option value="//api/name/activeReader">&nbsp;&nbsp;&nbsp;&nbsp;- activeReader</option>
+	
+	<option value="//api/name/availableReaderOfType:">&nbsp;&nbsp;&nbsp;&nbsp;- availableReaderOfType:</option>
+	
+	<option value="//api/name/availableReaders">&nbsp;&nbsp;&nbsp;&nbsp;- availableReaders</option>
 	
 	<option value="//api/name/beginMonitoring">&nbsp;&nbsp;&nbsp;&nbsp;- beginMonitoring</option>
 	
 	<option value="//api/name/beginMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- beginMonitoring:</option>
 	
-	<option value="//api/name/beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:</option>
+	<option value="//api/name/beginUpgradeUsingSDKUIForReader:completionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- beginUpgradeUsingSDKUIForReader:completionHandler:</option>
 	
-	<option value="//api/name/beginUpgrade:">&nbsp;&nbsp;&nbsp;&nbsp;- beginUpgrade:</option>
+	<option value="//api/name/closeActiveReader">&nbsp;&nbsp;&nbsp;&nbsp;- closeActiveReader</option>
 	
-	<option value="//api/name/deactivateReader:">&nbsp;&nbsp;&nbsp;&nbsp;- deactivateReader:</option>
+	<option value="//api/name/disconnectFromReaderOfType:">&nbsp;&nbsp;&nbsp;&nbsp;- disconnectFromReaderOfType:</option>
 	
-	<option value="//api/name/endMonitoring:">&nbsp;&nbsp;&nbsp;&nbsp;- endMonitoring:</option>
+	<option value="//api/name/endMonitoring">&nbsp;&nbsp;&nbsp;&nbsp;- endMonitoring</option>
 	
-	<option value="//api/name/setPreferenceOrder:">&nbsp;&nbsp;&nbsp;&nbsp;- setPreferenceOrder:</option>
+	<option value="//api/name/lastAvailableReaderOfType:">&nbsp;&nbsp;&nbsp;&nbsp;- lastAvailableReaderOfType:</option>
+	
+	<option value="//api/name/openActiveReader">&nbsp;&nbsp;&nbsp;&nbsp;- openActiveReader</option>
 	
 	
 	
@@ -90,7 +96,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isInPinRetryMode">isInPinRetryMode</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/monitoringForTypes">monitoringForTypes</a></span></li>
 	
 </ul></li>
 
@@ -102,21 +108,27 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activateReader:">activateReader:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableDevices">availableDevices</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activeReader">activeReader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableReaderOfType:">availableReaderOfType:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableReaders">availableReaders</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginMonitoring">beginMonitoring</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginMonitoring:">beginMonitoring:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:">beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginUpgradeUsingSDKUIForReader:completionHandler:">beginUpgradeUsingSDKUIForReader:completionHandler:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/beginUpgrade:">beginUpgrade:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/closeActiveReader">closeActiveReader</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deactivateReader:">deactivateReader:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disconnectFromReaderOfType:">disconnectFromReaderOfType:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endMonitoring:">endMonitoring:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endMonitoring">endMonitoring</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPreferenceOrder:">setPreferenceOrder:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastAvailableReaderOfType:">lastAvailableReaderOfType:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/openActiveReader">openActiveReader</a></span></li>
 	
 </ul></li>
 
@@ -157,6 +169,13 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>The card reader manager handles all interaction with card and chip&amp;pin hardware devices.
 This includes audio readers, dock port readers, and Bluetooth readers.</p>
+
+<p>Each reader goes through 5 states during it&rsquo;s lifecycle:</p>
+
+<p>Available - A potential reader of one of the monitored types has been detected.
+Connecting - We are in the process of acquiring more information about the reader.
+Connected - The reader is fully identified.
+Open - The reader is listening for card data</p>
 					</div>
 					
 					
@@ -186,7 +205,13 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/endMonitoring:">&ndash;&nbsp;endMonitoring:</a></code>
+		<code><a href="#//api/name/monitoringForTypes">&nbsp;&nbsp;monitoringForTypes</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/endMonitoring">&ndash;&nbsp;endMonitoring</a></code>
 	</span>
 	
 	
@@ -198,39 +223,51 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/deactivateReader:">&ndash;&nbsp;deactivateReader:</a></code>
+		<code><a href="#//api/name/disconnectFromReaderOfType:">&ndash;&nbsp;disconnectFromReaderOfType:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setPreferenceOrder:">&ndash;&nbsp;setPreferenceOrder:</a></code>
+		<code><a href="#//api/name/openActiveReader">&ndash;&nbsp;openActiveReader</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/availableDevices">&ndash;&nbsp;availableDevices</a></code>
+		<code><a href="#//api/name/closeActiveReader">&ndash;&nbsp;closeActiveReader</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/beginUpgrade:">&ndash;&nbsp;beginUpgrade:</a></code>
+		<code><a href="#//api/name/availableReaders">&ndash;&nbsp;availableReaders</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:">&ndash;&nbsp;beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:</a></code>
+		<code><a href="#//api/name/availableReaderOfType:">&ndash;&nbsp;availableReaderOfType:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isInPinRetryMode">&nbsp;&nbsp;isInPinRetryMode</a></code>
+		<code><a href="#//api/name/lastAvailableReaderOfType:">&ndash;&nbsp;lastAvailableReaderOfType:</a></code>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activeReader">&ndash;&nbsp;activeReader</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/beginUpgradeUsingSDKUIForReader:completionHandler:">&ndash;&nbsp;beginUpgradeUsingSDKUIForReader:completionHandler:</a></code>
+	</span>
+	
 	
 </li>
 						</ul>
@@ -246,14 +283,44 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/isInPinRetryMode" title="isInPinRetryMode"></a>
-	<h3 class="subsubtitle method-title">isInPinRetryMode</h3>
+	<a name="//api/name/monitoringForTypes" title="monitoringForTypes"></a>
+	<h3 class="subsubtitle method-title">monitoringForTypes</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>The types we are currently monitoring for.</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isInPinRetryMode</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) PPHReaderTypeMask monitoringForTypes</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The types we are currently monitoring for.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -273,25 +340,16 @@ This includes audio readers, dock port readers, and Bluetooth readers.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
-in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p>
+		<p>Mark the given reader as the active reader for transactions. Anytime there is only a single reader available
+it will automatically become the active reader. Sending nil as the reader will deactivate the current active
+reader.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (PPHReaderError)activateReader:(id)<em>readerOrNil</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHReaderError)activateReader:(id)<em>reader</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>readerOrNil</em></dt>
-			<dd><p>The reader to activate or nil for the default/only reader.</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -301,8 +359,9 @@ in other cases this will connect to the bluetooth or feature port accessory or d
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
-in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</p>
+		<p>Mark the given reader as the active reader for transactions. Anytime there is only a single reader available
+it will automatically become the active reader. Sending nil as the reader will deactivate the current active
+reader.</p>
 	</div>
 	
 	
@@ -320,8 +379,108 @@ in other cases this will connect to the bluetooth or feature port accessory or d
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/availableDevices" title="availableDevices"></a>
-	<h3 class="subsubtitle method-title">availableDevices</h3>
+	<a name="//api/name/activeReader" title="activeReader"></a>
+	<h3 class="subsubtitle method-title">activeReader</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the reader that is currently being used for transactions. If there is a single available reader then
+it will automatically be marked as active. If there are multiple available readers you must call
+<code>activateReader</code> to select one before transacting.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHCardReaderMetadata *)activeReader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the reader that is currently being used for transactions. If there is a single available reader then
+it will automatically be marked as active. If there are multiple available readers you must call
+<code>activateReader</code> to select one before transacting.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableReaderOfType:" title="availableReaderOfType:"></a>
+	<h3 class="subsubtitle method-title">availableReaderOfType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the currently available reader of a given type. A reader is considered available if we have a potential
+connection opportunity (e.g. something is inserted in the audio jack, or a bluetooth device with a matching
+protocol is in range)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (PPHCardReaderMetadata *)availableReaderOfType:(id)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of reader to get</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the currently available reader of a given type. A reader is considered available if we have a potential
+connection opportunity (e.g. something is inserted in the audio jack, or a bluetooth device with a matching
+protocol is in range)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableReaders" title="availableReaders"></a>
+	<h3 class="subsubtitle method-title">availableReaders</h3>
 	
 	
 	
@@ -332,7 +491,7 @@ paired devices that are currently within range/connectable.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSArray *)availableDevices</code></div>
+	<div class="method-subsection method-declaration"><code>- (NSArray *)availableReaders</code></div>
 
     
 	
@@ -340,7 +499,7 @@ paired devices that are currently within range/connectable.</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>NSArray(<a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>)</p>
+		<p>NSArray(<a href="../Classes/PPHCardReaderMetadata.html">PPHCardReaderMetadata</a>)</p>
 	</div>
 	
 	
@@ -443,13 +602,6 @@ paired devices that are currently within range/connectable.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Begin monitoring the device for connection and removal of the specified reader types.</p>
-
-<p>PLEASE NOTE that we will call EAAccessoryManager::register/unregisterForLocalNotifications
-based on whether you pass the bluetooth or feature port reader types. So if your application is
-ALSO manipulating the accessory framework, you should pass one of those types if you don&rsquo;t want
-us to shutoff accessory notifications for your app. Alternatively, you can call endMonitoring first
-and then <a href="#//api/name/beginMonitoring">beginMonitoring</a> with your new types. This is obviously an edge case since you will likely
-just call <a href="#//api/name/beginMonitoring">beginMonitoring</a> once and be done with it.</p>
 	</div>
 	
 	
@@ -467,19 +619,18 @@ just call <a href="#//api/name/beginMonitoring">beginMonitoring</a> once and be 
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:" title="beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:"></a>
-	<h3 class="subsubtitle method-title">beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:</h3>
+	<a name="//api/name/beginUpgradeUsingSDKUIForReader:completionHandler:" title="beginUpgradeUsingSDKUIForReader:completionHandler:"></a>
+	<h3 class="subsubtitle method-title">beginUpgradeUsingSDKUIForReader:completionHandler:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Perform a software update on the EMV terminal.
-This version will cause the SDK to show UI during the update flow.</p>
+		<p>Begin the flow that updates the reader.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginReaderUpdateUsingSDKUI_WithViewController:(id)<em>vc</em> completionHandler:(id)<em>completionHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)beginUpgradeUsingSDKUIForReader:(id)<em>reader</em> completionHandler:(id)<em>completionHandler</em></code></div>
 
     
 	
@@ -487,8 +638,8 @@ This version will cause the SDK to show UI during the update flow.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>vc</em></dt>
-			<dd><p>: The current or active view controller.</p></dd>
+			<dt><em>reader</em></dt>
+			<dd><p>The reader to begin upgrading</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -506,8 +657,7 @@ This version will cause the SDK to show UI during the update flow.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Perform a software update on the EMV terminal.
-This version will cause the SDK to show UI during the update flow.</p>
+		<p>Begin the flow that updates the reader.</p>
 	</div>
 	
 	
@@ -525,33 +675,27 @@ This version will cause the SDK to show UI during the update flow.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/beginUpgrade:" title="beginUpgrade:"></a>
-	<h3 class="subsubtitle method-title">beginUpgrade:</h3>
+	<a name="//api/name/closeActiveReader" title="closeActiveReader"></a>
+	<h3 class="subsubtitle method-title">closeActiveReader</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
-for the target reader.</p>
+		<p>Stops listening for card data on the active reader. Has no effect if the reader is not open.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)beginUpgrade:(id)<em>reader</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)closeActiveReader</code></div>
 
     
 	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>reader</em></dt>
-			<dd><p>the reader to upgrade</p></dd>
-		</dl>
-		
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>wether or not the reader was closed</p>
 	</div>
-	
-	
 	
 	
 	
@@ -559,8 +703,7 @@ for the target reader.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>In the case of readers requiring further setup, call this method with the <a href="../Classes/PPHCardReaderBasicInformation.html">PPHCardReaderBasicInformation</a>
-for the target reader.</p>
+		<p>Stops listening for card data on the active reader. Has no effect if the reader is not open.</p>
 	</div>
 	
 	
@@ -578,34 +721,28 @@ for the target reader.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/deactivateReader:" title="deactivateReader:"></a>
-	<h3 class="subsubtitle method-title">deactivateReader:</h3>
+	<a name="//api/name/disconnectFromReaderOfType:" title="disconnectFromReaderOfType:"></a>
+	<h3 class="subsubtitle method-title">disconnectFromReaderOfType:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
-or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
-disconnect the reader.</p>
+		<p>Explicitly disconnect from the given reader type if one is available and connected. This may increase battery life
+at the expense of user experience</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deactivateReader:(id)<em>readerOrNil</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)disconnectFromReaderOfType:(id)<em>type</em></code></div>
 
     
 	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>readerOrNil</em></dt>
-			<dd><p>The reader to deactivate or nil for the default/only reader.</p></dd>
-		</dl>
-		
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>wether or not a reader of the given type in a connected state was found and disconnected</p>
 	</div>
-	
-	
 	
 	
 	
@@ -613,9 +750,8 @@ disconnect the reader.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
-or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
-disconnect the reader.</p>
+		<p>Explicitly disconnect from the given reader type if one is available and connected. This may increase battery life
+at the expense of user experience</p>
 	</div>
 	
 	
@@ -633,8 +769,8 @@ disconnect the reader.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/endMonitoring:" title="endMonitoring:"></a>
-	<h3 class="subsubtitle method-title">endMonitoring:</h3>
+	<a name="//api/name/endMonitoring" title="endMonitoring"></a>
+	<h3 class="subsubtitle method-title">endMonitoring</h3>
 	
 	
 	
@@ -644,19 +780,9 @@ disconnect the reader.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)endMonitoring:(id)<em>unregisterForLocalNotifications</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)endMonitoring</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>unregisterForLocalNotifications</em></dt>
-			<dd><p>if YES, we will call EAAccessoryManager unregisterForLocalNotifications</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -684,25 +810,19 @@ disconnect the reader.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setPreferenceOrder:" title="setPreferenceOrder:"></a>
-	<h3 class="subsubtitle method-title">setPreferenceOrder:</h3>
+	<a name="//api/name/lastAvailableReaderOfType:" title="lastAvailableReaderOfType:"></a>
+	<h3 class="subsubtitle method-title">lastAvailableReaderOfType:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>For accessory based readers, there is the possibility that multiple capable devices may
-be connected to the phone at the same time. In this case, specifying a preference
-order can be useful to manage multiple devices with multiple phones. Generally,
-you&rsquo;re probably better off using the inherent iOS pairing screens to manage this,
-but to each their own. In addition, if you have custom bluetooth or dock port readers
-that we support, you can pass the custom protocol string in this list and we&rsquo;ll look for
-that. IMPORTANT: You still need to add the protocol to your application&rsquo;s plist
-(under supported accessories) in order for this to work.</p>
+		<p>The most recently available reader of a given type. If the reader type is currently available
+then you will get the same return value as calling <code>availableReaderOfType</code></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)setPreferenceOrder:(id)<em>arrayOfCardReaderBasicInfo</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (PPHCardReaderMetadata *)lastAvailableReaderOfType:(id)<em>type</em></code></div>
 
     
 	
@@ -710,10 +830,8 @@ that. IMPORTANT: You still need to add the protocol to your application&rsquo;s 
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>arrayOfCardReaderBasicInfo</em></dt>
-			<dd><p>The array argument should be a set of card reader
-information with as much information as relevant
-filled out (for example name is not required when devices of that type have no name)</p></dd>
+			<dt><em>type</em></dt>
+			<dd><p>the type of reader to get</p></dd>
 		</dl>
 		
 	</div>
@@ -726,14 +844,58 @@ filled out (for example name is not required when devices of that type have no n
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>For accessory based readers, there is the possibility that multiple capable devices may
-be connected to the phone at the same time. In this case, specifying a preference
-order can be useful to manage multiple devices with multiple phones. Generally,
-you&rsquo;re probably better off using the inherent iOS pairing screens to manage this,
-but to each their own. In addition, if you have custom bluetooth or dock port readers
-that we support, you can pass the custom protocol string in this list and we&rsquo;ll look for
-that. IMPORTANT: You still need to add the protocol to your application&rsquo;s plist
-(under supported accessories) in order for this to work.</p>
+		<p>The most recently available reader of a given type. If the reader type is currently available
+then you will get the same return value as calling <code>availableReaderOfType</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardReaderManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/openActiveReader" title="openActiveReader"></a>
+	<h3 class="subsubtitle method-title">openActiveReader</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Begins listening for card data on the active reader. If the reader is not yet fully connected it will
+automatically open when it&rsquo;s connection completes successfully. Has no effect if the reader is already
+in an open state.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)openActiveReader</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>wether or not the reader was opened or marked to be opened</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Begins listening for card data on the active reader. If the reader is not yet fully connected it will
+automatically open when it&rsquo;s connection completes successfully. Has no effect if the reader is already
+in an open state.</p>
 	</div>
 	
 	
@@ -768,7 +930,7 @@ that. IMPORTANT: You still need to add the protocol to your application&rsquo;s 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-07-20)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

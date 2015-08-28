@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PPHInvoiceConstants.h"
+#import "PPHPaymentConstants.h"
 #import "PPHAmount.h"
 #import "PPHCardNotPresentData.h"
 

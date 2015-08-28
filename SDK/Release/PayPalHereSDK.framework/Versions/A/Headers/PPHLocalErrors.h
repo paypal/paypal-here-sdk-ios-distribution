@@ -30,7 +30,11 @@
 #define kPPHLocalErrorBadConfigurationPaymentBelowAllowedLimit -2019
 #define kPPHLocalErrorBadConfigurationPaymentAboveAllowedLimit -2020
 #define kPPHLocalErrorBadConfigurationInvalidSDKVersion -2021
-#define kPPHLocalErrorBadConfigurationNoEMVReaderConnected -2022
-
-
-
+#define kPPHLocalErrorFlowControllerTransactionFailed -2022
+#define kPPHLocalErrorFlowControllerTransactionCancelled -2023
+#define kPPHLocalErrorReaderSoftwareVersionNotCurrent -2024
+#define kPPHLocalErrorReaderBatteryCritical -2025
+#define kPPHLocalErrorReaderNotConnected -2026
+#define kPPHLocalErrorReaderAlreadyActivated -2027
+#define kPPHLocalErrorQuantityOutOfBounds -2028
+#define kPPHLocalErrorBadConfigurationNoSignature -2029

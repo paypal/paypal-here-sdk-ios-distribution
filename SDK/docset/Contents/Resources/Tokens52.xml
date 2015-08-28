@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHLoggingDelegate.html">
+	<File path="Classes/PPHTokenizedCustomerInformation.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHLoggingDelegate</TokenIdentifier>
-			<Abstract type="html">For debugging purposes it can be helpful to see our internal logs.
-Implement this protocol and set the logging delegate on PayPalHereSDK.
-You should generally not set this delegate in production code as it will
-have a theoretical performance impact (we&apos;ll call respondsToSelector a lot).
-If you respond to a given selector, we&apos;ll put the message together, which will
-cause a bunch of string munging to happen. So basically, use this when you
-mean it, not just on a whim.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTokenizedCustomerInformation</TokenIdentifier>
+			<Abstract type="html">PayPal card processing returns some extremely useful data for receipts and/or loyalty programs. (Checkin has this stuff built in)</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
             
 			
 			<NodeRef refid="52"/>
@@ -19,153 +13,153 @@ mean it, not just on a whim.</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereError:</TokenIdentifier>
-			<Abstract type="html">Log a message considered to be indicative of an error.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setCustomerId:</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereError:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereError:</Anchor>
+			
+			<Anchor>//api/name/customerId</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereWarning:</TokenIdentifier>
-			<Abstract type="html">Log a message considered to be a potential issue affecting proper function.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/customerId</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereWarning:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereWarning:</Anchor>
+			
+			<Anchor>//api/name/customerId</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereInfo:</TokenIdentifier>
-			<Abstract type="html">Log informational events.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/customerId</TokenIdentifier>
+			<Abstract type="html">An opaque identifier for this card which is distinct from any customerId from checkin and unique across cards for a particular merchant.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereInfo:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *customerId</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereInfo:</Anchor>
+			
+			<Anchor>//api/name/customerId</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereTrace:</TokenIdentifier>
-			<Abstract type="html">Log fxn tracing events.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setMaskedEmailAddress:</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereTrace:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereTrace:</Anchor>
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereDebug:</TokenIdentifier>
-			<Abstract type="html">Log debug/verbose events.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/maskedEmailAddress</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereDebug:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereDebug:</Anchor>
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareError:</TokenIdentifier>
-			<Abstract type="html">Log a message considered to be indicative of an error for hardware interactions.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/maskedEmailAddress</TokenIdentifier>
+			<Abstract type="html">If availble, a masked email address for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereHardwareError:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedEmailAddress</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereHardwareError:</Anchor>
+			
+			<Anchor>//api/name/maskedEmailAddress</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareWarning:</TokenIdentifier>
-			<Abstract type="html">Log a message considered to be a potential issue affecting proper function for hardware interactions.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setMaskedMobileNumber:</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereHardwareWarning:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereHardwareWarning:</Anchor>
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareInfo:</TokenIdentifier>
-			<Abstract type="html">Log informational events for hardware interactions.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/maskedMobileNumber</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)logPayPalHereHardwareInfo:(NSString *)message</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>message</Name>
-					<Abstract type="html">The fully formatted log message.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
 			
-			<Anchor>//api/name/logPayPalHereHardwareInfo:</Anchor>
+			
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/flush</TokenIdentifier>
-			<Abstract type="html">Cause the logger to send all its queued messages now.</Abstract>
-			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/maskedMobileNumber</TokenIdentifier>
+			<Abstract type="html">If availble, a masked mobile phone number for confirmation of identity or display for receipt destination.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
 			
-			<Declaration>- (void)flush</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *maskedMobileNumber</Declaration>
 			
 			
-			<Anchor>//api/name/flush</Anchor>
+			<Anchor>//api/name/maskedMobileNumber</Anchor>
             <NodeRef refid="52"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/setReceiptPreferenceToken:</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTokenizedCustomerInformation/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHTokenizedCustomerInformation/receiptPreferenceToken</TokenIdentifier>
+			<Abstract type="html">A token to be provided to the server to send a receipt to the saved destination or to associate an email address with this card
+for future transactions.</Abstract>
+			<DeclaredIn>PPHTokenizedCustomerInformation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *receiptPreferenceToken</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPreferenceToken</Anchor>
+            <NodeRef refid="52"/>
+		</Token>
+		
+        
         
 	</File>
 </Tokens>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHCardReaderManager.html">
+	<File path="Classes/PPHCardReaderMetadata.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderManager</TokenIdentifier>
-			<Abstract type="html">The card reader manager handles all interaction with card and chip&amp;amp;pin hardware devices.
-This includes audio readers, dock port readers, and Bluetooth readers.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHCardReaderMetadata</TokenIdentifier>
+			<Abstract type="html">PPHCardReaderMetadata represents what can be determined about a connected
+card reader device without actually connecting or talking to it.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
             
 			
 			<NodeRef refid="10"/>
@@ -14,199 +14,518 @@ This includes audio readers, dock port readers, and Bluetooth readers.</Abstract
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginMonitoring</TokenIdentifier>
-			<Abstract type="html">Monitor for all known device types</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHCardReaderMetadata/anyReader</TokenIdentifier>
+			<Abstract type="html">When specifying a preference order for readers, use the anyReader value at the
+end of the list to allow a reader outside of the preference set to be chosen.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (PPHReaderError)beginMonitoring</Declaration>
+			<Declaration>+ (PPHCardReaderMetadata *)anyReader</Declaration>
 			
 			
-			<Anchor>//api/name/beginMonitoring</Anchor>
+			<Anchor>//api/name/anyReader</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginMonitoring:</TokenIdentifier>
-			<Abstract type="html">Begin monitoring the device for connection and removal of the specified reader types.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setReaderType:</TokenIdentifier>
+			<Abstract type="html">The type of reader this metadata is for</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (PPHReaderError)beginMonitoring:(id)readerTypes</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>readerTypes</Name>
-					<Abstract type="html">the types of readers to watch for</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, assign) PPHReaderType readerType</Declaration>
 			
-			<Anchor>//api/name/beginMonitoring:</Anchor>
+			
+			<Anchor>//api/name/readerType</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/endMonitoring:</TokenIdentifier>
-			<Abstract type="html">Stop reacting to events around device connection and removal.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/readerType</TokenIdentifier>
+			<Abstract type="html">The type of reader this metadata is for</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (void)endMonitoring:(id)unregisterForLocalNotifications</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>unregisterForLocalNotifications</Name>
-					<Abstract type="html">if YES, we will call EAAccessoryManager unregisterForLocalNotifications</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, assign) PPHReaderType readerType</Declaration>
 			
-			<Anchor>//api/name/endMonitoring:</Anchor>
+			
+			<Anchor>//api/name/readerType</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/activateReader:</TokenIdentifier>
-			<Abstract type="html">Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
-in other cases this will connect to the bluetooth or feature port accessory or do similar activities.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/readerType</TokenIdentifier>
+			<Abstract type="html">The type of reader this metadata is for</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (PPHReaderError)activateReader:(id)readerOrNil</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>readerOrNil</Name>
-					<Abstract type="html">The reader to activate or nil for the default/only reader.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, assign) PPHReaderType readerType</Declaration>
 			
-			<Anchor>//api/name/activateReader:</Anchor>
+			
+			<Anchor>//api/name/readerType</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/deactivateReader:</TokenIdentifier>
-			<Abstract type="html">Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
-or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
-disconnect the reader.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setFamily:</TokenIdentifier>
+			<Abstract type="html">The overall name for all instances this type of device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (void)deactivateReader:(id)readerOrNil</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>readerOrNil</Name>
-					<Abstract type="html">The reader to deactivate or nil for the default/only reader.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *family</Declaration>
 			
-			<Anchor>//api/name/deactivateReader:</Anchor>
+			
+			<Anchor>//api/name/family</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/setPreferenceOrder:</TokenIdentifier>
-			<Abstract type="html">For accessory based readers, there is the possibility that multiple capable devices may
-be connected to the phone at the same time. In this case, specifying a preference
-order can be useful to manage multiple devices with multiple phones. Generally,
-you&apos;re probably better off using the inherent iOS pairing screens to manage this,
-but to each their own. In addition, if you have custom bluetooth or dock port readers
-that we support, you can pass the custom protocol string in this list and we&apos;ll look for
-that. IMPORTANT: You still need to add the protocol to your application&apos;s plist
-(under supported accessories) in order for this to work.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/family</TokenIdentifier>
+			<Abstract type="html">The overall name for all instances this type of device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (void)setPreferenceOrder:(id)arrayOfCardReaderBasicInfo</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>arrayOfCardReaderBasicInfo</Name>
-					<Abstract type="html">The array argument should be a set of card reader
-information with as much information as relevant
-filled out (for example name is not required when devices of that type have no name)</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *family</Declaration>
 			
-			<Anchor>//api/name/setPreferenceOrder:</Anchor>
+			
+			<Anchor>//api/name/family</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/availableDevices</TokenIdentifier>
-			<Abstract type="html">An array of known available devices. For example with bluetooth devices this will include
-paired devices that are currently within range/connectable.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/family</TokenIdentifier>
+			<Abstract type="html">The overall name for all instances this type of device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (NSArray *)availableDevices</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *family</Declaration>
 			
-			<ReturnValue><Abstract type="html">NSArray(PPHCardReaderBasicInformation</Abstract></ReturnValue>
-			<Anchor>//api/name/availableDevices</Anchor>
+			
+			<Anchor>//api/name/family</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginUpgrade:</TokenIdentifier>
-			<Abstract type="html">In the case of readers requiring further setup, call this method with the PPHCardReaderBasicInformation
-for the target reader.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setFriendlyName:</TokenIdentifier>
+			<Abstract type="html">A friendly name for the device, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (void)beginUpgrade:(id)reader</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>reader</Name>
-					<Abstract type="html">the reader to upgrade</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *friendlyName</Declaration>
 			
-			<Anchor>//api/name/beginUpgrade:</Anchor>
+			
+			<Anchor>//api/name/friendlyName</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Perform a software update on the EMV terminal.
-This version will cause the SDK to show UI during the update flow.</Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/friendlyName</TokenIdentifier>
+			<Abstract type="html">A friendly name for the device, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>- (void)beginReaderUpdateUsingSDKUI_WithViewController:(id)vc completionHandler:(id)completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>vc</Name>
-					<Abstract type="html">: The current or active view controller.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">called when the action has completed</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, strong) NSString *friendlyName</Declaration>
 			
-			<Anchor>//api/name/beginReaderUpdateUsingSDKUI_WithViewController:completionHandler:</Anchor>
+			
+			<Anchor>//api/name/friendlyName</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/setIsInPinRetryMode:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/friendlyName</TokenIdentifier>
+			<Abstract type="html">A friendly name for the device, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isInPinRetryMode</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *friendlyName</Declaration>
 			
 			
-			<Anchor>//api/name/isInPinRetryMode</Anchor>
+			<Anchor>//api/name/friendlyName</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderManager/isInPinRetryMode</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setProtocolName:</TokenIdentifier>
+			<Abstract type="html">In the case of accessory readers (bluetooth, dock port), this is the protocol used
+by the device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isInPinRetryMode</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *protocolName</Declaration>
 			
 			
-			<Anchor>//api/name/isInPinRetryMode</Anchor>
+			<Anchor>//api/name/protocolName</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderManager/isInPinRetryMode</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHCardReaderManager.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/protocolName</TokenIdentifier>
+			<Abstract type="html">In the case of accessory readers (bluetooth, dock port), this is the protocol used
+by the device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isInPinRetryMode</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *protocolName</Declaration>
 			
 			
-			<Anchor>//api/name/isInPinRetryMode</Anchor>
+			<Anchor>//api/name/protocolName</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/protocolName</TokenIdentifier>
+			<Abstract type="html">In the case of accessory readers (bluetooth, dock port), this is the protocol used
+by the device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *protocolName</Declaration>
+			
+			
+			<Anchor>//api/name/protocolName</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setModelNo:</TokenIdentifier>
+			<Abstract type="html">A device specific model number as a string that should never change for the same device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *modelNo</Declaration>
+			
+			
+			<Anchor>//api/name/modelNo</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/modelNo</TokenIdentifier>
+			<Abstract type="html">A device specific model number as a string that should never change for the same device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *modelNo</Declaration>
+			
+			
+			<Anchor>//api/name/modelNo</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/modelNo</TokenIdentifier>
+			<Abstract type="html">A device specific model number as a string that should never change for the same device</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *modelNo</Declaration>
+			
+			
+			<Anchor>//api/name/modelNo</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setReaderModel:</TokenIdentifier>
+			<Abstract type="html">The credit card processing device reader model which should never change</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) PPHReaderModel readerModel</Declaration>
+			
+			
+			<Anchor>//api/name/readerModel</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/readerModel</TokenIdentifier>
+			<Abstract type="html">The credit card processing device reader model which should never change</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) PPHReaderModel readerModel</Declaration>
+			
+			
+			<Anchor>//api/name/readerModel</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/readerModel</TokenIdentifier>
+			<Abstract type="html">The credit card processing device reader model which should never change</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) PPHReaderModel readerModel</Declaration>
+			
+			
+			<Anchor>//api/name/readerModel</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setSerialNumber:</TokenIdentifier>
+			<Abstract type="html">A device-specific serial number that should not change for the same
+device and should not be the same for any other device with the same family.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serialNumber</Declaration>
+			
+			
+			<Anchor>//api/name/serialNumber</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/serialNumber</TokenIdentifier>
+			<Abstract type="html">A device-specific serial number that should not change for the same
+device and should not be the same for any other device with the same family.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serialNumber</Declaration>
+			
+			
+			<Anchor>//api/name/serialNumber</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/serialNumber</TokenIdentifier>
+			<Abstract type="html">A device-specific serial number that should not change for the same
+device and should not be the same for any other device with the same family.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serialNumber</Declaration>
+			
+			
+			<Anchor>//api/name/serialNumber</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setOsRevision:</TokenIdentifier>
+			<Abstract type="html">The device OS version, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *osRevision</Declaration>
+			
+			
+			<Anchor>//api/name/osRevision</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/osRevision</TokenIdentifier>
+			<Abstract type="html">The device OS version, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *osRevision</Declaration>
+			
+			
+			<Anchor>//api/name/osRevision</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/osRevision</TokenIdentifier>
+			<Abstract type="html">The device OS version, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *osRevision</Declaration>
+			
+			
+			<Anchor>//api/name/osRevision</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setFirmwareRevision:</TokenIdentifier>
+			<Abstract type="html">The device software version, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *firmwareRevision</Declaration>
+			
+			
+			<Anchor>//api/name/firmwareRevision</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/firmwareRevision</TokenIdentifier>
+			<Abstract type="html">The device software version, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *firmwareRevision</Declaration>
+			
+			
+			<Anchor>//api/name/firmwareRevision</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/firmwareRevision</TokenIdentifier>
+			<Abstract type="html">The device software version, if available</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *firmwareRevision</Declaration>
+			
+			
+			<Anchor>//api/name/firmwareRevision</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/setBatteryInfo:</TokenIdentifier>
+			<Abstract type="html">Metadata on the battery of this reader, such as whether
+it is charging and the batterys current charge level.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHReaderBatteryMetadata *batteryInfo</Declaration>
+			
+			
+			<Anchor>//api/name/batteryInfo</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/batteryInfo</TokenIdentifier>
+			<Abstract type="html">Metadata on the battery of this reader, such as whether
+it is charging and the batterys current charge level.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHReaderBatteryMetadata *batteryInfo</Declaration>
+			
+			
+			<Anchor>//api/name/batteryInfo</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardReaderMetadata/batteryInfo</TokenIdentifier>
+			<Abstract type="html">Metadata on the battery of this reader, such as whether
+it is charging and the batterys current charge level.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHReaderBatteryMetadata *batteryInfo</Declaration>
+			
+			
+			<Anchor>//api/name/batteryInfo</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/capabilities</TokenIdentifier>
+			<Abstract type="html">More complete information on the capabilities of the card reader device. Such as
+the different forms of payments it accepts and etc..
+If no capability information can be determined this object returned will be nil.</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (PPHCardReaderCapabilities *)capabilities</Declaration>
+			
+			
+			<Anchor>//api/name/capabilities</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/cardIsInserted</TokenIdentifier>
+			<Abstract type="html">Is there a card currently dipped in the reader?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)cardIsInserted</Declaration>
+			
+			
+			<Anchor>//api/name/cardIsInserted</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/isReadyToTransact</TokenIdentifier>
+			<Abstract type="html">Is the device prepared to take a transaction</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isReadyToTransact</Declaration>
+			
+			
+			<Anchor>//api/name/isReadyToTransact</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/upgradeIsAvailable</TokenIdentifier>
+			<Abstract type="html">Is there a software update available for the reader?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)upgradeIsAvailable</Declaration>
+			
+			
+			<Anchor>//api/name/upgradeIsAvailable</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/upgradeIsReady</TokenIdentifier>
+			<Abstract type="html">Are the upgrade files downloaded and ready to be applied?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)upgradeIsReady</Declaration>
+			
+			
+			<Anchor>//api/name/upgradeIsReady</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/upgradeIsManadatory</TokenIdentifier>
+			<Abstract type="html">Does the reader need to upgraded before taking a payment?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)upgradeIsManadatory</Declaration>
+			
+			
+			<Anchor>//api/name/upgradeIsManadatory</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/upgradeIsInitialSetup</TokenIdentifier>
+			<Abstract type="html">Does the available upgrade contain the initial setup of the reader?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)upgradeIsInitialSetup</Declaration>
+			
+			
+			<Anchor>//api/name/upgradeIsInitialSetup</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/batteryIsLow</TokenIdentifier>
+			<Abstract type="html">Is the battery level low enough to warrant warning the user?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)batteryIsLow</Declaration>
+			
+			
+			<Anchor>//api/name/batteryIsLow</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/batteryIsCritical</TokenIdentifier>
+			<Abstract type="html">Is the battery level too low to take a payment?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)batteryIsCritical</Declaration>
+			
+			
+			<Anchor>//api/name/batteryIsCritical</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/isReadyForUpgrade</TokenIdentifier>
+			<Abstract type="html">Is the battery too low to start a reader upgrade?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isReadyForUpgrade</Declaration>
+			
+			
+			<Anchor>//api/name/isReadyForUpgrade</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardReaderMetadata/batteryIsCharging</TokenIdentifier>
+			<Abstract type="html">Is the battery currently charging?</Abstract>
+			<DeclaredIn>PPHCardReaderMetadata.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)batteryIsCharging</Declaration>
+			
+			
+			<Anchor>//api/name/batteryIsCharging</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHSignatureView.html">
+	<File path="Classes/PPHMerchantInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHSignatureView</TokenIdentifier>
-			<Abstract type="html">A UIView subclass that will record user touches into a signature image.
-Generally should be used &quot;full-ish&quot; screen.</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHMerchantInfo</TokenIdentifier>
+			<Abstract type="html">Information about the merchant&apos;s preferences such as currency and invoice header information.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="40"/>
@@ -14,78 +13,287 @@ Generally should be used &quot;full-ish&quot; screen.</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/setDelegate:</TokenIdentifier>
-			<Abstract type="html">A receiver of events on the signature view</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceLogoUrl:</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
 			
-			<Anchor>//api/name/delegate</Anchor>
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/delegate</TokenIdentifier>
-			<Abstract type="html">A receiver of events on the signature view</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
 			
-			<Anchor>//api/name/delegate</Anchor>
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHSignatureView/delegate</TokenIdentifier>
-			<Abstract type="html">A receiver of events on the signature view</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceLogoUrl</TokenIdentifier>
+			<Abstract type="html">The image to be displayed on invoices</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>@property (unsafe_unretained) id&lt;PPHSignatureViewDelegate&gt; delegate</Declaration>
+			<Declaration>@property (nonatomic, strong) NSURL *invoiceLogoUrl</Declaration>
 			
 			
-			<Anchor>//api/name/delegate</Anchor>
+			<Anchor>//api/name/invoiceLogoUrl</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/isEmptySignature</TokenIdentifier>
-			<Abstract type="html">Is the current signature considered empty?</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setInvoiceContactInfo:</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isEmptySignature</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
 			
-			<Anchor>//api/name/isEmptySignature</Anchor>
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/printableImage</TokenIdentifier>
-			<Abstract type="html">Get the signature image for printing or upload purposes</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>- (UIImage *)printableImage</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
 			
-			<Anchor>//api/name/printableImage</Anchor>
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHSignatureView/clearSignaturePad</TokenIdentifier>
-			<Abstract type="html">Clear the current signature. It&apos;s good practice to do this after you&apos;re done with it as well
-to avoid memory usage and potential data exposure.</Abstract>
-			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/invoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">The contact info to be used on invoices as the &quot;From&quot; information</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)clearSignaturePad</Declaration>
+			<Declaration>@property (nonatomic, strong) PPHInvoiceContactInfo *invoiceContactInfo</Declaration>
 			
 			
-			<Anchor>//api/name/clearSignaturePad</Anchor>
+			<Anchor>//api/name/invoiceContactInfo</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setCurrencyCode:</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
+			
+			
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/currencyCode</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
+			
+			
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/currencyCode</TokenIdentifier>
+			<Abstract type="html">The currency code for invoices from the merchant. We don&apos;t currently support the currency NOT being the
+default currency of the account.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *currencyCode</Declaration>
+			
+			
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTaxId:</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/taxId</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/taxId</TokenIdentifier>
+			<Abstract type="html">Tax Id (not required) or ABN/VAT id (only for receipts at this point)</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setPayPalAccount:</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/payPalAccount</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/payPalAccount</TokenIdentifier>
+			<Abstract type="html">Access credentials from PayPal Access</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHAccessAccount *payPalAccount</Declaration>
+			
+			
+			<Anchor>//api/name/payPalAccount</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setTerms:</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/terms</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/terms</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/setCustomReceiptText:</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/customReceiptText</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHMerchantInfo/customReceiptText</TokenIdentifier>
+			<Abstract type="html">Terms set by merchant in business info, currently return policy</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</TokenIdentifier>
+			<Abstract type="html">To save the merchant preferences. Currently it stores taxID &amp;amp; ccStatementName both of which are shown in the
+receipts if they are set. One way of setting these is through this API and the other way is through web by loggin in to PayPal account</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>- (void)saveMerchantPreferencesWithTaxID:(id)taxID ccStatementName:(id)ccStatementName completionHandler:(id)completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/saveMerchantPreferencesWithTaxID:ccStatementName:completionHandler:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHMerchantInfo/getMerchantPreferencesWithCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">To get the merchant preferences. Currenlty it returns taxID &amp;amp; ccStatementName both of which are set using saveMerchantPreferencesWithTaxID API
+or through PayPal website.</Abstract>
+			<DeclaredIn>PPHMerchantInfo.h</DeclaredIn>
+			
+			<Declaration>- (void)getMerchantPreferencesWithCompletionHandler:(id)completionHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getMerchantPreferencesWithCompletionHandler:</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+        
         
 	</File>
 </Tokens>

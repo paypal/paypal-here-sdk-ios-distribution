@@ -39,6 +39,8 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/cardAllowsSwipe">&nbsp;&nbsp;&nbsp;&nbsp;cardAllowsSwipe</option>
+	
 	<option value="//api/name/cardType">&nbsp;&nbsp;&nbsp;&nbsp;cardType</option>
 	
 	<option value="//api/name/cardholderFirstName">&nbsp;&nbsp;&nbsp;&nbsp;cardholderFirstName</option>
@@ -103,6 +105,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cardAllowsSwipe">cardAllowsSwipe</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cardType">cardType</a></span></li>
 	
@@ -297,6 +301,12 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/cardAllowsSwipe">&nbsp;&nbsp;cardAllowsSwipe</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/asDictionary">&ndash;&nbsp;asDictionary</a></code>
 	</span>
 	
@@ -313,6 +323,47 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cardAllowsSwipe" title="cardAllowsSwipe"></a>
+	<h3 class="subsubtitle method-title">cardAllowsSwipe</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Wether the card allows swipe data to be used.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL cardAllowsSwipe</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Wether the card allows swipe data to be used.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHCardSwipeData.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/cardType" title="cardType"></a>
@@ -873,7 +924,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithEncryptedTrack1:(NSString *)<em>encryptedTrack1</em> encryptedTrack2:(NSString *)<em>encryptedTrack2</em> readerSerial:(NSString *)<em>serial</em> keySerial:(NSString *)<em>ksn</em> withType:(NSString *)<em>readerType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithEncryptedTrack1:(id)<em>encryptedTrack1</em> encryptedTrack2:(id)<em>encryptedTrack2</em> readerSerial:(id)<em>serial</em> keySerial:(id)<em>ksn</em> withType:(id)<em>readerType</em></code></div>
 
     
 	
@@ -955,7 +1006,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithTrack1:(NSString *)<em>track1</em> track2:(NSString *)<em>track2</em> readerSerial:(NSString *)<em>serial</em> withType:(NSString *)<em>readerType</em> andExtraInfo:(NSDictionary *)<em>extraInfo</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithTrack1:(id)<em>track1</em> track2:(id)<em>track2</em> readerSerial:(id)<em>serial</em> withType:(id)<em>readerType</em> andExtraInfo:(id)<em>extraInfo</em></code></div>
 
     
 	
@@ -1009,7 +1060,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)parseTracks:(NSString *)<em>track1AndOr2</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)parseTracks:(id)<em>track1AndOr2</em></code></div>
 
     
 	
@@ -1060,7 +1111,7 @@ for this payment. Beginning a payment with a signature will automatically set th
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)parseTracksWithMaskedTrack1:(NSString *)<em>maskedTrack1OrNil</em> maskedTrack2:(NSString *)<em>maskedTrack2OrNil</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)parseTracksWithMaskedTrack1:(id)<em>maskedTrack1OrNil</em> maskedTrack2:(id)<em>maskedTrack2OrNil</em></code></div>
 
     
 	
@@ -1113,6 +1164,9 @@ expiration date and card holder name.</p></dd>
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1123,7 +1177,7 @@ expiration date and card holder name.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

@@ -3,11 +3,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <PayPalHereSDK/PPHReaderType.h>
-#import <PayPalHereSDK/PPHCardReaderDelegate.h>
-#import <PayPalHereSDK/PPHCardReaderWatcher.h>
-#import <PayPalHereSDK/PPHCardReaderMetadata.h>
-#import <PayPalHereSDK/PPHInvoiceProtocol.h>
+#import "PPHReaderConstants.h"
+#import "PPHCardReaderDelegate.h"
+#import "PPHCardReaderWatcher.h"
+#import "PPHCardReaderMetadata.h"
+#import "PPHInvoiceProtocol.h"
 
 typedef NS_OPTIONS(NSInteger, PPHReaderError) {
     ePPHReaderErrorNone = 0,
@@ -26,101 +26,119 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
     /*!
      * The current transaction is not valid (no amount), or reader was mid-transaction and could not be started.
      */
-    ePPHReaderErrorTransactionNotValid = 5
+    ePPHReaderErrorTransactionNotValid = 5,
+    ePPHReaderErrorNonReaderConnected = 6,
+    ePPHReaderErrorInvalidState = 7
 };
 
 @class PPHChipAndPinDecisionEvent;
 @class PPHChipAndPinAuthResponse;
 @class PPHError;
-@class PPHCardReaderBasicInformation;
+@class PPHCardReaderMetadata;
 
 /*!
  * The card reader manager handles all interaction with card and chip&pin hardware devices.
  * This includes audio readers, dock port readers, and Bluetooth readers.
+ *
+ * Each reader goes through 5 states during it's lifecycle:
+ *
+ * Available - A potential reader of one of the monitored types has been detected.
+ * Connecting - We are in the process of acquiring more information about the reader.
+ * Connected - The reader is fully identified.
+ * Open - The reader is listening for card data
  */
 @interface PPHCardReaderManager : NSObject
 
 /*!
  * Monitor for all known device types
  */
--(PPHReaderError)beginMonitoring;
+- (PPHReaderError)beginMonitoring;
 
 /*!
  * Begin monitoring the device for connection and removal of the specified reader types.
  *
- * PLEASE NOTE that we will call EAAccessoryManager::register/unregisterForLocalNotifications
- * based on whether you pass the bluetooth or feature port reader types. So if your application is
- * ALSO manipulating the accessory framework, you should pass one of those types if you don't want
- * us to shutoff accessory notifications for your app. Alternatively, you can call endMonitoring first
- * and then beginMonitoring with your new types. This is obviously an edge case since you will likely
- * just call beginMonitoring once and be done with it.
  * @param readerTypes the types of readers to watch for
  */
--(PPHReaderError)beginMonitoring: (PPHReaderTypeMask) readerTypes;
+- (PPHReaderError)beginMonitoring: (PPHReaderTypeMask) readerTypes;
+
+/*!
+ * The types we are currently monitoring for.
+ */
+@property (nonatomic, readonly) PPHReaderTypeMask monitoringForTypes;
 
 /*!
  * Stop reacting to events around device connection and removal.
- * @param unregisterForLocalNotifications if YES, we will call EAAccessoryManager unregisterForLocalNotifications
  */
--(void)endMonitoring: (BOOL) unregisterForLocalNotifications;
+- (void)endMonitoring;
 
 /*!
- * Connect or activate the reader given. In the case of the audio readers, this may activate the battery,
- * in other cases this will connect to the bluetooth or feature port accessory or do similar activities.
- * @param readerOrNil The reader to activate or nil for the default/only reader.
+ * Mark the given reader as the active reader for transactions. Anytime there is only a single reader available
+ * it will automatically become the active reader. Sending nil as the reader will deactivate the current active
+ * reader.
  */
--(PPHReaderError)activateReader: (PPHCardReaderBasicInformation*) readerOrNil;
+- (PPHReaderError)activateReader:(PPHCardReaderMetadata *)reader;
 
 /*!
- * Disconnect or deactivate the reader given. In the case of the audior readers this may turn off the battery
- * or stop feeding power via the audio jack. In the case of bluetooth or feature port readers this may
- * disconnect the reader.
- * @param readerOrNil The reader to deactivate or nil for the default/only reader.
- */
--(void)deactivateReader: (PPHCardReaderBasicInformation*) readerOrNil;
-
-/*!
- * For accessory based readers, there is the possibility that multiple capable devices may
- * be connected to the phone at the same time. In this case, specifying a preference
- * order can be useful to manage multiple devices with multiple phones. Generally, 
- * you're probably better off using the inherent iOS pairing screens to manage this,
- * but to each their own. In addition, if you have custom bluetooth or dock port readers
- * that we support, you can pass the custom protocol string in this list and we'll look for
- * that. IMPORTANT: You still need to add the protocol to your application's plist
- * (under supported accessories) in order for this to work.
+ * Explicitly disconnect from the given reader type if one is available and connected. This may increase battery life
+ * at the expense of user experience
  *
- * @param arrayOfCardReaderBasicInfo The array argument should be a set of card reader 
- * information with as much information as relevant
- * filled out (for example name is not required when devices of that type have no name)
+ * @return wether or not a reader of the given type in a connected state was found and disconnected
  */
--(void)setPreferenceOrder: (NSArray*) arrayOfCardReaderBasicInfo;
+- (BOOL)disconnectFromReaderOfType:(PPHReaderType)type;
+
+/*!
+ * Begins listening for card data on the active reader. If the reader is not yet fully connected it will
+ * automatically open when it's connection completes successfully. Has no effect if the reader is already
+ * in an open state.
+ *
+ * @return wether or not the reader was opened or marked to be opened
+ */
+- (BOOL)openActiveReader;
+
+/*!
+ * Stops listening for card data on the active reader. Has no effect if the reader is not open.
+ *
+ * @return wether or not the reader was closed
+ */
+- (BOOL)closeActiveReader;
 
 /*!
  * An array of known available devices. For example with bluetooth devices this will include
  * paired devices that are currently within range/connectable.
  *
- * @returns NSArray(PPHCardReaderBasicInformation)
+ * @returns NSArray(PPHCardReaderMetadata)
  */
--(NSArray*) availableDevices;
+- (NSArray *)availableReaders;
 
 /*!
- * In the case of readers requiring further setup, call this method with the PPHCardReaderBasicInformation
- * for the target reader.
- * @param reader the reader to upgrade
+ * Get the currently available reader of a given type. A reader is considered available if we have a potential
+ * connection opportunity (e.g. something is inserted in the audio jack, or a bluetooth device with a matching 
+ * protocol is in range)
+ *
+ * @param type the type of reader to get
  */
--(void)beginUpgrade: (PPHCardReaderBasicInformation*) reader;
+- (PPHCardReaderMetadata *)availableReaderOfType:(PPHReaderType)type;
 
 /*!
- * Perform a software update on the EMV terminal.
- * This version will cause the SDK to show UI during the update flow.
+ * The most recently available reader of a given type. If the reader type is currently available
+ * then you will get the same return value as calling `availableReaderOfType`
  *
- * @param vc : The current or active view controller.
- *
+ * @param type the type of reader to get
+ */
+- (PPHCardReaderMetadata *)lastAvailableReaderOfType:(PPHReaderType)type;
+
+/*!
+ * Get the reader that is currently being used for transactions. If there is a single available reader then
+ * it will automatically be marked as active. If there are multiple available readers you must call
+ * `activateReader` to select one before transacting.
+ */
+- (PPHCardReaderMetadata *)activeReader;
+
+/*!
+ * Begin the flow that updates the reader.
+ * @param reader The reader to begin upgrading
  * @param completionHandler called when the action has completed
  */
--(void) beginReaderUpdateUsingSDKUI_WithViewController: (UIViewController *)vc completionHandler:(void(^)(BOOL success, NSString *message))completionHandler;
-
-
-@property (nonatomic,readonly) BOOL isInPinRetryMode;
+- (void)beginUpgradeUsingSDKUIForReader:(PPHCardReaderMetadata *)reader completionHandler:(void(^)(BOOL success, NSString *message))completionHandler;
 
 @end

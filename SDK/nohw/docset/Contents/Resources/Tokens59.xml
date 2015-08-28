@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHLocationWatcherDelegate.html">
+	<File path="Protocols/PPHAnalyticsDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHLocationWatcherDelegate</TokenIdentifier>
-			<Abstract type="html">A PPHLocationWatcherDelegate receives events when new tabs are created, old tabs are removed,
-and errors occur.</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHAnalyticsDelegate</TokenIdentifier>
+			<Abstract type="html">PPHAnalyticsDelegate is in charge of delivering analytics events to a server</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="59"/>
@@ -14,85 +13,71 @@ and errors occur.</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectNewTab:</TokenIdentifier>
-			<Abstract type="html">A new checkin has been opened since the last update</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/beginSession:</TokenIdentifier>
+			<Abstract type="html">Start an analytics session - create any sort of visitor/device identifiers etc.</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(id)watcher didDetectNewTab:(id)checkin</Declaration>
+			<Declaration>- (void)beginSession:(id)properties</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">information about the location on which the checkin has been opened</Abstract>
-				</Parameter><Parameter>
-					<Name>checkin</Name>
-					<Abstract type="html">information about the checkin and customer</Abstract>
+					<Name>properties</Name>
+					<Abstract type="html">session-wide information about the session</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/locationWatcher:didDetectNewTab:</Anchor>
+			<Anchor>//api/name/beginSession:</Anchor>
             <NodeRef refid="59"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectRemovedTab:</TokenIdentifier>
-			<Abstract type="html">A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/amendSession:</TokenIdentifier>
+			<Abstract type="html">Update session information of an in progress session</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(id)watcher didDetectRemovedTab:(id)checkin</Declaration>
+			<Declaration>- (void)amendSession:(id)properties</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">information about the location on which the checkin has been closed</Abstract>
-				</Parameter><Parameter>
-					<Name>checkin</Name>
-					<Abstract type="html">last known information about the checkin and customer</Abstract>
+					<Name>properties</Name>
+					<Abstract type="html">session-wide information about the session</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/locationWatcher:didDetectRemovedTab:</Anchor>
+			<Anchor>//api/name/amendSession:</Anchor>
             <NodeRef refid="59"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didReceiveError:</TokenIdentifier>
-			<Abstract type="html">An error has occurred trying to update checkin information</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/endSession</TokenIdentifier>
+			<Abstract type="html">End an analytics session - clear any identifiers</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(id)watcher didReceiveError:(id)error</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">the watcher that tried to update</Abstract>
-				</Parameter><Parameter>
-					<Name>error</Name>
-					<Abstract type="html">the error</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)endSession</Declaration>
 			
-			<Anchor>//api/name/locationWatcher:didReceiveError:</Anchor>
+			
+			<Anchor>//api/name/endSession</Anchor>
             <NodeRef refid="59"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didCompleteUpdate:wasModified:</TokenIdentifier>
-			<Abstract type="html">A request for updated checkin information has completed successfully.</Abstract>
-			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/queueEvent:withType:andInfo:</TokenIdentifier>
+			<Abstract type="html">Log an analytics event</Abstract>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
 			
-			<Declaration>- (void)locationWatcher:(id)watcher didCompleteUpdate:(id)openTabs wasModified:(id)wasModified</Declaration>
+			<Declaration>- (void)queueEvent:(id)event withType:(id)type andInfo:(id)info</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>watcher</Name>
-					<Abstract type="html">the watcher that tried to update</Abstract>
+					<Name>event</Name>
+					<Abstract type="html">the name of the event that has occurred</Abstract>
 				</Parameter><Parameter>
-					<Name>openTabs</Name>
-					<Abstract type="html">Known open tabs as of the last update</Abstract>
+					<Name>type</Name>
+					<Abstract type="html">the type of event that has occurred</Abstract>
 				</Parameter><Parameter>
-					<Name>wasModified</Name>
-					<Abstract type="html">Whether any checkin information was updated</Abstract>
+					<Name>info</Name>
+					<Abstract type="html">additional information about the event</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/locationWatcher:didCompleteUpdate:wasModified:</Anchor>
+			<Anchor>//api/name/queueEvent:withType:andInfo:</Anchor>
             <NodeRef refid="59"/>
 		</Token>
 		

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHChipAndPinEvent.html">
+	<File path="Classes/PPHChipAndPinCardChipBrokenEvent.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinEvent</TokenIdentifier>
-			<Abstract type="html">Base class for all events fired from chip&amp;amp;pin readers</Abstract>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinCardChipBrokenEvent</TokenIdentifier>
+			<Abstract type="html">Fired when reading the EMV chip fails</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
             
 			
@@ -13,80 +13,45 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/setEventType:</TokenIdentifier>
-			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
-can be very helpful in debugging and in turning this enum to a string.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinCardChipBrokenEvent/setFallbackEnabled:</TokenIdentifier>
+			<Abstract type="html">Whether a fallback swipe is now enabled (either by repeated failures
+or the configuration of the chip)</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
+			<Declaration>@property (nonatomic, readonly) BOOL fallbackEnabled</Declaration>
 			
 			
-			<Anchor>//api/name/eventType</Anchor>
+			<Anchor>//api/name/fallbackEnabled</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/eventType</TokenIdentifier>
-			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
-can be very helpful in debugging and in turning this enum to a string.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinCardChipBrokenEvent/fallbackEnabled</TokenIdentifier>
+			<Abstract type="html">Whether a fallback swipe is now enabled (either by repeated failures
+or the configuration of the chip)</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
+			<Declaration>@property (nonatomic, readonly) BOOL fallbackEnabled</Declaration>
 			
 			
-			<Anchor>//api/name/eventType</Anchor>
+			<Anchor>//api/name/fallbackEnabled</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEvent/eventType</TokenIdentifier>
-			<Abstract type="html">The type of event being reported. Note that all events implement descriptions, so this
-can be very helpful in debugging and in turning this enum to a string.</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinCardChipBrokenEvent/fallbackEnabled</TokenIdentifier>
+			<Abstract type="html">Whether a fallback swipe is now enabled (either by repeated failures
+or the configuration of the chip)</Abstract>
 			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) PPHChipAndPinEventType eventType</Declaration>
+			<Declaration>@property (nonatomic, readonly) BOOL fallbackEnabled</Declaration>
 			
 			
-			<Anchor>//api/name/eventType</Anchor>
+			<Anchor>//api/name/fallbackEnabled</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/setReader:</TokenIdentifier>
-			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
-			
-			
-			<Anchor>//api/name/reader</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinEvent/reader</TokenIdentifier>
-			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
-			
-			
-			<Anchor>//api/name/reader</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHChipAndPinEvent/reader</TokenIdentifier>
-			<Abstract type="html">The card reader metadata associated with the event.</Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) PPHCardReaderMetadata *reader</Declaration>
-			
-			
-			<Anchor>//api/name/reader</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
+        
         
 	</File>
 </Tokens>

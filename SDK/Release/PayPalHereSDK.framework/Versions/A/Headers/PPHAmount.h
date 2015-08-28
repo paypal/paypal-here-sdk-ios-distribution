@@ -58,6 +58,14 @@
 -(id)init UNAVAILABLE_ATTRIBUTE;
 
 /*!
+ * Designated initializer
+ * Initialize an amount with the currency.
+ * @param amount the amount to initialize
+ * @param currency the currency for the amount
+ */
+-(id)initWithAmount:(NSDecimalNumber *)amount inCurrency:(NSString *)currency NS_DESIGNATED_INITIALIZER;
+
+/*!
  * Initialize an amount with the appropriate padding for a currency. For example,
  * in USD which is a 2 digit currency, passing 12345 will return 123.45
  * @param amount the amount with no decimal point
@@ -85,6 +93,18 @@
 
 /*! YES if the amount is valid (i.e. if amount is not NSDecimalNumber::notANumber */
 -(BOOL) isValid;
+
+/*! YES if the amount is equal to zero */
+-(BOOL) isAmountEqualToZero;
+
+/*! YES if the amount is greater than or equal to the minimum value for cardPresent transactions */
+-(BOOL) isAmountAboveCardPresentMinimum;
+
+/*! YES if the amount is less than or equal to the max value for cardPresent transactions */
+-(BOOL) isAmountBelowCardPresentMaximum;
+
+/*! YES if the amount can be used for contactless payments */
+-(BOOL) isAmountAcceptedForContactless;
 
 /*! The amount in the minimal unit of the currency (e.g. penny in the US) */
 -(NSInteger) amountInCents;

@@ -1,187 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHChipAndPinEventType.html">
+	<File path="Protocols/PPHLoggingDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHChipAndPinEventType</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHLoggingDelegate</TokenIdentifier>
+			<Abstract type="html">For debugging purposes it can be helpful to see our internal logs.
+Implement this protocol and set the logging delegate on PayPalHereSDK.
+You should generally not set this delegate in production code as it will
+have a theoretical performance impact (we&apos;ll call respondsToSelector a lot).
+If you respond to a given selector, we&apos;ll put the message together, which will
+cause a bunch of string munging to happen. So basically, use this when you
+mean it, not just on a whim.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="63"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventApproved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventApproved</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereError:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be indicative of an error.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereError:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereError:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventDeclined</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventDeclined</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereWarning:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be a potential issue affecting proper function.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereWarning:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereWarning:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventAuthRequired</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventAuthRequired</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereInfo:</TokenIdentifier>
+			<Abstract type="html">Log informational events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereInfo:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereInfo:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventFailed</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventFailed</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereTrace:</TokenIdentifier>
+			<Abstract type="html">Log fxn tracing events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereTrace:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereTrace:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCancelled</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCancelled</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereDebug:</TokenIdentifier>
+			<Abstract type="html">Log debug/verbose events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereDebug:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereDebug:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinVerified</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinVerified</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareError:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be indicative of an error for hardware interactions.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereHardwareError:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereHardwareError:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinIncorrect</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinIncorrect</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareWarning:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be a potential issue affecting proper function for hardware interactions.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereHardwareWarning:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereHardwareWarning:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventWaitingForPin</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventWaitingForPin</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareInfo:</TokenIdentifier>
+			<Abstract type="html">Log informational events for hardware interactions.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereHardwareInfo:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereHardwareInfo:</Anchor>
             <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinBlocked</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinBlocked</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/flush</TokenIdentifier>
+			<Abstract type="html">Cause the logger to send all its queued messages now.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)flush</Declaration>
+			
+			
+			<Anchor>//api/name/flush</Anchor>
             <NodeRef refid="63"/>
-        </Token>
+		</Token>
+		
         
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventPinDigitPressed</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventPinDigitPressed</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardBlocked</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardBlocked</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardInserted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardInserted</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardRemoved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardRemoved</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardInvalid</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardInvalid</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardDeclined</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardDeclined</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventCardChipBroken</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventCardChipBroken</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinEventDecisionRequired</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinEventDecisionRequired</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="63"/>
-        </Token>
         
 	</File>
 </Tokens>

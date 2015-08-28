@@ -11,74 +11,109 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#import "PPHInvoiceConstants.h"
+#import "PPHPaymentConstants.h"
 
 @class PPHTransactionControllerWatcher;
 @class PPHInvoice;
+@class PPHSDKReceiptContext;
 
 /*!
- * The Payment Events we'll send to the app.  These are currently a simple enum.
+ * Actions the EMVSDK should take in the event of a contactless timeout.
  */
-typedef NS_ENUM(NSInteger, PPHTransactionControlActionType) {
-    /*!
-     * Use this return value to indicate that the application has taken over transaction
+typedef NS_ENUM(NSInteger, PPHContactlessTimeoutAction) {
+    /*! 
+     * In the event of a contactless timeout, use this value to indicate you would like
+     * the EMVSDK to take over and retry a contactless transaction.
      */
-    ePPHTransactionType_Handled,
+    ePPHContactlessTimeoutActionContinueWithContactless,
     /*!
-     * Use this value to indicate that the SDK should continue with the transaction 
+     * In the event of a contactless timeout, use this value to indicate you would like
+     * the EMVSDK to take over and resume with a contact transaction.
      */
-    ePPHTransactionType_Continue
+    ePPHContactlessTimeoutActionContinueWithContact,
+    /*!
+     * In the event of a contactless timeout, use this value to indicate the EMVSDK
+     * should simply cancel. This is the default behavior of the EMVSDK in a timeout scenario.
+     */
+    ePPHContactlessTimeoutActionCancelTransaction
 };
+
+
+typedef void (^PPHContactlessListenerTimeoutHandler) (PPHContactlessTimeoutAction timeoutOptions);
 
 /**
  * The TransactionController defines an interface that can be used by the application to install a callback
- * object that is used to customize behavior.
+ * object that is used to customize behavior and the payment experience.
  * TransactionControllers are set on the TransactionManager on a per transaction basis. Unlike persistent
  * listeners that are registered with the manager object, TransactionControllers are "forgotten" by the
  * SDK at the end of each transaction (regardless of success or failure).
- * TransactionControllers interact with the SDK by using the TransactionControlAction and also via the parameters
- * passed into the callbacks. For example, the value HANDLED indicates that the application has taken over processing
- * and that the SDK should stop processing this particular transaction at this state.
- * The CONTINUE flag indicates that the application has either made changes to the input object or left everything untouched
- * and that the SDK should continue processing the transaction.
- *
+ * TransactionControllers are also used to call out important transaction related events to the app
+ * such as contactless payment listener timeouts.
  */
 @protocol PPHTransactionControllerDelegate <NSObject>
 
 /*!
- * onPreAuthorize This callback is invoked by the TransactionManager in response to a call to
- * the processPayment() API in the TransactionManager. As soon as the TransactionManager is ready
- * to perform the authorization this callback is invoked. The SDK is responsible for ensuring that
- * this call is invoked in the appropriate thread.
- *
- * @param inv This is the Invoice object against which the authorization will be performed. At this point
- *            the application can choose to make some changes to the invoice. For example, a tip could
- *            be added to an Invoice at this time or an item could be removed etc.
- *
- * @param preAuthJSON A dictionary ready for json conversion and shipment to the paypal service
- *                      that represents the request payload. This is the request data that will
- *                      be sent to the backend and the application is allowed to modify this data.
- * CAUTION: Modifying the data incorrectly could cause your transaction to fail. Ensure that any changes by the app
- *          will not introduce errors and that you handle the error cases appropriately. More documentation on what
- *          the server expects in the payload can be found in the documentation.
- *
- * @return TransactionControlAction. Return HANDLED if you want the SDK to stop processing the transaction at this point
- * If HANDLED is returned, then the Transaction will be canceled but the application is free to keep the invoice around
- * if it so wishes. If the invoice is not required then use the cancel method defined on the Invoice to cancel it.
- * Return CONTINUE if you wish the SDK to continue processing this transaction.
- *
+ * This delegate method will be called by the EMVSDK whenever a user selects a payment method by
+ * presenting their card. Mandatory if your app would like to take custom action such as handling tips
+ * before letting the EMVSDK continue. Gives you a chance to modify the transaction total.
+ * @param paymentOption the type of payment option the user selected.
  */
--(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSMutableDictionary*) preAuthJSON;
+- (void)userDidSelectPaymentMethod:(PPHPaymentMethod) paymentOption;
 
 /*!
- * onPostAuthorize 
- * 
- * This callback is invoked by the TransactionManager once authorization is complete. Note that authorization
- * complete does not indicate success. The input parameter indicates whether or not the authorization failed.
- *
- * @param didFail - indicates whether the authorization failed. A true indicates that the authorization itself failed. A false indicates
- *                that the authorization did not fail. It however, DOES NOT indicate that the transaction was successful.
- *
+ * This delegate method will be called by the EMVSDK whenever a user selects a refund method by 
+ * presenting their card. Mandatory if your app would like to take custom action before letting
+ * the EMVSDK continue. Gives you a chance to modify the transaction total.
+ * @param refundOption the type of refund payment option user selected.
  */
--(void)onPostAuthorize:(BOOL)didFail;
+- (void)userDidSelectRefundMethod:(PPHPaymentMethod) refundOption;
+
+/*!
+ * Mandatory if you are using the EMVSDK. Returns a reference to a 
+ * navigation controller we drive UI off of.
+ */
+- (UINavigationController *)getCurrentNavigationController;
+
+@optional
+
+/*!
+ * Custom receipt options we display as part of the EMVSDK receipt screen.
+ */
+- (NSArray *)getReceiptOptions;
+
+/*!
+ * This message is sent to the delegate right before the receipt options screen appears.
+ * If your app does automatic receipt printing, this is a good place to do it.
+ *
+ * @param receiptContext: An object containing information about the transaction record & receipt status.
+ */
+- (void)receiptOptionsWillAppearWithContext:(PPHSDKReceiptContext *)receiptContext;
+
+/*!
+ * After starting a contactless transaction, if no contactless card is presented to the terminal a 
+ * timeout occurs. Implement this method if you want to handle this scenario as the calling application.
+ * If implemented, it is your responsibility to invoke the completionHandler to give control back to the
+ * EMVSDK when ready. You will notify the EMVSDK of the action it must take.
+ *
+ * @param completionHandler: A completion handler that should be invoked by the receiving delegate.
+ */
+- (void)contactlessListenerDidTimeout:(PPHContactlessListenerTimeoutHandler) completionHandler;
+
+/*!
+ * Gets called when the reader has been activated for payments and is ready to process card present data. 
+ * Handle any non-EMV SDK related processing once this comes back.
+ */
+- (void)readerDidActivateForPayments;
+
+/*!
+ * Gets called when the reader has been de-activated for payments. 
+ * We have not dropped connection with the reader, but our reader will not process any card present data.
+ * To enable the reader for payments again, just call activateReaderForPayments when you are ready and take 
+ * a payment against the current TM invoice, or simply start a new transaction.
+ * Deactivation can occur if a user presses cancel on the terminal before presenting their card to the terminal. 
+ * Deactivation can also occur if you have explicitly called deActivateReaderForPayment.
+ */
+- (void)readerDidDeactivateForPayments;
 
 @end

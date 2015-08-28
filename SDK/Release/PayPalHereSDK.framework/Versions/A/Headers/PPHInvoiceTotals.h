@@ -34,9 +34,10 @@ typedef enum {
 @interface PPHInvoiceTotals : NSObject
 
 /*!
- * The honest to goodness total that is expected to be paid against this invoice.
+ * Total with tax, but does not include gratuity, discount, shipping & other things. I wouldn't use this.
+ * You should just call totalAmount on the PPHInvoice object or totalWithParts:ePPHTotalGrandTotal.
  */
-@property (nonatomic,strong,readonly) NSDecimalNumber *total;
+@property (nonatomic,strong,readonly) NSDecimalNumber *total DEPRECATED_ATTRIBUTE;
 /*!
  * Total before taxes, discounts and tips
  */

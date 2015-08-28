@@ -83,9 +83,19 @@
 	
 	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
 	
+	<option value="//api/name/initWithAmount:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithAmount:inCurrency:</option>
+	
 	<option value="//api/name/initWithPadding:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithPadding:inCurrency:</option>
 	
 	<option value="//api/name/initWithRounding:inCurrency:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithRounding:inCurrency:</option>
+	
+	<option value="//api/name/isAmountAboveCardPresentMinimum">&nbsp;&nbsp;&nbsp;&nbsp;- isAmountAboveCardPresentMinimum</option>
+	
+	<option value="//api/name/isAmountAcceptedForContactless">&nbsp;&nbsp;&nbsp;&nbsp;- isAmountAcceptedForContactless</option>
+	
+	<option value="//api/name/isAmountBelowCardPresentMaximum">&nbsp;&nbsp;&nbsp;&nbsp;- isAmountBelowCardPresentMaximum</option>
+	
+	<option value="//api/name/isAmountEqualToZero">&nbsp;&nbsp;&nbsp;&nbsp;- isAmountEqualToZero</option>
 	
 	<option value="//api/name/isValid">&nbsp;&nbsp;&nbsp;&nbsp;- isValid</option>
 	
@@ -177,9 +187,19 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithAmount:inCurrency:">initWithAmount:inCurrency:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithPadding:inCurrency:">initWithPadding:inCurrency:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithRounding:inCurrency:">initWithRounding:inCurrency:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAmountAboveCardPresentMinimum">isAmountAboveCardPresentMinimum</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAmountAcceptedForContactless">isAmountAcceptedForContactless</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAmountBelowCardPresentMaximum">isAmountBelowCardPresentMaximum</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAmountEqualToZero">isAmountEqualToZero</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isValid">isValid</a></span></li>
 	
@@ -300,6 +320,12 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/initWithAmount:inCurrency:">&ndash;&nbsp;initWithAmount:inCurrency:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/initWithPadding:inCurrency:">&ndash;&nbsp;initWithPadding:inCurrency:</a></code>
 	</span>
 	
@@ -325,6 +351,30 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isValid">&ndash;&nbsp;isValid</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAmountEqualToZero">&ndash;&nbsp;isAmountEqualToZero</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAmountAboveCardPresentMinimum">&ndash;&nbsp;isAmountAboveCardPresentMinimum</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAmountBelowCardPresentMaximum">&ndash;&nbsp;isAmountBelowCardPresentMaximum</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAmountAcceptedForContactless">&ndash;&nbsp;isAmountAcceptedForContactless</a></code>
 	</span>
 	
 	
@@ -1271,6 +1321,64 @@ NOTE: The currency information is deduced via the active merchant set within the
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/initWithAmount:inCurrency:" title="initWithAmount:inCurrency:"></a>
+	<h3 class="subsubtitle method-title">initWithAmount:inCurrency:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Designated initializer
+Initialize an <a href="#//api/name/amount">amount</a> with the currency.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithAmount:(id)<em>amount</em> inCurrency:(id)<em>currency</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>amount</em></dt>
+			<dd><p>the <a href="#//api/name/amount">amount</a> to initialize</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currency</em></dt>
+			<dd><p>the currency for the <a href="#//api/name/amount">amount</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Designated initializer
+Initialize an <a href="#//api/name/amount">amount</a> with the currency.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithPadding:inCurrency:" title="initWithPadding:inCurrency:"></a>
 	<h3 class="subsubtitle method-title">initWithPadding:inCurrency:</h3>
 	
@@ -1370,6 +1478,170 @@ For example in USD passing 1.232 would return 1.23</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initialize an <a href="#//api/name/amount">amount</a> and round to the appropriate precision for the currency.
 For example in USD passing 1.232 would return 1.23</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAmountAboveCardPresentMinimum" title="isAmountAboveCardPresentMinimum"></a>
+	<h3 class="subsubtitle method-title">isAmountAboveCardPresentMinimum</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES if the <a href="#//api/name/amount">amount</a> is greater than or equal to the minimum value for cardPresent transactions</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAmountAboveCardPresentMinimum</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>YES if the <a href="#//api/name/amount">amount</a> is greater than or equal to the minimum value for cardPresent transactions</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAmountAcceptedForContactless" title="isAmountAcceptedForContactless"></a>
+	<h3 class="subsubtitle method-title">isAmountAcceptedForContactless</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES if the <a href="#//api/name/amount">amount</a> can be used for contactless payments</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAmountAcceptedForContactless</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>YES if the <a href="#//api/name/amount">amount</a> can be used for contactless payments</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAmountBelowCardPresentMaximum" title="isAmountBelowCardPresentMaximum"></a>
+	<h3 class="subsubtitle method-title">isAmountBelowCardPresentMaximum</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES if the <a href="#//api/name/amount">amount</a> is less than or equal to the max value for cardPresent transactions</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAmountBelowCardPresentMaximum</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>YES if the <a href="#//api/name/amount">amount</a> is less than or equal to the max value for cardPresent transactions</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHAmount.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAmountEqualToZero" title="isAmountEqualToZero"></a>
+	<h3 class="subsubtitle method-title">isAmountEqualToZero</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES if the <a href="#//api/name/amount">amount</a> is equal to zero</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAmountEqualToZero</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>YES if the <a href="#//api/name/amount">amount</a> is equal to zero</p>
 	</div>
 	
 	
@@ -1856,7 +2128,7 @@ separator always set to &ldquo;.&rdquo;</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-07-20)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

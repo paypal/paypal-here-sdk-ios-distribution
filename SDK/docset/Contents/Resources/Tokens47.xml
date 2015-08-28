@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PayPalHereSDK.html">
+	<File path="Classes/PPHReaderDisplayFormatter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PayPalHereSDK</TokenIdentifier>
-			<Abstract type="html">The main object through which you can interact with PayPal and associated hardware devices
-such as card readers and chip &amp;amp; pin devices.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHReaderDisplayFormatter</TokenIdentifier>
+			<Abstract type="html">* This class allows you to generate aligned, justified strings of text for display
+* on LED screens. Most reader display screens allow a certain number of characters to be displayed
+* per row. Based on these constraints you will probably either want to right justify, left justify,
+* or simply center your strings of text on the display. Use this class to do these operations.
+* This class is simply a formatter and has no intelligence on how many lines a readerDisplay accepts.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
             
 			
 			<NodeRef refid="47"/>
@@ -14,399 +17,169 @@ such as card readers and chip &amp;amp; pin devices.</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedCardReaderManager</TokenIdentifier>
-			<Abstract type="html">The interface to interact with the card reader</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/setStringValue:</TokenIdentifier>
+			<Abstract type="html">Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&quot;&quot; if an error occurred during formatting due
+to bad input values. We also append @&quot;&quot; if subsequent formatting operations fail.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (PPHCardReaderManager *)sharedCardReaderManager</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSMutableString *stringValue</Declaration>
 			
 			
-			<Anchor>//api/name/sharedCardReaderManager</Anchor>
+			<Anchor>//api/name/stringValue</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedLocalManager</TokenIdentifier>
-			<Abstract type="html">The interface to interact with checkin services and merchant locations</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/stringValue</TokenIdentifier>
+			<Abstract type="html">Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&quot;&quot; if an error occurred during formatting due
+to bad input values. We also append @&quot;&quot; if subsequent formatting operations fail.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (PPHLocalManager *)sharedLocalManager</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSMutableString *stringValue</Declaration>
 			
 			
-			<Anchor>//api/name/sharedLocalManager</Anchor>
+			<Anchor>//api/name/stringValue</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedPaymentProcessor</TokenIdentifier>
-			<Abstract type="html">The interface to process payments with card swipe, keyed in/scanned, and checkins</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHReaderDisplayFormatter/stringValue</TokenIdentifier>
+			<Abstract type="html">Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&quot;&quot; if an error occurred during formatting due
+to bad input values. We also append @&quot;&quot; if subsequent formatting operations fail.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (PPHPaymentProcessor *)sharedPaymentProcessor</Declaration>
+			<Declaration>@property (nonatomic, strong, readonly) NSMutableString *stringValue</Declaration>
 			
 			
-			<Anchor>//api/name/sharedPaymentProcessor</Anchor>
+			<Anchor>//api/name/stringValue</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedAccessController</TokenIdentifier>
-			<Abstract type="html">A helper to establish OAuth credentials on behalf of your application for a merchant.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHReaderDisplayFormatter/formatterWithNumCharactersPerRow:</TokenIdentifier>
+			<Abstract type="html">Grab an instance of PPHReaderDisplayFormatter by specifying the number of characters allowed
+per row for the current display you are working with.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (PPHAccessController *)sharedAccessController</Declaration>
+			<Declaration>+ (PPHReaderDisplayFormatter *)formatterWithNumCharactersPerRow:(id)numChars</Declaration>
 			
 			
-			<Anchor>//api/name/sharedAccessController</Anchor>
+			<Anchor>//api/name/formatterWithNumCharactersPerRow:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sharedTransactionManager</TokenIdentifier>
-			<Abstract type="html">A way to do payments &amp;amp; refunds in a stateful way</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHReaderDisplayFormatter/formatterForDisplayReader:</TokenIdentifier>
+			<Abstract type="html">Grab an instance of PPHReaderDisplayFormatter by specifying the current Display Reader you
+are working with. Currently we only support the m010 reader. Based on the reader provided, we init
+the formatter with the appropriate number of characters per row. If you provide
+ePPHDisplayReaderUnknown we return nil, for a custom formatter use the formatterWithNumCharacters
+PerRow static initter method instead.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (PPHTransactionManager *)sharedTransactionManager</Declaration>
+			<Declaration>+ (PPHReaderDisplayFormatter *)formatterForDisplayReader:(id)reader</Declaration>
 			
 			
-			<Anchor>//api/name/sharedTransactionManager</Anchor>
+			<Anchor>//api/name/formatterForDisplayReader:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setNetworkDelegate:</TokenIdentifier>
-			<Abstract type="html">Should you wish to handle your own network requests, you can set this singleton
-which the PayPal Here SDK will call whenever a network request needs to go out.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/justifyString:withAlignment:</TokenIdentifier>
+			<Abstract type="html">Use this method to justify/align a string.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (void)setNetworkDelegate:(id&lt;PPHNetworkRequestDelegate&gt;)delegate</Declaration>
+			<Declaration>- (void)justifyString:(id)str withAlignment:(id)alignment</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">an object implementing PPHNetworkRequestDelegate which will be in charge of executing requests</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setNetworkDelegate:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/networkDelegate</TokenIdentifier>
-			<Abstract type="html">The current network request delegate.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (id&lt;PPHNetworkRequestDelegate&gt;)networkDelegate</Declaration>
-			
-			
-			<Anchor>//api/name/networkDelegate</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</TokenIdentifier>
-			<Abstract type="html">If you handle your own network requests, you should update the progress of those requests
-via this method so that various SDK features (such as reader software updates) can report
-overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible - so for example you could say a network request consists
-of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
-estimated relative durations of each of those to be used in computing the total step units.
-But for the rest of us mortals, you&apos;ll probably just say it&apos;s 1 step and the percentage is
-the percentage of the download that&apos;s completed.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)reportNetworkRequestProgress:(NSURLRequest *)originalRequest currentStep:(NSInteger)currentStep totalSteps:(NSInteger)totalSteps currentStepPercentage:(NSInteger)wholeNumberCurrentPercentage totalStepPercentageEstimate:(NSInteger)wholeNumberTotalPercentage</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>originalRequest</Name>
-					<Abstract type="html">The request as originally passed to your network delegate. If you
-&quot;rewrite&quot; the request, you need to keep the old one around to properly inform us of
-progress.</Abstract>
+					<Name>str:</Name>
+					<Abstract type="html">The string you want formatted/aligned for the display</Abstract>
 				</Parameter><Parameter>
-					<Name>currentStep</Name>
-					<Abstract type="html">The 1-based index of the step currently executing (e.g. it doesn&apos;t make
-sense to be on the 0th step.</Abstract>
-				</Parameter><Parameter>
-					<Name>totalSteps</Name>
-					<Abstract type="html">The count of the total number of steps required to execute the request.
-Must be at least 1.</Abstract>
-				</Parameter><Parameter>
-					<Name>wholeNumberCurrentPercentage</Name>
-					<Abstract type="html">a number between 0 and 100 expressing how much of the
-current step is completed.</Abstract>
-				</Parameter><Parameter>
-					<Name>wholeNumberTotalPercentage</Name>
-					<Abstract type="html">a number between 0 and 100 expressing how much of the
-total process is completed.</Abstract>
+					<Name>alignment:</Name>
+					<Abstract type="html">NSTextAlignment value to specify how you want the text aligned. Currently we only
+support NSTextAlignmentCenter, NSTextAlignmentRight, and NSTextAlignmentLeft. Any other enumeration
+val passed in will result in the string being ignored and no action being taken.
+
+EXAMPLE: Let&apos;s say you pass in the string &quot;Hello\nWorld&quot; with alignment NSTextAlignmentCenter.
+This implies you want the lines &quot;Hello&quot; and &quot;World&quot; to be on two separate lines on the display reader
+and you want each string to be centered on the display. We format the string accordingly. After
+feeding the string into this API, get the formatted string back by querying the stringValue property.</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</Anchor>
+			<Anchor>//api/name/justifyString:withAlignment:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setAnalyticsDelegate:</TokenIdentifier>
-			<Abstract type="html">Should you wish to handle your own analytics, you can set this singleton.
-Be warned if you don&apos;t also let us do our own analytics we will not be able
-to help diagnose aggregate issues for our SDK in your application.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/stringWithLeftString:andRightString:</TokenIdentifier>
+			<Abstract type="html">Add a line that has a left aligned string and a right aligned string (blanks inserted in between)</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (void)setAnalyticsDelegate:(id&lt;PPHAnalyticsDelegate&gt;)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">an object implementing PPHAnalyticsDelegate which will be in charge of reporting events</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)stringWithLeftString:(id)left andRightString:(id)right</Declaration>
 			
-			<Anchor>//api/name/setAnalyticsDelegate:</Anchor>
+			
+			<Anchor>//api/name/stringWithLeftString:andRightString:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/analyticsDelegate</TokenIdentifier>
-			<Abstract type="html">The current analytics delegate.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/readerTextForKey:</TokenIdentifier>
+			<Abstract type="html">Provide a key prefix for a string in our string tables, this method will return the appropriate
+text mapped to the key prefix for the formatter&apos;s current reader. You can then feed the string into
+the formatter&apos;s API&apos;s to justify the text if you want and then retrieve the formatted text.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (id&lt;PPHAnalyticsDelegate&gt;)analyticsDelegate</Declaration>
+			<Declaration>- (NSString *)readerTextForKey:(id)key</Declaration>
 			
 			
-			<Anchor>//api/name/analyticsDelegate</Anchor>
+			<Anchor>//api/name/readerTextForKey:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setLoggingDelegate:</TokenIdentifier>
-			<Abstract type="html">Should you wish to receive internal log messages, set this delegate. See
-PPHLogingDelegate for a warning about performance impact.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/splitOnNewLine:</TokenIdentifier>
+			<Abstract type="html">Convenience method to split a string on new line characters. You can then feed each string
+one by one into the formatter&apos;s justifyString method and specify different alignments.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (void)setLoggingDelegate:(id&lt;PPHLoggingDelegate&gt;)delegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>delegate</Name>
-					<Abstract type="html">an object implementing one or more methods of
-the PPHLoggingDelegate</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (NSArray *)splitOnNewLine:(id)str</Declaration>
 			
-			<Anchor>//api/name/setLoggingDelegate:</Anchor>
+			
+			<Anchor>//api/name/splitOnNewLine:</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/loggingDelegate</TokenIdentifier>
-			<Abstract type="html">The current logging delegate or nil.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/addPaddedLine</TokenIdentifier>
+			<Abstract type="html">Convenience method to generate a blank line of text padded with spaces and add it to
+the formatter. This can help to create blank rows between two lines of text for example.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (id&lt;PPHLoggingDelegate&gt;)loggingDelegate</Declaration>
+			<Declaration>- (void)addPaddedLine</Declaration>
 			
 			
-			<Anchor>//api/name/loggingDelegate</Anchor>
+			<Anchor>//api/name/addPaddedLine</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/activeMerchant</TokenIdentifier>
-			<Abstract type="html">The currently active merchant account</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/clearString</TokenIdentifier>
+			<Abstract type="html">Clear out any formatted text the formatter is currently holding and set it to the
+empty string @&quot;&quot;</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
 			
-			<Declaration>+ (PPHMerchantInfo *)activeMerchant</Declaration>
+			<Declaration>- (void)clearString</Declaration>
 			
 			
-			<Anchor>//api/name/activeMerchant</Anchor>
+			<Anchor>//api/name/clearString</Anchor>
             <NodeRef refid="47"/>
 		</Token>
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setActiveMerchant:withMerchantId:completionHandler:</TokenIdentifier>
-			<Abstract type="html">Set the currently active merchant for which all payment operations will be done.
-We will persist this merchant information to secure storage.  When your app runs
-again and you call setActiveMerchant with a merchantId we&apos;ve seen before we&apos;ll
-automatically check the saved merchant info for that merchantId.  If you pass in
-a nil or sparsely filled out merchant object we&apos;ll use the values we pulled from
-storage.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)setActiveMerchant:(PPHMerchantInfo *)merchant withMerchantId:(NSString *)merchantId completionHandler:(PPHAccessCompletionHandler)completionHandler</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>merchant</Name>
-					<Abstract type="html">The merchant information including OAuth credentials</Abstract>
-				</Parameter><Parameter>
-					<Name>merchantId</Name>
-					<Abstract type="html">a value which we&apos;ll use to uniquely identify this merchant on this device so
-we can save/fetch this specific merchant&apos;s information from local secure storage.
-If more than one merchant logs into this system you should make sure you provide
-different values.  This id belongs to the app and is not generated by paypal
-nor sent down to the service.</Abstract>
-				</Parameter><Parameter>
-					<Name>completionHandler</Name>
-					<Abstract type="html">The handler to be called when the merchant setup has completed
-(setup includes a call to the server to verify the token and retrieve user information)</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setActiveMerchant:withMerchantId:completionHandler:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/hasLocationAccess</TokenIdentifier>
-			<Abstract type="html">Returns YES if we have the access we need to device location information
-(we ask for significant location changes so long as a transaction is in progress,
-or for general location updates if the device does not support significant updates).</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (BOOL)hasLocationAccess</Declaration>
-			
-			
-			<Anchor>//api/name/hasLocationAccess</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/askForLocationAccess</TokenIdentifier>
-			<Abstract type="html">DEPRECATED
-Calls &quot;- (void)startWatchingLocation&quot;
-Returns YES.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (BOOL)askForLocationAccess</Declaration>
-			
-			
-			<Anchor>//api/name/askForLocationAccess</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/startWatchingLocation</TokenIdentifier>
-			<Abstract type="html">Allow the SDK to begin watching the location to attach to payments. In the future allowing
-the SDK to obtain a location fix will be a requirement for taking payments. Location monitoring
-is automatically stopped and restarted when the app is suspended if it is being watched.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)startWatchingLocation</Declaration>
-			
-			
-			<Anchor>//api/name/startWatchingLocation</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/stopWatchingLocation</TokenIdentifier>
-			<Abstract type="html">Disallow the SDK from getting location updates.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)stopWatchingLocation</Declaration>
-			
-			
-			<Anchor>//api/name/stopWatchingLocation</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setBaseAPIURL:</TokenIdentifier>
-			<Abstract type="html">For TEST purposes, you can set the service URL used for requests in the PayPal Here SDK</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)setBaseAPIURL:(NSURL *)url</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>url</Name>
-					<Abstract type="html">The base URL (essentially https://stagename/) for your non-live environment.</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setBaseAPIURL:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/selectEnvironmentWithType:</TokenIdentifier>
-			<Abstract type="html">Used to select between PPHSDKServiceTypes - currently just Live or Sandbox.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)selectEnvironmentWithType:(PPHSDKServiceType)serviceType</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>serviceType</Name>
-					<Abstract type="html">The service to connect to.</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/selectEnvironmentWithType:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sdkVersion</TokenIdentifier>
-			<Abstract type="html">The version of the SDK currently in use</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (NSString *)sdkVersion</Declaration>
-			
-			
-			<Anchor>//api/name/sdkVersion</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/referrerCode</TokenIdentifier>
-			<Abstract type="html">The partner referrer code.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (NSString *)referrerCode</Declaration>
-			
-			
-			<Anchor>//api/name/referrerCode</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/setReferrerCode:</TokenIdentifier>
-			<Abstract type="html">Set the Partner Referrer code that is obtained after sigining up with PayPalHere.
-NOTE: If the value is set in here, it would be automatically set within the invoice.
-If not, you would need to feed in same the information within the invoice object.</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)setReferrerCode:(NSString *)referrerCode</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>referrerCode</Name>
-					<Abstract type="html">the referrer code that is obtained once a partner registers with PayPalHere.</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setReferrerCode:</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/baseURL</TokenIdentifier>
-			<Abstract type="html">Returns the current base URL</Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (NSString *)baseURL</Declaration>
-			
-			
-			<Anchor>//api/name/baseURL</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/PayPalHereSDK/sendStackTrace</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PayPalHereSDK.h</DeclaredIn>
-			
-			<Declaration>+ (void)sendStackTrace</Declaration>
-			
-			
-			<Anchor>//api/name/sendStackTrace</Anchor>
-            <NodeRef refid="47"/>
-		</Token>
-		
+        
         
 	</File>
 </Tokens>

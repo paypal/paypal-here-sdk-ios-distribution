@@ -45,6 +45,10 @@
 	
 	<option value="//api/name/correlationId">&nbsp;&nbsp;&nbsp;&nbsp;correlationId</option>
 	
+	<option value="//api/name/customerId">&nbsp;&nbsp;&nbsp;&nbsp;customerId</option>
+	
+	<option value="//api/name/customerInfo">&nbsp;&nbsp;&nbsp;&nbsp;customerInfo</option>
+	
 	<option value="//api/name/date">&nbsp;&nbsp;&nbsp;&nbsp;date</option>
 	
 	<option value="//api/name/encryptedCardData">&nbsp;&nbsp;&nbsp;&nbsp;encryptedCardData</option>
@@ -59,6 +63,10 @@
 	
 	<option value="//api/name/paymentMethodDetail">&nbsp;&nbsp;&nbsp;&nbsp;paymentMethodDetail</option>
 	
+	<option value="//api/name/receiptDestination">&nbsp;&nbsp;&nbsp;&nbsp;receiptDestination</option>
+	
+	<option value="//api/name/receiptPreferenceToken">&nbsp;&nbsp;&nbsp;&nbsp;receiptPreferenceToken</option>
+	
 	<option value="//api/name/transactionHandle">&nbsp;&nbsp;&nbsp;&nbsp;transactionHandle</option>
 	
 	<option value="//api/name/transactionId">&nbsp;&nbsp;&nbsp;&nbsp;transactionId</option>
@@ -71,6 +79,8 @@
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/initWithAuthorizationId:andWithInvoice:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithAuthorizationId:andWithInvoice:</option>
+	
+	<option value="//api/name/initWithInvoice:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithInvoice:</option>
 	
 	<option value="//api/name/initWithTransactionId:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTransactionId:</option>
 	
@@ -106,6 +116,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/correlationId">correlationId</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customerId">customerId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customerInfo">customerInfo</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/date">date</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/encryptedCardData">encryptedCardData</a></span></li>
@@ -120,6 +134,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentMethodDetail">paymentMethodDetail</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptDestination">receiptDestination</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptPreferenceToken">receiptPreferenceToken</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transactionHandle">transactionHandle</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transactionId">transactionId</a></span></li>
@@ -133,6 +151,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithAuthorizationId:andWithInvoice:">initWithAuthorizationId:andWithInvoice:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithInvoice:">initWithInvoice:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTransactionId:">initWithTransactionId:</a></span></li>
 	
@@ -233,6 +253,18 @@ record the SDK can differentiate and tell whether it represents an authorization
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/customerId">&nbsp;&nbsp;customerId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptPreferenceToken">&nbsp;&nbsp;receiptPreferenceToken</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/paidWithPayPal">&nbsp;&nbsp;paidWithPayPal</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -269,6 +301,18 @@ record the SDK can differentiate and tell whether it represents an authorization
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/customerInfo">&nbsp;&nbsp;customerInfo</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptDestination">&nbsp;&nbsp;receiptDestination</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/initWithTransactionId:">&ndash;&nbsp;initWithTransactionId:</a></code>
 	</span>
 	
@@ -282,6 +326,12 @@ record the SDK can differentiate and tell whether it represents an authorization
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithAuthorizationId:andWithInvoice:">&ndash;&nbsp;initWithAuthorizationId:andWithInvoice:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithInvoice:">&ndash;&nbsp;initWithInvoice:</a></code>
 	</span>
 	
 	
@@ -389,6 +439,88 @@ record the SDK can differentiate and tell whether it represents an authorization
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *correlationId</code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/customerId" title="customerId"></a>
+	<h3 class="subsubtitle method-title">customerId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>CustomerId and receiptPreferences information used for sending a receipt</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *customerId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>CustomerId and receiptPreferences information used for sending a receipt</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/customerInfo" title="customerInfo"></a>
+	<h3 class="subsubtitle method-title">customerInfo</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Customer info associated to the given payment (if applicable)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) PPHTokenizedCustomerInformation *customerInfo</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Customer info associated to the given payment (if applicable)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionRecord.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -649,6 +781,58 @@ record the SDK can differentiate and tell whether it represents an authorization
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/receiptDestination" title="receiptDestination"></a>
+	<h3 class="subsubtitle method-title">receiptDestination</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The destination we sent a receipt to if one was sent and the destination was manually entered</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) PPHReceiptDestination *receiptDestination</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The destination we sent a receipt to if one was sent and the destination was manually entered</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptPreferenceToken" title="receiptPreferenceToken"></a>
+	<h3 class="subsubtitle method-title">receiptPreferenceToken</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *receiptPreferenceToken</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/transactionHandle" title="transactionHandle"></a>
 	<h3 class="subsubtitle method-title">transactionHandle</h3>
 	
@@ -757,7 +941,7 @@ In order to perform a capture, this API could be used in conjuction with the &ld
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithAuthorizationId:(NSString *)<em>authorizationId</em> andWithInvoice:(PPHInvoice *)<em>invoice</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithAuthorizationId:(id)<em>authorizationId</em> andWithInvoice:(id)<em>invoice</em></code></div>
 
     
 	
@@ -790,6 +974,47 @@ In order to perform a capture, this API could be used in conjuction with the &ld
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/initWithInvoice:" title="initWithInvoice:"></a>
+	<h3 class="subsubtitle method-title">initWithInvoice:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a PPHTransactionRecord with an <a href="#//api/name/invoice">invoice</a>.  This can be used with beginRefund</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithInvoice:(id)<em>invoice</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a PPHTransactionRecord with an <a href="#//api/name/invoice">invoice</a>.  This can be used with beginRefund</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHTransactionRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithTransactionId:" title="initWithTransactionId:"></a>
 	<h3 class="subsubtitle method-title">initWithTransactionId:</h3>
 	
@@ -801,7 +1026,7 @@ In order to perform a capture, this API could be used in conjuction with the &ld
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithTransactionId:(NSString *)<em>transactionId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithTransactionId:(id)<em>transactionId</em></code></div>
 
     
 	
@@ -842,7 +1067,7 @@ In order to perform a capture, this API could be used in conjuction with the &ld
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithTransactionId:(NSString *)<em>transactionId</em> andWithPayPalInvoiceId:(NSString *)<em>payPalInvoiceId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithTransactionId:(id)<em>transactionId</em> andWithPayPalInvoiceId:(id)<em>payPalInvoiceId</em></code></div>
 
     
 	
@@ -876,6 +1101,9 @@ In order to perform a capture, this API could be used in conjuction with the &ld
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -886,7 +1114,7 @@ In order to perform a capture, this API could be used in conjuction with the &ld
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

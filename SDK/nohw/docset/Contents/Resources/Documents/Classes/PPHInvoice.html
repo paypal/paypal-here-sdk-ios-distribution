@@ -51,6 +51,8 @@
 	
 	<option value="//api/name/customAmountValue">&nbsp;&nbsp;&nbsp;&nbsp;customAmountValue</option>
 	
+	<option value="//api/name/customReceiptText">&nbsp;&nbsp;&nbsp;&nbsp;customReceiptText</option>
+	
 	<option value="//api/name/discountAmount">&nbsp;&nbsp;&nbsp;&nbsp;discountAmount</option>
 	
 	<option value="//api/name/discountPercentage">&nbsp;&nbsp;&nbsp;&nbsp;discountPercentage</option>
@@ -78,6 +80,10 @@
 	<option value="//api/name/paymentTerms">&nbsp;&nbsp;&nbsp;&nbsp;paymentTerms</option>
 	
 	<option value="//api/name/paypalInvoiceId">&nbsp;&nbsp;&nbsp;&nbsp;paypalInvoiceId</option>
+	
+	<option value="//api/name/receiptEmailAddress">&nbsp;&nbsp;&nbsp;&nbsp;receiptEmailAddress</option>
+	
+	<option value="//api/name/receiptPhoneNumber">&nbsp;&nbsp;&nbsp;&nbsp;receiptPhoneNumber</option>
 	
 	<option value="//api/name/referrerCode">&nbsp;&nbsp;&nbsp;&nbsp;referrerCode</option>
 	
@@ -211,6 +217,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customAmountValue">customAmountValue</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customReceiptText">customReceiptText</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/discountAmount">discountAmount</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/discountPercentage">discountPercentage</a></span></li>
@@ -238,6 +246,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentTerms">paymentTerms</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paypalInvoiceId">paypalInvoiceId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptEmailAddress">receiptEmailAddress</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptPhoneNumber">receiptPhoneNumber</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/referrerCode">referrerCode</a></span></li>
 	
@@ -617,6 +629,12 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/customReceiptText">&nbsp;&nbsp;customReceiptText</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/totals">&nbsp;&nbsp;totals</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -692,6 +710,18 @@
 		<code><a href="#//api/name/quantityByItemId:">&ndash;&nbsp;quantityByItemId:</a></code>
 	</span>
 	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptPhoneNumber">&nbsp;&nbsp;receiptPhoneNumber</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptEmailAddress">&nbsp;&nbsp;receiptEmailAddress</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
@@ -837,7 +867,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *cashierId</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *cashierId</code></div>
 
     
 	
@@ -919,7 +949,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSString *currency</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic, readonly) NSString *currency</code></div>
 
     
 	
@@ -960,7 +990,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *customAmountName</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *customAmountName</code></div>
 
     
 	
@@ -1014,6 +1044,47 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The amount of a custom value entered on an invoice from the website.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoice.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/customReceiptText" title="customReceiptText"></a>
+	<h3 class="subsubtitle method-title">customReceiptText</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The custom receipt text associated with the invoice</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *customReceiptText</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The custom receipt text associated with the invoice</p>
 	</div>
 	
 	
@@ -1370,7 +1441,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *note</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *note</code></div>
 
     
 	
@@ -1452,7 +1523,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *payerEmail</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *payerEmail</code></div>
 
     
 	
@@ -1534,7 +1605,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *paymentTerms</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *paymentTerms</code></div>
 
     
 	
@@ -1605,6 +1676,92 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/receiptEmailAddress" title="receiptEmailAddress"></a>
+	<h3 class="subsubtitle method-title">receiptEmailAddress</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>emailAddress will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any email from the server</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *receiptEmailAddress</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>emailAddress will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any email from the server</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoice.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptPhoneNumber" title="receiptPhoneNumber"></a>
+	<h3 class="subsubtitle method-title">receiptPhoneNumber</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>phoneNumber will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any phone number from the server</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *receiptPhoneNumber</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>phoneNumber will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any phone number from the server</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PPHInvoice.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/referrerCode" title="referrerCode"></a>
 	<h3 class="subsubtitle method-title">referrerCode</h3>
 	
@@ -1616,7 +1773,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *referrerCode</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *referrerCode</code></div>
 
     
 	
@@ -1862,7 +2019,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *shippingTaxRateName</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *shippingTaxRateName</code></div>
 
     
 	
@@ -2190,7 +2347,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *terms</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *terms</code></div>
 
     
 	
@@ -3743,7 +3900,7 @@ This copies everything except the data that defines it as a unique invoice to Pa
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-07-20)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

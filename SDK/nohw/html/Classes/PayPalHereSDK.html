@@ -57,13 +57,9 @@
 	
 	<option value="//api/name/referrerCode">&nbsp;&nbsp;&nbsp;&nbsp;+ referrerCode</option>
 	
-	<option value="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">&nbsp;&nbsp;&nbsp;&nbsp;+ reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</option>
-	
 	<option value="//api/name/sdkVersion">&nbsp;&nbsp;&nbsp;&nbsp;+ sdkVersion</option>
 	
 	<option value="//api/name/selectEnvironmentWithType:">&nbsp;&nbsp;&nbsp;&nbsp;+ selectEnvironmentWithType:</option>
-	
-	<option value="//api/name/selectEnvironmentWithType:andCountryCodeOrNil:">&nbsp;&nbsp;&nbsp;&nbsp;+ selectEnvironmentWithType:andCountryCodeOrNil:</option>
 	
 	<option value="//api/name/sendStackTrace">&nbsp;&nbsp;&nbsp;&nbsp;+ sendStackTrace</option>
 	
@@ -79,13 +75,13 @@
 	
 	<option value="//api/name/setReferrerCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ setReferrerCode:</option>
 	
+	<option value="//api/name/setupWithCompositeTokenString:thenCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setupWithCompositeTokenString:thenCompletionHandler:</option>
+	
 	<option value="//api/name/setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:</option>
 	
 	<option value="//api/name/sharedAccessController">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedAccessController</option>
 	
 	<option value="//api/name/sharedCardReaderManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedCardReaderManager</option>
-	
-	<option value="//api/name/sharedCardReaderStateMonitor">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedCardReaderStateMonitor</option>
 	
 	<option value="//api/name/sharedLocalManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedLocalManager</option>
 	
@@ -141,13 +137,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/referrerCode">referrerCode</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sdkVersion">sdkVersion</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectEnvironmentWithType:">selectEnvironmentWithType:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectEnvironmentWithType:andCountryCodeOrNil:">selectEnvironmentWithType:andCountryCodeOrNil:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendStackTrace">sendStackTrace</a></span></li>
 	
@@ -163,13 +155,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setReferrerCode:">setReferrerCode:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setupWithCompositeTokenString:thenCompletionHandler:">setupWithCompositeTokenString:thenCompletionHandler:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:">setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedAccessController">sharedAccessController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedCardReaderManager">sharedCardReaderManager</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedCardReaderStateMonitor">sharedCardReaderStateMonitor</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedLocalManager">sharedLocalManager</a></span></li>
 	
@@ -210,7 +202,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">PayPalHereSDK.h<br />PayPalHereSDKSingleton.h</td>
+	<td class="specification-value">PayPalHereSDKSingleton.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -220,8 +212,29 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The main object through which you can interact with PayPal and associated hardware devices
-such as card readers and chip &amp; pin devices.</p>
+						<p>The main object through which you can access other resources provided by the SDK. This is a singleton
+and as such has global context. This object serves three main purposes:
+a) Initialization of the SDK
+b) Set global configurations - for ex: you can set a network delegate to listen for networking calls
+c) Access Shared resources - the other objects in the SDK such as TransactionManager, Card Reader Manager
+can be accessed from this object</p>
+
+<p>INITIALIZATION: This SDK comes to life once the initialization sequence gets rolling. In order to initialize
+the SDK you will need to have an access token, expiry for the token and a refresh url. Your application needs
+perform the OAuth login at the end of which you will have these values generated by Login With PayPal.
+When the SDK is intialized, we internally go about setting up a PPHMerchantInfo object from the credentials
+provided. Think of this object as the central entity around which actions are performed. As a merchant facing
+application you are in essence performing actions on behalf of the merchant and this simply reflects that.
+The initialization sequence fires a completion handler when it is done and it is IMPORTANT that you - the
+application developer - check the status of initialization and handle errors meaningfully. There are developer
+facing error messages to help ensure that the correct set of values are passed. As an example: we return
+ePPHInitResultFailedInsufficientCredentials when you attempt initialization without a valid access token or
+refresh url.</p>
+
+<p>Once intialization is complete, you can grab the shared manager objects to perform transactions using the SDK.
+Start with the PPHTransactionManager which can be retrieved using <a href="#//api/name/sharedTransactionManager">[PayPalHereSDK sharedTransactionManager]</a>. The
+transaction manager itself is well documented and will walk you through the steps needed to be able to take
+payments with the PayPal Here SDK. Happy coding!</p>
 					</div>
 					
 					
@@ -234,7 +247,7 @@ such as card readers and chip &amp; pin devices.</p>
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
@@ -281,12 +294,6 @@ such as card readers and chip &amp; pin devices.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:">+&nbsp;reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/setAnalyticsDelegate:">+&nbsp;setAnalyticsDelegate:</a></code>
 	</span>
 	
@@ -312,6 +319,18 @@ such as card readers and chip &amp; pin devices.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/activeMerchant">+&nbsp;activeMerchant</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:">+&nbsp;setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setupWithCompositeTokenString:thenCompletionHandler:">+&nbsp;setupWithCompositeTokenString:thenCompletionHandler:</a></code>
 	</span>
 	
 	
@@ -390,32 +409,6 @@ such as card readers and chip &amp; pin devices.</p>
 </li>
 						</ul>
 						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sharedCardReaderStateMonitor">+&nbsp;sharedCardReaderStateMonitor</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:">+&nbsp;setupWithCredentials:refreshUrl:tokenExpiryOrNil:thenCompletionHandler:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/selectEnvironmentWithType:andCountryCodeOrNil:">+&nbsp;selectEnvironmentWithType:andCountryCodeOrNil:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
 					</div>
 					
 					
@@ -463,7 +456,7 @@ such as card readers and chip &amp; pin devices.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -504,7 +497,7 @@ such as card readers and chip &amp; pin devices.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -549,7 +542,7 @@ Returns YES.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -590,7 +583,7 @@ Returns YES.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -637,7 +630,7 @@ or for general location updates if the device does not support significant updat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -650,7 +643,7 @@ or for general location updates if the device does not support significant updat
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The current logging delegate or nil.</p>
+		<p>The current logging delegate.</p>
 	</div>		
 	
     
@@ -667,7 +660,7 @@ or for general location updates if the device does not support significant updat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The current logging delegate or nil.</p>
+		<p>The current logging delegate.</p>
 	</div>
 	
 	
@@ -678,7 +671,7 @@ or for general location updates if the device does not support significant updat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -719,7 +712,7 @@ or for general location updates if the device does not support significant updat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -760,98 +753,7 @@ or for general location updates if the device does not support significant updat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:" title="reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:"></a>
-	<h3 class="subsubtitle method-title">reportNetworkRequestProgress:currentStep:totalSteps:currentStepPercentage:totalStepPercentageEstimate:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>If you handle your own network requests, you should update the progress of those requests
-via this method so that various SDK features (such as reader software updates) can report
-overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible - so for example you could say a network request consists
-of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
-estimated relative durations of each of those to be used in computing the total step units.
-But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
-the percentage of the download that&rsquo;s completed.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (void)reportNetworkRequestProgress:(id)<em>originalRequest</em> currentStep:(id)<em>currentStep</em> totalSteps:(id)<em>totalSteps</em> currentStepPercentage:(id)<em>wholeNumberCurrentPercentage</em> totalStepPercentageEstimate:(id)<em>wholeNumberTotalPercentage</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>originalRequest</em></dt>
-			<dd><p>The request as originally passed to your network delegate. If you
-&ldquo;rewrite&rdquo; the request, you need to keep the old one around to properly inform us of
-progress.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>currentStep</em></dt>
-			<dd><p>The 1-based index of the step currently executing (e.g. it doesn&rsquo;t make
-sense to be on the 0th step.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>totalSteps</em></dt>
-			<dd><p>The count of the total number of steps required to execute the request.
-Must be at least 1.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>wholeNumberCurrentPercentage</em></dt>
-			<dd><p>a number between 0 and 100 expressing how much of the
-current step is completed.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>wholeNumberTotalPercentage</em></dt>
-			<dd><p>a number between 0 and 100 expressing how much of the
-total process is completed.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>If you handle your own network requests, you should update the progress of those requests
-via this method so that various SDK features (such as reader software updates) can report
-overall progress back to you. This method is meant to allow you to get more precise about
-progress than is likely possible - so for example you could say a network request consists
-of connecting, uploading the request info, and downloading (3 totalSteps), and could assign
-estimated relative durations of each of those to be used in computing the total step units.
-But for the rest of us mortals, you&rsquo;ll probably just say it&rsquo;s 1 step and the percentage is
-the percentage of the download that&rsquo;s completed.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -892,7 +794,7 @@ the percentage of the download that&rsquo;s completed.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -911,63 +813,6 @@ the percentage of the download that&rsquo;s completed.</p>
     
 
 	<div class="method-subsection method-declaration"><code>+ (void)selectEnvironmentWithType:(id)<em>serviceType</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>serviceType</em></dt>
-			<dd><p>The service to connect to.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Used to select between PPHSDKServiceTypes - currently just Live or Sandbox.</p>
-
-<p>By default the SDK will run against Live, no need to call this method if you&rsquo;d
-like to use the Live service.</p>
-
-<p>However, if you want the SDK to run against PayPal&rsquo;s Sandbox environment,
-or you wish to point the SDK back at Live, you can use this method.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/selectEnvironmentWithType:andCountryCodeOrNil:" title="selectEnvironmentWithType:andCountryCodeOrNil:"></a>
-	<h3 class="subsubtitle method-title">selectEnvironmentWithType:andCountryCodeOrNil:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Used to select between PPHSDKServiceTypes - currently just Live or Sandbox.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (void)selectEnvironmentWithType:(id)<em>serviceType</em> andCountryCodeOrNil:(id)<em>countryCode</em></code></div>
 
     
 	
@@ -1097,7 +942,7 @@ successfully.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1152,7 +997,7 @@ to help diagnose aggregate issues for our SDK in your application.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1206,7 +1051,7 @@ services.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1260,7 +1105,7 @@ PPHLogingDelegate for a warning about performance impact.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1313,7 +1158,7 @@ which the PayPal Here SDK will call whenever a network request needs to go out.<
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1368,7 +1213,63 @@ If not, you would need to feed in same the information within the invoice object
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setupWithCompositeTokenString:thenCompletionHandler:" title="setupWithCompositeTokenString:thenCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">setupWithCompositeTokenString:thenCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Parse composite token string like the one returned from <a href="https://github.com/djMax/paypal-retail-node">https://github.com/djMax/paypal-retail-node</a> and initialize the SDK with it.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setupWithCompositeTokenString:(id)<em>compositeString</em> thenCompletionHandler:(id)<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>compositeString</em></dt>
+			<dd><p>The all powerful composit token string in the format: &ldquo;sdk_token=[sandbox|live]:<base 64 encoded JSON object in the format of [authToken, expiry, refreshURL]>&rdquo;</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>The handler that will fire once initialization is done.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Parse composite token string like the one returned from <a href="https://github.com/djMax/paypal-retail-node">https://github.com/djMax/paypal-retail-node</a> and initialize the SDK with it.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1503,7 +1404,7 @@ initialization was successful before attempting to proceed with the transaction 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1534,47 +1435,6 @@ initialization was successful before attempting to proceed with the transaction 
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The interface to interact with the card reader</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/sharedCardReaderStateMonitor" title="sharedCardReaderStateMonitor"></a>
-	<h3 class="subsubtitle method-title">sharedCardReaderStateMonitor</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Holds the authoritative state of the card readers and running card data.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (PPHCardReaderStateMonitor *)sharedCardReaderStateMonitor</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Holds the authoritative state of the card readers and running card data.</p>
 	</div>
 	
 	
@@ -1626,7 +1486,7 @@ initialization was successful before attempting to proceed with the transaction 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1667,7 +1527,7 @@ initialization was successful before attempting to proceed with the transaction 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1708,7 +1568,7 @@ initialization was successful before attempting to proceed with the transaction 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1753,7 +1613,7 @@ is automatically stopped and restarted when the app is suspended if it is being 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1794,7 +1654,7 @@ is automatically stopped and restarted when the app is suspended if it is being 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PayPalHereSDK.h</code><br />
+		<code class="declared-in-ref">PayPalHereSDKSingleton.h</code><br />
 	</div>				
 	
 	
@@ -1820,7 +1680,7 @@ is automatically stopped and restarted when the app is suspended if it is being 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-07-20)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

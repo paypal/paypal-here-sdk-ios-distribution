@@ -1,97 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHErrorCategory.html">
+	<File path="Protocols/PPHSignatureViewDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHErrorCategory</TokenIdentifier>
-			<Abstract type="html">The error category is useful for understanding what action should be taken in response to a particular
-domain/error code combination (mainly in the context of payment. This is powered by a JSON file hosted
-on paypal.com and updated periodically.</Abstract>
-			<DeclaredIn>PPHError.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSignatureViewDelegate</TokenIdentifier>
+			<Abstract type="html">A delegate that receives events related to buyer signatures in the PPHSignatureView</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
             
 			
 			<NodeRef refid="65"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryUnknown</TokenIdentifier>
-            <Abstract type="html">No additional information is available about the error.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryUnknown</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureTouchesBegan</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has begun, so that you can hide potentially conflicting UI</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureTouchesBegan</Declaration>
+			
+			
+			<Anchor>//api/name/signatureTouchesBegan</Anchor>
             <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryOutage</TokenIdentifier>
-            <Abstract type="html">The error indicates a PayPal or dependent system outage of some variety.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryOutage</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureUpdated:</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has completed. Note that it may &quot;begin again&quot; such as a
+disconnected gesture for last name.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureUpdated:(id)isEmpty</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>isEmpty</Name>
+					<Abstract type="html">whether the new signature is empty</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/signatureUpdated:</Anchor>
             <NodeRef refid="65"/>
-        </Token>
+		</Token>
+		
         
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryRetry</TokenIdentifier>
-            <Abstract type="html">The error is likely transient and a retry may be successful.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryRetry</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryBuyerDeclined</TokenIdentifier>
-            <Abstract type="html">The error indicates the buyer&apos;s request to pay was declined and retry is unlikely to succeed without some
-external change such as the credit card company releasing a hold or PayPal funding sources changing (just as examples)
-     </Abstract>
-            <Declaration>ePPHErrorCategoryBuyerDeclined</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategorySellerDeclined</TokenIdentifier>
-            <Abstract type="html">The error indicates there is a problem with the merchant account such as a restriction or account capability error.
-     </Abstract>
-            <Declaration>ePPHErrorCategorySellerDeclined</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryAmbiguous</TokenIdentifier>
-            <Abstract type="html">The error is known to have multiple causes from the category list and we can&apos;t be sure which one caused this occurrence.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryAmbiguous</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHErrorCategoryData</TokenIdentifier>
-            <Abstract type="html">The error indicates there was a problem with the data submitted such as an invalid checkin or card number/expiration, etc.
-     </Abstract>
-            <Declaration>ePPHErrorCategoryData</Declaration>
-            
-            <DeclaredIn>PPHError.h</DeclaredIn>
-            
-            <NodeRef refid="65"/>
-        </Token>
         
 	</File>
 </Tokens>

@@ -5,6 +5,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPHPaymentConstants.h"
 
 @class PPHPaymentLimits;
 
@@ -14,13 +15,6 @@ typedef NS_ENUM(NSInteger, PPHAccountStatus) {
     ePPHAccountStatusRestricted,
     ePPHAccountStatusEligible,
     ePPHAccountStatusIneligible
-};
-
-typedef NS_OPTIONS(NSInteger, PPHAvailablePaymentTypes) {
-    ePPHAvailablePaymentTypeNone = 0,
-    ePPHAvailablePaymentTypeCard = 1,
-    ePPHAvailablePaymentTypeCheckin = 1 << 1,
-    ePPHAvailablePaymentTypeChip = 1 << 2
 };
 
 /*!

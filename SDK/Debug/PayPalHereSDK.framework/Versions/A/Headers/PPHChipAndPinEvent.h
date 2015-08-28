@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, PPHChipAndPinEventType) {
     ePPHChipAndPinEventPinIncorrect = 7,
     ePPHChipAndPinEventWaitingForPin = 8,
     ePPHChipAndPinEventPinBlocked = 9,
-    ePPHChipAndPinEventPinDigitPressed = 10,
+    ePPHChipAndPinEventButtonPressed = 10,
     ePPHChipAndPinEventCardBlocked = 11,
     ePPHChipAndPinEventCardInserted = 12,
     ePPHChipAndPinEventCardRemoved = 13,
@@ -26,6 +26,27 @@ typedef NS_ENUM(NSInteger, PPHChipAndPinEventType) {
     ePPHChipAndPinEventCardDeclined = 15,
     ePPHChipAndPinEventCardChipBroken = 16,
     ePPHChipAndPinEventDecisionRequired = 17,
+    ePPHChipAndPinEventCardTapped = 18,
+    ePPHChipAndPinEventCardTapFailure = 19,
+    ePPHChipAndPinEventNumericEntry = 20
+};
+
+typedef NS_ENUM(NSInteger, PPHCardTapError) {
+    ePPHCardTapErrorUnknown,                // Error returned could not be determined
+    ePPHCardTapErrorHardwareFailure,        // Error resulted from a hardware failure during transaction
+    ePPHCardTapErrorChipCardInserted,       // Error because a chip card was inserted, contactless aborted
+    ePPHCardTapErrorMSDCardSwiped,          // Error because a card was swiped, contactless aborted
+    ePPHCardTapErrorContactlessTimeout,     // Error from contactless listener timeout
+    ePPHCardTapErrorICCRequested,           // Error contactless EMV card is requesting to be inserted
+    ePPHCardTapErrorInsertSwipeOrTapNewCard // Error tap failed, terminal requesting to insert, swipe, or tap a different card
+};
+
+typedef NS_ENUM(NSInteger, PPHChipAndPinButtonType) {
+    ePPHChipAndPinButtonUnknown,         // Unknown could not determine which button was pressed
+    ePPHChipAndPinButtonKeyPadDigit,     // A key pad digit was pressed
+    ePPHChipAndPinButtonBack,            // Back button was pressed
+    ePPHChipAndPinButtonCancel,          // Cancel Button pressed
+    ePPHChipAndPinButtonOK               // OK check Button pressed
 };
 
 /*!
@@ -62,15 +83,17 @@ typedef NS_ENUM(NSInteger, PPHChipAndPinEventType) {
 /*!
  * An event fired when a digit was pressed on the keypad
  */
-@interface PPHChipAndPinDigitEvent : PPHChipAndPinEvent
-/*! The number of digits that have been pressed */
+@interface PPHChipAndPinButtonPressedEvent : PPHChipAndPinEvent
+/*! num digits that were pressed */
 @property (nonatomic,readonly) NSInteger digits;
+/*! The type of button that was pressed */
+@property (nonatomic, readonly) PPHChipAndPinButtonType pressedButton;
 @end
 
 /*!
  * An event fired when the terminal has begun waiting for PIN entry
  */
-@interface PPHChipAndPinWaitingForPinEvent : PPHChipAndPinDigitEvent
+@interface PPHChipAndPinWaitingForPinEvent : PPHChipAndPinButtonPressedEvent
 /*!
  * YES if failure on this attempt is likely to result in card being locked out
  */
@@ -147,4 +170,33 @@ typedef NS_ENUM(NSInteger, PPHChipAndPinEventType) {
  * or the configuration of the chip)
  */
 @property (nonatomic,readonly) BOOL fallbackEnabled;
+@end
+
+/*!
+ * Fired when reading of a contactless tap card fails
+ */
+@interface PPHChipAndPinCardTapFailureEvent : PPHChipAndPinEvent
+/*!
+ * The exact error returned from the terminal when attempting
+ * to process a tap. This error will indicate why the failure
+ * occurred.
+ */
+@property (nonatomic,readonly) PPHCardTapError tapError;
+@end
+
+/*!
+ * Fired when succesfully reading a contactless tap
+ */
+@interface PPHChipAndPinCardTappedEvent : PPHChipAndPinEvent
+/*!
+ * The type of tap we have received.
+ */
+@property (nonatomic,assign) PPHContactlessTransactionType tapType;
+@end
+
+@interface PPHChipAndPinNumericEntryEvent : PPHChipAndPinEvent
+/*!
+ * The number entered by the user
+ */
+@property (nonatomic,readonly) NSDecimalNumber *number;
 @end

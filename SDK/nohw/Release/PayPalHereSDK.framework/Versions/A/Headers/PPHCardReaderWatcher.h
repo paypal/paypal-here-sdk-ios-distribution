@@ -16,9 +16,4 @@
  */
 -(id)initWithDelegate: (id<PPHCardReaderDelegate>) delegate;
 
-/*!
- * Initialize a watcher to send events to the delegate (for "simple" card reader events)
- * @param delegate the receiver of card reader events
- */
--(id)initWithSimpleDelegate: (id<PPHSimpleCardReaderDelegate>) delegate;
 @end

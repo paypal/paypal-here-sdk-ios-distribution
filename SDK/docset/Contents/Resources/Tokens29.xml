@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PPHInvoiceTotals.html">
+	<File path="Classes/PPHInvoiceContactInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceTotals</TokenIdentifier>
-			<Abstract type="html">A class to help with all the different ways one computes the totals of an invoice</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceContactInfo</TokenIdentifier>
+			<Abstract type="html">A collection of information about a person or entity for the purposes
+of invoicing - billing info, merchant info, shipping info, etc.</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="29"/>
@@ -13,363 +14,574 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setTotal:</TokenIdentifier>
-			<Abstract type="html">The honest to goodness total that is expected to be paid against this invoice.</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setFirstName:</TokenIdentifier>
+			<Abstract type="html">The first name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *total</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *firstName</Declaration>
 			
 			
-			<Anchor>//api/name/total</Anchor>
+			<Anchor>//api/name/firstName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/total</TokenIdentifier>
-			<Abstract type="html">The honest to goodness total that is expected to be paid against this invoice.</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/firstName</TokenIdentifier>
+			<Abstract type="html">The first name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *total</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *firstName</Declaration>
 			
 			
-			<Anchor>//api/name/total</Anchor>
+			<Anchor>//api/name/firstName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/total</TokenIdentifier>
-			<Abstract type="html">The honest to goodness total that is expected to be paid against this invoice.</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/firstName</TokenIdentifier>
+			<Abstract type="html">The first name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *total</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *firstName</Declaration>
 			
 			
-			<Anchor>//api/name/total</Anchor>
+			<Anchor>//api/name/firstName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setSubTotal:</TokenIdentifier>
-			<Abstract type="html">Total before taxes, discounts and tips</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setLastName:</TokenIdentifier>
+			<Abstract type="html">The last name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *subTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *lastName</Declaration>
 			
 			
-			<Anchor>//api/name/subTotal</Anchor>
+			<Anchor>//api/name/lastName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/subTotal</TokenIdentifier>
-			<Abstract type="html">Total before taxes, discounts and tips</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/lastName</TokenIdentifier>
+			<Abstract type="html">The last name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *subTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *lastName</Declaration>
 			
 			
-			<Anchor>//api/name/subTotal</Anchor>
+			<Anchor>//api/name/lastName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/subTotal</TokenIdentifier>
-			<Abstract type="html">Total before taxes, discounts and tips</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/lastName</TokenIdentifier>
+			<Abstract type="html">The last name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *subTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *lastName</Declaration>
 			
 			
-			<Anchor>//api/name/subTotal</Anchor>
+			<Anchor>//api/name/lastName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setItemTaxTotal:</TokenIdentifier>
-			<Abstract type="html">Tax from the items</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setBusinessName:</TokenIdentifier>
+			<Abstract type="html">The business name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *itemTaxTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *businessName</Declaration>
 			
 			
-			<Anchor>//api/name/itemTaxTotal</Anchor>
+			<Anchor>//api/name/businessName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/itemTaxTotal</TokenIdentifier>
-			<Abstract type="html">Tax from the items</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/businessName</TokenIdentifier>
+			<Abstract type="html">The business name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *itemTaxTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *businessName</Declaration>
 			
 			
-			<Anchor>//api/name/itemTaxTotal</Anchor>
+			<Anchor>//api/name/businessName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/itemTaxTotal</TokenIdentifier>
-			<Abstract type="html">Tax from the items</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/businessName</TokenIdentifier>
+			<Abstract type="html">The business name of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *itemTaxTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *businessName</Declaration>
 			
 			
-			<Anchor>//api/name/itemTaxTotal</Anchor>
+			<Anchor>//api/name/businessName</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setTaxTotal:</TokenIdentifier>
-			<Abstract type="html">Item tax + shipping tax</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setPhoneNumber:</TokenIdentifier>
+			<Abstract type="html">The phone number of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *taxTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *phoneNumber</Declaration>
 			
 			
-			<Anchor>//api/name/taxTotal</Anchor>
+			<Anchor>//api/name/phoneNumber</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/taxTotal</TokenIdentifier>
-			<Abstract type="html">Item tax + shipping tax</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/phoneNumber</TokenIdentifier>
+			<Abstract type="html">The phone number of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *taxTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *phoneNumber</Declaration>
 			
 			
-			<Anchor>//api/name/taxTotal</Anchor>
+			<Anchor>//api/name/phoneNumber</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/taxTotal</TokenIdentifier>
-			<Abstract type="html">Item tax + shipping tax</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/phoneNumber</TokenIdentifier>
+			<Abstract type="html">The phone number of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *taxTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *phoneNumber</Declaration>
 			
 			
-			<Anchor>//api/name/taxTotal</Anchor>
+			<Anchor>//api/name/phoneNumber</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setDiscountsTotal:</TokenIdentifier>
-			<Abstract type="html">Total of discounts on the order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setFaxNumber:</TokenIdentifier>
+			<Abstract type="html">The fax number, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *discountsTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *faxNumber</Declaration>
 			
 			
-			<Anchor>//api/name/discountsTotal</Anchor>
+			<Anchor>//api/name/faxNumber</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/discountsTotal</TokenIdentifier>
-			<Abstract type="html">Total of discounts on the order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/faxNumber</TokenIdentifier>
+			<Abstract type="html">The fax number, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *discountsTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *faxNumber</Declaration>
 			
 			
-			<Anchor>//api/name/discountsTotal</Anchor>
+			<Anchor>//api/name/faxNumber</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/discountsTotal</TokenIdentifier>
-			<Abstract type="html">Total of discounts on the order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/faxNumber</TokenIdentifier>
+			<Abstract type="html">The fax number, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *discountsTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *faxNumber</Declaration>
 			
 			
-			<Anchor>//api/name/discountsTotal</Anchor>
+			<Anchor>//api/name/faxNumber</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setGratuityTotal:</TokenIdentifier>
-			<Abstract type="html">Tip added to the order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setWebsite:</TokenIdentifier>
+			<Abstract type="html">The URL of the merchant website, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *gratuityTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *website</Declaration>
 			
 			
-			<Anchor>//api/name/gratuityTotal</Anchor>
+			<Anchor>//api/name/website</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/gratuityTotal</TokenIdentifier>
-			<Abstract type="html">Tip added to the order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/website</TokenIdentifier>
+			<Abstract type="html">The URL of the merchant website, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *gratuityTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *website</Declaration>
 			
 			
-			<Anchor>//api/name/gratuityTotal</Anchor>
+			<Anchor>//api/name/website</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/gratuityTotal</TokenIdentifier>
-			<Abstract type="html">Tip added to the order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/website</TokenIdentifier>
+			<Abstract type="html">The URL of the merchant website, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *gratuityTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *website</Declaration>
 			
 			
-			<Anchor>//api/name/gratuityTotal</Anchor>
+			<Anchor>//api/name/website</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setShippingTotal:</TokenIdentifier>
-			<Abstract type="html">Shipping charge (not common for in person transactions obviously)</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setCustomValue:</TokenIdentifier>
+			<Abstract type="html">A custom value for use as you please, if available. Displayed to the buyer</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *shippingTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customValue</Declaration>
 			
 			
-			<Anchor>//api/name/shippingTotal</Anchor>
+			<Anchor>//api/name/customValue</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/shippingTotal</TokenIdentifier>
-			<Abstract type="html">Shipping charge (not common for in person transactions obviously)</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/customValue</TokenIdentifier>
+			<Abstract type="html">A custom value for use as you please, if available. Displayed to the buyer</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *shippingTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customValue</Declaration>
 			
 			
-			<Anchor>//api/name/shippingTotal</Anchor>
+			<Anchor>//api/name/customValue</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/shippingTotal</TokenIdentifier>
-			<Abstract type="html">Shipping charge (not common for in person transactions obviously)</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/customValue</TokenIdentifier>
+			<Abstract type="html">A custom value for use as you please, if available. Displayed to the buyer</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *shippingTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *customValue</Declaration>
 			
 			
-			<Anchor>//api/name/shippingTotal</Anchor>
+			<Anchor>//api/name/customValue</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setRefundTotal:</TokenIdentifier>
-			<Abstract type="html">Refunds against this invoice, only relevant when read from the server</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setCity:</TokenIdentifier>
+			<Abstract type="html">The city of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *refundTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *city</Declaration>
 			
 			
-			<Anchor>//api/name/refundTotal</Anchor>
+			<Anchor>//api/name/city</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/refundTotal</TokenIdentifier>
-			<Abstract type="html">Refunds against this invoice, only relevant when read from the server</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/city</TokenIdentifier>
+			<Abstract type="html">The city of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *refundTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *city</Declaration>
 			
 			
-			<Anchor>//api/name/refundTotal</Anchor>
+			<Anchor>//api/name/city</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/refundTotal</TokenIdentifier>
-			<Abstract type="html">Refunds against this invoice, only relevant when read from the server</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/city</TokenIdentifier>
+			<Abstract type="html">The city of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDecimalNumber *refundTotal</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *city</Declaration>
 			
 			
-			<Anchor>//api/name/refundTotal</Anchor>
+			<Anchor>//api/name/city</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/setTaxDetails:</TokenIdentifier>
-			<Abstract type="html">Details for each tax rate on this order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setCountryCode:</TokenIdentifier>
+			<Abstract type="html">The country code of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *taxDetails</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *countryCode</Declaration>
 			
 			
-			<Anchor>//api/name/taxDetails</Anchor>
+			<Anchor>//api/name/countryCode</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/taxDetails</TokenIdentifier>
-			<Abstract type="html">Details for each tax rate on this order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/countryCode</TokenIdentifier>
+			<Abstract type="html">The country code of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *taxDetails</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *countryCode</Declaration>
 			
 			
-			<Anchor>//api/name/taxDetails</Anchor>
+			<Anchor>//api/name/countryCode</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceTotals/taxDetails</TokenIdentifier>
-			<Abstract type="html">Details for each tax rate on this order</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/countryCode</TokenIdentifier>
+			<Abstract type="html">The country code of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *taxDetails</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *countryCode</Declaration>
 			
 			
-			<Anchor>//api/name/taxDetails</Anchor>
+			<Anchor>//api/name/countryCode</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/initWithInvoice:</TokenIdentifier>
-			<Abstract type="html">Initialize and compute totals for an invoice</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setLineOne:</TokenIdentifier>
+			<Abstract type="html">Line 1 of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithInvoice:(PPHInvoice *)invoice</Declaration>
+			<Declaration>@property (nonatomic, strong) NSString *lineOne</Declaration>
+			
+			
+			<Anchor>//api/name/lineOne</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/lineOne</TokenIdentifier>
+			<Abstract type="html">Line 1 of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *lineOne</Declaration>
+			
+			
+			<Anchor>//api/name/lineOne</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/lineOne</TokenIdentifier>
+			<Abstract type="html">Line 1 of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *lineOne</Declaration>
+			
+			
+			<Anchor>//api/name/lineOne</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setLineTwo:</TokenIdentifier>
+			<Abstract type="html">Line 2 of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *lineTwo</Declaration>
+			
+			
+			<Anchor>//api/name/lineTwo</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/lineTwo</TokenIdentifier>
+			<Abstract type="html">Line 2 of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *lineTwo</Declaration>
+			
+			
+			<Anchor>//api/name/lineTwo</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/lineTwo</TokenIdentifier>
+			<Abstract type="html">Line 2 of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *lineTwo</Declaration>
+			
+			
+			<Anchor>//api/name/lineTwo</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setPostalCode:</TokenIdentifier>
+			<Abstract type="html">The Postal Code of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *postalCode</Declaration>
+			
+			
+			<Anchor>//api/name/postalCode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/postalCode</TokenIdentifier>
+			<Abstract type="html">The Postal Code of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *postalCode</Declaration>
+			
+			
+			<Anchor>//api/name/postalCode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/postalCode</TokenIdentifier>
+			<Abstract type="html">The Postal Code of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *postalCode</Declaration>
+			
+			
+			<Anchor>//api/name/postalCode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setTaxId:</TokenIdentifier>
+			<Abstract type="html">The tax id (VAT, ABN) of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/taxId</TokenIdentifier>
+			<Abstract type="html">The tax id (VAT, ABN) of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/taxId</TokenIdentifier>
+			<Abstract type="html">The tax id (VAT, ABN) of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *taxId</Declaration>
+			
+			
+			<Anchor>//api/name/taxId</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/setState:</TokenIdentifier>
+			<Abstract type="html">The state of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *state</Declaration>
+			
+			
+			<Anchor>//api/name/state</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/state</TokenIdentifier>
+			<Abstract type="html">The state of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *state</Declaration>
+			
+			
+			<Anchor>//api/name/state</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoiceContactInfo/state</TokenIdentifier>
+			<Abstract type="html">The state of the address of the contact, if available</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *state</Declaration>
+			
+			
+			<Anchor>//api/name/state</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/initWithCountryCode:city:addressLineOne:</TokenIdentifier>
+			<Abstract type="html">Initialize a PPHInvoiceContactInfo with a minimum valid address</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithCountryCode:(id)countryCode city:(id)city addressLineOne:(id)lineOne</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>invoice</Name>
-					<Abstract type="html">The invoice on which to compute totals</Abstract>
+					<Name>countryCode</Name>
+					<Abstract type="html">the two letter ISO code</Abstract>
+				</Parameter><Parameter>
+					<Name>city</Name>
+					<Abstract type="html">the city</Abstract>
+				</Parameter><Parameter>
+					<Name>lineOne</Name>
+					<Abstract type="html">the first line of the address</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/initWithInvoice:</Anchor>
+			<Anchor>//api/name/initWithCountryCode:city:addressLineOne:</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceTotals/totalWithParts:</TokenIdentifier>
-			<Abstract type="html">Retrieve the total using a custom composition</Abstract>
-			<DeclaredIn>PPHInvoiceTotals.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/isValidInfo</TokenIdentifier>
+			<Abstract type="html">YES if this contact info is valid - meaning either no address or a valid address basically.</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
 			
-			<Declaration>- (NSDecimalNumber *)totalWithParts:(PPHInvoiceTotalParts)composition</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>composition</Name>
-					<Abstract type="html">Which parts should be included in the total</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (BOOL)isValidInfo</Declaration>
 			
-			<Anchor>//api/name/totalWithParts:</Anchor>
+			
+			<Anchor>//api/name/isValidInfo</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/asDictionary</TokenIdentifier>
+			<Abstract type="html">Return the contact info as a dictionary suitable for the PayPal server</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			
+			
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceContactInfo/initWithDictionary:</TokenIdentifier>
+			<Abstract type="html">Initialize the contact info from a server-provided dictionary</Abstract>
+			<DeclaredIn>PPHInvoiceContactInfo.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDictionary:(id)representation</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>representation</Name>
+					<Abstract type="html">server response or result of asDictionary</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithDictionary:</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+        
         
 	</File>
 </Tokens>

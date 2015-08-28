@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHInitResultType.html">
+	<File path="Constants/PPHContactlessTimeoutAction.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHInitResultType</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHContactlessTimeoutAction</TokenIdentifier>
+			<Abstract type="html">Actions the EMVSDK should take in the event of a contactless timeout.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="76"/>
@@ -14,35 +14,37 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHInitResultSuccess</TokenIdentifier>
-            <Abstract type="html">If the merchant setup was successful.
+            <TokenIdentifier>//apple_ref/c/econst/ePPHContactlessTimeoutActionContinueWithContactless</TokenIdentifier>
+            <Abstract type="html">In the event of a contactless timeout, use this value to indicate you would like
+the EMVSDK to take over and retry a contactless transaction.
      </Abstract>
-            <Declaration>ePPHInitResultSuccess</Declaration>
+            <Declaration>ePPHContactlessTimeoutActionContinueWithContactless</Declaration>
             
-            <DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
+            <DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
             
             <NodeRef refid="76"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHInitResultFailedInsufficientCredentials</TokenIdentifier>
-            <Abstract type="html">Init failed due to insufficient information in the PPHAccessAccount object. This usually happens when the application attempts to initialize
-the SDK with a PPHAccessAccount object that does not have a valid access token or refresh url
+            <TokenIdentifier>//apple_ref/c/econst/ePPHContactlessTimeoutActionContinueWithContact</TokenIdentifier>
+            <Abstract type="html">In the event of a contactless timeout, use this value to indicate you would like
+the EMVSDK to take over and resume with a contact transaction.
      </Abstract>
-            <Declaration>ePPHInitResultFailedInsufficientCredentials</Declaration>
+            <Declaration>ePPHContactlessTimeoutActionContinueWithContact</Declaration>
             
-            <DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
+            <DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
             
             <NodeRef refid="76"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHInitResultFailed</TokenIdentifier>
-            <Abstract type="html">Init failed because of an error we encountered when retrieving merchant info. Please see PPHError object return from this call for more information
+            <TokenIdentifier>//apple_ref/c/econst/ePPHContactlessTimeoutActionCancelTransaction</TokenIdentifier>
+            <Abstract type="html">In the event of a contactless timeout, use this value to indicate the EMVSDK
+should simply cancel. This is the default behavior of the EMVSDK in a timeout scenario.
      </Abstract>
-            <Declaration>ePPHInitResultFailed</Declaration>
+            <Declaration>ePPHContactlessTimeoutActionCancelTransaction</Declaration>
             
-            <DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
+            <DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
             
             <NodeRef refid="76"/>
         </Token>

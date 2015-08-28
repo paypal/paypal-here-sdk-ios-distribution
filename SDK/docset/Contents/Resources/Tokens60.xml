@@ -1,107 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHAnalyticsEventName.html">
+	<File path="Protocols/PPHCardReaderDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHAnalyticsEventName</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHCardReaderDelegate</TokenIdentifier>
+			<Abstract type="html">Basic events for audio, feature port, and EMV readers. While methods are marked optional for cases where you
+just want to see certain events (like reader software upgrade), the delegate that&apos;s actually looking to complete
+a payment is going to need all of these.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="60"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_None</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_None</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didFindAvailableReaderDevice:</TokenIdentifier>
+			<Abstract type="html">A potential reader has been found.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didFindAvailableReaderDevice:(id)reader</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>reader</Name>
+					<Abstract type="html">the reader that was found</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didFindAvailableReaderDevice:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_ReaderInserted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_ReaderInserted</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didStartReaderDetection:</TokenIdentifier>
+			<Abstract type="html">This event will be triggered in cases where reader detection takes a while, such as for
+the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didStartReaderDetection:(id)reader</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>reader</Name>
+					<Abstract type="html">the basic information about reader that is actively being &quot;verified&quot;</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didStartReaderDetection:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_ReaderRemoved</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_ReaderRemoved</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectReaderDevice:</TokenIdentifier>
+			<Abstract type="html">A fully working reader was detected and is available</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didDetectReaderDevice:(id)reader</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>reader</Name>
+					<Abstract type="html">the reader that was detected</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didDetectReaderDevice:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_AudioSwiperError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_AudioSwiperError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didRemoveReader:</TokenIdentifier>
+			<Abstract type="html">A reader device has been removed from the system</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didRemoveReader:(id)readerType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>readerType</Name>
+					<Abstract type="html">the type of reader that was removed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didRemoveReader:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_AudioSwipeSuccessful</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_AudioSwipeSuccessful</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didDetectCardSwipeAttempt</TokenIdentifier>
+			<Abstract type="html">Something has occurred in the read head of the reader. Since processing can take a second or so,
+this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+will hurt success rate.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didDetectCardSwipeAttempt</Declaration>
+			
+			
+			<Anchor>//api/name/didDetectCardSwipeAttempt</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_DockPortSwiperError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_DockPortSwiperError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didCompleteCardSwipe:</TokenIdentifier>
+			<Abstract type="html">A card swipe has succeeded</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didCompleteCardSwipe:(id)card</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">Encrypted and masked data about the card</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didCompleteCardSwipe:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_DockPortSwipeSuccessful</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_DockPortSwipeSuccessful</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didFailToReadCard</TokenIdentifier>
+			<Abstract type="html">A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didFailToReadCard</Declaration>
+			
+			
+			<Anchor>//api/name/didFailToReadCard</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_SoftwareUpdateError</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_SoftwareUpdateError</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didReceiveCardReaderMetadata:</TokenIdentifier>
+			<Abstract type="html">Serial number and other related information is available for the card reader.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didReceiveCardReaderMetadata:(id)metadata</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>metadata</Name>
+					<Abstract type="html">the available data about the reader</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didReceiveCardReaderMetadata:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEvent_SoftwareUpdateRestartReader</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHAnalyticsEvent_SoftwareUpdateRestartReader</Declaration>
-            
-            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/activeReaderChangedFrom:to:</TokenIdentifier>
+			<Abstract type="html">A new reader has been set as active and is now the only one eligible for payment.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)activeReaderChangedFrom:(id)previousReader to:(id)currentReader</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>previousReader</Name>
+					<Abstract type="html">the reader that was active</Abstract>
+				</Parameter><Parameter>
+					<Name>currentReader</Name>
+					<Abstract type="html">the reader that is active</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/activeReaderChangedFrom:to:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didUpgradeReader:withMessage:</TokenIdentifier>
+			<Abstract type="html">A reader upgrade was successful</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didUpgradeReader:(id)successful withMessage:(id)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>successful</Name>
+					<Abstract type="html">whether the upgrade succeeded</Abstract>
+				</Parameter><Parameter>
+					<Name>message</Name>
+					<Abstract type="html">Additional details about the upgrade (if it failed)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didUpgradeReader:withMessage:</Anchor>
+            <NodeRef refid="60"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHCardReaderDelegate/didRemoveCard</TokenIdentifier>
+			<Abstract type="html">Called when a card is that was inserted into the reader has been removed.</Abstract>
+			<DeclaredIn>PPHCardReaderDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)didRemoveCard</Declaration>
+			
+			
+			<Anchor>//api/name/didRemoveCard</Anchor>
+            <NodeRef refid="60"/>
+		</Token>
+		
+        
         
 	</File>
 </Tokens>

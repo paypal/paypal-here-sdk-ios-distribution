@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19018F671B8D810A00AE7824 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19018F661B8D810A00AE7824 /* LoginViewController.m */; };
+		19018F6A1B8D815200AE7824 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19018F691B8D815200AE7824 /* PaymentViewController.m */; };
+		19018F6D1B8D823A00AE7824 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F6C1B8D823A00AE7824 /* CoreGraphics.framework */; };
+		19018F6F1B8D824500AE7824 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F6E1B8D824500AE7824 /* libc++.dylib */; };
+		19018F711B8D824D00AE7824 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F701B8D824D00AE7824 /* Foundation.framework */; };
+		19018F731B8D825300AE7824 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F721B8D825300AE7824 /* UIKit.framework */; };
+		19018F751B8D825900AE7824 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F741B8D825900AE7824 /* CoreTelephony.framework */; };
+		19018F771B8D825F00AE7824 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F761B8D825F00AE7824 /* MediaPlayer.framework */; };
+		19018F791B8D826500AE7824 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F781B8D826500AE7824 /* SystemConfiguration.framework */; };
+		19018F7B1B8D826D00AE7824 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F7A1B8D826D00AE7824 /* ExternalAccessory.framework */; };
+		19018F7D1B8D827100AE7824 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F7C1B8D827100AE7824 /* AVFoundation.framework */; };
+		19018F7F1B8D827800AE7824 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F7E1B8D827800AE7824 /* AudioToolbox.framework */; };
+		19018F811B8D827D00AE7824 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F801B8D827D00AE7824 /* CoreLocation.framework */; };
+		19018F831B8D828500AE7824 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F821B8D828500AE7824 /* CFNetwork.framework */; };
+		19018F851B8D828A00AE7824 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F841B8D828A00AE7824 /* Security.framework */; };
+		19018F871B8D829000AE7824 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F861B8D829000AE7824 /* MobileCoreServices.framework */; };
+		19018F891B8D829800AE7824 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F881B8D829800AE7824 /* libxml2.dylib */; };
+		19018F8B1B8D829E00AE7824 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F8A1B8D829E00AE7824 /* CoreBluetooth.framework */; };
+		19018F8D1B8D82A500AE7824 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F8C1B8D82A500AE7824 /* QuartzCore.framework */; };
+		19018F8F1B8D82AC00AE7824 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F8E1B8D82AC00AE7824 /* libz.dylib */; };
+		19018F911B8D82B200AE7824 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F901B8D82B200AE7824 /* libsqlite3.dylib */; };
+		19018F961B8E590700AE7824 /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018F951B8E590700AE7824 /* PayPalHereSDK.framework */; };
+		19018F981B8E591F00AE7824 /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19018F971B8E591F00AE7824 /* PayPalHereSDK.bundle */; };
+		1957B7021B8ED76600508F12 /* PaymentCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1957B7011B8ED76600508F12 /* PaymentCompleteViewController.m */; };
+		199A3BC11B87E82D00E3A401 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A3BC01B87E82D00E3A401 /* main.m */; };
+		199A3BC41B87E82D00E3A401 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A3BC31B87E82D00E3A401 /* AppDelegate.m */; };
+		199A3BCA1B87E82D00E3A401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199A3BC81B87E82D00E3A401 /* Main.storyboard */; };
+		199A3BCC1B87E82D00E3A401 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 199A3BCB1B87E82D00E3A401 /* Images.xcassets */; };
+		199A3BCF1B87E82D00E3A401 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199A3BCD1B87E82D00E3A401 /* LaunchScreen.xib */; };
+		199A3BDB1B87E82D00E3A401 /* TakePaymentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A3BDA1B87E82D00E3A401 /* TakePaymentTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		199A3BD51B87E82D00E3A401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 199A3BB31B87E82D00E3A401 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 199A3BBA1B87E82D00E3A401;
+			remoteInfo = TakePayment;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		19018F651B8D810A00AE7824 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		19018F661B8D810A00AE7824 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		19018F681B8D815200AE7824 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		19018F691B8D815200AE7824 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		19018F6C1B8D823A00AE7824 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		19018F6E1B8D824500AE7824 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		19018F701B8D824D00AE7824 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		19018F721B8D825300AE7824 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		19018F741B8D825900AE7824 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		19018F761B8D825F00AE7824 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		19018F781B8D826500AE7824 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		19018F7A1B8D826D00AE7824 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		19018F7C1B8D827100AE7824 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		19018F7E1B8D827800AE7824 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		19018F801B8D827D00AE7824 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		19018F821B8D828500AE7824 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		19018F841B8D828A00AE7824 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		19018F861B8D829000AE7824 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		19018F881B8D829800AE7824 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		19018F8A1B8D829E00AE7824 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		19018F8C1B8D82A500AE7824 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		19018F8E1B8D82AC00AE7824 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		19018F901B8D82B200AE7824 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		19018F951B8E590700AE7824 /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = ../SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
+		19018F971B8E591F00AE7824 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = ../SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
+		1957B7001B8ED76600508F12 /* PaymentCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCompleteViewController.h; sourceTree = "<group>"; };
+		1957B7011B8ED76600508F12 /* PaymentCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCompleteViewController.m; sourceTree = "<group>"; };
+		199A3BBB1B87E82D00E3A401 /* TakePayment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakePayment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		199A3BBF1B87E82D00E3A401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		199A3BC01B87E82D00E3A401 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		199A3BC21B87E82D00E3A401 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		199A3BC31B87E82D00E3A401 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		199A3BC91B87E82D00E3A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		199A3BCB1B87E82D00E3A401 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		199A3BCE1B87E82D00E3A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		199A3BD41B87E82D00E3A401 /* TakePaymentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakePaymentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		199A3BD91B87E82D00E3A401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		199A3BDA1B87E82D00E3A401 /* TakePaymentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakePaymentTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		199A3BB81B87E82D00E3A401 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19018F961B8E590700AE7824 /* PayPalHereSDK.framework in Frameworks */,
+				19018F911B8D82B200AE7824 /* libsqlite3.dylib in Frameworks */,
+				19018F8F1B8D82AC00AE7824 /* libz.dylib in Frameworks */,
+				19018F8D1B8D82A500AE7824 /* QuartzCore.framework in Frameworks */,
+				19018F8B1B8D829E00AE7824 /* CoreBluetooth.framework in Frameworks */,
+				19018F891B8D829800AE7824 /* libxml2.dylib in Frameworks */,
+				19018F871B8D829000AE7824 /* MobileCoreServices.framework in Frameworks */,
+				19018F851B8D828A00AE7824 /* Security.framework in Frameworks */,
+				19018F831B8D828500AE7824 /* CFNetwork.framework in Frameworks */,
+				19018F811B8D827D00AE7824 /* CoreLocation.framework in Frameworks */,
+				19018F7F1B8D827800AE7824 /* AudioToolbox.framework in Frameworks */,
+				19018F7D1B8D827100AE7824 /* AVFoundation.framework in Frameworks */,
+				19018F7B1B8D826D00AE7824 /* ExternalAccessory.framework in Frameworks */,
+				19018F791B8D826500AE7824 /* SystemConfiguration.framework in Frameworks */,
+				19018F771B8D825F00AE7824 /* MediaPlayer.framework in Frameworks */,
+				19018F751B8D825900AE7824 /* CoreTelephony.framework in Frameworks */,
+				19018F731B8D825300AE7824 /* UIKit.framework in Frameworks */,
+				19018F711B8D824D00AE7824 /* Foundation.framework in Frameworks */,
+				19018F6F1B8D824500AE7824 /* libc++.dylib in Frameworks */,
+				19018F6D1B8D823A00AE7824 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		199A3BD11B87E82D00E3A401 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19018F941B8E586E00AE7824 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19018F951B8E590700AE7824 /* PayPalHereSDK.framework */,
+				19018F901B8D82B200AE7824 /* libsqlite3.dylib */,
+				19018F8E1B8D82AC00AE7824 /* libz.dylib */,
+				19018F8C1B8D82A500AE7824 /* QuartzCore.framework */,
+				19018F8A1B8D829E00AE7824 /* CoreBluetooth.framework */,
+				19018F881B8D829800AE7824 /* libxml2.dylib */,
+				19018F861B8D829000AE7824 /* MobileCoreServices.framework */,
+				19018F841B8D828A00AE7824 /* Security.framework */,
+				19018F821B8D828500AE7824 /* CFNetwork.framework */,
+				19018F801B8D827D00AE7824 /* CoreLocation.framework */,
+				19018F7E1B8D827800AE7824 /* AudioToolbox.framework */,
+				19018F7C1B8D827100AE7824 /* AVFoundation.framework */,
+				19018F7A1B8D826D00AE7824 /* ExternalAccessory.framework */,
+				19018F781B8D826500AE7824 /* SystemConfiguration.framework */,
+				19018F761B8D825F00AE7824 /* MediaPlayer.framework */,
+				19018F741B8D825900AE7824 /* CoreTelephony.framework */,
+				19018F721B8D825300AE7824 /* UIKit.framework */,
+				19018F701B8D824D00AE7824 /* Foundation.framework */,
+				19018F6E1B8D824500AE7824 /* libc++.dylib */,
+				19018F6C1B8D823A00AE7824 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		199A3BB21B87E82D00E3A401 = {
+			isa = PBXGroup;
+			children = (
+				19018F971B8E591F00AE7824 /* PayPalHereSDK.bundle */,
+				19018F941B8E586E00AE7824 /* Frameworks */,
+				199A3BBD1B87E82D00E3A401 /* TakePayment */,
+				199A3BD71B87E82D00E3A401 /* TakePaymentTests */,
+				199A3BBC1B87E82D00E3A401 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		199A3BBC1B87E82D00E3A401 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				199A3BBB1B87E82D00E3A401 /* TakePayment.app */,
+				199A3BD41B87E82D00E3A401 /* TakePaymentTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		199A3BBD1B87E82D00E3A401 /* TakePayment */ = {
+			isa = PBXGroup;
+			children = (
+				1957B7001B8ED76600508F12 /* PaymentCompleteViewController.h */,
+				1957B7011B8ED76600508F12 /* PaymentCompleteViewController.m */,
+				19018F681B8D815200AE7824 /* PaymentViewController.h */,
+				19018F691B8D815200AE7824 /* PaymentViewController.m */,
+				19018F651B8D810A00AE7824 /* LoginViewController.h */,
+				19018F661B8D810A00AE7824 /* LoginViewController.m */,
+				199A3BC21B87E82D00E3A401 /* AppDelegate.h */,
+				199A3BC31B87E82D00E3A401 /* AppDelegate.m */,
+				199A3BC81B87E82D00E3A401 /* Main.storyboard */,
+				199A3BCB1B87E82D00E3A401 /* Images.xcassets */,
+				199A3BCD1B87E82D00E3A401 /* LaunchScreen.xib */,
+				199A3BBE1B87E82D00E3A401 /* Supporting Files */,
+			);
+			path = TakePayment;
+			sourceTree = "<group>";
+		};
+		199A3BBE1B87E82D00E3A401 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				199A3BBF1B87E82D00E3A401 /* Info.plist */,
+				199A3BC01B87E82D00E3A401 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		199A3BD71B87E82D00E3A401 /* TakePaymentTests */ = {
+			isa = PBXGroup;
+			children = (
+				199A3BDA1B87E82D00E3A401 /* TakePaymentTests.m */,
+				199A3BD81B87E82D00E3A401 /* Supporting Files */,
+			);
+			path = TakePaymentTests;
+			sourceTree = "<group>";
+		};
+		199A3BD81B87E82D00E3A401 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				199A3BD91B87E82D00E3A401 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		199A3BBA1B87E82D00E3A401 /* TakePayment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 199A3BDE1B87E82D00E3A401 /* Build configuration list for PBXNativeTarget "TakePayment" */;
+			buildPhases = (
+				199A3BB71B87E82D00E3A401 /* Sources */,
+				199A3BB81B87E82D00E3A401 /* Frameworks */,
+				199A3BB91B87E82D00E3A401 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TakePayment;
+			productName = TakePayment;
+			productReference = 199A3BBB1B87E82D00E3A401 /* TakePayment.app */;
+			productType = "com.apple.product-type.application";
+		};
+		199A3BD31B87E82D00E3A401 /* TakePaymentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 199A3BE11B87E82D00E3A401 /* Build configuration list for PBXNativeTarget "TakePaymentTests" */;
+			buildPhases = (
+				199A3BD01B87E82D00E3A401 /* Sources */,
+				199A3BD11B87E82D00E3A401 /* Frameworks */,
+				199A3BD21B87E82D00E3A401 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				199A3BD61B87E82D00E3A401 /* PBXTargetDependency */,
+			);
+			name = TakePaymentTests;
+			productName = TakePaymentTests;
+			productReference = 199A3BD41B87E82D00E3A401 /* TakePaymentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		199A3BB31B87E82D00E3A401 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "PayPal Inc.";
+				TargetAttributes = {
+					199A3BBA1B87E82D00E3A401 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					199A3BD31B87E82D00E3A401 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 199A3BBA1B87E82D00E3A401;
+					};
+				};
+			};
+			buildConfigurationList = 199A3BB61B87E82D00E3A401 /* Build configuration list for PBXProject "TakePayment" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 199A3BB21B87E82D00E3A401;
+			productRefGroup = 199A3BBC1B87E82D00E3A401 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				199A3BBA1B87E82D00E3A401 /* TakePayment */,
+				199A3BD31B87E82D00E3A401 /* TakePaymentTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		199A3BB91B87E82D00E3A401 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19018F981B8E591F00AE7824 /* PayPalHereSDK.bundle in Resources */,
+				199A3BCA1B87E82D00E3A401 /* Main.storyboard in Resources */,
+				199A3BCF1B87E82D00E3A401 /* LaunchScreen.xib in Resources */,
+				199A3BCC1B87E82D00E3A401 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		199A3BD21B87E82D00E3A401 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		199A3BB71B87E82D00E3A401 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1957B7021B8ED76600508F12 /* PaymentCompleteViewController.m in Sources */,
+				199A3BC41B87E82D00E3A401 /* AppDelegate.m in Sources */,
+				199A3BC11B87E82D00E3A401 /* main.m in Sources */,
+				19018F671B8D810A00AE7824 /* LoginViewController.m in Sources */,
+				19018F6A1B8D815200AE7824 /* PaymentViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		199A3BD01B87E82D00E3A401 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				199A3BDB1B87E82D00E3A401 /* TakePaymentTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		199A3BD61B87E82D00E3A401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 199A3BBA1B87E82D00E3A401 /* TakePayment */;
+			targetProxy = 199A3BD51B87E82D00E3A401 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		199A3BC81B87E82D00E3A401 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				199A3BC91B87E82D00E3A401 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		199A3BCD1B87E82D00E3A401 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				199A3BCE1B87E82D00E3A401 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		199A3BDC1B87E82D00E3A401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		199A3BDD1B87E82D00E3A401 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		199A3BDF1B87E82D00E3A401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../SDK/Debug",
+				);
+				INFOPLIST_FILE = TakePayment/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-stdlib=libstdc++",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		199A3BE01B87E82D00E3A401 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../SDK/Debug",
+				);
+				INFOPLIST_FILE = TakePayment/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-stdlib=libstdc++",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		199A3BE21B87E82D00E3A401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TakePaymentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakePayment.app/TakePayment";
+			};
+			name = Debug;
+		};
+		199A3BE31B87E82D00E3A401 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TakePaymentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakePayment.app/TakePayment";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		199A3BB61B87E82D00E3A401 /* Build configuration list for PBXProject "TakePayment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199A3BDC1B87E82D00E3A401 /* Debug */,
+				199A3BDD1B87E82D00E3A401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		199A3BDE1B87E82D00E3A401 /* Build configuration list for PBXNativeTarget "TakePayment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199A3BDF1B87E82D00E3A401 /* Debug */,
+				199A3BE01B87E82D00E3A401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		199A3BE11B87E82D00E3A401 /* Build configuration list for PBXNativeTarget "TakePaymentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199A3BE21B87E82D00E3A401 /* Debug */,
+				199A3BE31B87E82D00E3A401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 199A3BB31B87E82D00E3A401 /* Project object */;
+}

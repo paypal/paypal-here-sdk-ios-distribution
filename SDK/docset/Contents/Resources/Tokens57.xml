@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHTransactionManagerDelegate.html">
+	<File path="Classes/PPHTransactionWatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionManagerDelegate</TokenIdentifier>
-			<Abstract type="html">The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various
-messages throughout the payment flow. These messages reflect the different stages of a transaction
-and could be used by the application to display appropriate text, image or UI on the screen.</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionWatcher</TokenIdentifier>
+			<Abstract type="html">The PPHTransactionWatcher follows the standard PPHSDK &quot;Watcher&quot; pattern, translating
+NotificationCenter events into a delegate interface. A PPHTransactionWatcher &quot;watches&quot;
+the PPHTransactionManager, granting PPHSDK clients the ability to easily track its
+comings, goings, and doings.</Abstract>
+			<DeclaredIn>PPHTransactionWatcher.h</DeclaredIn>
             
 			
 			<NodeRef refid="57"/>
@@ -15,22 +16,23 @@ and could be used by the application to display appropriate text, image or UI on
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionManagerDelegate/onPaymentEvent:</TokenIdentifier>
-			<Abstract type="html">onPaymentEvent</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionWatcher/initWithDelegate:</TokenIdentifier>
+			<Abstract type="html">Initialize a watcher to send events to the delegate</Abstract>
+			<DeclaredIn>PPHTransactionWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)onPaymentEvent:(PPHTransactionManagerEvent *)event</Declaration>
+			<Declaration>- (id)initWithDelegate:(id)delegate</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">: A PaymentEvent object the contains information about the event.</Abstract>
+					<Name>delegate</Name>
+					<Abstract type="html">the receiver of transaction manager events</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/onPaymentEvent:</Anchor>
+			<Anchor>//api/name/initWithDelegate:</Anchor>
             <NodeRef refid="57"/>
 		</Token>
 		
+        
         
 	</File>
 </Tokens>

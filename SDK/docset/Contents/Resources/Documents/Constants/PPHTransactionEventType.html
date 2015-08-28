@@ -102,6 +102,8 @@
                             
                             &nbsp;&nbsp; <a href="">ePPHTransactionType_CardDataReceived</a>,<br/>
                             
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_ReadCardNotAllowed</a>,<br/>
+                            
                             &nbsp;&nbsp; <a href="">ePPHTransactionType_FailedToReadCard</a>,<br/>
                             
                             &nbsp;&nbsp; <a href="">ePPHTransactionType_ProcessingPayment</a>,<br/>
@@ -111,6 +113,8 @@
                             &nbsp;&nbsp; <a href="">ePPHTransactionType_TransactionCancelled</a>,<br/>
                             
                             &nbsp;&nbsp; <a href="">ePPHTransactionType_TransactionDeclined</a>,<br/>
+                            
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_GratuityUpdated</a>,<br/>
                             
                             };</code>
                     
@@ -126,9 +130,9 @@
 
 <p>The TransactionManager has entered the idle state.  It is not doing any work and is ready to begin a payment or refund.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -145,9 +149,9 @@
 are currently collecting information from card readers or the application.  You can now set/modify the invoice,
 signatures, and other data related to this payment.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -163,9 +167,9 @@ signatures, and other data related to this payment.</p>
 <p>This event will be triggered in cases where reader detection takes a while, such as for
 the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -180,9 +184,9 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 
 <p>A fully working reader was detected and is available</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -197,9 +201,9 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 
 <p>A reader device has been removed from the system</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -216,9 +220,9 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
 will hurt success rate.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -231,11 +235,28 @@ will hurt success rate.</p>
 <dd>
 
 
-<p>Card data received.  The transaction manager has received card data.</p>
+<p>Card data received. The transaction manager has received card data, and it can be processed</p>
+
+
+
+
 
     
+	<p>
+		Declared In <code class="declared-in-ref">PPHTransactionManagerDelegate.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ePPHTransactionType_ReadCardNotAllowed"></a><code>ePPHTransactionType_ReadCardNotAllowed</code></dt>
+<dd>
 
-    
+
+<p>Card data received. The transaction manager has received card data, but it is not allowed to process it</p>
+
+
+
+
 
     
 	<p>
@@ -250,9 +271,9 @@ will hurt success rate.</p>
 
 <p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -268,9 +289,9 @@ will hurt success rate.</p>
 <p>The TransactionManager has entered a state where it is communicating with the backend servers to collect a payment.
 It is now too late to cancel the payment.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -286,9 +307,9 @@ It is now too late to cancel the payment.</p>
 <p>The TransactionManager has entered a state where it has completed the transaction successfully and is
 waiting for the app to collect a signature from the customer and call the finalizePayment API.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -304,9 +325,9 @@ waiting for the app to collect a signature from the customer and call the finali
 <p>Event specifying that transaction has been cancelled. This will happen only in case of EMV Payments when te user pulls
 the card out of the reader when transaction is going on</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -322,9 +343,26 @@ the card out of the reader when transaction is going on</p>
 <p>Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal
 declines the transaction for some reason.</p>
 
-    
+
+
+
 
     
+	<p>
+		Declared In <code class="declared-in-ref">PPHTransactionManagerDelegate.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ePPHTransactionType_GratuityUpdated"></a><code>ePPHTransactionType_GratuityUpdated</code></dt>
+<dd>
+
+
+<p>The gratuity on the invoice has been updated (typically by terminal entry)</p>
+
+
+
+
 
     
 	<p>
@@ -350,6 +388,9 @@ declines the transaction for some reason.</p>
                     
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -360,7 +401,7 @@ declines the transaction for some reason.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
+						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-08-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
