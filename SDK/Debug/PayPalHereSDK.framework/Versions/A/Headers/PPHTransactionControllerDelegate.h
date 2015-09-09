@@ -13,10 +13,7 @@
 
 #import "PPHInvoiceConstants.h"
 #import "PPHPaymentConstants.h"
-
-@class PPHTransactionControllerWatcher;
-@class PPHInvoice;
-@class PPHSDKReceiptContext;
+#import "PPHTransactionRecord.h"
 
 /*!
  * Actions the EMVSDK should take in the event of a contactless timeout.
@@ -77,8 +74,13 @@ typedef void (^PPHContactlessListenerTimeoutHandler) (PPHContactlessTimeoutActio
 
 @optional
 
+
 /*!
- * Custom receipt options we display as part of the EMVSDK receipt screen.
+ * Request an NSArray of PPHReceiptOption from the delegate. This array represents
+ * a series of options that will be displayed alongside the Email and SMS receipt options.
+ * A sample use case for this is implementing a "Print" option that will print the receipt using
+ * your custom hardware and logic.
+ * See PPHReceiptOption for more information.
  */
 - (NSArray *)getReceiptOptions;
 
@@ -86,9 +88,9 @@ typedef void (^PPHContactlessListenerTimeoutHandler) (PPHContactlessTimeoutActio
  * This message is sent to the delegate right before the receipt options screen appears.
  * If your app does automatic receipt printing, this is a good place to do it.
  *
- * @param receiptContext: An object containing information about the transaction record & receipt status.
+ * @param record A description of the current transaction
  */
-- (void)receiptOptionsWillAppearWithContext:(PPHSDKReceiptContext *)receiptContext;
+- (void)receiptOptionsWillAppearForRecord:(PPHTransactionRecord *)record;
 
 /*!
  * After starting a contactless transaction, if no contactless card is presented to the terminal a 

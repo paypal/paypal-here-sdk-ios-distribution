@@ -47,6 +47,7 @@
 #import "PPHReaderPaymentInterfaces.h"
 #import "PPHReaderConstants.h"
 #import "PPHReceiptDestination.h"
+#import "PPHReceiptOption.h"
 #import "PPHSignatureView.h"
 #import "PPHSupportedPaymentInterfaces.h"
 #import "PPHTokenizedCustomerInformation.h"
@@ -54,4 +55,5 @@
 #import "PPHTransactionManager.h"
 #import "PPHTransactionManagerDelegate.h"
 #import "PPHTransactionRecord.h"
+#import "PPHTransactionResponse.h"
 #import "PPHTransactionWatcher.h"

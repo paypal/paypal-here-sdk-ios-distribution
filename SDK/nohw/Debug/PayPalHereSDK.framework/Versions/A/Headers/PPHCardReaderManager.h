@@ -79,14 +79,6 @@ typedef NS_OPTIONS(NSInteger, PPHReaderError) {
 - (PPHReaderError)activateReader:(PPHCardReaderMetadata *)reader;
 
 /*!
- * Explicitly disconnect from the given reader type if one is available and connected. This may increase battery life
- * at the expense of user experience
- *
- * @return wether or not a reader of the given type in a connected state was found and disconnected
- */
-- (BOOL)disconnectFromReaderOfType:(PPHReaderType)type;
-
-/*!
  * Begins listening for card data on the active reader. If the reader is not yet fully connected it will
  * automatically open when it's connection completes successfully. Has no effect if the reader is already
  * in an open state.

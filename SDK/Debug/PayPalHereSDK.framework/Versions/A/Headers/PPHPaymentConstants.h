@@ -108,6 +108,12 @@ typedef NS_ENUM(NSInteger, PPHTransactionStatus) {
 + (BOOL)paymentMethodIsSwipe:(PPHPaymentMethod)method;
 
 /*!
+ * Check whether the payment method is a form of magstripe data.
+ * @param method the payment method
+ */
++ (BOOL)paymentMethodIsMSD:(PPHPaymentMethod)method;
+
+/*!
  * Is the payment method a type of Credit Card payment?
  * @param method the payment method
  */

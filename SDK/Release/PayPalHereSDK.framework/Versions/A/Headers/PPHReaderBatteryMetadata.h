@@ -33,6 +33,7 @@ typedef NS_ENUM(int, PPHReaderBatteryStatus) {
 @interface PPHReaderBatteryMetadata : NSObject <NSCoding>
 @property (nonatomic) PPHReaderBatteryStatus status;
 @property (nonatomic) int level;
+- (BOOL)connectedToPower;
 
 + (instancetype)batteryMetadataWithStatus:(PPHReaderBatteryStatus)status;
 + (instancetype)batteryMetadataWithStatus:(PPHReaderBatteryStatus)status level:(int)level;

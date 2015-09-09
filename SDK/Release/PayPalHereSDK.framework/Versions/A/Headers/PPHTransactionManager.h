@@ -280,6 +280,6 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
 - (void)processRefundUsingUIWithAmount:(PPHAmount*)amount completionHandler:(PPHTransactionCompletionHandler)completionHandler;
 
 //If Destination is nil, we offer a choice of receipts. If not, we use Phone or Email UI depending on what's there. We then autofill destination.
-- (void)sendReceiptUsingUIWithTransactionStatus:(PPHTransactionStatus)transactionStatus transactionRecord:(PPHTransactionRecord *)record amount:(PPHAmount *)transactionAmount transactionController:(id<PPHTransactionControllerDelegate>)transactionController destination:(PPHReceiptDestination *)destination completionHandler:(PPHReceiptCompletionHandler)completionHandler;
+- (void)sendReceiptUsingUIWithTransactionRecord:(PPHTransactionRecord *)record amount:(PPHAmount *)transactionAmount transactionController:(id<PPHTransactionControllerDelegate>)transactionController destination:(PPHReceiptDestination *)destination completionHandler:(PPHReceiptCompletionHandler)completionHandler;
 
 @end

@@ -71,6 +71,9 @@
 /*! The destination we sent a receipt to if one was sent and the destination was manually entered */
 @property (nonatomic,strong,readonly) PPHReceiptDestination *receiptDestination;
 
+/*! The last known status associated with this transaction */
+@property (nonatomic,readonly) PPHTransactionStatus transactionStatus;
+
 /*! Create a PPHTransactionRecord with a transactionId.  This can be used with beginRefund */
 -(id) initWithTransactionId:(NSString *)transactionId;
 
