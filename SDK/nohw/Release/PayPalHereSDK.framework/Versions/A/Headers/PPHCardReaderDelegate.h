@@ -65,7 +65,7 @@
 -(void)didFailToReadCard;
 
 /*!
- * Serial number and other related information is available for the card reader.
+ * New or different information has been discovered about a reader and we have produced an updated metadata.
  * @param metadata the available data about the reader
  */
 -(void)didReceiveCardReaderMetadata: (PPHCardReaderMetadata*) metadata;

@@ -27,13 +27,8 @@
 @implementation PaymentViewController
 
 - (instancetype)init {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
-        // In case you're using the no hardware version of the SDK, set this to YES. It would suggest that you're using your own swiper hardware and frameworks.
-        [[PayPalHereSDK sharedTransactionManager] setIgnoreHardwareReaders:NO];
-        // Meant to start monitoring for any available devices.
-        [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     }
     return self;
 }
@@ -120,15 +115,22 @@
 
 - (void)updateReaderStatusWithReader:(PPHCardReaderMetadata *)reader {
     if (reader) {
-        NSString *readerName = reader.friendlyName ?: [[PPHReaderConstants stringForReaderType:reader.readerType] stringByAppendingString:@" Reader"];
-        [self.cardReaderStatus setText:[NSString stringWithFormat:@"%@ Connected!", readerName]];
-        [self.cardReaderStatus setTextColor:[UIColor blueColor]];
+        NSString *statusText = reader.friendlyName ?: [[PPHReaderConstants stringForReaderType:reader.readerType] stringByAppendingString:@" Reader"];
+        statusText = [NSString stringWithFormat:@"%@ Connected!", statusText];
+        [self displayReaderStatusWithMessage:statusText successfulStatus:YES];
     } else {
-        [self.cardReaderStatus setText:@"No Reader Found!"];
-        [self.cardReaderStatus setTextColor:[UIColor redColor]];
+        [self displayReaderStatusWithMessage:@"No Reader Found!" successfulStatus:YES];
     }
 }
 
+- (void)displayReaderStatusWithMessage:(NSString *)message successfulStatus:(BOOL) status {
+    [self.cardReaderStatus setText:message];
+    if (status) {
+        [self.cardReaderStatus setTextColor:[UIColor blueColor]];
+    } else {
+        [self.cardReaderStatus setTextColor:[UIColor redColor]];
+    }
+}
 
 #pragma mark -
 #pragma mark UITextFieldDelegate
@@ -158,7 +160,6 @@
 // Update your invoice here, if needed, before we proceed with the transaction.
 // IMPORTANT NOTE : For a contactless transaction, refrain from updating the invoice once the card is tapped.
 - (void)userDidSelectPaymentMethod:(PPHPaymentMethod) paymentOption {
-
     __weak typeof(self) weakSelf = self;
     // STEP #3 to take an EMV payment. 
     [[PayPalHereSDK sharedTransactionManager] processPaymentUsingUIWithPaymentType:paymentOption
@@ -169,14 +170,9 @@
     }];
 }
 
-- (void)displayReaderStatusWithMessage:(NSString *)message successfulStatus:(BOOL) status {
-    [self.cardReaderStatus setText:message];
-    if (status) {
-        [self.cardReaderStatus setTextColor:[UIColor blueColor]];
-    } else {
-        [self.cardReaderStatus setTextColor:[UIColor redColor]];
-    }
+- (void)userDidSelectRefundMethod:(PPHPaymentMethod)refundOption {
 }
+
 
 #pragma mark -
 #pragma PPHCardReaderDelegate implementation
@@ -225,4 +221,21 @@
     return [[PayPalHereSDK sharedCardReaderManager].activeReader upgradeIsManadatory];
 }
 
+
+#pragma mark -
+#pragma mark Receipts
+
+- (NSArray *)getReceiptOptions {
+    PPHReceiptOption *receiptOption = [[PPHReceiptOption alloc] initWithBlock:^(PPHTransactionRecord *record, UIView *presentedView) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Transaction Complete"
+                                                        message:[NSString stringWithFormat:@"Status: %@", [PPHPaymentConstants stringFromTransactionStatus:record.transactionStatus]]
+                                                       delegate:nil cancelButtonTitle:@"Okay..."
+                                              otherButtonTitles:nil];
+        [alert show];
+    } predicate:^BOOL(PPHTransactionRecord *record) {
+        return YES;
+    } buttonLabel:@"Sample Alert"];
+    
+    return @[receiptOption];
+}
 @end

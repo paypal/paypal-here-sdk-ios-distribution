@@ -53,15 +53,6 @@
 @property (nonatomic,strong) NSString* correlationId;
 
 /*!
- * A customerId and receipt preference token used for account lookup
- * when sending receipts. Resolves customerId with preference level, even if you have
- * a guest account the backend uses these two pieces of information to send your receipt over.
- */
-@property (nonatomic,copy) NSString* customerId;
-
-@property (nonatomic,copy) NSString* receiptPreferenceToken;
-
-/*!
  * Whether this was an authorization rather than a sale. In this context,
  * authorization means a "complete transaction and verification of funds"
  * that provides a token that can be captured at a future time. Note that

@@ -16,28 +16,16 @@
 #import "PPHTransactionRecord.h"
 
 /*!
- * Actions the EMVSDK should take in the event of a contactless timeout.
+ * Actions the SDK should take in the event of a contactless timeout.
  */
 typedef NS_ENUM(NSInteger, PPHContactlessTimeoutAction) {
-    /*! 
-     * In the event of a contactless timeout, use this value to indicate you would like
-     * the EMVSDK to take over and retry a contactless transaction.
-     */
     ePPHContactlessTimeoutActionContinueWithContactless,
-    /*!
-     * In the event of a contactless timeout, use this value to indicate you would like
-     * the EMVSDK to take over and resume with a contact transaction.
-     */
     ePPHContactlessTimeoutActionContinueWithContact,
-    /*!
-     * In the event of a contactless timeout, use this value to indicate the EMVSDK
-     * should simply cancel. This is the default behavior of the EMVSDK in a timeout scenario.
-     */
     ePPHContactlessTimeoutActionCancelTransaction
 };
 
 
-typedef void (^PPHContactlessListenerTimeoutHandler) (PPHContactlessTimeoutAction timeoutOptions);
+
 
 /**
  * The TransactionController defines an interface that can be used by the application to install a callback
@@ -93,14 +81,11 @@ typedef void (^PPHContactlessListenerTimeoutHandler) (PPHContactlessTimeoutActio
 - (void)receiptOptionsWillAppearForRecord:(PPHTransactionRecord *)record;
 
 /*!
- * After starting a contactless transaction, if no contactless card is presented to the terminal a 
- * timeout occurs. Implement this method if you want to handle this scenario as the calling application.
- * If implemented, it is your responsibility to invoke the completionHandler to give control back to the
- * EMVSDK when ready. You will notify the EMVSDK of the action it must take.
- *
- * @param completionHandler: A completion handler that should be invoked by the receiving delegate.
+ * To conserve battery life the contactless listener of the reader may timeout, in which case this
+ * method will be called so you may instruct the SDK to take a specific action. If this delegate
+ * method is unimplemented the SDK will default to ePPHContactlessTimeoutActionCancelTransaction
  */
-- (void)contactlessListenerDidTimeout:(PPHContactlessListenerTimeoutHandler) completionHandler;
+- (PPHContactlessTimeoutAction)contactlessTimeoutAction;
 
 /*!
  * Gets called when the reader has been activated for payments and is ready to process card present data. 

@@ -101,6 +101,9 @@
     return self.navigationController;
 }
 
+- (void)userDidSelectPaymentMethod:(PPHPaymentMethod)paymentOption {
+}
+
 - (void)userDidSelectRefundMethod:(PPHPaymentMethod)refundOption {
     __weak typeof(self) weakSelf = self;
     // STEP #2 to perform a refund.
