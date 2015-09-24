@@ -10,17 +10,19 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface PaymentViewController ()<
+    UIAlertViewDelegate,
     UITextFieldDelegate,
     PPHTransactionControllerDelegate,
     PPHCardReaderDelegate
 >
 
-@property(nonatomic, retain) IBOutlet UILabel *cardReaderStatus;
-@property(nonatomic, retain) IBOutlet UILabel *enterAmountLabel;
-@property(nonatomic, retain) IBOutlet UITextField *amountTextField;
-@property(nonatomic, retain) IBOutlet UIButton *enableContactlessButton;
+@property (nonatomic, strong) UILabel *cardReaderStatus;
+@property (nonatomic, strong) UITextField *amountTextField;
 @property (nonatomic, strong) PPHCardReaderWatcher *cardReaderWatcher;
 @property (nonatomic, strong) PPHInvoice *invoice;
+
+@property (nonatomic) BOOL promptedForSoftwareUpdate;
+@property (nonatomic, strong) UIAlertView *softwareUpgradeAlert;
 
 @end
 
@@ -33,28 +35,61 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupView];
+- (void)loadView {
+    [super loadView];
+   
+    CGRect viewFrame = self.view.frame;
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    // Enter Amount Label
+    UILabel *enterAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake((viewFrame.size.width - 200)/2, (viewFrame.size.height - 150)/2, 200, 50)];
+    [enterAmountLabel setText:@"Enter an amount"];
+    [enterAmountLabel setFont:[UIFont systemFontOfSize:15]];
+    [enterAmountLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:enterAmountLabel];
+    
+    
+    // Card Reader Status
+    self.cardReaderStatus = [[UILabel alloc] initWithFrame:CGRectMake((viewFrame.size.width - 400)/2, (viewFrame.size.height + 150)/2, 400, 50)];
+    [self.cardReaderStatus setFont:[UIFont systemFontOfSize:14]];
+    [self.cardReaderStatus setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:self.cardReaderStatus];
+    
+    
+    // Amount Text Field
+    self.amountTextField = [[UITextField alloc] initWithFrame:CGRectMake((viewFrame.size.width - 100)/2, (viewFrame.size.height - 50)/2, 100, 40)];
+    [self.amountTextField setPlaceholder:@"1.00"];
+    [self.amountTextField setTextAlignment:NSTextAlignmentRight];
+    [self.amountTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.amountTextField setKeyboardType:UIKeyboardTypeDecimalPad];
+    self.amountTextField.delegate = self;
+    [self.view addSubview:self.amountTextField];
+    
+    
+    // Enable Contactless Button
+    UIButton *enableContactlessButton = [[UIButton alloc] initWithFrame:CGRectMake((viewFrame.size.width - 200)/2, (viewFrame.size.height + 50)/2, 200, 50)];
+    [enableContactlessButton setTitle:@"Enable Contactless" forState:UIControlStateNormal];
+    [enableContactlessButton setBackgroundColor:[UIColor blueColor]];
+    [enableContactlessButton addTarget:self action:@selector(enableContactlessButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:enableContactlessButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self clearAnyExistingInfo];
     [self setupSimpleInvoice];
+    [self updateReaderStatusWithReader:[PayPalHereSDK sharedCardReaderManager].activeReader];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.promptedForSoftwareUpdate = NO;
+    [self checkForSoftwareUpgrade];
 }
 
 - (void)clearAnyExistingInfo {
     [[PayPalHereSDK sharedTransactionManager] cancelPayment];
     [self.amountTextField setText:@""];
-}
-
-- (void)setupView {
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self setupEnterAmountLabel];
-    [self setupCardReaderStatusLabel];
-    [self setupAmountTextField];
-    [self setupEnableContactLessButton];
 }
 
 - (void)setupSimpleInvoice {
@@ -63,46 +98,7 @@
     [[PayPalHereSDK sharedTransactionManager] beginPaymentUsingUIWithInvoice:self.invoice transactionController:self];
 }
 
-- (void)setupEnterAmountLabel {
-    CGRect viewFrame = self.view.frame;
-    self.enterAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake((viewFrame.size.width - 200)/2, (viewFrame.size.height - 150)/2, 200, 50)];
-    [self.enterAmountLabel setText:@"Enter an amount"];
-    [self.enterAmountLabel setFont:[UIFont systemFontOfSize:15]];
-    [self.enterAmountLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:self.enterAmountLabel];
-}
-
-- (void)setupCardReaderStatusLabel {
-    CGRect viewFrame = self.view.frame;
-    self.cardReaderStatus = [[UILabel alloc] initWithFrame:CGRectMake((viewFrame.size.width - 400)/2, (viewFrame.size.height + 150)/2, 400, 50)];
-    [self.cardReaderStatus setFont:[UIFont systemFontOfSize:14]];
-    [self.cardReaderStatus setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:self.cardReaderStatus];
-    
-    [self updateReaderStatusWithReader:nil];
-}
-
-- (void)setupAmountTextField {
-    CGRect viewFrame = self.view.frame;
-    self.amountTextField = [[UITextField alloc] initWithFrame:CGRectMake((viewFrame.size.width - 100)/2, (viewFrame.size.height - 50)/2, 100, 40)];
-    [self.amountTextField setPlaceholder:@"1.00"];
-    [self.amountTextField setTextAlignment:NSTextAlignmentRight];
-    [self.amountTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    [self.amountTextField setKeyboardType:UIKeyboardTypeDecimalPad];
-    self.amountTextField.delegate = self;
-    [self.view addSubview:self.amountTextField];
-}
-
-- (void)setupEnableContactLessButton {
-    CGRect viewFrame = self.view.frame;
-    self.enableContactlessButton = [[UIButton alloc] initWithFrame:CGRectMake((viewFrame.size.width - 200)/2, (viewFrame.size.height + 50)/2, 200, 50)];
-    [self.enableContactlessButton setTitle:@"Enable Contactless" forState:UIControlStateNormal];
-    [self.enableContactlessButton setBackgroundColor:[UIColor blueColor]];
-    [self.enableContactlessButton addTarget:self action:@selector(enableContactlessButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.enableContactlessButton];
-}
-
-- (IBAction)enableContactlessButtonPressed:(id)sender {
+- (void)enableContactlessButtonPressed:(id)sender {
     // STEP #2 to take an EMV payment.
     // This would activate the reader for a transaction and prompt the user to either tap, insert or swipe their card.
     [[PayPalHereSDK sharedTransactionManager] activateReaderForPayments:NULL];
@@ -114,37 +110,55 @@
 }
 
 - (void)updateReaderStatusWithReader:(PPHCardReaderMetadata *)reader {
+    NSString *message = @"No Reader Found!";
+    UIColor *color = [UIColor blueColor];
+    
     if (reader) {
-        NSString *statusText = reader.friendlyName ?: [[PPHReaderConstants stringForReaderType:reader.readerType] stringByAppendingString:@" Reader"];
-        statusText = [NSString stringWithFormat:@"%@ Connected!", statusText];
-        [self displayReaderStatusWithMessage:statusText successfulStatus:YES];
-    } else {
-        [self displayReaderStatusWithMessage:@"No Reader Found!" successfulStatus:YES];
+        if (reader.upgradeIsManadatory) {
+            message = @"Reader Upgrade Required!";
+            color = [UIColor redColor];
+        } else {
+            message = reader.friendlyName ?: [[PPHReaderConstants stringForReaderType:reader.readerType] stringByAppendingString:@" Reader"];
+            message = [message stringByAppendingString:@" Connected!"];
+        }
+    }
+    
+    [self.cardReaderStatus setText:message];
+    [self.cardReaderStatus setTextColor:color];
+}
+
+#pragma mark -
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView == self.softwareUpgradeAlert && buttonIndex != self.softwareUpgradeAlert.cancelButtonIndex) {
+        [self beginReaderUpgrade];
     }
 }
 
-- (void)displayReaderStatusWithMessage:(NSString *)message successfulStatus:(BOOL) status {
-    [self.cardReaderStatus setText:message];
-    if (status) {
-        [self.cardReaderStatus setTextColor:[UIColor blueColor]];
-    } else {
-        [self.cardReaderStatus setTextColor:[UIColor redColor]];
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (alertView == self.softwareUpgradeAlert) {
+        self.softwareUpgradeAlert = nil;
     }
 }
 
 #pragma mark -
 #pragma mark UITextFieldDelegate
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; {
     NSString *amountString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-   
+
     [self.invoice removeAllItems];
-    [self.invoice addItemWithId:@"1"
-                       detailId:nil
-                           name:@"SimpleItem"
-                       quantity:[NSDecimalNumber one]
-                      unitPrice:[NSDecimalNumber decimalNumberWithString:amountString]
-                        taxRate:nil
-                    taxRateName:nil];
+
+    if (amountString.length) {
+        [self.invoice addItemWithId:@"1"
+                           detailId:nil
+                               name:@"SimpleItem"
+                           quantity:[NSDecimalNumber one]
+                          unitPrice:[NSDecimalNumber decimalNumberWithString:amountString]
+                            taxRate:nil
+                        taxRateName:nil];
+    }
     
     return YES;
 }
@@ -182,6 +196,11 @@
     [self checkForSoftwareUpgrade];
 }
 
+- (void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata {
+    [self updateReaderStatusWithReader:metadata];
+    [self checkForSoftwareUpgrade];
+}
+
 - (void)didRemoveReader:(PPHReaderType)readerType {
     [self updateReaderStatusWithReader:[PayPalHereSDK sharedCardReaderManager].activeReader];
 }
@@ -190,37 +209,33 @@
 #pragma Software Update Related Implementation
 
 - (void)checkForSoftwareUpgrade {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([self updateRequired]) {
-            [self beginReaderUpdate];
-        } else {
-            [self displayReaderStatusWithMessage:@"Ready To Transact" successfulStatus:YES];
-        }
-    });
+    if (!self.promptedForSoftwareUpdate && [[PayPalHereSDK sharedCardReaderManager].activeReader upgradeIsManadatory]) {
+        self.promptedForSoftwareUpdate = YES;
+        
+        self.softwareUpgradeAlert = [[UIAlertView alloc] initWithTitle:@"Software Upgrade Required"
+                                                        message:@"You must update your reader before it is eligible for payment."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Start Upgrade", nil];
+        [self.softwareUpgradeAlert show];
+    }
 }
 
--(void)beginReaderUpdate {
+-(void)beginReaderUpgrade {
     __weak typeof(self) weakSelf = self;
     [[PayPalHereSDK sharedCardReaderManager] beginUpgradeUsingSDKUIForReader:[[PayPalHereSDK sharedCardReaderManager] availableReaderOfType:ePPHReaderTypeChipAndPinBluetooth]
                                                            completionHandler:^(BOOL success, NSString *message) {
+                                                               weakSelf.promptedForSoftwareUpdate = NO;
+                                                               NSString *title = success ? @"Software Upgrade Successful" : @"Software Upgrade Failed";
+                                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                                                                               message:nil
+                                                                                                              delegate:nil
+                                                                                                     cancelButtonTitle:@"OK"
+                                                                                                     otherButtonTitles:nil];
+                                                               [alert show];
                                                                
-        [weakSelf softwareUpdateCompleteWithStatus:success andMessage:message];
     }];
 }
-
--(void)softwareUpdateCompleteWithStatus:(BOOL)success andMessage:(NSString *)message {
-    if (success) {
-        [self displayReaderStatusWithMessage:@"Ready To Transact" successfulStatus:YES];
-    } else {
-        [self displayReaderStatusWithMessage:@"Update Failed" successfulStatus:NO];
-    }
-    
-}
-
--(BOOL)updateRequired {
-    return [[PayPalHereSDK sharedCardReaderManager].activeReader upgradeIsManadatory];
-}
-
 
 #pragma mark -
 #pragma mark Receipts

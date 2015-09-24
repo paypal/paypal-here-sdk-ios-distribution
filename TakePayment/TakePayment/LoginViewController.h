@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#define kSavedToken @"savedToken"
 
 @interface LoginViewController : UIViewController
 

@@ -10,6 +10,7 @@
 #import "PaymentViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
+#define SAVED_TOKEN @"savedToken"
 
 @interface LoginViewController ()
 
@@ -53,7 +54,7 @@
 
 - (void)loginButtonPressed {
     // If you have the token saved already, use it else, off to PayPal we go.
-    NSString *savedToken = [[NSUserDefaults standardUserDefaults] stringForKey:kSavedToken];
+    NSString *savedToken = [[NSUserDefaults standardUserDefaults] stringForKey:SAVED_TOKEN];
     if (savedToken) {
         [self initializeSDKMerchantWithToken:savedToken];
     } else {
@@ -68,7 +69,7 @@
     [self setWaitingForServer:YES];
 
     // Replace the url with your own sample server endpoint.
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSavedToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SAVED_TOKEN];
     NSURL *url = [NSURL URLWithString:@"http://pph-retail-sdk-sample.herokuapp.com/toPayPal/live"];
     [[UIApplication sharedApplication] openURL:url];
 }
@@ -83,6 +84,7 @@
 }
 
 - (void)initializeSDKMerchantWithToken:(NSString *)token {
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:SAVED_TOKEN];
     [self setWaitingForServer:YES];
 
     __weak typeof(self) weakSelf = self;
