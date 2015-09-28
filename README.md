@@ -1,7 +1,8 @@
-ios-here-sdk-dist
+Introduction
 =================
 
-The PayPal Here SDK enables iOS apps to interact with credit card swipers so that merchants can process in-person credit card transactions using a mobile app. The native libraries of the PayPal Here SDK enable you to:
+The PayPal Here SDK enables iOS apps to process in-person credit card transactions using Contactless/EMV chip card readers or magstipe swipers. The native libraries of the PayPal Here SDK enable you to:
+
 * **Interact with PayPal Hardware** — Detect, connect to, and listen for events coming from PayPal Here audio jack-based card swipers.
 * **Process Card-Present payments** — When you swipe a card through a PayPal Here swiper, card data is immediately encrypted. The encrypted package can be sent to PayPal alongside the transaction data for processing.
 
@@ -12,19 +13,20 @@ Developers should use the PayPal Here SDK to get world-class payment process wit
 [Visit our website](https://www.paypal.com/webapps/mpp/credit-card-reader) for more information about PayPal Here.
 
 
-Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
-
 As an alternative to the SDK, a developer can also use a URI framework that lets one app (or mobile webpage) link directly to the PayPal Here app to complete a payment.  Using this method, the merchant will tap a button or link in one app, which will open the pre-installed PayPal Here app on their device, with the PayPal Here app pre-populating the original order information, collect a payment (card swipe) in the PayPal Here app, and return the merchant to the original app/webpage. This is available for US, UK, Australia, and Japan for iOS & Android.  See the [Sideloader API](https://github.com/paypal/here-sideloader-api-samples) on Github.
+
+
+The supporting materials
+========================
+ *  Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
+ *  Please see and modify the sample app availble in this repo to experiment and learn more about the SDK and it's capabilities.
+ *  If you are coming from a previous implementation of the PayPalHereSDK please see our [migration guide](/docs/1.5-1.6_MigrationGuide.md).
+
 
 Project Configuration
 ==============
 
 Please follow the steps in the [project configuration guide](/docs/ProjectConfiguration.md) to properly set up your application for use with the PayPalHereSDK.
-
-The Sample App
-==============
-
-Please see and modify the sample app availble in this repo to experiment and learn more about the SDK and it's capabilities.
 
 Authentication
 ===============================
@@ -38,7 +40,7 @@ See our [Merchant Onboarding Guide](docs/Merchant%20Onboarding%20Guide.pdf) for 
 SDK Initialization
 ==================
 
-* Configure the environment if you wish to use sandbox.  Consult the [sandbox overview](https://developer.paypal.com/docs/classic/lifecycle/sb_overview/) for more information about the PayPal sandbox environment.
+* Configure the environment if you wish to use sandbox, when using _mastripe swipers_.  Consult the [sandbox overview](https://developer.paypal.com/docs/classic/lifecycle/sb_overview/) for more information about the PayPal sandbox environment.
 
 ```objc
 [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Sandbox];
@@ -72,7 +74,7 @@ Or if you perhaps have an for a stand that sells hamburgers and hotdogs
 Taking Payments
 ================================
 
-The PayPalHere SDK offers several different ways to accept payments. This document will only cover the use of the "UI" methods of `PPHTransactionManager`. These methods have handle many aspects of the payment process for you automatically including:
+The PayPalHere SDK offers several different ways to accept payments. This document will only cover the use of the "UI" methods of `PPHTransactionManager`. These methods handle many aspects of the payment process for you automatically including:
 
 * Reader connection and activation
 * Listening for card events
@@ -132,9 +134,6 @@ You may implement the various optional methods of `PPHTransactionControllerDeleg
 
 The approach for taking a refund is very similar.
 
-If you are coming from a previous implementation of the PayPalHereSDK please see our [migration guide](/docs/1.5-1.6_MigrationGuide.md).
-
-For more information please consult the [full API documentation](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
 
 Card Readers
 ================================
