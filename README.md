@@ -67,14 +67,10 @@ To take a payment we must first create an invoice which can be as simple or comp
 PPHInvoice *myOneDollarInvoice = [[PPHInvoice alloc] initWithItem:@"Total" forAmount:[PPHAmount amountWithDecimal:[NSDecimalNumber one]]];
 ```
 
-Or if you perhaps have an for a stand that sells hamburgers and hotdogs
-```objc
-```
-
 Taking Payments
 ================================
 
-The PayPalHere SDK offers several different ways to accept payments. This document will only cover the use of the "UI" methods of `PPHTransactionManager`. These methods handle many aspects of the payment process for you automatically including:
+The PayPal Here SDK offers several different ways to accept payments. This document will only cover the use of the "UI" methods of `PPHTransactionManager`. These methods handle many aspects of the payment process for you automatically including:
 
 * Reader connection and activation
 * Listening for card events
