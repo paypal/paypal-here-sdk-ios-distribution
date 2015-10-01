@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UILabel *cardReaderStatus;
 @property (nonatomic, strong) UITextField *amountTextField;
+@property (nonatomic, strong) UIButton *enableContactlessButton;
 @property (nonatomic, strong) PPHCardReaderWatcher *cardReaderWatcher;
 @property (nonatomic, strong) PPHInvoice *invoice;
 
@@ -67,18 +68,18 @@
     
     
     // Enable Contactless Button
-    UIButton *enableContactlessButton = [[UIButton alloc] initWithFrame:CGRectMake((viewFrame.size.width - 200)/2, (viewFrame.size.height + 50)/2, 200, 50)];
-    [enableContactlessButton setTitle:@"Enable Contactless" forState:UIControlStateNormal];
-    [enableContactlessButton setBackgroundColor:[UIColor blueColor]];
-    [enableContactlessButton addTarget:self action:@selector(enableContactlessButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:enableContactlessButton];
+    self.enableContactlessButton = [[UIButton alloc] initWithFrame:CGRectMake((viewFrame.size.width - 200)/2, (viewFrame.size.height + 50)/2, 200, 50)];
+    [self.enableContactlessButton setTitle:@"Enable Contactless" forState:UIControlStateNormal];
+    [self.enableContactlessButton setBackgroundColor:[UIColor blueColor]];
+    [self.enableContactlessButton addTarget:self action:@selector(enableContactlessButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.enableContactlessButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self clearAnyExistingInfo];
     [self setupSimpleInvoice];
-    [self updateReaderStatusWithReader:[PayPalHereSDK sharedCardReaderManager].activeReader];
+    [self updateUIWithActiveReader];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -109,7 +110,8 @@
     [self.navigationController pushViewController:paymenCompletetVC animated:YES];
 }
 
-- (void)updateReaderStatusWithReader:(PPHCardReaderMetadata *)reader {
+- (void)updateUIWithActiveReader {
+    PPHCardReaderMetadata *reader = [PayPalHereSDK sharedCardReaderManager].activeReader;
     NSString *message = @"No Reader Found!";
     UIColor *color = [UIColor blueColor];
     
@@ -125,6 +127,11 @@
     
     [self.cardReaderStatus setText:message];
     [self.cardReaderStatus setTextColor:color];
+    
+    
+    self.enableContactlessButton.hidden = !(reader.capabilities.paymentCapabilities.contactless &&
+                                            [self.invoice.totalAmount isAmountAcceptedForContactless] &&
+                                            reader.isReadyToTransact);
 }
 
 #pragma mark -
@@ -160,6 +167,8 @@
                         taxRateName:nil];
     }
     
+    [self updateUIWithActiveReader];
+    
     return YES;
 }
 
@@ -191,18 +200,22 @@
 #pragma mark -
 #pragma PPHCardReaderDelegate implementation
 
+- (void)activeReaderChangedFrom:(PPHCardReaderMetadata *)previousReader to:(PPHCardReaderMetadata *)currentReader {
+    [self updateUIWithActiveReader];
+}
+
 - (void)didDetectReaderDevice:(PPHCardReaderMetadata *)reader {
-    [self updateReaderStatusWithReader:reader];
+    [self updateUIWithActiveReader];
     [self checkForSoftwareUpgrade];
 }
 
 - (void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata {
-    [self updateReaderStatusWithReader:metadata];
+    [self updateUIWithActiveReader];
     [self checkForSoftwareUpgrade];
 }
 
 - (void)didRemoveReader:(PPHReaderType)readerType {
-    [self updateReaderStatusWithReader:[PayPalHereSDK sharedCardReaderManager].activeReader];
+    [self updateUIWithActiveReader];
 }
 
 #pragma mark -
