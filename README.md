@@ -18,9 +18,9 @@ As an alternative to the SDK, a developer can also use a URI framework that lets
 
 The supporting materials
 ========================
- *  Full class and method documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
- *  Please see and modify the sample app availble in this repo to experiment and learn more about the SDK and it's capabilities.
- *  If you are coming from a previous implementation of the PayPalHereSDK please see our [migration guide](/docs/1.5-1.6_MigrationGuide.md).
+ *  API documentation can be [found here](http://paypal-mobile.github.com/ios-here-sdk-dist/index.html).
+ *  Sample Apps: Please see and modify the sample app availble in this repo to experiment and learn more about the SDK and it's capabilities.
+ *  If you are migrating from a previous implementation (v 1.5) of the PayPal Here SDK please see our [migration guide](/docs/1.5-1.6_MigrationGuide.md).
 
 
 Project Configuration
