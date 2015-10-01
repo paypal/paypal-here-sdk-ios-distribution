@@ -26,7 +26,7 @@ The supporting materials
 Project Configuration
 ==============
 
-Please follow the steps in the [project configuration guide](/docs/ProjectConfiguration.md) to properly set up your application for use with the PayPalHereSDK.
+Please follow the steps in the [project configuration guide](/docs/ProjectConfiguration.md) to properly set up your application for use with the PayPal Here SDK.
 
 Authentication
 ===============================
@@ -59,7 +59,7 @@ SDK Initialization
 Invoices
 ================================
 
-Invoices in the PayPalHereSDK define the order which we are interacting with using the PayPal APIs. They provide synchronization with the website, total calculation and many more powerful features.
+Invoices in the PayPal Here SDK define the order which we are interacting with using the PayPal APIs. They provide synchronization with the website, total calculation and many more powerful features.
 
 To take a payment we must first create an invoice which can be as simple or complex as your use case demands. The simplest use case is to create an invoice for a single non-itemized amount:
 
