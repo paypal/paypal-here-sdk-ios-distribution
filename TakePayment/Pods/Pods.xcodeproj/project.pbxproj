@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7D69506BDEB9B6DB1B345B7C3A4233FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFAB3A0973A80EDDF26326DD9CEDDB0C /* Foundation.framework */; };
+		EFC1906F0B860E1D815B914FD2C65401 /* Pods-TakePayment-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD15A2269C8AC770C542D66BA416FE4 /* Pods-TakePayment-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02BC8E753A169178F4D8DA0862507D73 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = PayPalHereSDK.bundle; sourceTree = "<group>"; };
+		0B3D2B4103C8FB0F0A99C3C5EAF46D29 /* Pods-TakePayment-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TakePayment-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2D9D23C3D11221145D8CDA2614A2A01A /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
+		5DD15A2269C8AC770C542D66BA416FE4 /* Pods-TakePayment-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TakePayment-dummy.m"; sourceTree = "<group>"; };
+		A2A8A97128FFE4A402304FA6B37CACB9 /* Pods-TakePayment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TakePayment.debug.xcconfig"; sourceTree = "<group>"; };
+		A344A0344615DEF61EE588BCB98B4319 /* Pods-TakePayment-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TakePayment-acknowledgements.plist"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CA7C9E2F5AAD1F5C3F52531573C22A58 /* libPods-TakePayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TakePayment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFAB3A0973A80EDDF26326DD9CEDDB0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D05ED4E4485FF44B111976438D069653 /* Pods-TakePayment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TakePayment.release.xcconfig"; sourceTree = "<group>"; };
+		FE520D69E005408E686B9C1FD8E660CD /* Pods-TakePayment-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TakePayment-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		154D6103A6DE982E93F710F26779D8BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D69506BDEB9B6DB1B345B7C3A4233FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23F2D2BD4B7CBB9FBE67D577587BDF5F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1A2ECB1A245C7A39901F7BBB2922F87 /* SDK */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29730FC0D6C90340C2E5CFFB8AC250A8 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C108D51D0EA0BB67FF08FC3B224BDD89 /* Pods-TakePayment */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3D3C0CEF49316E93C808114B5AA031EE /* PayPalHereSDK */ = {
+			isa = PBXGroup;
+			children = (
+				8F4251B407A00DD9AD6FF74EBABF8EF0 /* Debug */,
+			);
+			name = PayPalHereSDK;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		4C6869E034C989DE45C90E85323BECDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D9D23C3D11221145D8CDA2614A2A01A /* PayPalHereSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CFAB3A0973A80EDDF26326DD9CEDDB0C /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		748AAA197996E7657AA07E091E70E3A6 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D3C0CEF49316E93C808114B5AA031EE /* PayPalHereSDK */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				748AAA197996E7657AA07E091E70E3A6 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
+				29730FC0D6C90340C2E5CFFB8AC250A8 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8F4251B407A00DD9AD6FF74EBABF8EF0 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				4C6869E034C989DE45C90E85323BECDB /* Frameworks */,
+				23F2D2BD4B7CBB9FBE67D577587BDF5F /* Resources */,
+			);
+			name = Debug;
+			sourceTree = "<group>";
+		};
+		A1A2ECB1A245C7A39901F7BBB2922F87 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				AC26EADD7B28C126613EAABCA3108D09 /* Debug */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		AC26EADD7B28C126613EAABCA3108D09 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				02BC8E753A169178F4D8DA0862507D73 /* PayPalHereSDK.bundle */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53F661C0CA7190D2CF05023FB33D61E4 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C108D51D0EA0BB67FF08FC3B224BDD89 /* Pods-TakePayment */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D2B4103C8FB0F0A99C3C5EAF46D29 /* Pods-TakePayment-acknowledgements.markdown */,
+				A344A0344615DEF61EE588BCB98B4319 /* Pods-TakePayment-acknowledgements.plist */,
+				5DD15A2269C8AC770C542D66BA416FE4 /* Pods-TakePayment-dummy.m */,
+				FE520D69E005408E686B9C1FD8E660CD /* Pods-TakePayment-resources.sh */,
+				A2A8A97128FFE4A402304FA6B37CACB9 /* Pods-TakePayment.debug.xcconfig */,
+				D05ED4E4485FF44B111976438D069653 /* Pods-TakePayment.release.xcconfig */,
+			);
+			name = "Pods-TakePayment";
+			path = "Target Support Files/Pods-TakePayment";
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA7C9E2F5AAD1F5C3F52531573C22A58 /* libPods-TakePayment.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		835203B1FBB11528AC632A3AF5C4238A /* Pods-TakePayment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13A09C53EC22B657A2F25AA9D5EBA192 /* Build configuration list for PBXNativeTarget "Pods-TakePayment" */;
+			buildPhases = (
+				AE25198A0BD493A8FF36E8D53B8AB082 /* Sources */,
+				154D6103A6DE982E93F710F26779D8BA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-TakePayment";
+			productName = "Pods-TakePayment";
+			productReference = CA7C9E2F5AAD1F5C3F52531573C22A58 /* libPods-TakePayment.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				835203B1FBB11528AC632A3AF5C4238A /* Pods-TakePayment */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE25198A0BD493A8FF36E8D53B8AB082 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFC1906F0B860E1D815B914FD2C65401 /* Pods-TakePayment-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		552D02D5BA751AC2E8790D2811D496CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		5A1E791F506CEDB2C10FE2EAE93A9123 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2A8A97128FFE4A402304FA6B37CACB9 /* Pods-TakePayment.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BE91DB0E99EFE719DDF335B76C15A5B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D05ED4E4485FF44B111976438D069653 /* Pods-TakePayment.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13A09C53EC22B657A2F25AA9D5EBA192 /* Build configuration list for PBXNativeTarget "Pods-TakePayment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A1E791F506CEDB2C10FE2EAE93A9123 /* Debug */,
+				BE91DB0E99EFE719DDF335B76C15A5B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				552D02D5BA751AC2E8790D2811D496CA /* Debug */,
+				10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -23,10 +23,16 @@ The supporting materials
  *  If you are migrating from a previous implementation (v 1.5) of the PayPal Here SDK please see our [migration guide](/docs/1.5-1.6_MigrationGuide.md).
 
 
-Project Configuration
+Installation
 ==============
 
-Please follow the steps in the [project configuration guide](/docs/ProjectConfiguration.md) to properly set up your application for use with the PayPal Here SDK.
+Our recommended installation method is Cocoapods 
+`pod 'PayPalHereSDK'`
+
+You can also switch to the Release or 'No Hardware' builds of the PayPalHereSDK by using the different pod subspecs
+`pod 'PayPalHereSDK/Release'`
+
+If you prefer a manual integration you can file the steps in the [project configuration guide](/docs/ProjectConfiguration.md) to properly set up your application.
 
 Authentication
 ===============================
@@ -189,5 +195,4 @@ App Review Information
 When you submit your app, you will need to refer to MFI ID's for the hardware that you can interact with through our app.  Be sure to include the following into your app store review notes:
 * This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
 * This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
-
 

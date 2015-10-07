@@ -1,0 +1,1 @@
+../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHTransactionManagerDelegate.h
