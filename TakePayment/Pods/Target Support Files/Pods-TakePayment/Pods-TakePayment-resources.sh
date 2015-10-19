@@ -58,10 +58,10 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "../../SDK/Debug/PayPalHereSDK.bundle"
+  install_resource "PayPalHereSDK/SDK/Debug/PayPalHereSDK.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "../../SDK/Debug/PayPalHereSDK.bundle"
+  install_resource "PayPalHereSDK/SDK/Debug/PayPalHereSDK.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

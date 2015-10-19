@@ -6,7 +6,7 @@
 //
 
 #import "PaymentCompleteViewController.h"
-
+#import "AppDelegate.h"
 
 @interface PaymentCompleteViewController ()<PPHTransactionControllerDelegate>
 
@@ -91,7 +91,7 @@
 
 - (void)doneButtonPressed {
     // Once the transaction (and/or refund) is complete, pop to your root view controller.
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:((AppDelegate *)[UIApplication sharedApplication].delegate).paymentVC animated:YES];
 }
 
 #pragma mark -

@@ -1,1 +1,1 @@
-../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHInvoiceItemContext.h
+../../../../PayPalHereSDK/SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHInvoiceItemContext.h

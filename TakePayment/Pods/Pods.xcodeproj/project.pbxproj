@@ -12,14 +12,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02BC8E753A169178F4D8DA0862507D73 /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		0B3D2B4103C8FB0F0A99C3C5EAF46D29 /* Pods-TakePayment-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TakePayment-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2D9D23C3D11221145D8CDA2614A2A01A /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
+		464EE213F8C1274C917A35195E2DA694 /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = SDK/Debug/PayPalHereSDK.framework; sourceTree = "<group>"; };
 		5DD15A2269C8AC770C542D66BA416FE4 /* Pods-TakePayment-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TakePayment-dummy.m"; sourceTree = "<group>"; };
 		A2A8A97128FFE4A402304FA6B37CACB9 /* Pods-TakePayment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TakePayment.debug.xcconfig"; sourceTree = "<group>"; };
 		A344A0344615DEF61EE588BCB98B4319 /* Pods-TakePayment-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TakePayment-acknowledgements.plist"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CA7C9E2F5AAD1F5C3F52531573C22A58 /* libPods-TakePayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TakePayment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED3A34D28AE9747443ABD8715B46ABB /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = SDK/Debug/PayPalHereSDK.bundle; sourceTree = "<group>"; };
 		CFAB3A0973A80EDDF26326DD9CEDDB0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D05ED4E4485FF44B111976438D069653 /* Pods-TakePayment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TakePayment.release.xcconfig"; sourceTree = "<group>"; };
 		FE520D69E005408E686B9C1FD8E660CD /* Pods-TakePayment-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TakePayment-resources.sh"; sourceTree = "<group>"; };
@@ -37,12 +37,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23F2D2BD4B7CBB9FBE67D577587BDF5F /* Resources */ = {
+		0A3FB9609F8C65B0B16304E9AC077CF3 /* PayPalHereSDK */ = {
 			isa = PBXGroup;
 			children = (
-				A1A2ECB1A245C7A39901F7BBB2922F87 /* SDK */,
+				E532C994BE19079D9CF08E331377CDBD /* Debug */,
 			);
-			name = Resources;
+			path = PayPalHereSDK;
+			sourceTree = "<group>";
+		};
+		0FCCCC32AC8060C3F5C0773420C88319 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				464EE213F8C1274C917A35195E2DA694 /* PayPalHereSDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		29730FC0D6C90340C2E5CFFB8AC250A8 /* Targets Support Files */ = {
@@ -53,23 +61,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3D3C0CEF49316E93C808114B5AA031EE /* PayPalHereSDK */ = {
-			isa = PBXGroup;
-			children = (
-				8F4251B407A00DD9AD6FF74EBABF8EF0 /* Debug */,
-			);
-			name = PayPalHereSDK;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		4C6869E034C989DE45C90E85323BECDB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2D9D23C3D11221145D8CDA2614A2A01A /* PayPalHereSDK.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,48 +69,23 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		748AAA197996E7657AA07E091E70E3A6 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3D3C0CEF49316E93C808114B5AA031EE /* PayPalHereSDK */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				748AAA197996E7657AA07E091E70E3A6 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				F5193628BCC26DE4D2DA13126B9C4583 /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
 				29730FC0D6C90340C2E5CFFB8AC250A8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8F4251B407A00DD9AD6FF74EBABF8EF0 /* Debug */ = {
+		86E34F7C27E84041B14021AE243B1FF8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4C6869E034C989DE45C90E85323BECDB /* Frameworks */,
-				23F2D2BD4B7CBB9FBE67D577587BDF5F /* Resources */,
+				CED3A34D28AE9747443ABD8715B46ABB /* PayPalHereSDK.bundle */,
 			);
-			name = Debug;
-			sourceTree = "<group>";
-		};
-		A1A2ECB1A245C7A39901F7BBB2922F87 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				AC26EADD7B28C126613EAABCA3108D09 /* Debug */,
-			);
-			path = SDK;
-			sourceTree = "<group>";
-		};
-		AC26EADD7B28C126613EAABCA3108D09 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				02BC8E753A169178F4D8DA0862507D73 /* PayPalHereSDK.bundle */,
-			);
-			path = Debug;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -150,6 +116,23 @@
 				CA7C9E2F5AAD1F5C3F52531573C22A58 /* libPods-TakePayment.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E532C994BE19079D9CF08E331377CDBD /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				0FCCCC32AC8060C3F5C0773420C88319 /* Frameworks */,
+				86E34F7C27E84041B14021AE243B1FF8 /* Resources */,
+			);
+			name = Debug;
+			sourceTree = "<group>";
+		};
+		F5193628BCC26DE4D2DA13126B9C4583 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A3FB9609F8C65B0B16304E9AC077CF3 /* PayPalHereSDK */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
+#import "PaymentViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+- (LoginViewController *)loginVC;
+- (PaymentViewController *)paymentVC;
 
 @end
 

@@ -7,7 +7,6 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
-#import "PaymentViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 #define SAVED_TOKEN @"savedToken"
@@ -53,7 +52,6 @@
 }
 
 - (void)loginButtonPressed {
-    // If you have the token saved already, use it else, off to PayPal we go.
     NSString *savedToken = [[NSUserDefaults standardUserDefaults] stringForKey:SAVED_TOKEN];
     if (savedToken) {
         [self initializeSDKMerchantWithToken:savedToken];
@@ -76,11 +74,8 @@
 
 - (void)gotoPaymentScreen {
     [self setWaitingForServer:NO];
-
-    PaymentViewController *paymentVC = [[PaymentViewController alloc] init];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:paymentVC];
-    [appDelegate.window setRootViewController:navVC];
+    
+    [self.navigationController pushViewController:((AppDelegate *)[UIApplication sharedApplication].delegate).paymentVC animated:YES];
 }
 
 - (void)initializeSDKMerchantWithToken:(NSString *)token {

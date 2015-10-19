@@ -193,6 +193,6 @@ There is a lot more available in the PayPal Here SDK.  More detail is available 
 App Review Information
 ======================
 When you submit your app, you will need to refer to MFI ID's for the hardware that you can interact with through our app.  Be sure to include the following into your app store review notes:
-* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002
+* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0021
 * This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
 

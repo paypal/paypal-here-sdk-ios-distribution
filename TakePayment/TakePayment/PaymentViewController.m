@@ -13,13 +13,15 @@
     UIAlertViewDelegate,
     UITextFieldDelegate,
     PPHTransactionControllerDelegate,
-    PPHCardReaderDelegate
+    PPHCardReaderDelegate,
+    PPHTransactionManagerDelegate
 >
 
 @property (nonatomic, strong) UILabel *cardReaderStatus;
 @property (nonatomic, strong) UITextField *amountTextField;
 @property (nonatomic, strong) UIButton *enableContactlessButton;
 @property (nonatomic, strong) PPHCardReaderWatcher *cardReaderWatcher;
+@property (nonatomic, strong) PPHTransactionWatcher *transactionWatcher;
 @property (nonatomic, strong) PPHInvoice *invoice;
 
 @property (nonatomic) BOOL promptedForSoftwareUpdate;
@@ -32,6 +34,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.cardReaderWatcher = [[PPHCardReaderWatcher alloc] initWithDelegate:self];
+        self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
     }
     return self;
 }
@@ -196,6 +199,15 @@
 - (void)userDidSelectRefundMethod:(PPHPaymentMethod)refundOption {
 }
 
+#pragma mark -
+#pragma PPHTransactionManagerDelegate implementation
+
+- (void)onPaymentEvent:(PPHTransactionManagerEvent *)event {
+    // Restart the payment if the user cancels it by presing the X button on the reader.
+    if (event.eventType == ePPHTransactionType_TransactionCancelled) {
+        [[PayPalHereSDK sharedTransactionManager] beginPaymentUsingUIWithInvoice:self.invoice transactionController:self];
+    }
+}
 
 #pragma mark -
 #pragma PPHCardReaderDelegate implementation

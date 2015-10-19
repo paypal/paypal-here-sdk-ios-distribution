@@ -6,22 +6,31 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface AppDelegate ()
 
 @property (nonatomic, strong) LoginViewController *loginVC;
+@property (nonatomic, strong) PaymentViewController *paymentVC;
 
 @end
 
 @implementation AppDelegate
 
+@synthesize window;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [PayPalHereSDK askForLocationAccess];
     
     self.loginVC = [[LoginViewController alloc] init];
-    [self.window setRootViewController:self.loginVC];
+    self.paymentVC = [[PaymentViewController alloc] init];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.loginVC];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    [self.window setRootViewController:navVC];
+    
     return YES;
 }
 
