@@ -1,78 +1,79 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>PPHTransactionEventType Constants Reference</title>
-		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.2 (build 963)" />
-	</head>
-	<body>
-		<header id="top_header">
-			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">PayPalHereSDK </a></h1>
-				<a id="developerHome" href="../index.html">PayPal</a>
-			</div>
+<head>
+	<meta charset="utf-8">
+
+	<title>PPHTransactionEventType Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
 			
-			<div id="title" role="banner">
-				<h1 class="hideInXcode">PPHTransactionEventType Constants Reference</h1>
-			</div>
-			<ul id="headerButtons" role="toolbar">
-				<li id="toc_button">
-					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
-				</li>
-				<li id="jumpto_button" role="navigation">
-					<select id="jumpTo">
+			<h1 id="library-title">
+				<a href="../index.html">PayPalHereSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">PayPal</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+
 	
-	
-	
+
 	
 </select>
-				</li>
-			</ul>
-		</header>
-		<nav id="tocContainer" class="isShowingTOC">
-			<ul id="toc" role="tree">
-				
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
 
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">PPHTransactionEventType Constants Reference</h1>
 
-
-
-			</ul>
-		</nav>
-		<article>
-			<div id="contents" class="isShowingTOC" role="main">
-				<a title="PPHTransactionEventType Constants Reference" name="top"></a>
-				<div class="main-navigation navigation-top">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="header">
-					<div class="section-header">
-						<h1 class="title title-header">PPHTransactionEventType Constants Reference</h1>
-					</div>		
-				</div>
-				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Declared in</td>
-	<td class="specification-value">PPHTransactionManagerDelegate.h</td>
+	<th>Declared in</th>
+	<td>PPHTransactionManagerDelegate.h</td>
 </tr>
 						</tbody></table></div>
 					
+
                     
-                    
+
 					
-					
-					
-					
-                    
+
                     
                     <h3 class="subsubtitle method-title">PPHTransactionEventType</h3>
                     
@@ -86,31 +87,35 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, PPHTransactionEventType ) {<br/>
+                        <code>typedef NS_ENUM(NSInteger, PPHTransactionEventType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_Idle</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_Idle</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_GettingPaymentInfo</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_GettingPaymentInfo</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_DidStartReaderDetection</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_DidStartReaderDetection</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_DidDetectReaderDevice</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_DidDetectReaderDevice</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_DidRemoveReader</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_DidRemoveReader</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_CardReadBegun</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_CardReadBegun</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_CardDataReceived</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_CardDataReceived</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_FailedToReadCard</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_ReadCardNotAllowed</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_ProcessingPayment</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_FailedToReadCard</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_WaitingForSignature</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_ProcessingPayment</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_TransactionCancelled</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_WaitingForSignature</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">ePPHTransactionType_TransactionDeclined</a>,<br/>
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_TransactionCancelled</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_TransactionDeclined</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ePPHTransactionType_GratuityUpdated</a>,<br>
                             
                             };</code>
                     
@@ -126,9 +131,9 @@
 
 <p>The TransactionManager has entered the idle state.  It is not doing any work and is ready to begin a payment or refund.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -145,9 +150,9 @@
 are currently collecting information from card readers or the application.  You can now set/modify the invoice,
 signatures, and other data related to this payment.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -163,9 +168,9 @@ signatures, and other data related to this payment.</p>
 <p>This event will be triggered in cases where reader detection takes a while, such as for
 the audio readers. It presents an opportunity to show UI indicating that you are &ldquo;working on it&rdquo;</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -180,9 +185,9 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 
 <p>A fully working reader was detected and is available</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -197,9 +202,9 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 
 <p>A reader device has been removed from the system</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -216,9 +221,9 @@ the audio readers. It presents an opportunity to show UI indicating that you are
 this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
 will hurt success rate.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -231,11 +236,28 @@ will hurt success rate.</p>
 <dd>
 
 
-<p>Card data received.  The transaction manager has received card data.</p>
+<p>Card data received. The transaction manager has received card data, and it can be processed</p>
+
+
+
+
 
     
+	<p>
+		Declared In <code class="declared-in-ref">PPHTransactionManagerDelegate.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ePPHTransactionType_ReadCardNotAllowed"></a><code>ePPHTransactionType_ReadCardNotAllowed</code></dt>
+<dd>
 
-    
+
+<p>Card data received. The transaction manager has received card data, but it is not allowed to process it</p>
+
+
+
+
 
     
 	<p>
@@ -250,9 +272,9 @@ will hurt success rate.</p>
 
 <p>A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -268,9 +290,9 @@ will hurt success rate.</p>
 <p>The TransactionManager has entered a state where it is communicating with the backend servers to collect a payment.
 It is now too late to cancel the payment.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -286,9 +308,9 @@ It is now too late to cancel the payment.</p>
 <p>The TransactionManager has entered a state where it has completed the transaction successfully and is
 waiting for the app to collect a signature from the customer and call the finalizePayment API.</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -304,9 +326,9 @@ waiting for the app to collect a signature from the customer and call the finali
 <p>Event specifying that transaction has been cancelled. This will happen only in case of EMV Payments when te user pulls
 the card out of the reader when transaction is going on</p>
 
-    
 
-    
+
+
 
     
 	<p>
@@ -322,9 +344,26 @@ the card out of the reader when transaction is going on</p>
 <p>Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal
 declines the transaction for some reason.</p>
 
-    
+
+
+
 
     
+	<p>
+		Declared In <code class="declared-in-ref">PPHTransactionManagerDelegate.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ePPHTransactionType_GratuityUpdated"></a><code>ePPHTransactionType_GratuityUpdated</code></dt>
+<dd>
+
+
+<p>The gratuity on the invoice has been updated (typically by terminal entry)</p>
+
+
+
+
 
     
 	<p>
@@ -336,128 +375,38 @@ declines the transaction for some reason.</p>
                         </dl>
                     </div>
                     
-                    
+
                     
                     
 
                     
-                    
+
                     
                     <div class="method-subsection declared-in-section">
                         <h4 class="method-subtitle">Declared In</h4>
-                        <code class="declared-in-ref">PPHTransactionManagerDelegate.h</code><br />
-                    </div>				
+                        <p><code class="declared-in-ref">PPHTransactionManagerDelegate.h</code></p>
+                    </div>
                     
                     
                     
-				</div>
-				<div class="main-navigation navigation-bottom">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="footer">
-					<hr />
+                    
+          
+				</main>
+
+				<footer>
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 PayPal. All rights reserved. (Last updated: 2015-01-30)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						<p class="copyright">Copyright &copy; 2015 PayPal. All rights reserved. Updated: 2015-10-04</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
-				</div>
+				</footer>
 			</div>
-		</article>
-		<script type="text/javascript">
-			function jumpToChange()
-			{
-				window.location.hash = this.options[this.selectedIndex].value;
-			}
-			
-			function toggleTOC()
-			{
-				var contents = document.getElementById('contents');
-				var tocContainer = document.getElementById('tocContainer');
-				
-				if (this.getAttribute('class') == 'open')
-				{
-					this.setAttribute('class', '');
-					contents.setAttribute('class', '');
-					tocContainer.setAttribute('class', '');
-					
-					window.name = "hideTOC";
-				}
-				else
-				{
-					this.setAttribute('class', 'open');
-					contents.setAttribute('class', 'isShowingTOC');
-					tocContainer.setAttribute('class', 'isShowingTOC');
-					
-					window.name = "";
-				}
-				return false;
-			}
-			
-			function toggleTOCEntryChildren(e)
-			{
-				e.stopPropagation();
-				var currentClass = this.getAttribute('class');
-				if (currentClass == 'children') {
-					this.setAttribute('class', 'children open');
-				}
-				else if (currentClass == 'children open') {
-					this.setAttribute('class', 'children');
-				}
-				return false;
-			}
-			
-			function tocEntryClick(e)
-			{
-				e.stopPropagation();
-				return true;
-			}
-			
-			function init()
-			{
-				var selectElement = document.getElementById('jumpTo');
-				selectElement.addEventListener('change', jumpToChange, false);
-				
-				var tocButton = document.getElementById('table_of_contents');
-				tocButton.addEventListener('click', toggleTOC, false);
-				
-				var taskTreeItem = document.getElementById('task_treeitem');
-				if (taskTreeItem.getElementsByTagName('li').length > 0)
-				{
-					taskTreeItem.setAttribute('class', 'children');
-					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
-				}
-				
-				var tocList = document.getElementById('toc');
-				
-				var tocEntries = tocList.getElementsByTagName('li');
-				for (var i = 0; i < tocEntries.length; i++) {
-					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
-				}
-				
-				var tocLinks = tocList.getElementsByTagName('a');
-				for (var i = 0; i < tocLinks.length; i++) {
-					tocLinks[i].addEventListener('click', tocEntryClick, false);
-				}
-				
-				if (window.name == "hideTOC") {
-					toggleTOC.call(tocButton);
-				}
-			}
-			
-			window.onload = init;
-			
-			// If showing in Xcode, hide the TOC and Header
-			if (navigator.userAgent.match(/xcode/i)) {
-				document.getElementById("contents").className = "hideInXcode"
-				document.getElementById("tocContainer").className = "hideInXcode"
-				document.getElementById("top_header").className = "hideInXcode"
-			}
-			
-		</script>
-	</body>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
 </html>
