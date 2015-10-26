@@ -1,1 +1,1 @@
-../../../../PayPalHereSDK/SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHPaymentProcessor.h
+../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHPaymentProcessor.h

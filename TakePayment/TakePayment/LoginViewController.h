@@ -10,5 +10,6 @@
 @interface LoginViewController : UIViewController
 
 - (void)initializeSDKMerchantWithToken:(NSString *)token;
+- (void)forgetTokens;
 
 @end

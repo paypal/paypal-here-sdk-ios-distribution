@@ -1,1 +1,1 @@
-../../../../PayPalHereSDK/SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHSignatureView.h
+../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHSignatureView.h

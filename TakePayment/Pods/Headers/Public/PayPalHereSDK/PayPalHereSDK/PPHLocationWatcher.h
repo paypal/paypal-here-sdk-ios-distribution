@@ -1,1 +1,1 @@
-../../../../PayPalHereSDK/SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHLocationWatcher.h
+../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHLocationWatcher.h

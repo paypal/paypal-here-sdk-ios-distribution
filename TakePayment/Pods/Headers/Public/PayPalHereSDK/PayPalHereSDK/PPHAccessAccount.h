@@ -1,1 +1,1 @@
-../../../../PayPalHereSDK/SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHAccessAccount.h
+../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHAccessAccount.h

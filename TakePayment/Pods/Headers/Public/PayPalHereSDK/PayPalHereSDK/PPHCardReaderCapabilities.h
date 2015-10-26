@@ -1,1 +1,1 @@
-../../../../PayPalHereSDK/SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHCardReaderCapabilities.h
+../../../../../../SDK/Debug/PayPalHereSDK.framework/Versions/A/Headers/PPHCardReaderCapabilities.h

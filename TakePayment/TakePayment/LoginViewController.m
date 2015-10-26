@@ -60,6 +60,9 @@
     }
 }
 
+- (void)forgetTokens {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SAVED_TOKEN];
+}
 #pragma mark -
 #pragma PayPal & SDK related
 
@@ -67,7 +70,7 @@
     [self setWaitingForServer:YES];
 
     // Replace the url with your own sample server endpoint.
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SAVED_TOKEN];
+    [self forgetTokens];
     NSURL *url = [NSURL URLWithString:@"http://pph-retail-sdk-sample.herokuapp.com/toPayPal/live"];
     [[UIApplication sharedApplication] openURL:url];
 }

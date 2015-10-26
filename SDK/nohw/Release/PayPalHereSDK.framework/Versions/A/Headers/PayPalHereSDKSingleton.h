@@ -149,6 +149,11 @@ typedef void (^PPHInitializationCompletionHandler)(PPHInitResultType status, PPH
 +(PPHMerchantInfo*)activeMerchant;
 
 /*!
+ * Set the active merchant to nil and clear any state based on the active merchant.
+ */
++(void)clearActiveMerchant;
+
+/*!
  * This is now the de-facto way to initialize the PPH SDK. The current API - setActiveMerchant 
  * - will be marked for deprecation and will be removed at some point in the future.
  * As before, this initialization sequence will ensure that we persist certain merchant information

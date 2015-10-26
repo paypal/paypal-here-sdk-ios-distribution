@@ -152,8 +152,8 @@
 @property (nonatomic,readonly) NSString *paypalInvoiceId;
 /*! The date of the last save */
 @property (nonatomic,readonly) NSDate* createDate;
-/*! The unique number assigned to the invoice for the mercahnt that created it */
-@property (nonatomic,readonly) NSString *merchantReferenceNumber;
+/*! The unique number assigned to the invoice for the merchant that created it */
+@property (nonatomic,strong) NSString *merchantReferenceNumber;
 /*! A memo from the server that contains location data of a payment */
 @property (nonatomic,readonly) NSString *merchantMemo;
 /*! Data about the payment of the invoice */

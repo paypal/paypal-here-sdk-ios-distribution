@@ -7,6 +7,7 @@
 
 #import "PaymentViewController.h"
 #import "PaymentCompleteViewController.h"
+#import "AppDelegate.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface PaymentViewController ()<
@@ -76,6 +77,8 @@
     [self.enableContactlessButton setBackgroundColor:[UIColor blueColor]];
     [self.enableContactlessButton addTarget:self action:@selector(enableContactlessButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.enableContactlessButton];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -135,6 +138,15 @@
     self.enableContactlessButton.hidden = !(reader.capabilities.paymentCapabilities.contactless &&
                                             [self.invoice.totalAmount isAmountAcceptedForContactless] &&
                                             reader.isReadyToTransact);
+}
+
+- (void)logout:(id)sender {
+    [[PayPalHereSDK sharedTransactionManager] cancelPayment];
+    [PayPalHereSDK clearActiveMerchant];
+
+    LoginViewController *loginVC = ((AppDelegate *)[UIApplication sharedApplication].delegate).loginVC;
+    [loginVC forgetTokens];
+    [self.navigationController popToViewController:loginVC animated:YES];
 }
 
 #pragma mark -

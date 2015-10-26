@@ -37,7 +37,7 @@ If you prefer a manual integration you can file the steps in the [project config
 Authentication
 ===============================
 
-1. Set up a PayPal developer account ([sign up here](https://developer.paypal.com/developer/applications/)) and configure an application to be used with the PayPal Here SDK.  Refer to the [PayPal Here SDK integration Document](https://developer.paypal.com/docs/integration/mobile/pph-sdk-overview/) for information on how to properly configure your app.
+1. Set up a PayPal developer account ([sign up here](https://developer.paypal.com/developer/applications/)) and configure an application to be used with the PayPal Here SDK.  Refer to the [PayPal Here SDK integration Document](https://developer.paypal.com/docs/integration/paypal-here/) for information on how to properly configure your app.
 
 2. Deploy and configure the [Retail SDK Authentication Server](https://github.com/djMax/paypal-retail-node) OR manually negotiate the [PayPal oAuth2 flow](https://developer.paypal.com/docs/integration/direct/paypal-oauth2/) to obtain the tokens required for login.
 
