@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHNetworkRequestDelegate.html">
+	<File path="Protocols/PPHLocationWatcherDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHNetworkRequestDelegate</TokenIdentifier>
-			<Abstract type="html">A protocol for objects wishing to manage network requests for the PayPal Here SDK</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHLocationWatcherDelegate</TokenIdentifier>
+			<Abstract type="html">A PPHLocationWatcherDelegate receives events when new tabs are created, old tabs are removed,
+and errors occur.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
             
 			
 			<NodeRef refid="65"/>
@@ -13,85 +14,85 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/beginRequest:withID:withHandler:</TokenIdentifier>
-			<Abstract type="html">Add a request to be sent over the network.</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectNewTab:</TokenIdentifier>
+			<Abstract type="html">A new checkin has been opened since the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)beginRequest:(NSMutableURLRequest *)inRequest withID:(NSString *)identifier withHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error , NSData *data ))handler</Declaration>
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectNewTab:(PPHLocationCheckin *)checkin</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>inRequest</Name>
-					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+					<Name>watcher</Name>
+					<Abstract type="html">information about the location on which the checkin has been opened</Abstract>
 				</Parameter><Parameter>
-					<Name>identifier</Name>
-					<Abstract type="html">an identifier which is used to cancel a request or group of requests sharing the same identifier</Abstract>
-				</Parameter><Parameter>
-					<Name>handler</Name>
-					<Abstract type="html">called when the request completes with success or failure</Abstract>
+					<Name>checkin</Name>
+					<Abstract type="html">information about the checkin and customer</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">YES if you handled the request, NO if you did not and we should process it ourselves.</Abstract></ReturnValue>
-			<Anchor>//api/name/beginRequest:withID:withHandler:</Anchor>
+			
+			<Anchor>//api/name/locationWatcher:didDetectNewTab:</Anchor>
             <NodeRef refid="65"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/cancelOperationsForID:</TokenIdentifier>
-			<Abstract type="html">Cancel all active operations with the given identifier</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didDetectRemovedTab:</TokenIdentifier>
+			<Abstract type="html">A checkin has been closed in some way (paid, cancelled, left, etc) since the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)cancelOperationsForID:(NSString *)identifier</Declaration>
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didDetectRemovedTab:(PPHLocationCheckin *)checkin</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>identifier</Name>
-					<Abstract type="html">the value passed to addRequest</Abstract>
+					<Name>watcher</Name>
+					<Abstract type="html">information about the location on which the checkin has been closed</Abstract>
+				</Parameter><Parameter>
+					<Name>checkin</Name>
+					<Abstract type="html">last known information about the checkin and customer</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/cancelOperationsForID:</Anchor>
+			<Anchor>//api/name/locationWatcher:didDetectRemovedTab:</Anchor>
             <NodeRef refid="65"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/modifyRequest:</TokenIdentifier>
-			<Abstract type="html">If you just need to modify a request but not &quot;handle&quot; it, you can implement this selector.</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didReceiveError:</TokenIdentifier>
+			<Abstract type="html">An error has occurred trying to update checkin information</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)modifyRequest:(NSMutableURLRequest *)inRequest</Declaration>
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didReceiveError:(PPHError *)error</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>inRequest</Name>
-					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/modifyRequest:</Anchor>
-            <NodeRef refid="65"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/requestCompleted:withResponse:data:andError:</TokenIdentifier>
-			<Abstract type="html">We&apos;ll call you when a response is received. This is most useful for logging.</Abstract>
-			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
-			
-			<Declaration>- (void)requestCompleted:(NSURLRequest *)inRequest withResponse:(NSHTTPURLResponse *)inResponse data:(NSData *)data andError:(NSError *)error</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>inRequest</Name>
-					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
-				</Parameter><Parameter>
-					<Name>inResponse</Name>
-					<Abstract type="html">the response received from the server</Abstract>
-				</Parameter><Parameter>
-					<Name>data</Name>
-					<Abstract type="html">the data received with the response</Abstract>
+					<Name>watcher</Name>
+					<Abstract type="html">the watcher that tried to update</Abstract>
 				</Parameter><Parameter>
 					<Name>error</Name>
-					<Abstract type="html">the raw error received, if any</Abstract>
+					<Abstract type="html">the error</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/requestCompleted:withResponse:data:andError:</Anchor>
+			<Anchor>//api/name/locationWatcher:didReceiveError:</Anchor>
+            <NodeRef refid="65"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLocationWatcherDelegate/locationWatcher:didCompleteUpdate:wasModified:</TokenIdentifier>
+			<Abstract type="html">A request for updated checkin information has completed successfully.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>- (void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>watcher</Name>
+					<Abstract type="html">the watcher that tried to update</Abstract>
+				</Parameter><Parameter>
+					<Name>openTabs</Name>
+					<Abstract type="html">Known open tabs as of the last update</Abstract>
+				</Parameter><Parameter>
+					<Name>wasModified</Name>
+					<Abstract type="html">Whether any checkin information was updated</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/locationWatcher:didCompleteUpdate:wasModified:</Anchor>
             <NodeRef refid="65"/>
 		</Token>
 		

@@ -49,6 +49,7 @@
 #import "PPHReceiptDestination.h"
 #import "PPHReceiptOption.h"
 #import "PPHSignatureView.h"
+#import "PPHSignatureViewController.h"
 #import "PPHSupportedPaymentInterfaces.h"
 #import "PPHTokenizedCustomerInformation.h"
 #import "PPHTransactionControllerDelegate.h"

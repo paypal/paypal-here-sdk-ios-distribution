@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHAnalyticsDelegate.html">
+	<File path="Classes/PPHTransactionWatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHAnalyticsDelegate</TokenIdentifier>
-			<Abstract type="html">PPHAnalyticsDelegate is in charge of delivering analytics events to a server</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHTransactionWatcher</TokenIdentifier>
+			<Abstract type="html">The PPHTransactionWatcher follows the standard PPHSDK &quot;Watcher&quot; pattern, translating
+NotificationCenter events into a delegate interface. A PPHTransactionWatcher &quot;watches&quot;
+the PPHTransactionManager, granting PPHSDK clients the ability to easily track its
+comings, goings, and doings.</Abstract>
+			<DeclaredIn>PPHTransactionWatcher.h</DeclaredIn>
             
 			
 			<NodeRef refid="60"/>
@@ -13,71 +16,19 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/beginSession:</TokenIdentifier>
-			<Abstract type="html">Start an analytics session - create any sort of visitor/device identifiers etc.</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHTransactionWatcher/initWithDelegate:</TokenIdentifier>
+			<Abstract type="html">Initialize a watcher to send events to the delegate</Abstract>
+			<DeclaredIn>PPHTransactionWatcher.h</DeclaredIn>
 			
-			<Declaration>- (void)beginSession:(NSDictionary *)properties</Declaration>
+			<Declaration>- (id)initWithDelegate:(id&lt;PPHTransactionManagerDelegate&gt;)delegate</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>properties</Name>
-					<Abstract type="html">session-wide information about the session</Abstract>
+					<Name>delegate</Name>
+					<Abstract type="html">the receiver of transaction manager events</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/beginSession:</Anchor>
-            <NodeRef refid="60"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/amendSession:</TokenIdentifier>
-			<Abstract type="html">Update session information of an in progress session</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-			
-			<Declaration>- (void)amendSession:(NSDictionary *)properties</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>properties</Name>
-					<Abstract type="html">session-wide information about the session</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/amendSession:</Anchor>
-            <NodeRef refid="60"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/endSession</TokenIdentifier>
-			<Abstract type="html">End an analytics session - clear any identifiers</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-			
-			<Declaration>- (void)endSession</Declaration>
-			
-			
-			<Anchor>//api/name/endSession</Anchor>
-            <NodeRef refid="60"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHAnalyticsDelegate/queueEvent:withType:andInfo:</TokenIdentifier>
-			<Abstract type="html">Log an analytics event</Abstract>
-			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
-			
-			<Declaration>- (void)queueEvent:(PPHAnalyticsEventName)event withType:(PPHAnalyticsEventType)type andInfo:(NSDictionary *)info</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">the name of the event that has occurred</Abstract>
-				</Parameter><Parameter>
-					<Name>type</Name>
-					<Abstract type="html">the type of event that has occurred</Abstract>
-				</Parameter><Parameter>
-					<Name>info</Name>
-					<Abstract type="html">additional information about the event</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/queueEvent:withType:andInfo:</Anchor>
+			<Anchor>//api/name/initWithDelegate:</Anchor>
             <NodeRef refid="60"/>
 		</Token>
 		

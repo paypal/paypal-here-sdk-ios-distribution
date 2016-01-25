@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHChipAndPinButtonType.html">
+	<File path="Constants/PPHAnalyticsEventType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHChipAndPinButtonType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHAnalyticsEventType</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			<DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
 			
 			<NodeRef refid="75"/>
@@ -14,51 +14,31 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinButtonUnknown</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeNone</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinButtonUnknown</Declaration>
+            <Declaration>ePPHAnalyticsEventTypeNone</Declaration>
             
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
             <NodeRef refid="75"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinButtonKeyPadDigit</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinButtonKeyPadDigit</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeNormal</TokenIdentifier>
+            <Abstract type="html">A &quot;normal&quot; event meant to help discern what features are being used in you&apos;re app, what situations are being encountered, etc.</Abstract>
+            <Declaration>ePPHAnalyticsEventTypeNormal</Declaration>
             
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="75"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinButtonBack</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinButtonBack</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
             <NodeRef refid="75"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinButtonCancel</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinButtonCancel</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHAnalyticsEventTypeLog</TokenIdentifier>
+            <Abstract type="html">A &quot;log&quot; message that is not as useful for aggregation but more for individual session debugging and troubleshooting</Abstract>
+            <Declaration>ePPHAnalyticsEventTypeLog</Declaration>
             
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
-            
-            <NodeRef refid="75"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHChipAndPinButtonOK</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHChipAndPinButtonOK</Declaration>
-            
-            <DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+            <DeclaredIn>PPHAnalyticsDelegate.h</DeclaredIn>
             
             <NodeRef refid="75"/>
         </Token>

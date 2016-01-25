@@ -191,3 +191,10 @@ Bug fix: Fixing the AU country code check, that was wrongly setting the availabl
   - Fixed resource plist issue blocking app submission.
   - Writeable invoice merchant reference number.
   - `clearActiveMerchant` API to clear saved internal tokens and merchant info.
+
+1.6.2
+  What's new:
+  - Fixed parsing of payment information when downloading a paid invoice.
+  - Exposed PPHSDKSignatureViewController to enable partners to show the same signature screen outside of a UI flow.
+  - Displaying receipt UI for a voided transaction should now have text that indicates the transaction was unsuccessful.
+  - Capturing payment for an authorized invoice will return a TransactionRecord with the transactionID correctly populated.

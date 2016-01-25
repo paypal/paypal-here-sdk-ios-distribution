@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHReaderType.html">
+	<File path="Constants/PPHReaderBatteryStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHReaderType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHReaderBatteryStatus</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHReaderConstants.h</DeclaredIn>
+			<DeclaredIn>PPHReaderBatteryMetadata.h</DeclaredIn>
             
 			
 			<NodeRef refid="93"/>
@@ -14,41 +14,45 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderTypeUnknown</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHReaderTypeUnknown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderBatteryStatusOnBattery</TokenIdentifier>
+            <Abstract type="html">Reader is currently running solely battery, reader is not charging.
+     </Abstract>
+            <Declaration>ePPHReaderBatteryStatusOnBattery</Declaration>
             
-            <DeclaredIn>PPHReaderConstants.h</DeclaredIn>
-            
-            <NodeRef refid="93"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderTypeAudioJack</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHReaderTypeAudioJack</Declaration>
-            
-            <DeclaredIn>PPHReaderConstants.h</DeclaredIn>
+            <DeclaredIn>PPHReaderBatteryMetadata.h</DeclaredIn>
             
             <NodeRef refid="93"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderTypeDockPort</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHReaderTypeDockPort</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderBatteryStatusCharging</TokenIdentifier>
+            <Abstract type="html">Reader is currently charging. Running on battery which is charging.
+     </Abstract>
+            <Declaration>ePPHReaderBatteryStatusCharging</Declaration>
             
-            <DeclaredIn>PPHReaderConstants.h</DeclaredIn>
+            <DeclaredIn>PPHReaderBatteryMetadata.h</DeclaredIn>
             
             <NodeRef refid="93"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderTypeChipAndPinBluetooth</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHReaderTypeChipAndPinBluetooth</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderBatteryStatusChargedConnectedToPower</TokenIdentifier>
+            <Abstract type="html">Reader is charging, battery is fully charged.
+     </Abstract>
+            <Declaration>ePPHReaderBatteryStatusChargedConnectedToPower</Declaration>
             
-            <DeclaredIn>PPHReaderConstants.h</DeclaredIn>
+            <DeclaredIn>PPHReaderBatteryMetadata.h</DeclaredIn>
+            
+            <NodeRef refid="93"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHReaderBatteryStatusBatteryLow</TokenIdentifier>
+            <Abstract type="html">Reader running solely on battery and the battery is low.
+     </Abstract>
+            <Declaration>ePPHReaderBatteryStatusBatteryLow</Declaration>
+            
+            <DeclaredIn>PPHReaderBatteryMetadata.h</DeclaredIn>
             
             <NodeRef refid="93"/>
         </Token>

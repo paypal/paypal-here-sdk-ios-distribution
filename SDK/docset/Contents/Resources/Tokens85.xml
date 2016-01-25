@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/PPHLocationCheckinStatus.html">
+	<File path="Constants/PPHInitResultType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/PPHLocationCheckinStatus</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHInitResultType</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+			<DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
             
 			
 			<NodeRef refid="85"/>
@@ -14,71 +14,35 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusUnknown</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusUnknown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHInitResultSuccess</TokenIdentifier>
+            <Abstract type="html">If the merchant setup was successful.
+     </Abstract>
+            <Declaration>ePPHInitResultSuccess</Declaration>
             
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="85"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusActive</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusActive</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+            <DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
             
             <NodeRef refid="85"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusCancelled</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusCancelled</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHInitResultFailedInsufficientCredentials</TokenIdentifier>
+            <Abstract type="html">Init failed due to insufficient information in the PPHAccessAccount object. This usually happens when the application attempts to initialize
+the SDK with a PPHAccessAccount object that does not have a valid access token or refresh url
+     </Abstract>
+            <Declaration>ePPHInitResultFailedInsufficientCredentials</Declaration>
             
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="85"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusExpired</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusExpired</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+            <DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
             
             <NodeRef refid="85"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusPaid</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusPaid</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHInitResultFailed</TokenIdentifier>
+            <Abstract type="html">Init failed because of an error we encountered when retrieving merchant info. Please see PPHError object return from this call for more information
+     </Abstract>
+            <Declaration>ePPHInitResultFailed</Declaration>
             
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="85"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusLeft</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusLeft</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
-            
-            <NodeRef refid="85"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/ePPHCheckinStatusDeleted</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>ePPHCheckinStatusDeleted</Declaration>
-            
-            <DeclaredIn>PPHLocationCheckin.h</DeclaredIn>
+            <DeclaredIn>PayPalHereSDKSingleton.h</DeclaredIn>
             
             <NodeRef refid="85"/>
         </Token>

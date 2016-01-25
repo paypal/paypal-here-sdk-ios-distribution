@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/PPHTransactionManagerDelegate.html">
+	<File path="Protocols/PPHSignatureViewControllerDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionManagerDelegate</TokenIdentifier>
-			<Abstract type="html">The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various
-messages throughout the payment flow. These messages reflect the different stages of a transaction
-and could be used by the application to display appropriate text, image or UI on the screen.</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSignatureViewControllerDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHSignatureViewController.h</DeclaredIn>
             
 			
 			<NodeRef refid="68"/>
@@ -15,19 +13,26 @@ and could be used by the application to display appropriate text, image or UI on
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionManagerDelegate/onPaymentEvent:</TokenIdentifier>
-			<Abstract type="html">onPaymentEvent</Abstract>
-			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewControllerDelegate/takeSignatureViewController:collectedSignatureImage:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHSignatureViewController.h</DeclaredIn>
 			
-			<Declaration>- (void)onPaymentEvent:(PPHTransactionManagerEvent *)event</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>event</Name>
-					<Abstract type="html">: A PaymentEvent object the contains information about the event.</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)takeSignatureViewController:(PPHSignatureViewController *)viewController collectedSignatureImage:(UIImage *)signatureImage</Declaration>
 			
-			<Anchor>//api/name/onPaymentEvent:</Anchor>
+			
+			<Anchor>//api/name/takeSignatureViewController:collectedSignatureImage:</Anchor>
+            <NodeRef refid="68"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewControllerDelegate/takeSignatureViewControllerCanceledCollectingSignature:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHSignatureViewController.h</DeclaredIn>
+			
+			<Declaration>- (void)takeSignatureViewControllerCanceledCollectingSignature:(PPHSignatureViewController *)viewController</Declaration>
+			
+			
+			<Anchor>//api/name/takeSignatureViewControllerCanceledCollectingSignature:</Anchor>
             <NodeRef refid="68"/>
 		</Token>
 		
