@@ -195,7 +195,5 @@ App Review Information
 Only the release build of the PayPal Here SDK is eligible for App Store release. If you submit your app for approval with the debug build, your app will be rejected. To install the release build with Cocoapods please use:
 `pod 'PayPalHereSDK/Release'`
 
-When you submit your app, you will need to refer to MFI ID's for the hardware that you can interact with through our app.  Be sure to include the following into your app store review notes:
-* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0021
-* This iOS application uses the com.magtek.idynamo protocol for the Magtek iDynamo reader: PPID 103164-0003 
+When you submit your app, you might need to enroll to [Apple MFi program](https://mfi.apple.com/MFiWeb/getFAQ.action). In order to complete your enrollment, please fill __MFi-Enrollment.xls__ in __docs__ folder and email it to pph-sdk@paypal.com.
 
