@@ -89,7 +89,6 @@
     // Initialize the SDK with the token.
     [PayPalHereSDK setupWithCompositeTokenString:token
                            thenCompletionHandler:^(PPHInitResultType status, PPHError *error, PPHMerchantInfo *info) {
-                               info.invoiceContactInfo.businessName = @"Matt's Haus"; 
                                if (error) {
                                    [weakSelf loginWithPayPal];
                                } else {

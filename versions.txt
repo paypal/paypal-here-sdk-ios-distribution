@@ -198,3 +198,8 @@ Bug fix: Fixing the AU country code check, that was wrongly setting the availabl
   - Exposed PPHSDKSignatureViewController to enable partners to show the same signature screen outside of a UI flow.
   - Displaying receipt UI for a voided transaction should now have text that indicates the transaction was unsuccessful.
   - Capturing payment for an authorized invoice will return a TransactionRecord with the transactionID correctly populated.
+
+1.6.3
+  What's new:
+  - Fix payment information parsing on partially refunded invoices.
+  - Added PPHTransactionManager APIs to prompt for gratuity on card readers with displays and number pads.

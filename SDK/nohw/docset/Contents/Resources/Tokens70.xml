@@ -118,6 +118,23 @@ method is unimplemented the SDK will default to ePPHContactlessTimeoutActionCanc
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/userAddedGratuityToInvoice:</TokenIdentifier>
+			<Abstract type="html">The user added a gratuity to PPHTransactionManager&apos;s currentInvoice through prompts on the reader</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)userAddedGratuityToInvoice:(PPHInvoice *)invoice</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice that was updated. The same instance that is the currentInvoice of PPHTransactionManager</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/userAddedGratuityToInvoice:</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/readerDidActivateForPayments</TokenIdentifier>
 			<Abstract type="html">Gets called when the reader has been activated for payments and is ready to process card present data.
 Handle any non-EMV SDK related processing once this comes back.</Abstract>

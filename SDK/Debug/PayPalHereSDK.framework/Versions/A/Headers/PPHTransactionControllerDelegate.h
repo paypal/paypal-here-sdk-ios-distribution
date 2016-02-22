@@ -88,6 +88,13 @@ typedef NS_ENUM(NSInteger, PPHContactlessTimeoutAction) {
 - (PPHContactlessTimeoutAction)contactlessTimeoutAction;
 
 /*!
+ * The user added a gratuity to PPHTransactionManager's currentInvoice through prompts on the reader
+ *
+ * @param invoice The invoice that was updated. The same instance that is the currentInvoice of PPHTransactionManager
+ */
+- (void)userAddedGratuityToInvoice:(PPHInvoice *)invoice;
+
+/*!
  * Gets called when the reader has been activated for payments and is ready to process card present data. 
  * Handle any non-EMV SDK related processing once this comes back.
  */

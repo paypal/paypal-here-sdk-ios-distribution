@@ -55,7 +55,7 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
  */
 @property (nonatomic, readonly) BOOL hasActiveTransaction;
 
-/**
+/*!
  * Configure the TransactionManager to ignore OR work with any payment readers that might
  * be attached.
  *
@@ -69,7 +69,7 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
  */
 @property (nonatomic, assign) BOOL ignoreHardwareReaders;
 
-/**
+/*!
  * Determines if the current transaction will request a signature or not for a given amount.
  *
  * @param amountOrNil The amount to test against, or nil if you would like to use the current invoice total.
@@ -77,7 +77,7 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
  */
 - (BOOL)transactionRequiresSignatureForAmount:(PPHAmount *)amountOrNil paymentMethod:(PPHPaymentMethod)paymentMethod;
 
-/**
+/*!
  * Determines if we can bypass signature if it is not essential to the payment environment.
  *
  * If YES then we always request a signature when it would normally be optional (swipe, contactless MSD)
@@ -88,6 +88,24 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
  *
  */
 @property (nonatomic, assign) BOOL requireSignatureWhenApplicable;
+
+/*!
+ * If set to YES when attempting to activate the reader instead we will first display a prompt for
+ * a user to enter an amount on the reader that will be added to the invoice as a gratuity. After
+ * the gratuity amount is collected the reader will then be activated.
+ *
+ * Defaults to NO
+ */
+@property (nonatomic, assign) BOOL shouldPromptForOnReaderTips;
+
+/*!
+ * If set to YES when on reader tipping is enabled the reader will prompt for and collect a
+ * gratuity amount as percentage rather than amount. Once entered the percentage will be multiplied
+ * with the current invoice's subtotal and applied as a gratuity amount.
+ *
+ * Defaults to NO
+ */
+@property (nonatomic, assign) BOOL usePercentageOnReaderTips;
 
 /*! beginPayment puts us in a state to take a payment.  
  * You can now set the shoppingCart, signature, and extras 
@@ -261,7 +279,6 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
  * This api is used to stop the EMV reader from looking for payments.
  */
 - (void)deActivateReaderForPayments;
-
 
 
 @end
