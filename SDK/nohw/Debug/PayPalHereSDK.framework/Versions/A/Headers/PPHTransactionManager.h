@@ -107,6 +107,21 @@ typedef void (^PPHReceiptCompletionHandler) (PPHTransactionRecord *record);
  */
 @property (nonatomic, assign) BOOL usePercentageOnReaderTips;
 
+/*!
+ * The amount of time in seconds we will wait before explicitly putting the reader to sleep when not
+ * in a transaction.
+ *
+ * The default value is read from a configuration file that PayPal believes represents the best time
+ * to conserve battery without sacrificing to much user experience. If your use case or opinion
+ * requires otherwise you may change it here.
+ *
+ * A value less than zero will cause the reader to never explicitly sleep.
+ * A value of NSTimeIntervalSince1970 will cause the SDK to use the PayPal configured value.
+ *
+ * At the time of writing this comment the configured value is 60 seconds.
+ */
+@property (nonatomic, assign) NSTimeInterval readerSleepDelay;
+
 /*! beginPayment puts us in a state to take a payment.  
  * You can now set the shoppingCart, signature, and extras 
  */
