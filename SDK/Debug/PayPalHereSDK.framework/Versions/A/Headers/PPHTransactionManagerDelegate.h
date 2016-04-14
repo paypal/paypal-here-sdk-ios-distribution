@@ -86,7 +86,12 @@ typedef NS_ENUM(NSInteger, PPHTransactionEventType) {
      * Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal 
      * declines the transaction for some reason.
      */
-    ePPHTransactionType_TransactionDeclined
+    ePPHTransactionType_TransactionDeclined,
+    
+    /*!
+     * Refund type selection has been cancelled.
+     */
+    ePPHTransactionType_RefundTypeSelectionCancelled
 };
 
 /**
