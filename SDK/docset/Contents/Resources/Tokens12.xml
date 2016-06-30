@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHCardSwipeData.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHCardSwipeData</TokenIdentifier>
+			<Abstract type="html">Data received as the result of a successful swipe through the card reader</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+            
+			
+			<NodeRef refid="12"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/initWithTrack1:track2:readerSerial:withType:andExtraInfo:</TokenIdentifier>
+			<Abstract type="html">* Initialize card swipe data from a non-PayPalHere compatible card reader.
+* @param track1 The data from track1, if any
+* @param track2 The data from track2, if any
+* @param serial The serial number of the reader
+* @param readerType the type of reader, such as MAGTEK, ROAM or MIURA(SWIPE|FBSWIPE)
+* @param extraInfo Any extra information necessary to interpret and process the track data, such as
+* ksn (key serial number)
+*
+ NOTE :  API DEPRECATED **: Please use the new init API:</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithTrack1:(NSString *)track1 track2:(NSString *)track2 readerSerial:(NSString *)serial withType:(NSString *)readerType andExtraInfo:(NSDictionary *)extraInfo</Declaration>
+			
+			
+			<Anchor>//api/name/initWithTrack1:track2:readerSerial:withType:andExtraInfo:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/initWithEncryptedTrack1:encryptedTrack2:readerSerial:keySerial:withType:</TokenIdentifier>
+			<Abstract type="html">Initialize card swipe data from a non-PayPalHere compatible card reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithEncryptedTrack1:(NSString *)encryptedTrack1 encryptedTrack2:(NSString *)encryptedTrack2 readerSerial:(NSString *)serial keySerial:(NSString *)ksn withType:(NSString *)readerType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>encryptedTrack1</Name>
+					<Abstract type="html">The encrypted data from track1, if any</Abstract>
+				</Parameter><Parameter>
+					<Name>encryptedTrack2</Name>
+					<Abstract type="html">The encrypted data from track2, if any</Abstract>
+				</Parameter><Parameter>
+					<Name>serial</Name>
+					<Abstract type="html">The serial number of the reader</Abstract>
+				</Parameter><Parameter>
+					<Name>ksn</Name>
+					<Abstract type="html">The Key serial number of the reader, if any</Abstract>
+				</Parameter><Parameter>
+					<Name>readerType</Name>
+					<Abstract type="html">the type of reader, such as MAGTEK, ROAM or MIURA(SWIPE|FBSWIPE)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithEncryptedTrack1:encryptedTrack2:readerSerial:keySerial:withType:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setMaskedCardNumber:</TokenIdentifier>
+			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedCardNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedCardNumber</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/maskedCardNumber</TokenIdentifier>
+			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedCardNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedCardNumber</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/maskedCardNumber</TokenIdentifier>
+			<Abstract type="html">The masked card number, if available. Usually includes first four and last four</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *maskedCardNumber</Declaration>
+			
+			
+			<Anchor>//api/name/maskedCardNumber</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardholderName:</TokenIdentifier>
+			<Abstract type="html">If any name was available, this will be non-nil. Sometimes the name is pre-parsed into first
+and last name, so those fields may or may not be filled out.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardholderName</TokenIdentifier>
+			<Abstract type="html">If any name was available, this will be non-nil. Sometimes the name is pre-parsed into first
+and last name, so those fields may or may not be filled out.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardholderName</TokenIdentifier>
+			<Abstract type="html">If any name was available, this will be non-nil. Sometimes the name is pre-parsed into first
+and last name, so those fields may or may not be filled out.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardholderFirstName:</TokenIdentifier>
+			<Abstract type="html">IF AVAILABLE, the parsed first name.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderFirstName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderFirstName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardholderFirstName</TokenIdentifier>
+			<Abstract type="html">IF AVAILABLE, the parsed first name.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderFirstName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderFirstName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardholderFirstName</TokenIdentifier>
+			<Abstract type="html">IF AVAILABLE, the parsed first name.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderFirstName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderFirstName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardholderLastName:</TokenIdentifier>
+			<Abstract type="html">IF AVAILABLE, the parsed last name.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderLastName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderLastName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardholderLastName</TokenIdentifier>
+			<Abstract type="html">IF AVAILABLE, the parsed last name.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderLastName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderLastName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardholderLastName</TokenIdentifier>
+			<Abstract type="html">IF AVAILABLE, the parsed last name.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *cardholderLastName</Declaration>
+			
+			
+			<Anchor>//api/name/cardholderLastName</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setExpirationMonth:</TokenIdentifier>
+			<Abstract type="html">The month of card expiration, 1-12</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger expirationMonth</Declaration>
+			
+			
+			<Anchor>//api/name/expirationMonth</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/expirationMonth</TokenIdentifier>
+			<Abstract type="html">The month of card expiration, 1-12</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger expirationMonth</Declaration>
+			
+			
+			<Anchor>//api/name/expirationMonth</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/expirationMonth</TokenIdentifier>
+			<Abstract type="html">The month of card expiration, 1-12</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger expirationMonth</Declaration>
+			
+			
+			<Anchor>//api/name/expirationMonth</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setExpirationYear:</TokenIdentifier>
+			<Abstract type="html">The full year of the card expiration, e.g. 2012</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger expirationYear</Declaration>
+			
+			
+			<Anchor>//api/name/expirationYear</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/expirationYear</TokenIdentifier>
+			<Abstract type="html">The full year of the card expiration, e.g. 2012</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger expirationYear</Declaration>
+			
+			
+			<Anchor>//api/name/expirationYear</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/expirationYear</TokenIdentifier>
+			<Abstract type="html">The full year of the card expiration, e.g. 2012</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger expirationYear</Declaration>
+			
+			
+			<Anchor>//api/name/expirationYear</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setExtraData:</TokenIdentifier>
+			<Abstract type="html">Any extra data from the card reader to go along with the swipe</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDictionary *extraData</Declaration>
+			
+			
+			<Anchor>//api/name/extraData</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/extraData</TokenIdentifier>
+			<Abstract type="html">Any extra data from the card reader to go along with the swipe</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDictionary *extraData</Declaration>
+			
+			
+			<Anchor>//api/name/extraData</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/extraData</TokenIdentifier>
+			<Abstract type="html">Any extra data from the card reader to go along with the swipe</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDictionary *extraData</Declaration>
+			
+			
+			<Anchor>//api/name/extraData</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setKsn:</TokenIdentifier>
+			<Abstract type="html">Key serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ksn</Declaration>
+			
+			
+			<Anchor>//api/name/ksn</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/ksn</TokenIdentifier>
+			<Abstract type="html">Key serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ksn</Declaration>
+			
+			
+			<Anchor>//api/name/ksn</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/ksn</TokenIdentifier>
+			<Abstract type="html">Key serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ksn</Declaration>
+			
+			
+			<Anchor>//api/name/ksn</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setSerial:</TokenIdentifier>
+			<Abstract type="html">Serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serial</Declaration>
+			
+			
+			<Anchor>//api/name/serial</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/serial</TokenIdentifier>
+			<Abstract type="html">Serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serial</Declaration>
+			
+			
+			<Anchor>//api/name/serial</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/serial</TokenIdentifier>
+			<Abstract type="html">Serial number of the reader.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *serial</Declaration>
+			
+			
+			<Anchor>//api/name/serial</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setSignaturePresent:</TokenIdentifier>
+			<Abstract type="html">Set this property to YES before beginning payment is we have, or will collect a signature
+for this payment. Beginning a payment with a signature will automatically set this value to YES.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL signaturePresent</Declaration>
+			
+			
+			<Anchor>//api/name/signaturePresent</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/signaturePresent</TokenIdentifier>
+			<Abstract type="html">Set this property to YES before beginning payment is we have, or will collect a signature
+for this payment. Beginning a payment with a signature will automatically set this value to YES.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL signaturePresent</Declaration>
+			
+			
+			<Anchor>//api/name/signaturePresent</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/signaturePresent</TokenIdentifier>
+			<Abstract type="html">Set this property to YES before beginning payment is we have, or will collect a signature
+for this payment. Beginning a payment with a signature will automatically set this value to YES.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL signaturePresent</Declaration>
+			
+			
+			<Anchor>//api/name/signaturePresent</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/parseTracks:</TokenIdentifier>
+			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)parseTracks:(NSString *)track1AndOr2</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>track1AndOr2</Name>
+					<Abstract type="html">whatever was received from the card reader</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/parseTracks:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/parseTracksWithMaskedTrack1:maskedTrack2:</TokenIdentifier>
+			<Abstract type="html">Parse raw track data for name, account number, etc.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)parseTracksWithMaskedTrack1:(NSString *)maskedTrack1OrNil maskedTrack2:(NSString *)maskedTrack2OrNil</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>maskedTrack1OrNil</Name>
+					<Abstract type="html">The masked track1 information obtained from the card reader, if any.</Abstract>
+				</Parameter><Parameter>
+					<Name>maskedTrack2OrNil</Name>
+					<Abstract type="html">The masked track2 information obtained from the card reader, if any.
+
+Returns NO if neither maskedTrack1 nor maskedTrack2 is passed in, or, while there was an error during parsing.
+Returns YES if the masked information was parsed successfully while extracting the masked card number,
+expiration date and card holder name.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/parseTracksWithMaskedTrack1:maskedTrack2:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setReader:</TokenIdentifier>
+			<Abstract type="html">The card reader on which the swipe occurred.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardReaderMetadata *reader</Declaration>
+			
+			
+			<Anchor>//api/name/reader</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/reader</TokenIdentifier>
+			<Abstract type="html">The card reader on which the swipe occurred.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardReaderMetadata *reader</Declaration>
+			
+			
+			<Anchor>//api/name/reader</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/reader</TokenIdentifier>
+			<Abstract type="html">The card reader on which the swipe occurred.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHCardReaderMetadata *reader</Declaration>
+			
+			
+			<Anchor>//api/name/reader</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardType:</TokenIdentifier>
+			<Abstract type="html">Return the cardType</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHCreditCardType cardType</Declaration>
+			
+			
+			<Anchor>//api/name/cardType</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardType</TokenIdentifier>
+			<Abstract type="html">Return the cardType</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHCreditCardType cardType</Declaration>
+			
+			
+			<Anchor>//api/name/cardType</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardType</TokenIdentifier>
+			<Abstract type="html">Return the cardType</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHCreditCardType cardType</Declaration>
+			
+			
+			<Anchor>//api/name/cardType</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/setCardAllowsSwipe:</TokenIdentifier>
+			<Abstract type="html">Wether the card allows swipe data to be used.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL cardAllowsSwipe</Declaration>
+			
+			
+			<Anchor>//api/name/cardAllowsSwipe</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/cardAllowsSwipe</TokenIdentifier>
+			<Abstract type="html">Wether the card allows swipe data to be used.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL cardAllowsSwipe</Declaration>
+			
+			
+			<Anchor>//api/name/cardAllowsSwipe</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHCardSwipeData/cardAllowsSwipe</TokenIdentifier>
+			<Abstract type="html">Wether the card allows swipe data to be used.</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL cardAllowsSwipe</Declaration>
+			
+			
+			<Anchor>//api/name/cardAllowsSwipe</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHCardSwipeData/asDictionary</TokenIdentifier>
+			<Abstract type="html">Return the swipe data as a dictionary suitable for submission to PayPal</Abstract>
+			<DeclaredIn>PPHCardSwipeData.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			
+			
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

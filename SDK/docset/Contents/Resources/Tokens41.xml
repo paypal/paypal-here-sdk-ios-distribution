@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHPaymentConstants.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHPaymentConstants</TokenIdentifier>
+			<Abstract type="html">Convenience methods for dealing with payments
+and their enumerations</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+            
+			
+			<NodeRef refid="41"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodFromString:</TokenIdentifier>
+			<Abstract type="html">Return a payment method given the corresponding non-localized string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHPaymentMethod)paymentMethodFromString:(NSString *)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodFromString:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodDetailFromString:</TokenIdentifier>
+			<Abstract type="html">Return payment method detail given the corresponding non-localized string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHPaymentMethodDetail)paymentMethodDetailFromString:(NSString *)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the payment detail</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodDetailFromString:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromPaymentMethod:</TokenIdentifier>
+			<Abstract type="html">Turn a payment method enum into a string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromPaymentMethod:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/stringFromPaymentMethod:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromPaymentMethodDetail:</TokenIdentifier>
+			<Abstract type="html">Turn a payment method detail into a string</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromPaymentMethodDetail:(PPHPaymentMethodDetail)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">the payment method detail enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/stringFromPaymentMethodDetail:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsContactless:</TokenIdentifier>
+			<Abstract type="html">Is the payment method a type of Contactless payment?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsContactless:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsContactless:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsCardPresent:</TokenIdentifier>
+			<Abstract type="html">Check whether the payment method is a form of card present payment</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsCardPresent:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsCardPresent:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsEmv:</TokenIdentifier>
+			<Abstract type="html">Check whether the payment method is a form of EMV payments</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsEmv:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsEmv:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsSwipe:</TokenIdentifier>
+			<Abstract type="html">Check whether the payment method is a swipe payment</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsSwipe:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsSwipe:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsMSD:</TokenIdentifier>
+			<Abstract type="html">Check whether the payment method is a form of magstripe data.</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsMSD:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsMSD:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodIsCreditCard:</TokenIdentifier>
+			<Abstract type="html">Is the payment method a type of Credit Card payment?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodIsCreditCard:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodIsCreditCard:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodMarksAsPaid:</TokenIdentifier>
+			<Abstract type="html">Does the payment method put the invoice in a MarkedAsPaid state
+(i.e. is it cash or check)</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethodMarksAsPaid:(PPHPaymentMethod)method</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodMarksAsPaid:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethodForContactlessTransactionType:</TokenIdentifier>
+			<Abstract type="html">Return a payment method given a contactless transaction type.</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHPaymentMethod)paymentMethodForContactlessTransactionType:(PPHContactlessTransactionType)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>the</Name>
+					<Abstract type="html">contactless transaction type such as EMV or MSD.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethodForContactlessTransactionType:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/paymentMethod:isAllowedInAvailablePaymentTypes:</TokenIdentifier>
+			<Abstract type="html">Do the given available payment types permit the given payment method</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)paymentMethod:(PPHPaymentMethod)method isAllowedInAvailablePaymentTypes:(PPHAvailablePaymentTypes)availablePaymentTypes</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the payment method to check permission for</Abstract>
+				</Parameter><Parameter>
+					<Name>availablePaymentTypes</Name>
+					<Abstract type="html">the mask of available payment types to test against</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/paymentMethod:isAllowedInAvailablePaymentTypes:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/stringFromTransactionStatus:</TokenIdentifier>
+			<Abstract type="html">A non-user-friendly string identifier for the given transaction status</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromTransactionStatus:(PPHTransactionStatus)transactionStatus</Declaration>
+			
+			
+			<Anchor>//api/name/stringFromTransactionStatus:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/transactionStatusIsRefund:</TokenIdentifier>
+			<Abstract type="html">Is the given transaction status related to a refund?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)transactionStatusIsRefund:(PPHTransactionStatus)transactionStatus</Declaration>
+			
+			
+			<Anchor>//api/name/transactionStatusIsRefund:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/transactionStatusIsSuccessful:</TokenIdentifier>
+			<Abstract type="html">Is the given transaction successful so far? Transactions being processed are in a successful state.</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)transactionStatusIsSuccessful:(PPHTransactionStatus)transactionStatus</Declaration>
+			
+			
+			<Anchor>//api/name/transactionStatusIsSuccessful:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/transactionStatusIsCancelled:</TokenIdentifier>
+			<Abstract type="html">Is the given transaction status related to a cancelled transaction?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)transactionStatusIsCancelled:(PPHTransactionStatus)transactionStatus</Declaration>
+			
+			
+			<Anchor>//api/name/transactionStatusIsCancelled:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHPaymentConstants/transactionStatusIsDeclined:</TokenIdentifier>
+			<Abstract type="html">Is the given transaction status related to a declined transaction?</Abstract>
+			<DeclaredIn>PPHPaymentConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)transactionStatusIsDeclined:(PPHTransactionStatus)transactionStatus</Declaration>
+			
+			
+			<Anchor>//api/name/transactionStatusIsDeclined:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

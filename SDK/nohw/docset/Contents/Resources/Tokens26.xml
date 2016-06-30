@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHError.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHError</TokenIdentifier>
+			<Abstract type="html">A customized error class for additional PayPal information such as a correlation id</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+            
+			
+			<NodeRef refid="26"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHError/recentErrors</TokenIdentifier>
+			<Abstract type="html">Stores the last five error objects created, for easier debugging and reporting when problems occur</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>+ (NSArray *)recentErrors</Declaration>
+			
+			
+			<Anchor>//api/name/recentErrors</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHError/pphErrorWithNSError:</TokenIdentifier>
+			<Abstract type="html">* &quot;Upgrade&quot; an NSError to a PPHError</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>+ (PPHError *)pphErrorWithNSError:(NSError *)error</Declaration>
+			
+			
+			<Anchor>//api/name/pphErrorWithNSError:</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHError/errorWithDomain:code:devMessage:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage</Declaration>
+			
+			
+			<Anchor>//api/name/errorWithDomain:code:devMessage:</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHError/errorWithDomain:code:devMessage:userMessage:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString *)userMessage</Declaration>
+			
+			
+			<Anchor>//api/name/errorWithDomain:code:devMessage:userMessage:</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/initWithDomain:code:devMessage:userMessage:userInfo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithDomain:(NSString *)domain code:(NSInteger)code devMessage:(NSString *)devMessage userMessage:(NSString *)userMessage userInfo:(NSDictionary *)userInfo</Declaration>
+			
+			
+			<Anchor>//api/name/initWithDomain:code:devMessage:userMessage:userInfo:</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/apiMessage</TokenIdentifier>
+			<Abstract type="html">The message returned from the server</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)apiMessage</Declaration>
+			
+			
+			<Anchor>//api/name/apiMessage</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/apiShortMessage</TokenIdentifier>
+			<Abstract type="html">A short version of the message returned from the server</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)apiShortMessage</Declaration>
+			
+			
+			<Anchor>//api/name/apiShortMessage</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/mappedMessage</TokenIdentifier>
+			<Abstract type="html">A mapped mesage with more detailed information</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)mappedMessage</Declaration>
+			
+			
+			<Anchor>//api/name/mappedMessage</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/parameter</TokenIdentifier>
+			<Abstract type="html">If the error refers to a particular parameter of your request, this value will be non-nil</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSArray *)parameter</Declaration>
+			
+			
+			<Anchor>//api/name/parameter</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/correlationId</TokenIdentifier>
+			<Abstract type="html">An alphanumeric id that is useful for PayPal support to diagnose problems</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)correlationId</Declaration>
+			
+			
+			<Anchor>//api/name/correlationId</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/date</TokenIdentifier>
+			<Abstract type="html">The date at which the error occurred</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSDate *)date</Declaration>
+			
+			
+			<Anchor>//api/name/date</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/devMessage</TokenIdentifier>
+			<Abstract type="html">A message for developers of 3rd party apps who are using the SDK. May contain useful information or
+suggestions about how this error came about or how to avoid it.</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)devMessage</Declaration>
+			
+			
+			<Anchor>//api/name/devMessage</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/isCancelError</TokenIdentifier>
+			<Abstract type="html">YES if this error is the result of the user pressing cancel (e.g. on a network request)</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isCancelError</Declaration>
+			
+			
+			<Anchor>//api/name/isCancelError</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/isTimeoutError</TokenIdentifier>
+			<Abstract type="html">YES if this error is the result of a network request timing out</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isTimeoutError</Declaration>
+			
+			
+			<Anchor>//api/name/isTimeoutError</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHError/asDictionary</TokenIdentifier>
+			<Abstract type="html">Generate an NSDictionary representing this error object, typically for writing to JSON</Abstract>
+			<DeclaredIn>PPHError.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			
+			
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

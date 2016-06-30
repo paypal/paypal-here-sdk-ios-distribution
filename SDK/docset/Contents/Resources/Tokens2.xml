@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHAccessController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHAccessController</TokenIdentifier>
+			<Abstract type="html">PPHAccessController helps you build OAuth authentication into your app. PLEASE NOTE:
+In order to implement proper security, you should create a server similar to
+the sample server included in this SDK to store your app secret server-side (only).</Abstract>
+			<DeclaredIn>PPHAccessController.h</DeclaredIn>
+            
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessController/setupMerchant:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Once you get an access_token and merchant info, pass it into setupMerchant
+and we&apos;ll verify PayPal Here setup and save their credentials.</Abstract>
+			<DeclaredIn>PPHAccessController.h</DeclaredIn>
+			
+			<Declaration>- (void)setupMerchant:(PPHAccessAccount *)account completionHandler:(PPHAccessCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>account</Name>
+					<Abstract type="html">The account created as a result of a successful PayPal Access login redirect</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">Will be called when we have gotten information about the account (eligibility, identity)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setupMerchant:completionHandler:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessController/refresh:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Refresh a PPHAccessAccount token using the refreshurl. If successful, the accesstoken
+will be updated</Abstract>
+			<DeclaredIn>PPHAccessController.h</DeclaredIn>
+			
+			<Declaration>- (void)refresh:(PPHAccessAccount *)account completionHandler:(PPHAccessTokenRefreshHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>account</Name>
+					<Abstract type="html">the account for which the refreshurl should be used to get a new accesstoken</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when refresh is complete</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/refresh:completionHandler:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

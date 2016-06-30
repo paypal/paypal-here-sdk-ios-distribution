@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/PPHTransactionEventType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/PPHTransactionEventType</TokenIdentifier>
+			<Abstract type="html">The Payment Events we&apos;ll send to the app.  These are currently a simple enum.</Abstract>
+			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="101"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_Idle</TokenIdentifier>
+            <Abstract type="html">The TransactionManager has entered the idle state.  It is not doing any work and is ready to begin a payment or refund.
+     </Abstract>
+            <Declaration>ePPHTransactionType_Idle</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_GettingPaymentInfo</TokenIdentifier>
+            <Abstract type="html">The transactionManager has entered a state of data collection.  beginPayment() has been called and we &lt;br&gt;
+are currently collecting information from card readers or the application.  You can now set/modify the invoice,
+signatures, and other data related to this payment.
+     </Abstract>
+            <Declaration>ePPHTransactionType_GettingPaymentInfo</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_DidStartReaderDetection</TokenIdentifier>
+            <Abstract type="html">This event will be triggered in cases where reader detection takes a while, such as for
+the audio readers. It presents an opportunity to show UI indicating that you are &quot;working on it&quot;
+     </Abstract>
+            <Declaration>ePPHTransactionType_DidStartReaderDetection</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_DidDetectReaderDevice</TokenIdentifier>
+            <Abstract type="html">A fully working reader was detected and is available
+     </Abstract>
+            <Declaration>ePPHTransactionType_DidDetectReaderDevice</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_DidRemoveReader</TokenIdentifier>
+            <Abstract type="html">A reader device has been removed from the system
+     </Abstract>
+            <Declaration>ePPHTransactionType_DidRemoveReader</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_CardReadBegun</TokenIdentifier>
+            <Abstract type="html">Something has occurred in the read head of the reader. Since processing can take a second or so,
+this allows you to get some UI up. Be careful how much work you do here because taxing the CPU
+will hurt success rate.
+     </Abstract>
+            <Declaration>ePPHTransactionType_CardReadBegun</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_CardDataReceived</TokenIdentifier>
+            <Abstract type="html">Card data received. The transaction manager has received card data, and it can be processed
+     </Abstract>
+            <Declaration>ePPHTransactionType_CardDataReceived</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_ReadCardNotAllowed</TokenIdentifier>
+            <Abstract type="html">Card data received. The transaction manager has received card data, but it is not allowed to process it
+     </Abstract>
+            <Declaration>ePPHTransactionType_ReadCardNotAllowed</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_FailedToReadCard</TokenIdentifier>
+            <Abstract type="html">A swipe attempt failed. Usually this means the magstripe could not be read and the merchant should try again.
+     </Abstract>
+            <Declaration>ePPHTransactionType_FailedToReadCard</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_ProcessingPayment</TokenIdentifier>
+            <Abstract type="html">The TransactionManager has entered a state where it is communicating with the backend servers to collect a payment.
+It is now too late to cancel the payment.
+     </Abstract>
+            <Declaration>ePPHTransactionType_ProcessingPayment</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_WaitingForSignature</TokenIdentifier>
+            <Abstract type="html">The TransactionManager has entered a state where it has completed the transaction successfully and is
+waiting for the app to collect a signature from the customer and call the finalizePayment API.
+     </Abstract>
+            <Declaration>ePPHTransactionType_WaitingForSignature</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_TransactionCancelled</TokenIdentifier>
+            <Abstract type="html">Event specifying that transaction has been cancelled. This will happen only in case of EMV Payments when te user pulls
+the card out of the reader when transaction is going on
+     </Abstract>
+            <Declaration>ePPHTransactionType_TransactionCancelled</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_TransactionDeclined</TokenIdentifier>
+            <Abstract type="html">Event specifying that transaction has been declined. This will happen only in case of EMV Payments in case terminal
+declines the transaction for some reason.
+     </Abstract>
+            <Declaration>ePPHTransactionType_TransactionDeclined</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ePPHTransactionType_RefundTypeSelectionCancelled</TokenIdentifier>
+            <Abstract type="html">Refund type selection has been cancelled.
+     </Abstract>
+            <Declaration>ePPHTransactionType_RefundTypeSelectionCancelled</Declaration>
+            
+            <DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+            <NodeRef refid="101"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

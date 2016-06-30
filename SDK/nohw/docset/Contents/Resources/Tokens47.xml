@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHReaderDisplayFormatter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHReaderDisplayFormatter</TokenIdentifier>
+			<Abstract type="html">* This class allows you to generate aligned, justified strings of text for display
+* on LED screens. Most reader display screens allow a certain number of characters to be displayed
+* per row. Based on these constraints you will probably either want to right justify, left justify,
+* or simply center your strings of text on the display. Use this class to do these operations.
+* This class is simply a formatter and has no intelligence on how many lines a readerDisplay accepts.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+            
+			
+			<NodeRef refid="47"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/setStringValue:</TokenIdentifier>
+			<Abstract type="html">Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&quot;&quot; if an error occurred during formatting due
+to bad input values. We also append @&quot;&quot; if subsequent formatting operations fail.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSMutableString *stringValue</Declaration>
+			
+			
+			<Anchor>//api/name/stringValue</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/stringValue</TokenIdentifier>
+			<Abstract type="html">Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&quot;&quot; if an error occurred during formatting due
+to bad input values. We also append @&quot;&quot; if subsequent formatting operations fail.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSMutableString *stringValue</Declaration>
+			
+			
+			<Anchor>//api/name/stringValue</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHReaderDisplayFormatter/stringValue</TokenIdentifier>
+			<Abstract type="html">Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&quot;&quot; if an error occurred during formatting due
+to bad input values. We also append @&quot;&quot; if subsequent formatting operations fail.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSMutableString *stringValue</Declaration>
+			
+			
+			<Anchor>//api/name/stringValue</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHReaderDisplayFormatter/formatterWithNumCharactersPerRow:</TokenIdentifier>
+			<Abstract type="html">Grab an instance of PPHReaderDisplayFormatter by specifying the number of characters allowed
+per row for the current display you are working with.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>+ (PPHReaderDisplayFormatter *)formatterWithNumCharactersPerRow:(NSUInteger)numChars</Declaration>
+			
+			
+			<Anchor>//api/name/formatterWithNumCharactersPerRow:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHReaderDisplayFormatter/formatterForDisplayReader:</TokenIdentifier>
+			<Abstract type="html">Grab an instance of PPHReaderDisplayFormatter by specifying the current Display Reader you
+are working with. Currently we only support the m010 reader. Based on the reader provided, we init
+the formatter with the appropriate number of characters per row. If you provide
+ePPHDisplayReaderUnknown we return nil, for a custom formatter use the formatterWithNumCharacters
+PerRow static initter method instead.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>+ (PPHReaderDisplayFormatter *)formatterForDisplayReader:(PPHDisplayReader)reader</Declaration>
+			
+			
+			<Anchor>//api/name/formatterForDisplayReader:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/justifyString:withAlignment:</TokenIdentifier>
+			<Abstract type="html">Use this method to justify/align a string.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>- (void)justifyString:(NSString *)str withAlignment:(NSTextAlignment)alignment</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>str:</Name>
+					<Abstract type="html">The string you want formatted/aligned for the display</Abstract>
+				</Parameter><Parameter>
+					<Name>alignment:</Name>
+					<Abstract type="html">NSTextAlignment value to specify how you want the text aligned. Currently we only
+support NSTextAlignmentCenter, NSTextAlignmentRight, and NSTextAlignmentLeft. Any other enumeration
+val passed in will result in the string being ignored and no action being taken.
+
+EXAMPLE: Let&apos;s say you pass in the string &quot;Hello\nWorld&quot; with alignment NSTextAlignmentCenter.
+This implies you want the lines &quot;Hello&quot; and &quot;World&quot; to be on two separate lines on the display reader
+and you want each string to be centered on the display. We format the string accordingly. After
+feeding the string into this API, get the formatted string back by querying the stringValue property.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/justifyString:withAlignment:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/stringWithLeftString:andRightString:</TokenIdentifier>
+			<Abstract type="html">Add a line that has a left aligned string and a right aligned string (blanks inserted in between)</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>- (void)stringWithLeftString:(NSString *)left andRightString:(NSString *)right</Declaration>
+			
+			
+			<Anchor>//api/name/stringWithLeftString:andRightString:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/readerTextForKey:</TokenIdentifier>
+			<Abstract type="html">Provide a key prefix for a string in our string tables, this method will return the appropriate
+text mapped to the key prefix for the formatter&apos;s current reader. You can then feed the string into
+the formatter&apos;s API&apos;s to justify the text if you want and then retrieve the formatted text.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)readerTextForKey:(NSString *)key</Declaration>
+			
+			
+			<Anchor>//api/name/readerTextForKey:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/splitOnNewLine:</TokenIdentifier>
+			<Abstract type="html">Convenience method to split a string on new line characters. You can then feed each string
+one by one into the formatter&apos;s justifyString method and specify different alignments.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>- (NSArray *)splitOnNewLine:(NSString *)str</Declaration>
+			
+			
+			<Anchor>//api/name/splitOnNewLine:</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/addPaddedLine</TokenIdentifier>
+			<Abstract type="html">Convenience method to generate a blank line of text padded with spaces and add it to
+the formatter. This can help to create blank rows between two lines of text for example.</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>- (void)addPaddedLine</Declaration>
+			
+			
+			<Anchor>//api/name/addPaddedLine</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHReaderDisplayFormatter/clearString</TokenIdentifier>
+			<Abstract type="html">Clear out any formatted text the formatter is currently holding and set it to the
+empty string @&quot;&quot;</Abstract>
+			<DeclaredIn>PPHReaderDisplayFormatter.h</DeclaredIn>
+			
+			<Declaration>- (void)clearString</Declaration>
+			
+			
+			<Anchor>//api/name/clearString</Anchor>
+            <NodeRef refid="47"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

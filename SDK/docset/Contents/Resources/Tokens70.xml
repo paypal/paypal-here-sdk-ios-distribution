@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHTransactionControllerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionControllerDelegate</TokenIdentifier>
+			<Abstract type="html">The TransactionController defines an interface that can be used by the application to install a callback
+object that is used to customize behavior and the payment experience.
+TransactionControllers are set on the TransactionManager on a per transaction basis. Unlike persistent
+listeners that are registered with the manager object, TransactionControllers are &quot;forgotten&quot; by the
+SDK at the end of each transaction (regardless of success or failure).
+TransactionControllers are also used to call out important transaction related events to the app
+such as contactless payment listener timeouts.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="70"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/userDidSelectPaymentMethod:</TokenIdentifier>
+			<Abstract type="html">This delegate method will be called by the EMVSDK whenever a user selects a payment method by
+presenting their card. Mandatory if your app would like to take custom action such as handling tips
+before letting the EMVSDK continue. Gives you a chance to modify the transaction total.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)userDidSelectPaymentMethod:(PPHPaymentMethod)paymentOption</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>paymentOption</Name>
+					<Abstract type="html">the type of payment option the user selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/userDidSelectPaymentMethod:</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/userDidSelectRefundMethod:</TokenIdentifier>
+			<Abstract type="html">This delegate method will be called by the EMVSDK whenever a user selects a refund method by
+presenting their card. Mandatory if your app would like to take custom action before letting
+the EMVSDK continue. Gives you a chance to modify the transaction total.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)userDidSelectRefundMethod:(PPHPaymentMethod)refundOption</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>refundOption</Name>
+					<Abstract type="html">the type of refund payment option user selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/userDidSelectRefundMethod:</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/getCurrentNavigationController</TokenIdentifier>
+			<Abstract type="html">Mandatory if you are using the EMVSDK. Returns a reference to a
+navigation controller we drive UI off of.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (UINavigationController *)getCurrentNavigationController</Declaration>
+			
+			
+			<Anchor>//api/name/getCurrentNavigationController</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/getReceiptOptions</TokenIdentifier>
+			<Abstract type="html">Request an NSArray of PPHReceiptOption from the delegate. This array represents
+a series of options that will be displayed alongside the Email and SMS receipt options.
+A sample use case for this is implementing a &quot;Print&quot; option that will print the receipt using
+your custom hardware and logic.
+See PPHReceiptOption for more information.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (NSArray *)getReceiptOptions</Declaration>
+			
+			
+			<Anchor>//api/name/getReceiptOptions</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/receiptOptionsWillAppearForRecord:</TokenIdentifier>
+			<Abstract type="html">This message is sent to the delegate right before the receipt options screen appears.
+If your app does automatic receipt printing, this is a good place to do it.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)receiptOptionsWillAppearForRecord:(PPHTransactionRecord *)record</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>record</Name>
+					<Abstract type="html">A description of the current transaction</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/receiptOptionsWillAppearForRecord:</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/contactlessTimeoutAction</TokenIdentifier>
+			<Abstract type="html">To conserve battery life the contactless listener of the reader may timeout, in which case this
+method will be called so you may instruct the SDK to take a specific action. If this delegate
+method is unimplemented the SDK will default to ePPHContactlessTimeoutActionCancelTransaction</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (PPHContactlessTimeoutAction)contactlessTimeoutAction</Declaration>
+			
+			
+			<Anchor>//api/name/contactlessTimeoutAction</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/userAddedGratuityToInvoice:</TokenIdentifier>
+			<Abstract type="html">The user added a gratuity to PPHTransactionManager&apos;s currentInvoice through prompts on the reader</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)userAddedGratuityToInvoice:(PPHInvoice *)invoice</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice that was updated. The same instance that is the currentInvoice of PPHTransactionManager</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/userAddedGratuityToInvoice:</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/readerDidActivateForPayments</TokenIdentifier>
+			<Abstract type="html">Gets called when the reader has been activated for payments and is ready to process card present data.
+Handle any non-EMV SDK related processing once this comes back.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)readerDidActivateForPayments</Declaration>
+			
+			
+			<Anchor>//api/name/readerDidActivateForPayments</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionControllerDelegate/readerDidDeactivateForPayments</TokenIdentifier>
+			<Abstract type="html">Gets called when the reader has been de-activated for payments.
+We have not dropped connection with the reader, but our reader will not process any card present data.
+To enable the reader for payments again, just call activateReaderForPayments when you are ready and take
+a payment against the current TM invoice, or simply start a new transaction.
+Deactivation can occur if a user presses cancel on the terminal before presenting their card to the terminal.
+Deactivation can also occur if you have explicitly called deActivateReaderForPayment.</Abstract>
+			<DeclaredIn>PPHTransactionControllerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)readerDidDeactivateForPayments</Declaration>
+			
+			
+			<Anchor>//api/name/readerDidDeactivateForPayments</Anchor>
+            <NodeRef refid="70"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

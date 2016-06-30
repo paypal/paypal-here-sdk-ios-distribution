@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHTransactionManagerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHTransactionManagerDelegate</TokenIdentifier>
+			<Abstract type="html">The PPHTransactionManagerDelegate aids in communicating with the application layer by sending various
+messages throughout the payment flow. These messages reflect the different stages of a transaction
+and could be used by the application to display appropriate text, image or UI on the screen.</Abstract>
+			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="71"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHTransactionManagerDelegate/onPaymentEvent:</TokenIdentifier>
+			<Abstract type="html">onPaymentEvent</Abstract>
+			<DeclaredIn>PPHTransactionManagerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onPaymentEvent:(PPHTransactionManagerEvent *)event</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>event</Name>
+					<Abstract type="html">: A PaymentEvent object the contains information about the event.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onPaymentEvent:</Anchor>
+            <NodeRef refid="71"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

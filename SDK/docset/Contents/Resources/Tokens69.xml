@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHSignatureViewDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHSignatureViewDelegate</TokenIdentifier>
+			<Abstract type="html">A delegate that receives events related to buyer signatures in the PPHSignatureView</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+            
+			
+			<NodeRef refid="69"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureTouchesBegan</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has begun, so that you can hide potentially conflicting UI</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureTouchesBegan</Declaration>
+			
+			
+			<Anchor>//api/name/signatureTouchesBegan</Anchor>
+            <NodeRef refid="69"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHSignatureViewDelegate/signatureUpdated:</TokenIdentifier>
+			<Abstract type="html">Called when a signature gesture has completed. Note that it may &quot;begin again&quot; such as a
+disconnected gesture for last name.</Abstract>
+			<DeclaredIn>PPHSignatureView.h</DeclaredIn>
+			
+			<Declaration>- (void)signatureUpdated:(BOOL)isEmpty</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>isEmpty</Name>
+					<Abstract type="html">whether the new signature is empty</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/signatureUpdated:</Anchor>
+            <NodeRef refid="69"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

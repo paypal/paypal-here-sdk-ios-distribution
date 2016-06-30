@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHChipAndPinDecisionEvent.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHChipAndPinDecisionEvent</TokenIdentifier>
+			<Abstract type="html">An event fired when there are multiple applications on the card
+and the consumer/merchant must choose which one to use</Abstract>
+			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+            
+			
+			<NodeRef refid="20"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinDecisionEvent/count</TokenIdentifier>
+			<Abstract type="html">Number of applications available</Abstract>
+			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			
+			<Declaration>- (NSInteger)count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinDecisionEvent/applicationNameAtIndex:</TokenIdentifier>
+			<Abstract type="html">Name of the application at index ix</Abstract>
+			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)applicationNameAtIndex:(NSInteger)ix</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ix</Name>
+					<Abstract type="html">the index (0-based)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/applicationNameAtIndex:</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHChipAndPinDecisionEvent/applicationIdAtIndex:</TokenIdentifier>
+			<Abstract type="html">Id of the application at index ix</Abstract>
+			<DeclaredIn>PPHChipAndPinEvent.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)applicationIdAtIndex:(NSInteger)ix</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ix</Name>
+					<Abstract type="html">the index (0-based)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/applicationIdAtIndex:</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

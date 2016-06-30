@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHInvoicePayment.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoicePayment</TokenIdentifier>
+			<Abstract type="html">A data structure representing a payment on an invoice. It includes details about the method of payment, any relevant transaction identifiers, the location
+and other related information. There can be at most one payment against an invoice.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+            
+			
+			<NodeRef refid="34"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/initWithTransaction:forAmount:withMethod:andDetail:onDate:</TokenIdentifier>
+			<Abstract type="html">Create a payment record manually</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithTransaction:(NSString *)transactionId forAmount:(PPHAmount *)amount withMethod:(PPHPaymentMethod)method andDetail:(PPHPaymentMethodDetail)detail onDate:(NSDate *)date</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>transactionId</Name>
+					<Abstract type="html">the transaction identifier</Abstract>
+				</Parameter><Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">the amount of hte payment</Abstract>
+				</Parameter><Parameter>
+					<Name>method</Name>
+					<Abstract type="html">the type of payment</Abstract>
+				</Parameter><Parameter>
+					<Name>detail</Name>
+					<Abstract type="html">additional data based on method</Abstract>
+				</Parameter><Parameter>
+					<Name>date</Name>
+					<Abstract type="html">the date of the payment</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTransaction:forAmount:withMethod:andDetail:onDate:</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/initWithDictionary:</TokenIdentifier>
+			<Abstract type="html">Create a payment record from the server information</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>representation</Name>
+					<Abstract type="html">the server response as part of the invoice details</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithDictionary:</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/asDictionary</TokenIdentifier>
+			<Abstract type="html">Render the payment information to a dictioary (mainly useful for local caching/storing)</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			
+			
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setPaymentMethod:</TokenIdentifier>
+			<Abstract type="html">The high level method of payment</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHPaymentMethod paymentMethod</Declaration>
+			
+			
+			<Anchor>//api/name/paymentMethod</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/paymentMethod</TokenIdentifier>
+			<Abstract type="html">The high level method of payment</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHPaymentMethod paymentMethod</Declaration>
+			
+			
+			<Anchor>//api/name/paymentMethod</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/paymentMethod</TokenIdentifier>
+			<Abstract type="html">The high level method of payment</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHPaymentMethod paymentMethod</Declaration>
+			
+			
+			<Anchor>//api/name/paymentMethod</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setPaymentMethodDetail:</TokenIdentifier>
+			<Abstract type="html">Additional data related to the payment method, such as the source of the funds if known</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHPaymentMethodDetail paymentMethodDetail</Declaration>
+			
+			
+			<Anchor>//api/name/paymentMethodDetail</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/paymentMethodDetail</TokenIdentifier>
+			<Abstract type="html">Additional data related to the payment method, such as the source of the funds if known</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHPaymentMethodDetail paymentMethodDetail</Declaration>
+			
+			
+			<Anchor>//api/name/paymentMethodDetail</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/paymentMethodDetail</TokenIdentifier>
+			<Abstract type="html">Additional data related to the payment method, such as the source of the funds if known</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHPaymentMethodDetail paymentMethodDetail</Declaration>
+			
+			
+			<Anchor>//api/name/paymentMethodDetail</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setTransactionId:</TokenIdentifier>
+			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
+			
+			
+			<Anchor>//api/name/transactionId</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/transactionId</TokenIdentifier>
+			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
+			
+			
+			<Anchor>//api/name/transactionId</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/transactionId</TokenIdentifier>
+			<Abstract type="html">For PayPal balance-affecting transactions (cc, checkin) - the tx id of the payment</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *transactionId</Declaration>
+			
+			
+			<Anchor>//api/name/transactionId</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setAmount:</TokenIdentifier>
+			<Abstract type="html">The amount of the payment or refund.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) PPHAmount *amount</Declaration>
+			
+			
+			<Anchor>//api/name/amount</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/amount</TokenIdentifier>
+			<Abstract type="html">The amount of the payment or refund.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) PPHAmount *amount</Declaration>
+			
+			
+			<Anchor>//api/name/amount</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/amount</TokenIdentifier>
+			<Abstract type="html">The amount of the payment or refund.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) PPHAmount *amount</Declaration>
+			
+			
+			<Anchor>//api/name/amount</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setDate:</TokenIdentifier>
+			<Abstract type="html">The date on which the payment or refund occurred</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *date</Declaration>
+			
+			
+			<Anchor>//api/name/date</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/date</TokenIdentifier>
+			<Abstract type="html">The date on which the payment or refund occurred</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *date</Declaration>
+			
+			
+			<Anchor>//api/name/date</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/date</TokenIdentifier>
+			<Abstract type="html">The date on which the payment or refund occurred</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *date</Declaration>
+			
+			
+			<Anchor>//api/name/date</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setPaidWithPayPal:</TokenIdentifier>
+			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL paidWithPayPal</Declaration>
+			
+			
+			<Anchor>//api/name/paidWithPayPal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/paidWithPayPal</TokenIdentifier>
+			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL paidWithPayPal</Declaration>
+			
+			
+			<Anchor>//api/name/paidWithPayPal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/paidWithPayPal</TokenIdentifier>
+			<Abstract type="html">Was the invoice paid on PayPal.com?</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL paidWithPayPal</Declaration>
+			
+			
+			<Anchor>//api/name/paidWithPayPal</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setLatitude:</TokenIdentifier>
+			<Abstract type="html">The coordinates of the location where the payment was taken.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *latitude</Declaration>
+			
+			
+			<Anchor>//api/name/latitude</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/latitude</TokenIdentifier>
+			<Abstract type="html">The coordinates of the location where the payment was taken.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *latitude</Declaration>
+			
+			
+			<Anchor>//api/name/latitude</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/latitude</TokenIdentifier>
+			<Abstract type="html">The coordinates of the location where the payment was taken.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *latitude</Declaration>
+			
+			
+			<Anchor>//api/name/latitude</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setLongitude:</TokenIdentifier>
+			<Abstract type="html">The coordinates of the location where the payment was taken.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *longitude</Declaration>
+			
+			
+			<Anchor>//api/name/longitude</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/longitude</TokenIdentifier>
+			<Abstract type="html">The coordinates of the location where the payment was taken.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *longitude</Declaration>
+			
+			
+			<Anchor>//api/name/longitude</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/longitude</TokenIdentifier>
+			<Abstract type="html">The coordinates of the location where the payment was taken.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *longitude</Declaration>
+			
+			
+			<Anchor>//api/name/longitude</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setDetails:</TokenIdentifier>
+			<Abstract type="html">Additional information about the payment such as the amount of cash tendered, etc. TODO put this in separate fields</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *details</Declaration>
+			
+			
+			<Anchor>//api/name/details</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/details</TokenIdentifier>
+			<Abstract type="html">Additional information about the payment such as the amount of cash tendered, etc. TODO put this in separate fields</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *details</Declaration>
+			
+			
+			<Anchor>//api/name/details</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/details</TokenIdentifier>
+			<Abstract type="html">Additional information about the payment such as the amount of cash tendered, etc. TODO put this in separate fields</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *details</Declaration>
+			
+			
+			<Anchor>//api/name/details</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setCreditCardType:</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the type of that card.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHCreditCardType creditCardType</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardType</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/creditCardType</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the type of that card.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHCreditCardType creditCardType</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardType</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/creditCardType</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the type of that card.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHCreditCardType creditCardType</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardType</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setCreditCardLastFourDigits:</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the last four digits of the card number.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *creditCardLastFourDigits</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardLastFourDigits</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/creditCardLastFourDigits</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the last four digits of the card number.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *creditCardLastFourDigits</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardLastFourDigits</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/creditCardLastFourDigits</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the last four digits of the card number.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *creditCardLastFourDigits</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardLastFourDigits</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setCreditCardApplicationName:</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the discrete application of that card that was used, if available.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *creditCardApplicationName</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardApplicationName</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/creditCardApplicationName</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the discrete application of that card that was used, if available.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *creditCardApplicationName</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardApplicationName</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/creditCardApplicationName</TokenIdentifier>
+			<Abstract type="html">If this payment was made with a credit card this is the discrete application of that card that was used, if available.</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSString *creditCardApplicationName</Declaration>
+			
+			
+			<Anchor>//api/name/creditCardApplicationName</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setFee:</TokenIdentifier>
+			<Abstract type="html">PayPal fee, if applicable and known - this is typically only filled out when reading payment details from transaction details APIs</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHAmount *fee</Declaration>
+			
+			
+			<Anchor>//api/name/fee</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/fee</TokenIdentifier>
+			<Abstract type="html">PayPal fee, if applicable and known - this is typically only filled out when reading payment details from transaction details APIs</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHAmount *fee</Declaration>
+			
+			
+			<Anchor>//api/name/fee</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/fee</TokenIdentifier>
+			<Abstract type="html">PayPal fee, if applicable and known - this is typically only filled out when reading payment details from transaction details APIs</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHAmount *fee</Declaration>
+			
+			
+			<Anchor>//api/name/fee</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/setCashTendered:</TokenIdentifier>
+			<Abstract type="html">If this payment was made with cash and we know the amount tendered, this will be non-nil</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *cashTendered</Declaration>
+			
+			
+			<Anchor>//api/name/cashTendered</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoicePayment/cashTendered</TokenIdentifier>
+			<Abstract type="html">If this payment was made with cash and we know the amount tendered, this will be non-nil</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *cashTendered</Declaration>
+			
+			
+			<Anchor>//api/name/cashTendered</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoicePayment/cashTendered</TokenIdentifier>
+			<Abstract type="html">If this payment was made with cash and we know the amount tendered, this will be non-nil</Abstract>
+			<DeclaredIn>PPHInvoicePayment.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) NSDecimalNumber *cashTendered</Declaration>
+			
+			
+			<Anchor>//api/name/cashTendered</Anchor>
+            <NodeRef refid="34"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,2007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHInvoice.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoice</TokenIdentifier>
+			<Abstract type="html">An invoice represents a collection of items and extra charges by a merchant for a customer.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+            
+			
+			<NodeRef refid="27"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoice/downloadInvoiceForInvoiceId:context:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Finds the invoice with the specified PayPal Invoice ID (a guid-like value starting with INV)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>+ (void)downloadInvoiceForInvoiceId:(NSString *)invoiceId context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoiceId</Name>
+					<Abstract type="html">NSString The ID of the invoice to fetch from the server. You can acquire an invoice ID from doing a SearchInvoices API call or using one from saving a previous invoice.</Abstract>
+				</Parameter><Parameter>
+					<Name>context</Name>
+					<Abstract type="html">NSManagedObjectContext The context to reconcile the invoice with, nil is you would not like to reconcile at this time.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/downloadInvoiceForInvoiceId:context:completionHandler:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoice/downloadInvoiceForMerchantReferenceNumber:context:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Finds the invoice with the specified merchant reference number</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>+ (void)downloadInvoiceForMerchantReferenceNumber:(NSString *)referenceNumber context:(PPHInvoiceItemContext *)context completionHandler:(PPHInvoiceLoadCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>referenceNumber</Name>
+					<Abstract type="html">the merchant reference number on the invoice</Abstract>
+				</Parameter><Parameter>
+					<Name>context</Name>
+					<Abstract type="html">NSManagedObjectContext The context to reconcile the invoice with, nil is you would not like to reconcile at this time.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceLoadCompletionHandler The block to invoke and retuirn the newly created invoice once the load is complete.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/downloadInvoiceForMerchantReferenceNumber:context:completionHandler:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/initWithCurrency:</TokenIdentifier>
+			<Abstract type="html">Initialize the invoice with just a currency. The go to way to make a brand new invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithCurrency:(NSString *)currency</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>currency</Name>
+					<Abstract type="html">NSString The curreny code to make the invoice with.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithCurrency:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/initWithDictionary:</TokenIdentifier>
+			<Abstract type="html">Initialize the invoice with data received from the server in the past.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>representation</Name>
+					<Abstract type="html">NSDictionary The dictionary previously received from a GetInvoiceDetails API call.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithDictionary:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/initWithDictionary:context:</TokenIdentifier>
+			<Abstract type="html">Initialize the invoice with data received from the server in the past and reconcile its items with the given context.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation context:(PPHInvoiceItemContext *)context</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>representation</Name>
+					<Abstract type="html">NSDictionary The dictionary previously received from a GetInvoiceDetails API call.</Abstract>
+				</Parameter><Parameter>
+					<Name>context</Name>
+					<Abstract type="html">NSManagedObjectContext The context to reconcile the invoice items with.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithDictionary:context:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/initWithDictionary:invoiceId:context:</TokenIdentifier>
+			<Abstract type="html">Initialize the invoice with data received from the server in the past give it the invoice ID specified and reconcile its items with the given context. You MUST use this initialization method if you have an invoice ID that you want to give to an invoice, otherwise the invoice will get a new one when saving for the first time.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDictionary:(NSDictionary *)representation invoiceId:(NSString *)invoiceId context:(PPHInvoiceItemContext *)context</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>representation</Name>
+					<Abstract type="html">NSDictionary The dictionary previously received from a GetInvoiceDetails API call.</Abstract>
+				</Parameter><Parameter>
+					<Name>invoiceId</Name>
+					<Abstract type="html">NSString The invoice ID previously received from the server that you want to give to this server.</Abstract>
+				</Parameter><Parameter>
+					<Name>context</Name>
+					<Abstract type="html">NSManagedObjectContext The context to reconcile the invoice items with.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithDictionary:invoiceId:context:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/initWithItem:forAmount:</TokenIdentifier>
+			<Abstract type="html">Initialize a simple invoice with one item and an amount.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithItem:(NSString *)item forAmount:(PPHAmount *)amount</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>item</Name>
+					<Abstract type="html">Item name or description</Abstract>
+				</Parameter><Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">The amount of the item</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithItem:forAmount:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/copyAsTemplate</TokenIdentifier>
+			<Abstract type="html">Create a new invoice using the data from this invoice.
+This copies everything except the data that defines it as a unique invoice to PayPal.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)copyAsTemplate</Declaration>
+			
+			
+			<Anchor>//api/name/copyAsTemplate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/asDictionary</TokenIdentifier>
+			<Abstract type="html">Compile the invoice&apos;s data to a format that is ready to save as an InvoiceType parameter to an API call.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/readDictionary:</TokenIdentifier>
+			<Abstract type="html">Reloads an invoice&apos;s data using a dictionary previously received from the server.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)readDictionary:(NSDictionary *)dictionary</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>dictionary</Name>
+					<Abstract type="html">The NSDictionary as received from the server</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/readDictionary:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setDiscountAmount:</TokenIdentifier>
+			<Abstract type="html">Discount applied to the subtotal (amount applied first, then percentage)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *discountAmount</Declaration>
+			
+			
+			<Anchor>//api/name/discountAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/discountAmount</TokenIdentifier>
+			<Abstract type="html">Discount applied to the subtotal (amount applied first, then percentage)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *discountAmount</Declaration>
+			
+			
+			<Anchor>//api/name/discountAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/discountAmount</TokenIdentifier>
+			<Abstract type="html">Discount applied to the subtotal (amount applied first, then percentage)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *discountAmount</Declaration>
+			
+			
+			<Anchor>//api/name/discountAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setDiscountPercentage:</TokenIdentifier>
+			<Abstract type="html">Discount percentage applied to the subtotal (amount applied first, then percentage)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *discountPercentage</Declaration>
+			
+			
+			<Anchor>//api/name/discountPercentage</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/discountPercentage</TokenIdentifier>
+			<Abstract type="html">Discount percentage applied to the subtotal (amount applied first, then percentage)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *discountPercentage</Declaration>
+			
+			
+			<Anchor>//api/name/discountPercentage</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/discountPercentage</TokenIdentifier>
+			<Abstract type="html">Discount percentage applied to the subtotal (amount applied first, then percentage)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *discountPercentage</Declaration>
+			
+			
+			<Anchor>//api/name/discountPercentage</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setGratuity:</TokenIdentifier>
+			<Abstract type="html">The amount the payer decided to tip (or the default tip)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *gratuity</Declaration>
+			
+			
+			<Anchor>//api/name/gratuity</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/gratuity</TokenIdentifier>
+			<Abstract type="html">The amount the payer decided to tip (or the default tip)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *gratuity</Declaration>
+			
+			
+			<Anchor>//api/name/gratuity</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/gratuity</TokenIdentifier>
+			<Abstract type="html">The amount the payer decided to tip (or the default tip)</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *gratuity</Declaration>
+			
+			
+			<Anchor>//api/name/gratuity</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setPaymentTerms:</TokenIdentifier>
+			<Abstract type="html">e.g. DueOnReceipt,Net30</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *paymentTerms</Declaration>
+			
+			
+			<Anchor>//api/name/paymentTerms</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/paymentTerms</TokenIdentifier>
+			<Abstract type="html">e.g. DueOnReceipt,Net30</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *paymentTerms</Declaration>
+			
+			
+			<Anchor>//api/name/paymentTerms</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/paymentTerms</TokenIdentifier>
+			<Abstract type="html">e.g. DueOnReceipt,Net30</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *paymentTerms</Declaration>
+			
+			
+			<Anchor>//api/name/paymentTerms</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setDueDate:</TokenIdentifier>
+			<Abstract type="html">Custom due date</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDate *dueDate</Declaration>
+			
+			
+			<Anchor>//api/name/dueDate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/dueDate</TokenIdentifier>
+			<Abstract type="html">Custom due date</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDate *dueDate</Declaration>
+			
+			
+			<Anchor>//api/name/dueDate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/dueDate</TokenIdentifier>
+			<Abstract type="html">Custom due date</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDate *dueDate</Declaration>
+			
+			
+			<Anchor>//api/name/dueDate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setPayerEmail:</TokenIdentifier>
+			<Abstract type="html">Often noreply@here.paypal.com</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *payerEmail</Declaration>
+			
+			
+			<Anchor>//api/name/payerEmail</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/payerEmail</TokenIdentifier>
+			<Abstract type="html">Often noreply@here.paypal.com</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *payerEmail</Declaration>
+			
+			
+			<Anchor>//api/name/payerEmail</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/payerEmail</TokenIdentifier>
+			<Abstract type="html">Often noreply@here.paypal.com</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *payerEmail</Declaration>
+			
+			
+			<Anchor>//api/name/payerEmail</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setBillingInfo:</TokenIdentifier>
+			<Abstract type="html">Billing address information</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceContactInfo *billingInfo</Declaration>
+			
+			
+			<Anchor>//api/name/billingInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/billingInfo</TokenIdentifier>
+			<Abstract type="html">Billing address information</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceContactInfo *billingInfo</Declaration>
+			
+			
+			<Anchor>//api/name/billingInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/billingInfo</TokenIdentifier>
+			<Abstract type="html">Billing address information</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceContactInfo *billingInfo</Declaration>
+			
+			
+			<Anchor>//api/name/billingInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setShippingInfo:</TokenIdentifier>
+			<Abstract type="html">Shipping address information</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceContactInfo *shippingInfo</Declaration>
+			
+			
+			<Anchor>//api/name/shippingInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/shippingInfo</TokenIdentifier>
+			<Abstract type="html">Shipping address information</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceContactInfo *shippingInfo</Declaration>
+			
+			
+			<Anchor>//api/name/shippingInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/shippingInfo</TokenIdentifier>
+			<Abstract type="html">Shipping address information</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceContactInfo *shippingInfo</Declaration>
+			
+			
+			<Anchor>//api/name/shippingInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setShippingAmount:</TokenIdentifier>
+			<Abstract type="html">The cost of shipping applied to the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *shippingAmount</Declaration>
+			
+			
+			<Anchor>//api/name/shippingAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/shippingAmount</TokenIdentifier>
+			<Abstract type="html">The cost of shipping applied to the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *shippingAmount</Declaration>
+			
+			
+			<Anchor>//api/name/shippingAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/shippingAmount</TokenIdentifier>
+			<Abstract type="html">The cost of shipping applied to the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *shippingAmount</Declaration>
+			
+			
+			<Anchor>//api/name/shippingAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setShippingTaxRate:</TokenIdentifier>
+			<Abstract type="html">The actual percentage tax rate applied to the shipping</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *shippingTaxRate</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTaxRate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/shippingTaxRate</TokenIdentifier>
+			<Abstract type="html">The actual percentage tax rate applied to the shipping</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *shippingTaxRate</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTaxRate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/shippingTaxRate</TokenIdentifier>
+			<Abstract type="html">The actual percentage tax rate applied to the shipping</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *shippingTaxRate</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTaxRate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setShippingTaxRateName:</TokenIdentifier>
+			<Abstract type="html">The name of the tax rate applied to the shipping cost</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *shippingTaxRateName</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTaxRateName</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/shippingTaxRateName</TokenIdentifier>
+			<Abstract type="html">The name of the tax rate applied to the shipping cost</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *shippingTaxRateName</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTaxRateName</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/shippingTaxRateName</TokenIdentifier>
+			<Abstract type="html">The name of the tax rate applied to the shipping cost</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *shippingTaxRateName</Declaration>
+			
+			
+			<Anchor>//api/name/shippingTaxRateName</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTaxInclusive:</TokenIdentifier>
+			<Abstract type="html">Is the tax included in the subtotal?</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL taxInclusive</Declaration>
+			
+			
+			<Anchor>//api/name/taxInclusive</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/taxInclusive</TokenIdentifier>
+			<Abstract type="html">Is the tax included in the subtotal?</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL taxInclusive</Declaration>
+			
+			
+			<Anchor>//api/name/taxInclusive</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/taxInclusive</TokenIdentifier>
+			<Abstract type="html">Is the tax included in the subtotal?</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL taxInclusive</Declaration>
+			
+			
+			<Anchor>//api/name/taxInclusive</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTaxCalculatedAfterDiscount:</TokenIdentifier>
+			<Abstract type="html">Is the discount to be subtracted before tax?</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL taxCalculatedAfterDiscount</Declaration>
+			
+			
+			<Anchor>//api/name/taxCalculatedAfterDiscount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/taxCalculatedAfterDiscount</TokenIdentifier>
+			<Abstract type="html">Is the discount to be subtracted before tax?</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL taxCalculatedAfterDiscount</Declaration>
+			
+			
+			<Anchor>//api/name/taxCalculatedAfterDiscount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/taxCalculatedAfterDiscount</TokenIdentifier>
+			<Abstract type="html">Is the discount to be subtracted before tax?</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL taxCalculatedAfterDiscount</Declaration>
+			
+			
+			<Anchor>//api/name/taxCalculatedAfterDiscount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setCustomAmountName:</TokenIdentifier>
+			<Abstract type="html">The name of a custom value entered on an invoice from the website.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *customAmountName</Declaration>
+			
+			
+			<Anchor>//api/name/customAmountName</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/customAmountName</TokenIdentifier>
+			<Abstract type="html">The name of a custom value entered on an invoice from the website.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *customAmountName</Declaration>
+			
+			
+			<Anchor>//api/name/customAmountName</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/customAmountName</TokenIdentifier>
+			<Abstract type="html">The name of a custom value entered on an invoice from the website.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *customAmountName</Declaration>
+			
+			
+			<Anchor>//api/name/customAmountName</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setCustomAmountValue:</TokenIdentifier>
+			<Abstract type="html">The amount of a custom value entered on an invoice from the website.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *customAmountValue</Declaration>
+			
+			
+			<Anchor>//api/name/customAmountValue</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/customAmountValue</TokenIdentifier>
+			<Abstract type="html">The amount of a custom value entered on an invoice from the website.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *customAmountValue</Declaration>
+			
+			
+			<Anchor>//api/name/customAmountValue</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/customAmountValue</TokenIdentifier>
+			<Abstract type="html">The amount of a custom value entered on an invoice from the website.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic) NSDecimalNumber *customAmountValue</Declaration>
+			
+			
+			<Anchor>//api/name/customAmountValue</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setReferrerCode:</TokenIdentifier>
+			<Abstract type="html">Referrer code - used to track source of invoice creation beyond just &quot;API/Web&quot;</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *referrerCode</Declaration>
+			
+			
+			<Anchor>//api/name/referrerCode</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/referrerCode</TokenIdentifier>
+			<Abstract type="html">Referrer code - used to track source of invoice creation beyond just &quot;API/Web&quot;</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *referrerCode</Declaration>
+			
+			
+			<Anchor>//api/name/referrerCode</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/referrerCode</TokenIdentifier>
+			<Abstract type="html">Referrer code - used to track source of invoice creation beyond just &quot;API/Web&quot;</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *referrerCode</Declaration>
+			
+			
+			<Anchor>//api/name/referrerCode</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setCashierId:</TokenIdentifier>
+			<Abstract type="html">Cashier ID - Indicate the merchant&apos;s sub-user (e.g. Cashier) that is responsible for a transaction.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *cashierId</Declaration>
+			
+			
+			<Anchor>//api/name/cashierId</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/cashierId</TokenIdentifier>
+			<Abstract type="html">Cashier ID - Indicate the merchant&apos;s sub-user (e.g. Cashier) that is responsible for a transaction.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *cashierId</Declaration>
+			
+			
+			<Anchor>//api/name/cashierId</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/cashierId</TokenIdentifier>
+			<Abstract type="html">Cashier ID - Indicate the merchant&apos;s sub-user (e.g. Cashier) that is responsible for a transaction.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *cashierId</Declaration>
+			
+			
+			<Anchor>//api/name/cashierId</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setCurrency:</TokenIdentifier>
+			<Abstract type="html">The currency type used by this invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic, readonly) NSString *currency</Declaration>
+			
+			
+			<Anchor>//api/name/currency</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/currency</TokenIdentifier>
+			<Abstract type="html">The currency type used by this invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic, readonly) NSString *currency</Declaration>
+			
+			
+			<Anchor>//api/name/currency</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/currency</TokenIdentifier>
+			<Abstract type="html">The currency type used by this invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic, readonly) NSString *currency</Declaration>
+			
+			
+			<Anchor>//api/name/currency</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setPaypalInvoiceId:</TokenIdentifier>
+			<Abstract type="html">The unique identifier for the invoice received when creating the invoice on the network</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *paypalInvoiceId</Declaration>
+			
+			
+			<Anchor>//api/name/paypalInvoiceId</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/paypalInvoiceId</TokenIdentifier>
+			<Abstract type="html">The unique identifier for the invoice received when creating the invoice on the network</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *paypalInvoiceId</Declaration>
+			
+			
+			<Anchor>//api/name/paypalInvoiceId</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/paypalInvoiceId</TokenIdentifier>
+			<Abstract type="html">The unique identifier for the invoice received when creating the invoice on the network</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *paypalInvoiceId</Declaration>
+			
+			
+			<Anchor>//api/name/paypalInvoiceId</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setCreateDate:</TokenIdentifier>
+			<Abstract type="html">The date of the last save</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDate *createDate</Declaration>
+			
+			
+			<Anchor>//api/name/createDate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/createDate</TokenIdentifier>
+			<Abstract type="html">The date of the last save</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDate *createDate</Declaration>
+			
+			
+			<Anchor>//api/name/createDate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/createDate</TokenIdentifier>
+			<Abstract type="html">The date of the last save</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDate *createDate</Declaration>
+			
+			
+			<Anchor>//api/name/createDate</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setMerchantReferenceNumber:</TokenIdentifier>
+			<Abstract type="html">The unique number assigned to the invoice for the merchant that created it</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *merchantReferenceNumber</Declaration>
+			
+			
+			<Anchor>//api/name/merchantReferenceNumber</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/merchantReferenceNumber</TokenIdentifier>
+			<Abstract type="html">The unique number assigned to the invoice for the merchant that created it</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *merchantReferenceNumber</Declaration>
+			
+			
+			<Anchor>//api/name/merchantReferenceNumber</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/merchantReferenceNumber</TokenIdentifier>
+			<Abstract type="html">The unique number assigned to the invoice for the merchant that created it</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *merchantReferenceNumber</Declaration>
+			
+			
+			<Anchor>//api/name/merchantReferenceNumber</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setMerchantMemo:</TokenIdentifier>
+			<Abstract type="html">A memo from the server that contains location data of a payment</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *merchantMemo</Declaration>
+			
+			
+			<Anchor>//api/name/merchantMemo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/merchantMemo</TokenIdentifier>
+			<Abstract type="html">A memo from the server that contains location data of a payment</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *merchantMemo</Declaration>
+			
+			
+			<Anchor>//api/name/merchantMemo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/merchantMemo</TokenIdentifier>
+			<Abstract type="html">A memo from the server that contains location data of a payment</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *merchantMemo</Declaration>
+			
+			
+			<Anchor>//api/name/merchantMemo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setPaymentInfo:</TokenIdentifier>
+			<Abstract type="html">Data about the payment of the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHInvoicePayment *paymentInfo</Declaration>
+			
+			
+			<Anchor>//api/name/paymentInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/paymentInfo</TokenIdentifier>
+			<Abstract type="html">Data about the payment of the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHInvoicePayment *paymentInfo</Declaration>
+			
+			
+			<Anchor>//api/name/paymentInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/paymentInfo</TokenIdentifier>
+			<Abstract type="html">Data about the payment of the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHInvoicePayment *paymentInfo</Declaration>
+			
+			
+			<Anchor>//api/name/paymentInfo</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setRefunds:</TokenIdentifier>
+			<Abstract type="html">An array of PPHInvoicePayments received from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *refunds</Declaration>
+			
+			
+			<Anchor>//api/name/refunds</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/refunds</TokenIdentifier>
+			<Abstract type="html">An array of PPHInvoicePayments received from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *refunds</Declaration>
+			
+			
+			<Anchor>//api/name/refunds</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/refunds</TokenIdentifier>
+			<Abstract type="html">An array of PPHInvoicePayments received from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *refunds</Declaration>
+			
+			
+			<Anchor>//api/name/refunds</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setStatus:</TokenIdentifier>
+			<Abstract type="html">The last received status of the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHInvoiceStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/status</TokenIdentifier>
+			<Abstract type="html">The last received status of the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHInvoiceStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/status</TokenIdentifier>
+			<Abstract type="html">The last received status of the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHInvoiceStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setOriginatedOnWeb:</TokenIdentifier>
+			<Abstract type="html">YES if invoice origin is Web</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL originatedOnWeb</Declaration>
+			
+			
+			<Anchor>//api/name/originatedOnWeb</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/originatedOnWeb</TokenIdentifier>
+			<Abstract type="html">YES if invoice origin is Web</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL originatedOnWeb</Declaration>
+			
+			
+			<Anchor>//api/name/originatedOnWeb</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/originatedOnWeb</TokenIdentifier>
+			<Abstract type="html">YES if invoice origin is Web</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL originatedOnWeb</Declaration>
+			
+			
+			<Anchor>//api/name/originatedOnWeb</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTerms:</TokenIdentifier>
+			<Abstract type="html">The terms associated with the invoice, such as return policy</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/terms</TokenIdentifier>
+			<Abstract type="html">The terms associated with the invoice, such as return policy</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/terms</TokenIdentifier>
+			<Abstract type="html">The terms associated with the invoice, such as return policy</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *terms</Declaration>
+			
+			
+			<Anchor>//api/name/terms</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setCustomReceiptText:</TokenIdentifier>
+			<Abstract type="html">The custom receipt text associated with the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/customReceiptText</TokenIdentifier>
+			<Abstract type="html">The custom receipt text associated with the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/customReceiptText</TokenIdentifier>
+			<Abstract type="html">The custom receipt text associated with the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *customReceiptText</Declaration>
+			
+			
+			<Anchor>//api/name/customReceiptText</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTotals:</TokenIdentifier>
+			<Abstract type="html">All the calculated total information for the invoice. Gets recalculated automatically whenever a change is made to the invoice items.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceTotals *totals</Declaration>
+			
+			
+			<Anchor>//api/name/totals</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/totals</TokenIdentifier>
+			<Abstract type="html">All the calculated total information for the invoice. Gets recalculated automatically whenever a change is made to the invoice items.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceTotals *totals</Declaration>
+			
+			
+			<Anchor>//api/name/totals</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/totals</TokenIdentifier>
+			<Abstract type="html">All the calculated total information for the invoice. Gets recalculated automatically whenever a change is made to the invoice items.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) PPHInvoiceTotals *totals</Declaration>
+			
+			
+			<Anchor>//api/name/totals</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTotalAmount:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAmount *totalAmount</Declaration>
+			
+			
+			<Anchor>//api/name/totalAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/totalAmount</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAmount *totalAmount</Declaration>
+			
+			
+			<Anchor>//api/name/totalAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/totalAmount</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAmount *totalAmount</Declaration>
+			
+			
+			<Anchor>//api/name/totalAmount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setSubTotal:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *subTotal</Declaration>
+			
+			
+			<Anchor>//api/name/subTotal</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/subTotal</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *subTotal</Declaration>
+			
+			
+			<Anchor>//api/name/subTotal</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/subTotal</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *subTotal</Declaration>
+			
+			
+			<Anchor>//api/name/subTotal</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTax:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *tax</Declaration>
+			
+			
+			<Anchor>//api/name/tax</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/tax</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *tax</Declaration>
+			
+			
+			<Anchor>//api/name/tax</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/tax</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *tax</Declaration>
+			
+			
+			<Anchor>//api/name/tax</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setSubTotalWithDiscounts:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *subTotalWithDiscounts</Declaration>
+			
+			
+			<Anchor>//api/name/subTotalWithDiscounts</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/subTotalWithDiscounts</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *subTotalWithDiscounts</Declaration>
+			
+			
+			<Anchor>//api/name/subTotalWithDiscounts</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/subTotalWithDiscounts</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *subTotalWithDiscounts</Declaration>
+			
+			
+			<Anchor>//api/name/subTotalWithDiscounts</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTotalDiscount:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *totalDiscount</Declaration>
+			
+			
+			<Anchor>//api/name/totalDiscount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/totalDiscount</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *totalDiscount</Declaration>
+			
+			
+			<Anchor>//api/name/totalDiscount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/totalDiscount</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *totalDiscount</Declaration>
+			
+			
+			<Anchor>//api/name/totalDiscount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setRefundTotal:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *refundTotal</Declaration>
+			
+			
+			<Anchor>//api/name/refundTotal</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/refundTotal</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *refundTotal</Declaration>
+			
+			
+			<Anchor>//api/name/refundTotal</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/refundTotal</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *refundTotal</Declaration>
+			
+			
+			<Anchor>//api/name/refundTotal</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTotalFees:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *totalFees</Declaration>
+			
+			
+			<Anchor>//api/name/totalFees</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/totalFees</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *totalFees</Declaration>
+			
+			
+			<Anchor>//api/name/totalFees</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/totalFees</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDecimalNumber *totalFees</Declaration>
+			
+			
+			<Anchor>//api/name/totalFees</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTaxDetails:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *taxDetails</Declaration>
+			
+			
+			<Anchor>//api/name/taxDetails</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/taxDetails</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *taxDetails</Declaration>
+			
+			
+			<Anchor>//api/name/taxDetails</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/taxDetails</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *taxDetails</Declaration>
+			
+			
+			<Anchor>//api/name/taxDetails</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setTotalWithRefunds:</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAmount *totalWithRefunds</Declaration>
+			
+			
+			<Anchor>//api/name/totalWithRefunds</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/totalWithRefunds</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAmount *totalWithRefunds</Declaration>
+			
+			
+			<Anchor>//api/name/totalWithRefunds</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/totalWithRefunds</TokenIdentifier>
+			<Abstract type="html">Convenience method for accessing PPHInvoiceTotals data</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAmount *totalWithRefunds</Declaration>
+			
+			
+			<Anchor>//api/name/totalWithRefunds</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setItems:</TokenIdentifier>
+			<Abstract type="html">The items in the invoice. Sorted according to display order.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/items</TokenIdentifier>
+			<Abstract type="html">The items in the invoice. Sorted according to display order.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/items</TokenIdentifier>
+			<Abstract type="html">The items in the invoice. Sorted according to display order.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setItemCount:</TokenIdentifier>
+			<Abstract type="html">Number of unique items in the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) int itemCount</Declaration>
+			
+			
+			<Anchor>//api/name/itemCount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/itemCount</TokenIdentifier>
+			<Abstract type="html">Number of unique items in the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) int itemCount</Declaration>
+			
+			
+			<Anchor>//api/name/itemCount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/itemCount</TokenIdentifier>
+			<Abstract type="html">Number of unique items in the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) int itemCount</Declaration>
+			
+			
+			<Anchor>//api/name/itemCount</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/quantityByItemId:</TokenIdentifier>
+			<Abstract type="html">Get the quantity of an item currently on the order.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (NSDecimalNumber *)quantityByItemId:(NSString *)itemId</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>itemId</Name>
+					<Abstract type="html">the item id for the item for which a quantity is desired</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/quantityByItemId:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setReceiptPhoneNumber:</TokenIdentifier>
+			<Abstract type="html">phoneNumber will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any phone number from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptPhoneNumber</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPhoneNumber</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/receiptPhoneNumber</TokenIdentifier>
+			<Abstract type="html">phoneNumber will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any phone number from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptPhoneNumber</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPhoneNumber</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/receiptPhoneNumber</TokenIdentifier>
+			<Abstract type="html">phoneNumber will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any phone number from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptPhoneNumber</Declaration>
+			
+			
+			<Anchor>//api/name/receiptPhoneNumber</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setReceiptEmailAddress:</TokenIdentifier>
+			<Abstract type="html">emailAddress will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any email from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/receiptEmailAddress</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/receiptEmailAddress</TokenIdentifier>
+			<Abstract type="html">emailAddress will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any email from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/receiptEmailAddress</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/receiptEmailAddress</TokenIdentifier>
+			<Abstract type="html">emailAddress will be prefilled into the receipt options of the transaction, and cleared when we restart it.
+If set, it will take precedence over any email from the server</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *receiptEmailAddress</Declaration>
+			
+			
+			<Anchor>//api/name/receiptEmailAddress</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/setNote:</TokenIdentifier>
+			<Abstract type="html">A note that can be used when marking as paid if no other is specified.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *note</Declaration>
+			
+			
+			<Anchor>//api/name/note</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/note</TokenIdentifier>
+			<Abstract type="html">A note that can be used when marking as paid if no other is specified.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *note</Declaration>
+			
+			
+			<Anchor>//api/name/note</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHInvoice/note</TokenIdentifier>
+			<Abstract type="html">A note that can be used when marking as paid if no other is specified.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>@property (copy, nonatomic) NSString *note</Declaration>
+			
+			
+			<Anchor>//api/name/note</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/invoiceItemWithId:</TokenIdentifier>
+			<Abstract type="html">Fetches an invoice item that corresponds to an itemId with no detailId.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)itemId</Declaration>
+			
+			<ReturnValue><Abstract type="html">PPHInvoiceItem The invoice item that was found. If there was none nil is returned.</Abstract></ReturnValue>
+			<Anchor>//api/name/invoiceItemWithId:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/invoiceItemWithId:detailId:</TokenIdentifier>
+			<Abstract type="html">Fetches an invoice item that corresponds to an itemId and detailId.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (PPHInvoiceItem *)invoiceItemWithId:(NSString *)itemId detailId:(NSString *)detailId</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>itemId</Name>
+					<Abstract type="html">NSString The itemId to find in the invoice.</Abstract>
+				</Parameter><Parameter>
+					<Name>detailId</Name>
+					<Abstract type="html">NSString The detail id (usually identifying options or variations)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">PPHInvoiceItem The invoice item that was found. If there was none nil is returned.</Abstract></ReturnValue>
+			<Anchor>//api/name/invoiceItemWithId:detailId:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:</TokenIdentifier>
+			<Abstract type="html">Creates an invoice item with the given parameters an returns a pointer to it.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (PPHInvoiceItem *)addItemWithId:(NSString *)itemId name:(NSString *)name quantity:(NSDecimalNumber *)quantity unitPrice:(NSDecimalNumber *)unitPrice taxRate:(NSDecimalNumber *)taxRate taxRateName:(NSString *)taxRateName</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>itemId</Name>
+					<Abstract type="html">NSString The itemId for the new invoice item. Must be unique to other invoice items which don&apos;t have any itemDetailId. You can use this to get a pointer to the item later using invoiceWithId if you don&apos;t call reconcileInContext. If the itemId is not unique this method will return nil. Also, if you pass in a nil itemId this method will also return nil.</Abstract>
+				</Parameter><Parameter>
+					<Name>name</Name>
+					<Abstract type="html">NSString The item name.</Abstract>
+				</Parameter><Parameter>
+					<Name>quantity</Name>
+					<Abstract type="html">NSDecimalNumber The number of the items to put in the cart. This value must not be negative, if a negative quantity is passed in this method will return nil.</Abstract>
+				</Parameter><Parameter>
+					<Name>unitPrice</Name>
+					<Abstract type="html">NSDecimalNumber The price of a single one of these items. This value must not be negative, if a negative unitPrice is passed in this method will return nil.</Abstract>
+				</Parameter><Parameter>
+					<Name>taxRate</Name>
+					<Abstract type="html">NSDecimalNumber The tax to be applied to this item. This value must not be negative, if a negative taxRate is passed in this method will return nil.</Abstract>
+				</Parameter><Parameter>
+					<Name>taxRateName</Name>
+					<Abstract type="html">NSString The name for the tax rate given to this item.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">PPHInvoiceItem The newly created item.</Abstract></ReturnValue>
+			<Anchor>//api/name/addItemWithId:name:quantity:unitPrice:taxRate:taxRateName:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:</TokenIdentifier>
+			<Abstract type="html">Creates an invoice item with the given parameters an returns a pointer to it. ONLY use this function if you want to make an item that is not bound to a SellableItem for some reason. If you add one of these such items to the invoice and later call reconcileInContext the item will be associated with a new SellableItem and the item&apos;s itemId will be set to that of the SellableItem, rendering the previous itemId useless for searching in the invoice.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (PPHInvoiceItem *)addItemWithId:(NSString *)itemId detailId:(NSString *)detailId name:(NSString *)name quantity:(NSDecimalNumber *)quantity unitPrice:(NSDecimalNumber *)unitPrice taxRate:(NSDecimalNumber *)taxRate taxRateName:(NSString *)taxRateName</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>itemId</Name>
+					<Abstract type="html">NSString The itemId for the new invoice item. Must be unique to other invoice items (including itemDetailId). You can use this to get a pointer to the item later using invoiceWithId if you don&apos;t call reconcileInContext.</Abstract>
+				</Parameter><Parameter>
+					<Name>name</Name>
+					<Abstract type="html">NSString The item name.</Abstract>
+				</Parameter><Parameter>
+					<Name>quantity</Name>
+					<Abstract type="html">NSDecimalNumber The number of the items to put in the cart.</Abstract>
+				</Parameter><Parameter>
+					<Name>unitPrice</Name>
+					<Abstract type="html">NSDecimalNumber The price of a single one of these items.</Abstract>
+				</Parameter><Parameter>
+					<Name>taxRate</Name>
+					<Abstract type="html">NSDecimalNumber The tax to be applied to this item.</Abstract>
+				</Parameter><Parameter>
+					<Name>taxRateName</Name>
+					<Abstract type="html">NSString The name for the tax rate given to this item.</Abstract>
+				</Parameter><Parameter>
+					<Name>itemDetailId</Name>
+					<Abstract type="html">NSString The &quot;identifying details&quot; for the item such as size, toppings, etc.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">PPHInvoiceItem The newly created item.</Abstract></ReturnValue>
+			<Anchor>//api/name/addItemWithId:detailId:name:quantity:unitPrice:taxRate:taxRateName:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/incrementInvoiceItem:byQuantity:</TokenIdentifier>
+			<Abstract type="html">Adds the specified quantity to the specified InvoiceItem in the invoice, you may pass a negative quantity value to decrement the item. Calling increment on an InvoiceItem that does not exist in the invoice will cause the item to be added with the desired quantity.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)incrementInvoiceItem:(PPHInvoiceItem *)item byQuantity:(NSDecimalNumber *)quantity</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>item</Name>
+					<Abstract type="html">PPHInvoiceItem The item to increment.</Abstract>
+				</Parameter><Parameter>
+					<Name>quantity</Name>
+					<Abstract type="html">NSDecimalNumber The amount to increase the item&apos;s quantity by, this may be negative to remove items from the invoice.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/incrementInvoiceItem:byQuantity:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/removeAllItems</TokenIdentifier>
+			<Abstract type="html">Remove all items from the invoice</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)removeAllItems</Declaration>
+			
+			
+			<Anchor>//api/name/removeAllItems</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/refreshInvoice:</TokenIdentifier>
+			<Abstract type="html">Enqueues a network action to synchronize the invoice with the server&apos;s representation of it.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)refreshInvoice:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/refreshInvoice:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/save:</TokenIdentifier>
+			<Abstract type="html">Enqueues a network action to save the invoice.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)save:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/save:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/send:</TokenIdentifier>
+			<Abstract type="html">Enqueues a network action to send the invoice. A save is performed if the invoice has changed.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)send:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/send:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/cancel:</TokenIdentifier>
+			<Abstract type="html">Enqueues a network action to cancel the invoice.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)cancel:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/cancel:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/getRefundDetails:</TokenIdentifier>
+			<Abstract type="html">Enqueues a network action to get refund details</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)getRefundDetails:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/getRefundDetails:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoice/deleteInvoice:</TokenIdentifier>
+			<Abstract type="html">Enqueues a network action to delete the invoice.</Abstract>
+			<DeclaredIn>PPHInvoice.h</DeclaredIn>
+			
+			<Declaration>- (void)deleteInvoice:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">PPHInvoiceBasicCompletionHandler The block to invoke once the network response is processed, you can check the returned error to see if the request was successful.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/deleteInvoice:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

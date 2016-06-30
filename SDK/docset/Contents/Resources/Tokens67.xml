@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHNetworkRequestDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHNetworkRequestDelegate</TokenIdentifier>
+			<Abstract type="html">A protocol for objects wishing to manage network requests for the PayPal Here SDK</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="67"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/beginRequest:withID:withHandler:</TokenIdentifier>
+			<Abstract type="html">Add a request to be sent over the network.</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)beginRequest:(NSMutableURLRequest *)inRequest withID:(NSString *)identifier withHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error , NSData *data ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inRequest</Name>
+					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+				</Parameter><Parameter>
+					<Name>identifier</Name>
+					<Abstract type="html">an identifier which is used to cancel a request or group of requests sharing the same identifier</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">called when the request completes with success or failure</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">YES if you handled the request, NO if you did not and we should process it ourselves.</Abstract></ReturnValue>
+			<Anchor>//api/name/beginRequest:withID:withHandler:</Anchor>
+            <NodeRef refid="67"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/cancelOperationsForID:</TokenIdentifier>
+			<Abstract type="html">Cancel all active operations with the given identifier</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)cancelOperationsForID:(NSString *)identifier</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>identifier</Name>
+					<Abstract type="html">the value passed to addRequest</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/cancelOperationsForID:</Anchor>
+            <NodeRef refid="67"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/modifyRequest:</TokenIdentifier>
+			<Abstract type="html">If you just need to modify a request but not &quot;handle&quot; it, you can implement this selector.</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)modifyRequest:(NSMutableURLRequest *)inRequest</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inRequest</Name>
+					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/modifyRequest:</Anchor>
+            <NodeRef refid="67"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHNetworkRequestDelegate/requestCompleted:withResponse:data:andError:</TokenIdentifier>
+			<Abstract type="html">We&apos;ll call you when a response is received. This is most useful for logging.</Abstract>
+			<DeclaredIn>PPHNetworkRequestDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)requestCompleted:(NSURLRequest *)inRequest withResponse:(NSHTTPURLResponse *)inResponse data:(NSData *)data andError:(NSError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inRequest</Name>
+					<Abstract type="html">the request, with headers and body and URL and such - ready to go</Abstract>
+				</Parameter><Parameter>
+					<Name>inResponse</Name>
+					<Abstract type="html">the response received from the server</Abstract>
+				</Parameter><Parameter>
+					<Name>data</Name>
+					<Abstract type="html">the data received with the response</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">the raw error received, if any</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/requestCompleted:withResponse:data:andError:</Anchor>
+            <NodeRef refid="67"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHLoggingDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHLoggingDelegate</TokenIdentifier>
+			<Abstract type="html">For debugging purposes it can be helpful to see our internal logs.
+Implement this protocol and set the logging delegate on PayPalHereSDK.
+You should generally not set this delegate in production code as it will
+have a theoretical performance impact (we&apos;ll call respondsToSelector a lot).
+If you respond to a given selector, we&apos;ll put the message together, which will
+cause a bunch of string munging to happen. So basically, use this when you
+mean it, not just on a whim.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="66"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereError:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be indicative of an error.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereError:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereError:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereWarning:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be a potential issue affecting proper function.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereWarning:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereWarning:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereInfo:</TokenIdentifier>
+			<Abstract type="html">Log informational events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereInfo:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereInfo:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereTrace:</TokenIdentifier>
+			<Abstract type="html">Log fxn tracing events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereTrace:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereTrace:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereDebug:</TokenIdentifier>
+			<Abstract type="html">Log debug/verbose events.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereDebug:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereDebug:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareError:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be indicative of an error for hardware interactions.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereHardwareError:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereHardwareError:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareWarning:</TokenIdentifier>
+			<Abstract type="html">Log a message considered to be a potential issue affecting proper function for hardware interactions.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereHardwareWarning:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereHardwareWarning:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/logPayPalHereHardwareInfo:</TokenIdentifier>
+			<Abstract type="html">Log informational events for hardware interactions.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)logPayPalHereHardwareInfo:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The fully formatted log message.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logPayPalHereHardwareInfo:</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHLoggingDelegate/flush</TokenIdentifier>
+			<Abstract type="html">Cause the logger to send all its queued messages now.</Abstract>
+			<DeclaredIn>PPHLoggingDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)flush</Declaration>
+			
+			
+			<Anchor>//api/name/flush</Anchor>
+            <NodeRef refid="66"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHAccessAccount.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHAccessAccount</TokenIdentifier>
+			<Abstract type="html">The PPHAccessUser class stores information about a successfully
+authenticated PayPal Access account. Via the NSCoding protocol,
+this object can be saved to persistent storage.</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/initWithAccessToken:expires_in:refreshUrl:details:</TokenIdentifier>
+			<Abstract type="html">Initialize a PPHAccessAccount from details</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithAccessToken:(NSString *)accessToken expires_in:(NSString *)seconds refreshUrl:(NSString *)refreshUrl details:(NSDictionary *)paypalAccessResponse</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>accessToken</Name>
+					<Abstract type="html">the active access_token for this account</Abstract>
+				</Parameter><Parameter>
+					<Name>seconds</Name>
+					<Abstract type="html">the expiration time of the access token, in seconds from now</Abstract>
+				</Parameter><Parameter>
+					<Name>refreshUrl</Name>
+					<Abstract type="html">a URL on your application server which can generate a new access token</Abstract>
+				</Parameter><Parameter>
+					<Name>paypalAccessResponse</Name>
+					<Abstract type="html">if you requested extra data from PayPal Access (e.g. email address and such),
+pass it in paypalAccessResponse and we&apos;ll consume what we can and leave the rest in extraInfo</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithAccessToken:expires_in:refreshUrl:details:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/hasCredentials</TokenIdentifier>
+			<Abstract type="html">YES if we have credentials available (e.g. access_token is non-nil)</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)hasCredentials</Declaration>
+			
+			
+			<Anchor>//api/name/hasCredentials</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setAccess_token:</TokenIdentifier>
+			<Abstract type="html">The current access token for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *access_token</Declaration>
+			
+			
+			<Anchor>//api/name/access_token</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/access_token</TokenIdentifier>
+			<Abstract type="html">The current access token for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *access_token</Declaration>
+			
+			
+			<Anchor>//api/name/access_token</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/access_token</TokenIdentifier>
+			<Abstract type="html">The current access token for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *access_token</Declaration>
+			
+			
+			<Anchor>//api/name/access_token</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setRefresh_url:</TokenIdentifier>
+			<Abstract type="html">The refresh URL which can be used to get a new access_token when it expires</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *refresh_url</Declaration>
+			
+			
+			<Anchor>//api/name/refresh_url</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/refresh_url</TokenIdentifier>
+			<Abstract type="html">The refresh URL which can be used to get a new access_token when it expires</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *refresh_url</Declaration>
+			
+			
+			<Anchor>//api/name/refresh_url</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/refresh_url</TokenIdentifier>
+			<Abstract type="html">The refresh URL which can be used to get a new access_token when it expires</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *refresh_url</Declaration>
+			
+			
+			<Anchor>//api/name/refresh_url</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setId_token:</TokenIdentifier>
+			<Abstract type="html">The identifier for this account from the server, which can change
+if and when the PayPal Access process is repeated</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *id_token</Declaration>
+			
+			
+			<Anchor>//api/name/id_token</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/id_token</TokenIdentifier>
+			<Abstract type="html">The identifier for this account from the server, which can change
+if and when the PayPal Access process is repeated</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *id_token</Declaration>
+			
+			
+			<Anchor>//api/name/id_token</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/id_token</TokenIdentifier>
+			<Abstract type="html">The identifier for this account from the server, which can change
+if and when the PayPal Access process is repeated</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *id_token</Declaration>
+			
+			
+			<Anchor>//api/name/id_token</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setTokenScope:</TokenIdentifier>
+			<Abstract type="html">The original scope requested for the token</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *tokenScope</Declaration>
+			
+			
+			<Anchor>//api/name/tokenScope</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/tokenScope</TokenIdentifier>
+			<Abstract type="html">The original scope requested for the token</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *tokenScope</Declaration>
+			
+			
+			<Anchor>//api/name/tokenScope</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/tokenScope</TokenIdentifier>
+			<Abstract type="html">The original scope requested for the token</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *tokenScope</Declaration>
+			
+			
+			<Anchor>//api/name/tokenScope</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setAccessTokenExpiration:</TokenIdentifier>
+			<Abstract type="html">The time the access token is expected to expire</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *accessTokenExpiration</Declaration>
+			
+			
+			<Anchor>//api/name/accessTokenExpiration</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/accessTokenExpiration</TokenIdentifier>
+			<Abstract type="html">The time the access token is expected to expire</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *accessTokenExpiration</Declaration>
+			
+			
+			<Anchor>//api/name/accessTokenExpiration</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/accessTokenExpiration</TokenIdentifier>
+			<Abstract type="html">The time the access token is expected to expire</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDate *accessTokenExpiration</Declaration>
+			
+			
+			<Anchor>//api/name/accessTokenExpiration</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setStatus:</TokenIdentifier>
+			<Abstract type="html">Whether the account is enabled for PayPal Here</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign, readonly) PPHAccountStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/status</TokenIdentifier>
+			<Abstract type="html">Whether the account is enabled for PayPal Here</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign, readonly) PPHAccountStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/status</TokenIdentifier>
+			<Abstract type="html">Whether the account is enabled for PayPal Here</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign, readonly) PPHAccountStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setUserId:</TokenIdentifier>
+			<Abstract type="html">The PayPal ID for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *userId</Declaration>
+			
+			
+			<Anchor>//api/name/userId</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/userId</TokenIdentifier>
+			<Abstract type="html">The PayPal ID for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *userId</Declaration>
+			
+			
+			<Anchor>//api/name/userId</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/userId</TokenIdentifier>
+			<Abstract type="html">The PayPal ID for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *userId</Declaration>
+			
+			
+			<Anchor>//api/name/userId</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setEmail:</TokenIdentifier>
+			<Abstract type="html">The primary email for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *email</Declaration>
+			
+			
+			<Anchor>//api/name/email</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/email</TokenIdentifier>
+			<Abstract type="html">The primary email for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *email</Declaration>
+			
+			
+			<Anchor>//api/name/email</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/email</TokenIdentifier>
+			<Abstract type="html">The primary email for this account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *email</Declaration>
+			
+			
+			<Anchor>//api/name/email</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setEmails:</TokenIdentifier>
+			<Abstract type="html">All known emails for the account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSArray *emails</Declaration>
+			
+			
+			<Anchor>//api/name/emails</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/emails</TokenIdentifier>
+			<Abstract type="html">All known emails for the account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSArray *emails</Declaration>
+			
+			
+			<Anchor>//api/name/emails</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/emails</TokenIdentifier>
+			<Abstract type="html">All known emails for the account</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSArray *emails</Declaration>
+			
+			
+			<Anchor>//api/name/emails</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setAvailablePaymentTypes:</TokenIdentifier>
+			<Abstract type="html">The type of payments this merchant account is allowed to accept using the SDK</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAvailablePaymentTypes availablePaymentTypes</Declaration>
+			
+			
+			<Anchor>//api/name/availablePaymentTypes</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/availablePaymentTypes</TokenIdentifier>
+			<Abstract type="html">The type of payments this merchant account is allowed to accept using the SDK</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAvailablePaymentTypes availablePaymentTypes</Declaration>
+			
+			
+			<Anchor>//api/name/availablePaymentTypes</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/availablePaymentTypes</TokenIdentifier>
+			<Abstract type="html">The type of payments this merchant account is allowed to accept using the SDK</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) PPHAvailablePaymentTypes availablePaymentTypes</Declaration>
+			
+			
+			<Anchor>//api/name/availablePaymentTypes</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setPaymentLimits:</TokenIdentifier>
+			<Abstract type="html">Information re payment limits</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHPaymentLimits *paymentLimits</Declaration>
+			
+			
+			<Anchor>//api/name/paymentLimits</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/paymentLimits</TokenIdentifier>
+			<Abstract type="html">Information re payment limits</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHPaymentLimits *paymentLimits</Declaration>
+			
+			
+			<Anchor>//api/name/paymentLimits</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/paymentLimits</TokenIdentifier>
+			<Abstract type="html">Information re payment limits</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) PPHPaymentLimits *paymentLimits</Declaration>
+			
+			
+			<Anchor>//api/name/paymentLimits</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setExtraInfo:</TokenIdentifier>
+			<Abstract type="html">Any extra info provided by the OAuth process</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *extraInfo</Declaration>
+			
+			
+			<Anchor>//api/name/extraInfo</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/extraInfo</TokenIdentifier>
+			<Abstract type="html">Any extra info provided by the OAuth process</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *extraInfo</Declaration>
+			
+			
+			<Anchor>//api/name/extraInfo</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/extraInfo</TokenIdentifier>
+			<Abstract type="html">Any extra info provided by the OAuth process</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSDictionary *extraInfo</Declaration>
+			
+			
+			<Anchor>//api/name/extraInfo</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/setCurrencyCode:</TokenIdentifier>
+			<Abstract type="html">The default currency on the account, as specified in the /status method of the HereAPI.</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *currencyCode</Declaration>
+			
+			
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHAccessAccount/currencyCode</TokenIdentifier>
+			<Abstract type="html">The default currency on the account, as specified in the /status method of the HereAPI.</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *currencyCode</Declaration>
+			
+			
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHAccessAccount/currencyCode</TokenIdentifier>
+			<Abstract type="html">The default currency on the account, as specified in the /status method of the HereAPI.</Abstract>
+			<DeclaredIn>PPHAccessAccount.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong, readonly) NSString *currencyCode</Declaration>
+			
+			
+			<Anchor>//api/name/currencyCode</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

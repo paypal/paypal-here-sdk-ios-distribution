@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHInvoiceConstants.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceConstants</TokenIdentifier>
+			<Abstract type="html">Convenience methods for dealing with the various invoice enumerations</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+            
+			
+			<NodeRef refid="28"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusFromString:</TokenIdentifier>
+			<Abstract type="html">Return an invoice status given the non-localized string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (PPHInvoiceStatus)invoiceStatusFromString:(NSString *)string</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">String representation of the invoice status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/invoiceStatusFromString:</Anchor>
+            <NodeRef refid="28"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/stringFromInvoiceStatus:</TokenIdentifier>
+			<Abstract type="html">Turn an invoice status into a string</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)stringFromInvoiceStatus:(PPHInvoiceStatus)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">the invoice status enumeration value</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/stringFromInvoiceStatus:</Anchor>
+            <NodeRef refid="28"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusIsPaid:</TokenIdentifier>
+			<Abstract type="html">Determine whether this invoice status means that the invoice was paid at some point
+(i.e. is it paid, refunded, or partially refunded)</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)invoiceStatusIsPaid:(PPHInvoiceStatus)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">the invoice status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/invoiceStatusIsPaid:</Anchor>
+            <NodeRef refid="28"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PPHInvoiceConstants/invoiceStatusIsRefunded:</TokenIdentifier>
+			<Abstract type="html">Determine whether this invoice status means the invoice was refunded at some point
+(i.e. refunded or partially refunded)</Abstract>
+			<DeclaredIn>PPHInvoiceConstants.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)invoiceStatusIsRefunded:(PPHInvoiceStatus)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">the invoice status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/invoiceStatusIsRefunded:</Anchor>
+            <NodeRef refid="28"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

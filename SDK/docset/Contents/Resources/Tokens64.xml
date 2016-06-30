@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/PPHInvoiceProtocol.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/PPHInvoiceProtocol</TokenIdentifier>
+			<Abstract type="html">The minimal set of information required to take payment on an invoice</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+            
+			
+			<NodeRef refid="64"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/currency</TokenIdentifier>
+			<Abstract type="html">The currency type used by this invoice</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)currency</Declaration>
+			
+			
+			<Anchor>//api/name/currency</Anchor>
+            <NodeRef refid="64"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/totalAmount</TokenIdentifier>
+			<Abstract type="html">The total amount due on the invoice</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+			
+			<Declaration>- (PPHAmount *)totalAmount</Declaration>
+			
+			
+			<Anchor>//api/name/totalAmount</Anchor>
+            <NodeRef refid="64"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/paypalInvoiceId</TokenIdentifier>
+			<Abstract type="html">The unique identifier for the invoice received when creating the invoice on the network</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)paypalInvoiceId</Declaration>
+			
+			
+			<Anchor>//api/name/paypalInvoiceId</Anchor>
+            <NodeRef refid="64"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/asDictionary</TokenIdentifier>
+			<Abstract type="html">Compile the invoice&apos;s data to a format that is ready to save as an InvoiceType parameter to an API call.</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)asDictionary</Declaration>
+			
+			<ReturnValue><Abstract type="html">id The created invoice</Abstract></ReturnValue>
+			<Anchor>//api/name/asDictionary</Anchor>
+            <NodeRef refid="64"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PPHInvoiceProtocol/payerEmail</TokenIdentifier>
+			<Abstract type="html">The buyer&apos;s email address if known. Often noreply@here.paypal.com</Abstract>
+			<DeclaredIn>PPHInvoiceProtocol.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)payerEmail</Declaration>
+			
+			
+			<Anchor>//api/name/payerEmail</Anchor>
+            <NodeRef refid="64"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>PPHPaymentProcessor Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">PayPalHereSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">PayPal</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:">- beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</option>
+		
+		<option value="//api/name/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:">- beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:</option>
+		
+		<option value="//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">- beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</option>
+		
+		<option value="//api/name/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:">- beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:</option>
+		
+		<option value="//api/name/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:">- beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:</option>
+		
+		<option value="//api/name/beginCheckinPayment:forInvoice:completionHandler:">- beginCheckinPayment:forInvoice:completionHandler:</option>
+		
+		<option value="//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:">- beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</option>
+		
+		<option value="//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">- beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</option>
+		
+		<option value="//api/name/beginRefund:forAmount:completionHandler:">- beginRefund:forAmount:completionHandler:</option>
+		
+		<option value="//api/name/beginSendReceipt:to:completionHandler:">- beginSendReceipt:to:completionHandler:</option>
+		
+		<option value="//api/name/beginVoidForTransactionId:withInvoice:andCompletionHandler:">- beginVoidForTransactionId:withInvoice:andCompletionHandler:</option>
+		
+		<option value="//api/name/checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:">- checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:</option>
+		
+		<option value="//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">- provideSignature:forTransaction:andInvoice:completionHandler:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">PPHPaymentProcessor Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>PPHPaymentProcessor.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The PPHPaymentProcessor is your one stop shop for turning various events into real money movement for your merchants.
+It supports card swipes, manually entered card data, chip and pin, and checkin/tab based transactions.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/beginRefund:forAmount:completionHandler:" title="beginRefund:forAmount:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginRefund:forAmount:completionHandler:">&ndash;&nbsp;beginRefund:forAmount:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Issue a refund against a previously successful PayPal transaction.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginRefund:(NSString *)<em>transactionId</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transactionId</code></th>
+						<td><p>The transaction identifier for the original payment transaction</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>amountOrNil</code></th>
+						<td><p>Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&rsquo;s a full refund.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Issue a refund against a previously successful PayPal transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:" title="beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:">&ndash;&nbsp;beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Issue a refund against a previously successful non-PayPal transaction.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginNonPayPalRefundWithInvoiceId:(NSString *)<em>invoiceId</em> forAmount:(PPHAmount *)<em>amountOrNil</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoiceId</code></th>
+						<td><p>The identifier for the invoice to be refunded.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>amountOrNil</code></th>
+						<td><p>Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&rsquo;s a full refund.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Issue a refund against a previously successful non-PayPal transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginCheckinPayment:forInvoice:completionHandler:" title="beginCheckinPayment:forInvoice:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginCheckinPayment:forInvoice:completionHandler:">&ndash;&nbsp;beginCheckinPayment:forInvoice:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Capture funds against an open checkin from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginCheckinPayment:(PPHLocationCheckin *)<em>checkin</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>checkin</code></th>
+						<td><p>information about the checkin (only id is needed)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Capture funds against an open checkin from <a href="../Classes/PPHLocalManager.html">PPHLocalManager</a> and <a href="../Classes/PPHLocationWatcher.html">PPHLocationWatcher</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:" title="beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:">&ndash;&nbsp;beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Collect funds against a card that has been passed through a reader and for which magstripe data is available.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginCardPresentChargeAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> withSignature:(UIImage *)<em>signature</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>card</code></th>
+						<td><p>from PPCardReaderManager swipe event</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>signature</code></th>
+						<td><p>the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">provideSignature:forTransaction:andInvoice:completionHandler:</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Collect funds against a card that has been passed through a reader and for which magstripe data is available.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:" title="beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Authorize funds against a card that has been passed through a reader and for which magstripe data is available.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginCardPresentAuthorizationAttempt:(PPHCardSwipeData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>card</code></th>
+						<td><p>from PPCardReaderManager swipe event</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed
+with <a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">provideSignature:forTransaction:andInvoice:completionHandler:</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Authorize funds against a card that has been passed through a reader and for which magstripe data is available.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:" title="beginCardNotPresentChargeAttempt:forInvoice:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Collect funds against a card that has been manually entered.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentChargeAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>card</code></th>
+						<td><p>Filled out manually or via a Card Scan</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Collect funds against a card that has been manually entered.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:" title="beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:">&ndash;&nbsp;beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Authorize funds against a card that has been passed in via manual entry, or user key-in.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)<em>card</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>card</code></th>
+						<td><p>for <a href="../Classes/PPHCardNotPresentData.html">PPHCardNotPresentData</a> passed in manual card data</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Authorize funds against a card that has been passed in via manual entry, or user key-in.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:" title="beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:">&ndash;&nbsp;beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Capture funds against an authorization.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginCaptureForTransactionId:(NSString *)<em>txId</em> withAmount:(PPHAmount *)<em>amount</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> asFinal:(BOOL)<em>finalCapture</em> withCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>txId</code></th>
+						<td><p>: The authorization id obtained after a successful authorization.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>amount</code></th>
+						<td><p>: Amount to be captured.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>: The invoice against which the auth was performed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>finalCapture</code></th>
+						<td><p>: Set to YES if its a final capture. NO, if we would like to perform multiple captures against this auth. Currently, the SDK supports ONLY single captures.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>: Called when the action has completed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Capture funds against an authorization.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginVoidForTransactionId:withInvoice:andCompletionHandler:" title="beginVoidForTransactionId:withInvoice:andCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginVoidForTransactionId:withInvoice:andCompletionHandler:">&ndash;&nbsp;beginVoidForTransactionId:withInvoice:andCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Void an existing authorization.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginVoidForTransactionId:(NSString *)<em>txId</em> withInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> andCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>txId</code></th>
+						<td><p>: The authorization id obtained after a successful authorization.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>: The invoice against which the auth was performed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>: Called when the action has completed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Void an existing authorization.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:" title="beginRecordingExternalPayment:withNote:forInvoice:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:">&ndash;&nbsp;beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Mark an invoice as having been paid by an external payment type such as Cash or Check.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginRecordingExternalPayment:(PPHPaymentMethod)<em>paymentType</em> withNote:(NSString *)<em>note</em> forInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHPaymentResponse *response ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>paymentType</code></th>
+						<td><p>must be cash or check currently for this method to succeed</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>note</code></th>
+						<td><p>a short note, such as the amount tendered or check number</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Mark an invoice as having been paid by an external payment type such as Cash or Check.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/provideSignature:forTransaction:andInvoice:completionHandler:" title="provideSignature:forTransaction:andInvoice:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/provideSignature:forTransaction:andInvoice:completionHandler:">&ndash;&nbsp;provideSignature:forTransaction:andInvoice:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a signature record for a previously successful charge.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)provideSignature:(UIImage *)<em>signature</em> forTransaction:(PPHCardChargeResponse *)<em>response</em> andInvoice:(id&lt;PPHInvoiceProtocol&gt;)<em>invoice</em> completionHandler:(void ( ^ ) ( PPHError *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>signature</code></th>
+						<td><p>the buyer-generated signature</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>response</code></th>
+						<td><p>the result of beginCardPresentChargeAttempt</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invoice</code></th>
+						<td><p>the invoice of the transaction that&rsquo;s being signed for</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a signature record for a previously successful charge.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:" title="checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:">&ndash;&nbsp;checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check if the given swipe card data was the same card used to pay the transaction</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)<em>card</em> transactionRecord:(PPHTransactionRecord *)<em>record</em> completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>card</code></th>
+						<td><p>the card data to be checked</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>record</code></th>
+						<td><p>the transaction record against which to check the card</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>handler to call when the action has completed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check if the given swipe card data was the same card used to pay the transaction</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginSendReceipt:to:completionHandler:" title="beginSendReceipt:to:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginSendReceipt:to:completionHandler:">&ndash;&nbsp;beginSendReceipt:to:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)beginSendReceipt:(PPHPaymentResponse *)<em>payment</em> to:(PPHReceiptDestination *)<em>destination</em> completionHandler:(PPHInvoiceBasicCompletionHandler)<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>payment</code></th>
+						<td><p>the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
+values of this object, so you can make one up with that data.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>destination</code></th>
+						<td><p>the destination for the receipt (e.g. an email address or phone number)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>called when the receipt is sent or an error occurs</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHPaymentProcessor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 PayPal. All rights reserved. Updated: 2016-04-14</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

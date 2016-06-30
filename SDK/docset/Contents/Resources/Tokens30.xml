@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHInvoiceFormatter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHInvoiceFormatter</TokenIdentifier>
+			<Abstract type="html">PPHInvoiceFormatter is capable of rendering the details of invoices for receipt purposes. Online receipts
+are typically hosted by PayPal, but this class is mainly useful for producing printable receipts.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
+            
+			
+			<NodeRef refid="30"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:withFormatData:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings with the given properties and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)formattedStringForInvoice:(PPHInvoice *)invoice withFormatData:(PPHInvoiceFormatterData *)data</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/formattedStringForInvoice:withFormatData:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedStringForInvoice:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return a string suitable for printing in
+a fixed width font</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)formattedStringForInvoice:(PPHInvoice *)invoice</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/formattedStringForInvoice:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHInvoiceFormatter/formattedImageForInvoice:withWidth:</TokenIdentifier>
+			<Abstract type="html">Format the invoice according to the formatter settings and return an image with the specified width
+and height depending on the number of items on the invoice. This is essentially using the htmlStringForInvoice
+method and rendering it down to an image for you.</Abstract>
+			<DeclaredIn>PPHInvoiceFormatter.h</DeclaredIn>
+			
+			<Declaration>- (UIImage *)formattedImageForInvoice:(PPHInvoice *)invoice withWidth:(NSInteger)widthInPixels</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">The invoice receipt to be printed</Abstract>
+				</Parameter><Parameter>
+					<Name>widthInPixels</Name>
+					<Abstract type="html">The width of the returned image - height will be determined based on this</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/formattedImageForInvoice:withWidth:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

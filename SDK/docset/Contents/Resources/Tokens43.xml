@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHPaymentProcessor.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHPaymentProcessor</TokenIdentifier>
+			<Abstract type="html">The PPHPaymentProcessor is your one stop shop for turning various events into real money movement for your merchants.
+It supports card swipes, manually entered card data, chip and pin, and checkin/tab based transactions.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+            
+			
+			<NodeRef refid="43"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginRefund:forAmount:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Issue a refund against a previously successful PayPal transaction.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginRefund:(NSString *)transactionId forAmount:(PPHAmount *)amountOrNil completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>transactionId</Name>
+					<Abstract type="html">The transaction identifier for the original payment transaction</Abstract>
+				</Parameter><Parameter>
+					<Name>amountOrNil</Name>
+					<Abstract type="html">Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&apos;s a full refund.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginRefund:forAmount:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Issue a refund against a previously successful non-PayPal transaction.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginNonPayPalRefundWithInvoiceId:(NSString *)invoiceId forAmount:(PPHAmount *)amountOrNil completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>invoiceId</Name>
+					<Abstract type="html">The identifier for the invoice to be refunded.</Abstract>
+				</Parameter><Parameter>
+					<Name>amountOrNil</Name>
+					<Abstract type="html">Only pass an amount in the case of a partial refund. Otherwise, the backend will ensure it&apos;s a full refund.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginNonPayPalRefundWithInvoiceId:forAmount:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCheckinPayment:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Capture funds against an open checkin from PPHLocalManager and PPHLocationWatcher</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCheckinPayment:(PPHLocationCheckin *)checkin forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHPaymentResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>checkin</Name>
+					<Abstract type="html">information about the checkin (only id is needed)</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCheckinPayment:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Collect funds against a card that has been passed through a reader and for which magstripe data is available.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCardPresentChargeAttempt:(PPHCardSwipeData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice withSignature:(UIImage *)signature completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">from PPCardReaderManager swipe event</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>signature</Name>
+					<Abstract type="html">the buyer-generated signature, or nil for no signature. If signature is nil, a signature should be provided later
+with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCardPresentChargeAttempt:forInvoice:withSignature:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Authorize funds against a card that has been passed through a reader and for which magstripe data is available.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCardPresentAuthorizationAttempt:(PPHCardSwipeData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">from PPCardReaderManager swipe event</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed
+with provideSignature:forTransaction:andInvoice:completionHandler:</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCardPresentAuthorizationAttempt:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Collect funds against a card that has been manually entered.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCardNotPresentChargeAttempt:(PPHCardNotPresentData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *response ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">Filled out manually or via a Card Scan</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCardNotPresentChargeAttempt:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Authorize funds against a card that has been passed in via manual entry, or user key-in.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCardNotPresentAuthorizationAttempt:(PPHCardNotPresentData *)card forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">for PPHCardNotPresentData passed in manual card data</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCardNotPresentAuthorizationAttempt:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">Capture funds against an authorization.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginCaptureForTransactionId:(NSString *)txId withAmount:(PPHAmount *)amount andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice asFinal:(BOOL)finalCapture withCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>txId</Name>
+					<Abstract type="html">: The authorization id obtained after a successful authorization.</Abstract>
+				</Parameter><Parameter>
+					<Name>amount</Name>
+					<Abstract type="html">: Amount to be captured.</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">: The invoice against which the auth was performed.</Abstract>
+				</Parameter><Parameter>
+					<Name>finalCapture</Name>
+					<Abstract type="html">: Set to YES if its a final capture. NO, if we would like to perform multiple captures against this auth. Currently, the SDK supports ONLY single captures.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: Called when the action has completed.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginCaptureForTransactionId:withAmount:andInvoice:asFinal:withCompletionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginVoidForTransactionId:withInvoice:andCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">Void an existing authorization.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginVoidForTransactionId:(NSString *)txId withInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice andCompletionHandler:(void ( ^ ) ( PPHCardChargeResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>txId</Name>
+					<Abstract type="html">: The authorization id obtained after a successful authorization.</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">: The invoice against which the auth was performed.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">: Called when the action has completed.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginVoidForTransactionId:withInvoice:andCompletionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Mark an invoice as having been paid by an external payment type such as Cash or Check.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginRecordingExternalPayment:(PPHPaymentMethod)paymentType withNote:(NSString *)note forInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHPaymentResponse *response ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>paymentType</Name>
+					<Abstract type="html">must be cash or check currently for this method to succeed</Abstract>
+				</Parameter><Parameter>
+					<Name>note</Name>
+					<Abstract type="html">a short note, such as the amount tendered or check number</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice on which to collect funds (total, currency, invoiceId are the main elements). You must save this invoice before
+attempting to collect payment.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginRecordingExternalPayment:withNote:forInvoice:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/provideSignature:forTransaction:andInvoice:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Provide a signature record for a previously successful charge.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)provideSignature:(UIImage *)signature forTransaction:(PPHCardChargeResponse *)response andInvoice:(id&lt;PPHInvoiceProtocol&gt;)invoice completionHandler:(void ( ^ ) ( PPHError *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>signature</Name>
+					<Abstract type="html">the buyer-generated signature</Abstract>
+				</Parameter><Parameter>
+					<Name>response</Name>
+					<Abstract type="html">the result of beginCardPresentChargeAttempt</Abstract>
+				</Parameter><Parameter>
+					<Name>invoice</Name>
+					<Abstract type="html">the invoice of the transaction that&apos;s being signed for</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/provideSignature:forTransaction:andInvoice:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Check if the given swipe card data was the same card used to pay the transaction</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)checkRefundEligibilityForCardPresent:(PPHCardSwipeData *)card transactionRecord:(PPHTransactionRecord *)record completionHandler:(void ( ^ ) ( PPHRefundEligibilityResponse *))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">the card data to be checked</Abstract>
+				</Parameter><Parameter>
+					<Name>record</Name>
+					<Abstract type="html">the transaction record against which to check the card</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">handler to call when the action has completed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/checkRefundEligibilityForCardPresent:transactionRecord:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHPaymentProcessor/beginSendReceipt:to:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Send the receipt for a particular transaction or transaction attempt/failure to an email address or mobile phone number.</Abstract>
+			<DeclaredIn>PPHPaymentProcessor.h</DeclaredIn>
+			
+			<Declaration>- (void)beginSendReceipt:(PPHPaymentResponse *)payment to:(PPHReceiptDestination *)destination completionHandler:(PPHInvoiceBasicCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>payment</Name>
+					<Abstract type="html">the response from the server for the payment attempt. In the case of successful non-EMV transactions, we only need the transactionId and paypalInvoiceId
+values of this object, so you can make one up with that data.</Abstract>
+				</Parameter><Parameter>
+					<Name>destination</Name>
+					<Abstract type="html">the destination for the receipt (e.g. an email address or phone number)</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">called when the receipt is sent or an error occurs</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/beginSendReceipt:to:completionHandler:</Anchor>
+            <NodeRef refid="43"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>PPHReaderDisplayFormatter Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">PayPalHereSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">PayPal</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/stringValue">stringValue</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/formatterForDisplayReader:">+ formatterForDisplayReader:</option>
+		
+		<option value="//api/name/formatterWithNumCharactersPerRow:">+ formatterWithNumCharactersPerRow:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/addPaddedLine">- addPaddedLine</option>
+		
+		<option value="//api/name/clearString">- clearString</option>
+		
+		<option value="//api/name/justifyString:withAlignment:">- justifyString:withAlignment:</option>
+		
+		<option value="//api/name/readerTextForKey:">- readerTextForKey:</option>
+		
+		<option value="//api/name/splitOnNewLine:">- splitOnNewLine:</option>
+		
+		<option value="//api/name/stringWithLeftString:andRightString:">- stringWithLeftString:andRightString:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">PPHReaderDisplayFormatter Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>PPHReaderDisplayFormatter.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li>This class allows you to generate aligned, justified strings of text for display</li>
+<li>on LED screens. Most reader display screens allow a certain number of characters to be displayed</li>
+<li>per row. Based on these constraints you will probably either want to right justify, left justify,</li>
+<li>or simply center your strings of text on the display. Use this class to do these operations.</li>
+<li><p>This class is simply a formatter and has no intelligence on how many lines a readerDisplay accepts.</p></li>
+<li><p>Your strings MUST include the &ldquo;\n&rdquo; character to specify new lines</p></li>
+<li>of text in your string. We apply alignment to each line separately and build out the string.</li>
+<li>If your strings do not have a &ldquo;\n&rdquo; we logically break lines based off of how many characters were</li>
+<li>defined per row.
+*</li>
+</ul>
+
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/stringValue" title="stringValue"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stringValue">&nbsp;&nbsp;stringValue</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&ldquo;&rdquo; if an error occurred during formatting due
+to bad input values. We also append @&ldquo;&rdquo; if subsequent formatting operations fail.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSMutableString *stringValue</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Query this property to get the current formatted string in ReaderDisplayFormatter.
+This value can be the empty string @&ldquo;&rdquo; if an error occurred during formatting due
+to bad input values. We also append @&ldquo;&rdquo; if subsequent formatting operations fail.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/formatterWithNumCharactersPerRow:" title="formatterWithNumCharactersPerRow:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/formatterWithNumCharactersPerRow:">+&nbsp;formatterWithNumCharactersPerRow:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Grab an instance of PPHReaderDisplayFormatter by specifying the number of characters allowed
+per row for the current display you are working with.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPHReaderDisplayFormatter *)formatterWithNumCharactersPerRow:(NSUInteger)<em>numChars</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Grab an instance of PPHReaderDisplayFormatter by specifying the number of characters allowed
+per row for the current display you are working with.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/formatterForDisplayReader:" title="formatterForDisplayReader:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/formatterForDisplayReader:">+&nbsp;formatterForDisplayReader:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Grab an instance of PPHReaderDisplayFormatter by specifying the current Display Reader you
+are working with. Currently we only support the m010 reader. Based on the reader provided, we init
+the formatter with the appropriate number of characters per row. If you provide
+ePPHDisplayReaderUnknown we return nil, for a custom formatter use the formatterWithNumCharacters
+PerRow static initter method instead.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPHReaderDisplayFormatter *)formatterForDisplayReader:(PPHDisplayReader)<em>reader</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Grab an instance of PPHReaderDisplayFormatter by specifying the current Display Reader you
+are working with. Currently we only support the m010 reader. Based on the reader provided, we init
+the formatter with the appropriate number of characters per row. If you provide
+ePPHDisplayReaderUnknown we return nil, for a custom formatter use the formatterWithNumCharacters
+PerRow static initter method instead.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/justifyString:withAlignment:" title="justifyString:withAlignment:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/justifyString:withAlignment:">&ndash;&nbsp;justifyString:withAlignment:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Use this method to justify/align a string.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)justifyString:(NSString *)<em>str</em> withAlignment:(NSTextAlignment)<em>alignment</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>str:</code></th>
+						<td><p>The string you want formatted/aligned for the display</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>alignment:</code></th>
+						<td><p>NSTextAlignment value to specify how you want the text aligned. Currently we only
+support NSTextAlignmentCenter, NSTextAlignmentRight, and NSTextAlignmentLeft. Any other enumeration
+val passed in will result in the string being ignored and no action being taken.</p>
+
+<p>EXAMPLE: Let&rsquo;s say you pass in the string &ldquo;Hello\nWorld&rdquo; with alignment NSTextAlignmentCenter.
+This implies you want the lines &ldquo;Hello&rdquo; and &ldquo;World&rdquo; to be on two separate lines on the display reader
+and you want each string to be centered on the display. We format the string accordingly. After
+feeding the string into this API, get the formatted string back by querying the <a href="#//api/name/stringValue">stringValue</a> property.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Use this method to justify/align a string.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stringWithLeftString:andRightString:" title="stringWithLeftString:andRightString:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stringWithLeftString:andRightString:">&ndash;&nbsp;stringWithLeftString:andRightString:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a line that has a left aligned string and a right aligned string (blanks inserted in between)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stringWithLeftString:(NSString *)<em>left</em> andRightString:(NSString *)<em>right</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a line that has a left aligned string and a right aligned string (blanks inserted in between)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/readerTextForKey:" title="readerTextForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/readerTextForKey:">&ndash;&nbsp;readerTextForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a key prefix for a string in our string tables, this method will return the appropriate
+text mapped to the key prefix for the formatter&rsquo;s current reader. You can then feed the string into
+the formatter&rsquo;s API&rsquo;s to justify the text if you want and then retrieve the formatted text.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)readerTextForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a key prefix for a string in our string tables, this method will return the appropriate
+text mapped to the key prefix for the formatter&rsquo;s current reader. You can then feed the string into
+the formatter&rsquo;s API&rsquo;s to justify the text if you want and then retrieve the formatted text.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/splitOnNewLine:" title="splitOnNewLine:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/splitOnNewLine:">&ndash;&nbsp;splitOnNewLine:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience method to split a string on new line characters. You can then feed each string
+one by one into the formatter&rsquo;s justifyString method and specify different alignments.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray *)splitOnNewLine:(NSString *)<em>str</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience method to split a string on new line characters. You can then feed each string
+one by one into the formatter&rsquo;s justifyString method and specify different alignments.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addPaddedLine" title="addPaddedLine"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addPaddedLine">&ndash;&nbsp;addPaddedLine</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience method to generate a blank line of text padded with spaces and add it to
+the formatter. This can help to create blank rows between two lines of text for example.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addPaddedLine</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience method to generate a blank line of text padded with spaces and add it to
+the formatter. This can help to create blank rows between two lines of text for example.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clearString" title="clearString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clearString">&ndash;&nbsp;clearString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Clear out any formatted text the formatter is currently holding and set it to the
+empty string @&ldquo;&rdquo;</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)clearString</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Clear out any formatted text the formatter is currently holding and set it to the
+empty string @&ldquo;&rdquo;</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPHReaderDisplayFormatter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 PayPal. All rights reserved. Updated: 2016-04-14</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PPHLocationWatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PPHLocationWatcher</TokenIdentifier>
+			<Abstract type="html">PPHLocationWatcher maintains a list of open tabs for a location and can update the list
+when asked.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+            
+			
+			<NodeRef refid="39"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/setDelegate:</TokenIdentifier>
+			<Abstract type="html">The delegate to be notified of new and removed tabs, as well as update errors</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, unsafe_unretained) id&lt;PPHLocationWatcherDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate to be notified of new and removed tabs, as well as update errors</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, unsafe_unretained) id&lt;PPHLocationWatcherDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationWatcher/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate to be notified of new and removed tabs, as well as update errors</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, unsafe_unretained) id&lt;PPHLocationWatcherDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/setLocationId:</TokenIdentifier>
+			<Abstract type="html">The location id which this object watches</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly, strong) NSString *locationId</Declaration>
+			
+			
+			<Anchor>//api/name/locationId</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/locationId</TokenIdentifier>
+			<Abstract type="html">The location id which this object watches</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly, strong) NSString *locationId</Declaration>
+			
+			
+			<Anchor>//api/name/locationId</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationWatcher/locationId</TokenIdentifier>
+			<Abstract type="html">The location id which this object watches</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly, strong) NSString *locationId</Declaration>
+			
+			
+			<Anchor>//api/name/locationId</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/setOpenTabs:</TokenIdentifier>
+			<Abstract type="html">Known open tabs as of the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly, strong) NSArray *openTabs</Declaration>
+			
+			
+			<Anchor>//api/name/openTabs</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/openTabs</TokenIdentifier>
+			<Abstract type="html">Known open tabs as of the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly, strong) NSArray *openTabs</Declaration>
+			
+			
+			<Anchor>//api/name/openTabs</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PPHLocationWatcher/openTabs</TokenIdentifier>
+			<Abstract type="html">Known open tabs as of the last update</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly, strong) NSArray *openTabs</Declaration>
+			
+			
+			<Anchor>//api/name/openTabs</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/updateNow</TokenIdentifier>
+			<Abstract type="html">Trigger an update against the server and dispatch events to the delegate as necessary.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>- (void)updateNow</Declaration>
+			
+			
+			<Anchor>//api/name/updateNow</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/updatePeriodically:withMaximumInterval:</TokenIdentifier>
+			<Abstract type="html">Trigger periodic updates. The watcher uses an adaptive strategy based on whether results are changing or not.
+So for example, if it calls twice in the minimumUpdateInterval and the tabs have not changed, it will start towards
+maximumUpdateIntervalSeconds. When results change, it will come back towards minimumUpdateIntervalSeconds.</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>- (void)updatePeriodically:(NSInteger)minimumUpdateIntervalSeconds withMaximumInterval:(NSInteger)maximumUpdateIntervalSeconds</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>minimumUpdateIntervalSeconds</Name>
+					<Abstract type="html">After a successful call, wait at least this long until the next call</Abstract>
+				</Parameter><Parameter>
+					<Name>maximumUpdateIntervalSeconds</Name>
+					<Abstract type="html">After a successful call, wait no longer than this long until the next call</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/updatePeriodically:withMaximumInterval:</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PPHLocationWatcher/stopPeriodicUpdates</TokenIdentifier>
+			<Abstract type="html">Stop any active periodic updates established with updatePeriodically:withMaximumInterval:</Abstract>
+			<DeclaredIn>PPHLocationWatcher.h</DeclaredIn>
+			
+			<Declaration>- (void)stopPeriodicUpdates</Declaration>
+			
+			
+			<Anchor>//api/name/stopPeriodicUpdates</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
