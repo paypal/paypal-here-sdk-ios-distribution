@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PayPalHereSDK'
-  s.version          = '1.6.5.1'
+  s.version          = '1.6.6'
   s.summary          = 'SDK for interfacing with PayPal card readers and mobile payment processing APIs.'
   s.license          = 'COMMERCIAL'
   s.homepage         = 'https://developer.paypal.com/docs/integration/paypal-here/ios-dev/overview/'

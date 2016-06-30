@@ -198,12 +198,16 @@
 // Update your invoice here, if needed, before we proceed with the transaction.
 // IMPORTANT NOTE : For a contactless transaction, refrain from updating the invoice once the card is tapped.
 - (void)userDidSelectPaymentMethod:(PPHPaymentMethod) paymentOption {
+    
     __weak typeof(self) weakSelf = self;
     // STEP #3 to take an EMV payment. 
     [[PayPalHereSDK sharedTransactionManager] processPaymentUsingUIWithPaymentType:paymentOption
                                                                  completionHandler:^(PPHTransactionResponse *response) {
                                                                      
-                                                                     [weakSelf gotoPaymentCompleteScreenWithResponse:response];
+            if (!response.error) {
+                NSLog(@"%@", [NSString stringWithFormat:@" Last Four digits on card : %@, card type: %ld", response.record.invoice.paymentInfo.creditCardLastFourDigits, (long)response.record.invoice.paymentInfo.creditCardType]);
+            }
+            [weakSelf gotoPaymentCompleteScreenWithResponse:response];
                                                                      
     }];
 }
