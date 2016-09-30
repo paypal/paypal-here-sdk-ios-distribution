@@ -3,4 +3,6 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/PayPalHereSDK"
 OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/PayPalHereSDK"
 OTHER_LDFLAGS = $(inherited) -ObjC -stdlib=libstdc++ -l"sqlite3" -l"stdc++" -l"xml2" -l"z" -framework "AVFoundation" -framework "AudioToolbox" -framework "CFNetwork" -framework "CoreBluetooth" -framework "CoreTelephony" -framework "ExternalAccessory" -framework "Foundation" -framework "MediaPlayer" -framework "MobileCoreServices" -framework "PayPalHereSDK" -framework "Security" -framework "SystemConfiguration"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

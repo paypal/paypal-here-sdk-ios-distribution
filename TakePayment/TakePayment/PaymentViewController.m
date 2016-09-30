@@ -199,6 +199,8 @@
 // IMPORTANT NOTE : For a contactless transaction, refrain from updating the invoice once the card is tapped.
 - (void)userDidSelectPaymentMethod:(PPHPaymentMethod) paymentOption {
     
+    [PayPalHereSDK activeMerchant].invoiceContactInfo.businessName = @"Generic Business";
+    
     __weak typeof(self) weakSelf = self;
     // STEP #3 to take an EMV payment. 
     [[PayPalHereSDK sharedTransactionManager] processPaymentUsingUIWithPaymentType:paymentOption
