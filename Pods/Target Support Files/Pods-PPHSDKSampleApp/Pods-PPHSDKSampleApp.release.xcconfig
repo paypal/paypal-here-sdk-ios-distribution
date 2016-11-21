@@ -1,0 +1,9 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/.."
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/HereSDK" "${PODS_ROOT}/Headers/Public/PayPalManticore"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/HereSDK" -isystem "${PODS_ROOT}/Headers/Public/PayPalManticore"
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "AVFoundation" -framework "AudioToolbox" -framework "CFNetwork" -framework "CoreBluetooth" -framework "CoreTelephony" -framework "ExternalAccessory" -framework "Foundation" -framework "HereSDK" -framework "JavaScriptCore" -framework "MediaPlayer" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}/Pods
