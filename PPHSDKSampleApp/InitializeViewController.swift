@@ -60,7 +60,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         // Set up a device discovered listener for EMV device connection.  If a software update is required
         // then we'll offer up that flow.
-        // TODO: should make this so it auto starts for required and offers for non-required updates.
         PayPalRetailSDK.addDeviceDiscoveredListener { (device) -> Void in
             device!.addUpdateRequiredListener({ (deviceUpdate) -> Void in
                 if(deviceUpdate!.isRequired) {
@@ -85,7 +84,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
     }
     
-    
     @IBAction func initMerchant(_ sender: UIButton) {
         print("button code entered")
         initMerchantButton.isHidden = true
@@ -96,7 +94,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // sample retail node server that's available at https://github.com/paypal/paypal-retail-node
         let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/sandbox")!
         
-        // Check if there's a previous token saved in UserDefaults and use that if so.  Otherwise,
+        // Check if there's a previous token saved in UserDefaults and, if so, use that.  Otherwise,
         // kick open the SFSafariViewController to expose the login and obtain another token.
         let tokenDefault = UserDefaults.init()
         if let savedToken = tokenDefault.string(forKey: "SAVED_TOKEN") {
@@ -165,6 +163,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // Clear out the UserDefaults and show the appropriate buttons/labels
         let tokenDefault = UserDefaults.init()
         tokenDefault.removeObject(forKey: "SAVED_TOKEN")
+        tokenDefault.synchronize()
         
         merchAcctLabel.isHidden = true
         merchEmailLabel.isHidden = true
@@ -174,16 +173,19 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // Code to disable the payments/refunds tab bar item
         if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[1] as? UITabBarItem {
             tabBarItem.isEnabled = false
+
         }
         
         initMerchantButton.isHidden = false
-
-        
+        initMerchantButton.sizeToFit()
     }
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         // This function would be called if the user pressed the Done button inside the SFSafariViewController.
         print("did finish was called")
+        activitySpinner.stopAnimating()
+        initMerchantButton.isHidden = false
+        initMerchantButton.sizeToFit()
     }
     
 
