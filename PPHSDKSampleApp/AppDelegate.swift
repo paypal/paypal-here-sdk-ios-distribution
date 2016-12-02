@@ -48,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var token = url.query?.replacingOccurrences(of: "sdk_token=", with: "")
         token = token?.removingPercentEncoding
         
+        // Save token to UserDefaults for further usage
+        let tokenDefault = UserDefaults.init()
+        tokenDefault.setValue(token, forKey: "SAVED_TOKEN")
+        
         // Use the notification service to send the token the InitializeViewController
         if (sourceApplication == "com.apple.SafariViewService") {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: token)

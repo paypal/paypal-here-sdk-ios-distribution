@@ -19,6 +19,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var refundBtn: UIButton!
     @IBOutlet weak var refundId: UITextField!
     @IBOutlet weak var successTxnId: UILabel!
+    
 
     // Set up the relevant listeners, transactionContext, and Invoice.
     var listenerSignal: PPRetailCardPresentedSignal? = nil
@@ -59,7 +60,7 @@ class PaymentViewController: UIViewController {
         // unique transaction attempt.  For payment resubmissions, simply use the same invoice number
         // to ensure that the invoice hasn't already been paid.
         //
-        // invoice!.number = "sdk2test001"
+        invoice!.number = "sdk2test\(arc4random_uniform(9999))"
 
         if(invoice!.itemCount > 0) {
             invAmount.isHidden = true

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVB-px-oAq">
-                                <rect key="frame" x="144.66666666666669" y="353" width="125.00000000000006" height="30"/>
+                                <rect key="frame" x="145" y="353" width="125" height="30"/>
                                 <state key="normal" title="Initialize Merchant">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -63,6 +63,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vZ-ug-XtF">
+                                <rect key="frame" x="163.30956239870352" y="291" width="85.000000000000057" height="30.000000000000057"/>
+                                <state key="normal" title="Logout?"/>
+                                <connections>
+                                    <action selector="logout:" destination="9pv-A4-QxB" eventType="touchUpInside" id="bju-az-Xwe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -70,6 +77,7 @@
                             <constraint firstItem="IG5-gp-Akz" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="1eL-ut-TlP"/>
                             <constraint firstItem="rUH-EU-9C9" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="2Le-N0-EhQ"/>
                             <constraint firstItem="yVB-px-oAq" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="2iq-IA-1K3"/>
+                            <constraint firstItem="4vZ-ug-XtF" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" constant="-1.1904376012964519" id="5Ua-aw-caj"/>
                             <constraint firstItem="ODc-7g-iLa" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="186" id="BDm-GW-Mer"/>
                             <constraint firstItem="vxU-yv-wfV" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="BFl-87-ZSR"/>
                             <constraint firstItem="vxU-yv-wfV" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="GsJ-E1-e0p"/>
@@ -81,6 +89,7 @@
                             <constraint firstItem="ODc-7g-iLa" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="56" id="nvk-VE-xW1"/>
                             <constraint firstItem="4X4-Fd-US5" firstAttribute="top" secondItem="ODc-7g-iLa" secondAttribute="bottom" constant="28" id="pFH-kH-I3a"/>
                             <constraint firstItem="4X4-Fd-US5" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="94" id="uWo-Gh-wg0"/>
+                            <constraint firstItem="4vZ-ug-XtF" firstAttribute="top" secondItem="IG5-gp-Akz" secondAttribute="bottom" constant="8" id="vWU-3P-8FQ"/>
                             <constraint firstItem="ODc-7g-iLa" firstAttribute="centerY" secondItem="4X4-Fd-US5" secondAttribute="centerY" constant="-49" id="wJd-Xu-rET"/>
                             <constraint firstItem="IG5-gp-Akz" firstAttribute="top" secondItem="4X4-Fd-US5" secondAttribute="bottom" constant="7" id="wSz-1p-dXF"/>
                             <constraint firstItem="yVB-px-oAq" firstAttribute="top" secondItem="IG5-gp-Akz" secondAttribute="bottom" constant="70" id="xJF-gs-fGK"/>
@@ -91,6 +100,7 @@
                         <outlet property="activitySpinner" destination="vxU-yv-wfV" id="xLa-rV-1UL"/>
                         <outlet property="initMerchantButton" destination="yVB-px-oAq" id="zdo-xO-6Yz"/>
                         <outlet property="initSdkButton" destination="rUH-EU-9C9" id="WVv-Hr-jk6"/>
+                        <outlet property="logoutBtn" destination="4vZ-ug-XtF" id="k9u-rU-qSr"/>
                         <outlet property="merchAcctLabel" destination="4X4-Fd-US5" id="RaK-WZ-y5f"/>
                         <outlet property="merchEmailLabel" destination="IG5-gp-Akz" id="1Xx-7D-V3V"/>
                         <outlet property="successOrFail" destination="ODc-7g-iLa" id="jaL-Yt-n4a"/>
@@ -98,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="749.27536231884062" y="-321.19565217391306"/>
         </scene>
         <!--Payments & Refunds-->
         <scene sceneID="wg7-f3-ORb">
