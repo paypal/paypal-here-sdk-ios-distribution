@@ -85,7 +85,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
     
     @IBAction func initMerchant(_ sender: UIButton) {
-        print("button code entered")
+        
         initMerchantButton.isHidden = true
         successOrFail.isHidden = true
         activitySpinner.startAnimating()
@@ -180,12 +180,13 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchantButton.sizeToFit()
     }
     
+    // This function would be called if the user pressed the Done button inside the SFSafariViewController.
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        // This function would be called if the user pressed the Done button inside the SFSafariViewController.
-        print("did finish was called")
+        
         activitySpinner.stopAnimating()
         initMerchantButton.isHidden = false
         initMerchantButton.sizeToFit()
+        
     }
     
 
