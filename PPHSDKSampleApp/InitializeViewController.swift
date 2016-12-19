@@ -91,8 +91,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         activitySpinner.startAnimating()
 
         // Set your URL for your backend server that handles OAuth.  This sample uses and instance of the
-        // sample retail node server that's available at https://github.com/paypal/paypal-retail-node
-        let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/sandbox")!
+        // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
+        // set this to Live, simply change /sandbox to /live.
+        let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/sandbox")
         
         // Check if there's a previous token saved in UserDefaults and, if so, use that.  Otherwise,
         // kick open the SFSafariViewController to expose the login and obtain another token.
@@ -104,7 +105,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         } else {
             
             // Present a SFSafariViewController to handle the login to get the merchant account to use.
-            let svc = SFSafariViewController(url: url as URL)
+            let svc = SFSafariViewController(url: url as! URL)
             svc.delegate = self
             self.present(svc, animated: true, completion: nil)
         }
@@ -146,6 +147,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 self.merchEmailLabel.text = merchant!.emailAddress
                 self.merchEmailLabel.adjustsFontSizeToFitWidth = true
                 self.merchEmailLabel.textAlignment = .center
+                self.merchEmailLabel.numberOfLines = 0
+                self.merchEmailLabel.sizeToFit()
                 self.logoutBtn.isHidden = false
 
                 // Code to re-enable the payments/refunds tab bar item
