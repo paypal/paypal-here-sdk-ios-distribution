@@ -95,10 +95,14 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // set this to Live, simply change /sandbox to /live.
         let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/sandbox")
         
-        // Check if there's a previous token saved in UserDefaults and, if so, use that.  Otherwise,
-        // kick open the SFSafariViewController to expose the login and obtain another token.
+        // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
+        // check that the saved token matches the environment.  Otherwise, kick open the
+        // SFSafariViewController to expose the login and obtain another token.
         let tokenDefault = UserDefaults.init()
-        if let savedToken = tokenDefault.string(forKey: "SAVED_TOKEN") {
+        let savedToken = tokenDefault.string(forKey: "SAVED_TOKEN")
+        let env = savedToken?.components(separatedBy: ":")
+
+        if((savedToken != nil) && url!.absoluteString!.contains(env![0])) {
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: savedToken)
             
