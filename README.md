@@ -68,7 +68,8 @@ var invoice: PPRetailInvoice?
   }) as PPRetailCompletedSignal?
   ```
   
-**Refunds (with the same declarations as above):**
+**Refunds (with the same declarations as above):** <br>
+_To activate a refund with this app, simply tap the successful transaction ID after a payment._ <br>
   1. Create TransactionContext based on the Invoice you want to refund <br>
   ```swift
 
