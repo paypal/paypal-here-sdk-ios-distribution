@@ -9,7 +9,7 @@
 import UIKit
 
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var invAmount: UITextField!
     @IBOutlet weak var createInvoiceBtn: UIButton!
@@ -26,11 +26,10 @@ class PaymentViewController: UIViewController {
     var completedSignal: PPRetailCompletedSignal? = nil
     var tm: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.delegate = self
         
         createTxnBtn.isHidden = true
         acceptTxnBtn.isHidden = true
@@ -52,30 +51,51 @@ class PaymentViewController: UIViewController {
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
         
-        invoice = PPRetailInvoice.init(currencyCode: "USD")
+        guard let mInvoice = PPRetailInvoice.init(currencyCode: "USD"), invAmount.text != "" else {
+            
+            let alertController = UIAlertController(title: "Whoops!", message: "Something happened during invoice initialization", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Error during invoice init")
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
         
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let price = formatter.number(from: invAmount.text!) as! NSDecimalNumber
         
-        invoice!.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
+        mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
         
         // The invoice Number is used for duplicate payment checking.  It should be unique for every
         // unique transaction attempt.  For payment resubmissions, simply use the same invoice number
         // to ensure that the invoice hasn't already been paid.
-        //
-        invoice!.number = "sdk2test\(arc4random_uniform(9999))"
+        mInvoice.number = "sdk2test\(arc4random_uniform(9999))"
 
-        if(invoice!.itemCount > 0) {
-            invAmount.isHidden = true
-            createInvoiceBtn.isHidden = true
-            invCreatedLabel.isHidden = false
-            createTxnBtn.isHidden = false
-            invAmount.endEditing(true)
-        } else {
-            print("Error creating invoice for some reason :(")
+        guard mInvoice.itemCount > 0, mInvoice.total.intValue >= 1 else {
+            let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than $1", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Error creating invoice")
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
         }
+
+        invAmount.isHidden = true
+        createInvoiceBtn.isHidden = true
+        invCreatedLabel.isHidden = false
+        createTxnBtn.isHidden = false
+        invAmount.endEditing(true)
         
+        invoice = mInvoice
     }
     
     // This function does the createTransaction call to start the process with the current invoice.
@@ -93,7 +113,7 @@ class PaymentViewController: UIViewController {
     // set in this function as well to allow for the listening of the user either inserting, swiping, or tapping
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
-        
+
         tm!.begin(true)
         
         listenerSignal = tm!.addCardPresentedListener({ (cardInfo) -> Void in
@@ -121,6 +141,7 @@ class PaymentViewController: UIViewController {
             self.tm!.removeCompletedListener(self.completedSignal)
             
         }) as PPRetailCompletedSignal?
+        
         
     }
     
@@ -191,7 +212,25 @@ class PaymentViewController: UIViewController {
         refundBtn.isHidden = false
     }
     
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        // If the Initialize & Merchant tab is selected, I'm cancelling the current transaction so that it
+        // can be restarted when entering the payments tab again. This prevents a scenario where one merchant
+        // account is used to start the transaction but then they logout and login with a different merchant
+        // prior to processing the transaction.
+        if (tabBarController.selectedIndex == 0) {
+            tm?.cancel()
+            invAmount.isHidden = false
+            invAmount.text = ""
+            createInvoiceBtn.isHidden = false
+            createTxnBtn.isHidden = true
+            acceptTxnBtn.isHidden = true
+            refundId.isHidden = true
+            refundBtn.isHidden = true
+            invCreatedLabel.isHidden = true
+        }
+        
+    }
     
     
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE7571731775D5C4C26BF8C6 /* libPods-PPHSDKSampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1404486E94845F974946926E /* libPods-PPHSDKSampleApp.a */; };
+		5B314F0F0F636EA23BF3D0C6 /* libPods-PPHSDKSampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C9C647D372AC1983216A23 /* libPods-PPHSDKSampleApp.a */; };
 		C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */; };
 		C6C794021DDD01E800F8DC8E /* InitializeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */; };
 		C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */; };
@@ -17,9 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1404486E94845F974946926E /* libPods-PPHSDKSampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PPHSDKSampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		941209A83E185E804DB1F519 /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		B465C48A78A8D6665E859A30 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		49C9C647D372AC1983216A23 /* libPods-PPHSDKSampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PPHSDKSampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE645DC30F809878AC55D78A /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C6C793FC1DDD01E800F8DC8E /* PPHSDKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPHSDKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +28,8 @@
 		C6C7940B1DDD01E800F8DC8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C7940D1DDD01E800F8DC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C794141DDD1B9F00F8DC8E /* PPHSDKSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPHSDKSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E9CD25511B48764794A44374 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE7571731775D5C4C26BF8C6 /* libPods-PPHSDKSampleApp.a in Frameworks */,
+				5B314F0F0F636EA23BF3D0C6 /* libPods-PPHSDKSampleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +47,8 @@
 		2359FFE7D6776F5A76927401 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1404486E94845F974946926E /* libPods-PPHSDKSampleApp.a */,
+				C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */,
+				49C9C647D372AC1983216A23 /* libPods-PPHSDKSampleApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -54,8 +56,8 @@
 		C2AA9B86D7810FAFEC8FA22D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				941209A83E185E804DB1F519 /* Pods-PPHSDKSampleApp.debug.xcconfig */,
-				B465C48A78A8D6665E859A30 /* Pods-PPHSDKSampleApp.release.xcconfig */,
+				AE645DC30F809878AC55D78A /* Pods-PPHSDKSampleApp.debug.xcconfig */,
+				E9CD25511B48764794A44374 /* Pods-PPHSDKSampleApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -100,12 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C794101DDD01E800F8DC8E /* Build configuration list for PBXNativeTarget "PPHSDKSampleApp" */;
 			buildPhases = (
-				A442C24E9030A64113BF91B8 /* [CP] Check Pods Manifest.lock */,
+				B2B7E78DFE6CA55FCED0B3F6 /* [CP] Check Pods Manifest.lock */,
 				C6C793F81DDD01E800F8DC8E /* Sources */,
 				C6C793F91DDD01E800F8DC8E /* Frameworks */,
 				C6C793FA1DDD01E800F8DC8E /* Resources */,
-				64C156A5AC0DE7B1651A237C /* [CP] Embed Pods Frameworks */,
-				CB75642346309073BC55D2C4 /* [CP] Copy Pods Resources */,
+				E2158E0F7A98BB0E3078F6B8 /* [CP] Embed Pods Frameworks */,
+				62CC7A53F85BEEFB489188D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,7 +125,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = cowright;
 				TargetAttributes = {
 					C6C793FB1DDD01E800F8DC8E = {
@@ -165,22 +167,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		64C156A5AC0DE7B1651A237C /* [CP] Embed Pods Frameworks */ = {
+		62CC7A53F85BEEFB489188D2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A442C24E9030A64113BF91B8 /* [CP] Check Pods Manifest.lock */ = {
+		B2B7E78DFE6CA55FCED0B3F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,19 +197,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CB75642346309073BC55D2C4 /* [CP] Copy Pods Resources */ = {
+		E2158E0F7A98BB0E3078F6B8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -263,6 +265,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -271,6 +274,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -317,6 +321,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -325,6 +330,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -348,7 +354,7 @@
 		};
 		C6C794111DDD01E800F8DC8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 941209A83E185E804DB1F519 /* Pods-PPHSDKSampleApp.debug.xcconfig */;
+			baseConfigurationReference = AE645DC30F809878AC55D78A /* Pods-PPHSDKSampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FBH8QE7YE9;
@@ -363,7 +369,7 @@
 		};
 		C6C794121DDD01E800F8DC8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B465C48A78A8D6665E859A30 /* Pods-PPHSDKSampleApp.release.xcconfig */;
+			baseConfigurationReference = E9CD25511B48764794A44374 /* Pods-PPHSDKSampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FBH8QE7YE9;

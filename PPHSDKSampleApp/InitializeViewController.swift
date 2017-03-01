@@ -54,6 +54,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         initSdkButton.isHidden = true
         initMerchantButton.isHidden = false
+        initMerchantButton.sizeToFit()
         
         // First things first, we need to initilize the SDK itself.
         PayPalRetailSDK.initializeSDK()
@@ -101,6 +102,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         let tokenDefault = UserDefaults.init()
         let savedToken = tokenDefault.string(forKey: "SAVED_TOKEN")
         let env = savedToken?.components(separatedBy: ":")
+        print("token: \(savedToken)")
 
         if((savedToken != nil) && url!.absoluteString!.contains(env![0])) {
             
@@ -129,8 +131,40 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         let sdkToken = notification.object as! String
         
         PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in
-
-            if((error) != nil) {
+            
+//            if((error) != nil) {
+//                self.activitySpinner.stopAnimating()
+//                self.successOrFail.isHidden = false
+//                self.successOrFail.text = "Failed! Check logs for error"
+//                self.successOrFail.adjustsFontSizeToFitWidth = true
+//                self.successOrFail.textAlignment = .center
+//                self.initMerchantButton?.isHidden = false
+//                print("Debug ID: \(error!.debugId)")
+//                print("Error: \(error!.developerMessage)")
+//            } else {
+//                print("Merchant Success!")
+//                self.activitySpinner.stopAnimating()
+//                self.successOrFail.isHidden = false
+//                self.successOrFail.text = "Success! Merchant Initialized"
+//                self.successOrFail.adjustsFontSizeToFitWidth = true
+//                self.successOrFail.textAlignment = .center
+//                self.merchAcctLabel.isHidden = false
+//                self.merchEmailLabel.isHidden = false
+//                self.merchEmailLabel.text = merchant!.emailAddress
+//                self.merchEmailLabel.adjustsFontSizeToFitWidth = true
+//                self.merchEmailLabel.textAlignment = .center
+//                self.merchEmailLabel.numberOfLines = 0
+//                self.merchEmailLabel.sizeToFit()
+//                self.logoutBtn.isHidden = false
+//
+//                // Code to re-enable the payments/refunds tab bar item
+//                if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[1] as? UITabBarItem {
+//                    tabBarItem.isEnabled = true
+//                }
+//                
+//            }
+            
+            guard error == nil else {
                 self.activitySpinner.stopAnimating()
                 self.successOrFail.isHidden = false
                 self.successOrFail.text = "Failed! Check logs for error"
@@ -138,28 +172,31 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 self.successOrFail.textAlignment = .center
                 self.initMerchantButton?.isHidden = false
                 print("Debug ID: \(error!.debugId)")
-                print("Error: \(error!.developerMessage)")
-            } else {
-                print("Merchant Success!")
-                self.activitySpinner.stopAnimating()
-                self.successOrFail.isHidden = false
-                self.successOrFail.text = "Success! Merchant Initialized"
-                self.successOrFail.adjustsFontSizeToFitWidth = true
-                self.successOrFail.textAlignment = .center
-                self.merchAcctLabel.isHidden = false
-                self.merchEmailLabel.isHidden = false
-                self.merchEmailLabel.text = merchant!.emailAddress
-                self.merchEmailLabel.adjustsFontSizeToFitWidth = true
-                self.merchEmailLabel.textAlignment = .center
-                self.merchEmailLabel.numberOfLines = 0
-                self.merchEmailLabel.sizeToFit()
-                self.logoutBtn.isHidden = false
-
-                // Code to re-enable the payments/refunds tab bar item
-                if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[1] as? UITabBarItem {
-                    tabBarItem.isEnabled = true
-                }
+                print("Error Message: \(error!.message)")
                 
+                return
+            }
+            
+            // TODO: have another guard statement for merchant status (enabled for PPH) when/if it's avail in the SDK
+            
+            print("Merchant Success!")
+            self.activitySpinner.stopAnimating()
+            self.successOrFail.isHidden = false
+            self.successOrFail.text = "Success! Merchant Initialized"
+            self.successOrFail.adjustsFontSizeToFitWidth = true
+            self.successOrFail.textAlignment = .center
+            self.merchAcctLabel.isHidden = false
+            self.merchEmailLabel.isHidden = false
+            self.merchEmailLabel.text = merchant!.emailAddress
+            self.merchEmailLabel.adjustsFontSizeToFitWidth = true
+            self.merchEmailLabel.textAlignment = .center
+            self.merchEmailLabel.numberOfLines = 0
+            self.merchEmailLabel.sizeToFit()
+            self.logoutBtn.isHidden = false
+            
+            // Code to re-enable the payments/refunds tab bar item
+            if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[1] as? UITabBarItem {
+                tabBarItem.isEnabled = true
             }
             
         })
