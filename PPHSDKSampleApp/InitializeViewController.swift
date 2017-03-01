@@ -194,6 +194,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.merchEmailLabel.sizeToFit()
             self.logoutBtn.isHidden = false
             
+            // Save currency to UserDefaults for further usage
+            let tokenDefault = UserDefaults.init()
+            tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
+            
             // Code to re-enable the payments/refunds tab bar item
             if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = true
@@ -207,6 +211,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // Clear out the UserDefaults and show the appropriate buttons/labels
         let tokenDefault = UserDefaults.init()
         tokenDefault.removeObject(forKey: "SAVED_TOKEN")
+        tokenDefault.removeObject(forKey: "MERCH_CURRENCY")
         tokenDefault.synchronize()
         
         merchAcctLabel.isHidden = true

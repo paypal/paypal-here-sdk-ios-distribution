@@ -51,7 +51,14 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
         
-        guard let mInvoice = PPRetailInvoice.init(currencyCode: "USD"), invAmount.text != "" else {
+        // Invoice initialization takes in the currency code. However, if the currency used to init doesn't
+        // match the active merchant's currency, then an error will happen at payment time. Simply using
+        // userDefaults to store the merchant's currency after successful initializeMerchant, and then use
+        // it when initializing the invoice.
+        let tokenDefault = UserDefaults.init()
+        let merchCurrency = tokenDefault.string(forKey: "MERCH_CURRENCY")
+        
+        guard let mInvoice = PPRetailInvoice.init(currencyCode: merchCurrency), invAmount.text != "" else {
             
             let alertController = UIAlertController(title: "Whoops!", message: "Something happened during invoice initialization", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -75,7 +82,7 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         // unique transaction attempt.  For payment resubmissions, simply use the same invoice number
         // to ensure that the invoice hasn't already been paid.
         mInvoice.number = "sdk2test\(arc4random_uniform(9999))"
-
+        
         guard mInvoice.itemCount > 0, mInvoice.total.intValue >= 1 else {
             let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than $1", preferredStyle: UIAlertControllerStyle.alert)
             
