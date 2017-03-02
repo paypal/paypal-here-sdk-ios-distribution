@@ -50,7 +50,7 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     // from the input and utilizes a single item generic order.  For extra items or invoice settings,
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
-        
+
         // Invoice initialization takes in the currency code. However, if the currency used to init doesn't
         // match the active merchant's currency, then an error will happen at payment time. Simply using
         // userDefaults to store the merchant's currency after successful initializeMerchant, and then use
@@ -83,7 +83,7 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         // to ensure that the invoice hasn't already been paid.
         mInvoice.number = "sdk2test\(arc4random_uniform(9999))"
         
-        guard mInvoice.itemCount > 0, mInvoice.total.intValue >= 1 else {
+        guard mInvoice.itemCount > 0, mInvoice.total!.intValue >= 1 else {
             let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than $1", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
@@ -128,24 +128,28 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         }) as PPRetailCardPresentedSignal?
         
         completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
-            if((error) != nil) {
-                print("Error Code: \(error!.code)")
-                print("Error Message: \(error!.debugDescription)")
-                print("Debug ID: \(error!.debugId)")
-            } else {
-                print("Txn ID: \(txnRecord!.transactionNumber!)")
-                self.successTxnId.text = "Txn Id: \(txnRecord!.transactionNumber!)"
-                self.successTxnId.adjustsFontSizeToFitWidth = true
-                self.successTxnId.textAlignment = .center
-                self.successTxnId.isUserInteractionEnabled = true
-                self.acceptTxnBtn.isHidden = true
-                self.invCreatedLabel.isHidden = true
-                self.invAmount.isHidden = false
-                self.invAmount.text = ""
-                self.createInvoiceBtn.isHidden = false
-            }
+            
             self.tm!.removeCardPresentedListener(self.listenerSignal)
             self.tm!.removeCompletedListener(self.completedSignal)
+            
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.debugDescription)")
+                print("Debug ID: \(err.debugId)")
+                
+                return
+            }
+            
+            print("Txn ID: \(txnRecord!.transactionNumber!)")
+            self.successTxnId.text = "Txn Id: \(txnRecord!.transactionNumber!)"
+            self.successTxnId.adjustsFontSizeToFitWidth = true
+            self.successTxnId.textAlignment = .center
+            self.successTxnId.isUserInteractionEnabled = true
+            self.acceptTxnBtn.isHidden = true
+            self.invCreatedLabel.isHidden = true
+            self.invAmount.isHidden = false
+            self.invAmount.text = ""
+            self.createInvoiceBtn.isHidden = false
             
         }) as PPRetailCompletedSignal?
         
@@ -180,26 +184,30 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         }) as PPRetailCardPresentedSignal?
         
         completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
-            if((error) != nil) {
-                print("Error Code: \(error!.code)")
-                print("Error Message: \(error!.debugDescription)")
-                print("Debug ID: \(error!.debugId)")
-            } else {
-                print("Refund ID: \(txnRecord!.transactionNumber!)")
-                self.successTxnId.text = "Refund Id: \(txnRecord!.transactionNumber!)"
-                self.successTxnId.adjustsFontSizeToFitWidth = true
-                self.successTxnId.textAlignment = .center
-                self.successTxnId.isUserInteractionEnabled = false
-                self.successTxnId.isHidden = false
-                self.invAmount.isHidden = false
-                self.invAmount.text = ""
-                self.createInvoiceBtn.isHidden = false
-                self.refundId.isHidden = true
-                self.refundBtn.isHidden = true
-            }
+            
             self.tm!.removeCardPresentedListener(self.listenerSignal)
             self.tm!.removeCompletedListener(self.completedSignal)
             
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.debugDescription)")
+                print("Debug ID: \(err.debugId)")
+                
+                return
+            }
+            
+            print("Refund ID: \(txnRecord!.transactionNumber!)")
+            self.successTxnId.text = "Refund Id: \(txnRecord!.transactionNumber!)"
+            self.successTxnId.adjustsFontSizeToFitWidth = true
+            self.successTxnId.textAlignment = .center
+            self.successTxnId.isUserInteractionEnabled = false
+            self.successTxnId.isHidden = false
+            self.invAmount.isHidden = false
+            self.invAmount.text = ""
+            self.createInvoiceBtn.isHidden = false
+            self.refundId.isHidden = true
+            self.refundBtn.isHidden = true
+
         }) as PPRetailCompletedSignal?
         
     }
@@ -217,6 +225,7 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         refundId.isHidden = false
         refundId.text = successTxnId.text!.replacingOccurrences(of: "Txn Id: ", with: "")
         refundBtn.isHidden = false
+        
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

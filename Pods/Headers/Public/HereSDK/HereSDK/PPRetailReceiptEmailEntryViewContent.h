@@ -1,0 +1,1 @@
+../../../../../HereSDK.framework/Versions/A/Headers/PPRetailReceiptEmailEntryViewContent.h
