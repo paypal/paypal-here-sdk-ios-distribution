@@ -9,7 +9,7 @@
 import UIKit
 
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var invAmount: UITextField!
     @IBOutlet weak var createInvoiceBtn: UIButton!
@@ -26,11 +26,10 @@ class PaymentViewController: UIViewController {
     var completedSignal: PPRetailCompletedSignal? = nil
     var tm: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.delegate = self
         
         createTxnBtn.isHidden = true
         acceptTxnBtn.isHidden = true
@@ -51,31 +50,59 @@ class PaymentViewController: UIViewController {
     // from the input and utilizes a single item generic order.  For extra items or invoice settings,
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
+
+        // Invoice initialization takes in the currency code. However, if the currency used to init doesn't
+        // match the active merchant's currency, then an error will happen at payment time. Simply using
+        // userDefaults to store the merchant's currency after successful initializeMerchant, and then use
+        // it when initializing the invoice.
+        let tokenDefault = UserDefaults.init()
+        let merchCurrency = tokenDefault.string(forKey: "MERCH_CURRENCY")
         
-        invoice = PPRetailInvoice.init(currencyCode: "USD")
+        guard let mInvoice = PPRetailInvoice.init(currencyCode: merchCurrency), invAmount.text != "" else {
+            
+            let alertController = UIAlertController(title: "Whoops!", message: "Something happened during invoice initialization", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Error during invoice init")
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
         
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let price = formatter.number(from: invAmount.text!) as! NSDecimalNumber
         
-        invoice!.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
+        mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
         
         // The invoice Number is used for duplicate payment checking.  It should be unique for every
         // unique transaction attempt.  For payment resubmissions, simply use the same invoice number
         // to ensure that the invoice hasn't already been paid.
-        //
-        invoice!.number = "sdk2test\(arc4random_uniform(9999))"
-
-        if(invoice!.itemCount > 0) {
-            invAmount.isHidden = true
-            createInvoiceBtn.isHidden = true
-            invCreatedLabel.isHidden = false
-            createTxnBtn.isHidden = false
-            invAmount.endEditing(true)
-        } else {
-            print("Error creating invoice for some reason :(")
-        }
+        mInvoice.number = "sdk2test\(arc4random_uniform(9999))"
         
+        guard mInvoice.itemCount > 0, mInvoice.total!.intValue >= 1 else {
+            let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than $1", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Error creating invoice")
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+
+        invAmount.isHidden = true
+        createInvoiceBtn.isHidden = true
+        invCreatedLabel.isHidden = false
+        createTxnBtn.isHidden = false
+        invAmount.endEditing(true)
+        
+        invoice = mInvoice
     }
     
     // This function does the createTransaction call to start the process with the current invoice.
@@ -93,7 +120,7 @@ class PaymentViewController: UIViewController {
     // set in this function as well to allow for the listening of the user either inserting, swiping, or tapping
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
-        
+
         tm!.begin(true)
         
         listenerSignal = tm!.addCardPresentedListener({ (cardInfo) -> Void in
@@ -101,26 +128,31 @@ class PaymentViewController: UIViewController {
         }) as PPRetailCardPresentedSignal?
         
         completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
-            if((error) != nil) {
-                print("Error Code: \(error!.code)")
-                print("Error Message: \(error!.debugDescription)")
-                print("Debug ID: \(error!.debugId)")
-            } else {
-                print("Txn ID: \(txnRecord!.transactionNumber!)")
-                self.successTxnId.text = "Txn Id: \(txnRecord!.transactionNumber!)"
-                self.successTxnId.adjustsFontSizeToFitWidth = true
-                self.successTxnId.textAlignment = .center
-                self.successTxnId.isUserInteractionEnabled = true
-                self.acceptTxnBtn.isHidden = true
-                self.invCreatedLabel.isHidden = true
-                self.invAmount.isHidden = false
-                self.invAmount.text = ""
-                self.createInvoiceBtn.isHidden = false
-            }
+            
             self.tm!.removeCardPresentedListener(self.listenerSignal)
             self.tm!.removeCompletedListener(self.completedSignal)
             
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.debugDescription)")
+                print("Debug ID: \(err.debugId)")
+                
+                return
+            }
+            
+            print("Txn ID: \(txnRecord!.transactionNumber!)")
+            self.successTxnId.text = "Txn Id: \(txnRecord!.transactionNumber!)"
+            self.successTxnId.adjustsFontSizeToFitWidth = true
+            self.successTxnId.textAlignment = .center
+            self.successTxnId.isUserInteractionEnabled = true
+            self.acceptTxnBtn.isHidden = true
+            self.invCreatedLabel.isHidden = true
+            self.invAmount.isHidden = false
+            self.invAmount.text = ""
+            self.createInvoiceBtn.isHidden = false
+            
         }) as PPRetailCompletedSignal?
+        
         
     }
     
@@ -152,26 +184,30 @@ class PaymentViewController: UIViewController {
         }) as PPRetailCardPresentedSignal?
         
         completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
-            if((error) != nil) {
-                print("Error Code: \(error!.code)")
-                print("Error Message: \(error!.debugDescription)")
-                print("Debug ID: \(error!.debugId)")
-            } else {
-                print("Refund ID: \(txnRecord!.transactionNumber!)")
-                self.successTxnId.text = "Refund Id: \(txnRecord!.transactionNumber!)"
-                self.successTxnId.adjustsFontSizeToFitWidth = true
-                self.successTxnId.textAlignment = .center
-                self.successTxnId.isUserInteractionEnabled = false
-                self.successTxnId.isHidden = false
-                self.invAmount.isHidden = false
-                self.invAmount.text = ""
-                self.createInvoiceBtn.isHidden = false
-                self.refundId.isHidden = true
-                self.refundBtn.isHidden = true
-            }
+            
             self.tm!.removeCardPresentedListener(self.listenerSignal)
             self.tm!.removeCompletedListener(self.completedSignal)
             
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.debugDescription)")
+                print("Debug ID: \(err.debugId)")
+                
+                return
+            }
+            
+            print("Refund ID: \(txnRecord!.transactionNumber!)")
+            self.successTxnId.text = "Refund Id: \(txnRecord!.transactionNumber!)"
+            self.successTxnId.adjustsFontSizeToFitWidth = true
+            self.successTxnId.textAlignment = .center
+            self.successTxnId.isUserInteractionEnabled = false
+            self.successTxnId.isHidden = false
+            self.invAmount.isHidden = false
+            self.invAmount.text = ""
+            self.createInvoiceBtn.isHidden = false
+            self.refundId.isHidden = true
+            self.refundBtn.isHidden = true
+
         }) as PPRetailCompletedSignal?
         
     }
@@ -189,9 +225,28 @@ class PaymentViewController: UIViewController {
         refundId.isHidden = false
         refundId.text = successTxnId.text!.replacingOccurrences(of: "Txn Id: ", with: "")
         refundBtn.isHidden = false
+        
     }
     
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        // If the Initialize & Merchant tab is selected, I'm cancelling the current transaction so that it
+        // can be restarted when entering the payments tab again. This prevents a scenario where one merchant
+        // account is used to start the transaction but then they logout and login with a different merchant
+        // prior to processing the transaction.
+        if (tabBarController.selectedIndex == 0) {
+            tm?.cancel()
+            invAmount.isHidden = false
+            invAmount.text = ""
+            createInvoiceBtn.isHidden = false
+            createTxnBtn.isHidden = true
+            acceptTxnBtn.isHidden = true
+            refundId.isHidden = true
+            refundBtn.isHidden = true
+            invCreatedLabel.isHidden = true
+        }
+        
+    }
     
     
 }
