@@ -21,6 +21,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     @IBOutlet weak var successOrFail: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
+    @IBOutlet weak var initSdkInfoBtn: UIButton!
+    @IBOutlet weak var initMerchInfoBtn: UIButton!
+    @IBOutlet weak var codeViewer: UITextView!
     
     
     var svc: SFSafariViewController?
@@ -29,11 +32,17 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         super.viewDidLoad()
         
         initSdkButton.isHidden = false
+        initSdkInfoBtn.isHidden = false
         initMerchantButton.isHidden = true
-        merchAcctLabel.isHidden = true
+        initMerchInfoBtn.isHidden = true
+        merchAcctLabel.isHidden = false
+        merchAcctLabel.text = "Touch Below to Init SDK"
         merchEmailLabel.isHidden = true
         successOrFail.isHidden = true
         logoutBtn.isHidden = true
+        codeViewer.isHidden = true
+        codeViewer.layer.borderWidth = 0.5
+        codeViewer.layer.cornerRadius = 5.0
         
         // Upon initial load, disable the Payments tab bar.  This is re-enabled once the merchant
         // is initialized.
@@ -53,8 +62,12 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBAction func initSDK(_ sender: UIButton) {
         
         initSdkButton.isHidden = true
+        initSdkInfoBtn.isHidden = true
+        codeViewer.isHidden = true
         initMerchantButton.isHidden = false
+        initMerchInfoBtn.isHidden = false
         initMerchantButton.sizeToFit()
+        merchAcctLabel.text = "Touch Below to Init Merchant"
         
         // First things first, we need to initilize the SDK itself.
         PayPalRetailSDK.initializeSDK()
@@ -85,10 +98,25 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
     }
     
+    @IBAction func initSdkInfo(_ sender: UIButton) {
+
+        if (codeViewer.isHidden) {
+            codeViewer.isHidden = false
+            codeViewer.text = "\nPayPalRetailSDK.initializeSDK()"
+        } else {
+            codeViewer.isHidden = true
+        }
+        
+    }
+    
+    
     @IBAction func initMerchant(_ sender: UIButton) {
         
         initMerchantButton.isHidden = true
+        initMerchInfoBtn.isHidden = true
+        merchAcctLabel.isHidden = true
         successOrFail.isHidden = true
+        codeViewer.isHidden = true
         activitySpinner.startAnimating()
 
         // Set your URL for your backend server that handles OAuth.  This sample uses and instance of the
@@ -153,6 +181,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.successOrFail.adjustsFontSizeToFitWidth = true
             self.successOrFail.textAlignment = .center
             self.merchAcctLabel.isHidden = false
+            self.merchAcctLabel.text = "Merchant Account:"
             self.merchEmailLabel.isHidden = false
             self.merchEmailLabel.text = merchant!.emailAddress
             self.merchEmailLabel.adjustsFontSizeToFitWidth = true
@@ -173,6 +202,20 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         })
     }
     
+    
+    @IBAction func initMerchInfo(_ sender: UIButton) {
+        
+        if (codeViewer.isHidden) {
+            codeViewer.isHidden = false
+            codeViewer.text = "\nPayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in \n" +
+                "     <code to handle success/failure>\n" +
+            "})"
+        } else {
+            codeViewer.isHidden = true
+        }
+ 
+    }
+    
     @IBAction func logout(_ sender: UIButton) {
         
         // Clear out the UserDefaults and show the appropriate buttons/labels
@@ -181,7 +224,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         tokenDefault.removeObject(forKey: "MERCH_CURRENCY")
         tokenDefault.synchronize()
         
-        merchAcctLabel.isHidden = true
+        merchAcctLabel.isHidden = false
+        merchAcctLabel.text = "Click Below to Init Merchant"
         merchEmailLabel.isHidden = true
         successOrFail.isHidden = true
         logoutBtn.isHidden = true
@@ -194,6 +238,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         initMerchantButton.isHidden = false
         initMerchantButton.sizeToFit()
+        initMerchInfoBtn.isHidden = false
     }
     
     // This function would be called if the user pressed the Done button inside the SFSafariViewController.
@@ -202,6 +247,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         activitySpinner.stopAnimating()
         initMerchantButton.isHidden = false
         initMerchantButton.sizeToFit()
+        initMerchInfoBtn.isHidden = false
         
     }
     
