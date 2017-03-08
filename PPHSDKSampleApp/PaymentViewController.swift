@@ -19,12 +19,14 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var refundBtn: UIButton!
     @IBOutlet weak var refundId: UITextField!
     @IBOutlet weak var successTxnId: UILabel!
+    @IBOutlet weak var codeViewer: UITextView!
     
+    let infoButton = UIButton(type: UIButtonType.infoLight)
 
     // Set up the relevant listeners, transactionContext, and Invoice.
     var listenerSignal: PPRetailCardPresentedSignal? = nil
     var completedSignal: PPRetailCompletedSignal? = nil
-    var tm: PPRetailTransactionContext?
+    var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
 
     override func viewDidLoad() {
@@ -36,10 +38,23 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         refundId.isHidden = true
         refundBtn.isHidden = true
         invCreatedLabel.isHidden = true
+        codeViewer.isHidden = true
+        codeViewer.layer.borderWidth = 0.5
+        codeViewer.layer.cornerRadius = 5.0
+        
+        view.addSubview(infoButton)
+        infoButton.addTarget(self, action: #selector(showInfo), for: .touchUpInside)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(txnIdTap(sender:)))
         successTxnId.addGestureRecognizer(tap)
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        infoButton.frame = CGRect(x: (createInvoiceBtn.frame.origin.x + createInvoiceBtn.frame.width + 10),
+                                  y: (createInvoiceBtn.frame.midY - 11),
+                                  width: 22,
+                                  height: 22)
+        infoButton.setTitle("createInvoice", for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +65,9 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     // from the input and utilizes a single item generic order.  For extra items or invoice settings,
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
-
+        
+        successTxnId.isHidden = true
+        
         // Invoice initialization takes in the currency code. However, if the currency used to init doesn't
         // match the active merchant's currency, then an error will happen at payment time. Simply using
         // userDefaults to store the merchant's currency after successful initializeMerchant, and then use
@@ -95,6 +112,8 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
             
             return
         }
+        
+        invoice = mInvoice
 
         invAmount.isHidden = true
         createInvoiceBtn.isHidden = true
@@ -102,16 +121,26 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         createTxnBtn.isHidden = false
         invAmount.endEditing(true)
         
-        invoice = mInvoice
+        infoButton.frame = CGRect(x: (createTxnBtn.frame.origin.x + createTxnBtn.frame.width + 10),
+                                  y: (createTxnBtn.frame.midY - 11),
+                                  width: 22,
+                                  height: 22)
+        infoButton.setTitle("createTxn", for: .normal)
     }
     
     // This function does the createTransaction call to start the process with the current invoice.
     @IBAction func createTransaction(_ sender: UIButton) {
         
-        tm = PayPalRetailSDK.createTransaction(invoice)
+        tc = PayPalRetailSDK.createTransaction(invoice)
         createTxnBtn.isHidden = true
         invCreatedLabel.isHidden = true
         acceptTxnBtn.isHidden = false
+        
+        infoButton.frame = CGRect(x: (acceptTxnBtn.frame.origin.x + acceptTxnBtn.frame.width + 10),
+                                  y: (acceptTxnBtn.frame.midY - 11),
+                                  width: 22,
+                                  height: 22)
+        infoButton.setTitle("acceptTxn", for: .normal)
         
     }
     
@@ -121,16 +150,16 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
 
-        tm!.begin(true)
+        tc!.begin(true)
         
-        listenerSignal = tm!.addCardPresentedListener({ (cardInfo) -> Void in
-            self.tm!.continue(with: cardInfo)
+        listenerSignal = tc!.addCardPresentedListener({ (cardInfo) -> Void in
+            self.tc!.continue(with: cardInfo)
         }) as PPRetailCardPresentedSignal?
         
-        completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
+        completedSignal = tc!.addCompletedListener({ (error, txnRecord) -> Void in
             
-            self.tm!.removeCardPresentedListener(self.listenerSignal)
-            self.tm!.removeCompletedListener(self.completedSignal)
+            self.tc!.removeCardPresentedListener(self.listenerSignal)
+            self.tc!.removeCompletedListener(self.completedSignal)
             
             if let err = error {
                 print("Error Code: \(err.code)")
@@ -141,15 +170,20 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
             }
             
             print("Txn ID: \(txnRecord!.transactionNumber!)")
+            self.successTxnId.isHidden = false
             self.successTxnId.text = "Txn Id: \(txnRecord!.transactionNumber!)"
-            self.successTxnId.adjustsFontSizeToFitWidth = true
-            self.successTxnId.textAlignment = .center
             self.successTxnId.isUserInteractionEnabled = true
             self.acceptTxnBtn.isHidden = true
             self.invCreatedLabel.isHidden = true
             self.invAmount.isHidden = false
             self.invAmount.text = ""
             self.createInvoiceBtn.isHidden = false
+            
+            self.infoButton.frame = CGRect(x: (self.successTxnId.frame.origin.x + self.successTxnId.frame.width + 130),
+                                      y: (self.successTxnId.frame.midY - 22),
+                                      width: 22,
+                                      height: 22)
+            self.infoButton.setTitle("tapSuccessId", for: .normal)
             
         }) as PPRetailCompletedSignal?
         
@@ -162,16 +196,16 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
     // the card supplied.
     @IBAction func processRefund(_ sender: UIButton) {
         
-        tm = PayPalRetailSDK.createTransaction(invoice)
+        tc = PayPalRetailSDK.createTransaction(invoice)
         
-        let alertController = UIAlertController(title: "Refund $\(tm!.invoice!.total!)", message: "Is the card present?", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Refund $\(tc!.invoice!.total!)", message: "Is the card present?", preferredStyle: UIAlertControllerStyle.alert)
         let cardNotPresent = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-            self.tm!.beginRefund(false, amount: self.invoice?.total)
-            self.tm!.continue(with: nil)
+            self.tc!.beginRefund(false, amount: self.invoice?.total)
+            self.tc!.continue(with: nil)
         }
         
         let cardPresent = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            self.tm!.beginRefund(true, amount: self.invoice?.total)
+            self.tc!.beginRefund(true, amount: self.invoice?.total)
         }
         
         alertController.addAction(cardNotPresent)
@@ -179,14 +213,14 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         self.present(alertController, animated: true, completion: nil)
         
         
-        listenerSignal = tm!.addCardPresentedListener({ (cardInfo) -> Void in
-            self.tm!.continue(with: cardInfo)
+        listenerSignal = tc!.addCardPresentedListener({ (cardInfo) -> Void in
+            self.tc!.continue(with: cardInfo)
         }) as PPRetailCardPresentedSignal?
         
-        completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
+        completedSignal = tc!.addCompletedListener({ (error, txnRecord) -> Void in
             
-            self.tm!.removeCardPresentedListener(self.listenerSignal)
-            self.tm!.removeCompletedListener(self.completedSignal)
+            self.tc!.removeCardPresentedListener(self.listenerSignal)
+            self.tc!.removeCompletedListener(self.completedSignal)
             
             if let err = error {
                 print("Error Code: \(err.code)")
@@ -207,6 +241,12 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
             self.createInvoiceBtn.isHidden = false
             self.refundId.isHidden = true
             self.refundBtn.isHidden = true
+            
+            self.infoButton.frame = CGRect(x: (self.createInvoiceBtn.frame.origin.x + self.createInvoiceBtn.frame.width + 10),
+                                      y: (self.createInvoiceBtn.frame.midY - 11),
+                                      width: 22,
+                                      height: 22)
+            self.infoButton.setTitle("createInvoice", for: .normal)
 
         }) as PPRetailCompletedSignal?
         
@@ -226,6 +266,12 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         refundId.text = successTxnId.text!.replacingOccurrences(of: "Txn Id: ", with: "")
         refundBtn.isHidden = false
         
+        infoButton.frame = CGRect(x: (refundBtn.frame.origin.x + refundBtn.frame.width + 10),
+                                  y: (refundBtn.frame.midY - 11),
+                                  width: 22,
+                                  height: 22)
+        infoButton.setTitle("refundButton", for: .normal)
+        
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -235,7 +281,7 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         // account is used to start the transaction but then they logout and login with a different merchant
         // prior to processing the transaction.
         if (tabBarController.selectedIndex == 0) {
-            tm?.cancel()
+            tc?.cancel()
             invAmount.isHidden = false
             invAmount.text = ""
             createInvoiceBtn.isHidden = false
@@ -248,6 +294,54 @@ class PaymentViewController: UIViewController, UITabBarControllerDelegate {
         
     }
     
+    @IBAction func showInfo(_ sender: UIButton){
+        
+        guard let btnTitle = sender.currentTitle else {
+            print("button title wasn't set for some reason")
+            return
+        }
+
+        switch btnTitle {
+        case "createInvoice":
+            if (codeViewer.isHidden) {
+                codeViewer.isHidden = false
+                codeViewer.text = "\nmInvoice = PPRetailInvoice.init(currencyCode: \"USD\")"
+            } else {
+                codeViewer.isHidden = true
+            }
+        case "createTxn":
+            if (codeViewer.isHidden) {
+                codeViewer.isHidden = false
+                codeViewer.text = "\ntc = PayPalRetailSDK.createTransaction(invoice: PPRetailInvoice!)"
+            } else {
+                codeViewer.isHidden = true
+            }
+        case "acceptTxn":
+            if (codeViewer.isHidden) {
+                codeViewer.isHidden = false
+                codeViewer.text = "\ntc.begin(showPrompt: Bool)"
+            } else {
+                codeViewer.isHidden = true
+            }
+        case "tapSuccessId":
+            if (codeViewer.isHidden) {
+                codeViewer.isHidden = false
+                codeViewer.text = "\nTouch the transaction ID to initiate the refund flow for that transaction."
+            } else {
+                codeViewer.isHidden = true
+            }
+        case "refundButton":
+            if (codeViewer.isHidden) {
+                codeViewer.isHidden = false
+                codeViewer.text = "\ntc.beginRefund(cardPresent: Bool, amount: NSDecimalNumber)"
+            } else {
+                codeViewer.isHidden = true
+            }
+        default:
+            print("No Button Title Found")
+        }
+        
+    }
     
 }
 
