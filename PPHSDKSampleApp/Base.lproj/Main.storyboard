@@ -92,6 +92,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dBG-hg-KVD">
+                                <rect key="frame" x="141" y="40" width="133" height="29"/>
+                                <segments>
+                                    <segment title="sandbox"/>
+                                    <segment title="live"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -106,6 +113,7 @@
                             <constraint firstItem="rUH-EU-9C9" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-100" id="OfP-jH-HUT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gtd-eV-qBE" secondAttribute="trailing" id="Ohb-TR-V6a"/>
                             <constraint firstItem="4vZ-ug-XtF" firstAttribute="top" secondItem="IG5-gp-Akz" secondAttribute="bottom" constant="20" id="PKP-Yr-2QC"/>
+                            <constraint firstItem="dBG-hg-KVD" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="U9k-x0-MYG"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Gtd-eV-qBE" secondAttribute="leading" id="Xt6-C3-aZM"/>
                             <constraint firstItem="4X4-Fd-US5" firstAttribute="centerX" secondItem="IG5-gp-Akz" secondAttribute="centerX" id="Ysy-bC-5jd"/>
                             <constraint firstItem="ODc-7g-iLa" firstAttribute="bottom" secondItem="4X4-Fd-US5" secondAttribute="top" constant="-15" id="aVm-pK-luW"/>
@@ -114,6 +122,7 @@
                             <constraint firstItem="rUH-EU-9C9" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="j1X-XN-THU"/>
                             <constraint firstItem="yVB-px-oAq" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-100" id="kMi-LC-nMS"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Gtd-eV-qBE" secondAttribute="bottom" constant="19" id="qhO-IN-c33"/>
+                            <constraint firstItem="dBG-hg-KVD" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="20" id="rei-YM-RYV"/>
                             <constraint firstItem="ODc-7g-iLa" firstAttribute="centerX" secondItem="4X4-Fd-US5" secondAttribute="centerX" id="rxH-l1-Dqi"/>
                             <constraint firstItem="IG5-gp-Akz" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-100" id="wAu-Kv-faP"/>
                             <constraint firstItem="Uib-DD-R8x" firstAttribute="centerY" secondItem="yVB-px-oAq" secondAttribute="centerY" id="x8g-by-F3G"/>
@@ -123,6 +132,7 @@
                     <connections>
                         <outlet property="activitySpinner" destination="vxU-yv-wfV" id="xLa-rV-1UL"/>
                         <outlet property="codeViewer" destination="Gtd-eV-qBE" id="VAV-kC-VNf"/>
+                        <outlet property="envSelector" destination="dBG-hg-KVD" id="ncn-Wq-6U9"/>
                         <outlet property="initMerchInfoBtn" destination="Uib-DD-R8x" id="G5i-Fz-4Pg"/>
                         <outlet property="initMerchantButton" destination="yVB-px-oAq" id="zdo-xO-6Yz"/>
                         <outlet property="initSdkButton" destination="rUH-EU-9C9" id="WVv-Hr-jk6"/>

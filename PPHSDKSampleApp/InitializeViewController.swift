@@ -24,6 +24,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBOutlet weak var initSdkInfoBtn: UIButton!
     @IBOutlet weak var initMerchInfoBtn: UIButton!
     @IBOutlet weak var codeViewer: UITextView!
+    @IBOutlet weak var envSelector: UISegmentedControl!
     
     
     var svc: SFSafariViewController?
@@ -117,13 +118,14 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         merchAcctLabel.isHidden = true
         successOrFail.isHidden = true
         codeViewer.isHidden = true
+        envSelector.isHidden = true
         activitySpinner.startAnimating()
 
         // Set your URL for your backend server that handles OAuth.  This sample uses and instance of the
         // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
         // set this to Live, simply change /sandbox to /live.
-        let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/sandbox")
-        
+        let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!)
+
         // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
         // check that the saved token matches the environment.  Otherwise, kick open the
         // SFSafariViewController to expose the login and obtain another token.
@@ -239,6 +241,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchantButton.isHidden = false
         initMerchantButton.sizeToFit()
         initMerchInfoBtn.isHidden = false
+        envSelector.isHidden = false
     }
     
     // This function would be called if the user pressed the Done button inside the SFSafariViewController.
@@ -248,6 +251,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchantButton.isHidden = false
         initMerchantButton.sizeToFit()
         initMerchInfoBtn.isHidden = false
+        envSelector.isHidden = false
         
     }
     
