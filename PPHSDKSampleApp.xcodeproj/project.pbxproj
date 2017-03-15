@@ -14,6 +14,9 @@
 		C6C794071DDD01E800F8DC8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C794051DDD01E800F8DC8E /* Main.storyboard */; };
 		C6C794091DDD01E800F8DC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C794081DDD01E800F8DC8E /* Assets.xcassets */; };
 		C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */; };
+		C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF40031E7706B600109502 /* WelcomeViewController.swift */; };
+		C6EF40141E77173800109502 /* References in Resources */ = {isa = PBXBuildFile; fileRef = C6EF40131E77173800109502 /* References */; };
+		C6EF401A1E783EEE00109502 /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF40191E783EEE00109502 /* RoundLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		C6C7940D1DDD01E800F8DC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C794141DDD1B9F00F8DC8E /* PPHSDKSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPHSDKSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C6EF40031E7706B600109502 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		C6EF40131E77173800109502 /* References */ = {isa = PBXFileReference; lastKnownFileType = folder; path = References; sourceTree = "<group>"; };
+		C6EF40191E783EEE00109502 /* RoundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
 		F7E2930A34590D055C046EDF /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +73,7 @@
 			children = (
 				C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */,
 				C6C793FD1DDD01E800F8DC8E /* Products */,
+				C6EF40131E77173800109502 /* References */,
 				C2AA9B86D7810FAFEC8FA22D /* Pods */,
 				2359FFE7D6776F5A76927401 /* Frameworks */,
 			);
@@ -84,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */,
+				C6EF40031E7706B600109502 /* WelcomeViewController.swift */,
 				C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */,
 				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
 				C6C794051DDD01E800F8DC8E /* Main.storyboard */,
@@ -91,6 +99,7 @@
 				C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */,
 				C6C7940D1DDD01E800F8DC8E /* Info.plist */,
 				C6C794141DDD1B9F00F8DC8E /* PPHSDKSampleApp-Bridging-Header.h */,
+				C6EF40191E783EEE00109502 /* RoundLabel.swift */,
 			);
 			path = PPHSDKSampleApp;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6EF40141E77173800109502 /* References in Resources */,
 				C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */,
 				C6C794091DDD01E800F8DC8E /* Assets.xcassets in Resources */,
 				C6C794071DDD01E800F8DC8E /* Main.storyboard in Resources */,
@@ -220,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */,
+				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,
 				C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */,
+				C6EF401A1E783EEE00109502 /* RoundLabel.swift in Sources */,
 				C6C794021DDD01E800F8DC8E /* InitializeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
