@@ -14,6 +14,7 @@ let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotifica
 
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
 
+    
     @IBOutlet weak var initSdkButton: UIButton!
     @IBOutlet weak var initMerchantButton: UIButton!
     @IBOutlet weak var merchAcctLabel: UILabel!
@@ -33,13 +34,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         
         merchInfoView.isHidden = true
         initSdkCode.isHidden = true
         initMerchCode.isHidden = true
+        initMerchInfoBtn.isEnabled = false
         initMerchLbl.isEnabled = false
         initMerchantButton.isHidden = true
         goToPmtPageBtn.isHidden = true
+        
+        initSdkCode.textContainerInset = UIEdgeInsetsMake(5, 65, 5, 5)
+        initMerchCode.textContainerInset = UIEdgeInsetsMake(5, 65, 5, 5)
         
         // Receive the notification that the token is being returned
         NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
@@ -183,9 +189,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             }
             
             initMerchCode.isHidden = false
-            initMerchCode.text = "\nPayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in \n" +
+            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in \n" +
                 "     <code to handle success/failure>\n" +
-            "})"
+                "})"
         } else {
             initMerchCode.isHidden = true
             
