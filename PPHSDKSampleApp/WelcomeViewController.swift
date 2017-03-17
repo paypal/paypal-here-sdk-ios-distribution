@@ -23,6 +23,7 @@ class WelcomeViewController: UIViewController {
         let window = UIApplication.shared.keyWindow
         window!.rootViewController = self
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,7 +34,6 @@ class WelcomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
 
-        
     }
 
     @IBAction func goToInitPage(_ sender: UIButton) {
