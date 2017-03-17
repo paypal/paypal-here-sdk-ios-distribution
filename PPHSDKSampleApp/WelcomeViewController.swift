@@ -17,7 +17,11 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let window = UIApplication.shared.keyWindow
+        window!.rootViewController = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +36,10 @@ class WelcomeViewController: UIViewController {
         
     }
 
+    @IBAction func goToInitPage(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "showInitPageSegue", sender: sender)
+    }
 
 
 }

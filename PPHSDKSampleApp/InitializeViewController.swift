@@ -16,6 +16,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
 
     
     @IBOutlet weak var initSdkButton: UIButton!
+    @IBOutlet weak var initSdkLbl: UILabel!
     @IBOutlet weak var initMerchantButton: UIButton!
     @IBOutlet weak var merchAcctLabel: UILabel!
     @IBOutlet weak var merchEmailLabel: UILabel!
@@ -51,10 +52,16 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        let window = UIApplication.shared.keyWindow
+//        window!.rootViewController = self
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
 
     @IBAction func initSDK(_ sender: UIButton) {
         
@@ -91,6 +98,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         initSdkButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
         initSdkButton.isUserInteractionEnabled = false
+        initSdkLbl.isEnabled = false
     }
     
     @IBAction func initSdkInfo(_ sender: UIButton) {
@@ -167,6 +175,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.initMerchantButton.isHidden = false
             self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
             self.initMerchantButton.isUserInteractionEnabled = false
+            self.initMerchLbl.isEnabled = false
             self.merchInfoView.isHidden = false
             self.merchEmailLabel.text = merchant!.emailAddress
             
@@ -174,7 +183,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             let tokenDefault = UserDefaults.init()
             tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
             
-            //TODO: need to enable the run transaction button here
+            //Enable the run transaction button here
             self.goToPmtPageBtn.isHidden = false
             
         })
@@ -213,6 +222,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         merchEmailLabel.text = ""
         merchInfoView.isHidden = true
+        initMerchLbl.isEnabled = true
         initMerchantButton.isUserInteractionEnabled = true
         initMerchantButton.setImage(#imageLiteral(resourceName: "small-bluearrow"), for: .normal)
         envSelector.isEnabled = true
@@ -221,7 +231,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     
     @IBAction func goToPmtPage(_ sender: UIButton) {
         
-        
+        performSegue(withIdentifier: "showTxnPgSegue", sender: sender)
     }
     
     // This function would be called if the user pressed the Done button inside the SFSafariViewController.
