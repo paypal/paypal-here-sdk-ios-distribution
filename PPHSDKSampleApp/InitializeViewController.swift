@@ -15,8 +15,8 @@ let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotifica
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
 
     
+    @IBOutlet weak var demoAppLbl: UILabel!
     @IBOutlet weak var initSdkButton: UIButton!
-    @IBOutlet weak var initSdkLbl: UILabel!
     @IBOutlet weak var initMerchantButton: UIButton!
     @IBOutlet weak var merchAcctLabel: UILabel!
     @IBOutlet weak var merchEmailLabel: UILabel!
@@ -28,25 +28,20 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBOutlet weak var initMerchCode: UITextView!
     @IBOutlet weak var initSdkCode: UITextView!
     @IBOutlet weak var merchInfoView: UIView!
-    @IBOutlet weak var initMerchLbl: UILabel!
     @IBOutlet weak var goToPmtPageBtn: UIButton!
     
     var svc: SFSafariViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         
+        demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
         merchInfoView.isHidden = true
         initSdkCode.isHidden = true
         initMerchCode.isHidden = true
         initMerchInfoBtn.isEnabled = false
-        initMerchLbl.isEnabled = false
-        initMerchantButton.isHidden = true
+        initMerchantButton.isEnabled = false
         goToPmtPageBtn.isHidden = true
-        
-        initSdkCode.textContainerInset = UIEdgeInsetsMake(5, 65, 5, 5)
-        initMerchCode.textContainerInset = UIEdgeInsetsMake(5, 65, 5, 5)
         
         // Receive the notification that the token is being returned
         NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
@@ -65,8 +60,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
 
     @IBAction func initSDK(_ sender: UIButton) {
         
-        initMerchLbl.isEnabled = true
-        initMerchantButton.isHidden = false
+        initMerchantButton.isEnabled = true
         initMerchInfoBtn.isEnabled = true
         
         // First things first, we need to initilize the SDK itself.
@@ -98,15 +92,16 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         initSdkButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
         initSdkButton.isUserInteractionEnabled = false
-        initSdkLbl.isEnabled = false
     }
     
     @IBAction func initSdkInfo(_ sender: UIButton) {
 
         if (initSdkCode.isHidden) {
+            initSdkInfoBtn.setTitle("Hide Code", for: .normal)
             initSdkCode.isHidden = false
             initSdkCode.text = "PayPalRetailSDK.initializeSDK()"
         } else {
+            initSdkInfoBtn.setTitle("View Code", for: .normal)
             initSdkCode.isHidden = true
         }
         
@@ -116,7 +111,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBAction func initMerchant(_ sender: UIButton) {
         
         envSelector.isEnabled = false
-        initMerchantButton.isHidden = true
+        initMerchantButton.isEnabled = false
         activitySpinner.startAnimating()
 
         // Set your URL for your backend server that handles OAuth.  This sample uses and instance of the
@@ -172,10 +167,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             
             print("Merchant Success!")
             self.activitySpinner.stopAnimating()
-            self.initMerchantButton.isHidden = false
+            self.initMerchantButton.isEnabled = true
             self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
             self.initMerchantButton.isUserInteractionEnabled = false
-            self.initMerchLbl.isEnabled = false
             self.merchInfoView.isHidden = false
             self.merchEmailLabel.text = merchant!.emailAddress
             
@@ -196,14 +190,14 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             if (!merchInfoView.isHidden) {
                 merchInfoView.isHidden = true
             }
-            
+            initMerchInfoBtn.setTitle("Hide Code", for: .normal)
             initMerchCode.isHidden = false
             initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in \n" +
                 "     <code to handle success/failure>\n" +
                 "})"
         } else {
+            initMerchInfoBtn.setTitle("View Code", for: .normal)
             initMerchCode.isHidden = true
-            
             if((merchEmailLabel.text) != "") {
                 merchInfoView.isHidden = false
             }
@@ -222,7 +216,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         merchEmailLabel.text = ""
         merchInfoView.isHidden = true
-        initMerchLbl.isEnabled = true
         initMerchantButton.isUserInteractionEnabled = true
         initMerchantButton.setImage(#imageLiteral(resourceName: "small-bluearrow"), for: .normal)
         envSelector.isEnabled = true

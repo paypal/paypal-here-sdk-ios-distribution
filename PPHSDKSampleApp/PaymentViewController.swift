@@ -11,17 +11,15 @@ import UIKit
 
 class PaymentViewController: UIViewController {
     
+    @IBOutlet weak var demoAppLbl: UILabel!
     @IBOutlet weak var invAmount: UITextField!
     @IBOutlet weak var createInvoiceBtn: UIButton!
-    @IBOutlet weak var createInvLbl: UILabel!
     @IBOutlet weak var createInvCodeBtn: UIButton!
     @IBOutlet weak var createInvCodeView: UITextView!
     @IBOutlet weak var createTxnBtn: UIButton!
-    @IBOutlet weak var createTxnLbl: UILabel!
     @IBOutlet weak var createTxnCodeBtn: UIButton!
     @IBOutlet weak var createTxnCodeView: UITextView!
     @IBOutlet weak var acceptTxnBtn: UIButton!
-    @IBOutlet weak var acceptTxnLbl: UILabel!
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
     @IBOutlet weak var refundBtn: UIButton!
@@ -33,7 +31,6 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var successMsg: UILabel!
     @IBOutlet weak var txnInfoView: UIView!
     @IBOutlet weak var refundTxnCodeView: UITextView!
-    @IBOutlet weak var runTxnBtn: UIButton!
     @IBOutlet weak var refundCodeBtn: UIButton!
     @IBOutlet weak var noRefundBtn: UIButton!
     @IBOutlet weak var wantToRefundLbl: UILabel!
@@ -47,13 +44,18 @@ class PaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        txnCompletedView.addSubview(txnInfoView)
-//        self.view.addSubview(txnCompletedView)
+        
+        demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
+        
+        invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
+        invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let window = UIApplication.shared.keyWindow
         window!.rootViewController = self
+        
+        invAmount.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,7 +90,7 @@ class PaymentViewController: UIViewController {
         
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
-        let price = formatter.number(from: invAmount.text!) as! NSDecimalNumber
+        let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
         
         mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
         
@@ -113,12 +115,11 @@ class PaymentViewController: UIViewController {
         invoice = mInvoice
 
         invAmount.isEnabled = false
-        createInvLbl.isEnabled = false
+        createInvoiceBtn.isEnabled = false
         createInvoiceBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
         
-        createTxnLbl.isEnabled = true
         createTxnCodeBtn.isEnabled = true
-        createTxnBtn.isHidden = false
+        createTxnBtn.isEnabled = true
         
     }
     
@@ -128,11 +129,10 @@ class PaymentViewController: UIViewController {
         tc = PayPalRetailSDK.createTransaction(invoice)
         
         createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
-        createTxnLbl.isEnabled = false
+        createTxnBtn.isEnabled = false
         
-        acceptTxnLbl.isEnabled = true
         acceptTxnCodeBtn.isEnabled = true
-        acceptTxnBtn.isHidden = false
+        acceptTxnBtn.isEnabled = true
         
     }
     
@@ -230,11 +230,6 @@ class PaymentViewController: UIViewController {
         
     }
     
-    @IBAction func returnToPaymentsView(_ sender: Any) {
-        txnCompletedView.isHidden = true
-        self.viewDidLoad()
-    }
-    
     
     // If the 'go back to initial setup' button is selected, I'm cancelling the current transaction so that it
     // can be restarted when entering the payments tab again. This prevents a scenario where one merchant
@@ -256,30 +251,38 @@ class PaymentViewController: UIViewController {
         switch sender.tag {
         case 0:
             if (createInvCodeView.isHidden) {
+                createInvCodeBtn.setTitle("Hide Code", for: .normal)
                 createInvCodeView.isHidden = false
                 createInvCodeView.text = "mInvoice = PPRetailInvoice.init(currencyCode: \"USD\")"
             } else {
+                createInvCodeBtn.setTitle("View Code", for: .normal)
                 createInvCodeView.isHidden = true
             }
         case 1:
             if (createTxnCodeView.isHidden) {
+                createTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 createTxnCodeView.isHidden = false
                 createTxnCodeView.text = "tc = PayPalRetailSDK.createTransaction(invoice: PPRetailInvoice!)"
             } else {
+                createTxnCodeBtn.setTitle("View Code", for: .normal)
                 createTxnCodeView.isHidden = true
             }
         case 2:
             if (acceptTxnCodeView.isHidden) {
+                acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
                 acceptTxnCodeView.text = "tc.begin(showPrompt: Bool)"
             } else {
+                acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
             }
         case 3:
             if (refundTxnCodeView.isHidden) {
+                refundCodeBtn.setTitle("Hide Code", for: .normal)
                 refundTxnCodeView.isHidden = false
                 refundTxnCodeView.text = "tc.beginRefund(cardPresent: Bool, amount: NSDecimalNumber)"
             } else {
+                refundCodeBtn.setTitle("View Code", for: .normal)
                 refundTxnCodeView.isHidden = true
             }
         default:
@@ -288,5 +291,50 @@ class PaymentViewController: UIViewController {
         
     }
     
+    func editingChanged(_ textField: UITextField) {
+
+        if let amountString = textField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+        
+        guard let amt = invAmount.text, !amt.isEmpty else {
+            createInvoiceBtn.isEnabled = false
+            createInvCodeBtn.isEnabled = false
+            return
+        }
+        
+        createInvoiceBtn.isEnabled = true
+        createInvCodeBtn.isEnabled = true
+        
+    }
+    
+}
+
+extension String {
+    
+    // Formatting for invoice amount text field
+    func currencyInputFormatting() -> String {
+        
+        var number: NSDecimalNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = "$"
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        
+        var amountWithPrefix = self
+        
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        
+        let double = (amountWithPrefix as NSString).doubleValue
+        number = NSDecimalNumber(value: (double / 100))
+
+        guard number != 0 as NSDecimalNumber else {
+            return ""
+        }
+        
+        return formatter.string(from: number)!
+    }
 }
 
