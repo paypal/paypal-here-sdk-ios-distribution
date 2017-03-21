@@ -1,0 +1,45 @@
+{
+  "name": "PayPalRetailSDK",
+  "version": "0.6.0",
+  "summary": "Retail SDK",
+  "license": "MS-RSL",
+  "authors": {
+    "PayPal": "DL-PP-RetailSDK@paypal.com"
+  },
+  "homepage": "https://github.com/PayPal-Mobile/paypal-retail-sdk",
+  "description": "Retail SDK",
+  "requires_arc": true,
+  "source": {
+    "path": "."
+  },
+  "ios": {
+    "frameworks": [
+      "AudioToolbox",
+      "MobileCoreServices",
+      "Security",
+      "CFNetwork",
+      "AVFoundation",
+      "ExternalAccessory",
+      "MediaPlayer",
+      "CoreTelephony",
+      "Foundation",
+      "CoreBluetooth",
+      "SystemConfiguration",
+      "JavaScriptCore"
+    ],
+    "preserve_paths": "ios/PayPalRetailSDK.framework",
+    "public_header_files": "ios/PayPalRetailSDK.framework/Versions/A/Headers/*.h",
+    "resources": "ios/PayPalRetailSDK.framework/Versions/A/Resources/**/*",
+    "vendored_frameworks": "ios/PayPalRetailSDK.framework"
+  },
+  "platforms": {
+    "ios": "7.0",
+    "osx": "10.10"
+  },
+  "osx": {
+    "preserve_paths": "osx/PayPalRetailSDK.framework",
+    "public_header_files": "osx/PayPalRetailSDK.framework/Versions/A/Headers/*.h",
+    "resources": "osx/PayPalRetailSDK.framework/Versions/A/Resources/**/*",
+    "vendored_frameworks": "osx/PayPalRetailSDK.framework"
+  }
+}

@@ -1,0 +1,1 @@
+../../../../../iOS/PayPalRetailSDK.framework/Versions/A/Headers/PPRetailBatteryInfo.h
