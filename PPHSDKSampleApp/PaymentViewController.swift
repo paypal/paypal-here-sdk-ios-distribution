@@ -45,6 +45,7 @@ class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting up initial aesthetics.
         demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
         
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
@@ -291,6 +292,8 @@ class PaymentViewController: UIViewController {
         
     }
     
+    // Function to handle real-time changes in the invoice/payment amount text field.  The
+    // create invoice button is disabled unless there is a value in the box.
     func editingChanged(_ textField: UITextField) {
 
         if let amountString = textField.text?.currencyInputFormatting() {

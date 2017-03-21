@@ -35,6 +35,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting up initial aesthetics.
         demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
         merchInfoView.isHidden = true
         initSdkCode.isHidden = true
@@ -114,7 +115,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchantButton.isEnabled = false
         activitySpinner.startAnimating()
 
-        // Set your URL for your backend server that handles OAuth.  This sample uses and instance of the
+        // Set your URL for your backend server that handles OAuth.  This sample uses an instance of the
         // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
         // set this to Live, simply change /sandbox to /live.
         let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!)
@@ -231,10 +232,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         
         activitySpinner.stopAnimating()
-        initMerchantButton.isHidden = false
-        initMerchantButton.sizeToFit()
-        initMerchInfoBtn.isHidden = false
-        envSelector.isHidden = false
+        initMerchantButton.isEnabled = true
+        initMerchInfoBtn.isEnabled = true
+        envSelector.isEnabled = true
         
     }
     
