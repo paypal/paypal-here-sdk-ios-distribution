@@ -134,7 +134,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         } else {
             
             // Present a SFSafariViewController to handle the login to get the merchant account to use.
-            let svc = SFSafariViewController(url: url as! URL)
+            let svc = SFSafariViewController(url: url! as URL)
             svc.delegate = self
             self.present(svc, animated: true, completion: nil)
         }

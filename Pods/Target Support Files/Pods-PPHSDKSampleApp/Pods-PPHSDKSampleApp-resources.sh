@@ -74,6 +74,7 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/Info.plist"
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/PayPalRetailSDK.js"
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey.png"
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey@2x.png"
@@ -82,6 +83,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/Info.plist"
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/PayPalRetailSDK.js"
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey.png"
   install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey@2x.png"
