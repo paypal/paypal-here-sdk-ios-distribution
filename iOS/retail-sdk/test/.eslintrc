@@ -1,0 +1,11 @@
+{
+  "parser": "babel-eslint",
+  "extends": "../.eslintrc",
+  "rules": {
+    "import/no-extraneous-dependencies" : [2, { "devDependencies": true }],
+    "no-console": [0],
+    "max-len": [
+      2, { "code": 200 }
+    ]
+  }
+}

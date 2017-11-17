@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B221BF4-A0A8-4642-B69B-527026AC0B49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PayPalRetailSDK</RootNamespace>
+    <AssemblyName>PayPalRetailSDK.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDESKTOP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClearScript, Version=5.4.6.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClearScript.V8.5.4.6\lib\net40\ClearScript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HidLibrary">
+      <HintPath>..\packages\hidlibrary.3.2.31.0\lib\HidLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.4.2.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\generated\ClearScript\AccountSummary.cs">
+      <Link>generated\AccountSummary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\AccountSummarySection.cs">
+      <Link>generated\AccountSummarySection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\BatteryInfo.cs">
+      <Link>generated\BatteryInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\batteryStatus.cs">
+      <Link>generated\batteryStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\Card.cs">
+      <Link>generated\Card.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\CardInsertedHandler.cs">
+      <Link>generated\CardInsertedHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\CardIssuer.cs">
+      <Link>generated\CardIssuer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\deviceCapabilityType.cs">
+      <Link>generated\deviceCapabilityType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\DeviceManager.cs">
+      <Link>generated\DeviceManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\DeviceStatus.cs">
+      <Link>generated\DeviceStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\DeviceUpdate.cs">
+      <Link>generated\DeviceUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\FormFactor.cs">
+      <Link>generated\FormFactor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\Invoice.cs">
+      <Link>generated\Invoice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceAddress.cs">
+      <Link>generated\InvoiceAddress.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceAttachment.cs">
+      <Link>generated\InvoiceAttachment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceBillingInfo.cs">
+      <Link>generated\InvoiceBillingInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceCCInfo.cs">
+      <Link>generated\InvoiceCCInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceCustomAmount.cs">
+      <Link>generated\InvoiceCustomAmount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceItem.cs">
+      <Link>generated\InvoiceItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceMerchantInfo.cs">
+      <Link>generated\InvoiceMerchantInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceMetaData.cs">
+      <Link>generated\InvoiceMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceNotification.cs">
+      <Link>generated\InvoiceNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoicePayment.cs">
+      <Link>generated\InvoicePayment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoicePaymentMethod.cs">
+      <Link>generated\InvoicePaymentMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoicePaymentTerm.cs">
+      <Link>generated\InvoicePaymentTerm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoicePaymentTermPaymentTerms.cs">
+      <Link>generated\InvoicePaymentTermPaymentTerms.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoicePaymentType.cs">
+      <Link>generated\InvoicePaymentType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceRefund.cs">
+      <Link>generated\InvoiceRefund.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceShippingInfo.cs">
+      <Link>generated\InvoiceShippingInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceStatus.cs">
+      <Link>generated\InvoiceStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceTemplate.cs">
+      <Link>generated\InvoiceTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceTemplateSettings.cs">
+      <Link>generated\InvoiceTemplateSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\InvoiceTemplatesResponse.cs">
+      <Link>generated\InvoiceTemplatesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\logLevel.cs">
+      <Link>generated\logLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\MagneticCard.cs">
+      <Link>generated\MagneticCard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ManuallyEnteredCard.cs">
+      <Link>generated\ManuallyEnteredCard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\Merchant.cs">
+      <Link>generated\Merchant.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\NetworkRequest.cs">
+      <Link>generated\NetworkRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\NetworkResponse.cs">
+      <Link>generated\NetworkResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\Page.cs">
+      <Link>generated\Page.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\Payer.cs">
+      <Link>generated\Payer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\PaymentDevice.cs">
+      <Link>generated\PaymentDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\PaymentState.cs">
+      <Link>generated\PaymentState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\PayPalError.cs">
+      <Link>generated\PayPalError.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\PayPalErrorInfo.cs">
+      <Link>generated\PayPalErrorInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\readerConnectionType.cs">
+      <Link>generated\readerConnectionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\readerType.cs">
+      <Link>generated\readerType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ReceiptDestination.cs">
+      <Link>generated\ReceiptDestination.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ReceiptDestinationType.cs">
+      <Link>generated\ReceiptDestinationType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ReceiptEmailEntryViewContent.cs">
+      <Link>generated\ReceiptEmailEntryViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ReceiptOptionsViewContent.cs">
+      <Link>generated\ReceiptOptionsViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ReceiptSMSEntryViewContent.cs">
+      <Link>generated\ReceiptSMSEntryViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\ReceiptViewContent.cs">
+      <Link>generated\ReceiptViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\RetailInvoice.cs">
+      <Link>generated\RetailInvoice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\RetailInvoicePayment.cs">
+      <Link>generated\RetailInvoicePayment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\SDK.cs">
+      <Link>generated\SDK.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\SignatureReceiver.cs">
+      <Link>generated\SignatureReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\TippingState.cs">
+      <Link>generated\TippingState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\TokenExpirationHandler.cs">
+      <Link>generated\TokenExpirationHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\TransactionBeginOptions.cs">
+      <Link>generated\TransactionBeginOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\TransactionContext.cs">
+      <Link>generated\TransactionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\TransactionRecord.cs">
+      <Link>generated\TransactionRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\ClearScript\TransactionType.cs">
+      <Link>generated\TransactionType.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\InternalNetworkManager.cs">
+      <Link>InternalNetworkManager.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\IRetailNetworkRequestHandler.cs">
+      <Link>IRetailNetworkRequestHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\RetailSDKException.cs">
+      <Link>RetailSDKException.cs</Link>
+    </Compile>
+    <Compile Include="ClearScriptNetworkMessages.cs" />
+    <Compile Include="SdkCredentials.cs" />
+    <Compile Include="SynchronizedCallbackStore.cs" />
+    <Compile Include="UI\AlertView.xaml.cs">
+      <DependentUpon>AlertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceScanner.cs" />
+    <Compile Include="JsObjects\MagtekUsbDevice.cs" />
+    <Compile Include="JsObjects\MiuraBluetoothDevice.cs" />
+    <Compile Include="JsObjects\MiuraUsbDevice.cs" />
+    <Compile Include="JsObjects\NativeInterface.cs" />
+    <Compile Include="NLogManager.cs" />
+    <Compile Include="PayPalRetailObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetailSDK.cs" />
+    <Compile Include="UI\BlurredBackground.xaml.cs">
+      <DependentUpon>BlurredBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ISdkMediaPlayer.cs" />
+    <Compile Include="UI\ReceiptControl.xaml.cs">
+      <DependentUpon>ReceiptControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SdkWinMediaPlayer.cs" />
+    <Compile Include="UI\SignatureControl.xaml.cs">
+      <DependentUpon>SignatureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UiUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\PayPalRetailSDK.js">
+      <Link>Resources\PayPalRetailSDK.js</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Licenses\ClearScript.main.license" />
+    <None Include="Licenses\v8.main.license" />
+    <None Include="Licenses\v8.strongtalk.license" />
+    <None Include="Licenses\v8.v8.license" />
+    <None Include="Licenses\v8.valgrind.license" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\StyleDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\AlertView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\BlurredBackground.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\ReceiptControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\SignatureControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\manticore-win\Manticore.Desktop\Manticore.Desktop.csproj">
+      <Project>{ce286a0f-968c-4437-85f7-c5b00da5a5aa}</Project>
+      <Name>Manticore.Desktop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\check_icon_green.png">
+      <Link>Resources\Images\check_icon_green.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_x_declined.png">
+      <Link>Resources\Images\ic_x_declined.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_insert.png">
+      <Link>Resources\Images\img_emv_insert.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_insert_swipe.png">
+      <Link>Resources\Images\img_emv_insert_swipe.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_swipe.png">
+      <Link>Resources\Images\img_emv_swipe.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_insert_tap_swipe.png">
+      <Link>Resources\Images\img_emv_insert_tap_swipe.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_edit_receipt.png">
+      <Link>Resources\Images\img_edit_receipt.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_clear_signature.png">
+      <Link>Resources\Images\ic_clear_signature.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_clear_signature_disabled.png">
+      <Link>Resources\Images\ic_clear_signature_disabled.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_email.png">
+      <Link>Resources\Images\ic_email.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_text.png">
+      <Link>Resources\Images\ic_text.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\..\resources\sounds\success_card_read.mp3">
+      <Link>Resources\Sounds\success_card_read.mp3</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+if not exist "$(TargetDir)" md "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.6\tools\native\x86\*.*" "$(TargetDir)"
+if not exist "$(TargetDir)" md "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.6\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

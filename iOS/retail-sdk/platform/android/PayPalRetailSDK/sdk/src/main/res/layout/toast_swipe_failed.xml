@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@drawable/bg_toast_swipe_failed"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/swipe_failed_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"/>
+
+    <TextView
+        style="@style/ToastHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/medium"
+        android:textColor="@color/sdk_white"
+        android:text="@string/sdk_toast_swipe_failed_text"
+        android:gravity="center"/>
+</LinearLayout>

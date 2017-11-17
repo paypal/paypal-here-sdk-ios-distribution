@@ -74,22 +74,10 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/Info.plist"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/PayPalRetailSDK.js"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey@2x.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_lightblue.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_lightblue@2x.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/PayPalRetailSDK/PayPalRetailSDKResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/Info.plist"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/PayPalRetailSDK.js"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey@2x.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_lightblue.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_lightblue@2x.png"
-  install_resource "../iOS/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/PayPalRetailSDK/PayPalRetailSDKResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

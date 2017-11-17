@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>PayPal Retail Test App</title>
+    <link type="text/css" href="pure-min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        input {
+            font-size: 30px;
+            text-align: right;
+            margin-left: 15px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 35px;
+        }
+        .standard-button {
+            font-size: 30px;
+            margin: auto;
+            display: block;
+            width: 86%;
+        }
+        pre {
+            text-align: left;
+            font-size: 10px;
+        }
+        div.button-wrap {
+            margin: 14.5px;
+        }
+        .message {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        div.table {
+            display: table;
+            width: 100%;
+        }
+        div.row {
+            display: table-row;
+        }
+        div.cell {
+            display: table-cell;
+        }
+        div.label {
+            text-align: right;
+            font-size: 20px;
+        }
+        input[type="checkbox"]{
+            width: 30px; /*Desired width*/
+            height: 30px; /*Desired height*/
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Retail Test App</h1>
+<form class="pure-form">
+    <div class="table">
+        <div class="row">
+            <div class="cell label">Transaction Amount: </div>
+            <div class="cell">
+                <input type="number" id="amount" placeholder="$0.00" value="1.00"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell label">Gratuity:</div>
+            <div class="cell">
+                <input type="number" id="gratuity" placeholder="$0.00" value="0.00" style="margin-top: 10px"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell label">Certification mode:</div>
+            <div class="cell">
+                <input type="checkbox" id="certificationMode" checked style="margin-top: 10px;"/>
+            </div>
+        </div>
+    </div>
+    <div class="button-wrap"><button id="charge" class="pure-button pure-button-primary standard-button">Charge</button></div>
+</form>
+<div id="status" class="message">Starting Up.</div>
+<div id="reader-status" class="message">Please connect a reader.</div>
+<div class="button-wrap"><button id="refund-last" class="pure-button pure-button-primary standard-button">Refund last</button></div>
+<script type="text/javascript" src="zepto.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

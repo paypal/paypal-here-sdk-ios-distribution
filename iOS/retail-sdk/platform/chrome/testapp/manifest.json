@@ -1,0 +1,43 @@
+{
+  "name": "PayPal Retail SDK Test",
+  "description": "A test application for the PayPal Retail SDK on ChromeOS",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["sdkTestToken.js","PayPalRetailSDK.chrome.js","background.js"]
+    }
+  },
+  "icons": {
+    "16": "testapp-16.png",
+    "128": "testapp-128.png"
+  },
+  "permissions": [
+    "https://*.paypal.com/",
+    "https://*.paypalobjects.com/",
+    "http://pphstageexternal-vip.ext.external.paypalc3.com/",
+    "http://pph-retail-sdk-sample.herokuapp.com/",
+    "usb",
+    "hid",
+    "serial",
+    "storage",
+    "unlimitedStorage",
+    "fullscreen",
+    {
+      "usbDevices": [
+        {
+          "vendorId": 2049,
+          "productId": 17
+        },
+        {
+          "vendorId": 1317,
+          "productId": 42151
+        },
+        {
+          "vendorId": 1317,
+          "productId": 42149
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'git@github.paypal.com:IOS-R/podspecs.git'
+
+platform :osx, '10.10'
+
+pod 'PayPalRetailSDK', :path => '../../../'
+pod 'SimpleKeychain'
+pod 'jetfire'
+xcodeproj 'RetailSDKTestApp/RetailSDKTestApp.xcodeproj'

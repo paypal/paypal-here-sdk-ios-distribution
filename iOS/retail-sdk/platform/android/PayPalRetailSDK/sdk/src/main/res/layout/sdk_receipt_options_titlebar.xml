@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/sdk_action_bar_height"
+              android:background="@color/sdk_blue"
+              android:gravity="center"
+              android:orientation="horizontal" >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/receipt_ab_back"
+            android:gravity="center|left"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/sdk_receipt_title_bar_button_margin"
+            android:layout_marginStart="@dimen/sdk_receipt_title_bar_button_margin"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/back_button"
+            android:visibility="invisible"
+            android:src="@drawable/title_back" />
+        <LinearLayout
+            android:id="@+id/ab_contents"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:gravity="center"
+            android:visibility="visible"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/ab_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:contentDescription="@string/checkmark"
+                android:background="@drawable/check_icon_green" />
+            <TextView
+                android:id="@+id/ab_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/sdk_white"
+                android:text="@string/default_total_title"
+                android:textSize="@dimen/text_special"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/receipt_ab_right_button"
+            android:gravity="center|right"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/sdk_receipt_title_bar_button_margin"
+            android:layout_marginEnd="@dimen/sdk_receipt_title_bar_button_margin"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/sdk_white"
+            android:text="@string/sdk_actvy_receipt_title_send"
+            android:background="@color/sdk_blue"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/next_button"
+            android:visibility="visible"
+            style="?android:attr/borderlessButtonStyle" />
+    </RelativeLayout>
+</LinearLayout>

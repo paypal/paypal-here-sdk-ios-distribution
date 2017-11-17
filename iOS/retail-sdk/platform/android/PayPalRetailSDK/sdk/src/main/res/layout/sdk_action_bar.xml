@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sdk_action_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/sdk_action_bar_height"
+    android:background="@color/sdk_blue">
+
+    <ImageView
+        android:id="@+id/ab_left_image"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/larger"
+        android:contentDescription="@string/back_button"
+        android:src="@drawable/title_back"/>
+
+    <TextView
+        android:id="@+id/ab_left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/larger"
+        android:textSize="18sp"
+        android:textColor="@color/sdk_white"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/ab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:enabled="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/sdk_white"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_special" />
+
+    <TextView
+        android:id="@+id/ab_right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/larger"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:textColor="@color/sdk_white"
+        android:contentDescription="@string/next_button"
+        android:visibility="gone"/>
+
+</RelativeLayout>

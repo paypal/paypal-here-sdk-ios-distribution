@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/../iOS"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/PayPalRetailSDK"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/PayPalRetailSDK"
-OTHER_LDFLAGS = $(inherited) -ObjC -framework "AVFoundation" -framework "AudioToolbox" -framework "CFNetwork" -framework "CoreBluetooth" -framework "CoreTelephony" -framework "ExternalAccessory" -framework "Foundation" -framework "JavaScriptCore" -framework "MediaPlayer" -framework "MobileCoreServices" -framework "PayPalRetailSDK" -framework "Security" -framework "SystemConfiguration"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/PayPalRetailSDK" "${PODS_ROOT}/Headers/Public/SimpleKeychain"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/PayPalRetailSDK" "$PODS_CONFIGURATION_BUILD_DIR/SimpleKeychain" $(inherited) "${PODS_ROOT}/../iOS/retail-sdk/platform/objc/iOS/Roam"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/PayPalRetailSDK" -isystem "${PODS_ROOT}/Headers/Public/SimpleKeychain"
+OTHER_LDFLAGS = $(inherited) -ObjC -weak_library /usr/lib/libstdc++.dylib -l"PayPalRetailSDK" -l"SimpleKeychain" -l"SwiperAPI" -l"c++" -l"stdc++" -l"z" -framework "ExternalAccessory" -framework "Foundation" -framework "JavaScriptCore" -framework "UIKit"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

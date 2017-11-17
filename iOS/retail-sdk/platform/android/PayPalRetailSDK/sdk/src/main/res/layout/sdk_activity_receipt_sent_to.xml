@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/sdk_white"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/sdk_page_side_margin"
+        android:paddingRight="@dimen/sdk_page_side_margin">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sdk_layout_height"
+            android:layout_marginTop="@dimen/regular"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/none" >
+            <ImageView
+                android:id="@+id/receipt_type_icon"
+                android:src="@drawable/ic_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/receipt_icon_description"
+                android:padding="@dimen/small"/>
+            <EditText
+                android:id="@+id/send_location"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/sdk_layout_height"
+                android:paddingLeft="@dimen/smium"
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/sdk_dark_blue"
+                android:textColorHint="@color/sdk_dark_grey"
+                android:textCursorDrawable="@drawable/cursor_lightblue"
+                android:imeOptions="actionSend"
+                android:layout_toRightOf="@+id/country_code"
+                android:background="@drawable/empty"/>
+        </LinearLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/sdk_light_grey" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/receipts_disclaimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xsmall"
+        android:layout_margin="@dimen/xxlarge"
+        android:textColor="@color/sdk_black"
+        android:lineSpacingExtra="@dimen/small"
+        android:gravity="center"
+        android:text="@string/sms_receipt_privacy_message"/>
+</LinearLayout>

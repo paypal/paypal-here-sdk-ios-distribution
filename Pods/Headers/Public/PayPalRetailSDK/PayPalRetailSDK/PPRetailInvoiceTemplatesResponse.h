@@ -1,1 +1,0 @@
-../../../../../iOS/PayPalRetailSDK.framework/Versions/A/Headers/PPRetailInvoiceTemplatesResponse.h

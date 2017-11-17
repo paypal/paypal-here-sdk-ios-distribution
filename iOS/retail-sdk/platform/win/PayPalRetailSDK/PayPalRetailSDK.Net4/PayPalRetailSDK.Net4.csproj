@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F81DF46-A017-4CB6-AB0B-8517D66CE96D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PayPalRetailSDK</RootNamespace>
+    <AssemblyName>PayPalRetailSDK.Net4</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DOTNET4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.2.0\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\generated\jint\BatteryInfo.cs">
+      <Link>generated\BatteryInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\Card.cs">
+      <Link>generated\Card.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\DeviceOperationResultHandler.cs">
+      <Link>generated\DeviceOperationResultHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\DeviceUpdate.cs">
+      <Link>generated\DeviceUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\EmvDevice.cs">
+      <Link>generated\EmvDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\EmvDeviceCardStatus.cs">
+      <Link>generated\EmvDeviceCardStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\EmvDeviceNumericEntryType.cs">
+      <Link>generated\EmvDeviceNumericEntryType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\Invoice.cs">
+      <Link>generated\Invoice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceAddress.cs">
+      <Link>generated\InvoiceAddress.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceAttachment.cs">
+      <Link>generated\InvoiceAttachment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceBillingInfo.cs">
+      <Link>generated\InvoiceBillingInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceCCInfo.cs">
+      <Link>generated\InvoiceCCInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceCustomAmount.cs">
+      <Link>generated\InvoiceCustomAmount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceItem.cs">
+      <Link>generated\InvoiceItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceMerchantInfo.cs">
+      <Link>generated\InvoiceMerchantInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceMetaData.cs">
+      <Link>generated\InvoiceMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceNotification.cs">
+      <Link>generated\InvoiceNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoicePayment.cs">
+      <Link>generated\InvoicePayment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoicePaymentMethod.cs">
+      <Link>generated\InvoicePaymentMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoicePaymentTerm.cs">
+      <Link>generated\InvoicePaymentTerm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoicePaymentTermPaymentTerms.cs">
+      <Link>generated\InvoicePaymentTermPaymentTerms.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoicePaymentType.cs">
+      <Link>generated\InvoicePaymentType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceRefund.cs">
+      <Link>generated\InvoiceRefund.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceShippingInfo.cs">
+      <Link>generated\InvoiceShippingInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceStatus.cs">
+      <Link>generated\InvoiceStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceTemplate.cs">
+      <Link>generated\InvoiceTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceTemplateSettings.cs">
+      <Link>generated\InvoiceTemplateSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\InvoiceTemplatesResponse.cs">
+      <Link>generated\InvoiceTemplatesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\MagneticCard.cs">
+      <Link>generated\MagneticCard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\ManuallyEnteredCard.cs">
+      <Link>generated\ManuallyEnteredCard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\Merchant.cs">
+      <Link>generated\Merchant.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\NumericEntryOptions.cs">
+      <Link>generated\NumericEntryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\Payer.cs">
+      <Link>generated\Payer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\PaymentDevice.cs">
+      <Link>generated\PaymentDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\PaymentDeviceCardIssuer.cs">
+      <Link>generated\PaymentDeviceCardIssuer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\PaymentDeviceFormFactor.cs">
+      <Link>generated\PaymentDeviceFormFactor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\PayPalError.cs">
+      <Link>generated\PayPalError.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\PayPalErrorInfo.cs">
+      <Link>generated\PayPalErrorInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\ReceiptEmailEntryViewContent.cs">
+      <Link>generated\ReceiptEmailEntryViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\ReceiptOptionsViewContent.cs">
+      <Link>generated\ReceiptOptionsViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\ReceiptSMSEntryViewContent.cs">
+      <Link>generated\ReceiptSMSEntryViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\ReceiptViewContent.cs">
+      <Link>generated\ReceiptViewContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\SDK.cs">
+      <Link>generated\SDK.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\SecureEntryOptions.cs">
+      <Link>generated\SecureEntryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\SignatureReceiver.cs">
+      <Link>generated\SignatureReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\TransactionContext.cs">
+      <Link>generated\TransactionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\TransactionContextType.cs">
+      <Link>generated\TransactionContextType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\TransactionRecord.cs">
+      <Link>generated\TransactionRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\generated\jint\VirtualPaymentDevice.cs">
+      <Link>generated\VirtualPaymentDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\DeviceManager.cs">
+      <Link>DeviceManager.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\SynchronizedCallbackStore.cs">
+      <Link>SynchronizedCallbackStore.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\AlertView.xaml.cs">
+      <Link>UI\AlertView.xaml.cs</Link>
+      <DependentUpon>AlertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\BlurredBackground.xaml.cs">
+      <Link>UI\BlurredBackground.xaml.cs</Link>
+      <DependentUpon>BlurredBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\ISdkMediaPlayer.cs">
+      <Link>UI\ISdkMediaPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\ReceiptControl.xaml.cs">
+      <Link>UI\ReceiptControl.xaml.cs</Link>
+      <DependentUpon>ReceiptControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\SdkWinMediaPlayer.cs">
+      <Link>UI\SdkWinMediaPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\SignatureControl.xaml.cs">
+      <Link>UI\SignatureControl.xaml.cs</Link>
+      <DependentUpon>SignatureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Desktop\UI\UiUtils.cs">
+      <Link>UI\UiUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\InternalNetworkManager.cs">
+      <Link>InternalNetworkManager.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\IRetailNetworkRequestHandler.cs">
+      <Link>IRetailNetworkRequestHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\JintNetworkMessages.cs">
+      <Link>JintNetworkMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\PayPalRetailObject.cs">
+      <Link>PayPalRetailObject.cs</Link>
+    </Compile>
+    <Compile Include="..\PayPalRetailSDK.Win81\RetailSDKException.cs">
+      <Link>RetailSDKException.cs</Link>
+    </Compile>
+    <Compile Include="JsObjects\MagtekUsbDevice.cs" />
+    <Compile Include="JsObjects\MiuraBluetoothDevice.cs" />
+    <Compile Include="JsObjects\MiuraUsbDevice.cs" />
+    <Compile Include="JsObjects\NativeInterface.cs" />
+    <Compile Include="NLogManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetailSDK.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\PayPalRetailSDK.js">
+      <Link>Resources\PayPalRetailSDK.js</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HidLibrary\src\HidLibrary\HidLibrary.csproj">
+      <Project>{9e8f1d50-74ea-4c60-bd5c-ab2c5b53bc66}</Project>
+      <Name>HidLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\manticore-win\jint\Jint\Jint.csproj">
+      <Project>{678738da-f723-4920-b9e5-cad667104bda}</Project>
+      <Name>Jint</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\manticore-win\Manticore.Net4\Manticore.Net4.csproj">
+      <Project>{66492b34-ca92-43a6-8a24-d93f22f752b5}</Project>
+      <Name>Manticore.Net4</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\PayPalRetailSDK.Desktop\Resources\StyleDictionary.xaml">
+      <Link>Resources\StyleDictionary.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PayPalRetailSDK.Desktop\UI\AlertView.xaml">
+      <Link>UI\AlertView.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PayPalRetailSDK.Desktop\UI\BlurredBackground.xaml">
+      <Link>UI\BlurredBackground.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PayPalRetailSDK.Desktop\UI\ReceiptControl.xaml">
+      <Link>UI\ReceiptControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PayPalRetailSDK.Desktop\UI\SignatureControl.xaml">
+      <Link>UI\SignatureControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\check_icon_green.png">
+      <Link>Resources\Images\check_icon_green.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_x_declined.png">
+      <Link>Resources\Images\ic_x_declined.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_insert.png">
+      <Link>Resources\Images\img_emv_insert.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_insert_swipe.png">
+      <Link>Resources\Images\img_emv_insert_swipe.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_swipe.png">
+      <Link>Resources\Images\img_emv_swipe.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_emv_insert_tap_swipe.png">
+      <Link>Resources\Images\img_emv_insert_tap_swipe.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\img_edit_receipt.png">
+      <Link>Resources\Images\img_edit_receipt.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_clear_signature.png">
+      <Link>Resources\Images\ic_clear_signature.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_clear_signature_disabled.png">
+      <Link>Resources\Images\ic_clear_signature_disabled.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_email.png">
+      <Link>Resources\Images\ic_email.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\resources\images\drawable-xhdpi\ic_text.png">
+      <Link>Resources\Images\ic_text.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\..\resources\sounds\success_card_read.mp3">
+      <Link>Resources\Sounds\success_card_read.mp3</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

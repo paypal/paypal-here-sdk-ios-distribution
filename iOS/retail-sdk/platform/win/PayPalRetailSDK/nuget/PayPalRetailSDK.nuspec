@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>PayPalRetailSDK</id>
+        <version>$version$</version>
+        <title>PayPal Retail SDK</title>
+        <authors>PayPal Retail SDK Team</authors>
+        <owners>PayPal</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Retail SDK for PayPal</description>
+        <summary>Retail SDK for PayPal.</summary>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+				<dependency id="ClearScript.V8" version="5.4.6" />
+                <dependency id="32feet.NET" version="3.5.0.0" />
+                <dependency id="hidlibrary" version="3.2.31.0" />
+                <dependency id="NLog" version="4.0.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\PayPalRetailSDK.Desktop\bin\Debug\Manticore.Desktop.dll" target="lib\net45\Manticore.Desktop.dll" />
+        <file src="..\PayPalRetailSDK.Desktop\bin\Debug\Manticore.Desktop.pdb" target="lib\net45\Manticore.Desktop.pdb" />
+        <file src="..\PayPalRetailSDK.Desktop\bin\Debug\PayPalRetailSDK.Desktop.dll" target="lib\net45\PayPalRetailSDK.Desktop.dll" />
+        <file src="..\PayPalRetailSDK.Desktop\bin\Debug\PayPalRetailSDK.Desktop.dll.config" target="lib\net45\PayPalRetailSDK.Desktop.dll.config" />
+        <file src="..\PayPalRetailSDK.Desktop\bin\Debug\PayPalRetailSDK.Desktop.pdb" target="lib\net45\PayPalRetailSDK.Desktop.pdb" />
+    </files>
+</package>

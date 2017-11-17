@@ -7,92 +7,443 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3685354CEBDA05F6046013D1B7B24F80 /* Pods-PPHSDKSampleApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7A5C8001C21A5EACCD6FFFA3F0F8E7 /* Pods-PPHSDKSampleApp-dummy.m */; };
-		8CF47ADB6B1070504FFDE9D4189E4017 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		015C24DBE719192B6B3A180B7E9495D2 /* ic_email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB21F798D59B53526D5BCAB1CDC6225 /* ic_email@2x.png */; };
+		04C6A2AD7F7C76ECFF170975ABEE5846 /* ic_x_declined@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6387E58960D8794465FD86ECADA2FC /* ic_x_declined@2x.png */; };
+		0802B12BA12B417DC647164E47C00861 /* PPReceiptOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3063E33DC516A2EEEFBBBD8A1A8CC71 /* PPReceiptOptionsController.m */; };
+		09191F70D0544D227F0AE6901116EADB /* PPHRetailMerchantCardSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 19CF540CBEF2F7EBAFB02B64D19E41E1 /* PPHRetailMerchantCardSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D212826D852C32A1DC03DCB508BBDC1 /* PPRoamAudioReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A336882B0077D3E0F122AA7909826 /* PPRoamAudioReader.m */; };
+		0E2FC2BB9A1ABBD1AC47E824CBE3374A /* PPAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FFA45DEFFC8DB22AF615E5301997BDF /* PPAlertView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0E7847749D7AFB6306234305F273F414 /* RetailCountryPhoneFormats.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59F7A81E829719C3C7AFFA8E35163EE3 /* RetailCountryPhoneFormats.plist */; };
+		11EDA56EC37712EF868B78D84810820B /* PPHRetailMerchantCardSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB65DE0603D5D67951293844CECF9C0 /* PPHRetailMerchantCardSettings.m */; };
+		152861885B6F19D205FFEB7E41455F40 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AE35266F20BC2FE39982C8908CF9D003 /* ja.lproj */; };
+		18C2BF0C7591FB6AC7DBFE553F41BFAC /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0C0C717E2F1FFB6F657758EBBBCCEC64 /* fr.lproj */; };
+		19C9C2927F34C16A1DAE0DFA9B4DB3EF /* PPReceiptOptionsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA710458C59A26EF1853FAC2A845332E /* PPReceiptOptionsController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1B1165FE9EEE30CEC415AE1774ADE18C /* PPBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F795A5ECD839482BD174640D547383D /* PPBaseViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1E11D5956FA214A7D6E730786A931900 /* ja-JP.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 604AC4BCCFCF07A72F449EB39C28AE8F /* ja-JP.lproj */; };
+		1E4AD88C0B2DDC778BADAC11209D373C /* PayPalRetailSDKStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E86D3445FAB74D35F03D571694714 /* PayPalRetailSDKStyles.m */; };
+		1F745C2B2A4C48021DD8159059C4768F /* PayPalRetailSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F79C2C26DE3991D898067F939CE15F /* PayPalRetailSDK.m */; };
+		257A150B225B8FEA65204952A9C58B9B /* ic_x_declined.png in Resources */ = {isa = PBXBuildFile; fileRef = E2711E5F40E9F59A46A0C4F7AB3D9A9D /* ic_x_declined.png */; };
+		259054C539673D203DF6196E82ADB13D /* SwiperController.h in Headers */ = {isa = PBXBuildFile; fileRef = E134D40CCE3F3CCCE4830D77CC82F18D /* SwiperController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		27FC40147032434D672232EE99A33748 /* PPMiuraBluetoothDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2885538F986E19C0BC051B9E3E3C7353 /* PPMiuraBluetoothDevice.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		27FE37493599A899BEF43EDD68C113FC /* PPAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D0B2C354A433869994EC70374C74A /* PPAlertView.m */; };
+		28F58666F2D091EB57BCA5F65B202A08 /* en-AU.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 736A5850FF3E2DEFC50B360EA981B563 /* en-AU.lproj */; };
+		2C62C16BCCF2F6C56DBB813ED3A756F4 /* sdk_clear_signature_darkgrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E5AB1AB9A3019E44A1E0E0C9D941DF /* sdk_clear_signature_darkgrey@2x.png */; };
+		2EA573F9FF053B6A71D9EF99A427270A /* PPSignatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A7531ED1DC4C6A3F23E0E31166AE74 /* PPSignatureController.m */; };
+		2F3C39A6CA7D87AAC4676F80BF06A453 /* ic_edit_receipt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D51237BC3E53F5B4ED449D5E8416D68 /* ic_edit_receipt@2x.png */; };
+		328A15FB3A78F1CC0117F847580419F5 /* en-GB.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D25072170E65105BC35683BF6B740AA7 /* en-GB.lproj */; };
+		33743F38469CE1B219978C6E6138A1CB /* sdk_clear_signature_lightblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 29384C6D9C4360D082721ABBA2669EFD /* sdk_clear_signature_lightblue.png */; };
+		34D335CBBDB3DF8F090CAF08902054B7 /* PPNativeDeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 896355EBFEC18914969BBA1E5835B11A /* PPNativeDeviceManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		36F4C6E7EE4718A0ACC839B3E48A8381 /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 52484E9BC842BCF27E1D3733165E5338 /* zh-Hant.lproj */; };
+		3793462B0ED434DBA573C5E942B8DEB2 /* PPReceiptSMSEntryController.h in Headers */ = {isa = PBXBuildFile; fileRef = B06BC493EEF4712D460676E98F4BD29F /* PPReceiptSMSEntryController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3CBF65E570482062097BFA739D0A7E29 /* PPRetailNativeInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D64A6EC7AE4CEBE234709BE26FF36E /* PPRetailNativeInterface.m */; };
+		436FFAA9B2646A15DAFF02EF99B180FC /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9FB25A1CB3805DD6321889C5F7C0CD64 /* zh-Hans.lproj */; };
+		43CF0ED25BFFC9AA3AE9C85E3B990CC7 /* A0SimpleKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 6003AF0E2604F11DD23D56797BE9FEAC /* A0SimpleKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45D4B7E90A96BF5637734CD24E6A8948 /* ic_checkmark_lg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7098DE498A8381E92207D0528F535001 /* ic_checkmark_lg@2x.png */; };
+		474C5454492A0AC9E86976D3D534DDD5 /* A0SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACE73D85D442E958961203226F582A /* A0SimpleKeychain.m */; };
+		4851DC4B4CA927D589AC165C0094BDAB /* PPReceiptEmailEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C1888CEA37AFB229B6E4E74088AFB1 /* PPReceiptEmailEntryController.m */; };
+		497B040681021D39232ED3D8447CE010 /* PPHRetailMerchantStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 08057463BFBA0188279801799A024954 /* PPHRetailMerchantStatus.m */; };
+		4AC56AA3AC675592D1B4736433272B23 /* PayPalRetailSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F2536C03C4C08BF20C3BECAF4C9BC99 /* PayPalRetailSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B0A95C8CCB1031C106A140BD277C185 /* SdkCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07C2A71E2AEE8F2B68C9938FAF5998 /* SdkCredential.m */; };
+		4E169F2549AFBEBDE37E6F5678DF9063 /* PPSecureValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 072C75ECDAD42B511381C9B63CA21CDA /* PPSecureValueStorage.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		52D4638A73CAD210482908CF290AD5A1 /* choose_device_dongle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEB35D9C4A96ACB80F65731615530CE /* choose_device_dongle@3x.png */; };
+		56DD33DAEA9209792854BE7F39928F59 /* PPRetailNativeInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = C781FA872E0CCF3CC98B6A69718CA48A /* PPRetailNativeInterface.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5AFE86767F8E24BD8711FBD0BDA43023 /* PPHRetailMerchant.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD4602D7A55DB39AB7377E65C76361 /* PPHRetailMerchant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C2A4A9F7DFF191C05A5ED59BFE0A8B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08AEE7D2FD645C2EE72BE1A13D6A453 /* Foundation.framework */; };
+		61C1D2FF4A23A33F6810737814EEA689 /* PPRetailObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED3F0DE9B96B21490A512F3542B2B6 /* PPRetailObject.m */; };
+		65A7137B5D69D9C2FA63E85E8D108673 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923D6F35E70DA326C4572AE761AA2BB5 /* UIKit.framework */; };
+		673BCDEB5EA094A201F822C88388910E /* check_icon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB4032C1A50BF73A77AECA1903FCEF5 /* check_icon_green.png */; };
+		677B74D9F238929D1DE16FDE01B0BD41 /* choose_device_black_emv@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20983CEE216418837B24B8B98B914DA7 /* choose_device_black_emv@3x.png */; };
+		67938FCB4CD25D0A71ABA51AA7AE8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08AEE7D2FD645C2EE72BE1A13D6A453 /* Foundation.framework */; };
+		6A14807418F990937AC008509AB9F48E /* PPRetailCoreServices.h in Headers */ = {isa = PBXBuildFile; fileRef = CE30D77A5B5BFEB3065134C358F85373 /* PPRetailCoreServices.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6BA39EB34FB5D454EDF2E2ABF9ACF5E4 /* PPReceiptSMSEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAE8AA8F540CA9D0571F400417B863A /* PPReceiptSMSEntryController.m */; };
+		6BE028D7CD8733BD4CF4959A746C5962 /* PPSoundManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA80C3EB648F5583E1F3766170C43E2D /* PPSoundManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		72C47FDC37905F4FA3EF494A73796192 /* Pods-PPHSDKSampleApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7A5C8001C21A5EACCD6FFFA3F0F8E7 /* Pods-PPHSDKSampleApp-dummy.m */; };
+		77607022412C0681BE5C6CA5EA4854C0 /* PPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA2C2C060A8E140C6D964BFECD48197 /* PPBaseViewController.m */; };
+		79AE7220A2B9D9029EFA48A72C970086 /* PPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D37689377C4063F8F6705653BD8BE4A7 /* PPLocationManager.m */; };
+		7A8082E67D94526B796BC37D0AE67139 /* PPSignatureController.h in Headers */ = {isa = PBXBuildFile; fileRef = 873E5731BB51AEADB90876DCABE53F01 /* PPSignatureController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7D23525FCB35252D92AE3AD24E9DAA3B /* ic_edit_receipt.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B45C961D1C5913DD98E13ADF4E692F /* ic_edit_receipt.png */; };
+		7FD92D45A4471FA60B5072D6B9A7DF1E /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 428F595D22F6CCA33E9BBC69C90E64D4 /* es.lproj */; };
+		864E90C960D1F676F634C228246C784E /* PPHRetailMerchantUserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 05051636143570359AC2019EF6170DE8 /* PPHRetailMerchantUserInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87ADCF1470BA3670D2EF8106E7E7D49C /* ic_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D5287506D82427E5F32B9CCF44031BD /* ic_text.png */; };
+		8C9DDCEFDF83C12F457DE8F2CC278126 /* PPNativeDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D90D16B29E9F61CC7D9C7A2168272361 /* PPNativeDeviceManager.m */; };
+		9569140E54A2F5C20C689C3C977A7616 /* PlatformView+PPAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA7E041D1AD6E30A737A36CAC43CA14 /* PlatformView+PPAutoLayout.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9700AFB1586CC8B553FDFB92ACA968E0 /* A0SimpleKeychain+KeyPair.h in Headers */ = {isa = PBXBuildFile; fileRef = F9E98E37F949737828916933E2B8ADCE /* A0SimpleKeychain+KeyPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9804E5F9214F925ABE63C37DE704DA7B /* ic_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 8104955B0CDFD6AA482B9C6F877D684B /* ic_email.png */; };
+		9A281D06CE391815F6D67BA69E42853E /* choose_device_black_emv.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB6E30665C2DFAAED2B09221000156A /* choose_device_black_emv.png */; };
+		9BB514C3A9D8F6AC7CCBB118CCA69CFA /* PPRoamAudioReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E404547C963F0C4BC9E62CD78970D41 /* PPRoamAudioReader.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9FAA65C9EF79F03DC506EA333458CE54 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FB50F168249774472AB07A39A729D /* JavaScriptCore.framework */; };
+		A3CA882AF434DDAF065064FA93E2A0B9 /* SimpleKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = C28D1ACDB1D7003E9004759D889828F2 /* SimpleKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A83AAAF93ABC7F4E08497E155721E67C /* SdkCredential.h in Headers */ = {isa = PBXBuildFile; fileRef = E67E93AD74BB23ED4B1F495C33D2822A /* SdkCredential.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD21DAFBAB82D891DCA94BD67918A4DF /* sdk_clear_signature_darkgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F2605AB05189EDD0C6626D0598B914 /* sdk_clear_signature_darkgrey.png */; };
+		AE2E2E579450BB582FB65555140F6AEC /* PPRetailPhoneFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B63D1E316C61A741320E3447BBE1EA7 /* PPRetailPhoneFormatter.m */; };
+		B1E450965BEC2B9C5E9059257CF26F64 /* PPRetailUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F23023A6F9862A9D17979B2B8BAA14D4 /* PPRetailUtils.m */; };
+		B65C154CEBB0A2820D274F9EE2D5D074 /* PayPalRetailSDK+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EBCE626C1CAA9B66EED4A9950FE478BA /* PayPalRetailSDK+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B8618D6D546790C2714FE389633CCC37 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 10D0BE3A26A3B04CC772ED680BFB6F67 /* en.lproj */; };
+		BEB8D74E20EEFEA8D328190BABC35E37 /* PPHRetailMerchantStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AE542852139225B0A91296E35330994 /* PPHRetailMerchantStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C153DDD45DC83DBE959F5914556FFC9F /* PPRetailCoreServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC78E72660A73CDAA669A3F8EDA8F7 /* PPRetailCoreServices.m */; };
+		C37F8F76C9F063AA974530CB465259D6 /* PPSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CA089400849242F16047F5F02E5A9C /* PPSoundManager.m */; };
+		C3DA81A4600D12C76481F52D1D15C0B3 /* PPReceiptEmailEntryController.h in Headers */ = {isa = PBXBuildFile; fileRef = 58CCEC527678228CDA3452B70BC464C5 /* PPReceiptEmailEntryController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C3EE5CBC14520E439FAA1C46522F7D7F /* PPRetailObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 24F26DFFBFB0EEC95F2C29AEC4822A32 /* PPRetailObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C45477B923BB5A9000AC76D4B882D742 /* UIButton+PPStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7412505DCEDBDEB671DA4649457A16CA /* UIButton+PPStyle.m */; };
+		C51137D4103C0B5EC25B80F77A22166B /* PPLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9390EF345316A4A62F491555F18AAE36 /* PPLocationManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C750EF0FC37781FF2E66553A2D786572 /* PPHRetailMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D957EF67EC8D21CB699DA576F890EC5 /* PPHRetailMerchant.m */; };
+		C7DB1FBA4EB8D716A57AF07D857FD935 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABF905FEC0BDDC83D8773B8A3520C1 /* ExternalAccessory.framework */; };
+		C9E6373125C1A0D4BDACFFF0D9A70BAE /* PPSignatureView.h in Headers */ = {isa = PBXBuildFile; fileRef = 879EA52DE306902D5C860C90773B25DE /* PPSignatureView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CAAC8B6D6B3643B118CF0B287DD74482 /* A0SimpleKeychain+KeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D399124491BBEA8B2DBDCE813FCDD94 /* A0SimpleKeychain+KeyPair.m */; };
+		CCF1249776DFD312898787AECA778DD5 /* ic_edit_receipt_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D23E29E6C90A93F5B8EC12230EC24E8 /* ic_edit_receipt_pressed.png */; };
+		CE030B3A4E505C05E3C724B882455A4E /* check_icon_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D250DEE2281C102B7529CFC6D79048C /* check_icon_green@2x.png */; };
+		D43D9AE72B2EE924D8BDBDEE4E655A07 /* PlatformView+PPAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CB75738C75E934600EA20C44A8AA3132 /* PlatformView+PPAutoLayout.m */; };
+		D4E2204ECBC08F23488F856777DA0CF0 /* UIButton+PPStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A49B73AEE652D77318A46B5D016A0E /* UIButton+PPStyle.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DA20DF7817E18C7218E16A92EAFC2ADE /* PPRetailPhoneFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 03689350BD48B067C905D91ACA4DFE60 /* PPRetailPhoneFormatter.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DAEADB091D595887BCDBE7754676324A /* choose_device_dongle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DBBE8DDCF1725D589C37E07BC06E98 /* choose_device_dongle.png */; };
+		E30EE559D29334229853B8AAD8B1B1CA /* ic_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1203D795588CE31863FD894683E19654 /* ic_text@2x.png */; };
+		E41CCBD2E91D45008C234CE250D27DD5 /* ic_checkmark_lg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B65D34ED5C77DA397719F29FF7A60DB /* ic_checkmark_lg.png */; };
+		E45741C3BDB42F9862CD4371E7405335 /* PayPalRetailSDKStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 4312DB91B17A5EE9E6462945ABBB88F7 /* PayPalRetailSDKStyles.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E5058B4C538231D0E682782974A5F844 /* choose_device_black_emv@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A023C26C3F9BFBD4CF976025D23C6272 /* choose_device_black_emv@2x.png */; };
+		E6EA0EC0D9C2573861A1A8AC50B7A2FA /* PPReaderSelectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C71EE2E84E2ABA7680AF7A8E0CBAF0E /* PPReaderSelectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E8028DCEBBBCF8E95DADDE4A413F28BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08AEE7D2FD645C2EE72BE1A13D6A453 /* Foundation.framework */; };
+		EE86BE2AD52F75C3BB30310F8AD3EDA1 /* sdk_clear_signature_lightblue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771B17E5E1FA06F22FD60D36C5EB2098 /* sdk_clear_signature_lightblue@2x.png */; };
+		EF604702B5B9B7B010F54561ADC4EE4C /* PPMiuraBluetoothDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F991F3C27205E6145180B8DC7FB16F /* PPMiuraBluetoothDevice.m */; };
+		F1E9DA5BA65E7D326552326F74A77F62 /* PPSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC279EBA0EA5543E27F8BFB9B6663583 /* PPSignatureView.m */; };
+		F3511CA1DE4462195AA9864502D1CA7F /* PPHRetailMerchantUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 422D3697CAF3DD311ADAB159DEA5D1F3 /* PPHRetailMerchantUserInfo.m */; };
+		F418D2A48644A4E2C9D54C2ED147B490 /* choose_device_dongle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A92EEE31A58ECCB66901CAE97FCAB8 /* choose_device_dongle@2x.png */; };
+		F4DD5A47E367E8A9669BD8E9BED3F9A4 /* PPRetailUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0169A479411D80F44B0B2B5B5BB473ED /* PPRetailUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F6D285A0C8BBB9C12F2AE0F9E8EEB7C1 /* ic_edit_receipt_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA31D162D105A9AB397CEAB766344478 /* ic_edit_receipt_pressed@2x.png */; };
+		FB5F010B31708B30DE866A9D46CA9DD8 /* SimpleKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5740057320595EDBF1C157B86E89FB2F /* SimpleKeychain-dummy.m */; };
+		FBDEFEC7404377CCD7408319322A292F /* PayPalRetailSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8C74766AEC4A83835FEEBDF20CE6 /* PayPalRetailSDK-dummy.m */; };
+		FCF87B57EB41064A38CA7AD419DB52DD /* PPReaderSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144CB9C3F12028751F8D6A2B665BC28 /* PPReaderSelectionView.m */; };
+		FF82E18D8452B668C3340C12FEA0E753 /* PPSecureValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D049697CCF972BA35579DDA921AB20 /* PPSecureValueStorage.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		70D701D937D49AE89E6D2AECA62432A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F382331F4189D82FF7CBDACF062047AB;
+			remoteInfo = SimpleKeychain;
+		};
+		A18BE45F4F708730F93D51A9885A1E90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F382331F4189D82FF7CBDACF062047AB;
+			remoteInfo = SimpleKeychain;
+		};
+		B263F71B7CE5E2D892239CEC62C5DE31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5ECCF633EE681743EC03B37BD557C836;
+			remoteInfo = "PayPalRetailSDK-PayPalRetailSDKResources";
+		};
+		DCD0B7FF2CDB8A0152D6718DA1C58559 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D6CAB1F7D9645D9842BA2FD7E0DE594;
+			remoteInfo = PayPalRetailSDK;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		25AE8498A27C1812134AC0DC9F8605C2 /* sdk_clear_signature_lightblue.png */ = {isa = PBXFileReference; includeInIndex = 1; path = sdk_clear_signature_lightblue.png; sourceTree = "<group>"; };
-		3E22DADC1762AA8F6D9A46EC69F701D9 /* sdk_clear_signature_darkgrey@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "sdk_clear_signature_darkgrey@2x.png"; sourceTree = "<group>"; };
+		0169A479411D80F44B0B2B5B5BB473ED /* PPRetailUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPRetailUtils.h; sourceTree = "<group>"; };
+		03689350BD48B067C905D91ACA4DFE60 /* PPRetailPhoneFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPRetailPhoneFormatter.h; sourceTree = "<group>"; };
+		04F79C2C26DE3991D898067F939CE15F /* PayPalRetailSDK.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PayPalRetailSDK.m; sourceTree = "<group>"; };
+		05051636143570359AC2019EF6170DE8 /* PPHRetailMerchantUserInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPHRetailMerchantUserInfo.h; sourceTree = "<group>"; };
+		072C75ECDAD42B511381C9B63CA21CDA /* PPSecureValueStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPSecureValueStorage.h; sourceTree = "<group>"; };
+		08057463BFBA0188279801799A024954 /* PPHRetailMerchantStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPHRetailMerchantStatus.m; sourceTree = "<group>"; };
+		0C0C717E2F1FFB6F657758EBBBCCEC64 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = fr.lproj; sourceTree = "<group>"; };
+		0E9EBBC5FAF12B3E830FA91AB336319E /* libSimpleKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSimpleKeychain.a; path = libSimpleKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FAD4602D7A55DB39AB7377E65C76361 /* PPHRetailMerchant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPHRetailMerchant.h; sourceTree = "<group>"; };
+		10B45C961D1C5913DD98E13ADF4E692F /* ic_edit_receipt.png */ = {isa = PBXFileReference; includeInIndex = 1; path = ic_edit_receipt.png; sourceTree = "<group>"; };
+		10D0BE3A26A3B04CC772ED680BFB6F67 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
+		1203D795588CE31863FD894683E19654 /* ic_text@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "ic_text@2x.png"; sourceTree = "<group>"; };
+		18DBBE8DDCF1725D589C37E07BC06E98 /* choose_device_dongle.png */ = {isa = PBXFileReference; includeInIndex = 1; path = choose_device_dongle.png; sourceTree = "<group>"; };
+		19CF540CBEF2F7EBAFB02B64D19E41E1 /* PPHRetailMerchantCardSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPHRetailMerchantCardSettings.h; sourceTree = "<group>"; };
+		1DB6E30665C2DFAAED2B09221000156A /* choose_device_black_emv.png */ = {isa = PBXFileReference; includeInIndex = 1; path = choose_device_black_emv.png; sourceTree = "<group>"; };
+		20983CEE216418837B24B8B98B914DA7 /* choose_device_black_emv@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "choose_device_black_emv@3x.png"; sourceTree = "<group>"; };
+		24F26DFFBFB0EEC95F2C29AEC4822A32 /* PPRetailObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPRetailObject.h; sourceTree = "<group>"; };
+		2885538F986E19C0BC051B9E3E3C7353 /* PPMiuraBluetoothDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPMiuraBluetoothDevice.h; sourceTree = "<group>"; };
+		28F2605AB05189EDD0C6626D0598B914 /* sdk_clear_signature_darkgrey.png */ = {isa = PBXFileReference; includeInIndex = 1; path = sdk_clear_signature_darkgrey.png; sourceTree = "<group>"; };
+		29384C6D9C4360D082721ABBA2669EFD /* sdk_clear_signature_lightblue.png */ = {isa = PBXFileReference; includeInIndex = 1; path = sdk_clear_signature_lightblue.png; sourceTree = "<group>"; };
+		2AA7E041D1AD6E30A737A36CAC43CA14 /* PlatformView+PPAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PlatformView+PPAutoLayout.h"; sourceTree = "<group>"; };
+		2AB21F798D59B53526D5BCAB1CDC6225 /* ic_email@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "ic_email@2x.png"; sourceTree = "<group>"; };
+		2B63D1E316C61A741320E3447BBE1EA7 /* PPRetailPhoneFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPRetailPhoneFormatter.m; sourceTree = "<group>"; };
+		2D07C2A71E2AEE8F2B68C9938FAF5998 /* SdkCredential.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SdkCredential.m; sourceTree = "<group>"; };
+		2D7F840AEF092178C3AF1D6EE592D96A /* libPods-PPHSDKSampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-PPHSDKSampleApp.a"; path = "libPods-PPHSDKSampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3144CB9C3F12028751F8D6A2B665BC28 /* PPReaderSelectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPReaderSelectionView.m; sourceTree = "<group>"; };
+		31D049697CCF972BA35579DDA921AB20 /* PPSecureValueStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPSecureValueStorage.m; sourceTree = "<group>"; };
+		33BC78E72660A73CDAA669A3F8EDA8F7 /* PPRetailCoreServices.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPRetailCoreServices.m; sourceTree = "<group>"; };
+		33D64A6EC7AE4CEBE234709BE26FF36E /* PPRetailNativeInterface.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPRetailNativeInterface.m; sourceTree = "<group>"; };
+		3E404547C963F0C4BC9E62CD78970D41 /* PPRoamAudioReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPRoamAudioReader.h; sourceTree = "<group>"; };
+		3FFA45DEFFC8DB22AF615E5301997BDF /* PPAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPAlertView.h; sourceTree = "<group>"; };
+		422D3697CAF3DD311ADAB159DEA5D1F3 /* PPHRetailMerchantUserInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPHRetailMerchantUserInfo.m; sourceTree = "<group>"; };
+		428F595D22F6CCA33E9BBC69C90E64D4 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = es.lproj; sourceTree = "<group>"; };
+		4312DB91B17A5EE9E6462945ABBB88F7 /* PayPalRetailSDKStyles.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PayPalRetailSDKStyles.h; sourceTree = "<group>"; };
+		49A49B73AEE652D77318A46B5D016A0E /* UIButton+PPStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIButton+PPStyle.h"; sourceTree = "<group>"; };
+		4AE542852139225B0A91296E35330994 /* PPHRetailMerchantStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPHRetailMerchantStatus.h; sourceTree = "<group>"; };
 		4CF4EBB7D6845E4962647C1C67296150 /* Pods-PPHSDKSampleApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PPHSDKSampleApp-acknowledgements.plist"; sourceTree = "<group>"; };
-		68DAC6CE4FFE38CFF1E3772357BEE95B /* sdk_clear_signature_darkgrey.png */ = {isa = PBXFileReference; includeInIndex = 1; path = sdk_clear_signature_darkgrey.png; sourceTree = "<group>"; };
+		52484E9BC842BCF27E1D3733165E5338 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
+		5740057320595EDBF1C157B86E89FB2F /* SimpleKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SimpleKeychain-dummy.m"; sourceTree = "<group>"; };
+		58CCEC527678228CDA3452B70BC464C5 /* PPReceiptEmailEntryController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPReceiptEmailEntryController.h; sourceTree = "<group>"; };
+		59F7A81E829719C3C7AFFA8E35163EE3 /* RetailCountryPhoneFormats.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = RetailCountryPhoneFormats.plist; sourceTree = "<group>"; };
+		5ABA4EB74D2F07B019E78CC741FF5B69 /* PayPalRetailSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayPalRetailSDK.xcconfig; sourceTree = "<group>"; };
+		5B65D34ED5C77DA397719F29FF7A60DB /* ic_checkmark_lg.png */ = {isa = PBXFileReference; includeInIndex = 1; path = ic_checkmark_lg.png; sourceTree = "<group>"; };
+		5C6E86D3445FAB74D35F03D571694714 /* PayPalRetailSDKStyles.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PayPalRetailSDKStyles.m; sourceTree = "<group>"; };
+		5D957EF67EC8D21CB699DA576F890EC5 /* PPHRetailMerchant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPHRetailMerchant.m; sourceTree = "<group>"; };
+		6003AF0E2604F11DD23D56797BE9FEAC /* A0SimpleKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = A0SimpleKeychain.h; path = SimpleKeychain/A0SimpleKeychain.h; sourceTree = "<group>"; };
+		604AC4BCCFCF07A72F449EB39C28AE8F /* ja-JP.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "ja-JP.lproj"; sourceTree = "<group>"; };
+		64EAF5C78BD9E5AC4FF57B7DC19405FD /* SimpleKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleKeychain.xcconfig; sourceTree = "<group>"; };
+		66EA8C74766AEC4A83835FEEBDF20CE6 /* PayPalRetailSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PayPalRetailSDK-dummy.m"; sourceTree = "<group>"; };
 		6C791EF8CEC45C83B32AF3221D728743 /* Pods-PPHSDKSampleApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PPHSDKSampleApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6D399124491BBEA8B2DBDCE813FCDD94 /* A0SimpleKeychain+KeyPair.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "A0SimpleKeychain+KeyPair.m"; path = "SimpleKeychain/A0SimpleKeychain+KeyPair.m"; sourceTree = "<group>"; };
+		6E635753CD4FE80E085E4C85D1AF80CD /* PayPalRetailSDKResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PayPalRetailSDKResources.bundle; path = PayPalRetailSDKResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		7098DE498A8381E92207D0528F535001 /* ic_checkmark_lg@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "ic_checkmark_lg@2x.png"; sourceTree = "<group>"; };
+		736A5850FF3E2DEFC50B360EA981B563 /* en-AU.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "en-AU.lproj"; sourceTree = "<group>"; };
+		7412505DCEDBDEB671DA4649457A16CA /* UIButton+PPStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIButton+PPStyle.m"; sourceTree = "<group>"; };
+		74F991F3C27205E6145180B8DC7FB16F /* PPMiuraBluetoothDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPMiuraBluetoothDevice.m; sourceTree = "<group>"; };
+		771B17E5E1FA06F22FD60D36C5EB2098 /* sdk_clear_signature_lightblue@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "sdk_clear_signature_lightblue@2x.png"; sourceTree = "<group>"; };
+		782A1A1BD8144C5F752C74476D0DA3A1 /* libSwiperAPI.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libSwiperAPI.a; path = iOS/Roam/libSwiperAPI.a; sourceTree = "<group>"; };
 		7A3E97C9EDB6EF0D2F5A488A46C01880 /* Pods-PPHSDKSampleApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PPHSDKSampleApp-resources.sh"; sourceTree = "<group>"; };
-		8C1983E65BB1379FF43050C8EF502D28 /* PayPalRetailSDK.js */ = {isa = PBXFileReference; includeInIndex = 1; path = PayPalRetailSDK.js; sourceTree = "<group>"; };
+		7C71EE2E84E2ABA7680AF7A8E0CBAF0E /* PPReaderSelectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPReaderSelectionView.h; sourceTree = "<group>"; };
+		7D51237BC3E53F5B4ED449D5E8416D68 /* ic_edit_receipt@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "ic_edit_receipt@2x.png"; sourceTree = "<group>"; };
+		7D5287506D82427E5F32B9CCF44031BD /* ic_text.png */ = {isa = PBXFileReference; includeInIndex = 1; path = ic_text.png; sourceTree = "<group>"; };
+		7DABF905FEC0BDDC83D8773B8A3520C1 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ExternalAccessory.framework; sourceTree = DEVELOPER_DIR; };
+		7F2536C03C4C08BF20C3BECAF4C9BC99 /* PayPalRetailSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PayPalRetailSDK.h; sourceTree = "<group>"; };
+		8104955B0CDFD6AA482B9C6F877D684B /* ic_email.png */ = {isa = PBXFileReference; includeInIndex = 1; path = ic_email.png; sourceTree = "<group>"; };
+		873E5731BB51AEADB90876DCABE53F01 /* PPSignatureController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPSignatureController.h; sourceTree = "<group>"; };
+		879EA52DE306902D5C860C90773B25DE /* PPSignatureView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPSignatureView.h; sourceTree = "<group>"; };
+		896355EBFEC18914969BBA1E5835B11A /* PPNativeDeviceManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPNativeDeviceManager.h; sourceTree = "<group>"; };
+		8CEB35D9C4A96ACB80F65731615530CE /* choose_device_dongle@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "choose_device_dongle@3x.png"; sourceTree = "<group>"; };
+		8F795A5ECD839482BD174640D547383D /* PPBaseViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPBaseViewController.h; sourceTree = "<group>"; };
+		923D6F35E70DA326C4572AE761AA2BB5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		92E23F355AB08A2D903992A780DB78ED /* SimpleKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleKeychain-prefix.pch"; sourceTree = "<group>"; };
+		9390EF345316A4A62F491555F18AAE36 /* PPLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPLocationManager.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9533EA887E24051F938D6FB292FFA623 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A601E896D2A9D57DE915633979E8061 /* libPods-PPHSDKSampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-PPHSDKSampleApp.a"; path = "libPods-PPHSDKSampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CB3A20639813A9CFFAB94BCA622DFE7 /* PayPalRetailSDKResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = PayPalRetailSDKResources.bundle; sourceTree = "<group>"; };
+		9D23E29E6C90A93F5B8EC12230EC24E8 /* ic_edit_receipt_pressed.png */ = {isa = PBXFileReference; includeInIndex = 1; path = ic_edit_receipt_pressed.png; sourceTree = "<group>"; };
+		9D250DEE2281C102B7529CFC6D79048C /* check_icon_green@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "check_icon_green@2x.png"; sourceTree = "<group>"; };
+		9D6387E58960D8794465FD86ECADA2FC /* ic_x_declined@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "ic_x_declined@2x.png"; sourceTree = "<group>"; };
 		9E54AB7441CB9C47595114B26C0FEA13 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		9FB25A1CB3805DD6321889C5F7C0CD64 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		A023C26C3F9BFBD4CF976025D23C6272 /* choose_device_black_emv@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "choose_device_black_emv@2x.png"; sourceTree = "<group>"; };
+		A6E5AB1AB9A3019E44A1E0E0C9D941DF /* sdk_clear_signature_darkgrey@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "sdk_clear_signature_darkgrey@2x.png"; sourceTree = "<group>"; };
+		AA710458C59A26EF1853FAC2A845332E /* PPReceiptOptionsController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPReceiptOptionsController.h; sourceTree = "<group>"; };
+		AB0A336882B0077D3E0F122AA7909826 /* PPRoamAudioReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPRoamAudioReader.m; sourceTree = "<group>"; };
+		ABAE8AA8F540CA9D0571F400417B863A /* PPReceiptSMSEntryController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPReceiptSMSEntryController.m; sourceTree = "<group>"; };
+		AC7D0B2C354A433869994EC70374C74A /* PPAlertView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPAlertView.m; sourceTree = "<group>"; };
+		AE35266F20BC2FE39982C8908CF9D003 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ja.lproj; sourceTree = "<group>"; };
+		AEB4032C1A50BF73A77AECA1903FCEF5 /* check_icon_green.png */ = {isa = PBXFileReference; includeInIndex = 1; path = check_icon_green.png; sourceTree = "<group>"; };
+		B06BC493EEF4712D460676E98F4BD29F /* PPReceiptSMSEntryController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPReceiptSMSEntryController.h; sourceTree = "<group>"; };
 		B17141F93C64D4CD3343E1C4ED32DD1E /* Pods-PPHSDKSampleApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PPHSDKSampleApp-frameworks.sh"; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B885C060AAAC0930DA6551FA015B2990 /* ResourceBundle-PayPalRetailSDKResources-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PayPalRetailSDKResources-Info.plist"; sourceTree = "<group>"; };
+		BF6FB50F168249774472AB07A39A729D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		BFB65DE0603D5D67951293844CECF9C0 /* PPHRetailMerchantCardSettings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPHRetailMerchantCardSettings.m; sourceTree = "<group>"; };
+		C28D1ACDB1D7003E9004759D889828F2 /* SimpleKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SimpleKeychain.h; path = SimpleKeychain/SimpleKeychain.h; sourceTree = "<group>"; };
+		C781FA872E0CCF3CC98B6A69718CA48A /* PPRetailNativeInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPRetailNativeInterface.h; sourceTree = "<group>"; };
+		CB75738C75E934600EA20C44A8AA3132 /* PlatformView+PPAutoLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PlatformView+PPAutoLayout.m"; sourceTree = "<group>"; };
+		CBED3F0DE9B96B21490A512F3542B2B6 /* PPRetailObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPRetailObject.m; sourceTree = "<group>"; };
+		CE30D77A5B5BFEB3065134C358F85373 /* PPRetailCoreServices.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPRetailCoreServices.h; sourceTree = "<group>"; };
+		D25072170E65105BC35683BF6B740AA7 /* en-GB.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "en-GB.lproj"; sourceTree = "<group>"; };
+		D2CA089400849242F16047F5F02E5A9C /* PPSoundManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPSoundManager.m; sourceTree = "<group>"; };
+		D37689377C4063F8F6705653BD8BE4A7 /* PPLocationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPLocationManager.m; sourceTree = "<group>"; };
+		D4A92EEE31A58ECCB66901CAE97FCAB8 /* choose_device_dongle@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "choose_device_dongle@2x.png"; sourceTree = "<group>"; };
+		D4ACE73D85D442E958961203226F582A /* A0SimpleKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = A0SimpleKeychain.m; path = SimpleKeychain/A0SimpleKeychain.m; sourceTree = "<group>"; };
+		D90D16B29E9F61CC7D9C7A2168272361 /* PPNativeDeviceManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPNativeDeviceManager.m; sourceTree = "<group>"; };
+		DA31D162D105A9AB397CEAB766344478 /* ic_edit_receipt_pressed@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "ic_edit_receipt_pressed@2x.png"; sourceTree = "<group>"; };
 		DA7A5C8001C21A5EACCD6FFFA3F0F8E7 /* Pods-PPHSDKSampleApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PPHSDKSampleApp-dummy.m"; sourceTree = "<group>"; };
 		DEAE6D6B3D10C702A8C5E8A507920AE1 /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		E919106E8ECA7700010AA0BB8B7175F5 /* PayPalRetailSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalRetailSDK.framework; path = iOS/PayPalRetailSDK.framework; sourceTree = "<group>"; };
-		F7F9E6FF1C235B387C25B1A43BAB834E /* sdk_clear_signature_lightblue@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "sdk_clear_signature_lightblue@2x.png"; sourceTree = "<group>"; };
+		E134D40CCE3F3CCCE4830D77CC82F18D /* SwiperController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SwiperController.h; sourceTree = "<group>"; };
+		E2711E5F40E9F59A46A0C4F7AB3D9A9D /* ic_x_declined.png */ = {isa = PBXFileReference; includeInIndex = 1; path = ic_x_declined.png; sourceTree = "<group>"; };
+		E3063E33DC516A2EEEFBBBD8A1A8CC71 /* PPReceiptOptionsController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPReceiptOptionsController.m; sourceTree = "<group>"; };
+		E67E93AD74BB23ED4B1F495C33D2822A /* SdkCredential.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SdkCredential.h; sourceTree = "<group>"; };
+		E6DBC8CD1001ED728EB896ED38B3F484 /* PayPalRetailSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PayPalRetailSDK-prefix.pch"; sourceTree = "<group>"; };
+		E7C1888CEA37AFB229B6E4E74088AFB1 /* PPReceiptEmailEntryController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPReceiptEmailEntryController.m; sourceTree = "<group>"; };
+		E8A7531ED1DC4C6A3F23E0E31166AE74 /* PPSignatureController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPSignatureController.m; sourceTree = "<group>"; };
+		EA80C3EB648F5583E1F3766170C43E2D /* PPSoundManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PPSoundManager.h; sourceTree = "<group>"; };
+		EBCE626C1CAA9B66EED4A9950FE478BA /* PayPalRetailSDK+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PayPalRetailSDK+Private.h"; sourceTree = "<group>"; };
+		EC279EBA0EA5543E27F8BFB9B6663583 /* PPSignatureView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPSignatureView.m; sourceTree = "<group>"; };
+		ECA2C2C060A8E140C6D964BFECD48197 /* PPBaseViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPBaseViewController.m; sourceTree = "<group>"; };
+		F08AEE7D2FD645C2EE72BE1A13D6A453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F23023A6F9862A9D17979B2B8BAA14D4 /* PPRetailUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PPRetailUtils.m; sourceTree = "<group>"; };
+		F9522D1AF018DEE37CCC97A817CD3559 /* libPayPalRetailSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPayPalRetailSDK.a; path = libPayPalRetailSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9E98E37F949737828916933E2B8ADCE /* A0SimpleKeychain+KeyPair.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "A0SimpleKeychain+KeyPair.h"; path = "SimpleKeychain/A0SimpleKeychain+KeyPair.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		67C0D2DF8533904E20E494B95A4E6C35 /* Frameworks */ = {
+		1B1F167D8E7BD7EE9EF06DF511374363 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CF47ADB6B1070504FFDE9D4189E4017 /* Foundation.framework in Frameworks */,
+				E8028DCEBBBCF8E95DADDE4A413F28BB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3435670060998E1CACB2B3FA8CCEDE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7DB1FBA4EB8D716A57AF07D857FD935 /* ExternalAccessory.framework in Frameworks */,
+				5C2A4A9F7DFF191C05A5ED59BFE0A8B8 /* Foundation.framework in Frameworks */,
+				9FAA65C9EF79F03DC506EA333458CE54 /* JavaScriptCore.framework in Frameworks */,
+				65A7137B5D69D9C2FA63E85E8D108673 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA033B1EAF1F1CD79FA0A25319CFFD07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67938FCB4CD25D0A71ABA51AA7AE8645 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6F9DC61A65B5409583A9319F673CEC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		117B371CC15F7CCB0B1600D4474D95B2 /* PayPalRetailSDK */ = {
+		0CCA5BF51C7E90D253441FCB81653871 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				6CE52E14466C75A98397221F383D17DE /* Frameworks */,
-				A8F681E38F4952803CF67CDA9E2B9BD3 /* Resources */,
+				7F2536C03C4C08BF20C3BECAF4C9BC99 /* PayPalRetailSDK.h */,
+				04F79C2C26DE3991D898067F939CE15F /* PayPalRetailSDK.m */,
+				EBCE626C1CAA9B66EED4A9950FE478BA /* PayPalRetailSDK+Private.h */,
+				2AA7E041D1AD6E30A737A36CAC43CA14 /* PlatformView+PPAutoLayout.h */,
+				CB75738C75E934600EA20C44A8AA3132 /* PlatformView+PPAutoLayout.m */,
+				8F795A5ECD839482BD174640D547383D /* PPBaseViewController.h */,
+				ECA2C2C060A8E140C6D964BFECD48197 /* PPBaseViewController.m */,
+				9390EF345316A4A62F491555F18AAE36 /* PPLocationManager.h */,
+				D37689377C4063F8F6705653BD8BE4A7 /* PPLocationManager.m */,
+				C781FA872E0CCF3CC98B6A69718CA48A /* PPRetailNativeInterface.h */,
+				33D64A6EC7AE4CEBE234709BE26FF36E /* PPRetailNativeInterface.m */,
+				24F26DFFBFB0EEC95F2C29AEC4822A32 /* PPRetailObject.h */,
+				CBED3F0DE9B96B21490A512F3542B2B6 /* PPRetailObject.m */,
+				072C75ECDAD42B511381C9B63CA21CDA /* PPSecureValueStorage.h */,
+				31D049697CCF972BA35579DDA921AB20 /* PPSecureValueStorage.m */,
+				EA80C3EB648F5583E1F3766170C43E2D /* PPSoundManager.h */,
+				D2CA089400849242F16047F5F02E5A9C /* PPSoundManager.m */,
+				E67E93AD74BB23ED4B1F495C33D2822A /* SdkCredential.h */,
+				2D07C2A71E2AEE8F2B68C9938FAF5998 /* SdkCredential.m */,
 			);
-			name = PayPalRetailSDK;
-			path = ..;
+			name = Common;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		5DD5CFA019D06A7A6BCCBB71F715F250 /* Development Pods */ = {
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				117B371CC15F7CCB0B1600D4474D95B2 /* PayPalRetailSDK */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		6CDDF04B2CDA43664B97CE3611D942D5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A601E896D2A9D57DE915633979E8061 /* libPods-PPHSDKSampleApp.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6CE52E14466C75A98397221F383D17DE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E919106E8ECA7700010AA0BB8B7175F5 /* PayPalRetailSDK.framework */,
+				93DB93A32F45068CEF51A1B173F43F38 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		70D6F26EF7ED5C94DCDEDA76770DD878 /* Versions */ = {
+		1F9A6814423FA4F9CC98A581FB3C4054 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FEFFA201145AB773751E8499B67815F7 /* A */,
+				F9522D1AF018DEE37CCC97A817CD3559 /* libPayPalRetailSDK.a */,
+				2D7F840AEF092178C3AF1D6EE592D96A /* libPods-PPHSDKSampleApp.a */,
+				0E9EBBC5FAF12B3E830FA91AB336319E /* libSimpleKeychain.a */,
+				6E635753CD4FE80E085E4C85D1AF80CD /* PayPalRetailSDKResources.bundle */,
 			);
-			name = Versions;
-			path = Versions;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+		3EBAB4E9D9DEFFF20F2A9D8E2ED05B85 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+				C8969F39ADBB597F4341A6E8E913D978 /* PayPalRetailSDK */,
+				90E6F504FE808DDE08600EB96D8C7096 /* Roam */,
 			);
 			name = iOS;
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		462313C76509A33A1535E50CAAA3F9AD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5ABA4EB74D2F07B019E78CC741FF5B69 /* PayPalRetailSDK.xcconfig */,
+				66EA8C74766AEC4A83835FEEBDF20CE6 /* PayPalRetailSDK-dummy.m */,
+				E6DBC8CD1001ED728EB896ED38B3F484 /* PayPalRetailSDK-prefix.pch */,
+				B885C060AAAC0930DA6551FA015B2990 /* ResourceBundle-PayPalRetailSDKResources-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../../../../Pods/Target Support Files/PayPalRetailSDK";
+			sourceTree = "<group>";
+		};
+		4A0AF355E81FEBF90681C65847AC2B5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF6A9CA38BAB4012C9E33F6F61B4DE37 /* SimpleKeychain */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5039055A81E12CCCFB8EB1913AEE760C /* PayPalRetailSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AEB4032C1A50BF73A77AECA1903FCEF5 /* check_icon_green.png */,
+				9D250DEE2281C102B7529CFC6D79048C /* check_icon_green@2x.png */,
+				1DB6E30665C2DFAAED2B09221000156A /* choose_device_black_emv.png */,
+				A023C26C3F9BFBD4CF976025D23C6272 /* choose_device_black_emv@2x.png */,
+				20983CEE216418837B24B8B98B914DA7 /* choose_device_black_emv@3x.png */,
+				18DBBE8DDCF1725D589C37E07BC06E98 /* choose_device_dongle.png */,
+				D4A92EEE31A58ECCB66901CAE97FCAB8 /* choose_device_dongle@2x.png */,
+				8CEB35D9C4A96ACB80F65731615530CE /* choose_device_dongle@3x.png */,
+				5B65D34ED5C77DA397719F29FF7A60DB /* ic_checkmark_lg.png */,
+				7098DE498A8381E92207D0528F535001 /* ic_checkmark_lg@2x.png */,
+				10B45C961D1C5913DD98E13ADF4E692F /* ic_edit_receipt.png */,
+				7D51237BC3E53F5B4ED449D5E8416D68 /* ic_edit_receipt@2x.png */,
+				9D23E29E6C90A93F5B8EC12230EC24E8 /* ic_edit_receipt_pressed.png */,
+				DA31D162D105A9AB397CEAB766344478 /* ic_edit_receipt_pressed@2x.png */,
+				8104955B0CDFD6AA482B9C6F877D684B /* ic_email.png */,
+				2AB21F798D59B53526D5BCAB1CDC6225 /* ic_email@2x.png */,
+				7D5287506D82427E5F32B9CCF44031BD /* ic_text.png */,
+				1203D795588CE31863FD894683E19654 /* ic_text@2x.png */,
+				E2711E5F40E9F59A46A0C4F7AB3D9A9D /* ic_x_declined.png */,
+				9D6387E58960D8794465FD86ECADA2FC /* ic_x_declined@2x.png */,
+				28F2605AB05189EDD0C6626D0598B914 /* sdk_clear_signature_darkgrey.png */,
+				A6E5AB1AB9A3019E44A1E0E0C9D941DF /* sdk_clear_signature_darkgrey@2x.png */,
+				29384C6D9C4360D082721ABBA2669EFD /* sdk_clear_signature_lightblue.png */,
+				771B17E5E1FA06F22FD60D36C5EB2098 /* sdk_clear_signature_lightblue@2x.png */,
+				7155AC842ED7AD486BCDBA9EFFBDA528 /* assets */,
+			);
+			name = PayPalRetailSDK;
+			path = PayPalRetailSDK;
+			sourceTree = "<group>";
+		};
+		7155AC842ED7AD486BCDBA9EFFBDA528 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				10D0BE3A26A3B04CC772ED680BFB6F67 /* en.lproj */,
+				736A5850FF3E2DEFC50B360EA981B563 /* en-AU.lproj */,
+				D25072170E65105BC35683BF6B740AA7 /* en-GB.lproj */,
+				428F595D22F6CCA33E9BBC69C90E64D4 /* es.lproj */,
+				0C0C717E2F1FFB6F657758EBBBCCEC64 /* fr.lproj */,
+				AE35266F20BC2FE39982C8908CF9D003 /* ja.lproj */,
+				604AC4BCCFCF07A72F449EB39C28AE8F /* ja-JP.lproj */,
+				59F7A81E829719C3C7AFFA8E35163EE3 /* RetailCountryPhoneFormats.plist */,
+				9FB25A1CB3805DD6321889C5F7C0CD64 /* zh-Hans.lproj */,
+				52484E9BC842BCF27E1D3733165E5338 /* zh-Hant.lproj */,
+			);
+			name = assets;
+			path = assets;
+			sourceTree = "<group>";
+		};
+		74BEE4B48326C5AAB05CA057198B87B7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				64EAF5C78BD9E5AC4FF57B7DC19405FD /* SimpleKeychain.xcconfig */,
+				5740057320595EDBF1C157B86E89FB2F /* SimpleKeychain-dummy.m */,
+				92E23F355AB08A2D903992A780DB78ED /* SimpleKeychain-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SimpleKeychain";
 			sourceTree = "<group>";
 		};
 		7542DAE2E6FF26B84FE2226079A4769D /* Pods-PPHSDKSampleApp */ = {
@@ -110,64 +461,169 @@
 			path = "Target Support Files/Pods-PPHSDKSampleApp";
 			sourceTree = "<group>";
 		};
-		79C628586D0350472AE6DBE8C143260F /* iOS */ = {
+		7B993BEECDF9768F155186D7563EC31C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				F6C03BA3FF5F8D00D628718805F15041 /* PayPalRetailSDK.framework */,
+				58CCEC527678228CDA3452B70BC464C5 /* PPReceiptEmailEntryController.h */,
+				E7C1888CEA37AFB229B6E4E74088AFB1 /* PPReceiptEmailEntryController.m */,
+				AA710458C59A26EF1853FAC2A845332E /* PPReceiptOptionsController.h */,
+				E3063E33DC516A2EEEFBBBD8A1A8CC71 /* PPReceiptOptionsController.m */,
+				B06BC493EEF4712D460676E98F4BD29F /* PPReceiptSMSEntryController.h */,
+				ABAE8AA8F540CA9D0571F400417B863A /* PPReceiptSMSEntryController.m */,
+				873E5731BB51AEADB90876DCABE53F01 /* PPSignatureController.h */,
+				E8A7531ED1DC4C6A3F23E0E31166AE74 /* PPSignatureController.m */,
+				879EA52DE306902D5C860C90773B25DE /* PPSignatureView.h */,
+				EC279EBA0EA5543E27F8BFB9B6663583 /* PPSignatureView.m */,
 			);
-			name = iOS;
-			path = iOS;
+			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				5DD5CFA019D06A7A6BCCBB71F715F250 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				6CDDF04B2CDA43664B97CE3611D942D5 /* Products */,
+				F50386042F74BC22427D96E7C6E98685 /* Development Pods */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				4A0AF355E81FEBF90681C65847AC2B5D /* Pods */,
+				1F9A6814423FA4F9CC98A581FB3C4054 /* Products */,
 				E28FDC3462C6FB71290C3608FF61FB65 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A8F681E38F4952803CF67CDA9E2B9BD3 /* Resources */ = {
+		90E6F504FE808DDE08600EB96D8C7096 /* Roam */ = {
 			isa = PBXGroup;
 			children = (
-				79C628586D0350472AE6DBE8C143260F /* iOS */,
+				E134D40CCE3F3CCCE4830D77CC82F18D /* SwiperController.h */,
 			);
-			name = Resources;
+			name = Roam;
+			path = Roam;
 			sourceTree = "<group>";
 		};
-		B8E97F716D5654CB74FBD01685B44B6C /* Resources */ = {
+		9187F387D146D205EAEB680AD316CB7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9CB3A20639813A9CFFAB94BCA622DFE7 /* PayPalRetailSDKResources.bundle */,
-				C23165B8ADCE72BB141913EA17833DDD /* PayPalRetailSDKResources.bundle */,
-			);
-			name = Resources;
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+				782A1A1BD8144C5F752C74476D0DA3A1 /* libSwiperAPI.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C23165B8ADCE72BB141913EA17833DDD /* PayPalRetailSDKResources.bundle */ = {
+		93DB93A32F45068CEF51A1B173F43F38 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9533EA887E24051F938D6FB292FFA623 /* Info.plist */,
-				8C1983E65BB1379FF43050C8EF502D28 /* PayPalRetailSDK.js */,
-				68DAC6CE4FFE38CFF1E3772357BEE95B /* sdk_clear_signature_darkgrey.png */,
-				3E22DADC1762AA8F6D9A46EC69F701D9 /* sdk_clear_signature_darkgrey@2x.png */,
-				25AE8498A27C1812134AC0DC9F8605C2 /* sdk_clear_signature_lightblue.png */,
-				F7F9E6FF1C235B387C25B1A43BAB834E /* sdk_clear_signature_lightblue@2x.png */,
+				7DABF905FEC0BDDC83D8773B8A3520C1 /* ExternalAccessory.framework */,
+				F08AEE7D2FD645C2EE72BE1A13D6A453 /* Foundation.framework */,
+				BF6FB50F168249774472AB07A39A729D /* JavaScriptCore.framework */,
+				923D6F35E70DA326C4572AE761AA2BB5 /* UIKit.framework */,
 			);
-			name = PayPalRetailSDKResources.bundle;
-			path = PayPalRetailSDKResources.bundle;
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A9AA341DDB72AF2E31B11A1BA3907EDB /* PayPalRetailSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4312DB91B17A5EE9E6462945ABBB88F7 /* PayPalRetailSDKStyles.h */,
+				5C6E86D3445FAB74D35F03D571694714 /* PayPalRetailSDKStyles.m */,
+				3FFA45DEFFC8DB22AF615E5301997BDF /* PPAlertView.h */,
+				AC7D0B2C354A433869994EC70374C74A /* PPAlertView.m */,
+				2885538F986E19C0BC051B9E3E3C7353 /* PPMiuraBluetoothDevice.h */,
+				74F991F3C27205E6145180B8DC7FB16F /* PPMiuraBluetoothDevice.m */,
+				896355EBFEC18914969BBA1E5835B11A /* PPNativeDeviceManager.h */,
+				D90D16B29E9F61CC7D9C7A2168272361 /* PPNativeDeviceManager.m */,
+				7C71EE2E84E2ABA7680AF7A8E0CBAF0E /* PPReaderSelectionView.h */,
+				3144CB9C3F12028751F8D6A2B665BC28 /* PPReaderSelectionView.m */,
+				CE30D77A5B5BFEB3065134C358F85373 /* PPRetailCoreServices.h */,
+				33BC78E72660A73CDAA669A3F8EDA8F7 /* PPRetailCoreServices.m */,
+				03689350BD48B067C905D91ACA4DFE60 /* PPRetailPhoneFormatter.h */,
+				2B63D1E316C61A741320E3447BBE1EA7 /* PPRetailPhoneFormatter.m */,
+				0169A479411D80F44B0B2B5B5BB473ED /* PPRetailUtils.h */,
+				F23023A6F9862A9D17979B2B8BAA14D4 /* PPRetailUtils.m */,
+				3E404547C963F0C4BC9E62CD78970D41 /* PPRoamAudioReader.h */,
+				AB0A336882B0077D3E0F122AA7909826 /* PPRoamAudioReader.m */,
+				49A49B73AEE652D77318A46B5D016A0E /* UIButton+PPStyle.h */,
+				7412505DCEDBDEB671DA4649457A16CA /* UIButton+PPStyle.m */,
+				7B993BEECDF9768F155186D7563EC31C /* UI */,
+			);
+			name = PayPalRetailSDK;
+			path = PayPalRetailSDK;
+			sourceTree = "<group>";
+		};
+		B9C3933A8AF675A888372B1319A04883 /* pph */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4602D7A55DB39AB7377E65C76361 /* PPHRetailMerchant.h */,
+				5D957EF67EC8D21CB699DA576F890EC5 /* PPHRetailMerchant.m */,
+				19CF540CBEF2F7EBAFB02B64D19E41E1 /* PPHRetailMerchantCardSettings.h */,
+				BFB65DE0603D5D67951293844CECF9C0 /* PPHRetailMerchantCardSettings.m */,
+				4AE542852139225B0A91296E35330994 /* PPHRetailMerchantStatus.h */,
+				08057463BFBA0188279801799A024954 /* PPHRetailMerchantStatus.m */,
+				05051636143570359AC2019EF6170DE8 /* PPHRetailMerchantUserInfo.h */,
+				422D3697CAF3DD311ADAB159DEA5D1F3 /* PPHRetailMerchantUserInfo.m */,
+			);
+			name = pph;
+			path = pph;
+			sourceTree = "<group>";
+		};
+		BC366627C65C59D80CC619ABA193BC40 /* PayPalRetailSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E03B4F921CB1DEC44A7F27ECBADE3051 /* Default */,
+				9187F387D146D205EAEB680AD316CB7E /* Frameworks */,
+				462313C76509A33A1535E50CAAA3F9AD /* Support Files */,
+			);
+			name = PayPalRetailSDK;
+			path = "../iOS/retail-sdk/platform/objc";
+			sourceTree = "<group>";
+		};
+		C62B772EF954108E5F7DD3762023331D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D53474CFA88F3828A4B885EA1A6038F0 /* iOS */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C8969F39ADBB597F4341A6E8E913D978 /* PayPalRetailSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A9AA341DDB72AF2E31B11A1BA3907EDB /* PayPalRetailSDK */,
+			);
+			name = PayPalRetailSDK;
+			path = PayPalRetailSDK;
+			sourceTree = "<group>";
+		};
+		CF6A9CA38BAB4012C9E33F6F61B4DE37 /* SimpleKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				6003AF0E2604F11DD23D56797BE9FEAC /* A0SimpleKeychain.h */,
+				D4ACE73D85D442E958961203226F582A /* A0SimpleKeychain.m */,
+				F9E98E37F949737828916933E2B8ADCE /* A0SimpleKeychain+KeyPair.h */,
+				6D399124491BBEA8B2DBDCE813FCDD94 /* A0SimpleKeychain+KeyPair.m */,
+				C28D1ACDB1D7003E9004759D889828F2 /* SimpleKeychain.h */,
+				74BEE4B48326C5AAB05CA057198B87B7 /* Support Files */,
+			);
+			name = SimpleKeychain;
+			path = SimpleKeychain;
+			sourceTree = "<group>";
+		};
+		D53474CFA88F3828A4B885EA1A6038F0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5039055A81E12CCCFB8EB1913AEE760C /* PayPalRetailSDK */,
+			);
+			name = iOS;
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		E03B4F921CB1DEC44A7F27ECBADE3051 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA5BF51C7E90D253441FCB81653871 /* Common */,
+				3EBAB4E9D9DEFFF20F2A9D8E2ED05B85 /* iOS */,
+				B9C3933A8AF675A888372B1319A04883 /* pph */,
+				C62B772EF954108E5F7DD3762023331D /* Resources */,
+			);
+			name = Default;
 			sourceTree = "<group>";
 		};
 		E28FDC3462C6FB71290C3608FF61FB65 /* Targets Support Files */ = {
@@ -178,41 +634,136 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		F6C03BA3FF5F8D00D628718805F15041 /* PayPalRetailSDK.framework */ = {
+		F50386042F74BC22427D96E7C6E98685 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				70D6F26EF7ED5C94DCDEDA76770DD878 /* Versions */,
+				BC366627C65C59D80CC619ABA193BC40 /* PayPalRetailSDK */,
 			);
-			name = PayPalRetailSDK.framework;
-			path = PayPalRetailSDK.framework;
-			sourceTree = "<group>";
-		};
-		FEFFA201145AB773751E8499B67815F7 /* A */ = {
-			isa = PBXGroup;
-			children = (
-				B8E97F716D5654CB74FBD01685B44B6C /* Resources */,
-			);
-			name = A;
-			path = A;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4DE605E534D8D87207C15595CD326ADE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B65C154CEBB0A2820D274F9EE2D5D074 /* PayPalRetailSDK+Private.h in Headers */,
+				4AC56AA3AC675592D1B4736433272B23 /* PayPalRetailSDK.h in Headers */,
+				E45741C3BDB42F9862CD4371E7405335 /* PayPalRetailSDKStyles.h in Headers */,
+				9569140E54A2F5C20C689C3C977A7616 /* PlatformView+PPAutoLayout.h in Headers */,
+				0E2FC2BB9A1ABBD1AC47E824CBE3374A /* PPAlertView.h in Headers */,
+				1B1165FE9EEE30CEC415AE1774ADE18C /* PPBaseViewController.h in Headers */,
+				5AFE86767F8E24BD8711FBD0BDA43023 /* PPHRetailMerchant.h in Headers */,
+				09191F70D0544D227F0AE6901116EADB /* PPHRetailMerchantCardSettings.h in Headers */,
+				BEB8D74E20EEFEA8D328190BABC35E37 /* PPHRetailMerchantStatus.h in Headers */,
+				864E90C960D1F676F634C228246C784E /* PPHRetailMerchantUserInfo.h in Headers */,
+				C51137D4103C0B5EC25B80F77A22166B /* PPLocationManager.h in Headers */,
+				27FC40147032434D672232EE99A33748 /* PPMiuraBluetoothDevice.h in Headers */,
+				34D335CBBDB3DF8F090CAF08902054B7 /* PPNativeDeviceManager.h in Headers */,
+				E6EA0EC0D9C2573861A1A8AC50B7A2FA /* PPReaderSelectionView.h in Headers */,
+				C3DA81A4600D12C76481F52D1D15C0B3 /* PPReceiptEmailEntryController.h in Headers */,
+				19C9C2927F34C16A1DAE0DFA9B4DB3EF /* PPReceiptOptionsController.h in Headers */,
+				3793462B0ED434DBA573C5E942B8DEB2 /* PPReceiptSMSEntryController.h in Headers */,
+				6A14807418F990937AC008509AB9F48E /* PPRetailCoreServices.h in Headers */,
+				56DD33DAEA9209792854BE7F39928F59 /* PPRetailNativeInterface.h in Headers */,
+				C3EE5CBC14520E439FAA1C46522F7D7F /* PPRetailObject.h in Headers */,
+				DA20DF7817E18C7218E16A92EAFC2ADE /* PPRetailPhoneFormatter.h in Headers */,
+				F4DD5A47E367E8A9669BD8E9BED3F9A4 /* PPRetailUtils.h in Headers */,
+				9BB514C3A9D8F6AC7CCBB118CCA69CFA /* PPRoamAudioReader.h in Headers */,
+				4E169F2549AFBEBDE37E6F5678DF9063 /* PPSecureValueStorage.h in Headers */,
+				7A8082E67D94526B796BC37D0AE67139 /* PPSignatureController.h in Headers */,
+				C9E6373125C1A0D4BDACFFF0D9A70BAE /* PPSignatureView.h in Headers */,
+				6BE028D7CD8733BD4CF4959A746C5962 /* PPSoundManager.h in Headers */,
+				A83AAAF93ABC7F4E08497E155721E67C /* SdkCredential.h in Headers */,
+				259054C539673D203DF6196E82ADB13D /* SwiperController.h in Headers */,
+				D4E2204ECBC08F23488F856777DA0CF0 /* UIButton+PPStyle.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C1F27DDBF01266E1C3BB977D2A0E4F9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9700AFB1586CC8B553FDFB92ACA968E0 /* A0SimpleKeychain+KeyPair.h in Headers */,
+				43CF0ED25BFFC9AA3AE9C85E3B990CC7 /* A0SimpleKeychain.h in Headers */,
+				A3CA882AF434DDAF065064FA93E2A0B9 /* SimpleKeychain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		6AE6EDC7EF1D4C67332E9196A7907CD4 /* Pods-PPHSDKSampleApp */ = {
+		23C89D80F2EBD89CF557927D8124AC15 /* Pods-PPHSDKSampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64B29973132E88460AF653A28D292188 /* Build configuration list for PBXNativeTarget "Pods-PPHSDKSampleApp" */;
+			buildConfigurationList = 1129BD1D73694423CE643F0E2ED0D36D /* Build configuration list for PBXNativeTarget "Pods-PPHSDKSampleApp" */;
 			buildPhases = (
-				AD09307C708DA80410CFC5D9550C7C7E /* Sources */,
-				67C0D2DF8533904E20E494B95A4E6C35 /* Frameworks */,
+				BCF572C68137D32C4F6A39B76707519C /* Sources */,
+				EA033B1EAF1F1CD79FA0A25319CFFD07 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB89BE8A5EE5D3FE5EF026CB6122E2DC /* PBXTargetDependency */,
+				591042D3E8D598BF27E2F91C4FEEABC8 /* PBXTargetDependency */,
+			);
+			name = "Pods-PPHSDKSampleApp";
+			productName = "Pods-PPHSDKSampleApp";
+			productReference = 2D7F840AEF092178C3AF1D6EE592D96A /* libPods-PPHSDKSampleApp.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4D6CAB1F7D9645D9842BA2FD7E0DE594 /* PayPalRetailSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 092F4A18994D24285635BAFB50FF8850 /* Build configuration list for PBXNativeTarget "PayPalRetailSDK" */;
+			buildPhases = (
+				DF8F38095B132E6543AC88C7DA4BD3E2 /* Sources */,
+				E3435670060998E1CACB2B3FA8CCEDE3 /* Frameworks */,
+				4DE605E534D8D87207C15595CD326ADE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13BB7F275A758D54294A279B8E5A0CD2 /* PBXTargetDependency */,
+				2D5935E51E2E6F6BC313D73FD24239E9 /* PBXTargetDependency */,
+			);
+			name = PayPalRetailSDK;
+			productName = PayPalRetailSDK;
+			productReference = F9522D1AF018DEE37CCC97A817CD3559 /* libPayPalRetailSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5ECCF633EE681743EC03B37BD557C836 /* PayPalRetailSDK-PayPalRetailSDKResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64B0CDE837982579FF0BF4EED92E0A70 /* Build configuration list for PBXNativeTarget "PayPalRetailSDK-PayPalRetailSDKResources" */;
+			buildPhases = (
+				BBD3E1A222FBBF5CFCE361CABDE0A1AB /* Sources */,
+				F6F9DC61A65B5409583A9319F673CEC6 /* Frameworks */,
+				A077FCFF8265F36F454394F9C60BAC31 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-PPHSDKSampleApp";
-			productName = "Pods-PPHSDKSampleApp";
-			productReference = 9A601E896D2A9D57DE915633979E8061 /* libPods-PPHSDKSampleApp.a */;
+			name = "PayPalRetailSDK-PayPalRetailSDKResources";
+			productName = "PayPalRetailSDK-PayPalRetailSDKResources";
+			productReference = 6E635753CD4FE80E085E4C85D1AF80CD /* PayPalRetailSDKResources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F382331F4189D82FF7CBDACF062047AB /* SimpleKeychain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95020780901695AAF73DACD85F9A9D3E /* Build configuration list for PBXNativeTarget "SimpleKeychain" */;
+			buildPhases = (
+				E37C1EF24C3ADAC390E1CBC0B32DD3ED /* Sources */,
+				1B1F167D8E7BD7EE9EF06DF511374363 /* Frameworks */,
+				7C1F27DDBF01266E1C3BB977D2A0E4F9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleKeychain;
+			productName = SimpleKeychain;
+			productReference = 0E9EBBC5FAF12B3E830FA91AB336319E /* libSimpleKeychain.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -232,25 +783,152 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 6CDDF04B2CDA43664B97CE3611D942D5 /* Products */;
+			productRefGroup = 1F9A6814423FA4F9CC98A581FB3C4054 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6AE6EDC7EF1D4C67332E9196A7907CD4 /* Pods-PPHSDKSampleApp */,
+				4D6CAB1F7D9645D9842BA2FD7E0DE594 /* PayPalRetailSDK */,
+				5ECCF633EE681743EC03B37BD557C836 /* PayPalRetailSDK-PayPalRetailSDKResources */,
+				23C89D80F2EBD89CF557927D8124AC15 /* Pods-PPHSDKSampleApp */,
+				F382331F4189D82FF7CBDACF062047AB /* SimpleKeychain */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		A077FCFF8265F36F454394F9C60BAC31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				673BCDEB5EA094A201F822C88388910E /* check_icon_green.png in Resources */,
+				CE030B3A4E505C05E3C724B882455A4E /* check_icon_green@2x.png in Resources */,
+				9A281D06CE391815F6D67BA69E42853E /* choose_device_black_emv.png in Resources */,
+				E5058B4C538231D0E682782974A5F844 /* choose_device_black_emv@2x.png in Resources */,
+				677B74D9F238929D1DE16FDE01B0BD41 /* choose_device_black_emv@3x.png in Resources */,
+				DAEADB091D595887BCDBE7754676324A /* choose_device_dongle.png in Resources */,
+				F418D2A48644A4E2C9D54C2ED147B490 /* choose_device_dongle@2x.png in Resources */,
+				52D4638A73CAD210482908CF290AD5A1 /* choose_device_dongle@3x.png in Resources */,
+				28F58666F2D091EB57BCA5F65B202A08 /* en-AU.lproj in Resources */,
+				328A15FB3A78F1CC0117F847580419F5 /* en-GB.lproj in Resources */,
+				B8618D6D546790C2714FE389633CCC37 /* en.lproj in Resources */,
+				7FD92D45A4471FA60B5072D6B9A7DF1E /* es.lproj in Resources */,
+				18C2BF0C7591FB6AC7DBFE553F41BFAC /* fr.lproj in Resources */,
+				E41CCBD2E91D45008C234CE250D27DD5 /* ic_checkmark_lg.png in Resources */,
+				45D4B7E90A96BF5637734CD24E6A8948 /* ic_checkmark_lg@2x.png in Resources */,
+				7D23525FCB35252D92AE3AD24E9DAA3B /* ic_edit_receipt.png in Resources */,
+				2F3C39A6CA7D87AAC4676F80BF06A453 /* ic_edit_receipt@2x.png in Resources */,
+				CCF1249776DFD312898787AECA778DD5 /* ic_edit_receipt_pressed.png in Resources */,
+				F6D285A0C8BBB9C12F2AE0F9E8EEB7C1 /* ic_edit_receipt_pressed@2x.png in Resources */,
+				9804E5F9214F925ABE63C37DE704DA7B /* ic_email.png in Resources */,
+				015C24DBE719192B6B3A180B7E9495D2 /* ic_email@2x.png in Resources */,
+				87ADCF1470BA3670D2EF8106E7E7D49C /* ic_text.png in Resources */,
+				E30EE559D29334229853B8AAD8B1B1CA /* ic_text@2x.png in Resources */,
+				257A150B225B8FEA65204952A9C58B9B /* ic_x_declined.png in Resources */,
+				04C6A2AD7F7C76ECFF170975ABEE5846 /* ic_x_declined@2x.png in Resources */,
+				1E11D5956FA214A7D6E730786A931900 /* ja-JP.lproj in Resources */,
+				152861885B6F19D205FFEB7E41455F40 /* ja.lproj in Resources */,
+				0E7847749D7AFB6306234305F273F414 /* RetailCountryPhoneFormats.plist in Resources */,
+				AD21DAFBAB82D891DCA94BD67918A4DF /* sdk_clear_signature_darkgrey.png in Resources */,
+				2C62C16BCCF2F6C56DBB813ED3A756F4 /* sdk_clear_signature_darkgrey@2x.png in Resources */,
+				33743F38469CE1B219978C6E6138A1CB /* sdk_clear_signature_lightblue.png in Resources */,
+				EE86BE2AD52F75C3BB30310F8AD3EDA1 /* sdk_clear_signature_lightblue@2x.png in Resources */,
+				436FFAA9B2646A15DAFF02EF99B180FC /* zh-Hans.lproj in Resources */,
+				36F4C6E7EE4718A0ACC839B3E48A8381 /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		AD09307C708DA80410CFC5D9550C7C7E /* Sources */ = {
+		BBD3E1A222FBBF5CFCE361CABDE0A1AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3685354CEBDA05F6046013D1B7B24F80 /* Pods-PPHSDKSampleApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF572C68137D32C4F6A39B76707519C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72C47FDC37905F4FA3EF494A73796192 /* Pods-PPHSDKSampleApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF8F38095B132E6543AC88C7DA4BD3E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBDEFEC7404377CCD7408319322A292F /* PayPalRetailSDK-dummy.m in Sources */,
+				1F745C2B2A4C48021DD8159059C4768F /* PayPalRetailSDK.m in Sources */,
+				1E4AD88C0B2DDC778BADAC11209D373C /* PayPalRetailSDKStyles.m in Sources */,
+				D43D9AE72B2EE924D8BDBDEE4E655A07 /* PlatformView+PPAutoLayout.m in Sources */,
+				27FE37493599A899BEF43EDD68C113FC /* PPAlertView.m in Sources */,
+				77607022412C0681BE5C6CA5EA4854C0 /* PPBaseViewController.m in Sources */,
+				C750EF0FC37781FF2E66553A2D786572 /* PPHRetailMerchant.m in Sources */,
+				11EDA56EC37712EF868B78D84810820B /* PPHRetailMerchantCardSettings.m in Sources */,
+				497B040681021D39232ED3D8447CE010 /* PPHRetailMerchantStatus.m in Sources */,
+				F3511CA1DE4462195AA9864502D1CA7F /* PPHRetailMerchantUserInfo.m in Sources */,
+				79AE7220A2B9D9029EFA48A72C970086 /* PPLocationManager.m in Sources */,
+				EF604702B5B9B7B010F54561ADC4EE4C /* PPMiuraBluetoothDevice.m in Sources */,
+				8C9DDCEFDF83C12F457DE8F2CC278126 /* PPNativeDeviceManager.m in Sources */,
+				FCF87B57EB41064A38CA7AD419DB52DD /* PPReaderSelectionView.m in Sources */,
+				4851DC4B4CA927D589AC165C0094BDAB /* PPReceiptEmailEntryController.m in Sources */,
+				0802B12BA12B417DC647164E47C00861 /* PPReceiptOptionsController.m in Sources */,
+				6BA39EB34FB5D454EDF2E2ABF9ACF5E4 /* PPReceiptSMSEntryController.m in Sources */,
+				C153DDD45DC83DBE959F5914556FFC9F /* PPRetailCoreServices.m in Sources */,
+				3CBF65E570482062097BFA739D0A7E29 /* PPRetailNativeInterface.m in Sources */,
+				61C1D2FF4A23A33F6810737814EEA689 /* PPRetailObject.m in Sources */,
+				AE2E2E579450BB582FB65555140F6AEC /* PPRetailPhoneFormatter.m in Sources */,
+				B1E450965BEC2B9C5E9059257CF26F64 /* PPRetailUtils.m in Sources */,
+				0D212826D852C32A1DC03DCB508BBDC1 /* PPRoamAudioReader.m in Sources */,
+				FF82E18D8452B668C3340C12FEA0E753 /* PPSecureValueStorage.m in Sources */,
+				2EA573F9FF053B6A71D9EF99A427270A /* PPSignatureController.m in Sources */,
+				F1E9DA5BA65E7D326552326F74A77F62 /* PPSignatureView.m in Sources */,
+				C37F8F76C9F063AA974530CB465259D6 /* PPSoundManager.m in Sources */,
+				4B0A95C8CCB1031C106A140BD277C185 /* SdkCredential.m in Sources */,
+				C45477B923BB5A9000AC76D4B882D742 /* UIButton+PPStyle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E37C1EF24C3ADAC390E1CBC0B32DD3ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAAC8B6D6B3643B118CF0B287DD74482 /* A0SimpleKeychain+KeyPair.m in Sources */,
+				474C5454492A0AC9E86976D3D534DDD5 /* A0SimpleKeychain.m in Sources */,
+				FB5F010B31708B30DE866A9D46CA9DD8 /* SimpleKeychain-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13BB7F275A758D54294A279B8E5A0CD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "PayPalRetailSDK-PayPalRetailSDKResources";
+			target = 5ECCF633EE681743EC03B37BD557C836 /* PayPalRetailSDK-PayPalRetailSDKResources */;
+			targetProxy = B263F71B7CE5E2D892239CEC62C5DE31 /* PBXContainerItemProxy */;
+		};
+		2D5935E51E2E6F6BC313D73FD24239E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SimpleKeychain;
+			target = F382331F4189D82FF7CBDACF062047AB /* SimpleKeychain */;
+			targetProxy = 70D701D937D49AE89E6D2AECA62432A0 /* PBXContainerItemProxy */;
+		};
+		591042D3E8D598BF27E2F91C4FEEABC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SimpleKeychain;
+			target = F382331F4189D82FF7CBDACF062047AB /* SimpleKeychain */;
+			targetProxy = A18BE45F4F708730F93D51A9885A1E90 /* PBXContainerItemProxy */;
+		};
+		FB89BE8A5EE5D3FE5EF026CB6122E2DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PayPalRetailSDK;
+			target = 4D6CAB1F7D9645D9842BA2FD7E0DE594 /* PayPalRetailSDK */;
+			targetProxy = DCD0B7FF2CDB8A0152D6718DA1C58559 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
@@ -297,7 +975,7 @@
 			};
 			name = Debug;
 		};
-		73A577D7071DC9B51E7327D1691687B7 /* Debug */ = {
+		20E8F8627431FE64E50B53379955F52C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DEAE6D6B3D10C702A8C5E8A507920AE1 /* Pods-PPHSDKSampleApp.debug.xcconfig */;
 			buildSettings = {
@@ -320,7 +998,113 @@
 			};
 			name = Debug;
 		};
-		C21980C4758C0427D2BE4B4F06A5BADC /* Release */ = {
+		4107365DAC35D794E5F6CAF3B3BA88AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ABA4EB74D2F07B019E78CC741FF5B69 /* PayPalRetailSDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PayPalRetailSDK/PayPalRetailSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7B1C381E4C13006122A23B23021AD75F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ABA4EB74D2F07B019E78CC741FF5B69 /* PayPalRetailSDK.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PayPalRetailSDK";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/PayPalRetailSDK/ResourceBundle-PayPalRetailSDKResources-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = PayPalRetailSDKResources;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		85455C9CA89F96179DC619526329660F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ABA4EB74D2F07B019E78CC741FF5B69 /* PayPalRetailSDK.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PayPalRetailSDK";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/PayPalRetailSDK/ResourceBundle-PayPalRetailSDKResources-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = PayPalRetailSDKResources;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		8BDA3742AB193D0E1627D12533FD78D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ABA4EB74D2F07B019E78CC741FF5B69 /* PayPalRetailSDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PayPalRetailSDK/PayPalRetailSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B4D1D272058448A55EEA3A5357049739 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64EAF5C78BD9E5AC4FF57B7DC19405FD /* SimpleKeychain.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SimpleKeychain/SimpleKeychain-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BBEF5C1A8F061251A752025A5B377765 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E54AB7441CB9C47595114B26C0FEA13 /* Pods-PPHSDKSampleApp.release.xcconfig */;
 			buildSettings = {
@@ -340,6 +1124,30 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D5A2DD98DBEDFE4B9FF16549A9746008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64EAF5C78BD9E5AC4FF57B7DC19405FD /* SimpleKeychain.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SimpleKeychain/SimpleKeychain-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -386,6 +1194,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		092F4A18994D24285635BAFB50FF8850 /* Build configuration list for PBXNativeTarget "PayPalRetailSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4107365DAC35D794E5F6CAF3B3BA88AC /* Debug */,
+				8BDA3742AB193D0E1627D12533FD78D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1129BD1D73694423CE643F0E2ED0D36D /* Build configuration list for PBXNativeTarget "Pods-PPHSDKSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20E8F8627431FE64E50B53379955F52C /* Debug */,
+				BBEF5C1A8F061251A752025A5B377765 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -395,11 +1221,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64B29973132E88460AF653A28D292188 /* Build configuration list for PBXNativeTarget "Pods-PPHSDKSampleApp" */ = {
+		64B0CDE837982579FF0BF4EED92E0A70 /* Build configuration list for PBXNativeTarget "PayPalRetailSDK-PayPalRetailSDKResources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73A577D7071DC9B51E7327D1691687B7 /* Debug */,
-				C21980C4758C0427D2BE4B4F06A5BADC /* Release */,
+				7B1C381E4C13006122A23B23021AD75F /* Debug */,
+				85455C9CA89F96179DC619526329660F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95020780901695AAF73DACD85F9A9D3E /* Build configuration list for PBXNativeTarget "SimpleKeychain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4D1D272058448A55EEA3A5357049739 /* Debug */,
+				D5A2DD98DBEDFE4B9FF16549A9746008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
