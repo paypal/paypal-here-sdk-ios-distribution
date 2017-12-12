@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import PayPalRetailSDK
 
 class PaymentViewController: UIViewController {
     
@@ -36,9 +36,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var wantToRefundLbl: UILabel!
     @IBOutlet weak var concludeFlowLbl: UILabel!
 
-    // Set up the relevant listeners, transactionContext, and Invoice.
-    var listenerSignal: PPRetailCardPresentedSignal? = nil
-    var completedSignal: PPRetailCompletedSignal? = nil
+    // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
 
@@ -92,9 +90,8 @@ class PaymentViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
-        
-        mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
-        
+
+        mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
         // The invoice Number is used for duplicate payment checking.  It should be unique for every
         // unique transaction attempt.  For payment resubmissions, simply use the same invoice number
         // to ensure that the invoice hasn't already been paid.
@@ -143,16 +140,13 @@ class PaymentViewController: UIViewController {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
-        tc!.begin(true)
+        tc!.begin()
         
-        listenerSignal = tc!.addCardPresentedListener({ (cardInfo) -> Void in
+        tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
-        }) as PPRetailCardPresentedSignal?
+        }
         
-        completedSignal = tc!.addCompletedListener({ (error, txnRecord) -> Void in
-            
-            self.tc!.removeCardPresentedListener(self.listenerSignal)
-            self.tc!.removeCompletedListener(self.completedSignal)
+        tc!.setCompletedHandler { (error, txnRecord) -> Void in
             
             if let err = error {
                 print("Error Code: \(err.code)")
@@ -170,9 +164,7 @@ class PaymentViewController: UIViewController {
             self.successMsg.text = "Your payment of $\(self.tc!.invoice!.total!) was successful"
             self.successMsg.sizeToFit()
             self.concludeFlowLbl.isHidden = true
-            
-        }) as PPRetailCompletedSignal?
-        
+        }
 
     }
     
@@ -199,14 +191,11 @@ class PaymentViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         
         
-        listenerSignal = tc!.addCardPresentedListener({ (cardInfo) -> Void in
+        tc!.setCardPresentedHandler({ (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
-        }) as PPRetailCardPresentedSignal?
+        })
         
-        completedSignal = tc!.addCompletedListener({ (error, txnRecord) -> Void in
-            
-            self.tc!.removeCardPresentedListener(self.listenerSignal)
-            self.tc!.removeCompletedListener(self.completedSignal)
+        tc!.setCompletedHandler({ (error, txnRecord) -> Void in
             
             if let err = error {
                 print("Error Code: \(err.code)")
@@ -226,7 +215,7 @@ class PaymentViewController: UIViewController {
             self.noRefundBtn.isHidden = true
             
 
-        }) as PPRetailCompletedSignal?
+        })
         
         
     }
@@ -239,7 +228,15 @@ class PaymentViewController: UIViewController {
     @IBAction func backToInitPage(_ sender: Any) {
         
         if ((tc) != nil) {
-            tc?.cancel()
+            tc?.clear({ (error) in
+                if let err = error {
+                    print("Error Code: \(err.code)")
+                    print("Error Message: \(err.developerMessage)")
+                    print("Debug ID: \(err.debugId)")
+                    
+                    return
+                }
+            })
         }
         
         dismiss(animated: true, completion: nil)
@@ -309,6 +306,10 @@ class PaymentViewController: UIViewController {
         createInvoiceBtn.isEnabled = true
         createInvCodeBtn.isEnabled = true
         
+    }
+    
+    func getCurrentNavigationController() -> UINavigationController! {
+        return self.navigationController
     }
     
 }

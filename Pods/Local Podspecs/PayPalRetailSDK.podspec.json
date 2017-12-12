@@ -9,8 +9,8 @@
     "PayPal": "DL-PP-RetailSDK@paypal.com"
   },
   "source": {
-    "git": "git@github.paypal.com:RetailSDK-NewGen/objc-cocoapod-release-stage.git",
-    "tag": "0.5.0"
+    "git": "git@github.paypal.com:RetailSDK-NewGen/retail-sdk.git",
+    "branch": "v3.0.0"
   },
   "platforms": {
     "ios": "7.0",
@@ -19,8 +19,10 @@
   "prefix_header_contents": "#import \"PayPalRetailSDK+Private.h\"",
   "requires_arc": true,
   "ios": {
-    "vendored_libraries": [
-      "iOS/Roam/libSwiperAPI.a"
+    "vendored_frameworks": [
+      "iOS/Roam/RUA_BLE.framework",
+      "iOS/Roam/LandiSDK_BLE.framework",
+      "iOS/Roam/G4XSwiper.framework"
     ]
   },
   "default_subspecs": "Default",
@@ -51,15 +53,16 @@
           "Foundation",
           "UIKit",
           "ExternalAccessory",
-          "JavaScriptCore"
+          "JavaScriptCore",
+          "MediaPlayer"
         ],
         "source_files": [
-          "iOS/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m}",
-          "iOS/Roam/*.{h,m}",
-          "Common/*.{h,m}",
-          "Common/generated/**/*.{h,m}",
-          "Common/manticore-objc/Manticore/*.{h,m}",
-          "pph/**/*.{h,m}"
+          "iOS/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
+          "iOS/Roam/*.{h,m,mm}",
+          "Common/*.{h,m,mm}",
+          "Common/generated/**/*.{h,m,mm}",
+          "Common/manticore-objc/Manticore/*.{h,m,mm}",
+          "pph/**/*.{h,m,mm}"
         ]
       },
       "osx": {
@@ -73,11 +76,11 @@
           ]
         },
         "source_files": [
-          "osx/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m}",
-          "Common/*.{h,m}",
-          "Common/generated/**/*.{h,m}",
-          "Common/manticore-objc/Manticore/*.{h,m}",
-          "pph/**/*.{h,m}"
+          "osx/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
+          "Common/*.{h,m,mm}",
+          "Common/generated/**/*.{h,m,mm}",
+          "Common/manticore-objc/Manticore/*.{h,m,mm}",
+          "pph/**/*.{h,m,mm}"
         ]
       },
       "dependencies": {
@@ -120,15 +123,16 @@
           "Foundation",
           "UIKit",
           "ExternalAccessory",
-          "JavaScriptCore"
+          "JavaScriptCore",
+          "MediaPlayer"
         ],
         "source_files": [
-          "iOS/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m}",
-          "iOS/Roam/*.{h,m}",
-          "Common/*.{h,m}",
-          "Common/generated/**/*.{h,m}",
-          "Common/manticore-objc/Manticore/*.{h,m}",
-          "pph/**/*.{h,m}"
+          "iOS/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
+          "iOS/Roam/*.{h,m,mm}",
+          "Common/*.{h,m,mm}",
+          "Common/generated/**/*.{h,m,mm}",
+          "Common/manticore-objc/Manticore/*.{h,m,mm}",
+          "pph/**/*.{h,m,mm}"
         ]
       },
       "osx": {
@@ -142,11 +146,11 @@
           ]
         },
         "source_files": [
-          "osx/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m}",
-          "Common/*.{h,m}",
-          "Common/generated/**/*.{h,m}",
-          "Common/manticore-objc/Manticore/*.{h,m}",
-          "pph/**/*.{h,m}"
+          "osx/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
+          "Common/*.{h,m,mm}",
+          "Common/generated/**/*.{h,m,mm}",
+          "Common/manticore-objc/Manticore/*.{h,m,mm}",
+          "pph/**/*.{h,m,mm}"
         ]
       },
       "dependencies": {
@@ -155,7 +159,7 @@
         ]
       },
       "xcconfig": {
-        "OTHER_LDFLAGS": "-weak_library /usr/lib/libstdc++.dylib"
+        "OTHER_LDFLAGS": "-weak_library /usr/lib/libstdc++.dylib -lstdc++ -ObjC"
       },
       "libraries": [
         "c++",

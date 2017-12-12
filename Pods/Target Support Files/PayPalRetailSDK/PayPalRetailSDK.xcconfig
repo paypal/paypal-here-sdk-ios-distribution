@@ -1,8 +1,8 @@
 CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/PayPalRetailSDK
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/../../retail-sdk/platform/objc/iOS/Roam" "$PODS_CONFIGURATION_BUILD_DIR/SimpleKeychain"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/PayPalRetailSDK" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/PayPalRetailSDK" "${PODS_ROOT}/Headers/Public/SimpleKeychain"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/../iOS/retail-sdk/platform/objc/iOS/Roam" "$PODS_CONFIGURATION_BUILD_DIR/SimpleKeychain"
-OTHER_LDFLAGS = -weak_library /usr/lib/libstdc++.dylib -l"SwiperAPI" -l"c++" -l"stdc++" -l"z" -framework "ExternalAccessory" -framework "Foundation" -framework "JavaScriptCore" -framework "UIKit"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Public"
+OTHER_LDFLAGS = -ObjC -weak_library /usr/lib/libstdc++.dylib -l"c++" -l"stdc++" -l"z" -framework "ExternalAccessory" -framework "Foundation" -framework "G4XSwiper" -framework "JavaScriptCore" -framework "LandiSDK_BLE" -framework "MediaPlayer" -framework "RUA_BLE" -framework "UIKit"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}

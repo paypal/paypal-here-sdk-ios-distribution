@@ -1,1 +1,0 @@
-lipo -create libSwiperAPI-4.8.4.a libSwiperAPI-4.8.4-simulator.a -output libSwiperAPI.a
