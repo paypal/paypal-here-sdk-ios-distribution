@@ -133,14 +133,12 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in
             if let err = error {
                 self.activitySpinner.stopAnimating()
-                self.initMerchantButton.isHidden = false
                 print("Debug ID: \(err.debugId)")
                 print("Error Message: \(err.message)")
-                // TODO: need to do something with the error here
+                print("Error Code: \(err.code)")
+                
                 return
             }
-            
-            // TODO: add validation for merchant status (enabled for PPH) when/if it's avail in the SDK
             
             print("Merchant Success!")
             self.activitySpinner.stopAnimating()
@@ -170,7 +168,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             }
             initMerchInfoBtn.setTitle("Hide Code", for: .normal)
             initMerchCode.isHidden = false
-            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in \n" +
+            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in \n" +
                 "     <code to handle success/failure>\n" +
                 "})"
         } else {

@@ -18,8 +18,9 @@ class DeviceDiscoveryViewController: UIViewController {
     @IBOutlet weak var connectLastKnown: UIButton!
     @IBOutlet weak var connectLastKnownCodeBtn: UIButton!
     @IBOutlet weak var connectLastKnownCodeView: UITextView!
+    @IBOutlet weak var activeReaderLbl: UILabel!
     
-    let device = PPRetailDeviceManager.init()
+    let device = PayPalRetailSDK.deviceManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class DeviceDiscoveryViewController: UIViewController {
         findAndConnectCodeView.isHidden = true
         connectLastKnownCodeView.isHidden = true
         goToPmtPageBtn.isHidden = true
+        activeReaderLbl.text = ""
         
     }
     
@@ -48,12 +50,16 @@ class DeviceDiscoveryViewController: UIViewController {
             if let err = error {
                 print("Search Device Error: \(err.debugId)")
                 print("Search Device Error: \(err.code)")
-                print("Search Device Error: \(err.developerMessage)")
+                print("Search Device Error: \(err.message)")
+                
+                return
             }
-            self.device?.setActiveReader(paymentDevice)
+            self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
         })
         if((device?.getActiveReader()?.pendingUpdate) != nil) {
             checkForReaderUpdate()
+        } else {
+            goToPmtPageBtn.isHidden = false
         }
     }
     
@@ -64,12 +70,16 @@ class DeviceDiscoveryViewController: UIViewController {
             if let err = error {
                 print("Connect Last Device Error: \(err.debugId)")
                 print("Connect Last Device Error: \(err.code)")
-                print("Connect Last Device Error: \(err.developerMessage)")
+                print("Connect Last Device Error: \(err.message)")
+                
+                return
             }
-            self.device?.setActiveReader(paymentDevice)
+            self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
         })
         if((device?.getActiveReader()?.pendingUpdate) != nil) {
             checkForReaderUpdate()
+        } else {
+            goToPmtPageBtn.isHidden = false
         }
     }
     
@@ -86,13 +96,13 @@ class DeviceDiscoveryViewController: UIViewController {
                             } else {
                                 print("Reader Update Error: \(error?.debugId)")
                                 print("Reader Update Error: \(error?.code)")
-                                print("Reader Update Error: \(error?.developerMessage)")
+                                print("Reader Update Error: \(error?.message)")
                             }
                         })
                     } else {
                         print("Error in offer step: \(error?.debugId)")
                         print("Error in offer step: \(error?.code)")
-                        print("Error in offer step: \(error?.developerMessage)")
+                        print("Error in offer step: \(error?.message)")
                     }
                 })
             } else {

@@ -150,7 +150,7 @@ class PaymentViewController: UIViewController {
             
             if let err = error {
                 print("Error Code: \(err.code)")
-                print("Error Message: \(err.debugDescription)")
+                print("Error Message: \(err.message)")
                 print("Debug ID: \(err.debugId)")
                 
                 return
@@ -199,7 +199,7 @@ class PaymentViewController: UIViewController {
             
             if let err = error {
                 print("Error Code: \(err.code)")
-                print("Error Message: \(err.debugDescription)")
+                print("Error Message: \(err.message)")
                 print("Debug ID: \(err.debugId)")
                 
                 return
@@ -260,7 +260,7 @@ class PaymentViewController: UIViewController {
             if (createTxnCodeView.isHidden) {
                 createTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 createTxnCodeView.isHidden = false
-                createTxnCodeView.text = "tc = PayPalRetailSDK.createTransaction(invoice: PPRetailInvoice!)"
+                createTxnCodeView.text = "tc = PayPalRetailSDK.createTransaction(invoice)"
             } else {
                 createTxnCodeBtn.setTitle("View Code", for: .normal)
                 createTxnCodeView.isHidden = true
@@ -269,7 +269,7 @@ class PaymentViewController: UIViewController {
             if (acceptTxnCodeView.isHidden) {
                 acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
-                acceptTxnCodeView.text = "tc.begin(showPrompt: Bool)"
+                acceptTxnCodeView.text = "tc.begin()"
             } else {
                 acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
