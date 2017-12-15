@@ -152,7 +152,12 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             let tokenDefault = UserDefaults.init()
             tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
             
-            //Enable the run transaction button here
+            // Add the BN code for Partner tracking. To obtain this value, contact
+            // your PayPal account representative. Please do not change this value when
+            // using this sample app for testing.
+            merchant?.referrerCode = "PPHSDK_SampleApp_iOS"
+            
+            //Enable the connect card reader button here
             self.connectCardReaderBtn.isHidden = false
             
         }
@@ -196,6 +201,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchantButton.setImage(#imageLiteral(resourceName: "small-bluearrow"), for: .normal)
         envSelector.isEnabled = true
         connectCardReaderBtn.isHidden = true
+    }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
+        
     }
 
     

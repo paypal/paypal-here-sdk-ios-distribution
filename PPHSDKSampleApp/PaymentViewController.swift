@@ -23,9 +23,9 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
     @IBOutlet weak var refundBtn: UIButton!
-    @IBOutlet weak var refundId: UITextField!
+//    @IBOutlet weak var refundId: UITextField!
     @IBOutlet weak var successTxnId: UILabel!
-    @IBOutlet weak var codeViewer: UITextView!
+//    @IBOutlet weak var codeViewer: UITextView!
     @IBOutlet weak var backToInitPgBtn: UIButton!
     @IBOutlet weak var txnCompletedView: UIView!
     @IBOutlet weak var successMsg: UILabel!
@@ -239,8 +239,7 @@ class PaymentViewController: UIViewController {
             })
         }
         
-        dismiss(animated: true, completion: nil)
-        
+        performSegue(withIdentifier: "goToInitPage", sender: sender)
     }
     
     
