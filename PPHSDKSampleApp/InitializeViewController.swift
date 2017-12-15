@@ -136,7 +136,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 print("Debug ID: \(err.debugId)")
                 print("Error Message: \(err.message)")
                 print("Error Code: \(err.code)")
-                
+
+                // The token did not work, so clear the saved token so we can go back to the login page
+                let tokenDefault = UserDefaults.init()
+                tokenDefault.removeObject(forKey: "SAVED_TOKEN")
                 return
             }
             
