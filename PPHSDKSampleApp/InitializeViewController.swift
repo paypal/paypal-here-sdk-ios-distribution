@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import PayPalRetailSDK
 
 // Set up the notification name which will receive the token from the sample server
 let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotification"
@@ -28,7 +29,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBOutlet weak var initMerchCode: UITextView!
     @IBOutlet weak var initSdkCode: UITextView!
     @IBOutlet weak var merchInfoView: UIView!
-    @IBOutlet weak var goToPmtPageBtn: UIButton!
+    @IBOutlet weak var connectCardReaderBtn: UIButton!
     
     var svc: SFSafariViewController?
     
@@ -42,11 +43,11 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchCode.isHidden = true
         initMerchInfoBtn.isEnabled = false
         initMerchantButton.isEnabled = false
-        goToPmtPageBtn.isHidden = true
+        connectCardReaderBtn.isHidden = true
         
         // Receive the notification that the token is being returned
         NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,30 +67,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         // First things first, we need to initilize the SDK itself.
         PayPalRetailSDK.initializeSDK()
-        
-        // Set up a device discovered listener for EMV device connection.  If a software update is required
-        // then we'll offer up that flow.
-        PayPalRetailSDK.addDeviceDiscoveredListener { (device) -> Void in
-            device!.addUpdateRequiredListener({ (deviceUpdate) -> Void in
-                if(deviceUpdate!.isRequired) {
-                    deviceUpdate!.offer({ (error, status) -> Void in
-                        if((error) != nil) {
-                            print("Error: \(error!.description)")
-                        } else {
-                            deviceUpdate!.begin(true, callback: { (upgradeError, upgradeStatus) -> Void in
-                                if((upgradeError) != nil) {
-                                    print("Error: \(upgradeError!.description)")
-                                } else {
-                                    print("Update status: \(upgradeStatus)")
-                                }
-                            })
-                        }
-                    })
-                } else {
-                    print("Update not a required update")
-                }
-            })
-        }
         
         initSdkButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
         initSdkButton.isUserInteractionEnabled = false
@@ -134,7 +111,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         } else {
             
             // Present a SFSafariViewController to handle the login to get the merchant account to use.
-            let svc = SFSafariViewController(url: url as! URL)
+            let svc = SFSafariViewController(url: url! as URL)
             svc.delegate = self
             self.present(svc, animated: true, completion: nil)
         }
@@ -153,18 +130,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // the merchant.  Upon successful initialization, the payments & refunds tab will be enabled for use.
         let sdkToken = notification.object as! String
         
-        PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in
-            
+        PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in
             if let err = error {
                 self.activitySpinner.stopAnimating()
-                self.initMerchantButton.isHidden = false
                 print("Debug ID: \(err.debugId)")
                 print("Error Message: \(err.message)")
-                // TODO: need to do something with the error here
+                print("Error Code: \(err.code)")
+
+                // The token did not work, so clear the saved token so we can go back to the login page
+                let tokenDefault = UserDefaults.init()
+                tokenDefault.removeObject(forKey: "SAVED_TOKEN")
                 return
             }
-            
-            // TODO: add validation for merchant status (enabled for PPH) when/if it's avail in the SDK
             
             print("Merchant Success!")
             self.activitySpinner.stopAnimating()
@@ -178,10 +155,16 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             let tokenDefault = UserDefaults.init()
             tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
             
-            //Enable the run transaction button here
-            self.goToPmtPageBtn.isHidden = false
+            // Add the BN code for Partner tracking. To obtain this value, contact
+            // your PayPal account representative. Please do not change this value when
+            // using this sample app for testing.
+            merchant?.referrerCode = "PPHSDK_SampleApp_iOS"
             
-        })
+            //Enable the connect card reader button here
+            self.connectCardReaderBtn.isHidden = false
+            
+        }
+        
     }
     
     
@@ -193,7 +176,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             }
             initMerchInfoBtn.setTitle("Hide Code", for: .normal)
             initMerchCode.isHidden = false
-            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in \n" +
+            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in \n" +
                 "     <code to handle success/failure>\n" +
                 "})"
         } else {
@@ -220,13 +203,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initMerchantButton.isUserInteractionEnabled = true
         initMerchantButton.setImage(#imageLiteral(resourceName: "small-bluearrow"), for: .normal)
         envSelector.isEnabled = true
-        goToPmtPageBtn.isHidden = true
+        connectCardReaderBtn.isHidden = true
     }
     
-    @IBAction func goToPmtPage(_ sender: UIButton) {
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
         
-        performSegue(withIdentifier: "showTxnPgSegue", sender: sender)
     }
+
+    
+    @IBAction func goToDeviceDiscovery(_ sender: Any) {
+        performSegue(withIdentifier: "showDeviceDiscovery", sender: sender)
+    }
+    
     
     // This function would be called if the user pressed the Done button inside the SFSafariViewController.
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {

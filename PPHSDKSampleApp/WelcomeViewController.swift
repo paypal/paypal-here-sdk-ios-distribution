@@ -20,8 +20,8 @@ class WelcomeViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let window = UIApplication.shared.keyWindow
-        window!.rootViewController = self
+         let window = UIApplication.shared.keyWindow
+         window!.rootViewController = self
     }
     
 

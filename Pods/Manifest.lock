@@ -1,21 +1,22 @@
 PODS:
-  - HereSDK (0.7.0)
-  - PayPalManticore (1.0.0)
+  - PayPalRetailSDK (0.5.0):
+    - PayPalRetailSDK/Default (= 0.5.0)
+  - PayPalRetailSDK/Default (0.5.0):
+    - ORSSerialPort (~> 1.7.1)
+    - SimpleKeychain (~> 0.6.1)
+  - SimpleKeychain (0.6.1)
 
 DEPENDENCIES:
-  - HereSDK (from `HereSDK.podspec`)
-  - PayPalManticore (from `PayPalManticore.podspec`)
+  - PayPalRetailSDK (from `../retail-sdk/platform/objc/PayPalRetailSDK.podspec`)
 
 EXTERNAL SOURCES:
-  HereSDK:
-    :path: HereSDK.podspec
-  PayPalManticore:
-    :path: PayPalManticore.podspec
+  PayPalRetailSDK:
+    :path: "../retail-sdk/platform/objc/PayPalRetailSDK.podspec"
 
 SPEC CHECKSUMS:
-  HereSDK: 7f45dbaf155330c3002a5d81590f5335f64fd622
-  PayPalManticore: cdc561c82ae30b85fff04cfa92c49705d8e78475
+  PayPalRetailSDK: dfbc18e9e22a721f07326bfaa14ff1338b98b664
+  SimpleKeychain: 150d76f3b9200de58f033228f6e976c6241a221c
 
-PODFILE CHECKSUM: c785ca8297afec3cb71614369ad491ec0a73086b
+PODFILE CHECKSUM: b7436637080bc44f81d8bff153b00cefa912fcf4
 
 COCOAPODS: 1.1.1
