@@ -52,7 +52,7 @@ var invoice: PPRetailInvoice?
   }
   
   // Listener that gets called after the payment process
-  tc!.setCompletedHandler { (error, txnRecord) -> Void in
+  tc.setCompletedHandler { (error, txnRecord) -> Void in
 
       if((error) != nil) {
           // handle error situation accordingly
@@ -91,12 +91,12 @@ _To activate a refund with this app, simply tap the successful transaction ID af
   ```swift
   
   // Listener that fires once the card for refund is recognized
-  tc!.setCardPresentedHandler { (cardInfo) -> Void in
+  tc.setCardPresentedHandler { (cardInfo) -> Void in
       self.tc!.continue(with: cardInfo)
   }
   
   // Listener that fires once the refund is complete
-  tc!.setCompletedHandler { (error, txnRecord) -> Void in
+  tc.setCompletedHandler { (error, txnRecord) -> Void in
 
       if((error) != nil) {
           // handle error situation accordingly
