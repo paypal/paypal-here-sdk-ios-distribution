@@ -23,9 +23,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
     @IBOutlet weak var refundBtn: UIButton!
-//    @IBOutlet weak var refundId: UITextField!
     @IBOutlet weak var successTxnId: UILabel!
-//    @IBOutlet weak var codeViewer: UITextView!
     @IBOutlet weak var backToInitPgBtn: UIButton!
     @IBOutlet weak var txnCompletedView: UIView!
     @IBOutlet weak var successMsg: UILabel!
@@ -191,11 +189,11 @@ class PaymentViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         
         
-        tc!.setCardPresentedHandler({ (cardInfo) -> Void in
+        tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
-        })
-        
-        tc!.setCompletedHandler({ (error, txnRecord) -> Void in
+        }
+
+        tc!.setCompletedHandler { (error, txnRecord) -> Void in
             
             if let err = error {
                 print("Error Code: \(err.code)")
@@ -215,7 +213,7 @@ class PaymentViewController: UIViewController {
             self.noRefundBtn.isHidden = true
             
 
-        })
+        }
         
         
     }
