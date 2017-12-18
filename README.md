@@ -26,7 +26,7 @@ This app runs through the basic process of integrating the PayPal Here SDK.  Bel
 **Payment (with the following declarations assumed):**
 ```swift
 
-var tm: PPRetailTransactionContext?
+var tc: PPRetailTransactionContext?
 var invoice: PPRetailInvoice?
 ```
   1. Create an Invoice
