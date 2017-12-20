@@ -41,7 +41,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         merchInfoView.isHidden = true
         initSdkCode.isHidden = true
         initMerchCode.isHidden = true
-        initMerchInfoBtn.isEnabled = false
         initMerchantButton.isEnabled = false
         connectCardReaderBtn.isHidden = true
         
@@ -51,8 +50,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let window = UIApplication.shared.keyWindow
-        window?.rootViewController = self
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,13 +61,12 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBAction func initSDK(_ sender: UIButton) {
         
         initMerchantButton.isEnabled = true
-        initMerchInfoBtn.isEnabled = true
         
         // First things first, we need to initilize the SDK itself.
         PayPalRetailSDK.initializeSDK()
         
-        initSdkButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
-        initSdkButton.isUserInteractionEnabled = false
+        initSdkButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+        initSdkButton.isEnabled = false
     }
     
     @IBAction func initSdkInfo(_ sender: UIButton) {
@@ -85,27 +82,20 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
     }
     
-    
-    @IBAction func initMerchant(_ sender: UIButton) {
-        
-        envSelector.isEnabled = false
-        initMerchantButton.isEnabled = false
-        activitySpinner.startAnimating()
-
+    func performLogin() {
         // Set your URL for your backend server that handles OAuth.  This sample uses an instance of the
         // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
         // set this to Live, simply change /sandbox to /live.
         let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!)
-
+        
         // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
         // check that the saved token matches the environment.  Otherwise, kick open the
         // SFSafariViewController to expose the login and obtain another token.
         let tokenDefault = UserDefaults.init()
         let savedToken = tokenDefault.string(forKey: "SAVED_TOKEN")
         let env = savedToken?.components(separatedBy: ":")
-
+        
         if((savedToken != nil) && url!.absoluteString!.contains(env![0])) {
-            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: savedToken)
             
         } else {
@@ -115,7 +105,15 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             svc.delegate = self
             self.present(svc, animated: true, completion: nil)
         }
+    }
+    
+    
+    @IBAction func initMerchant(_ sender: UIButton) {
         
+        envSelector.isEnabled = false
+        activitySpinner.startAnimating()
+
+        performLogin()
         
     }
     
@@ -140,18 +138,19 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 // The token did not work, so clear the saved token so we can go back to the login page
                 let tokenDefault = UserDefaults.init()
                 tokenDefault.removeObject(forKey: "SAVED_TOKEN")
-                return
+                self.performLogin()
             }
             
             print("Merchant Success!")
             self.activitySpinner.stopAnimating()
-            self.initMerchantButton.isEnabled = true
-            self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
-            self.initMerchantButton.isUserInteractionEnabled = false
+            self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+            self.initMerchantButton.isEnabled = false
             self.merchInfoView.isHidden = false
             self.merchEmailLabel.text = merchant!.emailAddress
             
-            // Save currency to UserDefaults for further usage
+            // Save currency to UserDefaults for further usage. This needs to be used to initialize
+            // the PPRetailInvoice for the payment later on. This app is using UserDefault but
+            // it could just as easily be passed through the segue.
             let tokenDefault = UserDefaults.init()
             tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
             
@@ -171,9 +170,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBAction func initMerchInfo(_ sender: UIButton) {
         
         if (initMerchCode.isHidden) {
-            if (!merchInfoView.isHidden) {
-                merchInfoView.isHidden = true
-            }
             initMerchInfoBtn.setTitle("Hide Code", for: .normal)
             initMerchCode.isHidden = false
             initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in \n" +
@@ -200,14 +196,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         merchEmailLabel.text = ""
         merchInfoView.isHidden = true
-        initMerchantButton.isUserInteractionEnabled = true
+        initMerchantButton.isEnabled = true
         initMerchantButton.setImage(#imageLiteral(resourceName: "small-bluearrow"), for: .normal)
         envSelector.isEnabled = true
         connectCardReaderBtn.isHidden = true
-    }
-    
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
-        
     }
 
     
@@ -221,7 +213,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         activitySpinner.stopAnimating()
         initMerchantButton.isEnabled = true
-        initMerchInfoBtn.isEnabled = true
         envSelector.isEnabled = true
         
     }
