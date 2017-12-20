@@ -34,8 +34,7 @@ class DeviceDiscoveryViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let window = UIApplication.shared.keyWindow
-        window?.rootViewController = self
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,16 +50,17 @@ class DeviceDiscoveryViewController: UIViewController {
                 print("Search Device Error: \(err.debugId)")
                 print("Search Device Error: \(err.code)")
                 print("Search Device Error: \(err.message)")
-                
+
                 return
             }
-            self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+            
+            if(paymentDevice?.isConnected())! {
+                self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+                self.checkForReaderUpdate()
+                self.goToPmtPageBtn.isHidden = false
+            }
         })
-        if((device?.getActiveReader()?.pendingUpdate) != nil) {
-            checkForReaderUpdate()
-        } else {
-            goToPmtPageBtn.isHidden = false
-        }
+        
     }
     
     // Function to connect to the last known reader device used and check for any
@@ -71,16 +71,15 @@ class DeviceDiscoveryViewController: UIViewController {
                 print("Connect Last Device Error: \(err.debugId)")
                 print("Connect Last Device Error: \(err.code)")
                 print("Connect Last Device Error: \(err.message)")
-                
+                self.activeReaderLbl.text = "Error: \(err.message ?? "Unknown")"
                 return
             }
-            self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+            if(paymentDevice?.isConnected())! {
+                self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+                self.checkForReaderUpdate()
+                self.goToPmtPageBtn.isHidden = false
+            }
         })
-        if((device?.getActiveReader()?.pendingUpdate) != nil) {
-            checkForReaderUpdate()
-        } else {
-            goToPmtPageBtn.isHidden = false
-        }
     }
     
     // Code that checks if there's a software update available for the connected
@@ -109,8 +108,7 @@ class DeviceDiscoveryViewController: UIViewController {
                 print("Reader update not required at this time.")
             }
         })
-        
-        goToPmtPageBtn.isHidden = false
+
     }
     
     @IBAction func showCode(_ sender: UIButton){
