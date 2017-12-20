@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import PayPalRetailSDK
 
 class PaymentViewController: UIViewController {
     
@@ -22,23 +22,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptTxnBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
-    @IBOutlet weak var refundBtn: UIButton!
-    @IBOutlet weak var refundId: UITextField!
-    @IBOutlet weak var successTxnId: UILabel!
-    @IBOutlet weak var codeViewer: UITextView!
-    @IBOutlet weak var backToInitPgBtn: UIButton!
-    @IBOutlet weak var txnCompletedView: UIView!
-    @IBOutlet weak var successMsg: UILabel!
-    @IBOutlet weak var txnInfoView: UIView!
-    @IBOutlet weak var refundTxnCodeView: UITextView!
-    @IBOutlet weak var refundCodeBtn: UIButton!
-    @IBOutlet weak var noRefundBtn: UIButton!
-    @IBOutlet weak var wantToRefundLbl: UILabel!
-    @IBOutlet weak var concludeFlowLbl: UILabel!
 
-    // Set up the relevant listeners, transactionContext, and Invoice.
-    var listenerSignal: PPRetailCardPresentedSignal? = nil
-    var completedSignal: PPRetailCompletedSignal? = nil
+    // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
 
@@ -53,9 +38,6 @@ class PaymentViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let window = UIApplication.shared.keyWindow
-        window!.rootViewController = self
-        
         invAmount.becomeFirstResponder()
     }
     
@@ -92,13 +74,14 @@ class PaymentViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
-        
-        mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
+
+        mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
         
         // The invoice Number is used for duplicate payment checking.  It should be unique for every
         // unique transaction attempt.  For payment resubmissions, simply use the same invoice number
-        // to ensure that the invoice hasn't already been paid.
-        mInvoice.number = "sdk2test\(arc4random_uniform(9999))"
+        // to ensure that the invoice hasn't already been paid. For sample purposes, this app is
+        // simply generating a random number to append to the string 'sdk2test'.
+        mInvoice.number = "sdk2test\(arc4random_uniform(99999))"
         
         guard mInvoice.itemCount > 0, mInvoice.total!.intValue >= 1 else {
             let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than $1", preferredStyle: UIAlertControllerStyle.alert)
@@ -117,9 +100,8 @@ class PaymentViewController: UIViewController {
 
         invAmount.isEnabled = false
         createInvoiceBtn.isEnabled = false
-        createInvoiceBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
-        
-        createTxnCodeBtn.isEnabled = true
+        createInvoiceBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+
         createTxnBtn.isEnabled = true
         
     }
@@ -129,10 +111,9 @@ class PaymentViewController: UIViewController {
         
         tc = PayPalRetailSDK.createTransaction(invoice)
         
-        createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
+        createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
         createTxnBtn.isEnabled = false
-        
-        acceptTxnCodeBtn.isEnabled = true
+
         acceptTxnBtn.isEnabled = true
         
     }
@@ -143,109 +124,42 @@ class PaymentViewController: UIViewController {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
-        tc!.begin(true)
+        tc!.begin()
         
-        listenerSignal = tc!.addCardPresentedListener({ (cardInfo) -> Void in
+        tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
-        }) as PPRetailCardPresentedSignal?
-        
-        completedSignal = tc!.addCompletedListener({ (error, txnRecord) -> Void in
-            
-            self.tc!.removeCardPresentedListener(self.listenerSignal)
-            self.tc!.removeCompletedListener(self.completedSignal)
+        }
+
+        tc!.setCompletedHandler { (error, txnRecord) -> Void in
             
             if let err = error {
                 print("Error Code: \(err.code)")
-                print("Error Message: \(err.debugDescription)")
+                print("Error Message: \(err.message)")
                 print("Debug ID: \(err.debugId)")
                 
                 return
             }
-            
             print("Txn ID: \(txnRecord!.transactionNumber!)")
-            self.backToInitPgBtn.isHidden = true
-            self.txnCompletedView.isHidden = false
-            self.successTxnId.text = txnRecord!.transactionNumber!
-            self.successTxnId.sizeToFit()
-            self.successMsg.text = "Your payment of $\(self.tc!.invoice!.total!) was successful"
-            self.successMsg.sizeToFit()
-            self.concludeFlowLbl.isHidden = true
-            
-        }) as PPRetailCompletedSignal?
-        
+            print("popToViewController called")
+            self.navigationController?.popToViewController(self, animated: false)
+            print("top vc after pop \(String(describing: self.navigationController?.topViewController))")
+            self.goToPaymentCompletedViewController()
+        }
 
     }
     
-    // This function will process the refund.  It will first show an alert box to determine whether
-    // this is a card present/not present refund.  If it's card not present, then it will simply continue
-    // with a nil card object.  If the card is present, then it will request the card and continue with
-    // the card supplied.
-    @IBAction func processRefund(_ sender: UIButton) {
-        
-        tc = PayPalRetailSDK.createTransaction(invoice)
-        
-        let alertController = UIAlertController(title: "Refund $\(tc!.invoice!.total!)", message: "Is the card present?", preferredStyle: UIAlertControllerStyle.alert)
-        let cardNotPresent = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-            self.tc!.beginRefund(false, amount: self.invoice?.total)
-            self.tc!.continue(with: nil)
-        }
-        
-        let cardPresent = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            self.tc!.beginRefund(true, amount: self.invoice?.total)
-        }
-        
-        alertController.addAction(cardNotPresent)
-        alertController.addAction(cardPresent)
-        self.present(alertController, animated: true, completion: nil)
-        
-        
-        listenerSignal = tc!.addCardPresentedListener({ (cardInfo) -> Void in
-            self.tc!.continue(with: cardInfo)
-        }) as PPRetailCardPresentedSignal?
-        
-        completedSignal = tc!.addCompletedListener({ (error, txnRecord) -> Void in
-            
-            self.tc!.removeCardPresentedListener(self.listenerSignal)
-            self.tc!.removeCompletedListener(self.completedSignal)
-            
-            if let err = error {
-                print("Error Code: \(err.code)")
-                print("Error Message: \(err.debugDescription)")
-                print("Debug ID: \(err.debugId)")
-                
-                return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPmtCompletedView" {
+            if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
+                pmtCompletedViewController.invoice = invoice
             }
-            
-            print("Refund ID: \(txnRecord!.transactionNumber!)")
-            self.backToInitPgBtn.isHidden = false
-            self.backToInitPgBtn.setTitle("Start Over", for: .normal)
-            self.successMsg.text = "Your refund of $\(self.tc!.invoice!.total!) was successful"
-            self.wantToRefundLbl.isHidden = true
-            self.concludeFlowLbl.isHidden = false
-            self.txnInfoView.isHidden = true
-            self.noRefundBtn.isHidden = true
-            
-
-        }) as PPRetailCompletedSignal?
-        
-        
-    }
-    
-    
-    // If the 'go back to initial setup' button is selected, I'm cancelling the current transaction so that it
-    // can be restarted when entering the payments tab again. This prevents a scenario where one merchant
-    // account is used to start the transaction but then they logout and login with a different merchant
-    // prior to processing the transaction.
-    @IBAction func backToInitPage(_ sender: Any) {
-        
-        if ((tc) != nil) {
-            tc?.cancel()
         }
-        
-        dismiss(animated: true, completion: nil)
-        
     }
     
+    func goToPaymentCompletedViewController() {
+        print("perform segue called")
+        performSegue(withIdentifier: "goToPmtCompletedView", sender: Any?.self)
+    }
     
     @IBAction func showInfo(_ sender: UIButton){
 
@@ -263,7 +177,7 @@ class PaymentViewController: UIViewController {
             if (createTxnCodeView.isHidden) {
                 createTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 createTxnCodeView.isHidden = false
-                createTxnCodeView.text = "tc = PayPalRetailSDK.createTransaction(invoice: PPRetailInvoice!)"
+                createTxnCodeView.text = "tc = PayPalRetailSDK.createTransaction(invoice)"
             } else {
                 createTxnCodeBtn.setTitle("View Code", for: .normal)
                 createTxnCodeView.isHidden = true
@@ -272,19 +186,10 @@ class PaymentViewController: UIViewController {
             if (acceptTxnCodeView.isHidden) {
                 acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
-                acceptTxnCodeView.text = "tc.begin(showPrompt: Bool)"
+                acceptTxnCodeView.text = "tc.begin()"
             } else {
                 acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
-            }
-        case 3:
-            if (refundTxnCodeView.isHidden) {
-                refundCodeBtn.setTitle("Hide Code", for: .normal)
-                refundTxnCodeView.isHidden = false
-                refundTxnCodeView.text = "tc.beginRefund(cardPresent: Bool, amount: NSDecimalNumber)"
-            } else {
-                refundCodeBtn.setTitle("View Code", for: .normal)
-                refundTxnCodeView.isHidden = true
             }
         default:
             print("No Button Tag Found")
@@ -307,8 +212,10 @@ class PaymentViewController: UIViewController {
         }
         
         createInvoiceBtn.isEnabled = true
-        createInvCodeBtn.isEnabled = true
-        
+    }
+    
+    func getCurrentNavigationController() -> UINavigationController! {
+        return self.navigationController
     }
     
 }

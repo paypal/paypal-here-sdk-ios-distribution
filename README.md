@@ -13,7 +13,7 @@ This app runs through the basic process of integrating the PayPal Here SDK.  Bel
   2. Initialize the Merchant <br>
   ```swift
   
-  PayPalRetailSDK.initializeMerchant(sdkToken, completionHandler: {(error, merchant) -> Void in
+  PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in
       if((error) != nil) {
           // handle error situation and try to re-initialize
       } else {
@@ -26,46 +26,40 @@ This app runs through the basic process of integrating the PayPal Here SDK.  Bel
 **Payment (with the following declarations assumed):**
 ```swift
 
-var listenerSignal: PPRetailCardPresentedSignal? = nil
-var completedSignal: PPRetailCompletedSignal? = nil
-var tm: PPRetailTransactionContext?
+var tc: PPRetailTransactionContext?
 var invoice: PPRetailInvoice?
 ```
   1. Create an Invoice
   ```swift
   
   invoice = PPRetailInvoice.init(currencyCode: "USD")
-  invoice!.addItem("My Order", quantity: 1, unitPrice: price, itemId: nil, detailId: nil)
-  invoice!.number = "some_unique_invoice_number"
+  invoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
+  invoice.number = "some_unique_invoice_number"
   ```
   2. Create TransactionContext <br>
   ```swift
 
-  tm = PayPalRetailSDK.createTransaction(invoice)
+  tc = PayPalRetailSDK.createTransaction(invoice)
   ```
   3. Accept a Transaction (Activate the reader and take the payment)
   ```swift
   // Activates the reader for payment
-  tm!.begin(true)
+  tc.begin()
   
   // Listener that gets called when customer chooses the payment type on the reader
-  listenerSignal = tm!.addCardPresentedListener({ (cardInfo) -> Void in
-      self.tm!.continue(with: cardInfo)
-  }) as PPRetailCardPresentedSignal?
+  tc.setCardPresentedHandler { (cardInfo) -> Void in
+      self.tc.continue(with: cardInfo)
+  }
   
   // Listener that gets called after the payment process
-  completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
-      
+  tc.setCompletedHandler { (error, txnRecord) -> Void in
+
       if((error) != nil) {
-          // Do something with the error
+          // handle error situation accordingly
       } else {
-          // Do something with the transaction record
+          // transaction success
       }
-      
-      self.tm!.removeCardPresentedListener(self.listenerSignal)
-      self.tm!.removeCompletedListener(self.completedSignal)
-            
-  }) as PPRetailCompletedSignal?
+  }
   ```
   
 **Refunds (with the same declarations as above):** <br>
@@ -73,20 +67,20 @@ _To activate a refund with this app, simply tap the successful transaction ID af
   1. Create TransactionContext based on the Invoice you want to refund <br>
   ```swift
 
-  tm = PayPalRetailSDK.createTransaction(invoice)
+  tc = PayPalRetailSDK.createTransaction(invoice)
   ```
   2. Begin Refund and tell the SDK whether the card is present for the refund or not
   ```swift
   
   // Uses simple alert box to get whether the card is present or not and then calls beginRefund accordingly
-  let alertController = UIAlertController(title: "Refund $\(tm!.invoice!.total!)", message: "Is the card present?", preferredStyle: UIAlertControllerStyle.alert)
+  let alertController = UIAlertController(title: "Refund $\(tc.invoice.total)", message: "Is the card present?", preferredStyle: UIAlertControllerStyle.alert)
   let cardNotPresent = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-      self.tm!.beginRefund(false, amount: self.invoice?.total)
-      self.tm!.continue(with: nil)
+      self.tc.beginRefund(false, amount: self.invoice.total)
+      self.tc.continue(with: nil)
   }
         
   let cardPresent = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-      self.tm!.beginRefund(true, amount: self.invoice?.total)
+      self.tc.beginRefund(true, amount: self.invoice.total)
   }
         
   alertController.addAction(cardNotPresent)
@@ -97,21 +91,18 @@ _To activate a refund with this app, simply tap the successful transaction ID af
   ```swift
   
   // Listener that fires once the card for refund is recognized
-  listenerSignal = tm!.addCardPresentedListener({ (cardInfo) -> Void in
-      self.tm!.continue(with: cardInfo)
-  }) as PPRetailCardPresentedSignal?
+  tc.setCardPresentedHandler { (cardInfo) -> Void in
+      self.tc!.continue(with: cardInfo)
+  }
   
-  // Listener for when the refund is completed
-  completedSignal = tm!.addCompletedListener({ (error, txnRecord) -> Void in
+  // Listener that fires once the refund is complete
+  tc.setCompletedHandler { (error, txnRecord) -> Void in
+
       if((error) != nil) {
-          // Handle error scenario
+          // handle error situation accordingly
       } else {
-          // Refund successful - handle accordingly
+          // transaction success
       }
-      
-      self.tm!.removeCardPresentedListener(self.listenerSignal)
-      self.tm!.removeCompletedListener(self.completedSignal)
-            
-  }) as PPRetailCompletedSignal?
+  }
   ```
   
