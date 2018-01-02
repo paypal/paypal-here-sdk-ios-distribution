@@ -22,7 +22,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptTxnBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
-
+    @IBOutlet weak var pmtTypeSelector: UISegmentedControl!
+    
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
@@ -124,7 +125,11 @@ class PaymentViewController: UIViewController {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
-        tc!.begin()
+        if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
+            tc!.beginAnAuthorization()
+        } else {
+            tc!.begin()
+        }
         
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
@@ -140,9 +145,8 @@ class PaymentViewController: UIViewController {
                 return
             }
             print("Txn ID: \(txnRecord!.transactionNumber!)")
-            print("popToViewController called")
+            
             self.navigationController?.popToViewController(self, animated: false)
-            print("top vc after pop \(String(describing: self.navigationController?.topViewController))")
             self.goToPaymentCompletedViewController()
         }
 
@@ -157,7 +161,6 @@ class PaymentViewController: UIViewController {
     }
     
     func goToPaymentCompletedViewController() {
-        print("perform segue called")
         performSegue(withIdentifier: "goToPmtCompletedView", sender: Any?.self)
     }
     
@@ -186,7 +189,11 @@ class PaymentViewController: UIViewController {
             if (acceptTxnCodeView.isHidden) {
                 acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
-                acceptTxnCodeView.text = "tc.begin()"
+                if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
+                    acceptTxnCodeView.text = "tc.beginAnAuthorization()"
+                } else {
+                    acceptTxnCodeView.text = "tc.begin()"
+                }
             } else {
                 acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
