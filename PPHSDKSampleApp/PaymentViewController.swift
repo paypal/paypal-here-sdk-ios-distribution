@@ -147,13 +147,19 @@ class PaymentViewController: UIViewController {
             print("Txn ID: \(txnRecord!.transactionNumber!)")
             
             self.navigationController?.popToViewController(self, animated: false)
-            self.goToPaymentCompletedViewController()
+            
+            if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
+                self.goToAuthCompletedViewController()
+            } else {
+                self.goToPaymentCompletedViewController()
+            }
+            
         }
 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToPmtCompletedView" {
+        if (segue.identifier == "goToPmtCompletedView" || segue.identifier == "goToAuthCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
                 pmtCompletedViewController.invoice = invoice
             }
@@ -162,6 +168,10 @@ class PaymentViewController: UIViewController {
     
     func goToPaymentCompletedViewController() {
         performSegue(withIdentifier: "goToPmtCompletedView", sender: Any?.self)
+    }
+    
+    func goToAuthCompletedViewController() {
+        performSegue(withIdentifier: "goToAuthCompletedView", sender: Any?.self)
     }
     
     @IBAction func showInfo(_ sender: UIButton){
