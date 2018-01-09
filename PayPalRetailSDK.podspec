@@ -10,25 +10,23 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.ios.deployment_target    = '8.1'
-  s.ios.vendored_framework   = 'ios/PayPalRetailSDK.framework'
 
   s.ios.frameworks = 'AudioToolbox', 'MobileCoreServices', 'Security', 'CFNetwork', 'AVFoundation', 'ExternalAccessory', 'MediaPlayer', 'CoreTelephony', 'Foundation', 'CoreBluetooth', 'SystemConfiguration', 'JavaScriptCore', 'CoreBluetooth', 'UIKit', 'CoreLocation'
 
+  s.default_subspec = 'Debug'
 
   s.subspec 'Debug' do |sp|
-    sp.vendored_frameworks      = 'SDK/Debug/PayPalHereSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
-    sp.resource                 = 'SDK/Debug/PayPalHereSDK.bundle'
-    sp.ios.preserve_paths       = 'SDK/Debug/PayPalRetailSDK.framework'
-    sp.ios.public_header_files  = 'SDK/Debug/PayPalRetailSDK.framework/Versions/A/Headers/*.h'
-    sp.ios.resource             = 'SDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/**/*'
+    sp.vendored_frameworks      = 'RSDK/Debug/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
+    sp.ios.preserve_paths       = 'RSDK/Debug/PayPalRetailSDK.framework'
+    sp.ios.public_header_files  = 'RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Headers/*.h'
+    sp.ios.resource             = 'RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/**/*'
   end
 
   s.subspec 'Release' do |sp|
-    sp.vendored_frameworks      = 'SDK/Release/PayPalHereSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
-    sp.resource                 = 'SDK/Release/PayPalHereSDK.bundle'
-    sp.ios.preserve_paths       = 'SDK/Release/PayPalRetailSDK.framework'
-    sp.ios.public_header_files  = 'SDK/Release/PayPalRetailSDK.framework/Versions/A/Headers/*.h'
-    sp.ios.resource             = 'SDK/Release/PayPalRetailSDK.framework/Versions/A/Resources/**/*'
+    sp.vendored_frameworks      = 'RSDK/Release/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
+    sp.ios.preserve_paths       = 'RSDK/Release/PayPalRetailSDK.framework'
+    sp.ios.public_header_files  = 'RSDK/Release/PayPalRetailSDK.framework/Versions/A/Headers/*.h'
+    sp.ios.resource             = 'RSDK/Release/PayPalRetailSDK.framework/Versions/A/Resources/**/*'
   end
 
   s.dependency 'SimpleKeychain', '~> 0.6.1'
