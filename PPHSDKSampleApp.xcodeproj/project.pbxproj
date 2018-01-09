@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A75F3FF1264C8C2F9D2BD9BB /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A9A02160A87FE2588D04F7 /* Pods_PPHSDKSampleApp.framework */; };
 		C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */; };
+		C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */; };
+		C662A296200547FF00CC44AB /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A295200547FF00CC44AB /* StringExt.swift */; };
 		C698DE351FE9857100D005AE /* PaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */; };
 		C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */; };
 		C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 		9D0C8F097C02E189F9434357 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		AAB3EA95BFDD69D2C1A34255 /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCompletedViewController.swift; sourceTree = "<group>"; };
+		C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureAuthViewController.swift; sourceTree = "<group>"; };
+		C662A295200547FF00CC44AB /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompletedViewController.swift; sourceTree = "<group>"; };
 		C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryViewController.swift; sourceTree = "<group>"; };
 		C6C793FC1DDD01E800F8DC8E /* PPHSDKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPHSDKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,11 +106,13 @@
 				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
 				C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */,
 				C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */,
+				C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */,
 				C6C794051DDD01E800F8DC8E /* Main.storyboard */,
 				C6C794081DDD01E800F8DC8E /* Assets.xcassets */,
 				C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */,
 				C6C7940D1DDD01E800F8DC8E /* Info.plist */,
 				C6EF40191E783EEE00109502 /* RoundLabel.swift */,
+				C662A295200547FF00CC44AB /* StringExt.swift */,
 			);
 			path = PPHSDKSampleApp;
 			sourceTree = "<group>";
@@ -240,10 +246,12 @@
 				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,
 				C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */,
 				C6EF401A1E783EEE00109502 /* RoundLabel.swift in Sources */,
+				C662A296200547FF00CC44AB /* StringExt.swift in Sources */,
 				C6C794021DDD01E800F8DC8E /* InitializeViewController.swift in Sources */,
 				C698DE351FE9857100D005AE /* PaymentCompletedViewController.swift in Sources */,
 				C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */,
 				C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */,
+				C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

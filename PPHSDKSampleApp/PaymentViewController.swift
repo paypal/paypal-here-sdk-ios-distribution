@@ -27,6 +27,7 @@ class PaymentViewController: UIViewController {
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
+    var authId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +150,7 @@ class PaymentViewController: UIViewController {
             self.navigationController?.popToViewController(self, animated: false)
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
+                self.authId = txnRecord?.transactionNumber
                 self.goToAuthCompletedViewController()
             } else {
                 self.goToPaymentCompletedViewController()
@@ -159,9 +161,16 @@ class PaymentViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "goToPmtCompletedView" || segue.identifier == "goToAuthCompletedView") {
+        if (segue.identifier == "goToPmtCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
                 pmtCompletedViewController.invoice = invoice
+            }
+        }
+        
+        if (segue.identifier == "goToAuthCompletedView") {
+            if let authCompletedViewController = segue.destination as? AuthCompletedViewController {
+                authCompletedViewController.authId = authId
+                authCompletedViewController.invoice = invoice
             }
         }
     }
@@ -235,33 +244,5 @@ class PaymentViewController: UIViewController {
         return self.navigationController
     }
     
-}
-
-extension String {
-    
-    // Formatting for invoice amount text field
-    func currencyInputFormatting() -> String {
-        
-        var number: NSDecimalNumber!
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "$"
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        
-        var amountWithPrefix = self
-        
-        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
-        
-        let double = (amountWithPrefix as NSString).doubleValue
-        number = NSDecimalNumber(value: (double / 100))
-
-        guard number != 0 as NSDecimalNumber else {
-            return ""
-        }
-        
-        return formatter.string(from: number)!
-    }
 }
 

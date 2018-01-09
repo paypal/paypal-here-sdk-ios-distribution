@@ -119,8 +119,7 @@ class DeviceDiscoveryViewController: UIViewController {
                 findAndConnectCodeBtn.setTitle("Hide Code", for: .normal)
                 findAndConnectCodeView.isHidden = false
                 findAndConnectCodeView.text = "device.searchAndConnect(ui: { (error, paymentDevice) in\n" +
-                                              "     // code to handle failure or\n" +
-                                              "     // set active reader on success\n" +
+                                              "   <code to handle success/failure>\n" +
                                               "})"
             } else {
                 findAndConnectCodeBtn.setTitle("View Code", for: .normal)
@@ -131,8 +130,7 @@ class DeviceDiscoveryViewController: UIViewController {
                 connectLastKnownCodeBtn.setTitle("Hide Code", for: .normal)
                 connectLastKnownCodeView.isHidden = false
                 connectLastKnownCodeView.text = "device.connectToLastActiveReaderOrFindAnother(ui: { (error, paymentDevice) in\n" +
-                                                "     // code to handle failure or\n" +
-                                                "     // set active reader on success\n" +
+                                                "    <code to handle success/failure>\n" +
                                                 "})"
             } else {
                 connectLastKnownCodeBtn.setTitle("View Code", for: .normal)
