@@ -11,22 +11,21 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target    = '8.1'
 
+  s.xcconfig = {
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
+    'OTHER_LDFLAGS' => '-weak_library /usr/lib/libstdc++.dylib -lstdc++ -ObjC',
+  }
+
   s.ios.frameworks = 'AudioToolbox', 'MobileCoreServices', 'Security', 'CFNetwork', 'AVFoundation', 'ExternalAccessory', 'MediaPlayer', 'CoreTelephony', 'Foundation', 'CoreBluetooth', 'SystemConfiguration', 'JavaScriptCore', 'CoreBluetooth', 'UIKit', 'CoreLocation'
 
   s.default_subspec = 'Debug'
 
   s.subspec 'Debug' do |sp|
     sp.vendored_frameworks      = 'RSDK/Debug/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
-    sp.ios.preserve_paths       = 'RSDK/Debug/PayPalRetailSDK.framework'
-    sp.ios.public_header_files  = 'RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Headers/*.h'
-    sp.ios.resource             = 'RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/**/*'
   end
 
   s.subspec 'Release' do |sp|
     sp.vendored_frameworks      = 'RSDK/Release/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
-    sp.ios.preserve_paths       = 'RSDK/Release/PayPalRetailSDK.framework'
-    sp.ios.public_header_files  = 'RSDK/Release/PayPalRetailSDK.framework/Versions/A/Headers/*.h'
-    sp.ios.resource             = 'RSDK/Release/PayPalRetailSDK.framework/Versions/A/Resources/**/*'
   end
 
   s.dependency 'SimpleKeychain', '~> 0.6.1'
