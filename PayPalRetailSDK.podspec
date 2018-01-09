@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.authors          = {"PayPal"=>"DL-PP-RetailSDK@paypal.com"}
   s.homepage         = "https://github.com/PayPal-Mobile/paypal-retail-sdk"
   s.description      = "Retail SDK"
-  s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :tag => "v#{s.version}" }
+  s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :branch => "master" }
 
   s.requires_arc = true
   s.ios.deployment_target    = '8.1'
