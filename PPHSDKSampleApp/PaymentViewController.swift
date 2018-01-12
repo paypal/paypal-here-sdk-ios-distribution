@@ -127,7 +127,7 @@ class PaymentViewController: UIViewController {
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
         if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
-            tc!.beginAnAuthorization()
+//            tc!.beginAnAuthorization()
         } else {
             tc!.begin()
         }

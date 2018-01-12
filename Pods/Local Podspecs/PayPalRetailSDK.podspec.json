@@ -1,171 +1,78 @@
 {
   "name": "PayPalRetailSDK",
-  "version": "0.5.0",
-  "summary": "Retail SDK",
-  "description": "Retail SDK",
-  "homepage": "https://github.com/PayPal-Mobile/paypal-retail-sdk",
-  "license": "MS-RSL",
+  "version": "3.0.4.20181",
+  "summary": "SDK for interfacing with PayPal card readers and mobile payment processing APIs.",
+  "license": "COMMERCIAL",
   "authors": {
     "PayPal": "DL-PP-RetailSDK@paypal.com"
   },
+  "homepage": "https://github.com/paypal/paypal-here-sdk-ios-distribution",
+  "description": "Retail SDK",
   "source": {
-    "git": "git@github.paypal.com:RetailSDK-NewGen/retail-sdk.git",
-    "branch": "develop"
+    "git": "git@github.paypal.com:RetailSDK-NewGen/objc-cocoapod-release-stage.git",
+    "branch": "rsdk_build"
   },
-  "platforms": {
-    "ios": "7.0",
-    "osx": "10.10"
-  },
-  "prefix_header_contents": "#import \"PayPalRetailSDK+Private.h\"",
   "requires_arc": true,
+  "platforms": {
+    "ios": "8.1"
+  },
+  "xcconfig": {
+    "FRAMEWORK_SEARCH_PATHS": "$(inherited)",
+    "OTHER_LDFLAGS": "-weak_library /usr/lib/libstdc++.dylib -lstdc++ -ObjC"
+  },
   "ios": {
-    "vendored_frameworks": [
-      "iOS/Roam/RUA_BLE.framework",
-      "iOS/Roam/LandiSDK_BLE.framework",
-      "iOS/Roam/G4XSwiper.framework"
+    "frameworks": [
+      "AudioToolbox",
+      "MobileCoreServices",
+      "Security",
+      "CFNetwork",
+      "AVFoundation",
+      "ExternalAccessory",
+      "MediaPlayer",
+      "CoreTelephony",
+      "Foundation",
+      "CoreBluetooth",
+      "SystemConfiguration",
+      "JavaScriptCore",
+      "CoreBluetooth",
+      "UIKit",
+      "CoreLocation"
     ]
   },
-  "default_subspecs": "Default",
+  "default_subspecs": "Debug",
+  "dependencies": {
+    "SimpleKeychain": [
+      "~> 0.6.1"
+    ]
+  },
   "subspecs": [
     {
-      "name": "IncludeRoam",
-      "exclude_files": [
-        "Common/generated/PayPalRetailTest/**/*",
-        "Common/Tests/**/*"
-      ],
-      "resource_bundles": {
-        "PayPalRetailSDKResources": [
-          "Common/AllPlatforms/PayPalRetailSDK.js",
-          "Common/AllPlatforms/sounds/*",
-          "iOS/PayPalRetailSDK/assets/*",
-          "iOS/PayPalRetailSDK/*.png"
-        ]
-      },
-      "public_header_files": [
-        "Common/generated/*.h",
-        "Common/PPRetailObject.h",
-        "Common/PayPalRetailSDK.h",
-        "Common/SdkCredential.h",
-        "pph/*.h"
+      "name": "Debug",
+      "vendored_frameworks": [
+        "RSDK/Debug/PayPalRetailSDK.framework",
+        "frameworks/G4XSwiper.framework",
+        "frameworks/RUA_BLE.framework",
+        "frameworks/LandiSDK_BLE.framework"
       ],
       "ios": {
-        "frameworks": [
-          "Foundation",
-          "UIKit",
-          "ExternalAccessory",
-          "JavaScriptCore",
-          "MediaPlayer"
-        ],
-        "source_files": [
-          "iOS/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
-          "iOS/Roam/*.{h,m,mm}",
-          "Common/*.{h,m,mm}",
-          "Common/generated/**/*.{h,m,mm}",
-          "Common/manticore-objc/Manticore/*.{h,m,mm}",
-          "pph/**/*.{h,m,mm}"
-        ]
-      },
-      "osx": {
-        "frameworks": [
-          "Foundation",
-          "AppKit"
-        ],
-        "dependencies": {
-          "ORSSerialPort": [
-            "~> 1.7.1"
-          ]
-        },
-        "source_files": [
-          "osx/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
-          "Common/*.{h,m,mm}",
-          "Common/generated/**/*.{h,m,mm}",
-          "Common/manticore-objc/Manticore/*.{h,m,mm}",
-          "pph/**/*.{h,m,mm}"
-        ]
-      },
-      "dependencies": {
-        "SimpleKeychain": [
-          "~> 0.6.1"
-        ]
-      },
-      "xcconfig": {
-        "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) INCLUDE_ROAM_AUDIO"
-      },
-      "libraries": [
-        "c++",
-        "stdc++",
-        "z"
-      ]
+        "preserve_paths": "RSDK/Debug/PayPalRetailSDK.framework",
+        "public_header_files": "RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Headers/*.h",
+        "resources": "RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/**/*"
+      }
     },
     {
-      "name": "Default",
-      "exclude_files": [
-        "Common/generated/PayPalRetailTest/**/*",
-        "Common/Tests/**/*"
-      ],
-      "resource_bundles": {
-        "PayPalRetailSDKResources": [
-          "Common/AllPlatforms/PayPalRetailSDK.js",
-          "Common/AllPlatforms/sounds/*",
-          "iOS/PayPalRetailSDK/assets/*",
-          "iOS/PayPalRetailSDK/*.png"
-        ]
-      },
-      "public_header_files": [
-        "Common/generated/*.h",
-        "Common/PPRetailObject.h",
-        "Common/PayPalRetailSDK.h",
-        "Common/SdkCredential.h",
-        "pph/*.h"
+      "name": "Release",
+      "vendored_frameworks": [
+        "RSDK/Release/PayPalRetailSDK.framework",
+        "frameworks/G4XSwiper.framework",
+        "frameworks/RUA_BLE.framework",
+        "frameworks/LandiSDK_BLE.framework"
       ],
       "ios": {
-        "frameworks": [
-          "Foundation",
-          "UIKit",
-          "ExternalAccessory",
-          "JavaScriptCore",
-          "MediaPlayer"
-        ],
-        "source_files": [
-          "iOS/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
-          "iOS/Roam/*.{h,m,mm}",
-          "Common/*.{h,m,mm}",
-          "Common/generated/**/*.{h,m,mm}",
-          "Common/manticore-objc/Manticore/*.{h,m,mm}",
-          "pph/**/*.{h,m,mm}"
-        ]
-      },
-      "osx": {
-        "frameworks": [
-          "Foundation",
-          "AppKit"
-        ],
-        "dependencies": {
-          "ORSSerialPort": [
-            "~> 1.7.1"
-          ]
-        },
-        "source_files": [
-          "osx/PayPalRetailSDK/PayPalRetailSDK/**/*.{h,m,mm}",
-          "Common/*.{h,m,mm}",
-          "Common/generated/**/*.{h,m,mm}",
-          "Common/manticore-objc/Manticore/*.{h,m,mm}",
-          "pph/**/*.{h,m,mm}"
-        ]
-      },
-      "dependencies": {
-        "SimpleKeychain": [
-          "~> 0.6.1"
-        ]
-      },
-      "xcconfig": {
-        "OTHER_LDFLAGS": "-weak_library /usr/lib/libstdc++.dylib -lstdc++ -ObjC"
-      },
-      "libraries": [
-        "c++",
-        "stdc++",
-        "z"
-      ]
+        "preserve_paths": "RSDK/Release/PayPalRetailSDK.framework",
+        "public_header_files": "RSDK/Release/PayPalRetailSDK.framework/Versions/A/Headers/*.h",
+        "resources": "RSDK/Release/PayPalRetailSDK.framework/Versions/A/Resources/**/*"
+      }
     }
   ]
 }
