@@ -2,7 +2,7 @@
 # For release, update the s.version value in the public repo
 Pod::Spec.new do |s|
   s.name             = "PayPalRetailSDK"
-  s.version          = "3.0.4.20181"
+  s.version          = "3.0.4.20184"
   s.summary          = "SDK for interfacing with PayPal card readers and mobile payment processing APIs."
   s.license          = "COMMERCIAL"
   s.authors          = {"PayPal"=>"DL-PP-RetailSDK@paypal.com"}
