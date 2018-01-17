@@ -42,8 +42,6 @@ class PaymentCompletedViewController: UIViewController {
             return
         }
         
-        tc.beginRefund(true, amount: tc.invoice?.total)
-        
         tc.setCardPresentedHandler { (cardInfo) -> Void in
             tc.continue(with: cardInfo)
         }
@@ -63,6 +61,7 @@ class PaymentCompletedViewController: UIViewController {
             self.noThanksBtn(nil)
         }
         
+        tc.beginRefund(true, amount: tc.invoice?.total)
     }
     
     @IBAction func showRefundCode(_ sender: Any) {

@@ -126,12 +126,6 @@ class PaymentViewController: UIViewController {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
-        if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
-//            tc!.beginAnAuthorization()
-        } else {
-            tc!.begin()
-        }
-        
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
         }
@@ -156,6 +150,12 @@ class PaymentViewController: UIViewController {
                 self.goToPaymentCompletedViewController()
             }
             
+        }
+        
+        if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
+            //            tc!.beginAnAuthorization()
+        } else {
+            tc!.begin()
         }
 
     }
