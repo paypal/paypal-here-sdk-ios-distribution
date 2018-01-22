@@ -9,7 +9,7 @@
 import UIKit
 import PayPalRetailSDK
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     @IBOutlet weak var demoAppLbl: UILabel!
     @IBOutlet weak var invAmount: UITextField!
@@ -32,11 +32,13 @@ class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        PayPalRetailSDK.setRetailSDKAppDelegate(self)
         // Setting up initial aesthetics.
         demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
         
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -131,6 +131,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         sdkCreds.accessToken = accessToken
         sdkCreds.refreshUrl = tokenDefault.string(forKey: "REFRESH_URL")
         sdkCreds.environment = tokenDefault.string(forKey: "ENVIRONMENT")
+        sdkCreds.repository = "production"
     
         PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in
             if let err = error {
@@ -219,7 +220,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         envSelector.isEnabled = true
         
     }
-    
+
 
 }
 

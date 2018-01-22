@@ -61,11 +61,13 @@ class DeviceDiscoveryViewController: UIViewController {
             }
         })
         
+        
     }
     
     // Function to connect to the last known reader device used and check for any
     // reader updates.
     @IBAction func connectToLastReader(_ sender: Any) {
+        
         device?.connectToLastActiveReaderOrFindAnother(ui: { (error, paymentDevice) -> Void in
             if let err = error {
                 print("Connect Last Device Error: \(err.debugId)")
