@@ -128,6 +128,21 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
+        if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
+//            tc!.beginAnAuthorization()
+        } else {
+            let options = PPRetailTransactionBeginOptions()
+            options.showPromptInCardReader = true
+            options.showPromptInApp = true
+            options.preferredFormFactors = []
+            options.tippingOnReaderEnabled = false
+            options.amountBasedTipping = false
+            options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+            options.quickChipEnabled = true
+            
+            tc!.beginPayment(options)
+        }
+        
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
         }
@@ -152,12 +167,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                 self.goToPaymentCompletedViewController()
             }
             
-        }
-        
-        if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
-            //            tc!.beginAnAuthorization()
-        } else {
-            tc!.begin()
         }
 
     }
