@@ -49,6 +49,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -67,9 +68,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
@@ -115,16 +114,6 @@
     -(void)discoveredPaymentDevice:(PPRetailPaymentDevice* _Nullable)pd;
 
     /**
-     * Capture a previously authorized transaction.
-     */
-    -(void)captureAuthorizedTransaction:(NSString* _Nullable)authorizationId amount:(NSDecimalNumber* _Nullable)amount callback:(PPRetailSDKCaptureAuthorizedTransactionCallbackHandler _Nullable)callback;
-
-    /**
-     * Retrieve the list of authorized transactions
-     */
-    -(void)retrieveAuthorizedTransactions:(NSDate* _Nullable)startTime endTime:(NSDate* _Nullable)endTime pageSize:(int)pageSize nextPageToken:(NSString* _Nullable)nextPageToken callback:(PPRetailSDKRetrieveAuthorizedTransactionsCallbackHandler _Nullable)callback;
-
-    /**
      * Perform cleanup before shutting down the host application
      */
     -(void)logout;
@@ -143,6 +132,11 @@
      * Returns the SDK device manager
      */
     -(PPRetailDeviceManager* _Nullable)getDeviceManager;
+
+    /**
+     * Returns the Transaction Manager
+     */
+    -(PPRetailTransactionManager* _Nullable)getTransactionManager;
 
 
 

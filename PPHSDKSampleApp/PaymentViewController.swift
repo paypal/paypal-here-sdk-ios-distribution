@@ -154,11 +154,16 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             
         }
         
-        if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
-            //            tc!.beginAnAuthorization()
-        } else {
-            tc!.begin()
-        }
+        let options = PPRetailTransactionBeginOptions()
+        options.showPromptInCardReader = true
+        options.showPromptInApp = true
+        options.preferredFormFactors = []
+        options.tippingOnReaderEnabled = false
+        options.amountBasedTipping = false
+        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options.quickChipEnabled = false
+        
+        tc!.beginPayment(options)
 
     }
     
