@@ -6,6 +6,10 @@
 
 @interface SdkCredential : NSObject
 
+- (id)init __attribute__((unavailable("init not available, use initWith...")));
+
+- (id)initWithAccessToken:(NSString*) aToken refreshUrl:(NSString *)rUrl environment:(NSString *) env;
+
 @property (nonatomic, copy) NSString *accessToken;
 
 @property (nonatomic, copy) NSString *refreshUrl;

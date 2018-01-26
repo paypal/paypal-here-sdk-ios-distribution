@@ -36,6 +36,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -54,20 +55,16 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailNetworkRequest;
-@class PPRetailError;
-@class PPRetailCaptureResponse;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailInvoice;
 @class PPRetailSdkEnvironmentInfo;
 @class PPRetailPaymentDevice;
+@class PPRetailError;
 @class PPRetailPage;
 @class PPRetailError;
 @class PPRetailPayPalErrorInfo;
@@ -101,6 +98,7 @@
 @class PPRetailMerchant;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailTransactionContext;
+@class PPRetailAuthorizedTransaction;
 @class PPRetailReceiptOptionsViewContent;
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
@@ -109,7 +107,6 @@
 @class PPRetailObject;
 @class PPRetailPayer;
 @class PPRetailReceiptDestination;
-@class PPRetailAuthorizedTransaction;
 @class PPRetailDiscoveredCardReader;
 
 
@@ -234,6 +231,14 @@ typedef NS_ENUM(NSInteger, PPRetailTippingState) {
 };
 
 /**
+ * This enum represents the state of the auth transaction
+ */
+typedef NS_ENUM(NSInteger, PPRetailAuthStatus) {
+  PPRetailAuthStatuspending = 0,
+  PPRetailAuthStatuscanceled = 1
+};
+
+/**
  * Battery status
  */
 typedef NS_ENUM(NSInteger, PPRetailbatteryStatus) {
@@ -338,16 +343,6 @@ typedef NS_ENUM(NSInteger, PPRetailReaderModel) {
      * and provide
  */
 typedef void (^PPRetailSDKInterceptHandler)(PPRetailNetworkRequest* request);
-
-/**
- * The callback for captureAuthorizedTransaction completion
- */
-typedef void (^PPRetailSDKCaptureAuthorizedTransactionCallbackHandler)(PPRetailError* error, PPRetailCaptureResponse* captureResponse);
-
-/**
- * The callback for retrieveAuthorizedTransactions completion
- */
-typedef void (^PPRetailSDKRetrieveAuthorizedTransactionsCallbackHandler)(PPRetailError* error, PPRetailRetrieveAuthorizedTransactionResponse* authorizedTransactionsResponse);
 
 /**
  * 
@@ -472,6 +467,26 @@ typedef void (^PPRetailTransactionContextReceiptOptionHandlerHandler)(int index,
 typedef void (^PPRetailTransactionContextCompleteHandler)(PPRetailError* error);
 
 /**
+ * The callback for creating a transaction
+ */
+typedef void (^PPRetailTransactionManagerTransactionHandler)(PPRetailError* error, PPRetailTransactionContext* context);
+
+/**
+ * The callback for retrieveAuthorizedTransactions completion
+ */
+typedef void (^PPRetailTransactionManagerRetrieveAuthorizedTransactionsHandler)(PPRetailError* error, NSArray* listOfAuths, NSString* nextPageToken);
+
+/**
+ * The callback for voidTransaction completion
+ */
+typedef void (^PPRetailTransactionManagerVoidAuthorizationHandler)(PPRetailError* error);
+
+/**
+ * The callback for captureAuthorizedTransaction completion
+ */
+typedef void (^PPRetailTransactionManagerCaptureAuthorizedTransactionHandler)(PPRetailError* error, NSString* captureId);
+
+/**
  * The callback invoked while connecting to the last active card reader
  */
 typedef void (^PPRetailDeviceManagerConnectionHandler)(PPRetailError* error, PPRetailPaymentDevice* cardReader);
@@ -503,9 +518,14 @@ typedef void (^PPRetailPaymentDeviceDeviceLogsHandler)(PPRetailError* error);
 typedef void (^PPRetailDeviceUpdateCompletedHandler)(PPRetailError* error, BOOL deviceUpgraded);
 
 /**
- * The callback for retrieveAuthorizedTransactions completion
+ * 
  */
-typedef void (^PPRetailRetrieveAuthorizedTransactionResponseRetrieveAuthorizedTransactionsCallbackHandler)(PPRetailError* error, PPRetailRetrieveAuthorizedTransactionResponse* authorizedTransactionsResponse);
+typedef void (^PPRetailAuthorizedTransactionVoidCompleteHandler)(PPRetailError* error);
+
+/**
+ * 
+ */
+typedef void (^PPRetailAuthorizedTransactionCaptureCompleteHandler)(PPRetailError* error, NSString* captureId);
 
 
  
@@ -581,7 +601,7 @@ typedef void (^PPRetailDidCompleteSignatureEvent)(PPRetailError* error);
  */
 typedef id PPRetailDidCompleteSignatureSignal;
 
-        
+          
 /**
  * Called when the transaction is cancelled while waiting to collect the signature
  */
@@ -685,7 +705,7 @@ typedef void (^PPRetailReconnectReaderEvent)(int waitTime);
  */
 typedef id PPRetailReconnectReaderSignal;
 
-                    
+                
 /**
  * A Card Reader has been discovered.
  */
