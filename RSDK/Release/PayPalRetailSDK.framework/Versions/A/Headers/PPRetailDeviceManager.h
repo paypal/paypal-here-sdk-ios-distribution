@@ -49,6 +49,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -67,9 +68,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
@@ -95,16 +94,16 @@
 
 
     /**
-     * Show the Dialog UI to show the list of connected card-readers
-     * if there is more than 1 devices. Select one of them to use it*
+     * Show a list of connected credit card readers.
+     * If there is more than 1 devices. Select one of them to use it*
      * for transaction.
      */
-    -(void)searchAndConnectWithUI:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+    -(void)searchAndConnect:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
     /**
      * Try connecting to the last active credit card reader
      */
-    -(void)connectToLastActiveReaderOrFindAnotherWithUI:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+    -(void)connectToLastActiveReader:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
     /**
      * Sets the active reader

@@ -109,7 +109,7 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  * This is the primary starting point for taking a payment. First, create an invoice, then create a transaction, then
  * begin the transaction to have the SDK listen for events and go through the relevant flows for a payment type.
  */
-+ (PPRetailTransactionContext *)createTransaction:(PPRetailInvoice *)invoice;
++ (PPRetailTransactionContext *)createTransaction:(PPRetailInvoice *)invoice __attribute__((deprecated("Use transactionManager")));
 
 /**
  * Add a listener for the deviceDiscovered event
@@ -126,9 +126,9 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 /**
  * Capture a authorized transaction by providing authorization ID and final amount to be captured
  */
-+ (void)captureAuthorizedTransaction:(NSString *)authorizationId amount:(NSDecimalNumber *)amount completionHandler:(PPRetailSDKCaptureAuthorizedTransactionCallbackHandler)handler;
++ (void)captureAuthorizedTransaction:(NSString* _Nullable)authorizationId invoiceId:(NSString* _Nullable)invoiceId totalAmount:(NSDecimalNumber* _Nullable)totalAmount gratuityAmount:(NSDecimalNumber* _Nullable)gratuityAmount currency:(NSString* _Nullable)currency callback:(PPRetailTransactionManagerCaptureAuthorizedTransactionHandler _Nullable)callback;
 
-+ (void)retrieveAuthorizedTransaction:(NSDate *)startTime endTime:(NSDate *)endTime pageSize:(NSInteger *)pageSize nextPageToken:(NSString *)nextPageToken completionHandler:(PPRetailSDKRetrieveAuthorizedTransactionsCallbackHandler)handler;
++ (void)retrieveAuthorizedTransactions:(NSDate* _Nullable)startDateTime endDateTime:(NSDate* _Nullable)endDateTime pageSize:(int)pageSize status:(NSArray* _Nullable)status callback:(PPRetailTransactionManagerRetrieveAuthorizedTransactionsHandler _Nullable)callback;
 
 + (void)initializePPHRetailMerchant:(PPHRetailMerchant *)merchant completionHandler:(PPRetailMerchantHandler)handler;
 
@@ -137,6 +137,8 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 + (void)endCardReaderDiscovery;
 
 + (PPRetailDeviceManager *)deviceManager;
+
++ (PPRetailTransactionManager *)transactionManager;
 
 + (void)logout;
 
