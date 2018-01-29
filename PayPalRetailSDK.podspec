@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "PayPalRetailSDK"
   s.version          = "2.0.0.201801"
   s.summary          = "SDK for interfacing with PayPal card readers and mobile payment processing APIs."
-  s.license          = "COMMERCIAL"
+  s.license          = { :file => 'License.md' }
   s.authors          = {"PayPal"=>"DL-PP-RetailSDK@paypal.com"}
   s.homepage         = "https://github.com/paypal/paypal-here-sdk-ios-distribution"
   s.description      = "PayPal Retail SDK"
