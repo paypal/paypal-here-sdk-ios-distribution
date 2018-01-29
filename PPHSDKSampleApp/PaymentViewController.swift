@@ -114,12 +114,14 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     @IBAction func createTransaction(_ sender: UIButton) {
         
         tc = PayPalRetailSDK.createTransaction(invoice)
-        
-        createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
-        createTxnBtn.isEnabled = false
+        PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
+            self.tc = context;
 
-        acceptTxnBtn.isEnabled = true
-        
+            self.createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+            self.createTxnBtn.isEnabled = false
+            
+            self.acceptTxnBtn.isEnabled = true
+        })
     }
     
     // This function will activate the reader by calling the begin method of TransactionContext.  This will
