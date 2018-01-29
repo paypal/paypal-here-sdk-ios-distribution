@@ -49,6 +49,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -67,9 +68,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
@@ -106,6 +105,15 @@
     * Set the flag if the amount based tipping type used, otherwise, percentage based used
     */
     @property (nonatomic,assign) BOOL amountBasedTipping;
+    /**
+    * Setting this to true will only authorize the transaction and a payment will NOT be taken.
+ * The money will be moved only when a capture call is made on an authorized transaction.
+    */
+    @property (nonatomic,assign) BOOL isAuthCapture;
+    /**
+    * Set the flag if Quick Chip feature is Enabled
+    */
+    @property (nonatomic,assign) BOOL quickChipEnabled;
 
 
 

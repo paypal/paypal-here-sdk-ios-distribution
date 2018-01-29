@@ -49,6 +49,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -67,9 +68,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;

@@ -49,6 +49,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -67,9 +68,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
@@ -147,12 +146,7 @@
     /**
      * Begin the flow (activate payment devices, listen for relevant events from devices)
      */
-    -(PPRetailTransactionContext* _Nullable)beginPaymentWithOptions:(PPRetailTransactionBeginOptions* _Nullable)options;
-
-    /**
-     * Begin the flow (activate payment devices, listen for relevant events from devices)
-     */
-    -(PPRetailTransactionContext* _Nullable)begin;
+    -(PPRetailTransactionContext* _Nullable)beginPayment:(PPRetailTransactionBeginOptions* _Nullable)options;
 
     /**
      * Begin the flow to issue a refund on the current invoice.

@@ -49,6 +49,7 @@
 @class PPRetailRetailInvoicePayment;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailTransactionContext;
+@class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
 @class PPRetailReceiptDestination;
 @class PPRetailDeviceManager;
@@ -67,9 +68,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
-@class PPRetailCaptureResponse;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailRetrieveAuthorizedTransactionResponse;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
@@ -87,25 +86,25 @@
     */
     @property (nonatomic,strong,nullable,readonly) NSString* authorizationId;
     /**
-    * Time at which this authorization activity was created @readonly
+    * The PayPal invoice id for this authorization @readonly
     */
-    @property (nonatomic,strong,nullable,readonly) NSDate* timeCreated;
+    @property (nonatomic,strong,nullable,readonly) NSString* invoiceId;
     /**
-    * Net amount authorized for this transaction @readonly
+    * Time at which this authorization activity was created
     */
-    @property (nonatomic,strong,nullable,readonly) NSDecimalNumber* netAuthorizedAmount;
+    @property (nonatomic,strong,nullable) NSDate* timeCreated;
+    /**
+    * Amount authorized for this transaction
+    */
+    @property (nonatomic,strong,nullable) NSDecimalNumber* authorizedAmount;
     /**
     * Currency in which the net amount was authorized @readonly
     */
     @property (nonatomic,strong,nullable,readonly) NSString* currency;
     /**
-    * Status of the current authorization @readonly
+    * Status of the current authorization
     */
-    @property (nonatomic,strong,nullable,readonly) NSString* status;
-    /**
-    * Detailed Status @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* detailedStatus;
+    @property (nonatomic,strong,nullable) NSString* status;
 
 
     
@@ -115,6 +114,16 @@
 
 
 
+
+    /**
+     * Void this authorized transaction
+     */
+    -(void)voidTransaction:(PPRetailAuthorizedTransactionVoidCompleteHandler _Nullable)callback;
+
+    /**
+     * Capture this authorized transaction
+     */
+    -(void)captureTransaction:(NSDecimalNumber* _Nullable)totalAmount gratuityAmount:(NSDecimalNumber* _Nullable)gratuityAmount callback:(PPRetailAuthorizedTransactionCaptureCompleteHandler _Nullable)callback;
 
 
 
