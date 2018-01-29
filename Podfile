@@ -10,8 +10,8 @@ workspace 'PPHSDKSampleApp'
 
 target 'PPHSDKSampleApp' do
     project 'PPHSDKSampleApp.xcodeproj'
-    #pod 'PayPalRetailSDK', :path => "../retail-sdk/platform/objc/PayPalRetailSDK.podspec"
-    pod 'PayPalRetailSDK', :path => "PayPalRetailSDKFW.podspec"
+    pod 'PayPalRetailSDK'
+    #pod 'PayPalRetailSDK', :path => "PayPalRetailSDKFW.podspec"
 end
 
 
