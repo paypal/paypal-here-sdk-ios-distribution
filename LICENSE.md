@@ -10,7 +10,7 @@ The PayPal SDK is released under the following license:
 
     As used in this Agreement, "PayPal" means PayPal, Inc.  "Software" means the software code accompanying
     this agreement. "Documentation" means the documents, specifications and all other items accompanying 
-    this Agreement other than the Software.   
+    this Agreement other than the Software.
 
     1.  LICENSE GRANT Subject to the terms of this Agreement, PayPal hereby grants you a non-exclusive, 
     worldwide, royalty free license to use, reproduce, prepare derivative works from, publicly display, 
@@ -33,7 +33,7 @@ The PayPal SDK is released under the following license:
     costs arising from the claims, lawsuits or other legal actions arising out of such distribution.  You may 
     distribute the Software in object code form under your own license, provided that your license agreement:
 
-    (a)     complies with the terms and conditions of this license agreement; 
+    (a)     complies with the terms and conditions of this license agreement;
 
     (b)     effectively disclaims all warranties and conditions, express or implied, on behalf of PayPal;
 
@@ -42,7 +42,7 @@ The PayPal SDK is released under the following license:
     (d)     states that any provisions that differ from this Agreement are offered by you alone and not PayPal; and
 
     (e)     states that the Software is available from you or PayPal and informs licensees how to obtain it in a 
-    reasonable manner on or through a medium customarily used for software exchange.  
+    reasonable manner on or through a medium customarily used for software exchange.
 
     2.  DISCLAIMER OF WARRANTY
     PAYPAL LICENSES THE SOFTWARE AND DOCUMENTATION TO YOU ONLY ON AN "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS 
@@ -67,22 +67,22 @@ The PayPal SDK is released under the following license:
     TO USE THE SOFTWARE OR DOCUMENTATION, HOWEVER CAUSED AND UNDER ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
     STRICT LIABILITY OR TORT INCLUDING NEGLIGENCE OR OTHERWISE), EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
     PAYPAL'S AGGREGATE LIABILITY AND THAT OF ITS SUPPLIERS UNDER OR IN CONNECTION WITH THIS AGREEMENT SHALL BE 
-    LIMITED TO THE AMOUNT PAID BY YOU FOR THE SOFTWARE AND DOCUMENTATION. 
+    LIMITED TO THE AMOUNT PAID BY YOU FOR THE SOFTWARE AND DOCUMENTATION.
 
     4.  TRADEMARK USAGE
     PayPal is a trademark of PayPal, Inc. in the United States and other countries.  Such trademarks may not be used 
-    to endorse or promote any product unless expressly permitted under separate agreement with PayPal.  
+    to endorse or promote any product unless expressly permitted under separate agreement with PayPal.
 
     5.  CERTIFICATIONS
     Please note that if you modify the source code and redistribute these modifications for commercial purposes,
     you agree and understand you may need to certify or comply with any relevant certification or compliance entities
-    to process payments. 
+    to process payments.
 
     6.  TERM
     Your rights under this Agreement shall terminate if you fail to comply with any of the material terms or 
     conditions of this Agreement and do not cure such failure in a reasonable period of time after becoming 
     aware of such noncompliance.  If all your rights under this Agreement terminate, you agree to cease use 
-    and distribution of the Software and Documentation as soon as reasonably practicable. 
+    and distribution of the Software and Documentation as soon as reasonably practicable.
 
     7. GOVERNING LAW AND JURISDICTION. This Agreement is governed by the statutes and laws of the State of 
     California, without regard to the conflicts of law principles thereof.  If any part of this Agreement is 
