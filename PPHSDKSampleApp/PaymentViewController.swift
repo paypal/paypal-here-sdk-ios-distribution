@@ -9,7 +9,7 @@
 import UIKit
 import PayPalRetailSDK
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     @IBOutlet weak var demoAppLbl: UILabel!
     @IBOutlet weak var invAmount: UITextField!
@@ -22,19 +22,23 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptTxnBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
-
+    @IBOutlet weak var pmtTypeSelector: UISegmentedControl!
+    
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
+    var authId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        PayPalRetailSDK.setRetailSDKAppDelegate(self)
         // Setting up initial aesthetics.
         demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
         
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,12 +114,14 @@ class PaymentViewController: UIViewController {
     @IBAction func createTransaction(_ sender: UIButton) {
         
         tc = PayPalRetailSDK.createTransaction(invoice)
-        
-        createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
-        createTxnBtn.isEnabled = false
+        PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
+            self.tc = context;
 
-        acceptTxnBtn.isEnabled = true
-        
+            self.createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+            self.createTxnBtn.isEnabled = false
+            
+            self.acceptTxnBtn.isEnabled = true
+        })
     }
     
     // This function will activate the reader by calling the begin method of TransactionContext.  This will
@@ -123,8 +129,6 @@ class PaymentViewController: UIViewController {
     // set in this function as well to allow for the listening of the user either inserting, swiping, or tapping
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
-        
-        tc!.begin()
         
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
@@ -140,25 +144,52 @@ class PaymentViewController: UIViewController {
                 return
             }
             print("Txn ID: \(txnRecord!.transactionNumber!)")
-            print("popToViewController called")
+            
             self.navigationController?.popToViewController(self, animated: false)
-            print("top vc after pop \(String(describing: self.navigationController?.topViewController))")
-            self.goToPaymentCompletedViewController()
+            
+            if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
+                self.authId = txnRecord?.transactionNumber
+                self.goToAuthCompletedViewController()
+            } else {
+                self.goToPaymentCompletedViewController()
+            }
+            
         }
+        
+        let options = PPRetailTransactionBeginOptions()
+        options.showPromptInCardReader = true
+        options.showPromptInApp = true
+        options.preferredFormFactors = []
+        options.tippingOnReaderEnabled = false
+        options.amountBasedTipping = false
+        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options.quickChipEnabled = false
+        
+        tc!.beginPayment(options)
 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToPmtCompletedView" {
+        if (segue.identifier == "goToPmtCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
                 pmtCompletedViewController.invoice = invoice
+            }
+        }
+        
+        if (segue.identifier == "goToAuthCompletedView") {
+            if let authCompletedViewController = segue.destination as? AuthCompletedViewController {
+                authCompletedViewController.authId = authId
+                authCompletedViewController.invoice = invoice
             }
         }
     }
     
     func goToPaymentCompletedViewController() {
-        print("perform segue called")
         performSegue(withIdentifier: "goToPmtCompletedView", sender: Any?.self)
+    }
+    
+    func goToAuthCompletedViewController() {
+        performSegue(withIdentifier: "goToAuthCompletedView", sender: Any?.self)
     }
     
     @IBAction func showInfo(_ sender: UIButton){
@@ -186,7 +217,11 @@ class PaymentViewController: UIViewController {
             if (acceptTxnCodeView.isHidden) {
                 acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
-                acceptTxnCodeView.text = "tc.begin()"
+                if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
+                    acceptTxnCodeView.text = "tc.beginAnAuthorization()"
+                } else {
+                    acceptTxnCodeView.text = "tc.begin()"
+                }
             } else {
                 acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
@@ -218,33 +253,5 @@ class PaymentViewController: UIViewController {
         return self.navigationController
     }
     
-}
-
-extension String {
-    
-    // Formatting for invoice amount text field
-    func currencyInputFormatting() -> String {
-        
-        var number: NSDecimalNumber!
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "$"
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        
-        var amountWithPrefix = self
-        
-        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
-        
-        let double = (amountWithPrefix as NSString).doubleValue
-        number = NSDecimalNumber(value: (double / 100))
-
-        guard number != 0 as NSDecimalNumber else {
-            return ""
-        }
-        
-        return formatter.string(from: number)!
-    }
 }
 

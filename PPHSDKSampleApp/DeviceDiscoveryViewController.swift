@@ -45,7 +45,7 @@ class DeviceDiscoveryViewController: UIViewController {
     // device to use. As part of this function, we also need to include the process
     // of reader updates for our BT readers.
     @IBAction func findAndConnectReader(_ sender: Any) {
-        device?.searchAndConnect(ui: { (error, paymentDevice) -> Void in
+        device?.searchAndConnect({ (error, paymentDevice) -> Void in
             if let err = error {
                 print("Search Device Error: \(err.debugId)")
                 print("Search Device Error: \(err.code)")
@@ -56,7 +56,7 @@ class DeviceDiscoveryViewController: UIViewController {
             
             if(paymentDevice?.isConnected())! {
                 self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
-                self.checkForReaderUpdate()
+                self.checkForReaderUpdate(reader:paymentDevice)
                 self.goToPmtPageBtn.isHidden = false
             }
         })
@@ -66,7 +66,7 @@ class DeviceDiscoveryViewController: UIViewController {
     // Function to connect to the last known reader device used and check for any
     // reader updates.
     @IBAction func connectToLastReader(_ sender: Any) {
-        device?.connectToLastActiveReaderOrFindAnother(ui: { (error, paymentDevice) -> Void in
+        device?.connect(toLastActiveReader: { (error, paymentDevice) -> Void in
             if let err = error {
                 print("Connect Last Device Error: \(err.debugId)")
                 print("Connect Last Device Error: \(err.code)")
@@ -76,39 +76,29 @@ class DeviceDiscoveryViewController: UIViewController {
             }
             if(paymentDevice?.isConnected())! {
                 self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
-                self.checkForReaderUpdate()
+                self.checkForReaderUpdate(reader:paymentDevice)
                 self.goToPmtPageBtn.isHidden = false
             }
         })
     }
-    
+   
     // Code that checks if there's a software update available for the connected
     // reader and initiates the process if there's one available.
-    func checkForReaderUpdate() {
-        device?.getActiveReader()?.addUpdateRequiredListener({ (update) -> Void in
-            if(update?.isRequired)! {
-                update?.offer({ (error, startUpdate) in
-                    if(startUpdate) {
-                        update?.begin({ (error, updateComplete) in
-                            if(updateComplete) {
-                                print("Reader update complete.")
-                            } else {
-                                print("Reader Update Error: \(error?.debugId)")
-                                print("Reader Update Error: \(error?.code)")
-                                print("Reader Update Error: \(error?.message)")
-                            }
-                        })
-                    } else {
-                        print("Error in offer step: \(error?.debugId)")
-                        print("Error in offer step: \(error?.code)")
-                        print("Error in offer step: \(error?.message)")
-                    }
-                })
-            } else {
-                print("Reader update not required at this time.")
-            }
-        })
-
+    func checkForReaderUpdate(reader:PPRetailPaymentDevice?) {
+        // If an update was available when we connected, offer the update.
+        if(reader != nil && reader?.pendingUpdate != nil && (reader?.pendingUpdate?.isRequired)!) {
+            reader?.pendingUpdate?.offer({ (error, updateComplete) in
+                if(updateComplete) {
+                    print("Reader update complete.")
+                } else {
+                    print("Error in offer step: \(error?.debugId)")
+                    print("Error in offer step: \(error?.code)")
+                    print("Error in offer step: \(error?.message)")
+                }
+            })
+        } else {
+            print("Reader update not required at this time.")
+        }
     }
     
     @IBAction func showCode(_ sender: UIButton){
@@ -119,8 +109,7 @@ class DeviceDiscoveryViewController: UIViewController {
                 findAndConnectCodeBtn.setTitle("Hide Code", for: .normal)
                 findAndConnectCodeView.isHidden = false
                 findAndConnectCodeView.text = "device.searchAndConnect(ui: { (error, paymentDevice) in\n" +
-                                              "     // code to handle failure or\n" +
-                                              "     // set active reader on success\n" +
+                                              "   <code to handle success/failure>\n" +
                                               "})"
             } else {
                 findAndConnectCodeBtn.setTitle("View Code", for: .normal)
@@ -131,8 +120,7 @@ class DeviceDiscoveryViewController: UIViewController {
                 connectLastKnownCodeBtn.setTitle("Hide Code", for: .normal)
                 connectLastKnownCodeView.isHidden = false
                 connectLastKnownCodeView.text = "device.connectToLastActiveReaderOrFindAnother(ui: { (error, paymentDevice) in\n" +
-                                                "     // code to handle failure or\n" +
-                                                "     // set active reader on success\n" +
+                                                "    <code to handle success/failure>\n" +
                                                 "})"
             } else {
                 connectLastKnownCodeBtn.setTitle("View Code", for: .normal)

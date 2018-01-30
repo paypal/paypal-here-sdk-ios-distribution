@@ -37,32 +37,29 @@ class PaymentCompletedViewController: UIViewController {
     // This function will process the refund.
     @IBAction func provideRefund(_ sender: Any) {
         
-        guard let tc = PayPalRetailSDK.createTransaction(invoice) else {
-            print("Something went wrong while creating the transactionContext for the refund")
-            return
-        }
         
-        tc.beginRefund(true, amount: tc.invoice?.total)
-        
-        tc.setCardPresentedHandler { (cardInfo) -> Void in
-            tc.continue(with: cardInfo)
-        }
-        
-        tc.setCompletedHandler { (error, txnRecord) -> Void in
-            
-            if let err = error {
-                print("Error Code: \(err.code)")
-                print("Error Message: \(err.message)")
-                print("Debug ID: \(err.debugId)")
-                
-                return
+        PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, tc) in
+            tc?.setCardPresentedHandler { (cardInfo) -> Void in
+                tc?.continue(with: cardInfo)
             }
-            print("Refund ID: \(txnRecord!.transactionNumber!)")
-
-            self.navigationController?.popToViewController(self, animated: false)
-            self.noThanksBtn(nil)
-        }
-        
+            
+            tc?.setCompletedHandler { (error, txnRecord) -> Void in
+                
+                if let err = error {
+                    print("Error Code: \(err.code)")
+                    print("Error Message: \(err.message)")
+                    print("Debug ID: \(err.debugId)")
+                    
+                    return
+                }
+                print("Refund ID: \(txnRecord!.transactionNumber!)")
+                
+                self.navigationController?.popToViewController(self, animated: false)
+                self.noThanksBtn(nil)
+            }
+            
+            tc?.beginRefund(true, amount: tc?.invoice?.total)
+        })
     }
     
     @IBAction func showRefundCode(_ sender: Any) {
