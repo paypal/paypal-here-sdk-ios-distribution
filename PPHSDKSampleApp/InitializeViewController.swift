@@ -87,7 +87,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
         // set this to Live, simply change /sandbox to /live.  The returnTokenOnQueryString value tells
         // the sample server to return the actual token values instead of the compositeToken
-        let url = NSURL(string: "http://pphsdk2oauthserver.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)! + "?returnTokenOnQueryString=true")
+        let url = NSURL(string: "http://pph-retail-sdk-sample.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)! + "?returnTokenOnQueryString=true")
         
         // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
         // check that the saved token matches the environment.  Otherwise, kick open the
@@ -172,7 +172,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         if (initMerchCode.isHidden) {
             initMerchInfoBtn.setTitle("Hide Code", for: .normal)
             initMerchCode.isHidden = false
-            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in \n" +
+            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) -> Void in \n" +
                 "     <code to handle success/failure>\n" +
                 "})"
         } else {
@@ -191,6 +191,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // Clear out the UserDefaults and show the appropriate buttons/labels
         let tokenDefault = UserDefaults.init()
         tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
+        tokenDefault.removeObject(forKey: "REFRESH_URL")
+        tokenDefault.removeObject(forKey: "ENVIRONMENT")
         tokenDefault.removeObject(forKey: "MERCH_CURRENCY")
         tokenDefault.synchronize()
         

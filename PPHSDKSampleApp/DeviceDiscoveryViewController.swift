@@ -20,7 +20,7 @@ class DeviceDiscoveryViewController: UIViewController {
     @IBOutlet weak var connectLastKnownCodeView: UITextView!
     @IBOutlet weak var activeReaderLbl: UILabel!
     
-    let device = PayPalRetailSDK.deviceManager()
+    let deviceManager = PayPalRetailSDK.deviceManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class DeviceDiscoveryViewController: UIViewController {
     // device to use. As part of this function, we also need to include the process
     // of reader updates for our BT readers.
     @IBAction func findAndConnectReader(_ sender: Any) {
-        device?.searchAndConnect({ (error, paymentDevice) -> Void in
+        deviceManager?.searchAndConnect({ (error, paymentDevice) -> Void in
             if let err = error {
                 print("Search Device Error: \(err.debugId)")
                 print("Search Device Error: \(err.code)")
@@ -66,7 +66,7 @@ class DeviceDiscoveryViewController: UIViewController {
     // Function to connect to the last known reader device used and check for any
     // reader updates.
     @IBAction func connectToLastReader(_ sender: Any) {
-        device?.connect(toLastActiveReader: { (error, paymentDevice) -> Void in
+        deviceManager?.connect(toLastActiveReader: { (error, paymentDevice) -> Void in
             if let err = error {
                 print("Connect Last Device Error: \(err.debugId)")
                 print("Connect Last Device Error: \(err.code)")
@@ -85,7 +85,7 @@ class DeviceDiscoveryViewController: UIViewController {
     // Code that checks if there's a software update available for the connected
     // reader and initiates the process if there's one available.
     func checkForReaderUpdate(reader:PPRetailPaymentDevice?) {
-        // If an update was available when we connected, offer the update.
+        
         if(reader != nil && reader?.pendingUpdate != nil && (reader?.pendingUpdate?.isRequired)!) {
             reader?.pendingUpdate?.offer({ (error, updateComplete) in
                 if(updateComplete) {
@@ -99,6 +99,7 @@ class DeviceDiscoveryViewController: UIViewController {
         } else {
             print("Reader update not required at this time.")
         }
+        
     }
     
     @IBAction func showCode(_ sender: UIButton){
@@ -108,7 +109,7 @@ class DeviceDiscoveryViewController: UIViewController {
             if (findAndConnectCodeView.isHidden) {
                 findAndConnectCodeBtn.setTitle("Hide Code", for: .normal)
                 findAndConnectCodeView.isHidden = false
-                findAndConnectCodeView.text = "device.searchAndConnect(ui: { (error, paymentDevice) in\n" +
+                findAndConnectCodeView.text = "deviceManager.searchAndConnect({ (error, paymentDevice) in\n" +
                                               "   <code to handle success/failure>\n" +
                                               "})"
             } else {
@@ -119,7 +120,7 @@ class DeviceDiscoveryViewController: UIViewController {
             if (connectLastKnownCodeView.isHidden) {
                 connectLastKnownCodeBtn.setTitle("Hide Code", for: .normal)
                 connectLastKnownCodeView.isHidden = false
-                connectLastKnownCodeView.text = "device.connectToLastActiveReaderOrFindAnother(ui: { (error, paymentDevice) in\n" +
+                connectLastKnownCodeView.text = "deviceManager.connect(toLastActiveReader: { (error, paymentDevice) in\n" +
                                                 "    <code to handle success/failure>\n" +
                                                 "})"
             } else {

@@ -1,6 +1,3 @@
-#source 'https://github.paypal.com/IOS-R/podspecs'
-#source 'https://github.com/CocoaPods/Specs'
-
 platform :ios, '8.1'
 
 inhibit_all_warnings!
@@ -11,7 +8,6 @@ workspace 'PPHSDKSampleApp'
 target 'PPHSDKSampleApp' do
     project 'PPHSDKSampleApp.xcodeproj'
     pod 'PayPalHereSDKv2'
-    #pod 'PayPalRetailSDK', :path => "PayPalRetailSDKFW.podspec"
 end
 
 
