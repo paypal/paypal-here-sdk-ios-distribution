@@ -1,108 +1,48 @@
 # PPHSDKSampleApp
-_Sample app, written in Swift, using PPH SDK 2.0_
+_Sample app, written in Swift, using PPH SDK 2.x
 
 
-This app runs through the basic process of integrating the PayPal Here SDK.  Below are the steps, in their simplest form, to complete a payment with the PPH SDK.
+Introduction
+=================
+The PayPal Here SDK enables iOS apps to process in-person credit card transactions using an assortment of [card readers](https://www.paypal.com/webapps/mpp/credit-card-reader#A39) that are capable of accepting contactless, EMV, and swipe payment methods.
 
-**Initialization:**
-  1. Initialize the SDK <br>
-  ```swift
-  
-  PayPalRetailSDK.initializeSDK()
-  ```
-  2. Initialize the Merchant <br>
-  ```swift
-  
-  PayPalRetailSDK.initializeMerchant(sdkToken) { (error, merchant) -> Void in
-      if((error) != nil) {
-          // handle error situation and try to re-initialize
-      } else {
-          // merchant initialization success - continue on to payment
-      }
-  })
-  ```
+Developers should use the PayPal Here SDK to get world-class payment processing with one simple integration.  Some of the main benefits include
+* **Low, transparent pricing:** US Merchants pay just 2.7% per transaction (or 3.5% + $0.15 for keyed in transactions), including cards like American Express, with no additional hidden/monthly costs.
+* **Safety & Security:** PayPal's solution uses encrypted swipers, such that card data is never made available to merchants or anyone else.
+* **Live customer support:** Whenever you need support, we’re available to help with our customer support team.
+[Visit our website](https://www.paypal.com/webapps/mpp/credit-card-reader) for more information about PayPal Here.
 
 
-**Payment (with the following declarations assumed):**
-```swift
+Supporting Materials
+========================
+ *  PPH SDK documentation can be found [here](https://developer.paypal.com/docs/integration/paypal-here/).
+ *  Sample App: Please see and modify the sample app thats available in this repo to experiment and learn more about the SDK and it's capabilities.
 
-var tc: PPRetailTransactionContext?
-var invoice: PPRetailInvoice?
-```
-  1. Create an Invoice
-  ```swift
-  
-  invoice = PPRetailInvoice.init(currencyCode: "USD")
-  invoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
-  invoice.number = "some_unique_invoice_number"
-  ```
-  2. Create TransactionContext <br>
-  ```swift
 
-  tc = PayPalRetailSDK.createTransaction(invoice)
-  ```
-  3. Accept a Transaction (Activate the reader and take the payment)
-  ```swift
-  // Activates the reader for payment
-  tc.begin()
-  
-  // Listener that gets called when customer chooses the payment type on the reader
-  tc.setCardPresentedHandler { (cardInfo) -> Void in
-      self.tc.continue(with: cardInfo)
-  }
-  
-  // Listener that gets called after the payment process
-  tc.setCompletedHandler { (error, txnRecord) -> Void in
+Installation
+==============
+Our recommended installation method is Cocoapods - `pod 'PayPalHereSDKv2'`
 
-      if((error) != nil) {
-          // handle error situation accordingly
-      } else {
-          // transaction success
-      }
-  }
-  ```
-  
-**Refunds (with the same declarations as above):** <br>
-_To activate a refund with this app, simply tap the successful transaction ID after a payment._ <br>
-  1. Create TransactionContext based on the Invoice you want to refund <br>
-  ```swift
+The default installation is the Debug build but you can switch to the Release build of the PayPalHereSDK by using the Release subspec - `pod 'PayPalHereSDKv2/Release'`
 
-  tc = PayPalRetailSDK.createTransaction(invoice)
-  ```
-  2. Begin Refund and tell the SDK whether the card is present for the refund or not
-  ```swift
-  
-  // Uses simple alert box to get whether the card is present or not and then calls beginRefund accordingly
-  let alertController = UIAlertController(title: "Refund $\(tc.invoice.total)", message: "Is the card present?", preferredStyle: UIAlertControllerStyle.alert)
-  let cardNotPresent = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-      self.tc.beginRefund(false, amount: self.invoice.total)
-      self.tc.continue(with: nil)
-  }
-        
-  let cardPresent = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-      self.tc.beginRefund(true, amount: self.invoice.total)
-  }
-        
-  alertController.addAction(cardNotPresent)
-  alertController.addAction(cardPresent)
-  self.present(alertController, animated: true, completion: nil)
-  ```
-  3. Set your listeners to know whether the card is presented and/or the refund is completed
-  ```swift
-  
-  // Listener that fires once the card for refund is recognized
-  tc.setCardPresentedHandler { (cardInfo) -> Void in
-      self.tc!.continue(with: cardInfo)
-  }
-  
-  // Listener that fires once the refund is complete
-  tc.setCompletedHandler { (error, txnRecord) -> Void in
+As a side note, please make sure you also add `com.paypal.here.reader` to the Supported External Accessory Protocols entry of your app's `.plist` file. If you're processing with the [Mobile Card Reader](https://www.paypal.com/us/webapps/mpp/credit-card-reader-how-to/mobile-card-reader), you'll also need to add a description for Microphone usage within your `.plist` file.
 
-      if((error) != nil) {
-          // handle error situation accordingly
-      } else {
-          // transaction success
-      }
-  }
-  ```
-  
+
+Housekeeping Items
+=====================
+There are a few noteworthy items that should be called out. These include:
+* **Auth/Capture:** Please note that you will see code relating to auth/capture within the sample app, but this feature is NOT yet available. Our auth/capture functionality will be coming soon and then we'll update the sample app accordingly. For the time being, the code is available in the sample app but it's commented out.
+* **Key-in:** Even though there's not an example in the sample app, please know that the SDK will support this payment method should you need to implement it.
+* **Server:** There will be some server-side work that needs to be done to handle the token management part of the integration. Standard Oauth2 is used for Merchant Onboarding and more information on this piece can be found [here](https://developer.paypal.com/docs/integration/paypal-here/merchant-onboarding/)
+* **Marketing Toolkit:** Within this repo, you'll find downloadable marketing assets – from emails to banner ads – to help you quickly, and effectively, promote your app’s new payments functionality. 
+
+
+App Review Information
+======================
+Only the Release build of the PayPal Here SDK is eligible for App Store release. If you submit your app for approval with the Debug build, your app will be rejected. To install the release build with Cocoapods please use:
+`pod 'PayPalHereSDKv2/Release'`
+
+When you submit your app, if you are using the [Chip Card Reader](https://www.paypal.com/us/webapps/mpp/credit-card-reader-how-to/chip-card-reader), you will need to enroll in the [Apple MFi program](https://mfi.apple.com/MFiWeb/getFAQ.action). In order to complete your enrollment, please complete the [MFi Enrollment Form](/docs/MFi-Enrollment.xls) and email it to <pph-sdk@paypal.com>. Please note that this process can take a few days to complete.
+
+Be sure to include the following into your app store review notes:
+* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0021

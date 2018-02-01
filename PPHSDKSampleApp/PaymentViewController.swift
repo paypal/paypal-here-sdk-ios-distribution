@@ -151,6 +151,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
                 self.authId = txnRecord?.transactionNumber
 //                self.goToAuthCompletedViewController()
+                self.goToPaymentCompletedViewController()  // hard-coding the sale flow for now
             } else {
                 self.goToPaymentCompletedViewController()
             }
@@ -164,7 +165,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         options.preferredFormFactors = []
         options.tippingOnReaderEnabled = false
         options.amountBasedTipping = false
-        options.isAuthCapture = false
+        options.isAuthCapture = false  // setting to sale until auth/capture is available
 //        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
         
         tc!.beginPayment(options)
