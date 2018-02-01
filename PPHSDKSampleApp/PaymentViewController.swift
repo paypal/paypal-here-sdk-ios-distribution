@@ -33,9 +33,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         super.viewDidLoad()
         
         PayPalRetailSDK.setRetailSDKAppDelegate(self)
-        // Setting up initial aesthetics.
-        demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
         
+        // Setting up initial aesthetics.
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
@@ -113,9 +112,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // This function does the createTransaction call to start the process with the current invoice.
     @IBAction func createTransaction(_ sender: UIButton) {
         
-        tc = PayPalRetailSDK.createTransaction(invoice)
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
-            self.tc = context;
+            self.tc = context
 
             self.createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
             self.createTxnBtn.isEnabled = false
@@ -130,6 +128,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // their payment device.
     @IBAction func acceptTransaction(_ sender: UIButton) {
         
+        // This card presented listener is optional as the SDK will automatically continue when the card is
+        // presented even if this listener is not implemented.
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
         }
@@ -143,26 +143,30 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                 
                 return
             }
+            
             print("Txn ID: \(txnRecord!.transactionNumber!)")
             
             self.navigationController?.popToViewController(self, animated: false)
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
                 self.authId = txnRecord?.transactionNumber
-                self.goToAuthCompletedViewController()
+//                self.goToAuthCompletedViewController()
+                self.goToPaymentCompletedViewController()  // hard-coding the sale flow for now
             } else {
                 self.goToPaymentCompletedViewController()
             }
             
         }
         
+        // Setting up the options for the transaction
         let options = PPRetailTransactionBeginOptions()
         options.showPromptInCardReader = true
         options.showPromptInApp = true
         options.preferredFormFactors = []
         options.tippingOnReaderEnabled = false
         options.amountBasedTipping = false
-        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options.isAuthCapture = false  // setting to sale until auth/capture is available
+//        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
         
         tc!.beginPayment(options)
 
@@ -207,7 +211,10 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if (createTxnCodeView.isHidden) {
                 createTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 createTxnCodeView.isHidden = false
-                createTxnCodeView.text = "tc = PayPalRetailSDK.createTransaction(invoice)"
+                createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
+                                         "  // Set the transactionContext or handle the error \n" +
+                                         "  self.tc = context \n" +
+                                         "}))"
             } else {
                 createTxnCodeBtn.setTitle("View Code", for: .normal)
                 createTxnCodeView.isHidden = true
@@ -216,11 +223,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if (acceptTxnCodeView.isHidden) {
                 acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
-                if(pmtTypeSelector.titleForSegment(at: pmtTypeSelector.selectedSegmentIndex) == "auth") {
-                    acceptTxnCodeView.text = "tc.beginAnAuthorization()"
-                } else {
-                    acceptTxnCodeView.text = "tc.begin()"
-                }
+                acceptTxnCodeView.text = "tc.beginPayment(options)"
             } else {
                 acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
