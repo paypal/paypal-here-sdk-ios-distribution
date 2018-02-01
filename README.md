@@ -1,7 +1,3 @@
-# PPHSDKSampleApp
-_Sample app, written in Swift, using PPH SDK 2.x_
-
-
 Introduction
 =================
 The PayPal Here SDK enables iOS apps to process in-person credit card transactions using an assortment of [card readers](https://www.paypal.com/webapps/mpp/credit-card-reader#A39) that are capable of accepting contactless, EMV, and swipe payment methods.
