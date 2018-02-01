@@ -1,5 +1,5 @@
 # PPHSDKSampleApp
-_Sample app, written in Swift, using PPH SDK 2.x
+_Sample app, written in Swift, using PPH SDK 2.x_
 
 
 Introduction
