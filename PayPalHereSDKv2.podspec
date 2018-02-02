@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "PayPalHereSDKv2"
-  s.version          = "2.0.0.201805"
+  s.version          = "2.0.0.201806"
   s.summary          = "SDK for interfacing with PayPal card readers and mobile payment processing APIs."
   s.license          = { :type => 'COMMERCIAL', :file => 'LICENSE.md' }
-  s.authors          = {"PayPal"=>"DL-PP-RetailSDK@paypal.com"}
-  s.homepage         = "https://developer.paypal.com/docs/integration/paypal-here/ios-dev/overview/"
+  s.authors          = { "PayPal"=>"DL-PP-PPH-SDK-Admin@paypal.com" }
+  s.homepage         = "https://developer.paypal.com/docs/integration/paypal-here/"
   s.description      = "The PayPal Here SDK v2 for iOS provides access to a group of PayPal transaction services which contain an extensive set of point-of-sale functions for merchants."
   s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :tag => "v#{s.version}" }
 

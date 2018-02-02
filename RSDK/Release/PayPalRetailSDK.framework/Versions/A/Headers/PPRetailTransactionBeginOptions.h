@@ -110,11 +110,12 @@
  * The money will be moved only when a capture call is made on an authorized transaction.
     */
     @property (nonatomic,assign) BOOL isAuthCapture;
-    /**
-    * Set the flag if Quick Chip feature is Enabled
-    */
-    @property (nonatomic,assign) BOOL quickChipEnabled;
 
+
+    
+      - (instancetype _Null_unspecified)init;
+    
+    
 
 
 
