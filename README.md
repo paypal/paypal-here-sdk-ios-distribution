@@ -42,7 +42,7 @@ Only the Release build of the PayPal Here SDK is eligible for App Store release.
 When you submit your app, if you are using the [Chip Card Reader](https://www.paypal.com/us/webapps/mpp/credit-card-reader-how-to/chip-card-reader), you will need to enroll in the [Apple MFi program](https://mfi.apple.com/MFiWeb/getFAQ.action). In order to complete your enrollment, please complete the [MFi Enrollment Form](/docs/MFi-Enrollment.xls) and email it to <pph-sdk@paypal.com>. Please note that this process can take a few days to complete.
 
 Be sure to include the following into your app store review notes:
-* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0021
+* This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0026
 
 [License](LICENSE.md)
 =======
