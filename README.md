@@ -42,3 +42,6 @@ When you submit your app, if you are using the [Chip Card Reader](https://www.pa
 
 Be sure to include the following into your app store review notes:
 * This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0021
+
+[License](LICENSE.md)
+=======
