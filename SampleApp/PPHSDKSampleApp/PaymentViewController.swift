@@ -160,12 +160,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         // Setting up the options for the transaction
         let options = PPRetailTransactionBeginOptions()
-        options.showPromptInCardReader = true
-        options.showPromptInApp = true
-        options.preferredFormFactors = []
-        options.tippingOnReaderEnabled = false
-        options.amountBasedTipping = false
-        options.isAuthCapture = false  // setting to sale until auth/capture is available
+        options?.showPromptInCardReader = true
+        options?.showPromptInApp = true
+        options?.preferredFormFactors = []
+        options?.tippingOnReaderEnabled = false
+        options?.amountBasedTipping = false
+        options?.isAuthCapture = false  // setting to sale until auth/capture is available
 //        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
         
         tc!.beginPayment(options)
