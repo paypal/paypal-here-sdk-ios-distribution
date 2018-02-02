@@ -109,7 +109,7 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  * This is the primary starting point for taking a payment. First, create an invoice, then create a transaction, then
  * begin the transaction to have the SDK listen for events and go through the relevant flows for a payment type.
  */
-+ (PPRetailTransactionContext *)createTransaction:(PPRetailInvoice *)invoice __attribute__((deprecated("Use transactionManager")));
++ (PPRetailTransactionContext *)createTransaction:(PPRetailInvoice *)invoice __attribute__((deprecated("Deprecated since v2.0.0. Use transactionManager")));
 
 /**
  * Add a listener for the deviceDiscovered event
