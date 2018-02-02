@@ -22,27 +22,30 @@ class CaptureAuthViewController: UIViewController {
 
         captureAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         captureAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        
+        captureAuthBtn.isHidden = false
     }
 
     @IBAction func captureAuthorization(_ sender: UIButton) {
         
+        captureAuthBtn.isEnabled = false
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let amountToCapture = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
         
-//        PayPalRetailSDK.transactionManager()?.captureAuthorization(authId, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
-//            
-//            if let err = error {
-//                print("Error Code: \(err.code)")
-//                print("Error Message: \(err.message)")
-//                print("Debug ID: \(err.debugId)")
-//                
-//                return
-//            }
-//            print("Capture ID: \(captureId)")
-//            
-//            self.goToPaymentCompletedViewController()
-//        }
+        PayPalRetailSDK.transactionManager()?.captureAuthorization(authId, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
+            
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.message)")
+                print("Debug ID: \(err.debugId)")
+                
+                return
+            }
+            print("Capture ID: \(captureId)")
+            
+            self.goToPaymentCompletedViewController()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
