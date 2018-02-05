@@ -159,8 +159,9 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             self.navigationController?.popToViewController(self, animated: false)
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
-                self.authId = txnRecord?.transactionNumber
-                self.goToAuthCompletedViewController()
+//                self.authId = txnRecord?.transactionNumber
+//                self.goToAuthCompletedViewController()
+                self.goToPaymentCompletedViewController() //hard-coding to payment complete screen
             } else {
                 self.goToPaymentCompletedViewController()
             }
@@ -174,7 +175,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         options.preferredFormFactors = []
         options.tippingOnReaderEnabled = false
         options.amountBasedTipping = false
-        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+//        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options.isAuthCapture = false   //hard-coding to sale instead of auth option
         
         tc!.beginPayment(options)
 
