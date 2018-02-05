@@ -41,24 +41,25 @@ class AuthCompletedViewController: UIViewController {
         activitySpinner.isHidden = false
         activitySpinner.startAnimating()
         
-        PayPalRetailSDK.transactionManager().voidAuthorization(authId) { (error) in
-            if let err = error {
-                print("Error Code: \(err.code)")
-                print("Error Message: \(err.message)")
-                print("Debug ID: \(err.debugId)")
-                self.activitySpinner.stopAnimating()
-                return
-            }
-            
-            self.activitySpinner.stopAnimating()
-            self.voidAuthBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
-            self.voidSuccessLbl.isHidden = false
-            
-            self.captureAuthBtn.isEnabled = false
-            self.captureAuthBtn.setImage(#imageLiteral(resourceName: "small-grayarrow"), for: .disabled)
-            
-            self.startOverBtn.isHidden = false
-        }
+//        PayPalRetailSDK.transactionManager().voidAuthorization(authId) { (error) in
+//            if let err = error {
+//                print("Error Code: \(err.code)")
+//                print("Error Message: \(err.message)")
+//                print("Debug ID: \(err.debugId)")
+//                self.activitySpinner.stopAnimating()
+//                return
+//            }
+//
+//            self.activitySpinner.stopAnimating()
+//            self.activitySpinner.isHidden = true
+//            self.voidAuthBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
+//            self.voidSuccessLbl.isHidden = false
+//
+//            self.captureAuthBtn.isEnabled = false
+//            self.captureAuthBtn.setImage(#imageLiteral(resourceName: "small-grayarrow"), for: .disabled)
+//
+//            self.startOverBtn.isHidden = false
+//        }
         
     }
     
@@ -79,24 +80,24 @@ class AuthCompletedViewController: UIViewController {
         switch sender.tag {
         case 0:
             if (voidCodeViewer.isHidden) {
-                voidAuthBtn.setTitle("Hide Code", for: .normal)
+                voidCodeViewBtn.setTitle("Hide Code", for: .normal)
                 voidCodeViewer.isHidden = false
-                voidCodeViewer.text = "PayPalRetailSDK.voidAuthorization(authId) { (error) in\n" +
+                voidCodeViewer.text = "PayPalRetailSDK.transactionManager().voidAuthorization(authId) { (error) in\n" +
                                       "   <code to handle success/failure>\n" +
                                       "}"
             } else {
-                voidAuthBtn.setTitle("View Code", for: .normal)
+                voidCodeViewBtn.setTitle("View Code", for: .normal)
                 voidCodeViewer.isHidden = true
             }
         case 1:
             if (captureAuthCodeViewer.isHidden) {
-                captureAuthBtn.setTitle("Hide Code", for: .normal)
+                captureAuthCodeViewBtn.setTitle("Hide Code", for: .normal)
                 captureAuthCodeViewer.isHidden = false
                 captureAuthCodeViewer.text = "PayPalRetailSDK.captureAuthorizedTransaction(authId, invoiceId: invoice.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice.currency) { (error, captureId) in\n" +
                                              "  <code to handle success/failure>\n" +
                                              "}"
             } else {
-                captureAuthBtn.setTitle("View Code", for: .normal)
+                captureAuthCodeViewBtn.setTitle("View Code", for: .normal)
                 captureAuthCodeViewer.isHidden = true
             }
         default:
