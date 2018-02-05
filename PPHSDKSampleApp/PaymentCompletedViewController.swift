@@ -17,12 +17,17 @@ class PaymentCompletedViewController: UIViewController {
     @IBOutlet weak var refundCodeViewer: UITextView!
     
     var invoice: PPRetailInvoice?
+    var isCapture: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refundCodeViewer.isHidden = true
-        successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"
+        if(isCapture) {
+            successMsg.text = "Your capture of $\(invoice?.total ?? 0) was successful"
+        } else {
+            successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"
+        }
         successMsg.sizeToFit()
     }
     
@@ -39,7 +44,7 @@ class PaymentCompletedViewController: UIViewController {
     // if there's a card available or not. Based on that selection, the refund will process for the amount
     // supplied and the completion handler will be called afterwards.
     @IBAction func provideRefund(_ sender: Any) {
-
+        
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, tc) in
             
             // This card presented listener is optional as the SDK will automatically continue if a card is

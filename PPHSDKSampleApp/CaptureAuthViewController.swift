@@ -13,22 +13,52 @@ class CaptureAuthViewController: UIViewController {
     
     @IBOutlet weak var captureAmount: UITextField!
     @IBOutlet weak var captureAuthBtn: UIButton!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     var invoice: PPRetailInvoice?
     var authId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //init toolbar for keyboard
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        //create left side empty space so that done button set on right side
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CaptureAuthViewController.doneButtonAction))
+        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        toolbar.sizeToFit()
+        //setting toolbar as inputAccessoryView
+        self.captureAmount.inputAccessoryView = toolbar
 
         captureAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         captureAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
-        captureAuthBtn.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        captureAmount.becomeFirstResponder()
     }
 
     @IBAction func captureAuthorization(_ sender: UIButton) {
         
+        guard captureAmount.text != "" else {
+            let alertController = UIAlertController(title: "Whoops!", message: "You need to enter a capture amount", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Invalid Capture Amount")
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+        
+        activitySpinner.isHidden = false
+        activitySpinner.startAnimating()
         captureAuthBtn.isEnabled = false
+        
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let amountToCapture = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
@@ -40,10 +70,11 @@ class CaptureAuthViewController: UIViewController {
                 print("Error Message: \(err.message)")
                 print("Debug ID: \(err.debugId)")
                 
+                self.activitySpinner.stopAnimating()
                 return
             }
             print("Capture ID: \(captureId)")
-            
+            self.activitySpinner.stopAnimating()
             self.goToPaymentCompletedViewController()
         }
     }
@@ -51,6 +82,7 @@ class CaptureAuthViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToPmtCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
+                pmtCompletedViewController.isCapture = true
                 pmtCompletedViewController.invoice = invoice
             }
         }
@@ -67,16 +99,14 @@ class CaptureAuthViewController: UIViewController {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
-        
-        guard let amt = captureAmount.text, !amt.isEmpty else {
-            captureAuthBtn.isEnabled = false
-            return
-        }
-        
-        captureAuthBtn.isEnabled = true
+
     }
     
     func getCurrentNavigationController() -> UINavigationController! {
         return self.navigationController
+    }
+    
+    func doneButtonAction() {
+        self.view.endEditing(true)
     }
 }
