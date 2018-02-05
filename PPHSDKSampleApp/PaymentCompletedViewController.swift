@@ -44,7 +44,7 @@ class PaymentCompletedViewController: UIViewController {
     // if there's a card available or not. Based on that selection, the refund will process for the amount
     // supplied and the completion handler will be called afterwards.
     @IBAction func provideRefund(_ sender: Any) {
-        
+
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, tc) in
             
             // This card presented listener is optional as the SDK will automatically continue if a card is
