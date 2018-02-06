@@ -17,12 +17,17 @@ class PaymentCompletedViewController: UIViewController {
     @IBOutlet weak var refundCodeViewer: UITextView!
     
     var invoice: PPRetailInvoice?
+    var isCapture: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refundCodeViewer.isHidden = true
-        successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"
+        if(isCapture) {
+            successMsg.text = "Your capture of $\(invoice?.total ?? 0) was successful"
+        } else {
+            successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"
+        }
         successMsg.sizeToFit()
     }
     
