@@ -88,6 +88,7 @@ class CaptureAuthViewController: UIViewController {
                 pmtCompletedViewController.isCapture = true
                 pmtCompletedViewController.invoice = invoice
                 pmtCompletedViewController.paymentMethod = paymentMethod
+                // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
                 pmtCompletedViewController.transactionNumber = captureTransactionNumber
             }
         }
