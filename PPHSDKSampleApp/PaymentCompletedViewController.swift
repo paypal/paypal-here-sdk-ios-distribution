@@ -19,7 +19,7 @@ class PaymentCompletedViewController: UIViewController {
     var invoice: PPRetailInvoice?
     var isCapture: Bool = false
     var paymentMethod: PPRetailInvoicePaymentMethod?
-    var captureId: String?
+    var transactionNumber: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class PaymentCompletedViewController: UIViewController {
             self.noThanksBtn(nil)
         }
         
-        tc?.beginRefund(true, amount: tc?.invoice?.total)
+        tc?.beginRefund(true, amount: invoice?.total)
     }
     
     // This function will process the refund. You first have to create a TransactionContext, then set the appropriate
@@ -71,12 +71,7 @@ class PaymentCompletedViewController: UIViewController {
     // if there's a card available or not. Based on that selection, the refund will process for the amount
     // supplied and the completion handler will be called afterwards.
     @IBAction func provideRefund(_ sender: Any) {
-
-        if(isCapture) {
-            PayPalRetailSDK.transactionManager()?.createRefundTransaction(invoice?.payPalId, transactionNumber: captureId, paymentMethod: paymentMethod!, callback: refundHandler)
-        } else {
-            PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: refundHandler)
-        }
+        PayPalRetailSDK.transactionManager()?.createRefundTransaction(invoice?.payPalId, transactionNumber: transactionNumber, paymentMethod: paymentMethod!, callback: refundHandler)
     }
         
     
@@ -84,7 +79,7 @@ class PaymentCompletedViewController: UIViewController {
         if (refundCodeViewer.isHidden) {
             viewRefundCodeBtn.setTitle("Hide Code", for: .normal)
             refundCodeViewer.isHidden = false
-            refundCodeViewer.text = "tc.beginRefund(true, amount: tc.invoice.total)"
+            refundCodeViewer.text = "tc.beginRefund(true, amount: invoice?.total)"
         } else {
             viewRefundCodeBtn.setTitle("View Code", for: .normal)
             refundCodeViewer.isHidden = true

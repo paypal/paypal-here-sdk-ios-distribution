@@ -16,9 +16,9 @@ class CaptureAuthViewController: UIViewController {
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     var invoice: PPRetailInvoice?
-    var authId: String?
+    var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
-    var captureId: String?
+    var captureTransactionNumber: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +65,9 @@ class CaptureAuthViewController: UIViewController {
         formatter.generatesDecimalNumbers = true
         let amountToCapture = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
         
-        PayPalRetailSDK.transactionManager()?.captureAuthorization(authId, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
+        PayPalRetailSDK.transactionManager()?.captureAuthorization(authTransactionNumber, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
 
-            self.captureId = captureId
+            self.captureTransactionNumber = captureId
             if let err = error {
                 print("Error Code: \(err.code)")
                 print("Error Message: \(err.message)")
@@ -88,7 +88,7 @@ class CaptureAuthViewController: UIViewController {
                 pmtCompletedViewController.isCapture = true
                 pmtCompletedViewController.invoice = invoice
                 pmtCompletedViewController.paymentMethod = paymentMethod
-                pmtCompletedViewController.captureId = captureId                
+                pmtCompletedViewController.transactionNumber = captureTransactionNumber
             }
         }
     }

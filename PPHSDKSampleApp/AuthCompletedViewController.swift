@@ -23,7 +23,7 @@ class AuthCompletedViewController: UIViewController {
     @IBOutlet weak var voidSuccessLbl: UILabel!
     
     var invoice: PPRetailInvoice?
-    var authId: String?
+    var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class AuthCompletedViewController: UIViewController {
         activitySpinner.isHidden = false
         activitySpinner.startAnimating()
         
-        PayPalRetailSDK.transactionManager().voidAuthorization(authId) { (error) in
+        PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in
             if let err = error {
                 print("Error Code: \(err.code)")
                 print("Error Message: \(err.message)")
@@ -67,7 +67,7 @@ class AuthCompletedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToCaptureAuthView") {
             if let captureAuthViewController = segue.destination as? CaptureAuthViewController {
-                captureAuthViewController.authId = authId
+                captureAuthViewController.authTransactionNumber = authTransactionNumber
                 captureAuthViewController.invoice = invoice
                 captureAuthViewController.paymentMethod = paymentMethod
             }
@@ -84,7 +84,7 @@ class AuthCompletedViewController: UIViewController {
             if (voidCodeViewer.isHidden) {
                 voidCodeViewBtn.setTitle("Hide Code", for: .normal)
                 voidCodeViewer.isHidden = false
-                voidCodeViewer.text = "PayPalRetailSDK.transactionManager().voidAuthorization(authId) { (error) in\n" +
+                voidCodeViewer.text = "PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in\n" +
                                       "   <code to handle success/failure>\n" +
                                       "}"
             } else {
@@ -95,7 +95,7 @@ class AuthCompletedViewController: UIViewController {
             if (captureAuthCodeViewer.isHidden) {
                 captureAuthCodeViewBtn.setTitle("Hide Code", for: .normal)
                 captureAuthCodeViewer.isHidden = false
-                captureAuthCodeViewer.text = "PayPalRetailSDK.captureAuthorizedTransaction(authId, invoiceId: invoice.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice.currency) { (error, captureId) in\n" +
+                captureAuthCodeViewer.text = "PayPalRetailSDK.captureAuthorizedTransaction(authTransactionNumber, invoiceId: invoice.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice.currency) { (error, captureId) in\n" +
                                              "  <code to handle success/failure>\n" +
                                              "}"
             } else {
