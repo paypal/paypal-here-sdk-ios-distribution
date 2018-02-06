@@ -24,6 +24,7 @@ class AuthCompletedViewController: UIViewController {
     
     var invoice: PPRetailInvoice?
     var authId: String?
+    var paymentMethod: PPRetailInvoicePaymentMethod?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,7 @@ class AuthCompletedViewController: UIViewController {
             if let captureAuthViewController = segue.destination as? CaptureAuthViewController {
                 captureAuthViewController.authId = authId
                 captureAuthViewController.invoice = invoice
+                captureAuthViewController.paymentMethod = paymentMethod
             }
         }
     }

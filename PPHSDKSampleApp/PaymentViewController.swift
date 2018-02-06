@@ -28,6 +28,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
     var authId: String?
+    var paymentMethod: PPRetailInvoicePaymentMethod?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
         // We will enable the selector when Auth-Capture becomes available
-        self.pmtTypeSelector.isEnabled = false;
+        //self.pmtTypeSelector.isEnabled = false;
         
     }
     
@@ -163,6 +164,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
                 self.authId = txnRecord?.transactionNumber
+                self.paymentMethod = txnRecord?.paymentMethod
                 self.goToAuthCompletedViewController()
             } else {
                 self.goToPaymentCompletedViewController()
@@ -194,6 +196,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if let authCompletedViewController = segue.destination as? AuthCompletedViewController {
                 authCompletedViewController.authId = authId
                 authCompletedViewController.invoice = invoice
+                authCompletedViewController.paymentMethod = paymentMethod
             }
         }
     }

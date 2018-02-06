@@ -18,6 +18,8 @@ class PaymentCompletedViewController: UIViewController {
     
     var invoice: PPRetailInvoice?
     var isCapture: Bool = false
+    var paymentMethod: PPRetailInvoicePaymentMethod?
+    var captureId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,38 +41,44 @@ class PaymentCompletedViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func refundHandler(error: PPRetailError?, tc: PPRetailTransactionContext?) {
+        // This card presented listener is optional as the SDK will automatically continue if a card is
+        // presented for a refund.
+        tc?.setCardPresentedHandler { (cardInfo) -> Void in
+            tc?.continue(with: cardInfo)
+        }
+        
+        tc?.setCompletedHandler { (error, txnRecord) -> Void in
+            
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.message)")
+                print("Debug ID: \(err.debugId)")
+                
+                return
+            }
+            print("Refund ID: \(txnRecord!.transactionNumber!)")
+            
+            self.navigationController?.popToViewController(self, animated: false)
+            self.noThanksBtn(nil)
+        }
+        
+        tc?.beginRefund(true, amount: tc?.invoice?.total)
+    }
+    
     // This function will process the refund. You first have to create a TransactionContext, then set the appropriate
     // listeners, and then call beginRefund. Calling beginRefund with true and the amount will first prompt
     // if there's a card available or not. Based on that selection, the refund will process for the amount
     // supplied and the completion handler will be called afterwards.
     @IBAction func provideRefund(_ sender: Any) {
 
-        PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, tc) in
-            
-            // This card presented listener is optional as the SDK will automatically continue if a card is
-            // presented for a refund.
-            tc?.setCardPresentedHandler { (cardInfo) -> Void in
-                tc?.continue(with: cardInfo)
-            }
-            
-            tc?.setCompletedHandler { (error, txnRecord) -> Void in
-                
-                if let err = error {
-                    print("Error Code: \(err.code)")
-                    print("Error Message: \(err.message)")
-                    print("Debug ID: \(err.debugId)")
-                    
-                    return
-                }
-                print("Refund ID: \(txnRecord!.transactionNumber!)")
-                
-                self.navigationController?.popToViewController(self, animated: false)
-                self.noThanksBtn(nil)
-            }
-            
-            tc?.beginRefund(true, amount: tc?.invoice?.total)
-        })
+        if(isCapture) {
+            PayPalRetailSDK.transactionManager()?.createRefundTransaction(invoice?.payPalId, transactionNumber: captureId, paymentMethod: paymentMethod!, callback: refundHandler)
+        } else {
+            PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: refundHandler)
+        }
     }
+        
     
     @IBAction func showRefundCode(_ sender: Any) {
         if (refundCodeViewer.isHidden) {

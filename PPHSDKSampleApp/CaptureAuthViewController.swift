@@ -17,7 +17,9 @@ class CaptureAuthViewController: UIViewController {
     
     var invoice: PPRetailInvoice?
     var authId: String?
-
+    var paymentMethod: PPRetailInvoicePaymentMethod?
+    var captureId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +67,7 @@ class CaptureAuthViewController: UIViewController {
         
         PayPalRetailSDK.transactionManager()?.captureAuthorization(authId, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
 
+            self.captureId = captureId
             if let err = error {
                 print("Error Code: \(err.code)")
                 print("Error Message: \(err.message)")
@@ -84,6 +87,8 @@ class CaptureAuthViewController: UIViewController {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
                 pmtCompletedViewController.isCapture = true
                 pmtCompletedViewController.invoice = invoice
+                pmtCompletedViewController.paymentMethod = paymentMethod
+                pmtCompletedViewController.captureId = captureId                
             }
         }
     }
