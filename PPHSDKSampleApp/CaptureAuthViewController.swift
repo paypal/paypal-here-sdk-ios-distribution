@@ -63,20 +63,20 @@ class CaptureAuthViewController: UIViewController {
         formatter.generatesDecimalNumbers = true
         let amountToCapture = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
         
-//        PayPalRetailSDK.transactionManager()?.captureAuthorization(authId, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
-//
-//            if let err = error {
-//                print("Error Code: \(err.code)")
-//                print("Error Message: \(err.message)")
-//                print("Debug ID: \(err.debugId)")
-//
-//                self.activitySpinner.stopAnimating()
-//                return
-//            }
-//            print("Capture ID: \(captureId)")
-//            self.activitySpinner.stopAnimating()
-//            self.goToPaymentCompletedViewController()
-//        }
+        PayPalRetailSDK.transactionManager()?.captureAuthorization(authId, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
+
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.message)")
+                print("Debug ID: \(err.debugId)")
+
+                self.activitySpinner.stopAnimating()
+                return
+            }
+            print("Capture ID: \(captureId)")
+            self.activitySpinner.stopAnimating()
+            self.goToPaymentCompletedViewController()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
