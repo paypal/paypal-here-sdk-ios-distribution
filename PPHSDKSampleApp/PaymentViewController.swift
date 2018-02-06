@@ -48,6 +48,9 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
+        // We will enable the selector when Auth-Capture becomes available
+        self.pmtTypeSelector.isEnabled = false;
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -159,9 +162,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             self.navigationController?.popToViewController(self, animated: false)
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
-//                self.authId = txnRecord?.transactionNumber
-//                self.goToAuthCompletedViewController()
-                self.goToPaymentCompletedViewController() //hard-coding to payment complete screen
+                self.authId = txnRecord?.transactionNumber
+                self.goToAuthCompletedViewController()
             } else {
                 self.goToPaymentCompletedViewController()
             }
@@ -170,13 +172,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         // Setting up the options for the transaction
         let options = PPRetailTransactionBeginOptions()
-        options.showPromptInCardReader = true
-        options.showPromptInApp = true
-        options.preferredFormFactors = []
-        options.tippingOnReaderEnabled = false
-        options.amountBasedTipping = false
-//        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
-        options.isAuthCapture = false   //hard-coding to sale instead of auth option
+        options?.showPromptInCardReader = true
+        options?.showPromptInApp = true
+        options?.preferredFormFactors = []
+        options?.tippingOnReaderEnabled = false
+        options?.amountBasedTipping = false
+        options?.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
         
         tc!.beginPayment(options)
 
