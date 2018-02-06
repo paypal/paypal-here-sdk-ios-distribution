@@ -34,9 +34,22 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         PayPalRetailSDK.setRetailSDKAppDelegate(self)
         
+        //init toolbar for keyboard
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        //create left side empty space so that done button set on right side
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CaptureAuthViewController.doneButtonAction))
+        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        toolbar.sizeToFit()
+        //setting toolbar as inputAccessoryView
+        self.invAmount.inputAccessoryView = toolbar
+        
         // Setting up initial aesthetics.
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        
+        // We will enable the selector when Auth-Capture becomes available
+        self.pmtTypeSelector.isEnabled = false;
         
     }
     
@@ -150,8 +163,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
                 self.authId = txnRecord?.transactionNumber
-//                self.goToAuthCompletedViewController()
-                self.goToPaymentCompletedViewController()  // hard-coding the sale flow for now
+                self.goToAuthCompletedViewController()
             } else {
                 self.goToPaymentCompletedViewController()
             }
@@ -165,8 +177,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         options?.preferredFormFactors = []
         options?.tippingOnReaderEnabled = false
         options?.amountBasedTipping = false
-        options?.isAuthCapture = false  // setting to sale until auth/capture is available
-//        options.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options?.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
         
         tc!.beginPayment(options)
 
@@ -244,11 +255,15 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         guard let amt = invAmount.text, !amt.isEmpty else {
             createInvoiceBtn.isEnabled = false
-            createInvCodeBtn.isEnabled = false
+            
             return
         }
         
         createInvoiceBtn.isEnabled = true
+    }
+    
+    func doneButtonAction() {
+        self.view.endEditing(true)
     }
     
     func getCurrentNavigationController() -> UINavigationController! {
