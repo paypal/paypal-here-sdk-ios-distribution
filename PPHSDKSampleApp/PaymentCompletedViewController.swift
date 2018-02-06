@@ -79,7 +79,7 @@ class PaymentCompletedViewController: UIViewController {
         if (refundCodeViewer.isHidden) {
             viewRefundCodeBtn.setTitle("Hide Code", for: .normal)
             refundCodeViewer.isHidden = false
-            refundCodeViewer.text = "tc.beginRefund(true, amount: invoice?.total)"
+            refundCodeViewer.text = "tc.beginRefund(true, amount: invoice.total)"
         } else {
             viewRefundCodeBtn.setTitle("View Code", for: .normal)
             refundCodeViewer.isHidden = true
