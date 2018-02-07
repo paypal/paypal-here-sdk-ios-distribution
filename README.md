@@ -46,3 +46,11 @@ Be sure to include the following into your app store review notes:
 
 [License](LICENSE.md)
 =======
+
+Known Issues:
+=============
+You may see an error (“CFBundleExecutable” is not specified) when launching the app. Follow these steps to resolve the error:
+* Open the info.plist file in Xcode
+* Delete the entry for Executable file
+* Add Row to the Info.plist
+* Set the key for the new row to CFBundleExecutable and the value to $(EXECUTABLE_NAME)
