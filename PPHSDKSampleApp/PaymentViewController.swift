@@ -50,7 +50,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
         // We will enable the selector when Auth-Capture becomes available
-        //self.pmtTypeSelector.isEnabled = false;
+        self.pmtTypeSelector.isEnabled = false;
         
     }
     
