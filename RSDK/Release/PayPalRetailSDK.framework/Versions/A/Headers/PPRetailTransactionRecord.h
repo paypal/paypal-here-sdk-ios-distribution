@@ -90,6 +90,10 @@
     */
     @property (nonatomic,strong,nullable,readonly) NSString* invoiceId;
     /**
+    * The payment method used for this payment
+    */
+    @property (nonatomic,assign) PPRetailInvoicePaymentMethod paymentMethod;
+    /**
     * The PayPal authCode @readonly
     */
     @property (nonatomic,strong,nullable,readonly) NSString* authCode;

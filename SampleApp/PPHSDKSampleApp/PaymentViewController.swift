@@ -27,7 +27,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
-    var authId: String?
+    var transactionNumber: String?
+    var paymentMethod: PPRetailInvoicePaymentMethod?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
         // We will enable the selector when Auth-Capture becomes available
-        self.pmtTypeSelector.isEnabled = false;
+        //self.pmtTypeSelector.isEnabled = false;
         
     }
     
@@ -160,9 +161,10 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             print("Txn ID: \(txnRecord!.transactionNumber!)")
             
             self.navigationController?.popToViewController(self, animated: false)
+            self.transactionNumber = txnRecord?.transactionNumber
+            self.paymentMethod = txnRecord?.paymentMethod
             
             if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
-                self.authId = txnRecord?.transactionNumber
                 self.goToAuthCompletedViewController()
             } else {
                 self.goToPaymentCompletedViewController()
@@ -186,14 +188,17 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToPmtCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
+                pmtCompletedViewController.transactionNumber = transactionNumber
                 pmtCompletedViewController.invoice = invoice
+                pmtCompletedViewController.paymentMethod = paymentMethod
             }
         }
         
         if (segue.identifier == "goToAuthCompletedView") {
             if let authCompletedViewController = segue.destination as? AuthCompletedViewController {
-                authCompletedViewController.authId = authId
+                authCompletedViewController.authTransactionNumber = transactionNumber
                 authCompletedViewController.invoice = invoice
+                authCompletedViewController.paymentMethod = paymentMethod
             }
         }
     }
