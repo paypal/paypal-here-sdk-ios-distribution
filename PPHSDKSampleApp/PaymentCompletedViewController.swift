@@ -20,15 +20,19 @@ class PaymentCompletedViewController: UIViewController {
     var isCapture: Bool = false
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var transactionNumber: String?
+    var capturedAmount: NSDecimalNumber?
+    var refundAmount: NSDecimalNumber?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refundCodeViewer.isHidden = true
         if(isCapture) {
-            successMsg.text = "Your capture of $\(invoice?.total ?? 0) was successful"
+            successMsg.text = "Your capture of $\(capturedAmount ?? 0) was successful"
+            refundAmount = capturedAmount
         } else {
             successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"
+            refundAmount = invoice?.total
         }
         successMsg.sizeToFit()
     }
@@ -63,7 +67,7 @@ class PaymentCompletedViewController: UIViewController {
             self.noThanksBtn(nil)
         }
         
-        tc?.beginRefund(true, amount: invoice?.total)
+        tc?.beginRefund(true, amount: refundAmount)
     }
     
     // This function will process the refund. You first have to create a TransactionContext, then set the appropriate
