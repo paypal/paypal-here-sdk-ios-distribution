@@ -54,3 +54,4 @@ You may see an error (“CFBundleExecutable” is not specified) when launching 
 * Delete the entry for Executable file
 * Add Row to the Info.plist
 * Set the key for the new row to CFBundleExecutable and the value to $(EXECUTABLE_NAME)
+* [Video](https://github.com/paypal/paypal-here-sdk-ios-distribution/blob/master/KnownIssues/CFBundleExecutable_Fix.mov)
