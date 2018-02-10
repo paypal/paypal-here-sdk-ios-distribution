@@ -95,10 +95,17 @@
 
     /**
      * Show a list of connected credit card readers.
-     * If there is more than 1 devices. Select one of them to use it*
+     * If there is more than 1 devices. Select one of them to use it
      * for transaction.
      */
     -(void)searchAndConnect:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+
+    /**
+     * Show a list of connected credit card readers.
+     * If there is more than 1 devices. Select one of them to use it
+     * for transaction.
+     */
+    -(void)searchAndConnectWithoutCallback;
 
     /**
      * Try connecting to the last active credit card reader

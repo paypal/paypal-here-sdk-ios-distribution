@@ -19,6 +19,7 @@ class CaptureAuthViewController: UIViewController {
     var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var captureTransactionNumber: String?
+    var capturedAmount: NSDecimalNumber?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,6 @@ class CaptureAuthViewController: UIViewController {
         
         PayPalRetailSDK.transactionManager()?.captureAuthorization(authTransactionNumber, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
 
-            self.captureTransactionNumber = captureId
             if let err = error {
                 print("Error Code: \(err.code)")
                 print("Error Message: \(err.message)")
@@ -77,6 +77,9 @@ class CaptureAuthViewController: UIViewController {
                 return
             }
             print("Capture ID: \(captureId)")
+            
+            self.captureTransactionNumber = captureId
+            self.capturedAmount = amountToCapture
             self.activitySpinner.stopAnimating()
             self.goToPaymentCompletedViewController()
         }
@@ -86,7 +89,7 @@ class CaptureAuthViewController: UIViewController {
         if (segue.identifier == "goToPmtCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
                 pmtCompletedViewController.isCapture = true
-                pmtCompletedViewController.invoice = invoice
+                pmtCompletedViewController.capturedAmount = capturedAmount
                 pmtCompletedViewController.paymentMethod = paymentMethod
                 // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
                 pmtCompletedViewController.transactionNumber = captureTransactionNumber
