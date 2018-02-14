@@ -101,8 +101,7 @@ class CaptureAuthViewController: UIViewController {
         performSegue(withIdentifier: "goToPmtCompletedView", sender: Any?.self)
     }
     
-    // Function to handle real-time changes in the invoice/payment amount text field.  The
-    // create invoice button is disabled unless there is a value in the box.
+    // Function to handle real-time changes in the amount text field.
     func editingChanged(_ textField: UITextField) {
         
         if let amountString = textField.text?.currencyInputFormatting() {
