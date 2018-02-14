@@ -49,9 +49,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
-        // We will enable the selector when Auth-Capture becomes available
-        self.pmtTypeSelector.isEnabled = false;
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
