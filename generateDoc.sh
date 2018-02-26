@@ -6,7 +6,7 @@ mkdir tempDocs
 
 appledoc -p PayPalHereSdkv2 -c "PayPal" --company-id com.paypal -o ./tempDocs/ --no-create-docset \
 	--ignore .m --ignore .mm --ignore PPManticoreNativeInterface.h --ignore PPRetailNativeInterface.h \
-	--ignore PPRetailAccountSummary.h --ignore PPRetailAccountSummarySection.h --ignore PPRetailCard.h \
+	--ignore PPRetailAccountSummary.h --ignore PPRetailAccountSummarySection.h --ignore PPRetailCard.h --ignore PlatformView+PPAutoLayout.h \
 	--ignore PPRetailDeviceConnectorOptions.h --ignore PPRetailCardReaderScanAndDiscoverOptions.h --ignore PPRetailCountry.h \
 	--ignore PPRetailCardReaderScanAndDiscoverOptions.h --ignore PPRetailInvoicingService.h --ignore PPRetailPayPalErrorInfo.h \
 	--ignore PPRetailRetailInvoice.h --ignore PPRetailInvoiceTemplate.h --ignore PPRetailInvoiceActions.h --ignore PPRetailInvoiceAddress.h \
