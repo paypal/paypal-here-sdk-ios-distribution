@@ -6,8 +6,8 @@ mkdir testDocs
 
 appledoc -p PayPalHereSdkv2 -c "PayPal" --company-id com.paypal -o ./testDocs/ --no-create-docset \
 	--ignore .m --ignore .mm --ignore PPManticoreNativeInterface.h --ignore PPRetailNativeInterface.h \
-	--ignore PPRetailAccountSummary.h --ignore PPRetailAccountSummarySection.h \
-	--ignore PPRetailDeviceConnectorOptions.h --ignore PPRetailCardReaderScanAndDiscoverOptions.h \
+	--ignore PPRetailAccountSummary.h --ignore PPRetailAccountSummarySection.h --ignore PPRetailCard.h \
+	--ignore PPRetailDeviceConnectorOptions.h --ignore PPRetailCardReaderScanAndDiscoverOptions.h --ignore PPRetailCountry.h\
 	--ignore PPRetailCardReaderScanAndDiscoverOptions.h --ignore PPRetailInvoicingService.h --ignore PPRetailPayPalErrorInfo.h \
 	--ignore PPRetailRetailInvoice.h --ignore PPRetailInvoiceTemplate.h --ignore PPRetailInvoiceActions.h --ignore PPRetailInvoiceAddress.h \
 	--ignore PPRetailInvoiceAttachment.h --ignore PPRetailInvoiceBillingInfo.h --ignore PPRetailInvoiceListRequest.h \
@@ -18,7 +18,8 @@ appledoc -p PayPalHereSdkv2 -c "PayPal" --company-id com.paypal -o ./testDocs/ -
 	--ignore PPRetailMerchant.h --ignore PPRetailNetworkRequest.h --ignore PPRetailNetworkResponse.h --ignore PPRetailPage.h \
 	--ignore PPRetailPayer.h --ignore PPRetailCountries.h --ignore PPRetailMagneticCard.h --ignore PPRetailReceiptDestination.h \
 	--ignore PPRetailReceiptEmailEntryViewContent.h --ignore PPRetailReceiptOptionsViewContent.h --ignore PPRetailReceiptSMSEntryViewContent.h \
-	--ignore PPRetailReceiptViewContent.h --ignore PPSignatureView.h --ignore PPSignatureView.h \
+	--ignore PPRetailReceiptViewContent.h --ignore PPSignatureView.h --ignore PPSignatureView.h --ignore PPRetailAuthorizedTransaction.h \
+	
 	../retail-sdk/platform/objc/Common/ ../retail-sdk/platform/objc/Common/generated/ ../retail-sdk/platform/objc/iOS/PayPalRetailSDK/PayPalRetailSDK/
 
 # ^^ replace ../retail-sdk with the path to the rsdk folder
