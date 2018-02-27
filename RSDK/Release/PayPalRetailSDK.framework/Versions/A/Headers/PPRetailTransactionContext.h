@@ -77,12 +77,12 @@
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
- * The TransactionContext class is returned by RetailSDK.createTransaction and allows
+ * The TransactionContext class is returned by RetailSDK.getTransactionManager().createTransaction and allows
  * you to control many aspects of the payment or refund flow and observe events that
  * occur during the flows. Simply creating a TransactionContext will not kick off any behaviors,
- * so that you have a chance to configure the transaction context as you wish (choose payment
- * devices, specify transaction options, etc). When you're ready to proceed with the payment flow,
- * call begin()
+ * so that you have a chance to configure the transaction context as you wish (enable on-reader tipping
+ * , specify transaction options, etc). When you're ready to proceed with the payment flow,
+ * call beginPayment()
  */
 @interface PPRetailTransactionContext : PPRetailObject
 
@@ -100,14 +100,6 @@
  * is a signature required to secure payment? @readonly
     */
     @property (nonatomic,assign,readonly) BOOL isSignatureRequired;
-    /**
-    * If you set the paymentDevices property, this context
- * will only use the devices you specify to accept
- * payment. This can be useful for cases where a single terminal is managing multiple payment
- * devices with transactions proceeding in parallel. (This feature is still experimental for
- * certain payment factors, as any UI will still be single-instance.)
-    */
-    @property (nonatomic,strong,nullable) NSArray* paymentDevices;
     /**
     * While building your invoice, the running total
  * will be displayed on PaymentDevices capable of displaying messages. If you set
@@ -144,7 +136,7 @@
     -(void)clearOnReaderTip;
 
     /**
-     * Begin the flow (activate payment devices, listen for relevant events from devices)
+     * Begin the payment flow (activate payment devices, listen for relevant events from devices)
      */
     -(PPRetailTransactionContext* _Nullable)beginPayment:(PPRetailTransactionBeginOptions* _Nullable)options;
 
@@ -157,11 +149,6 @@
      * Is the transaction a type of refund?
      */
     -(BOOL)isRefund;
-
-    /**
-     * Display an alert on the app prompting for payment
-     */
-    -(void)promptForPaymentInstrument:(PPRetailPaymentDevice* _Nullable)selectedDevice;
 
     /**
      * Deactivate form factors without ending the transaction. Once deactivated, you should re-begin the transaction to
@@ -247,7 +234,8 @@
     -(void)setCardInsertedHandler:(PPRetailTransactionContextCardInsertedHandlerHandler _Nullable)cardInsertedHandler;
 
     /**
-     * Provide a handler to get notified when card was presented.
+     * Provide a handler to get notified when card was presented and emv/magstripe data was read.
+     * TransactionContext.continueWithCard should be invoked to continue the payment
      */
     -(void)setCardPresentedHandler:(PPRetailTransactionContextCardPresentedHandler _Nullable)cardPresentedHandler;
 

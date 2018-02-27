@@ -99,9 +99,9 @@
     */
     @property (nonatomic,strong,nullable,readonly) PPRetailInvoiceAddress* address;
     /**
-    * The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real!
+    * The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* environment;
+    @property (nonatomic,strong,nullable,readonly) NSString* environment;
     /**
     * The invoice total amount above which signature would be collected for swipe transactions.
     */
