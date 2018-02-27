@@ -436,7 +436,7 @@ typedef void (^PPRetailMerchantReceiptForwardedHandler)(PPRetailError* error);
 typedef void (^PPRetailTransactionContextTransactionCompletedHandler)(PPRetailError* error, PPRetailTransactionRecord* record);
 
 /**
- * Depending on your region and the buyer payment type, this can mean a magnetic
+ * Indicates that the card data was read. Depending on your region and the buyer payment type, this can mean a magnetic
      * card was swiped, an EMV card was inserted, or an NFC card/device was tapped.
  */
 typedef void (^PPRetailTransactionContextCardPresentedHandler)(PPRetailCard* card);
@@ -452,7 +452,7 @@ typedef void (^PPRetailTransactionContextSignatureCollectorHandler)(PPRetailSign
 typedef void (^PPRetailTransactionContextTokenExpirationHandlerHandler)(PPRetailTokenExpirationHandler* tokenExpirationHandler);
 
 /**
- * 
+ * Called when EMV card inserted was detected. This occurs before card data read.
  */
 typedef void (^PPRetailTransactionContextCardInsertedHandlerHandler)(PPRetailCardInsertedHandler* cardInsertedHandler);
 

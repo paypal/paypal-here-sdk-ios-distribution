@@ -64,6 +64,7 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 
 @optional
 - (void)readerConnectionViewDismissed;
+- (void)lastActiveReaderConnected;
 
 @end
 
