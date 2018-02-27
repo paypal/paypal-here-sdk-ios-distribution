@@ -13,7 +13,7 @@ appledoc -p PayPalHereSdkv2 -c "PayPal" --company-id com.paypal -o ./tempDocs/ -
 	--ignore PPRetailInvoiceAttachment.h --ignore PPRetailInvoiceBillingInfo.h --ignore PPRetailInvoiceListRequest.h \
 	--ignore PPRetailInvoiceListResponse.h --ignore PPRetailInvoiceMerchantInfo.h --ignore PPRetailInvoiceMetaData.h \
 	--ignore PPRetailInvoiceNotification.h --ignore PPRetailInvoicePayment.h --ignore PPRetailRetailInvoicePayment.h \
-	--ignore PPRetailInvoicePaymentTerm.h --ignore PPRetailInvoiceRefund.h --ignore PPRetailInvoiceSearchRequest.h \
+	--ignore PPRetailInvoicePaymentTerm.h --ignore PPRetailInvoiceRefund.h --ignore PPRetailInvoiceSearchRequest.h --ignore PPRetailSDK.h \
 	--ignore PPRetailInvoiceShippingInfo.h --ignore PPRetailInvoiceTemplateSettings.h --ignore PPRetailInvoiceTemplatesResponse.h \
 	--ignore PPRetailMerchant.h --ignore PPRetailNetworkRequest.h --ignore PPRetailNetworkResponse.h --ignore PPRetailPage.h \
 	--ignore PPRetailPayer.h --ignore PPRetailCountries.h --ignore PPRetailMagneticCard.h --ignore PPRetailReceiptDestination.h \
