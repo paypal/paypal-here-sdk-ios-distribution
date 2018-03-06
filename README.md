@@ -12,6 +12,7 @@ Developers should use the PayPal Here SDK to get world-class payment processing 
 Supporting Materials
 ========================
  *  PPH SDK documentation can be found [here](https://developer.paypal.com/docs/integration/paypal-here/).
+ *  PPH SDK class reference can be found [here](http://paypal.github.io/paypal-here-sdk-ios-distribution/).
  *  Sample App: Please see and modify the sample app thats available in this repo to experiment and learn more about the SDK and it's capabilities.
 
 
@@ -27,9 +28,11 @@ As a side note, please make sure you also add `com.paypal.here.reader` to the Su
 Housekeeping Items
 =====================
 There are a few noteworthy items that should be called out. These include:
+* **Auth/Capture:** Please note that auth/capture processing is currently only available for the US. Support for the other regions will be coming at a later date.
 * **Key-in:** Even though there's not an example in the sample app, please know that the SDK will support this payment method should you need to implement it.
 * **Server:** There will be some server-side work that needs to be done to handle the token management part of the integration. Standard Oauth2 is used for Merchant Onboarding and more information on this piece can be found [here](https://developer.paypal.com/docs/integration/paypal-here/merchant-onboarding/)
 * **Marketing Toolkit:** Within this repo, you'll find downloadable marketing assets – from emails to banner ads – to help you quickly, and effectively, promote your app’s new payments functionality. 
+* **SDK 1.6:** All new integrations should use this v2 version of the PayPal Here SDK. Existing partners looking for prior versions of this SDK are recommended to update to this version, but can find [version 1.6 here](https://github.com/paypal/paypal-here-sdk-ios-distribution/tree/PayPalHereSdkv1.6).
 
 
 App Review Information
@@ -41,3 +44,15 @@ When you submit your app, if you are using the [Chip Card Reader](https://www.pa
 
 Be sure to include the following into your app store review notes:
 * This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0026
+
+[License](LICENSE.md)
+=======
+
+Known Issues:
+=============
+You may see an error (“CFBundleExecutable” is not specified) when launching the app. Follow these steps to resolve the error:
+* Open the info.plist file in Xcode
+* Delete the entry for Executable file
+* Add Row to the Info.plist
+* Set the key for the new row to CFBundleExecutable and the value to $(EXECUTABLE_NAME)
+* [Video](https://github.com/paypal/paypal-here-sdk-ios-distribution/blob/master/KnownIssues/CFBundleExecutable_Fix.mov)
