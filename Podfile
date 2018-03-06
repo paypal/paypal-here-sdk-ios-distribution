@@ -7,7 +7,8 @@ workspace 'PPHSDKSampleApp'
 
 target 'PPHSDKSampleApp' do
     project 'PPHSDKSampleApp.xcodeproj'
-    pod 'PayPalHereSDKv2'
+    # pod 'PayPalHereSDKv2'
+    pod 'PayPalRetailSDK', path:'../..' #this is the path for the rsdk. Uncomment PayPalHereSDKv2 to use the public cocoapod
 end
 
 
