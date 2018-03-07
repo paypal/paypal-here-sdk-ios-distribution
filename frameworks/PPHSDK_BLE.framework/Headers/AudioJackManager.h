@@ -61,23 +61,23 @@
 
 @interface AudioJackManager : CommunicationManagerBase
 
-+(AudioJackManager*)sharedInstance;
-+(NSString*)getLibVersion;
--(BOOL)hasHeadset;
--(int)openDevice;
--(int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>) cb mode:(DeviceCommunicationMode)mode;
++ (AudioJackManager *)sharedInstance;
++ (NSString *)getLibVersion;
+- (BOOL)hasHeadset;
+- (int)openDevice;
+- (int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>)cb mode:(DeviceCommunicationMode)mode;
 
--(int)openDevice:(NSString*)identifier;
--(int)openDevice:(NSString *)identifier timeout:(long)timeout;
--(int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>)cb mode:(DeviceCommunicationMode)mode timeout:(long)timeout;
+- (int)openDevice:(NSString *)identifier;
+- (int)openDevice:(NSString *)identifier timeout:(long)timeout;
+- (int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>)cb mode:(DeviceCommunicationMode)mode timeout:(long)timeout;
 
--(void)closeDevice;
--(void)closeResource;
--(int)exchangeData:(NSData*) data timeout:(long)timeout cb:(id<CommunicationCallBack>)cb;
--(int)exchangeData:(NSData *)data timeout:(long)timeout;
--(int)cancelExchange;
--(BOOL)isConnected;
--(void)breakOpenDevice;
+- (void)closeDevice;
+- (void)closeResource;
+- (int)exchangeData:(NSData *)data timeout:(long)timeout cb:(id<CommunicationCallBack>)cb;
+- (int)exchangeData:(NSData *)data timeout:(long)timeout;
+- (int)cancelExchange;
+- (BOOL)isConnected;
+- (void)breakOpenDevice;
 
 
 

@@ -10,7 +10,7 @@
 
 @interface MFIBluetoothManager : LDBluetoothManager
 
-+(MFIBluetoothManager*)sharedInstance;
--(NSArray*)getDevicesSet;
++ (MFIBluetoothManager *)sharedInstance;
+- (NSArray *)getDevicesSet;
 
 @end

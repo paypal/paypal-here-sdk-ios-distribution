@@ -10,6 +10,6 @@
 
 @interface LDTmsCmdCrtVersionInfo : NSObject
 
-@property (strong,nonatomic) NSArray* FileVerInfos;
+@property (nonatomic, strong) NSArray *FileVerInfos;
 
 @end

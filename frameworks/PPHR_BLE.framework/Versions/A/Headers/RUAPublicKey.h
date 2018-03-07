@@ -31,12 +31,12 @@
  * */
 @property NSString *checksum;
 
-- (id)          initWithRID:(NSString *)rid
+- (id)initWithRID:(NSString *)rid
        withCAPublicKeyIndex:(NSString *)CAPublicKeyIndex
               withPublicKey:(NSString *)PublicKey
     withExponentOfPublicKey:(NSString *)ExponentOfPublicKey;
 
-- (id)          initWithRID:(NSString *)rid
+- (id)initWithRID:(NSString *)rid
        withCAPublicKeyIndex:(NSString *)CAPublicKeyIndex
               withPublicKey:(NSString *)PublicKey
     withExponentOfPublicKey:(NSString *)ExponentOfPublicKey

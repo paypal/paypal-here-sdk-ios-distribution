@@ -51,7 +51,7 @@
 /** Only applicable for contactless ApplicationIdentifier*/
 @property NSString *TxnLimit;
 
-- (id)                           initWithRID:(NSString *)rid
+- (id)initWithRID:(NSString *)rid
                                      withPIX:(NSString *)pix
                                 withAID:(NSString *)aid
                         withApplicationLabel:(NSString *)label
@@ -60,7 +60,7 @@
                            withPriorityIndex:(NSString *)priorityIndex
                withApplicationSelectionFlags:(NSString *)applicationSelectionFlags;
 
-- (id)                           initWithRID:(NSString *)rid
+- (id)initWithRID:(NSString *)rid
                                      withPIX:(NSString *)pix
                                      withAID:(NSString *)aid
                         withApplicationLabel:(NSString *)label
@@ -70,7 +70,7 @@
                withApplicationSelectionFlags:(NSString *)applicationSelectionFlags
                                  withTLVData:(NSString *)TLVData;
 
-- (id)                           initWithRID:(NSString *)rid
+- (id)initWithRID:(NSString *)rid
                                      withPIX:(NSString *)pix
                                      withAID:(NSString *)aid
                         withApplicationLabel:(NSString *)label

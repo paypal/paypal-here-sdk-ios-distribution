@@ -10,6 +10,6 @@
 
 @interface MHAudioJackManager : AudioJackManager
 
-+(MHAudioJackManager*)sharedInstance;
++ (MHAudioJackManager *)sharedInstance;
 
 @end

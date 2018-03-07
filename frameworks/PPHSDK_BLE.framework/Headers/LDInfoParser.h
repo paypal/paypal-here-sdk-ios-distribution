@@ -45,8 +45,7 @@
 #define CMD_PHASE_2 (2)
 
 
-typedef struct
-{
+typedef struct {
     char  acSoftInfo[16];  // 软件类别名称，固定为“LANDI-UNS”
     unsigned char acCRC[2];       // CRC
     unsigned short sFileNum;       // 文件个数
@@ -70,8 +69,7 @@ typedef struct
 
 
 // uns每一个小文件的头信息
-typedef struct
-{
+typedef struct {
     unsigned int uiFileOffSet;     // 该文件在UNS中的绝对起始地址
     unsigned int  uiFileLen;        // 文件长度，DDL文件包含版本控制段，PAR文件包含模版部分
     char  acFileType[3];    // 单独文件对应的后缀名，如bin,dla,par,drv等
@@ -86,8 +84,7 @@ typedef struct
 }UNS_SubFileInfo;
 
 // 公共头部，国外国内统一（第一段16字节）
-typedef struct
-{
+typedef struct {
     // 16字节版本标志
     // 平台&芯片
     unsigned char ucPlatform[10 + 1];
@@ -98,8 +95,7 @@ typedef struct
 }VI_VerFlag;
 
 // TMS 格式（第二段16字节）
-typedef struct
-{
+typedef struct {
     // 32字节版本 --  ROAM版本控制方案
     // ---16字节 - 行1---
     // 文件维护者ID号
@@ -118,16 +114,14 @@ typedef struct
 }VI_VerCtrl;
 
 //M33&M35P 格式
-typedef struct
-{
+typedef struct {
     unsigned char ucBaseVer[2 + 1];
     unsigned char ucSelfVer[2 + 1];
     unsigned char ucRelatedVer[4 + 1];
 }VI_VerManager;
 
 // 公共时间戳 格式（第三段16字节）
-typedef struct
-{
+typedef struct {
     // 时间戳 16字节
     unsigned char Year[4 + 1];
     unsigned char Month[2 + 1];
@@ -135,8 +129,7 @@ typedef struct
 }VI_Timestamp;
 
 // M33&M35P 16字节可变扩展域（第四段16字节，针对不同的类型文件，域意义不同）
-typedef union
-{
+typedef union {
     unsigned char info[16 + 1];
 }VI_Extend;
 
@@ -156,8 +149,7 @@ typedef struct {
 }LD_M3X_FILE_VersionInfo;
 
 // 4字节对齐 TMS 版本信息指令结构
-typedef struct
-{
+typedef struct {
     unsigned char ucHardwareType[16 + 1];
     FILE_VersionInfo viBootVer;
     FILE_VersionInfo viCtrlVer;
@@ -175,8 +167,7 @@ typedef struct
 }CMD_VersionInfo;
 
 // TMS 证书信息指令结构
-typedef struct
-{
+typedef struct {
     FILE_VersionInfo viFlrcVer;
     FILE_VersionInfo viFsrcVer;
     FILE_VersionInfo viAlrcVer;
@@ -187,65 +178,64 @@ typedef struct
 }CMD_CrtVersionInfo;
 
 
-class LDInfoParser
-{
+class LDInfoParser {
 public:
-				// UNSData
-				// 检查文件有效性
-				static int UNS_CheckValid(unsigned char* unsData, unsigned int unsSize);
-				// 获取整个UNS文件信息
-				static UNS_EntireFileInfo UNS_GetEntireFileHeader(unsigned char* unsData, unsigned int unsSize);
-				// 获取子文件信息
-				static UNS_SubFileInfo UNS_GetSubFileHeader(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
-				// 获取子文件个数
-				static unsigned int UNS_GetSubFileCount(unsigned char* unsData, unsigned int unsSize);
-				
+                // UNSData
+                // 检查文件有效性
+                static int UNS_CheckValid(unsigned char* unsData, unsigned int unsSize);
+                // 获取整个UNS文件信息
+                static UNS_EntireFileInfo UNS_GetEntireFileHeader(unsigned char* unsData, unsigned int unsSize);
+                // 获取子文件信息
+                static UNS_SubFileInfo UNS_GetSubFileHeader(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
+                // 获取子文件个数
+                static unsigned int UNS_GetSubFileCount(unsigned char* unsData, unsigned int unsSize);
+
                 //////////////////////////////////////////
                 // 获取UNS各个子文件版本信息 --- (国外版本)
-				static FILE_VersionInfo UNS_GetSubFileVersionInfo(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
-				static FILE_VersionInfo UNS_GetSubFileVersionInfo(unsigned char* data, unsigned int size);
-				// 获取标准子版本信息 --- （通用）
-				static VI_VerFlag UNS_GetSubFileVersionFlag(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
+                static FILE_VersionInfo UNS_GetSubFileVersionInfo(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
+                static FILE_VersionInfo UNS_GetSubFileVersionInfo(unsigned char* data, unsigned int size);
+                // 获取标准子版本信息 --- （通用）
+                static VI_VerFlag UNS_GetSubFileVersionFlag(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
                 //////////////////////////////////////////
                 // 获取UNS个个子文件版本信息 --- （国内版本）
                 static LD_M3X_FILE_VersionInfo UNS_GetSubM3XFileVersionInfo(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
                 static LD_M3X_FILE_VersionInfo UNS_GetSubM3XFileVersionInfo(unsigned char* data, unsigned int size);
                 // 获取标准子版本信息 --- （M33&M35P）
-				static VI_Extend UNS_GetSubM3XFileExtend(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
+                static VI_Extend UNS_GetSubM3XFileExtend(unsigned char* unsData, unsigned int unsSize, unsigned int subIndex);
                 //////////////////////////////////////////
-				// CMD
-				// 获取版本指令解析
-				static CMD_VersionInfo CMD_GetVersionInfo(unsigned char* cmdData, unsigned int cmdSize);
-				static CMD_CrtVersionInfo CMD_GetCrtVersionInfo(unsigned char* cmdData, unsigned int cmdSize);
-				// 确定Phase类型
-				static int CMD_GetPhaseValue(unsigned char* cmdData, unsigned int cmdSize);
-				
-    
+                // CMD
+                // 获取版本指令解析
+                static CMD_VersionInfo CMD_GetVersionInfo(unsigned char* cmdData, unsigned int cmdSize);
+                static CMD_CrtVersionInfo CMD_GetCrtVersionInfo(unsigned char* cmdData, unsigned int cmdSize);
+                // 确定Phase类型
+                static int CMD_GetPhaseValue(unsigned char* cmdData, unsigned int cmdSize);
+
+
                 //////////////////////////////////////////
                 // UNS rebuild APIs for RPxxx
                 static void* UNS_UNSFileRuleIndexSetAdd(void* indexSet, int iIndex);
-				static int UNS_CreateNewUNSFileFromOtherOne(unsigned char* unsData, unsigned int unsSize, unsigned char* newUNSData, unsigned int newUNSSize, void* indexSet);
-				static void UNS_UNSFileRuleIndexSetRelease(void* indexSet);
-    
-				//////////////////////////////////////////
-				// step 1：填充子文件数据内容
-				static bool UNS_FillSubFileData(UNS_SubFileInfo* sfi, unsigned int subIndex, unsigned int total,
+                static int UNS_CreateNewUNSFileFromOtherOne(unsigned char* unsData, unsigned int unsSize, unsigned char* newUNSData, unsigned int newUNSSize, void* indexSet);
+                static void UNS_UNSFileRuleIndexSetRelease(void* indexSet);
+
+                //////////////////////////////////////////
+                // step 1：填充子文件数据内容
+                static bool UNS_FillSubFileData(UNS_SubFileInfo* sfi, unsigned int subIndex, unsigned int total,
                                                 unsigned char* fileData, unsigned int fileSize,
                                                 unsigned char* unsData, unsigned int unsSize);
-				// step 2：填充子文件信息
-				static bool UNS_FillSubFileHeader(UNS_SubFileInfo* sfi, unsigned int subIndex,
+                // step 2：填充子文件信息
+                static bool UNS_FillSubFileHeader(UNS_SubFileInfo* sfi, unsigned int subIndex,
                                                   unsigned char* unsData, unsigned int unsSize);
-				// step 3：填充UNS文件信息 --- 最后填充，用于更新CRC
-				static bool UNS_FillEntireFileHeader(UNS_EntireFileInfo* efi, unsigned int total, unsigned char* unsData, unsigned int unsSize);
+                // step 3：填充UNS文件信息 --- 最后填充，用于更新CRC
+                static bool UNS_FillEntireFileHeader(UNS_EntireFileInfo* efi, unsigned int total, unsigned char* unsData, unsigned int unsSize);
                 //////////////////////////////////////////
-				// 索引符合版本头信息的域
-				static int UNS_FindNextSubFileIndex(unsigned char* ucPlatform, unsigned char* ucSubPlatform, unsigned char* ucFileType,
+                // 索引符合版本头信息的域
+                static int UNS_FindNextSubFileIndex(unsigned char* ucPlatform, unsigned char* ucSubPlatform, unsigned char* ucFileType,
                                                     int posIndex, unsigned char* unsData, unsigned int unsSize);
-				// 索引符合版本头信息的域个数
-				static unsigned int UNS_FindSubFileCount(unsigned char* ucPlatform, unsigned char* ucSubPlatform, unsigned char* ucFileType,
+                // 索引符合版本头信息的域个数
+                static unsigned int UNS_FindSubFileCount(unsigned char* ucPlatform, unsigned char* ucSubPlatform, unsigned char* ucFileType,
                                                          unsigned char* unsData, unsigned int unsSize);
-				// 创建新UNS临时包 - 通用
-				static int UNS_CreateSinglePlatformTempPackage(unsigned char* ucPlatform, unsigned char* ucSubPlatform, unsigned char* ucFileType,
+                // 创建新UNS临时包 - 通用
+                static int UNS_CreateSinglePlatformTempPackage(unsigned char* ucPlatform, unsigned char* ucSubPlatform, unsigned char* ucFileType,
                                                                unsigned char* unsData, unsigned int unsSize,
                                                                unsigned char* newUNSData, unsigned int newUNSSize);
                 ///////////////////////////////////////////
@@ -255,24 +245,24 @@ public:
                 static int UNS_FindSubFileCount(unsigned char* ucSubPlatform, unsigned char* ucExtend, unsigned char* unsData, unsigned int unsSize);
                 // 创建新UNS临时波 - M33&M35P
                 static int UNS_CreateM3XSinglePlatformExtendTempPackage(unsigned char* ucSubPlatform, unsigned char* ucExtend, unsigned char* unsData, unsigned int unsSize, unsigned char* newUNSData, unsigned int newUNSSize);
-				~LDInfoParser();
+                ~LDInfoParser();
 private:
                 // 公共平台版本处理
                 static bool parseVerFlagEx(unsigned char* verInfo, unsigned int infoSize, VI_VerFlag* vf);
-				static VI_VerFlag parseVerFlag(unsigned char* verInfo, unsigned int infoSize);
+                static VI_VerFlag parseVerFlag(unsigned char* verInfo, unsigned int infoSize);
                 // TMS
-				static VI_VerCtrl parseVerCtrl(unsigned char* verInfo, unsigned int infoSize);
+                static VI_VerCtrl parseVerCtrl(unsigned char* verInfo, unsigned int infoSize);
                 // TMS 时间戳 下标从48开始
                 // M33&M35P下标从32开始
-				static VI_Timestamp parseTimeStamp(unsigned char* verInfo, unsigned int infoSize);
+                static VI_Timestamp parseTimeStamp(unsigned char* verInfo, unsigned int infoSize);
                 // M33&M35P
                 static VI_VerManager parseVerManager(unsigned char* verInfo, unsigned int infoSize);
                 static VI_Extend parseExtend(unsigned char* verInfo, unsigned int infoSize);
-				// 其他方法
-				static unsigned short crc16(unsigned char* buf, unsigned int len);
-				static int datachar(unsigned char* str, unsigned int len, unsigned char ch);
-				static int datacharcount(unsigned char* str, unsigned int len, unsigned char ch);
-				LDInfoParser();
+                // 其他方法
+                static unsigned short crc16(unsigned char* buf, unsigned int len);
+                static int datachar(unsigned char* str, unsigned int len, unsigned char ch);
+                static int datacharcount(unsigned char* str, unsigned int len, unsigned char ch);
+                LDInfoParser();
 };
 
 #endif /* defined(__MPOSCommunicationManager__LDInfoParser__) */

@@ -9,24 +9,24 @@
 
 //Ìá¹©¸øµ÷ÓÃInjectionJob½Ó¿ÚµÄ´íÎóÂë
 //Éè±¸¶ËµÄ
-#define EM_DEV_Success	  					0x00
-#define EM_DEV_CmdNotSupport  				0x02
-#define EM_DEV_ErrorGeneratNonce  			0x04
-#define	EM_DEV_VerifySignError				0x05
-#define	EM_DEV_CalHashError				    0x07
-#define	EM_DEV_GenerateSignErr				0x0A
-#define	EM_DEV_GetRkmsPubKeyErr			    0x0B
+#define EM_DEV_Success                          0x00
+#define EM_DEV_CmdNotSupport                  0x02
+#define EM_DEV_ErrorGeneratNonce              0x04
+#define    EM_DEV_VerifySignError                0x05
+#define    EM_DEV_CalHashError                    0x07
+#define    EM_DEV_GenerateSignErr                0x0A
+#define    EM_DEV_GetRkmsPubKeyErr                0x0B
 #define EM_DEV_GetIPAndPortError            0x0C
-#define	EM_DEV_GetDevCrtError				0x12
-#define	EM_DEV_RecvRkmsCrtError			    0x15
-#define	EM_DEV_VerRkmsCrtError				0x16
+#define    EM_DEV_GetDevCrtError                0x12
+#define    EM_DEV_RecvRkmsCrtError                0x15
+#define    EM_DEV_VerRkmsCrtError                0x16
 #define EM_DEV_BadKeyName                   0x1A
-#define	EM_DEV_GetSkError					0x20
-#define	EM_DEV_GetTkError					0x21
-#define	EM_DEV_RecvRkmsRetErr				0x22
-#define	EM_DEV_CompleteInjectErr			0x23
-#define	EM_DEV_RecvMsgErr					0x24
-#define	EM_DEV_ErrorParam					0x8b
+#define    EM_DEV_GetSkError                    0x20
+#define    EM_DEV_GetTkError                    0x21
+#define    EM_DEV_RecvRkmsRetErr                0x22
+#define    EM_DEV_CompleteInjectErr            0x23
+#define    EM_DEV_RecvMsgErr                    0x24
+#define    EM_DEV_ErrorParam                    0x8b
 
 
 //rkms¶Ë
@@ -104,18 +104,18 @@
 
 @protocol CRemoteKeyInjectionParam <NSObject>
 
--(void)post_msg:(NSString*)str;
--(void)post_error:(NSString*)str;
--(void)post_success:(NSString*)str;
+- (void)post_msg:(NSString *)str;
+- (void)post_error:(NSString *)str;
+- (void)post_success:(NSString *)str;
 
 @end
 
 
 @interface RKMSJob : NSObject
 
--(int)InjectionJob:(NSString*)identifier DeviceType:(DeviceCommunicationChannel) devType RKMSDg:(NSString*)rkmsDg RKMSIP:(NSString* __autoreleasing*) rkmsIp RKMSPort:(unsigned short*)rkmsPort Oberver:(id<CRemoteKeyInjectionParam>) pDlg CommCB:(id<CommunicationCallBack>)cb CommMode:(DeviceCommunicationMode) md;
+- (int)InjectionJob:(NSString *)identifier DeviceType:(DeviceCommunicationChannel)devType RKMSDg:(NSString *)rkmsDg RKMSIP:(NSString *__autoreleasing *)rkmsIp RKMSPort:(unsigned short *)rkmsPort Oberver:(id<CRemoteKeyInjectionParam>)pDlg CommCB:(id<CommunicationCallBack>)cb CommMode:(DeviceCommunicationMode)md;
 
-+(NSString*)GetVersion;
++ (NSString *)GetVersion;
 
 @end
 

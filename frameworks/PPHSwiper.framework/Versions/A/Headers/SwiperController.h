@@ -12,15 +12,15 @@ typedef enum {
     SwiperControllerStateIdle,
     SwiperControllerStateWaitingForDevice,
     SwiperControllerStateRecording,
-	SwiperControllerStateDecoding
+    SwiperControllerStateDecoding
 } SwiperControllerState;
 
 typedef enum {
     SwiperControllerDecodeResultSuccess,
-	SwiperControllerDecodeResultSwipeFail,
-	SwiperControllerDecodeResultCRCError,
-	SwiperControllerDecodeResultCommError,
-	SwiperControllerDecodeResultUnknownError,
+    SwiperControllerDecodeResultSwipeFail,
+    SwiperControllerDecodeResultCRCError,
+    SwiperControllerDecodeResultCommError,
+    SwiperControllerDecodeResultUnknownError,
     SwiperControllerDecodeResultTapError,
     SwiperControllerDecodeResultCardNotSupported
 } SwiperControllerDecodeResult;
@@ -28,12 +28,12 @@ typedef enum {
 @protocol SwiperControllerDelegate;
 
 @interface SwiperController : NSObject {
-	NSObject <SwiperControllerDelegate>* delegate;
-	BOOL detectDeviceChange;
+    NSObject <SwiperControllerDelegate>* delegate;
+    BOOL detectDeviceChange;
     SwiperControllerState swiperState;
 }
 
-@property (nonatomic, assign) NSObject <SwiperControllerDelegate>* delegate;
+@property (nonatomic, assign) NSObject <SwiperControllerDelegate> *delegate;
 @property (nonatomic, assign) BOOL detectDeviceChange;
 @property (nonatomic, assign) double swipeTimeout;
 @property (nonatomic, assign) double chargeUpTime;
@@ -47,11 +47,11 @@ typedef enum {
 - (SwiperControllerState)getSwiperState;
 - (void)getSwiperKsn;
 - (void)isSwiperHere;
-- (NSString*)packEncTrackData:(NSString *)formatID
+- (NSString *)packEncTrackData:(NSString *)formatID
                      encTrack:(NSString *)encTrack
                  partialTrack:(NSString *)partialTrack;
-- (NSString*)getSwiperAPIVersion;
-- (NSString*)getSwiperFirmwareVersion;
+- (NSString *)getSwiperAPIVersion;
+- (NSString *)getSwiperFirmwareVersion;
 - (void)closeSwiper;
 
 @end

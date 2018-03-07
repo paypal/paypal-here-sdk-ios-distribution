@@ -15,7 +15,7 @@
 @property NSString* kcv;
 
 
--(id)initWithKeyName:(NSString *)keyName kcv:(NSString*)kcv;
--(NSString*) toString;
+- (id)initWithKeyName:(NSString *)keyName kcv:(NSString *)kcv;
+- (NSString *)toString;
 
 @end

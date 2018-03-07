@@ -13,11 +13,11 @@
 
 @protocol CommunicationCallBack <NSObject>
 
--(void)onSendOK;
--(void)onReceive:(NSData*)data;
--(void)onTimeout;
--(void)onError:(NSInteger)code message:(NSString*)msg;
--(void)onProgress:(NSData*)data;
+- (void)onSendOK;
+- (void)onReceive:(NSData *)data;
+- (void)onTimeout;
+- (void)onError:(NSInteger)code message:(NSString *)msg;
+- (void)onProgress:(NSData *)data;
 
 @end
 

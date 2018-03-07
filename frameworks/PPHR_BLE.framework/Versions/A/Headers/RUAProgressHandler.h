@@ -16,6 +16,6 @@
  * @param additionalMessage the addtional message
  * @see RUAProgressMessage
  */
--(void)onProgress:(RUAProgressMessage)message andAddtionalMessage:(NSString *)additionalMessage;
+- (void)onProgress:(RUAProgressMessage)message andAddtionalMessage:(NSString *)additionalMessage;
 
 @end

@@ -16,12 +16,12 @@
 #define RUATransactionManager_h
 
 typedef enum {
-    
+
     RUAVASTransactionEventMagneticSwipe,
     RUAVASTransactionEventChipCardInserted,
     RUAVASTransactionEventKeyPress,
     RUAVASTransactionEventUnknown
-    
+
 } RUAVASTransactionEvent;
 
 @protocol RUATransactionManager <NSObject>
@@ -71,7 +71,7 @@ typedef enum {
  [[deviceManager getTransactionManager] sendCommand:RUACommandEMVStartTransaction withParameters:[processor getEMVStartTransactionParameters] progress:^(RUAProgressMessage messageType) {
  }
  response:^(RUAResponse *ruaResponse) {
- 
+
  }
  ];
  </code>
@@ -207,7 +207,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)getVASVersion:(OnResponse)response;
+- (void)getVASVersion:(OnResponse)response;
 
 /**
  * Asynchronous method that returns the VAS(Value Added Services) merchant count. <br>
@@ -216,7 +216,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)getVASMerchantsCount:(OnResponse)response;
+- (void)getVASMerchantsCount:(OnResponse)response;
 
 /**
  * Asynchronous method that clears VAS(Value Added Services) merchants. <br>
@@ -225,7 +225,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)clearVASMerchants:(OnResponse)response;
+- (void)clearVASMerchants:(OnResponse)response;
 
 /**
  * Asynchronous method that returns the last VAS(Value Added Services) error message. <br>
@@ -234,7 +234,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)getVASErrorMessage:(OnResponse)response;
+- (void)getVASErrorMessage:(OnResponse)response;
 
 /**
  * Asynchronous method that activates VAS(Value Added Services) Exchanged Message Log. <br>
@@ -243,7 +243,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)activateVASExchangedMessageLog:(OnResponse)response;
+- (void)activateVASExchangedMessageLog:(OnResponse)response;
 
 /**
  * Asynchronous method that deactivates VAS(Value Added Services) Exchanged Message Log. <br>
@@ -252,7 +252,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)deactivateVASExchangedMessageLog:(OnResponse)response;
+- (void)deactivateVASExchangedMessageLog:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) Exchanged Message Log. <br>
@@ -261,7 +261,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)getVASExchangedMessagesLog:(OnResponse)response;
+- (void)getVASExchangedMessagesLog:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code<br>
@@ -271,7 +271,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUACommand, RUAVASMode
  */
--(void)enableVASMode:(RUAVASMode)vasMode response:(OnResponse)response;
+- (void)enableVASMode:(RUAVASMode)vasMode response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code<br>
@@ -281,7 +281,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUACommand
  */
--(void)enableVASPLSEState:(BOOL)isEnabled response:(OnResponse)response;
+- (void)enableVASPLSEState:(BOOL)isEnabled response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) Data <br>
@@ -291,7 +291,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)getVASDataforMerchant:(NSUInteger)merchantIndex response:(OnResponse)response;
+- (void)getVASDataforMerchant:(NSUInteger)merchantIndex response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code <br>
@@ -301,7 +301,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)setVASUnpredictableNumber:(NSString*)unpredictableNumber response:(OnResponse)response;
+- (void)setVASUnpredictableNumber:(NSString *)unpredictableNumber response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code <br>
@@ -311,7 +311,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand
  */
--(void)setVASApplicationVersion:(NSString*)applicationVersion response:(OnResponse)response;
+- (void)setVASApplicationVersion:(NSString *)applicationVersion response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code<br>
@@ -324,7 +324,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUACommand, RUAVASMode
  */
--(void)addVASMerchant:(RUAVASMode)vasMode merchantID:(NSString*)mercahntId merchantURL:(NSString*)merchantURL categoryFilter:(NSString*)categoryFilter response:(OnResponse)response;
+- (void)addVASMerchant:(RUAVASMode)vasMode merchantID:(NSString *)mercahntId merchantURL:(NSString *)merchantURL categoryFilter:(NSString *)categoryFilter response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code<br>
@@ -335,7 +335,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUACommand, RUAVASMode
  */
--(void)enableVASMode:(RUAVASMode)vasMode forMerchant:(NSString*)mercahntId response:(OnResponse)response;
+- (void)enableVASMode:(RUAVASMode)vasMode forMerchant:(NSString *)mercahntId response:(OnResponse)response;
 
 /**
  * Asynchronous method that returns VAS(Value Added Services) response code <br>
@@ -346,7 +346,7 @@ typedef enum {
  * @param response OnResponse block
  * @see RUAParameter, RUACommand, RUAVASTransactionEvent
  */
--(void)startVAS:(NSUInteger)timeout transactionEventThatInteruptVASInDualMode:(RUAVASTransactionEvent)transactionsEvents response:(OnResponse)response;
+- (void)startVAS:(NSUInteger)timeout transactionEventThatInteruptVASInDualMode:(RUAVASTransactionEvent)transactionsEvents response:(OnResponse)response;
 
 @end
 

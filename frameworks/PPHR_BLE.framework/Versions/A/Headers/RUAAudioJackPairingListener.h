@@ -28,7 +28,7 @@
  * the reader and mobile passkeys.
  */
 
-- (void)onPairConfirmation:(NSString *)readerPasskey mobileKey:(NSString *) mobilePasskey;
+- (void)onPairConfirmation:(NSString *)readerPasskey mobileKey:(NSString *)mobilePasskey;
 
 /**
  * Called to indicate that the pairing process has successfully completed.
@@ -39,12 +39,12 @@
 /**
  * Called to indicate that the device manager does not support audio jack pairing.
  */
-- (void) onPairNotSupported;
+- (void)onPairNotSupported;
 
 /**
  * Called to indicate that the pairing process failed.
  */
-- (void) onPairFailed;
+- (void)onPairFailed;
 
 @optional
 
@@ -52,13 +52,13 @@
  * Called during the pairing process to let the application display
  * the reader and mobile passkeys along with RUADevice Object.
  */
-- (void)onPairConfirmation:(NSString *)readerPasskey mobileKey:(NSString *) mobilePasskey device:(RUADevice*)device;
+- (void)onPairConfirmation:(NSString *)readerPasskey mobileKey:(NSString *)mobilePasskey device:(RUADevice *)device;
 
 /**
  * Called to indicate that the pairing process has successfully completed.
  */
 
-- (void)onPairSucceeded:(RUADevice*)device;
+- (void)onPairSucceeded:(RUADevice *)device;
 
 @end
 

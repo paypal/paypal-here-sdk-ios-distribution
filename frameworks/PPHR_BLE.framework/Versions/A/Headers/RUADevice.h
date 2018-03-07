@@ -11,9 +11,9 @@
 @interface RUADevice : NSObject
 
 typedef enum {
-	RUACommunicationInterfaceBluetooth = 0,
-	RUACommunicationInterfaceAudioJack = 1,
-	RUACommunicationInterfaceUnknown = 2
+    RUACommunicationInterfaceBluetooth = 0,
+    RUACommunicationInterfaceAudioJack = 1,
+    RUACommunicationInterfaceUnknown = 2
 } RUACommunicationInterface;
 
 /**
@@ -36,11 +36,11 @@ typedef enum {
  * */
 @property NSInteger RSSIvalue;
 
-- (id)            initWithName:(NSString *)name
+- (id)initWithName:(NSString *)name
                 withIdentifier:(NSString *)identifier
     withCommunicationInterface:(RUACommunicationInterface)interface;
 
-- (id)            initWithName:(NSString *)name
+- (id)initWithName:(NSString *)name
                 withIdentifier:(NSString *)identifier
     withCommunicationInterface:(RUACommunicationInterface)interface
                  withRSSIvalue:(NSInteger)rssivalue;

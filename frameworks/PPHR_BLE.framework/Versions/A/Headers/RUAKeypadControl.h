@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-	RUALanguageCodeENGLISH = 0,
-	RUALanguageCodeFRENCH = 1
+    RUALanguageCodeENGLISH = 0,
+    RUALanguageCodeFRENCH = 1
 }RUALanguageCode;
 /**
  * KeyPadControl provides interface to control the keypad of ROAM device.<br>
@@ -79,9 +79,9 @@ typedef enum {
  @param publicKey the public key
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  @see PublicKey
- 
+
  */
 
 - (void)retrieveKeyedCardData:(OnProgress)progress response:(OnResponse)response;

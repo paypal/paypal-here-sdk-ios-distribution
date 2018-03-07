@@ -14,8 +14,8 @@
 
 @protocol DeviceSearchListener <NSObject>
 
--(void) discoverOneDevice:(RDeviceInfo*)devInfo;
--(void) discoverComplete;
+- (void)discoverOneDevice:(RDeviceInfo *)devInfo;
+- (void)discoverComplete;
 
 @end
 

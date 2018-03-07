@@ -66,8 +66,8 @@
  * */
 @property NSString *bluetoothMacAddress;
 
-- (NSString *) toString;
+- (NSString *)toString;
 
-- (RUAFileVersionInfo*) getFileVerionsInfoFor:(RUAFileVersionInfo*)info;
+- (RUAFileVersionInfo *)getFileVerionsInfoFor:(RUAFileVersionInfo *)info;
 
 @end

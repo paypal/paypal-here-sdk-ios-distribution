@@ -26,14 +26,14 @@ typedef enum{
 
 @interface LDPlatformFilter : NSObject<NSCopying>
 
--(instancetype)initForCommon:(NSString*)platform subPlatform:(NSString*)subPlatform fileType:(NSString*)fileType;
--(instancetype)initForM3X:(NSString*)subPlatform hardwareConfig:(NSString*)hardwareConfig;
+- (instancetype)initForCommon:(NSString *)platform subPlatform:(NSString *)subPlatform fileType:(NSString *)fileType;
+- (instancetype)initForM3X:(NSString *)subPlatform hardwareConfig:(NSString *)hardwareConfig;
 
-@property (assign, nonatomic) LD_PlatformFilterType FilterType;
-@property (strong, nonatomic) NSString* Platform;
-@property (strong, nonatomic) NSString* SubPlatform;
-@property (strong, nonatomic) NSString* FileType;
-@property (strong, nonatomic) NSString* HardwareConfig;
+@property (nonatomic, assign) LD_PlatformFilterType FilterType;
+@property (nonatomic, strong) NSString *Platform;
+@property (nonatomic, strong) NSString *SubPlatform;
+@property (nonatomic, strong) NSString *FileType;
+@property (nonatomic, strong) NSString *HardwareConfig;
 
 @end
 
@@ -46,41 +46,41 @@ typedef enum{
 
 @interface CommunicationManagerBase : NSObject
 
-+(CommunicationManagerBase*)sharedInstance:(DeviceCommunicationChannel)channel;
++ (CommunicationManagerBase *)sharedInstance:(DeviceCommunicationChannel)channel;
 // (available but deprecated in v2.4.7.0520)
-+(int)searchDevices:(id<DeviceSearchListener>)dsl detectAudioDevice:(BOOL)detectAudioDevcie detectBluetooth:(BOOL)detectBluetoothDevice timeout:(long)timeout;
++ (int)searchDevices:(id<DeviceSearchListener>)dsl detectAudioDevice:(BOOL)detectAudioDevcie detectBluetooth:(BOOL)detectBluetoothDevice timeout:(long)timeout;
 /*
  * searchDevices with detectDeviceType
  * detectDeviceType can be combination of value of DeviceCommunicationChannel.
  * If u want to search all device for any type, detectDeviceType should be ANYDEVICETYPE;
  */
-+(int)searchDevices:(id<DeviceSearchListener>)dsl detectDeviceType:(DeviceCommunicationChannel)flag timeout:(long)timeout;
++ (int)searchDevices:(id<DeviceSearchListener>)dsl detectDeviceType:(DeviceCommunicationChannel)flag timeout:(long)timeout;
 /*
  * searchDevices with RSSI
  * u can search device in RSSI-Range by set lowRSSI and hiRSSI arguments.
  */
-+(int)searchDevices:(id<DeviceSearchListener>)dsl detectDeviceType:(DeviceCommunicationChannel)flag timeout:(long)timeout lowRSSI:(NSInteger)lr hiRSSI:(NSInteger)hr;
-+(void)stopSearching;
-+(NSString*)getLibVersion;
-+(void)switchLog:(BOOL)bOpen;
--(int)openDevice:(NSString*)identifier;
--(int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>) cb mode:(DeviceCommunicationMode)mode;
--(int)openDevice:(NSString *)identifier timeout:(long)timeout;
--(int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>)cb mode:(DeviceCommunicationMode)mode timeout:(long)timeout;
--(int)exchangeData:(NSData*)data timeout:(long)timeout cb:(id<CommunicationCallBack>) cb;
--(int)exchangeData:(NSData *)data timeout:(long)timeout;
--(int)cancelExchange;
--(void)closeDevice;
--(void)closeResource;
--(BOOL)isConnected;
++ (int)searchDevices:(id<DeviceSearchListener>)dsl detectDeviceType:(DeviceCommunicationChannel)flag timeout:(long)timeout lowRSSI:(NSInteger)lr hiRSSI:(NSInteger)hr;
++ (void)stopSearching;
++ (NSString *)getLibVersion;
++ (void)switchLog:(BOOL)bOpen;
+- (int)openDevice:(NSString *)identifier;
+- (int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>)cb mode:(DeviceCommunicationMode)mode;
+- (int)openDevice:(NSString *)identifier timeout:(long)timeout;
+- (int)openDevice:(NSString *)identifier cb:(id<CommunicationCallBack>)cb mode:(DeviceCommunicationMode)mode timeout:(long)timeout;
+- (int)exchangeData:(NSData *)data timeout:(long)timeout cb:(id<CommunicationCallBack>)cb;
+- (int)exchangeData:(NSData *)data timeout:(long)timeout;
+- (int)cancelExchange;
+- (void)closeDevice;
+- (void)closeResource;
+- (BOOL)isConnected;
 
 
--(void)breakOpenDevice;
+- (void)breakOpenDevice;
 
 
-+(void)download:(RDeviceInfo*)di path:(NSString*)filePath callback:(id<CommDownloadCallback>)cb;
-+(void)download:(RDeviceInfo*)di path:(NSString*)filePath filter:(LDPlatformFilter*)pf callback:(id<CommDownloadCallback>)cb;
++ (void)download:(RDeviceInfo *)di path:(NSString *)filePath callback:(id<CommDownloadCallback>)cb;
++ (void)download:(RDeviceInfo *)di path:(NSString *)filePath filter:(LDPlatformFilter *)pf callback:(id<CommDownloadCallback>)cb;
 //+(void)TMSDownload:(RDeviceInfo*)di path:(NSString*)filePath callback:(id<CommDownloadCallback>)cb;
-+(TMSDownloadCtrl*)getTMSDownloadCtrl;
++ (TMSDownloadCtrl *)getTMSDownloadCtrl;
 
 @end

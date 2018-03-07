@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    
-	/** 0: EMVL1 Ingenico Proprietary character defined in Appendix A Section 11.1. */
-	RUADisplayTextCharsetEMVL1,
-	/** 1: EMVL2 Character Set (ISO 8859_1 + Euro Symbol) defined in Appendix A Section 11.2 */
-	RUADisplayTextCharsetEMVL2
+
+    /** 0: EMVL1 Ingenico Proprietary character defined in Appendix A Section 11.1. */
+    RUADisplayTextCharsetEMVL1,
+    /** 1: EMVL2 Character Set (ISO 8859_1 + Euro Symbol) defined in Appendix A Section 11.2 */
+    RUADisplayTextCharsetEMVL2
 } RUADisplayTextCharset;
 
 /**
