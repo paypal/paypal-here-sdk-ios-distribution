@@ -68,6 +68,6 @@
  * */
 @property CertificateInfo *customerCertificate;
 
-- (NSString *) toString ;
+- (NSString *)toString;
 
 @end

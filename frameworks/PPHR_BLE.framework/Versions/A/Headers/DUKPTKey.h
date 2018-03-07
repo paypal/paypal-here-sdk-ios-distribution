@@ -19,7 +19,7 @@
  */
 @property NSString*encryptedValue;
 
--(id)initWithKeyName:(NSString *)keyName ksn:(NSString*)ksn encryptedValue:(NSString*)value;
--(NSString*) toString;
+- (id)initWithKeyName:(NSString *)keyName ksn:(NSString *)ksn encryptedValue:(NSString *)value;
+- (NSString *)toString;
 
 @end

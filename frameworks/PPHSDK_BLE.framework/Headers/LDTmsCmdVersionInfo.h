@@ -19,12 +19,12 @@ typedef enum _tagPhaseType{
 
 @interface LDTmsCmdVersionInfo : NSObject
 
-@property (strong,nonatomic) NSString* HardwareType;
-@property (strong,nonatomic) NSString* EmvKernelVer;
-@property (strong,nonatomic) NSString* KeyVer;
-@property (strong,nonatomic) NSString* PedVer;
-@property (strong,nonatomic) NSArray* FileVerInfos;
-@property (assign,nonatomic) ENU_PhaseType PhaseType;
+@property (nonatomic, strong) NSString *HardwareType;
+@property (nonatomic, strong) NSString *EmvKernelVer;
+@property (nonatomic, strong) NSString *KeyVer;
+@property (nonatomic, strong) NSString *PedVer;
+@property (nonatomic, strong) NSArray *FileVerInfos;
+@property (nonatomic, assign) ENU_PhaseType PhaseType;
 
 @end
 

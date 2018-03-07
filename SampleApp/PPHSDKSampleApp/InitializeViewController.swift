@@ -108,6 +108,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBAction func initMerchant(_ sender: UIButton) {
         
         envSelector.isEnabled = false
+        self.activitySpinner.color = UIColor.black
         activitySpinner.startAnimating()
 
         performLogin()
@@ -131,6 +132,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     
         PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in
             if let err = error {
+                self.activitySpinner.color = UIColor.red
+                self.activitySpinner.hidesWhenStopped = false
                 self.activitySpinner.stopAnimating()
                 print("Debug ID: \(err.debugId)")
                 print("Error Message: \(err.message)")
@@ -139,29 +142,30 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 // The token did not work, so clear the saved token so we can go back to the login page
                 let tokenDefault = UserDefaults.init()
                 tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
-                self.performLogin()
+                //self.performLogin()
+            } else {
+                print("Merchant Success!")
+                self.activitySpinner.hidesWhenStopped = true
+                self.activitySpinner.stopAnimating()
+                self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+                self.initMerchantButton.isEnabled = false
+                self.merchInfoView.isHidden = false
+                self.merchEmailLabel.text = merchant!.emailAddress
+
+                // Save currency to UserDefaults for further usage. This needs to be used to initialize
+                // the PPRetailInvoice for the payment later on. This app is using UserDefault but
+                // it could just as easily be passed through the segue.
+                let tokenDefault = UserDefaults.init()
+                tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
+
+                // Add the BN code for Partner tracking. To obtain this value, contact
+                // your PayPal account representative. Please do not change this value when
+                // using this sample app for testing.
+                merchant?.referrerCode = "PPHSDK_SampleApp_iOS"
+
+                //Enable the connect card reader button here
+                self.connectCardReaderBtn.isHidden = false
             }
-
-            print("Merchant Success!")
-            self.activitySpinner.stopAnimating()
-            self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
-            self.initMerchantButton.isEnabled = false
-            self.merchInfoView.isHidden = false
-            self.merchEmailLabel.text = merchant!.emailAddress
-
-            // Save currency to UserDefaults for further usage. This needs to be used to initialize
-            // the PPRetailInvoice for the payment later on. This app is using UserDefault but
-            // it could just as easily be passed through the segue.
-            let tokenDefault = UserDefaults.init()
-            tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
-
-            // Add the BN code for Partner tracking. To obtain this value, contact
-            // your PayPal account representative. Please do not change this value when
-            // using this sample app for testing.
-            merchant?.referrerCode = "PPHSDK_SampleApp_iOS"
-
-            //Enable the connect card reader button here
-            self.connectCardReaderBtn.isHidden = false
         }
         
     }

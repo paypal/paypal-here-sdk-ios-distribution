@@ -36,7 +36,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)clearAIDSList:(OnProgress)progress response:(OnResponse)response;
 
@@ -47,7 +47,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)clearPublicKeys:(OnProgress)progress response:(OnResponse)response;
 
@@ -59,7 +59,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)generateBeep:(OnProgress)progress response:(OnResponse)response;
 
@@ -70,7 +70,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)getReaderCapabilities:(OnProgress)progress response:(OnResponse)response;
 
@@ -81,7 +81,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)readVersion:(OnProgress)progress response:(OnResponse)response;
 
@@ -92,7 +92,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)readKeyMapping:(OnProgress)progress response:(OnResponse)response;
 /**
@@ -102,7 +102,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)resetDevice:(OnProgress)progress response:(OnResponse)response;
 
@@ -113,7 +113,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)retrieveKSN:(OnProgress)progress response:(OnResponse)response;
 
@@ -125,7 +125,7 @@
  @param publicKey the public key
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  @see PublicKey
  */
 - (void)revokePublicKey:(RUAPublicKey *)key progress:(OnProgress)progress response:(OnResponse)response;
@@ -165,7 +165,7 @@
  @param list list of the data object list parameters (reader parameters)
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  @see RUAParameter
  */
 - (void)setOnlineDOL:(NSArray *)list progress:(OnProgress)progress response:(OnResponse)response;
@@ -206,7 +206,7 @@
  The map passed to the onResponse callback contains the following parameters as keys, <br>
  @param response OnResponse block
  @param progress OnProgress block
- 
+
  */
 - (void)setUserInterfaceOptions:(OnProgress)progress response:(OnResponse)response;
 
@@ -232,7 +232,7 @@
  @param response OnResponse block
  @param progress OnProgress block
  */
-- (void) setUserInterfaceOptions:(int) cardInsertionTimeout
+- (void)setUserInterfaceOptions:(int)cardInsertionTimeout
          withDefaultLanguageCode:(RUALanguageCode)languageCode
                withPinPadOptions:(Byte) pinPadOptions
             withBackLightControl:(Byte) backlightControl
@@ -262,7 +262,7 @@
  @param response OnResponse block
  @see ApplicationIdentifier
 */
-- (void)submitAIDWithTLVDataList:(NSArray*) applicationIdentifiers response:(OnResponse)response;
+- (void)submitAIDWithTLVDataList:(NSArray *)applicationIdentifiers response:(OnResponse)response;
 
 /**
  This is an Asynchronous method that sends the Submit public key command to the reader.<br>
@@ -293,7 +293,7 @@
  @see RUADisplayControl
  */
 
-- (id <RUADisplayControl> )getDisplayControl;
+- (id <RUADisplayControl>)getDisplayControl;
 
 /**
  Returns the certificate file versions of the connected device.
@@ -301,7 +301,7 @@
  @param progress OnProgress block
  */
 
-- (void)readCertificateFilesVersion:(OnProgress)progress response:(OnResponse)response ;
+- (void)readCertificateFilesVersion:(OnProgress)progress response:(OnResponse)response;
 
 
 /**
@@ -310,12 +310,12 @@
  @see RUAKeypadControl
  */
 
-- (id <RUAKeypadControl> )getKeypadControl;
+- (id <RUAKeypadControl>)getKeypadControl;
 
 /***
  This command stores a single or double length master or session key specified in a secure memory location with the position specified by the session key locator.
  Session keys are decrypted prior to being stored using the master key corresponding to the specified master key locator.
- 
+
  @param keyLength 0 for single length key and 1 for double length key
  @param sessionKeyLocator
  @param masterKeyLocator
@@ -325,7 +325,7 @@
  @param response OnResponse block
  @param progress OnProgress block
  */
-- (void) loadSessionKey:(int) keyLength
+- (void)loadSessionKey:(int)keyLength
                         withSessionKeyLocator: (NSString *) sessionKeyLocator
                         withMasterKeyLocator: (NSString *) masterKeyLocator
                         withEncryptedKey:(NSString *) encryptedKey
@@ -390,13 +390,13 @@
  This method enables the contactless (turns on NFC card reader on the device) <br>
  @param response OnResponse block
 */
-- (void) enableContactless:(OnResponse)response;
+- (void)enableContactless:(OnResponse)response;
 
 /**
  This method enables RKI mode for RKI Injection process <br>
  @param response OnResponse block
  */
-- (void) enableRKIMode:(OnResponse)response;
+- (void)enableRKIMode:(OnResponse)response;
 
 
 /**
@@ -405,19 +405,19 @@
  *  @param groupName      refers to the groupName of the device to do RKI Injection
  *  @param response        OnResponse block
  */
-- (void) triggerRKIWithGroupName:(NSString *) groupName response:(OnResponse)response;
+- (void)triggerRKIWithGroupName:(NSString *)groupName response:(OnResponse)response;
 
 /**
  This method disables the contactless (turns OFF NFC card reader on the device) <br>
  @param response OnResponse block
  */
-- (void) disableContactless:(OnResponse)response;
+- (void)disableContactless:(OnResponse)response;
 
 /**
  This method configures the contactless transaction options on the reader <br>
  @param response OnResponse block
  */
-- (void) configureContactlessTransactionOptions: (BOOL) supportCVM
+- (void)configureContactlessTransactionOptions:(BOOL)supportCVM
                                     supportAMEX: (BOOL) supportAMEX
                              enableCryptogram17: (BOOL) enableCryptogram17
                          enableOnlineCryptogram: (BOOL) enableOnlineCryptogram
@@ -436,16 +436,16 @@
  @param response OnResponse block
  */
 
-- (void) configureContactlessTransactionOptions: (BOOL) supportCVM
-									supportAMEX: (BOOL) supportAMEX
-							 enableCryptogram17: (BOOL) enableCryptogram17
-						 enableOnlineCryptogram: (BOOL) enableOnlineCryptogram
-								   enableOnline: (BOOL) enableOnline
-								enableMagStripe: (BOOL) enableMagStripe
-								  enableMagChip: (BOOL) enableMagChip
-									enableQVSDC: (BOOL) enableQVSDC
-									  enableMSD: (BOOL) enableMSD
-				  contactlessOutcomeDisplayTime: (int) contactlessOutcomeDisplayTime
+- (void)configureContactlessTransactionOptions:(BOOL)supportCVM
+                                    supportAMEX: (BOOL) supportAMEX
+                             enableCryptogram17: (BOOL) enableCryptogram17
+                         enableOnlineCryptogram: (BOOL) enableOnlineCryptogram
+                                   enableOnline: (BOOL) enableOnline
+                                enableMagStripe: (BOOL) enableMagStripe
+                                  enableMagChip: (BOOL) enableMagChip
+                                    enableQVSDC: (BOOL) enableQVSDC
+                                      enableMSD: (BOOL) enableMSD
+                  contactlessOutcomeDisplayTime: (int) contactlessOutcomeDisplayTime
                                        response: (OnResponse) response __deprecated;
 
 /**
@@ -474,7 +474,7 @@
  * @see RUAFirmwareType
  * When the reader processes the command, it returns the result as a map to the OnResponse block passed.<br>
  */
-- (void)setFirmwareType:(RUAFirmwareType)firmwareType withVersion:(NSString*)version response:(OnResponse)response;
+- (void)setFirmwareType:(RUAFirmwareType)firmwareType withVersion:(NSString *)version response:(OnResponse)response;
 
 /**
  * This is a Asynchronous method that gets the custom firmware version<br>
@@ -506,6 +506,6 @@
  * @param type RUAFirmwareChecksumType enum to describe the firmwaretype
  * @param response OnResponse block
  */
--(void)getChecksumForType:(RUAFirmwareChecksumType)type response:(OnResponse)response;
+- (void)getChecksumForType:(RUAFirmwareChecksumType)type response:(OnResponse)response;
 
 @end

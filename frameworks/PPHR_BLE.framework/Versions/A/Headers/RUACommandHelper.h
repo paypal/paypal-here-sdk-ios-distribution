@@ -17,10 +17,10 @@
 #import "RUAVASMode.h"
 
 typedef struct TLV {
-	RUAParameter parameter;
-	NSString *code;
-	u_int32_t minLen;
-	u_int32_t maxLen;
+    RUAParameter parameter;
+    NSString *code;
+    u_int32_t minLen;
+    u_int32_t maxLen;
     RUAValueFormat valueFormat;
     BOOL isProprietary;
 } RUAParameterTLV;
@@ -59,9 +59,9 @@ typedef struct TLV {
 + (RUAValueFormat)getRUAValueFormat:(RUAParameter)paramter;
 + (NSData *)getSubmitPublicKeyListCommand:(RUAPublicKey *)key;
 + (NSData *)getRevokePublicKeyListCommand:(RUAPublicKey *)key;
-+ (NSData *)getSubmitAIDSListCommand:(NSArray *)aids forCommand:(RUACommand) command;
++ (NSData *)getSubmitAIDSListCommand:(NSArray *)aids forCommand:(RUACommand)command;
 + (NSData *)getTransactionCommand:(RUACommand)cmd withInputParameters:(NSDictionary *)input;
-+ (NSData *)getLoadSessionKeyCommand:(int) keyLength
++ (NSData *)getLoadSessionKeyCommand:(int)keyLength
                  withSessionKeyLocator: (NSString *) sessionKeyLocator
                   withMasterKeyLocator: (NSString *) masterKeyLocator
                       withEncryptedKey: (NSString *) encryptedKey
@@ -86,7 +86,7 @@ typedef struct TLV {
 
 + (NSData *)getVASExchangedMessageLogCommand;
 
-+ (NSData *)retrieveCommandToSetFirmwareType:(RUAFirmwareType)firmwareType withVersionString:(NSString*)versionString;
++ (NSData *)retrieveCommandToSetFirmwareType:(RUAFirmwareType)firmwareType withVersionString:(NSString *)versionString;
 
 + (NSData *)retrieveCommandToGetVersionForFirmwareType:(RUAFirmwareType)firmwareType;
 
@@ -98,9 +98,9 @@ typedef struct TLV {
 
 + (NSData *)getEnableVASPLSEStateCommandforState:(BOOL)isEnabled;
 
-+ (NSData *)retrieveSetVASUnpredictableNumberCommandFor:(NSString*)unpredictableNumber;
++ (NSData *)retrieveSetVASUnpredictableNumberCommandFor:(NSString *)unpredictableNumber;
 
-+ (NSData *)retrieveSetVASApplicationVersionCommandFor:(NSString*)applicationVersion;
++ (NSData *)retrieveSetVASApplicationVersionCommandFor:(NSString *)applicationVersion;
 
 + (RUAErrorCode)getRUAErrorCode:(NSString *)readerError;
 
@@ -108,9 +108,9 @@ typedef struct TLV {
 
 + (NSData *)retrieveCommandToGetChecksumForFirmwareType:(RUAFirmwareChecksumType)firmwareChecksumType;
 
-+ (NSData *)getEnableVASModeCommand:(RUAVASMode)vasMode forMerchant:(NSString*)merchantId;
++ (NSData *)getEnableVASModeCommand:(RUAVASMode)vasMode forMerchant:(NSString *)merchantId;
 
-+ (NSData *)getAddVASMerchantCommand:(RUAVASMode)vasMode merchantID:(NSString*)merchantId merchantURL:(NSString*)merchantURL categoryFilter:(NSString*)categoryFilter;
++ (NSData *)getAddVASMerchantCommand:(RUAVASMode)vasMode merchantID:(NSString *)merchantId merchantURL:(NSString *)merchantURL categoryFilter:(NSString *)categoryFilter;
 
 + (NSData *)getStartVASCommandWithTimeout:(NSUInteger)timeout transactionEventThatInteruptVASInDualMode:(RUAVASTransactionEvent)transactionsEvents;
 
@@ -120,6 +120,6 @@ typedef struct TLV {
  @return Dictionary of RUA parameters and values
  @see RUAProgressMessage
  */
-+ (NSString *)RUADescriptionOfParameters:(NSDictionary*)parameters;
++ (NSString *)RUADescriptionOfParameters:(NSDictionary *)parameters;
 
 @end

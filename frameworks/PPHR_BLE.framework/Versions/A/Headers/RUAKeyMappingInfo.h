@@ -21,8 +21,8 @@
  */
 @property NSMutableArray* mThreeDesKeyList;
 
--(id)initWithData:(NSData*)data;
+- (id)initWithData:(NSData *)data;
 
-- (NSString *) toString;
+- (NSString *)toString;
 
 @end

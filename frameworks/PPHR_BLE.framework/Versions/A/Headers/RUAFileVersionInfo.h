@@ -16,27 +16,27 @@
 @interface RUAFileVersionInfo : NSObject
 
 
-@property (strong,nonatomic) NSString* platform;
-@property (strong,nonatomic) NSString* subPlatform;
-@property (strong,nonatomic) NSString* fileType;
-@property (strong,nonatomic) NSString* maintainerId;
-@property (strong,nonatomic) NSString* fileLevel;
-@property (strong,nonatomic) NSString* fileSN;
-@property (strong,nonatomic) NSString* version;
-@property (strong,nonatomic) NSString* dependVer;
-@property (strong,nonatomic) NSString* verFlag;
-@property (strong,nonatomic) NSString* year;
-@property (strong,nonatomic) NSString* month;
-@property (strong,nonatomic) NSString* day;
+@property (nonatomic, strong) NSString *platform;
+@property (nonatomic, strong) NSString *subPlatform;
+@property (nonatomic, strong) NSString *fileType;
+@property (nonatomic, strong) NSString *maintainerId;
+@property (nonatomic, strong) NSString *fileLevel;
+@property (nonatomic, strong) NSString *fileSN;
+@property (nonatomic, strong) NSString *version;
+@property (nonatomic, strong) NSString *dependVer;
+@property (nonatomic, strong) NSString *verFlag;
+@property (nonatomic, strong) NSString *year;
+@property (nonatomic, strong) NSString *month;
+@property (nonatomic, strong) NSString *day;
 
 // This group of members represents additional info about files already on terminal.
 
-@property (strong,nonatomic) NSString* customerId;
-@property (strong,nonatomic) NSString* compatibilityMatrix;
+@property (nonatomic, strong) NSString *customerId;
+@property (nonatomic, strong) NSString *compatibilityMatrix;
 
-- (id)initWithUNSFile:(LDTmsFileVersionInfo*)ldtFileversionInfo;
-- (id)initWithUNSJson:(NSString*)UNSJson;
-- (id)init:(NSString*)infoFromReadVersion ;
+- (id)initWithUNSFile:(LDTmsFileVersionInfo *)ldtFileversionInfo;
+- (id)initWithUNSJson:(NSString *)UNSJson;
+- (id)init:(NSString *)infoFromReadVersion;
 - (NSString *)toString;
 - (BOOL)namePortionMatches:(RUAFileVersionInfo *)info;
 /**

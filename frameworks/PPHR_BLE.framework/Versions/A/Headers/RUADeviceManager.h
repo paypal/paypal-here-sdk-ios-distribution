@@ -20,14 +20,14 @@
 #define RUADeviceManager_h
 
 typedef  enum {
-	RUADeviceTypeG4x,
-	RUADeviceTypeRP350x,
+    RUADeviceTypeG4x,
+    RUADeviceTypeRP350x,
     RUADeviceTypeMOBY3000,
     RUADeviceTypeRP450c,
-	RUADeviceTypeRP750x,
+    RUADeviceTypeRP750x,
     RUADeviceTypeRP45BT,
     RUADeviceTypeMOBY8500,
-	RUADeviceTypeUnknown
+    RUADeviceTypeUnknown
 }RUADeviceType;
 
 /**
@@ -42,14 +42,14 @@ typedef  enum {
  @see RUATransactionManager
  */
 
-- (id <RUATransactionManager> )getTransactionManager;
+- (id <RUATransactionManager>)getTransactionManager;
 
 /**
  Returns configuration manager of the roam device.
  @return RUAConfigurationManager reader configuration manager
  @see RUAConfigurationManager
  */
-- (id <RUAConfigurationManager> )getConfigurationManager;
+- (id <RUAConfigurationManager>)getConfigurationManager;
 
 /**
  Returns the Device type
@@ -74,7 +74,7 @@ typedef  enum {
  @see RUADeviceStatusHandler
  @return true if successful
  */
-- (BOOL)initializeDevice:(id <RUADeviceStatusHandler> )statusHandler;
+- (BOOL)initializeDevice:(id <RUADeviceStatusHandler>)statusHandler;
 
 /**
  Initializes the roam reader (through audio jack or bluetooth) with defined timeout and registers the status handler for device status updates.
@@ -92,7 +92,7 @@ typedef  enum {
  @see RUADeviceStatusHandler
  @return true if successful
  */
-- (BOOL)initializeDevice:(id <RUADeviceStatusHandler> )statusHandler andTimeout:(int)timeout;
+- (BOOL)initializeDevice:(id <RUADeviceStatusHandler>)statusHandler andTimeout:(int)timeout;
 
 /**
  * Registers the handler to receive progress updates
@@ -132,7 +132,7 @@ typedef  enum {
 /**
  Cancels any pending connection attempt to reader by sending a stop command.
  */
--(void)stopInitialization;
+- (void)stopInitialization;
 
 /**
  Discovers the available devices for duration
@@ -141,7 +141,7 @@ typedef  enum {
  @duration duration of the bluetooth discovery in milliseconds
  @see RUADeviceSearchListener
  */
-- (void)searchDevicesForDuration:(long)duration andListener:(id <RUADeviceSearchListener> )searchListener;
+- (void)searchDevicesForDuration:(long)duration andListener:(id <RUADeviceSearchListener>)searchListener;
 
 /**
  Discovers the available devices
@@ -149,7 +149,7 @@ typedef  enum {
  @param searchListener the callback handler
  @see RUADeviceSearchListener
  */
-- (void)searchDevices:(id <RUADeviceSearchListener> )searchListener;
+- (void)searchDevices:(id <RUADeviceSearchListener>)searchListener;
 
 /**
  Discovers the available devices with lowRSSI and highRSSI<br>
@@ -183,7 +183,7 @@ typedef  enum {
  This is an Asynchronous method that returns the battery level and charging status of a device. <br>
  <br>
  When the reader processes the command, it returns the result as a map to  the OnResponse block passed.<br>
- The map passed to the onResponse callback contains the following parameters as keys, 
+ The map passed to the onResponse callback contains the following parameters as keys,
  RUAParameterBatteryLevel,
  RUAParameterIsDeviceCharging<br>
  @param response OnResponse block
@@ -195,46 +195,46 @@ typedef  enum {
 
  @param response OnResponse block
 */
-- (void) enableFirmwareUpdateMode:(OnResponse)response;
+- (void)enableFirmwareUpdateMode:(OnResponse)response;
 
 /**
 Triggers the firmware update with the file path provided and returns the response on the handler passed
 @param firmwareFilePath
  @param response OnResponse block
 */
-- (void) updateFirmware:(NSString *) firmareFilePath progress:(OnProgress)progress response:(OnResponse)response;
+- (void)updateFirmware:(NSString *)firmareFilePath progress:(OnProgress)progress response:(OnResponse)response;
 
 /**
  Synchronous method that will cancel the firmware update process and force the reader to exit the firmware update mode
  */
-- (void) cancelFirmwareUpdate;
+- (void)cancelFirmwareUpdate;
 
 
 /**
- This is an Asynchronous method that returns the statistics of a device, like the count of total number of swipes, bad swipes etc., 
+ This is an Asynchronous method that returns the statistics of a device, like the count of total number of swipes, bad swipes etc.,
  When the reader processes the command, it returns the result as a map to  the OnResponse block passed.
- The map passed to the onResponse callback contains the following parameters as keys, 
-	RUAParameterSystemCountPowerON,
-	RUAParameterSystemCountKeyHit,
-	RUAParameterSystemCountTotalSwipes,
-	RUAParameterSystemCountAudioJackInsertions,
-	RUAParameterSystemCountUSBEvent,
-	RUAParameterSystemCountBadSwipes,
-	RUAParameterSystemCountFallbackSwipes,
-	RUAParameterSystemCountChipInsertions,
-	RUAParameterSystemCountPowerOnFailForChipCards,
-	RUAParameterSystemCountAPDUFailForChipCards,
-	RUAParameterSystemCountRFWupa,
-	RUAParameterSystemCountClessActivateFail,
-	RUAParameterSystemCountClessAPDUFail,
-	RUAParameterSystemCountCharges,
-	RUAParameterSystemCountBluetoothConnectionsLost,
-	RUAParameterSystemCountOutOfBattery,
-	RUAParameterSystemCountCompleteCharge,
-	RUAParameterSystemCountCommands
+ The map passed to the onResponse callback contains the following parameters as keys,
+    RUAParameterSystemCountPowerON,
+    RUAParameterSystemCountKeyHit,
+    RUAParameterSystemCountTotalSwipes,
+    RUAParameterSystemCountAudioJackInsertions,
+    RUAParameterSystemCountUSBEvent,
+    RUAParameterSystemCountBadSwipes,
+    RUAParameterSystemCountFallbackSwipes,
+    RUAParameterSystemCountChipInsertions,
+    RUAParameterSystemCountPowerOnFailForChipCards,
+    RUAParameterSystemCountAPDUFailForChipCards,
+    RUAParameterSystemCountRFWupa,
+    RUAParameterSystemCountClessActivateFail,
+    RUAParameterSystemCountClessAPDUFail,
+    RUAParameterSystemCountCharges,
+    RUAParameterSystemCountBluetoothConnectionsLost,
+    RUAParameterSystemCountOutOfBattery,
+    RUAParameterSystemCountCompleteCharge,
+    RUAParameterSystemCountCommands
  @param response OnResponse block
  */
-- (void) getDeviceStatistics:(OnResponse)response;
+- (void)getDeviceStatistics:(OnResponse)response;
 
 
 /**
@@ -246,7 +246,7 @@ Triggers the firmware update with the file path provided and returns the respons
  * @param pairListener
  *            , see {@link AudioJackPairingListener}
  */
-- (void) requestPairing:(id <RUAAudioJackPairingListener> ) pairListener;
+- (void)requestPairing:(id <RUAAudioJackPairingListener>)pairListener;
 
 /**
  * Asynchronous method that will complete the process of pairing with
@@ -257,7 +257,7 @@ Triggers the firmware update with the file path provided and returns the respons
  * <br>
  * Currently only supported by the RP450c device manager.
  */
-- (void) confirmPairing:(BOOL)isMatching __deprecated;
+- (void)confirmPairing:(BOOL)isMatching __deprecated;
 
 /**
  * Returns the active communication type for those devices that can have multiple interfaces
@@ -266,7 +266,7 @@ Triggers the firmware update with the file path provided and returns the respons
  * @return {@see RUACommunicationInterface}
  */
 
--(RUACommunicationInterface) getActiveCommunicationType;
+- (RUACommunicationInterface)getActiveCommunicationType;
 
 @end
 

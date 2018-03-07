@@ -25,10 +25,10 @@
  */
 @property NSString* dateValue;
 
--(id)initWithData:(NSString*) certificateInfo;
+- (id)initWithData:(NSString *)certificateInfo;
 
--(id)initCustomerCertificateWithData:(NSString*) certificateInfo;
-    
--(NSString*) toString;
+- (id)initCustomerCertificateWithData:(NSString *)certificateInfo;
+
+- (NSString *)toString;
 
 @end

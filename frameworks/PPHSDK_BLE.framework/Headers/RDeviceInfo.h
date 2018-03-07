@@ -21,10 +21,10 @@ typedef enum _enumExtendDataKeyOfDeviceInfo{
 
 @interface RDeviceInfo : NSObject
 
--(id)initWithName:(NSString*)name identifier:(NSString*)identifier channel:(DeviceCommunicationChannel)dcc;
--(NSString*)getName;
--(NSString*)getIdentifier;
--(DeviceCommunicationChannel)getDevChannel;
--(NSDictionary*)getExtendData;
+- (id)initWithName:(NSString *)name identifier:(NSString *)identifier channel:(DeviceCommunicationChannel)dcc;
+- (NSString *)getName;
+- (NSString *)getIdentifier;
+- (DeviceCommunicationChannel)getDevChannel;
+- (NSDictionary *)getExtendData;
 
 @end

@@ -84,7 +84,7 @@ typedef void (^OnRepackageUNSFileHandler)(BOOL repackageSucceed);
  @return RUADeviceManager device manager for the device type specified
  @see RUADeviceType
  */
-+ (id <RUADeviceManager> )getDeviceManager:(RUADeviceType)type;
++ (id <RUADeviceManager>)getDeviceManager:(RUADeviceType)type;
 
 
 /**
@@ -100,13 +100,13 @@ typedef void (^OnRepackageUNSFileHandler)(BOOL repackageSucceed);
  @see RUADeviceType
  */
 
-+ (id <RUADeviceManager> )getAutoDetectDeviceManager:(NSArray*)type;
++ (id <RUADeviceManager>)getAutoDetectDeviceManager:(NSArray *)type;
 
 /**
  Returns an version of ROAMReaderUnifiedAPI (RUA)
  @return RUADeviceManager device manager for the device type specified
  */
-+ (NSString *) versionString __deprecated_msg("use RUA_Version instead");
++ (NSString *)versionString __deprecated_msg("use RUA_Version instead");
 
 /**
  * Returns a list of file version descriptions for each file
@@ -115,14 +115,14 @@ typedef void (^OnRepackageUNSFileHandler)(BOOL repackageSucceed);
  *
  */
 
-+ (NSArray*)getUnsFileVersionInfo:(NSString*)filePath;
++ (NSArray *)getUnsFileVersionInfo:(NSString *)filePath;
 
 /**
  * Checks if the uns file is valid.
  * @param filePath path of the uns file
  * @return <code>true</code> if valid, <code>false</code> otherwise
  */
-+ (BOOL)isValidUnsFile:(NSString*)filePath;
++ (BOOL)isValidUnsFile:(NSString *)filePath;
 
 /**
  * Repackage the speicified UNS file with reader version info

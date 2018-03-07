@@ -16,16 +16,16 @@
 
 @interface TMSDownloadCtrl : NSObject
 
--(void)download:(RDeviceInfo*)di path:(NSString*)filePath callback:(id<CommDownloadCallback>)cb;
--(void)newDownload:(RDeviceInfo *)di path:(NSString *)filePath callback:(id<CommDownloadCallback>)cb;
--(void)cancelDownload;
+- (void)download:(RDeviceInfo *)di path:(NSString *)filePath callback:(id<CommDownloadCallback>)cb;
+- (void)newDownload:(RDeviceInfo *)di path:(NSString *)filePath callback:(id<CommDownloadCallback>)cb;
+- (void)cancelDownload;
 
 // Version info
--(BOOL)CheckIsValid:(NSString*)filePath;
--(NSUInteger)GetFileCount:(NSString*)filePath;
--(LDTmsFileVersionInfo*)GetFileVersionInfo:(NSString*)filePath targetFile:(NSUInteger)index;
--(LDTmsCmdVersionInfo*)GetCmdVersionInfo:(NSData*)cmd;
--(LDTmsCmdCrtVersionInfo*)GetCmdCrtVersionInfo:(NSData*)cmd;
--(NSArray*)GetFileVersionInfoSet:(NSString*)filePath;
+- (BOOL)CheckIsValid:(NSString *)filePath;
+- (NSUInteger)GetFileCount:(NSString *)filePath;
+- (LDTmsFileVersionInfo *)GetFileVersionInfo:(NSString *)filePath targetFile:(NSUInteger)index;
+- (LDTmsCmdVersionInfo *)GetCmdVersionInfo:(NSData *)cmd;
+- (LDTmsCmdCrtVersionInfo *)GetCmdCrtVersionInfo:(NSData *)cmd;
+- (NSArray *)GetFileVersionInfoSet:(NSString *)filePath;
 
 @end

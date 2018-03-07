@@ -12,20 +12,20 @@
 @interface LDTmsFileVersionInfo : NSObject
 
 // 16bytes version identification
-@property (strong,nonatomic) NSString* Platform;
-@property (strong,nonatomic) NSString* SubPlatform;
-@property (strong,nonatomic) NSString* FileType;
+@property (nonatomic, strong) NSString *Platform;
+@property (nonatomic, strong) NSString *SubPlatform;
+@property (nonatomic, strong) NSString *FileType;
 // 32bytes version details
-@property (strong,nonatomic) NSString* MaintainID;
-@property (strong,nonatomic) NSString* FileLevel;
-@property (strong,nonatomic) NSString* FileSN;
-@property (strong,nonatomic) NSString* VersionNum;
-@property (strong,nonatomic) NSString* DependVerNum;
-@property (strong,nonatomic) NSString* VersionFlag;
+@property (nonatomic, strong) NSString *MaintainID;
+@property (nonatomic, strong) NSString *FileLevel;
+@property (nonatomic, strong) NSString *FileSN;
+@property (nonatomic, strong) NSString *VersionNum;
+@property (nonatomic, strong) NSString *DependVerNum;
+@property (nonatomic, strong) NSString *VersionFlag;
 // 16bytes timestamp
-@property (assign,nonatomic) NSUInteger Year;
-@property (assign,nonatomic) NSUInteger Month;
-@property (assign,nonatomic) NSUInteger Day;
+@property (nonatomic, assign) NSUInteger Year;
+@property (nonatomic, assign) NSUInteger Month;
+@property (nonatomic, assign) NSUInteger Day;
 
 
 @end

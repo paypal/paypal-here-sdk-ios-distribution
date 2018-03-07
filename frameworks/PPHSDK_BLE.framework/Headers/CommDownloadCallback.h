@@ -28,8 +28,8 @@
 
 @protocol CommDownloadCallback <NSObject>
 @required
--(void)onDownloadComplete;
--(void)onDownloadProgress:(unsigned int)current totalProgress:(unsigned int)total;
--(void)onDownloadError:(int)code;
+- (void)onDownloadComplete;
+- (void)onDownloadProgress:(unsigned int)current totalProgress:(unsigned int)total;
+- (void)onDownloadError:(int)code;
 
 @end

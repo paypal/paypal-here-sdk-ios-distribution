@@ -15,6 +15,6 @@
      *  DUKPT Key Name
      */
     NSString* keyName;
-    
+
 }
 @end
