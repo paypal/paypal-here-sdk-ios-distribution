@@ -145,6 +145,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 //self.performLogin()
             } else {
                 print("Merchant Success!")
+                // Start watching for the audio reader
+                PayPalRetailSDK.startWatchingAudio()
                 self.activitySpinner.hidesWhenStopped = true
                 self.activitySpinner.stopAnimating()
                 self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
