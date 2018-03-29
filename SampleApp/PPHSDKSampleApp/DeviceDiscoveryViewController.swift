@@ -30,7 +30,13 @@ class DeviceDiscoveryViewController: UIViewController {
         connectLastKnownCodeView.isHidden = true
         goToPmtPageBtn.isHidden = true
         activeReaderLbl.text = ""
-        
+
+        // Watch for audio readers.
+        // This will show a microphone connection permission prompt on the initial call (only once per app install)
+        // Time this call such that it does not interfere with any other alerts
+        // Requires a merchant, so start watching after a successful initializeMerchant
+        // The audio reader may not be available to some merchants based on their location or other criteria
+        PayPalRetailSDK.startWatchingAudio()
     }
     
     override func viewDidAppear(_ animated: Bool) {
