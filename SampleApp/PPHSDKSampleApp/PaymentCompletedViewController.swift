@@ -22,13 +22,19 @@ class PaymentCompletedViewController: UIViewController {
     var transactionNumber: String?
     var capturedAmount: NSDecimalNumber?
     var refundAmount: NSDecimalNumber?
+    var gratuityAmt: NSDecimalNumber?
+    var isTip: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refundCodeViewer.isHidden = true
         if(isCapture) {
-            successMsg.text = "Your capture of $\(capturedAmount ?? 0) was successful"
+            if(isTip)! {
+                successMsg.text = "Your tip of $\(gratuityAmt ?? 0) was added for a capture total of $\(capturedAmount ?? 0)"
+            } else {
+                successMsg.text = "Your capture of $\(capturedAmount ?? 0) was successful"
+            }
             refundAmount = capturedAmount
         } else {
             successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"

@@ -14,12 +14,15 @@ class CaptureAuthViewController: UIViewController {
     @IBOutlet weak var captureAmount: UITextField!
     @IBOutlet weak var captureAuthBtn: UIButton!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
+    @IBOutlet weak var enterAmountLbl: UILabel!
     
     var invoice: PPRetailInvoice?
     var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var captureTransactionNumber: String?
     var capturedAmount: NSDecimalNumber?
+    var isTip: Bool?
+    var gratuityAmt: NSDecimalNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,11 @@ class CaptureAuthViewController: UIViewController {
         captureAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         captureAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
+        if(isTip)! {
+            enterAmountLbl.text = "Enter a tip amount"
+            captureAuthBtn.setTitle("Capture Tip", for: .normal)
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +52,7 @@ class CaptureAuthViewController: UIViewController {
     }
 
     @IBAction func captureAuthorization(_ sender: UIButton) {
+        var amountToCapture: NSDecimalNumber = 0
         
         guard captureAmount.text != "" else {
             let alertController = UIAlertController(title: "Whoops!", message: "You need to enter a capture amount", preferredStyle: UIAlertControllerStyle.alert)
@@ -64,9 +73,16 @@ class CaptureAuthViewController: UIViewController {
         
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
-        let amountToCapture = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
+        let inputtedAmount = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
         
-        PayPalRetailSDK.transactionManager()?.captureAuthorization(authTransactionNumber, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice?.currency) { (error, captureId) in
+        if(isTip)! {
+            amountToCapture = (invoice?.total?.adding(inputtedAmount))!
+            gratuityAmt = inputtedAmount
+        } else {
+            amountToCapture = inputtedAmount
+        }
+        
+        PayPalRetailSDK.transactionManager()?.captureAuthorization(authTransactionNumber, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: gratuityAmt, currency: invoice?.currency) { (error, captureId) in
 
             if let err = error {
                 print("Error Code: \(err.code)")
@@ -93,6 +109,10 @@ class CaptureAuthViewController: UIViewController {
                 pmtCompletedViewController.paymentMethod = paymentMethod
                 // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
                 pmtCompletedViewController.transactionNumber = captureTransactionNumber
+                pmtCompletedViewController.isTip = isTip
+                if(isTip)! {
+                    pmtCompletedViewController.gratuityAmt = gratuityAmt
+                }
             }
         }
     }
