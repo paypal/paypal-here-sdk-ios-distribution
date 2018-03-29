@@ -25,6 +25,7 @@ class AuthCompletedViewController: UIViewController {
     var invoice: PPRetailInvoice?
     var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
+    var isTip: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +71,25 @@ class AuthCompletedViewController: UIViewController {
                 captureAuthViewController.authTransactionNumber = authTransactionNumber
                 captureAuthViewController.invoice = invoice
                 captureAuthViewController.paymentMethod = paymentMethod
+                captureAuthViewController.isTip = isTip
             }
         }
     }
     
     @IBAction func captureAuthorization(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToCaptureAuthView", sender: sender)
+        let alert = UIAlertController(title: "Adding a tip?", message: "Are you trying to do a regular capture or add a tip to a previous transaction?", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Capture", style: .default, handler: {action in
+            self.isTip = false
+            self.performSegue(withIdentifier: "goToCaptureAuthView", sender: sender)
+        }))
+        alert.addAction(UIAlertAction(title: "Add Tip", style: .default, handler: {action in
+            self.isTip = true
+            self.performSegue(withIdentifier: "goToCaptureAuthView", sender: sender)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     @IBAction func showInfo(_ sender: UIButton) {
