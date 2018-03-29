@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6O0-0Z-1mZ">
-                                <rect key="frame" x="-24" y="45.5" width="423" height="557.5"/>
+                                <rect key="frame" x="-24" y="46" width="423" height="557"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUH-EU-9C9">
                                         <rect key="frame" x="88" y="141" width="143" height="24"/>
@@ -314,7 +314,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK v2.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbR-xx-cDI">
-                                <rect key="frame" x="110" y="26.5" width="66.5" height="19"/>
+                                <rect key="frame" x="110" y="26" width="65" height="20"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -323,7 +323,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-lv-lKo">
-                                <rect key="frame" x="185.5" y="26.5" width="76.5" height="19"/>
+                                <rect key="frame" x="184" y="26" width="81" height="20"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -643,7 +643,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK v2.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-si-8Ch">
-                                <rect key="frame" x="110" y="26.5" width="66.5" height="19"/>
+                                <rect key="frame" x="110" y="26" width="65" height="20"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -652,7 +652,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibx-Ox-5hU">
-                                <rect key="frame" x="185.5" y="26.5" width="76.5" height="19"/>
+                                <rect key="frame" x="184" y="26" width="81" height="20"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -1227,7 +1227,7 @@
                                             <constraint firstAttribute="width" constant="55" id="kkr-fI-UWG"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="success msg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaY-Do-Jyo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="success msg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaY-Do-Jyo">
                                         <rect key="frame" x="85" y="132" width="205" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="205" id="b4l-la-6bb"/>
@@ -1708,6 +1708,7 @@
                         <outlet property="activitySpinner" destination="Nbg-Bm-0yn" id="BQ9-u3-Mt3"/>
                         <outlet property="captureAmount" destination="Tds-9L-4wd" id="v29-ko-G7k"/>
                         <outlet property="captureAuthBtn" destination="8iB-6b-D4W" id="geg-LK-dha"/>
+                        <outlet property="enterAmountLbl" destination="j6o-Pq-RBs" id="aeE-ri-35e"/>
                         <segue destination="uuq-nL-b5Y" kind="show" identifier="goToPmtCompletedView" id="fbT-Wf-9sx"/>
                     </connections>
                 </viewController>
@@ -1728,6 +1729,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fbT-Wf-9sx"/>
-        <segue reference="Scp-c0-ucd"/>
+        <segue reference="4vu-bE-Kj6"/>
     </inferredMetricsTieBreakers>
 </document>

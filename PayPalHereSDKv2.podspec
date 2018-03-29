@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "PayPalHereSDKv2"
-  s.version          = "2.0.1201805"
+  s.version          = "2.0.1201806"
   s.homepage         = 'https://developer.paypal.com/docs/integration/paypal-here/'
   s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :tag => "v#{s.version}" }  
   s.summary          = 'SDK for interfacing with PayPal card readers and mobile payment processing APIs.'
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
-    'OTHER_LDFLAGS' => '-weak_library /usr/lib/libstdc++.dylib -lstdc++ -ObjC',
+    'OTHER_LDFLAGS' => '/usr/lib/libstdc++.dylib -lstdc++ -ObjC',
   }
 
   s.ios.frameworks = 'AudioToolbox', 'MobileCoreServices', 'Security', 'CFNetwork', 'AVFoundation', 'ExternalAccessory', 'MediaPlayer', 'CoreTelephony', 'Foundation', 'CoreBluetooth', 'SystemConfiguration', 'JavaScriptCore', 'CoreBluetooth', 'UIKit', 'CoreLocation'
@@ -32,5 +32,6 @@ Pod::Spec.new do |s|
   end
 
   s.dependency 'SimpleKeychain', '~> 0.6.1'
+  s.dependency 'LogglyLogger-CocoaLumberjack', '~> 3.0'
 
 end
