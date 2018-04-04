@@ -1037,7 +1037,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgc-bR-1OB">
-                                        <rect key="frame" x="102" y="254" width="158" height="40"/>
+                                        <rect key="frame" x="102" y="254" width="158.5" height="40"/>
                                         <fontDescription key="fontDescription" name="PayPalSansBig-Medium" family="PayPal Sans Big" pointSize="32"/>
                                         <color key="textColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1667,7 +1667,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nbg-Bm-0yn">
-                                        <rect key="frame" x="193.5" y="236" width="37" height="37"/>
+                                        <rect key="frame" x="314" y="152" width="37" height="37"/>
                                         <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -1676,10 +1676,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Tds-9L-4wd" secondAttribute="trailing" constant="123" id="BbN-Za-lpB"/>
                                     <constraint firstItem="j6o-Pq-RBs" firstAttribute="top" secondItem="GOi-jN-Z4Y" secondAttribute="bottom" constant="46" id="DRD-fW-zd0"/>
                                     <constraint firstItem="Tds-9L-4wd" firstAttribute="top" secondItem="GOi-jN-Z4Y" secondAttribute="bottom" constant="46" id="FRp-eu-j8Q"/>
-                                    <constraint firstItem="Nbg-Bm-0yn" firstAttribute="top" secondItem="Tds-9L-4wd" secondAttribute="bottom" constant="50" id="Hvl-Sa-mJo"/>
                                     <constraint firstAttribute="trailing" secondItem="GOi-jN-Z4Y" secondAttribute="trailing" constant="48" id="ahQ-c5-WOX"/>
                                     <constraint firstItem="j6o-Pq-RBs" firstAttribute="leading" secondItem="2rb-2Y-dmK" secondAttribute="leading" constant="40" id="gim-8w-vnX"/>
                                     <constraint firstItem="Tds-9L-4wd" firstAttribute="leading" secondItem="j6o-Pq-RBs" secondAttribute="trailing" constant="14" id="gyM-rl-qbt"/>
+                                    <constraint firstItem="Nbg-Bm-0yn" firstAttribute="centerY" secondItem="Tds-9L-4wd" secondAttribute="centerY" id="oC4-r3-bzr"/>
+                                    <constraint firstItem="Nbg-Bm-0yn" firstAttribute="leading" secondItem="Tds-9L-4wd" secondAttribute="trailing" constant="8" id="uFg-JZ-afv"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -1691,7 +1692,6 @@
                             <constraint firstItem="Wjg-FJ-hxm" firstAttribute="centerY" secondItem="RDP-yU-wz8" secondAttribute="centerY" id="Evt-GI-LBf"/>
                             <constraint firstItem="2rb-2Y-dmK" firstAttribute="top" secondItem="cli-7x-QOH" secondAttribute="bottom" constant="12" id="J8e-Tg-qKR"/>
                             <constraint firstItem="8iB-6b-D4W" firstAttribute="width" secondItem="nXd-sx-GQY" secondAttribute="width" id="OOg-1b-u0o"/>
-                            <constraint firstItem="Nbg-Bm-0yn" firstAttribute="centerX" secondItem="nXd-sx-GQY" secondAttribute="centerX" id="QNi-Up-RFl"/>
                             <constraint firstItem="2rb-2Y-dmK" firstAttribute="centerX" secondItem="llt-44-daR" secondAttribute="centerX" id="TbC-cM-QnN"/>
                             <constraint firstItem="RDP-yU-wz8" firstAttribute="centerY" secondItem="llt-44-daR" secondAttribute="centerY" id="YJg-YO-zE0"/>
                             <constraint firstItem="2rb-2Y-dmK" firstAttribute="leading" secondItem="nXd-sx-GQY" secondAttribute="leadingMargin" constant="-40" id="be9-7x-VTS"/>
