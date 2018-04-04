@@ -89,6 +89,11 @@ class AuthCompletedViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = captureAuthBtn
+            popoverController.sourceRect = captureAuthBtn.bounds
+        }
+        
         self.present(alert, animated: true)
     }
     
