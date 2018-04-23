@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "PayPalHereSDKv2"
-  s.version          = "2.0.1201806"
+  s.version          = "2.0.1201808"
   s.homepage         = 'https://developer.paypal.com/docs/integration/paypal-here/'
   #s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :tag => "v#{s.version}" }  
   s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :branch => 'master' }  
