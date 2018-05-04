@@ -1,3 +1,8 @@
+Beta Version
+============
+This is the beta version of the PayPal Here SDK. This provides early access to upcoming changes for evaluation purposes only, do not use this version in a production environment.
+
+
 Introduction
 =================
 The PayPal Here SDK enables iOS apps to process in-person credit card transactions using an assortment of [card readers](https://www.paypal.com/webapps/mpp/credit-card-reader#A39) that are capable of accepting contactless, EMV, and swipe payment methods.
