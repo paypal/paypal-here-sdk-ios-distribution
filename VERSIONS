@@ -2,40 +2,34 @@ PayPalHere SDK v2 Releases
 These are the version numbers of the PayPalHere SDK and
 what is new in this release.
 
-2.0.0.201805
- What's new:
-  - Initial PayPal Here SDH v2 release.
+Beta 2.0.1201810-beta3
+  What's new:
+   - Get business name for the merchant.
+   - Fix crash in signature/receipt page when the host is portrait only.
+   - New connection flow bug fixes.
+   - Fix invoice url when environment is not live or sandbox (PPH internal).
 
 
-2.0.0.201806
- What's new:
-  - Sample app added to github
-  - Update the homepage for the podspec
-  - Podspec authors email
+ Beta 2.0.1201809
+  What's new:
+   - New connection APIs.
+   - Fix crash due to logging.
+   - UK contactless limit.
+   - Fix signature and receipt screen layout on modal. 
+   - Objc sample app.
 
-2.0.1.201801
- What's new:
-  - Version update
-  - Minor bug fixes
+ 2.0.1201808
+  What's new:
+   - Fix firmware update issues with some chip and swipe readers.
+   - Removed some debug NSLogs from release builds.
+   - Fix issue with failed transaction for swipe followed by insert by introducing delay for chip and tap/swipe readers.
+   - Signature UI changes.
+   - Gracefully handle debug log error scenarios in invoice sync.
 
- 2.0.1.201802
+ 2.0.1201807
  What's new:
-  - Sample App updates
+  - Fix- Do not show a receipt prompt after auth.
 
- 2.0.1.201803
- What's new:
-  - Update the podspec
-
- 2.0.1.201804
- What's new:
-  - Fix refresh in searchAndConnect. We now get a callback after refresh.
-  - Sample app- Use the captured amount for refund.
-
- 2.0.1201805
- What's new:
-  - Switched to a 3 component version number.
-  - Added Apple Docs.
-  - Bug fixes.
 
  2.0.1201806
  What's new:
@@ -48,14 +42,36 @@ what is new in this release.
   - Handle negative value items in invoice.
   - Tag property added to PPRetailTransactionBeginOptions and beginRefund- reserved for restricted use.
 
- 2.0.1201807
+ 2.0.1201805
  What's new:
-  - Fix- Do not show a receipt prompt after auth.
+  - Switched to a 3 component version number.
+  - Added Apple Docs.
+  - Bug fixes.
 
- 2.0.1201808
-  What's new:
-   - Fix firmware update issues with some chip and swipe readers.
-   - Removed some debug NSLogs from release builds.
-   - Fix issue with failed transaction for swipe followed by insert by introducing delay for chip and tap/swipe readers.
-   - Signature UI changes.
-   - Gracefully handle debug log error scenarios in invoice sync.
+ 2.0.1.201804
+ What's new:
+  - Fix refresh in searchAndConnect. We now get a callback after refresh.
+  - Sample app- Use the captured amount for refund.
+
+ 2.0.1.201803
+ What's new:
+  - Update the podspec
+
+ 2.0.1.201802
+ What's new:
+  - Sample App updates
+
+2.0.1.201801
+ What's new:
+  - Version update
+  - Minor bug fixes
+
+2.0.0.201806
+ What's new:
+  - Sample app added to github
+  - Update the homepage for the podspec
+  - Podspec authors email
+
+2.0.0.201805
+ What's new:
+  - Initial PayPal Here SDH v2 release.
