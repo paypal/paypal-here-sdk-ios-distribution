@@ -105,16 +105,6 @@
     -(void)logViaJs:(NSString* _Nullable)level component:(NSString* _Nullable)component message:(NSString* _Nullable)message extraData:(NSDictionary* _Nullable)extraData;
 
     /**
-     * Log a message for documentation
-     */
-    -(void)docLogViaJs:(NSString* _Nullable)docSequenceComponent message:(NSString* _Nullable)message;
-
-    /**
-     * Log documentation header
-     */
-    -(void)docLogHeaderViaJs;
-
-    /**
      * Information that represents the executing platform
      */
     -(void)setExecutingEnvironment:(PPRetailSdkEnvironmentInfo* _Nullable)sdkEnvInfo;
