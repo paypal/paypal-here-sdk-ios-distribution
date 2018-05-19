@@ -114,6 +114,11 @@
     -(void)connectToLastActiveReader:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
     /**
+     * Tries to connect to the previously used/active Bluetooth reader
+     */
+    -(void)scanAndAutoConnectToBluetoothReader:(NSString* _Nullable)readerName callback:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+
+    /**
      * Sets the active reader
      */
     -(void)setActiveReader:(PPRetailPaymentDevice* _Nullable)pd;
@@ -132,6 +137,17 @@
      * Get a list of paired/discovered devices
      */
     -(NSArray* _Nullable)getDiscoveredDevices;
+
+    /**
+     * Get the name of last active reader
+     */
+    -(NSString* _Nullable)getLastActiveBluetoothReader;
+
+    /**
+     * Stop scanning for Bluetooth devices
+     * Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}
+     */
+    -(void)stopScanningForBluetoothReaders;
 
 
 
