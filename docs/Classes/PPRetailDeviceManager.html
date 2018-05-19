@@ -66,13 +66,19 @@
 		
 		<option value="//api/name/getDiscoveredDevices">- getDiscoveredDevices</option>
 		
+		<option value="//api/name/getLastActiveBluetoothReader">- getLastActiveBluetoothReader</option>
+		
 		<option value="//api/name/isConnectedToMiura">- isConnectedToMiura</option>
+		
+		<option value="//api/name/scanAndAutoConnectToBluetoothReader:callback:">- scanAndAutoConnectToBluetoothReader:callback:</option>
 		
 		<option value="//api/name/searchAndConnect:">- searchAndConnect:</option>
 		
 		<option value="//api/name/searchAndConnectWithoutCallback">- searchAndConnectWithoutCallback</option>
 		
 		<option value="//api/name/setActiveReader:">- setActiveReader:</option>
+		
+		<option value="//api/name/stopScanningForBluetoothReaders">- stopScanningForBluetoothReaders</option>
 		
 	</optgroup>
 	
@@ -255,6 +261,52 @@ for transaction.</p>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Try connecting to the last active credit card reader</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/scanAndAutoConnectToBluetoothReader:callback:" title="scanAndAutoConnectToBluetoothReader:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/scanAndAutoConnectToBluetoothReader:callback:">&ndash;&nbsp;scanAndAutoConnectToBluetoothReader:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tries to connect to the previously used/active Bluetooth reader</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)scanAndAutoConnectToBluetoothReader:(NSString *_Nullable)<em>readerName</em> callback:(PPRetailDeviceManagerConnectionHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Tries to connect to the previously used/active Bluetooth reader</p>
 			</div>
 			
 
@@ -455,6 +507,100 @@ for transaction.</p>
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/getLastActiveBluetoothReader" title="getLastActiveBluetoothReader"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getLastActiveBluetoothReader">&ndash;&nbsp;getLastActiveBluetoothReader</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the name of last active reader</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *_Nullable)getLastActiveBluetoothReader</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get the name of last active reader</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopScanningForBluetoothReaders" title="stopScanningForBluetoothReaders"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopScanningForBluetoothReaders">&ndash;&nbsp;stopScanningForBluetoothReaders</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Stop scanning for Bluetooth devices
+Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopScanningForBluetoothReaders</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Stop scanning for Bluetooth devices
+Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -470,7 +616,7 @@ for transaction.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 PayPal. All rights reserved. Updated: 2018-04-23</p>
+						<p class="copyright">Copyright &copy; 2018 PayPal. All rights reserved. Updated: 2018-05-18</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
