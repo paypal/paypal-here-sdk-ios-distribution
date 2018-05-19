@@ -12,6 +12,11 @@
 #import "PayPalRetailSDKImports.h"
 #import "PPHRetailMerchant.h"
 #import "PPRetailError.h"
+#import <PPRetailInstrumentInterface/PPRetailInstrumentationDelegate.h>
+#import <PPRetailInstrumentInterface/PPRetailInstrumentationRouter.h>
+
+
+
 
 //! Project version number for PayPalRetailSDK.
 extern double PayPalRetailSDKVersionNumber;
@@ -76,6 +81,13 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 + (UINavigationController *)getCurrentNavigationController;
 
 + (void)setRetailSDKAppDelegate:(id<PPHRetailSDKAppDelegate>)delegate;
+
+/**
+ * Used for Instrumentaion using the Instrumentation-SDK to log for various loggers.
+ *
+ */
++ (void)addLoggingService:(id<PPRetailInstrumentationDelegate>)logingService;
+
 
 /**
  * This is the first call you should make to the PayPal Retail SDK (typically in application:didFinishLaunchingWithOptions:,
