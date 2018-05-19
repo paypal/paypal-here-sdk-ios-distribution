@@ -156,6 +156,11 @@
     -(void)extractReaderLogs:(PPRetailPaymentDeviceDeviceLogsHandler _Nullable)callback;
 
     /**
+     * Returns true if the passed FormFactor is active
+     */
+    -(BOOL)isFormFactorActive:(PPRetailFormFactor)formFactor;
+
+    /**
      * Connect to this device. A device connected event will be emitted once the device is connected
      */
     -(void)connect:(PPRetailPaymentDeviceConnectHandler _Nullable)callback;
