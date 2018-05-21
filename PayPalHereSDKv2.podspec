@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "PayPalHereSDKv2"
-  s.version          = "2.0.1201810"
+  s.version          = "2.0.1201811"
   s.homepage         = 'https://developer.paypal.com/docs/integration/paypal-here/'
   s.source           = { :git => 'https://github.com/PayPal-Mobile/ios-here-sdk-dist.git', :tag => "v#{s.version}" }  
   s.summary          = 'SDK for interfacing with PayPal card readers and mobile payment processing APIs.'
@@ -31,5 +31,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'SimpleKeychain', '~> 0.6.1'
   s.dependency 'LogglyLogger-CocoaLumberjack', '~> 3.0'
+  s.dependency 'PPRetailInstrumentInterface'
 
 end
