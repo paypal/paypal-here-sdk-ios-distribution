@@ -499,6 +499,11 @@ typedef void (^PPRetailTransactionManagerCaptureAuthorizedTransactionHandler)(PP
 typedef void (^PPRetailDeviceManagerConnectionHandler)(PPRetailError* error, PPRetailPaymentDevice* cardReader);
 
 /**
+ * The callback invoked while getting the list of paired devices
+ */
+typedef void (^PPRetailDeviceManagerPairedBTDevicesHandler)(NSArray* pairedDevices);
+
+/**
  * The battery status has been updated
  */
 typedef void (^PPRetailPaymentDeviceBatteryInfoHandler)(PPRetailError* error, PPRetailBatteryInfo* batteryInfo);
