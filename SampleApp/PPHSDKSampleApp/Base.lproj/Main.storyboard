@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="38S-Kk-lKk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="38S-Kk-lKk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -655,7 +655,7 @@
                                 <rect key="frame" x="-24" y="32" width="423" height="635"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJf-XF-yAb">
-                                        <rect key="frame" x="88" y="570" width="198" height="24"/>
+                                        <rect key="frame" x="88" y="525" width="198" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="198" id="yMv-4K-UCZ"/>
                                         </constraints>
@@ -698,33 +698,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84w-xC-aFQ">
-                                        <rect key="frame" x="40" y="177" width="66" height="19"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                        <color key="textColor" red="0.41568627450000001" green="0.46274509800000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Value" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="JDO-1i-vYu">
-                                        <rect key="frame" x="225" y="168" width="81" height="37"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="81" id="4TS-eC-Ppz"/>
-                                            <constraint firstAttribute="height" constant="37" id="Yis-m2-hPT"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.41568627450000001" green="0.46274509800000002" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqx-Po-PJa">
-                                        <rect key="frame" x="88" y="391" width="194" height="24"/>
+                                        <rect key="frame" x="88" y="346" width="194" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="194" id="mwO-OA-5Ze"/>
                                         </constraints>
@@ -752,7 +727,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZ3-n7-PwU" customClass="RoundLabel" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="241" width="36" height="36"/>
+                                        <rect key="frame" x="40" y="196" width="36" height="36"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                         </accessibility>
@@ -773,7 +748,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvS-yz-Np4">
-                                        <rect key="frame" x="88" y="247" width="163" height="25"/>
+                                        <rect key="frame" x="88" y="202" width="163" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="163" id="mV2-lu-4LT"/>
                                         </constraints>
@@ -792,7 +767,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kj-GR-2gD">
-                                        <rect key="frame" x="88" y="279" width="85" height="22"/>
+                                        <rect key="frame" x="88" y="234" width="85" height="22"/>
                                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="85" id="NTA-ku-Qhx"/>
@@ -812,7 +787,7 @@
                                         </connections>
                                     </button>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="FMb-bb-mOp">
-                                        <rect key="frame" x="20" y="309" width="383" height="64"/>
+                                        <rect key="frame" x="20" y="264" width="383" height="64"/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="OuE-uY-d3z"/>
@@ -827,7 +802,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EaS-Dl-oex" customClass="RoundLabel" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="385" width="36" height="36"/>
+                                        <rect key="frame" x="40" y="340" width="36" height="36"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                         </accessibility>
@@ -848,7 +823,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2P-Nc-fOK">
-                                        <rect key="frame" x="88" y="424" width="85" height="22"/>
+                                        <rect key="frame" x="88" y="379" width="85" height="22"/>
                                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="CqA-Fs-VCr"/>
@@ -868,7 +843,7 @@
                                         </connections>
                                     </button>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="VZd-JE-IMU">
-                                        <rect key="frame" x="20" y="454" width="355" height="98"/>
+                                        <rect key="frame" x="20" y="409" width="355" height="98"/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="98" id="1Ef-cX-Ni2"/>
@@ -883,7 +858,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMS-qg-7rn" customClass="RoundLabel" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="564" width="36" height="36"/>
+                                        <rect key="frame" x="40" y="519" width="36" height="36"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                         </accessibility>
@@ -904,7 +879,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYN-9E-Qmn">
-                                        <rect key="frame" x="88" y="602" width="85" height="22"/>
+                                        <rect key="frame" x="88" y="557" width="85" height="22"/>
                                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="64d-tr-EA9"/>
@@ -924,7 +899,7 @@
                                         </connections>
                                     </button>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="2R2-PP-Oaw">
-                                        <rect key="frame" x="20" y="632" width="423" height="64"/>
+                                        <rect key="frame" x="20" y="587" width="423" height="64"/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="5dx-Vc-0wl"/>
@@ -954,13 +929,9 @@
                                     <constraint firstItem="5Kj-GR-2gD" firstAttribute="leading" secondItem="zvS-yz-Np4" secondAttribute="leading" id="08r-fq-PDx"/>
                                     <constraint firstItem="2R2-PP-Oaw" firstAttribute="top" secondItem="sYN-9E-Qmn" secondAttribute="bottom" constant="8" id="0aF-z1-mcQ"/>
                                     <constraint firstItem="VZd-JE-IMU" firstAttribute="top" secondItem="O2P-Nc-fOK" secondAttribute="bottom" constant="8" id="1x4-Cl-1o1"/>
-                                    <constraint firstItem="84w-xC-aFQ" firstAttribute="top" secondItem="P42-ea-gui" secondAttribute="bottom" constant="26" id="3uo-nA-o5v"/>
-                                    <constraint firstItem="JDO-1i-vYu" firstAttribute="centerY" secondItem="84w-xC-aFQ" secondAttribute="centerY" id="4mN-Vk-Rub"/>
-                                    <constraint firstItem="EaS-Dl-oex" firstAttribute="top" secondItem="FMb-bb-mOp" secondAttribute="bottom" constant="12" id="5oO-VM-AtI"/>
                                     <constraint firstAttribute="bottom" secondItem="2R2-PP-Oaw" secondAttribute="bottom" constant="19" id="6kL-OV-3vm"/>
                                     <constraint firstItem="5Kj-GR-2gD" firstAttribute="top" secondItem="zvS-yz-Np4" secondAttribute="bottom" constant="7.6666666666666572" id="CgM-Ki-ghz"/>
                                     <constraint firstItem="sYN-9E-Qmn" firstAttribute="leading" secondItem="rJf-XF-yAb" secondAttribute="leading" id="DgC-rt-KwL"/>
-                                    <constraint firstItem="84w-xC-aFQ" firstAttribute="leading" secondItem="P42-ea-gui" secondAttribute="leading" id="EX2-ng-flB"/>
                                     <constraint firstItem="ys3-Nc-omn" firstAttribute="leading" secondItem="P42-ea-gui" secondAttribute="trailing" constant="14" id="FAk-2A-l8J"/>
                                     <constraint firstItem="rJf-XF-yAb" firstAttribute="centerY" secondItem="EMS-qg-7rn" secondAttribute="centerY" id="GOB-bd-kqn"/>
                                     <constraint firstItem="EMS-qg-7rn" firstAttribute="top" secondItem="VZd-JE-IMU" secondAttribute="bottom" constant="12" id="HgE-xb-ejy"/>
@@ -969,12 +940,11 @@
                                     <constraint firstItem="FMb-bb-mOp" firstAttribute="width" secondItem="pGu-P3-YUw" secondAttribute="width" constant="-40" id="KiX-0Y-whS"/>
                                     <constraint firstItem="O2P-Nc-fOK" firstAttribute="leading" secondItem="oqx-Po-PJa" secondAttribute="leading" id="Nvt-SV-hmk"/>
                                     <constraint firstItem="zvS-yz-Np4" firstAttribute="leading" secondItem="sZ3-n7-PwU" secondAttribute="trailing" constant="12" id="Td2-E0-dCV"/>
-                                    <constraint firstItem="JDO-1i-vYu" firstAttribute="leading" secondItem="84w-xC-aFQ" secondAttribute="trailing" constant="119" id="UEG-7h-0Qt"/>
                                     <constraint firstItem="P42-ea-gui" firstAttribute="top" secondItem="afc-bY-nQH" secondAttribute="bottom" constant="24" id="VDB-F9-Xxw"/>
                                     <constraint firstItem="ys3-Nc-omn" firstAttribute="centerY" secondItem="P42-ea-gui" secondAttribute="centerY" id="WpB-mU-kV4"/>
                                     <constraint firstItem="2R2-PP-Oaw" firstAttribute="leading" secondItem="VZd-JE-IMU" secondAttribute="leading" id="X6w-Lp-awN"/>
                                     <constraint firstItem="EMS-qg-7rn" firstAttribute="leading" secondItem="EaS-Dl-oex" secondAttribute="leading" id="YVJ-O4-zny"/>
-                                    <constraint firstItem="sZ3-n7-PwU" firstAttribute="top" secondItem="84w-xC-aFQ" secondAttribute="bottom" constant="45" id="adq-VC-D2d"/>
+                                    <constraint firstItem="EaS-Dl-oex" firstAttribute="top" secondItem="FMb-bb-mOp" secondAttribute="bottom" constant="12" id="Z4W-DF-LrM"/>
                                     <constraint firstItem="sYN-9E-Qmn" firstAttribute="top" secondItem="rJf-XF-yAb" secondAttribute="bottom" constant="8.6666666666665719" id="dut-xQ-bv0"/>
                                     <constraint firstItem="sZ3-n7-PwU" firstAttribute="leading" secondItem="P42-ea-gui" secondAttribute="leading" id="hzL-1Q-NE6"/>
                                     <constraint firstItem="oqx-Po-PJa" firstAttribute="centerY" secondItem="EaS-Dl-oex" secondAttribute="centerY" id="iB6-fA-cLC"/>
@@ -985,6 +955,7 @@
                                     <constraint firstItem="FMb-bb-mOp" firstAttribute="top" secondItem="5Kj-GR-2gD" secondAttribute="bottom" constant="8" id="o96-XO-Leg"/>
                                     <constraint firstAttribute="leadingMargin" secondItem="afc-bY-nQH" secondAttribute="leading" constant="-32" id="qLs-HP-gG0"/>
                                     <constraint firstItem="oqx-Po-PJa" firstAttribute="leading" secondItem="EaS-Dl-oex" secondAttribute="trailing" constant="12" id="qbm-uo-Src"/>
+                                    <constraint firstItem="sZ3-n7-PwU" firstAttribute="top" secondItem="P42-ea-gui" secondAttribute="bottom" constant="45" id="ugK-S5-U0y"/>
                                     <constraint firstAttribute="trailing" secondItem="FMb-bb-mOp" secondAttribute="trailing" id="v61-Ox-hM5"/>
                                     <constraint firstAttribute="trailing" secondItem="VZd-JE-IMU" secondAttribute="trailing" constant="28" id="wBc-cb-Uu1"/>
                                     <constraint firstItem="VZd-JE-IMU" firstAttribute="leading" secondItem="FMb-bb-mOp" secondAttribute="leading" id="yI4-O2-sbl"/>
@@ -1023,7 +994,6 @@
                         <outlet property="createTxnCodeView" destination="VZd-JE-IMU" id="HnR-WJ-sSc"/>
                         <outlet property="demoAppLbl" destination="ibx-Ox-5hU" id="9IO-bf-ZJ0"/>
                         <outlet property="invAmount" destination="ys3-Nc-omn" id="UoE-8K-56H"/>
-                        <outlet property="optionsTextField" destination="JDO-1i-vYu" id="bdb-nC-mOR"/>
                         <outlet property="pmtTypeSelector" destination="ad7-Za-o32" id="rcd-CO-2Xe"/>
                         <segue destination="uuq-nL-b5Y" kind="show" identifier="goToPmtCompletedView" id="UbX-On-qDn"/>
                         <segue destination="nit-GV-o3X" kind="show" identifier="goToAuthCompletedView" id="mF8-uX-Vzc"/>

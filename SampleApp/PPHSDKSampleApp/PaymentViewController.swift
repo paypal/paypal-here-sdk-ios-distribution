@@ -23,7 +23,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
     @IBOutlet weak var pmtTypeSelector: UISegmentedControl!
-    @IBOutlet weak var optionsTextField: UITextField!
     
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
@@ -45,13 +44,10 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         toolbar.sizeToFit()
         //setting toolbar as inputAccessoryView
         self.invAmount.inputAccessoryView = toolbar
-        self.optionsTextField.inputAccessoryView = toolbar
         
         // Setting up initial aesthetics.
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
-        
-        optionsTextField.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         
     }
     
