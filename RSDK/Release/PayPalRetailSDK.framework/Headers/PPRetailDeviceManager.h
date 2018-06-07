@@ -144,6 +144,11 @@
     -(NSString* _Nullable)getLastActiveBluetoothReader;
 
     /**
+     * Get a list of paired devices
+     */
+    -(void)getPairedBluetoothDevices:(PPRetailDeviceManagerPairedBTDevicesHandler _Nullable)callback;
+
+    /**
      * Stop scanning for Bluetooth devices
      * Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}
      */

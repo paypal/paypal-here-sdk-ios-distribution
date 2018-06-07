@@ -499,6 +499,11 @@ typedef void (^PPRetailTransactionManagerCaptureAuthorizedTransactionHandler)(PP
 typedef void (^PPRetailDeviceManagerConnectionHandler)(PPRetailError* error, PPRetailPaymentDevice* cardReader);
 
 /**
+ * The callback invoked while getting the list of paired devices
+ */
+typedef void (^PPRetailDeviceManagerPairedBTDevicesHandler)(NSArray* pairedDevices);
+
+/**
  * The battery status has been updated
  */
 typedef void (^PPRetailPaymentDeviceBatteryInfoHandler)(PPRetailError* error, PPRetailBatteryInfo* batteryInfo);
@@ -567,6 +572,16 @@ typedef void (^PPRetailContactlessReaderDeactivatedEvent)();
  * Returned from addContactlessReaderDeactivatedListener and used to unsubscribe from the event.
  */
 typedef id PPRetailContactlessReaderDeactivatedSignal;
+
+
+/**
+ * Contactless reader was activated and the transaction still remains active.
+ */
+typedef void (^PPRetailContactlessReaderActivatedEvent)();
+/**
+ * Returned from addContactlessReaderActivatedListener and used to unsubscribe from the event.
+ */
+typedef id PPRetailContactlessReaderActivatedSignal;
 
 
 /**
