@@ -181,6 +181,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         options?.tippingOnReaderEnabled = false
         options?.amountBasedTipping = false
         options?.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options?.tag = optionsTextFeild.text ?? ""
         
         tc!.beginPayment(options)
 
