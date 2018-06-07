@@ -575,6 +575,16 @@ typedef id PPRetailContactlessReaderDeactivatedSignal;
 
 
 /**
+ * Contactless reader was activated and the transaction still remains active.
+ */
+typedef void (^PPRetailContactlessReaderActivatedEvent)();
+/**
+ * Returned from addContactlessReaderActivatedListener and used to unsubscribe from the event.
+ */
+typedef id PPRetailContactlessReaderActivatedSignal;
+
+
+/**
  * Called when PIN entry is in progress or complete
  */
 typedef void (^PPRetailPinEntryEvent)(BOOL complete, BOOL correct, int pinDigits, BOOL lastAttempt);
