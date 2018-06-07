@@ -275,6 +275,19 @@
 
 
     /**
+     * Add a listener for the contactlessReaderActivated event
+     * @returns PPRetailContactlessReaderActivatedSignal an object that can be used to remove the listener when
+     * you're done with it.
+     */
+    -(PPRetailContactlessReaderActivatedSignal _Nullable)addContactlessReaderActivatedListener:(PPRetailContactlessReaderActivatedEvent _Nullable)listener;
+
+    /**
+     * Remove a listener for the contactlessReaderActivated event given the signal object that was returned from addContactlessReaderActivatedListener
+     */
+    -(void)removeContactlessReaderActivatedListener:(PPRetailContactlessReaderActivatedSignal _Nullable)listenerToken;
+
+
+    /**
      * Add a listener for the pinEntry event
      * @returns PPRetailPinEntrySignal an object that can be used to remove the listener when
      * you're done with it.
