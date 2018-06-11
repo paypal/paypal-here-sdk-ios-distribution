@@ -23,6 +23,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
     @IBOutlet weak var pmtTypeSelector: UISegmentedControl!
+    @IBOutlet weak var optionsTextFeild: UITextField!
     
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
@@ -44,10 +45,13 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         toolbar.sizeToFit()
         //setting toolbar as inputAccessoryView
         self.invAmount.inputAccessoryView = toolbar
+        self.optionsTextFeild.inputAccessoryView = toolbar
         
         // Setting up initial aesthetics.
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        
+        optionsTextFeild.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         
     }
     
@@ -177,6 +181,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         options?.tippingOnReaderEnabled = false
         options?.amountBasedTipping = false
         options?.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
+        options?.tag = optionsTextFeild.text ?? ""
         
         tc!.beginPayment(options)
 
