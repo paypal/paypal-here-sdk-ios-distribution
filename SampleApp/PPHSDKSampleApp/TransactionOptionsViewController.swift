@@ -9,10 +9,6 @@
 import UIKit
 import PayPalRetailSDK
 
-protocol TransactionOptionsViewControllerDelegate: NSObjectProtocol {
-    func transactionOptions(controller: TransactionOptionsViewController, formFactorArray: [PPRetailFormFactor])
-}
-
 class TransactionOptionsViewController: UIViewController {
     
     @IBOutlet weak var authCaptureSwitch: UISwitch!
@@ -23,31 +19,28 @@ class TransactionOptionsViewController: UIViewController {
     @IBOutlet weak var tagTextField: UITextField!
     @IBOutlet var formFactorButtons: [UIButton]!
     
-    /// Sets up the parameters for taking in Options from Payment View Controller
-    weak var delegate: TransactionOptionsViewControllerDelegate?
+    var paymentViewController: PaymentViewController!
     var transactionOptions: PPRetailTransactionBeginOptions!
     var formFactorArray: [PPRetailFormFactor]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Sets the toolbar to the "tagTextField"
         setToolBarForTextField(tagTextField)
         
-        // Turn the switch on/off depending on the value of the option fields.
         authCaptureSwitch.isOn = transactionOptions.isAuthCapture
         promptInAppSwitch.isOn = transactionOptions.showPromptInApp
         promptInCardReaderSwitch.isOn = transactionOptions.showPromptInCardReader
         tippingOnReaderSwitch.isOn = transactionOptions.tippingOnReaderEnabled
         amountBasedTippingSwitch.isOn = transactionOptions.amountBasedTipping
         
-        // Turn the formFactor button on/off depending on the formFactors selected.
         toggleButtons()
     }
     
-    /// The following 5 functions are triggered when a switch is pressed and it's value is changed.
-    /// Depending on the if the switch is on or off, these functions will set the appropriate option to true or false.
-    /// - Parameter sender: UISwitch assoicated with the options.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+    
     @IBAction func authCaptureSwitchPressed(_ sender: UISwitch) {
         transactionOptions.isAuthCapture = authCaptureSwitch.isOn
         
@@ -68,18 +61,10 @@ class TransactionOptionsViewController: UIViewController {
         transactionOptions.amountBasedTipping = amountBasedTippingSwitch.isOn
     }
     
-    /// This function is triggered when the UITextField for Tag is doneEditing
-    /// It will take the text in the UITextField and set it to the transactionOptions.tag field.
-    /// If nothing is typed in the field then it will pass an empty value to the field.
-    /// - Parameter sender: UITextField for the Tag Field.
     @IBAction func tagTextFieldEndEditing(_ sender: UITextField) {
         transactionOptions.tag = sender.text ?? ""
     }
     
-    /// This function will be triggred when one of the formFactor buttons is pressed. Whichever button triggers this
-    /// function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
-    /// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
-    /// - Parameter sender: UIButton assoicated with the formFactor Buttons.
     @IBAction func formFactorButtonPressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
@@ -110,18 +95,12 @@ class TransactionOptionsViewController: UIViewController {
         }
     }
     
-    /// This function will pass the formFactorArray to the previous ViewController (PaymentViewController)
-    /// and dismiss the transactionOptionsViewController. This event is
-    /// triggered by the "runTransactionButton" at the bottom of the screen.
-    /// - Parameter sender: The UIButton associated with the IBAction
     @IBAction func runTransactionButtonPressed(_ sender: UIButton) {
-        self.delegate?.transactionOptions(controller: self,formFactorArray: self.formFactorArray)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.paymentViewController.formFactorArray = self.formFactorArray
+        }
     }
     
-    /// THIS FUNCTION IS ONLY FOR UI. This will iterate through the formFactorArray and get the appropriate tag for the
-    /// buttons depending on the formFactor that are in the array. Then it will go through UIButton Outlet Collection
-    /// Array and set the isSelected State for the buttons associated with the form Factor.
     private func toggleButtons(){
         for factor in formFactorArray {
             var tag: Int!
@@ -148,9 +127,6 @@ class TransactionOptionsViewController: UIViewController {
         }
     }
     
-    /// THIS FUNCTION IS ONLY FOR UI. This function will create a toolbar which will have a "Done" button
-    /// to let us know that we have finished editing.
-    /// - Parameter sender: UITextfield that we want to add the toolbar to
     private func setToolBarForTextField(_ sender: UITextField){
         //init toolbar for keyboard
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
@@ -164,8 +140,6 @@ class TransactionOptionsViewController: UIViewController {
         sender.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
     }
     
-    /// THIS FUNCTION IS ONLY FOR UI. It will end keyboard editing and is the action for the done button in the
-    /// UITextfield toolbar.
     @objc private func dismissKeyboard(){
         view.endEditing(true)
     }

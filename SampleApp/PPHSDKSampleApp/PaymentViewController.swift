@@ -23,6 +23,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
     @IBOutlet weak var offlinePaymentBtn: UIButton!
+    @IBOutlet weak var replayTransactionsBtn: UIButton!
     
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
@@ -31,20 +32,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var options = PPRetailTransactionBeginOptions.defaultOptions()
     var formFactorArray: [PPRetailFormFactor] = []
-    var offlineModeController: OfflineModeViewController!
-    var transactionOptionsViewController: TransactionOptionsViewController!
     var offlineMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         PayPalRetailSDK.setRetailSDKAppDelegate(self)
-        
-        offlineModeController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "offlineModeViewController") as! OfflineModeViewController
-        offlineModeController.delegate = self
-        
-        transactionOptionsViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "transactionOptionsViewController") as! TransactionOptionsViewController
-        transactionOptionsViewController.delegate = self
         
         //init toolbar for keyboard
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
@@ -131,26 +124,41 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
     }
     
-    @IBAction func paymentOptions(_ sender: UIButton) {
-        transactionOptionsViewController.formFactorArray = self.formFactorArray
-        transactionOptionsViewController.transactionOptions = self.options
-        present(transactionOptionsViewController, animated: true, completion: nil)
-        
-    }
     @IBAction func offlinePaymentMode(_ sender: UIButton) {
-        offlineModeController.offlineMode = self.offlineMode
-        present(offlineModeController, animated: true, completion: nil)
+        offlinePaymentBtn.isSelected = !offlinePaymentBtn.isSelected
+        
+        if offlinePaymentBtn.isSelected {
+            offlineMode = true
+            createTxnBtn.setTitle("Save Payment", for: UIControlState.normal)
+            acceptTxnBtn.setTitle("Replay Transaction", for: UIControlState.normal)
+        } else {
+            offlineMode = false
+            createTxnBtn.setTitle("Create Transaction", for: UIControlState.normal)
+            acceptTxnBtn.setTitle("Accept Transaction", for: UIControlState.normal)
+        }
     }
     // This function does the createTransaction call to start the process with the current invoice.
     @IBAction func createTransaction(_ sender: UIButton) {
         
+        if offlineMode {
+           // PayPalRetailSDK.transactionManager().stopOfflinePayment()
+        }
+        
+        if offlinePaymentBtn.isSelected {
+            //PayPalRetailSDK.transactionManager().startOfflinePayment()
+        } else {
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
             self.tc = context
             
             self.createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
             self.createTxnBtn.isEnabled = false
+            
             self.acceptTxnBtn.isEnabled = true
         })
+        }
+    }
+    
+    @IBAction func replayTransactions(_ sender: UIButton) {
     }
     
     // This function will activate the reader by calling the begin method of TransactionContext.  This will
@@ -167,31 +175,30 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         tc!.setCompletedHandler { (error, txnRecord) -> Void in
             
-            if error != nil && self.offlineMode {
-                self.goToOfflinePaymentCompletedViewController()
-            } else if error != nil {
-                print("Error Code: \(String(describing: error?.code))")
-                print("Error Message: \(String(describing: error?.message))")
-                print("Debug ID: \(String(describing: error?.debugId))")
+            if let err = error {
+                print("Error Code: \(err.code)")
+                print("Error Message: \(err.message)")
+                print("Debug ID: \(err.debugId)")
                 
                 return
-            } else {
-                
-                print("Txn ID: \(txnRecord!.transactionNumber!)")
-                
-                self.navigationController?.popToViewController(self, animated: false)
-                self.transactionNumber = txnRecord?.transactionNumber
-                self.paymentMethod = txnRecord?.paymentMethod
-                
-                if (self.options?.isAuthCapture)! {
-                    self.goToAuthCompletedViewController()
-                } else {
-                    self.goToPaymentCompletedViewController()
-                }
             }
+            
+            print("Txn ID: \(txnRecord!.transactionNumber!)")
+            
+            self.navigationController?.popToViewController(self, animated: false)
+            self.transactionNumber = txnRecord?.transactionNumber
+            self.paymentMethod = txnRecord?.paymentMethod
+            
+            if (self.options?.isAuthCapture)! {
+                self.goToAuthCompletedViewController()
+            } else {
+                self.goToPaymentCompletedViewController()
+            }
+            
         }
         
         tc!.beginPayment(options)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -210,6 +217,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                 authCompletedViewController.paymentMethod = paymentMethod
             }
         }
+        
+        if let controller = segue.destination as? TransactionOptionsViewController {
+            controller.paymentViewController = self
+            controller.transactionOptions = options
+            controller.formFactorArray = formFactorArray
+        }
     }
     
     func goToPaymentCompletedViewController() {
@@ -218,10 +231,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     func goToAuthCompletedViewController() {
         performSegue(withIdentifier: "goToAuthCompletedView", sender: Any?.self)
-    }
-    
-    func goToOfflinePaymentCompletedViewController(){
-        performSegue(withIdentifier: "offlinePaymentCompletedVC", sender: self)
     }
     
     @IBAction func showInfo(_ sender: UIButton){
@@ -240,10 +249,14 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if (createTxnCodeView.isHidden) {
                 createTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 createTxnCodeView.isHidden = false
+                if offlinePaymentBtn.isSelected {
+                    createTxnCodeView.text = "To Begin: PayPalRetailSDK.transactionManager().startOfflinePayment()" + "To Stop: PayPalRetailSDK.transactionManager().stopOfflinePayment()"
+                } else {
                 createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
                     "  // Set the transactionContext or handle the error \n" +
                     "  self.tc = context \n" +
                 "}))"
+                }
             } else {
                 createTxnCodeBtn.setTitle("View Code", for: .normal)
                 createTxnCodeView.isHidden = true
@@ -252,7 +265,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if (acceptTxnCodeView.isHidden) {
                 acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 acceptTxnCodeView.isHidden = false
-                acceptTxnCodeView.text = "tc.beginPayment(options)"
+                
+                if offlinePaymentBtn.isSelected {
+                    acceptTxnCodeView.text = "PayPalRetailSDK.transactionManager().getOfflinePaymentStatus(transactionManager.ReplayOfflinePaymentCallback() {(error, cntext)}"
+                } else {
+                    acceptTxnCodeView.text = "tc.beginPayment(options)"
+                }
             } else {
                 acceptTxnCodeBtn.setTitle("View Code", for: .normal)
                 acceptTxnCodeView.isHidden = true
@@ -286,20 +304,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     func getCurrentNavigationController() -> UINavigationController! {
         return self.navigationController
     }
-    
-}
-
-extension PaymentViewController: OfflineModeViewControllerDelegate, TransactionOptionsViewControllerDelegate {
-    
-    func transactionOptions(controller: TransactionOptionsViewController, formFactorArray: [PPRetailFormFactor]) {
-        self.formFactorArray = formFactorArray
-    }
-    
-    
-    func offlineMode(controller: OfflineModeViewController, didChange isOffline: Bool) {
-        self.offlineMode = isOffline
-    }
-    
     
 }
 

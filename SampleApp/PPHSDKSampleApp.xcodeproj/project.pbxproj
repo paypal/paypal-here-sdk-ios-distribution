@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */; };
-		68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */; };
-		68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */; };
 		789DA898CEB289EC794D82C1 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451620A05B8E7193182BE368 /* Pods_PPHSDKSampleApp.framework */; };
 		C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */; };
 		C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */; };
@@ -33,8 +31,6 @@
 		685B7E4720DB152100F57461 /* LogglyLogger_CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogglyLogger_CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4820DB152100F57461 /* SimpleKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SimpleKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionOptionsViewController.swift; sourceTree = "<group>"; };
-		68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
-		68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflinePaymentCompletedViewController.swift; sourceTree = "<group>"; };
 		87E2DCB27568F60B7133D086 /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8E345C953E135D24A01797D1 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCompletedViewController.swift; sourceTree = "<group>"; };
@@ -108,9 +104,7 @@
 				C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */,
 				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
 				685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */,
-				68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */,
 				C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */,
-				68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */,
 				C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */,
 				C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */,
 				C6C794051DDD01E800F8DC8E /* Main.storyboard */,
@@ -231,6 +225,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/LogglyLogger-CocoaLumberjack/LogglyLogger_CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
 				"${BUILT_PRODUCTS_DIR}/PayPalRetailSDK/PayPalRetailSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
 			);
@@ -238,6 +233,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LogglyLogger_CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRetailInstrumentInterface.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalRetailSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
 			);
@@ -262,8 +258,6 @@
 				C6C794021DDD01E800F8DC8E /* InitializeViewController.swift in Sources */,
 				C698DE351FE9857100D005AE /* PaymentCompletedViewController.swift in Sources */,
 				C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */,
-				68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */,
-				68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */,
 				C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */,
 				C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */,
 			);
