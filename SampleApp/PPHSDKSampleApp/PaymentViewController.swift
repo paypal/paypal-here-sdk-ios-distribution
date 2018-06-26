@@ -22,19 +22,29 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     @IBOutlet weak var acceptTxnBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeBtn: UIButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
-    @IBOutlet weak var pmtTypeSelector: UISegmentedControl!
-    @IBOutlet weak var optionsTextFeild: UITextField!
+    @IBOutlet weak var offlinePaymentBtn: UIButton!
     
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
     var invoice: PPRetailInvoice?
     var transactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
-
+    var options = PPRetailTransactionBeginOptions.defaultOptions()
+    var formFactorArray: [PPRetailFormFactor] = []
+    var offlineModeController: OfflineModeViewController!
+    var transactionOptionsViewController: TransactionOptionsViewController!
+    var offlineMode: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         PayPalRetailSDK.setRetailSDKAppDelegate(self)
+        
+        offlineModeController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "offlineModeViewController") as! OfflineModeViewController
+        offlineModeController.delegate = self
+        
+        transactionOptionsViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "transactionOptionsViewController") as! TransactionOptionsViewController
+        transactionOptionsViewController.delegate = self
         
         //init toolbar for keyboard
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
@@ -45,13 +55,10 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         toolbar.sizeToFit()
         //setting toolbar as inputAccessoryView
         self.invAmount.inputAccessoryView = toolbar
-        self.optionsTextFeild.inputAccessoryView = toolbar
         
         // Setting up initial aesthetics.
         invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
-        
-        optionsTextFeild.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
         
     }
     
@@ -92,7 +99,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
-
+        
         mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
         
         // The invoice Number is used for duplicate payment checking.  It should be unique for every
@@ -115,24 +122,33 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         }
         
         invoice = mInvoice
-
+        
         invAmount.isEnabled = false
         createInvoiceBtn.isEnabled = false
         createInvoiceBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
-
+        
         createTxnBtn.isEnabled = true
         
     }
     
+    @IBAction func paymentOptions(_ sender: UIButton) {
+        transactionOptionsViewController.formFactorArray = self.formFactorArray
+        transactionOptionsViewController.transactionOptions = self.options
+        present(transactionOptionsViewController, animated: true, completion: nil)
+        
+    }
+    @IBAction func offlinePaymentMode(_ sender: UIButton) {
+        offlineModeController.offlineMode = self.offlineMode
+        present(offlineModeController, animated: true, completion: nil)
+    }
     // This function does the createTransaction call to start the process with the current invoice.
     @IBAction func createTransaction(_ sender: UIButton) {
         
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
             self.tc = context
-
+            
             self.createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
             self.createTxnBtn.isEnabled = false
-            
             self.acceptTxnBtn.isEnabled = true
         })
     }
@@ -148,43 +164,34 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
             self.tc!.continue(with: cardInfo)
         }
-
+        
         tc!.setCompletedHandler { (error, txnRecord) -> Void in
             
-            if let err = error {
-                print("Error Code: \(err.code)")
-                print("Error Message: \(err.message)")
-                print("Debug ID: \(err.debugId)")
+            if error != nil && self.offlineMode {
+                self.goToOfflinePaymentCompletedViewController()
+            } else if error != nil {
+                print("Error Code: \(String(describing: error?.code))")
+                print("Error Message: \(String(describing: error?.message))")
+                print("Debug ID: \(String(describing: error?.debugId))")
                 
                 return
-            }
-            
-            print("Txn ID: \(txnRecord!.transactionNumber!)")
-            
-            self.navigationController?.popToViewController(self, animated: false)
-            self.transactionNumber = txnRecord?.transactionNumber
-            self.paymentMethod = txnRecord?.paymentMethod
-            
-            if(self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth") {
-                self.goToAuthCompletedViewController()
             } else {
-                self.goToPaymentCompletedViewController()
+                
+                print("Txn ID: \(txnRecord!.transactionNumber!)")
+                
+                self.navigationController?.popToViewController(self, animated: false)
+                self.transactionNumber = txnRecord?.transactionNumber
+                self.paymentMethod = txnRecord?.paymentMethod
+                
+                if (self.options?.isAuthCapture)! {
+                    self.goToAuthCompletedViewController()
+                } else {
+                    self.goToPaymentCompletedViewController()
+                }
             }
-            
         }
         
-        // Setting up the options for the transaction
-        let options = PPRetailTransactionBeginOptions()
-        options?.showPromptInCardReader = true
-        options?.showPromptInApp = true
-        options?.preferredFormFactors = []
-        options?.tippingOnReaderEnabled = false
-        options?.amountBasedTipping = false
-        options?.isAuthCapture = (self.pmtTypeSelector.titleForSegment(at: self.pmtTypeSelector.selectedSegmentIndex) == "auth")
-        options?.tag = optionsTextFeild.text ?? ""
-        
         tc!.beginPayment(options)
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -213,8 +220,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         performSegue(withIdentifier: "goToAuthCompletedView", sender: Any?.self)
     }
     
+    func goToOfflinePaymentCompletedViewController(){
+        performSegue(withIdentifier: "offlinePaymentCompletedVC", sender: self)
+    }
+    
     @IBAction func showInfo(_ sender: UIButton){
-
+        
         switch sender.tag {
         case 0:
             if (createInvCodeView.isHidden) {
@@ -230,9 +241,9 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                 createTxnCodeBtn.setTitle("Hide Code", for: .normal)
                 createTxnCodeView.isHidden = false
                 createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
-                                         "  // Set the transactionContext or handle the error \n" +
-                                         "  self.tc = context \n" +
-                                         "}))"
+                    "  // Set the transactionContext or handle the error \n" +
+                    "  self.tc = context \n" +
+                "}))"
             } else {
                 createTxnCodeBtn.setTitle("View Code", for: .normal)
                 createTxnCodeView.isHidden = true
@@ -255,14 +266,13 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // Function to handle real-time changes in the invoice/payment amount text field.  The
     // create invoice button is disabled unless there is a value in the box.
     func editingChanged(_ textField: UITextField) {
-
+        
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
         
         guard let amt = invAmount.text, !amt.isEmpty else {
             createInvoiceBtn.isEnabled = false
-            
             return
         }
         
@@ -277,5 +287,35 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         return self.navigationController
     }
     
+}
+
+extension PaymentViewController: OfflineModeViewControllerDelegate, TransactionOptionsViewControllerDelegate {
+    
+    func transactionOptions(controller: TransactionOptionsViewController, formFactorArray: [PPRetailFormFactor]) {
+        self.formFactorArray = formFactorArray
+    }
+    
+    
+    func offlineMode(controller: OfflineModeViewController, didChange isOffline: Bool) {
+        self.offlineMode = isOffline
+    }
+    
+    
+}
+
+extension PPRetailTransactionBeginOptions {
+    
+    class func defaultOptions() -> PPRetailTransactionBeginOptions? {
+        // Setting up the options for the transaction
+        guard let options = PPRetailTransactionBeginOptions() else {return nil}
+        options.showPromptInCardReader = true
+        options.showPromptInApp = true
+        options.preferredFormFactors = []
+        options.tippingOnReaderEnabled = false
+        options.amountBasedTipping = false
+        options.isAuthCapture = false
+        options.tag = ""
+        return options
+    }
 }
 
