@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>PPRetailDeviceManager Class Reference</title>
+	<title>PPRetailCard Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,33 +54,37 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/cardIssuer">cardIssuer</option>
+		
+		<option value="//api/name/cardholderName">cardholderName</option>
+		
+		<option value="//api/name/failed">failed</option>
+		
+		<option value="//api/name/formFactor">formFactor</option>
+		
+		<option value="//api/name/isContactlessMSD">isContactlessMSD</option>
+		
+		<option value="//api/name/isSignatureRequired">isSignatureRequired</option>
+		
+		<option value="//api/name/lastFourDigits">lastFourDigits</option>
+		
+		<option value="//api/name/pinPresent">pinPresent</option>
+		
+		<option value="//api/name/reader">reader</option>
+		
+		<option value="//api/name/timestamp">timestamp</option>
+		
+	</optgroup>
+	
 
 	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/connectToLastActiveReader:">- connectToLastActiveReader:</option>
-		
-		<option value="//api/name/getActiveReader">- getActiveReader</option>
-		
-		<option value="//api/name/getDiscoveredDevices">- getDiscoveredDevices</option>
-		
-		<option value="//api/name/getLastActiveBluetoothReader">- getLastActiveBluetoothReader</option>
-		
-		<option value="//api/name/getPairedBluetoothDevices:">- getPairedBluetoothDevices:</option>
-		
-		<option value="//api/name/isConnectedToMiura">- isConnectedToMiura</option>
-		
-		<option value="//api/name/scanAndAutoConnectToBluetoothReader:callback:">- scanAndAutoConnectToBluetoothReader:callback:</option>
-		
-		<option value="//api/name/searchAndConnect:">- searchAndConnect:</option>
-		
-		<option value="//api/name/searchAndConnectWithoutCallback">- searchAndConnectWithoutCallback</option>
-		
-		<option value="//api/name/setActiveReader:">- setActiveReader:</option>
-		
-		<option value="//api/name/stopScanningForBluetoothReaders">- stopScanningForBluetoothReaders</option>
+		<option value="//api/name/isEmv">- isEmv</option>
 		
 	</optgroup>
 	
@@ -97,7 +101,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">PPRetailDeviceManager Class Reference</h1>
+					<h1 class="title">PPRetailCard Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -106,7 +110,7 @@
 	<td>PPRetailObject : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>PPRetailDeviceManager.h</td>
+	<td>PPRetailCard.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -116,9 +120,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>DeviceManager is responsible for exposing APIs regarding the devices.
-Currently, you can use DeviceManager to prompt the List to select the device
-or set/get the active device.</p>
+						<p>Information about a card presented to the PayPal Retail SDK</p>
 					</div>
 					
 					
@@ -134,8 +136,8 @@ or set/get the active device.</p>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/searchAndConnect:" title="searchAndConnect:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/searchAndConnect:">&ndash;&nbsp;searchAndConnect:</a></code>
+	<a name="//api/name/formFactor" title="formFactor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/formFactor">&nbsp;&nbsp;formFactor</a></code>
 </h3>
 
 	<div class="method-info">
@@ -145,14 +147,12 @@ or set/get the active device.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Show a list of connected credit card readers.
-If there is more than 1 devices. Select one of them to use it
-for transaction.</p>
+				<p>The process used by consumer to present the card @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)searchAndConnect:(PPRetailDeviceManagerConnectionHandler _Nullable)<em>callback</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) PPRetailFormFactor formFactor</code></div>
 
 		    
 			
@@ -164,9 +164,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Show a list of connected credit card readers.
-If there is more than 1 devices. Select one of them to use it
-for transaction.</p>
+				<p>The process used by consumer to present the card @readonly</p>
 			</div>
 			
 
@@ -177,15 +175,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/searchAndConnectWithoutCallback" title="searchAndConnectWithoutCallback"></a>
-	<h3 class="method-title"><code><a href="#//api/name/searchAndConnectWithoutCallback">&ndash;&nbsp;searchAndConnectWithoutCallback</a></code>
+	<a name="//api/name/failed" title="failed"></a>
+	<h3 class="method-title"><code><a href="#//api/name/failed">&nbsp;&nbsp;failed</a></code>
 </h3>
 
 	<div class="method-info">
@@ -195,14 +193,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Show a list of connected credit card readers.
-If there is more than 1 devices. Select one of them to use it
-for transaction.</p>
+				<p>The presentation failed and this event is simply a notice of failure @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)searchAndConnectWithoutCallback</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL failed</code></div>
 
 		    
 			
@@ -214,9 +210,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Show a list of connected credit card readers.
-If there is more than 1 devices. Select one of them to use it
-for transaction.</p>
+				<p>The presentation failed and this event is simply a notice of failure @readonly</p>
 			</div>
 			
 
@@ -227,15 +221,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/connectToLastActiveReader:" title="connectToLastActiveReader:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/connectToLastActiveReader:">&ndash;&nbsp;connectToLastActiveReader:</a></code>
+	<a name="//api/name/reader" title="reader"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reader">&nbsp;&nbsp;reader</a></code>
 </h3>
 
 	<div class="method-info">
@@ -245,12 +239,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Try connecting to the last active credit card reader</p>
+				<p>The device used to read the card @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)connectToLastActiveReader:(PPRetailDeviceManagerConnectionHandler _Nullable)<em>callback</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailPaymentDevice *reader</code></div>
 
 		    
 			
@@ -262,7 +256,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Try connecting to the last active credit card reader</p>
+				<p>The device used to read the card @readonly</p>
 			</div>
 			
 
@@ -273,15 +267,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/scanAndAutoConnectToBluetoothReader:callback:" title="scanAndAutoConnectToBluetoothReader:callback:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/scanAndAutoConnectToBluetoothReader:callback:">&ndash;&nbsp;scanAndAutoConnectToBluetoothReader:callback:</a></code>
+	<a name="//api/name/timestamp" title="timestamp"></a>
+	<h3 class="method-title"><code><a href="#//api/name/timestamp">&nbsp;&nbsp;timestamp</a></code>
 </h3>
 
 	<div class="method-info">
@@ -291,12 +285,13 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Tries to connect to the previously used/active Bluetooth reader</p>
+				<p>A server-compatible formatted time for when this
+presentation occurred @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)scanAndAutoConnectToBluetoothReader:(NSString *_Nullable)<em>readerName</em> callback:(PPRetailDeviceManagerConnectionHandler _Nullable)<em>callback</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *timestamp</code></div>
 
 		    
 			
@@ -308,7 +303,8 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Tries to connect to the previously used/active Bluetooth reader</p>
+				<p>A server-compatible formatted time for when this
+presentation occurred @readonly</p>
 			</div>
 			
 
@@ -319,15 +315,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/setActiveReader:" title="setActiveReader:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setActiveReader:">&ndash;&nbsp;setActiveReader:</a></code>
+	<a name="//api/name/lastFourDigits" title="lastFourDigits"></a>
+	<h3 class="method-title"><code><a href="#//api/name/lastFourDigits">&nbsp;&nbsp;lastFourDigits</a></code>
 </h3>
 
 	<div class="method-info">
@@ -337,12 +333,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Sets the active reader</p>
+				<p>Last four digits of the presented card @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)setActiveReader:(PPRetailPaymentDevice *_Nullable)<em>pd</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *lastFourDigits</code></div>
 
 		    
 			
@@ -354,7 +350,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Sets the active reader</p>
+				<p>Last four digits of the presented card @readonly</p>
 			</div>
 			
 
@@ -365,15 +361,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/isConnectedToMiura" title="isConnectedToMiura"></a>
-	<h3 class="method-title"><code><a href="#//api/name/isConnectedToMiura">&ndash;&nbsp;isConnectedToMiura</a></code>
+	<a name="//api/name/cardIssuer" title="cardIssuer"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cardIssuer">&nbsp;&nbsp;cardIssuer</a></code>
 </h3>
 
 	<div class="method-info">
@@ -383,12 +379,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>checks if any Miura devive is connected</p>
+				<p>Issuer of the card that was presented to the SDK @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (BOOL)isConnectedToMiura</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) PPRetailCardIssuer cardIssuer</code></div>
 
 		    
 			
@@ -400,7 +396,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>checks if any Miura devive is connected</p>
+				<p>Issuer of the card that was presented to the SDK @readonly</p>
 			</div>
 			
 
@@ -411,15 +407,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/getActiveReader" title="getActiveReader"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getActiveReader">&ndash;&nbsp;getActiveReader</a></code>
+	<a name="//api/name/cardholderName" title="cardholderName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cardholderName">&nbsp;&nbsp;cardholderName</a></code>
 </h3>
 
 	<div class="method-info">
@@ -429,12 +425,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns the selected device</p>
+				<p>Name of consumer who owns the presented card @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (PPRetailPaymentDevice *_Nullable)getActiveReader</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *cardholderName</code></div>
 
 		    
 			
@@ -446,7 +442,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the selected device</p>
+				<p>Name of consumer who owns the presented card @readonly</p>
 			</div>
 			
 
@@ -457,15 +453,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/getDiscoveredDevices" title="getDiscoveredDevices"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getDiscoveredDevices">&ndash;&nbsp;getDiscoveredDevices</a></code>
+	<a name="//api/name/pinPresent" title="pinPresent"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pinPresent">&nbsp;&nbsp;pinPresent</a></code>
 </h3>
 
 	<div class="method-info">
@@ -475,12 +471,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Get a list of paired/discovered devices</p>
+				<p>Indicates if pin was entered after presenting the card @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSArray *_Nullable)getDiscoveredDevices</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL pinPresent</code></div>
 
 		    
 			
@@ -492,7 +488,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Get a list of paired/discovered devices</p>
+				<p>Indicates if pin was entered after presenting the card @readonly</p>
 			</div>
 			
 
@@ -503,15 +499,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/getLastActiveBluetoothReader" title="getLastActiveBluetoothReader"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getLastActiveBluetoothReader">&ndash;&nbsp;getLastActiveBluetoothReader</a></code>
+	<a name="//api/name/isContactlessMSD" title="isContactlessMSD"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isContactlessMSD">&nbsp;&nbsp;isContactlessMSD</a></code>
 </h3>
 
 	<div class="method-info">
@@ -521,12 +517,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Get the name of last active reader</p>
+				<p>Indicates if a contactless MSD card was presented @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSString *_Nullable)getLastActiveBluetoothReader</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isContactlessMSD</code></div>
 
 		    
 			
@@ -538,7 +534,7 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Get the name of last active reader</p>
+				<p>Indicates if a contactless MSD card was presented @readonly</p>
 			</div>
 			
 
@@ -549,15 +545,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/getPairedBluetoothDevices:" title="getPairedBluetoothDevices:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getPairedBluetoothDevices:">&ndash;&nbsp;getPairedBluetoothDevices:</a></code>
+	<a name="//api/name/isSignatureRequired" title="isSignatureRequired"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isSignatureRequired">&nbsp;&nbsp;isSignatureRequired</a></code>
 </h3>
 
 	<div class="method-info">
@@ -567,12 +563,13 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Get a list of paired devices</p>
+				<p>true if given the card and the context in which it
+was presented, a signature is required. @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)getPairedBluetoothDevices:(PPRetailDeviceManagerPairedBTDevicesHandler _Nullable)<em>callback</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isSignatureRequired</code></div>
 
 		    
 			
@@ -584,7 +581,8 @@ for transaction.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Get a list of paired devices</p>
+				<p>true if given the card and the context in which it
+was presented, a signature is required. @readonly</p>
 			</div>
 			
 
@@ -595,15 +593,15 @@ for transaction.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/stopScanningForBluetoothReaders" title="stopScanningForBluetoothReaders"></a>
-	<h3 class="method-title"><code><a href="#//api/name/stopScanningForBluetoothReaders">&ndash;&nbsp;stopScanningForBluetoothReaders</a></code>
+	<a name="//api/name/isEmv" title="isEmv"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isEmv">&ndash;&nbsp;isEmv</a></code>
 </h3>
 
 	<div class="method-info">
@@ -613,13 +611,12 @@ for transaction.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Stop scanning for Bluetooth devices
-Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p>
+				<p>Indicates if the presented card is EMV</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)stopScanningForBluetoothReaders</code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)isEmv</code></div>
 
 		    
 			
@@ -631,8 +628,7 @@ Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Stop scanning for Bluetooth devices
-Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p>
+				<p>Indicates if the presented card is EMV</p>
 			</div>
 			
 
@@ -643,7 +639,7 @@ Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailCard.h</code></p>
 			</div>
 			
 			
