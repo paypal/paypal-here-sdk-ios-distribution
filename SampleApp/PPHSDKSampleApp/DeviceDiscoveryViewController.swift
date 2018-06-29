@@ -10,7 +10,7 @@ import UIKit
 import PayPalRetailSDK
 
 class DeviceDiscoveryViewController: UIViewController {
-
+    
     @IBOutlet weak var goToPmtPageBtn: UIButton!
     @IBOutlet weak var findAndConnect: UIButton!
     @IBOutlet weak var findAndConnectCodeBtn: UIButton!
@@ -19,6 +19,10 @@ class DeviceDiscoveryViewController: UIViewController {
     @IBOutlet weak var connectLastKnownCodeBtn: UIButton!
     @IBOutlet weak var connectLastKnownCodeView: UITextView!
     @IBOutlet weak var activeReaderLbl: UILabel!
+    @IBOutlet weak var autoConnectReader: UIButton!
+    @IBOutlet weak var autoConnectReaderCodeBtn: UIButton!
+    @IBOutlet weak var autoConnectReaderCodeView: UITextView!
+    @IBOutlet weak var autoConnectActivityIndicator: UIActivityIndicatorView!
     
     let deviceManager = PayPalRetailSDK.deviceManager()
     
@@ -28,9 +32,10 @@ class DeviceDiscoveryViewController: UIViewController {
         // Setting up initial aesthetics
         findAndConnectCodeView.isHidden = true
         connectLastKnownCodeView.isHidden = true
-        goToPmtPageBtn.isHidden = true
+        autoConnectReaderCodeView.isHidden = true
+        goToPmtPageBtn.isHidden = false
         activeReaderLbl.text = ""
-
+        
         // Watch for audio readers.
         // This will show a microphone connection permission prompt on the initial call (only once per app install)
         // Time this call such that it does not interfere with any other alerts
@@ -41,9 +46,9 @@ class DeviceDiscoveryViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -57,14 +62,14 @@ class DeviceDiscoveryViewController: UIViewController {
                 print("Search Device Error: \(err.debugId)")
                 print("Search Device Error: \(err.code)")
                 print("Search Device Error: \(err.message)")
-
+                
                 return
             }
             
             if(paymentDevice?.isConnected())! {
                 self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
                 self.checkForReaderUpdate(reader:paymentDevice)
-                self.goToPmtPageBtn.isHidden = false
+                //    self.goToPmtPageBtn.isHidden = false
             }
         })
         
@@ -84,11 +89,37 @@ class DeviceDiscoveryViewController: UIViewController {
             if(paymentDevice?.isConnected())! {
                 self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
                 self.checkForReaderUpdate(reader:paymentDevice)
-                self.goToPmtPageBtn.isHidden = false
+                //    self.goToPmtPageBtn.isHidden = false
             }
         })
     }
-   
+    
+    /// Auto Connect to the last known reader. It will check for that reader in the
+    /// background and connect to it automatically if it is available.
+    /// - Parameter sender: UI Button on the screen "Auto Connect"
+    @IBAction func autoConnectReader(_ sender: UIButton) {
+        autoConnectActivityIndicator.startAnimating()
+        guard let lastActiveReader = deviceManager?.getLastActiveBluetoothReader() else {
+            autoConnectActivityIndicator.stopAnimating()
+            activeReaderLbl.text = "No last known reader. Please Connect first."
+            return
+        }
+        deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in
+            self.autoConnectActivityIndicator.stopAnimating()
+            if error != nil {
+                print("Error in connecting with bluetooth reader via Auto Connect: " + (error?.developerMessage)!)
+                self.activeReaderLbl.text = "Error: \(error?.message ?? "No Last Reader")"
+            } else {
+                if (paymentDevice?.isConnected())! {
+                    self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+                    self.checkForReaderUpdate(reader: paymentDevice)
+                    print("Connected automatically with device.")
+                }
+            }
+        })
+        
+    }
+    
     // Code that checks if there's a software update available for the connected
     // reader and initiates the process if there's one available.
     func checkForReaderUpdate(reader:PPRetailPaymentDevice?) {
@@ -117,8 +148,8 @@ class DeviceDiscoveryViewController: UIViewController {
                 findAndConnectCodeBtn.setTitle("Hide Code", for: .normal)
                 findAndConnectCodeView.isHidden = false
                 findAndConnectCodeView.text = "deviceManager.searchAndConnect({ (error, paymentDevice) in\n" +
-                                              "   <code to handle success/failure>\n" +
-                                              "})"
+                    "   <code to handle success/failure>\n" +
+                "})"
             } else {
                 findAndConnectCodeBtn.setTitle("View Code", for: .normal)
                 findAndConnectCodeView.isHidden = true
@@ -128,16 +159,25 @@ class DeviceDiscoveryViewController: UIViewController {
                 connectLastKnownCodeBtn.setTitle("Hide Code", for: .normal)
                 connectLastKnownCodeView.isHidden = false
                 connectLastKnownCodeView.text = "deviceManager.connect(toLastActiveReader: { (error, paymentDevice) in\n" +
-                                                "    <code to handle success/failure>\n" +
-                                                "})"
+                    "    <code to handle success/failure>\n" +
+                "})"
             } else {
                 connectLastKnownCodeBtn.setTitle("View Code", for: .normal)
                 connectLastKnownCodeView.isHidden = true
             }
+        case 2:
+            if autoConnectReaderCodeView.isHidden {
+                autoConnectReaderCodeBtn.setTitle("Hide Code", for: .normal)
+                autoConnectReaderCodeView.isHidden = false
+                autoConnectReaderCodeView.text = "deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in\n" +
+                        "<code to handle success/failure>\n}"
+            } else {
+                autoConnectReaderCodeBtn.setTitle("View Code", for: .normal)
+                autoConnectReaderCodeView.isHidden = true
+            }
         default:
             print("No Button Tag Found")
         }
-        
     }
     
     @IBAction func goToPmtPage(_ sender: Any) {

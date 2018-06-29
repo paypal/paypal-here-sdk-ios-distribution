@@ -114,7 +114,7 @@ class TransactionOptionsViewController: UIViewController {
     /// and dismiss the transactionOptionsViewController. This event is
     /// triggered by the "runTransactionButton" at the bottom of the screen.
     /// - Parameter sender: The UIButton associated with the IBAction
-    @IBAction func runTransactionButtonPressed(_ sender: UIButton) {
+    @IBAction func dismissScreen(_ sender: UIButton) {
         self.delegate?.transactionOptions(controller: self,formFactorArray: self.formFactorArray)
         dismiss(animated: true, completion: nil)
     }

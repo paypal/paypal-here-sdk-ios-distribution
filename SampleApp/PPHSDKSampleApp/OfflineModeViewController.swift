@@ -141,7 +141,7 @@ class OfflineModeViewController: UIViewController {
     
     /// This function will pass the offlineMode value to the PaymentViewController and dimiss this controller.
     /// - Parameter sender: "Run Transaction" button
-    @IBAction func runTransaction(_ sender: UIButton) {
+    @IBAction func dismissScreen(_ sender: UIButton) {
         self.delegate?.offlineMode(controller: self, didChange: self.offlineMode)
         dismiss(animated: true, completion: nil)
     }

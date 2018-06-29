@@ -23,10 +23,11 @@ class CaptureAuthViewController: UIViewController {
     var capturedAmount: NSDecimalNumber?
     var isTip: Bool?
     var gratuityAmt: NSDecimalNumber = 0
+    var currencySymbol: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         //init toolbar for keyboard
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
         //create left side empty space so that done button set on right side
@@ -49,6 +50,13 @@ class CaptureAuthViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         captureAmount.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.init()
+        currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as! String
+        captureAmount.placeholder = "\(currencySymbol!) 0.00"
     }
 
     @IBAction func captureAuthorization(_ sender: UIButton) {
@@ -73,7 +81,7 @@ class CaptureAuthViewController: UIViewController {
         
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
-        let inputtedAmount = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
+        let inputtedAmount = formatter.number(from: captureAmount.text!.replacingOccurrences(of: "\(currencySymbol!)", with: "")) as! NSDecimalNumber
         
         if(isTip)! {
             amountToCapture = (invoice?.total?.adding(inputtedAmount))!
