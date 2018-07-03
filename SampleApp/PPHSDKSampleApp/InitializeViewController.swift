@@ -14,7 +14,7 @@ import PayPalRetailSDK
 let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotification"
 
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
-
+    
     
     @IBOutlet weak var demoAppLbl: UILabel!
     @IBOutlet weak var initSdkButton: UIButton!
@@ -46,18 +46,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         // Receive the notification that the token is being returned
         NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    
     @IBAction func initSDK(_ sender: UIButton) {
         
         initMerchantButton.isEnabled = true
@@ -70,7 +70,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
     
     @IBAction func initSdkInfo(_ sender: UIButton) {
-
+        
         if (initSdkCode.isHidden) {
             initSdkInfoBtn.setTitle("Hide Code", for: .normal)
             initSdkCode.isHidden = false
@@ -93,7 +93,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // check that the saved token matches the environment.  Otherwise, kick open the
         // SFSafariViewController to expose the login and obtain another token.
         let tokenDefault = UserDefaults.init()
-
+        
         if((tokenDefault.string(forKey: "ACCESS_TOKEN") != nil) && (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)! == tokenDefault.string(forKey: "ENVIRONMENT"))) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: tokenDefault.string(forKey: "ACCESS_TOKEN"))
         } else {
@@ -110,7 +110,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         envSelector.isEnabled = false
         self.activitySpinner.color = UIColor.black
         activitySpinner.startAnimating()
-
+        
         performLogin()
         
     }
@@ -126,10 +126,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // the merchant.  Upon successful initialization, the 'Connect Card Reader' button will be
         // enabled for use.
         let accessToken = notification.object as! String
-
+        
         let tokenDefault = UserDefaults.init()
         let sdkCreds = SdkCredential.init(accessToken: accessToken, refreshUrl: tokenDefault.string(forKey: "REFRESH_URL"), environment: tokenDefault.string(forKey: "ENVIRONMENT"))
-    
+        
         PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in
             if let err = error {
                 self.activitySpinner.color = UIColor.red
@@ -138,11 +138,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 print("Debug ID: \(err.debugId)")
                 print("Error Message: \(err.message)")
                 print("Error Code: \(err.code)")
-
+                
                 // The token did not work, so clear the saved token so we can go back to the login page
                 let tokenDefault = UserDefaults.init()
                 tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
-                //self.performLogin()
             } else {
                 print("Merchant Success!")
                 // Start watching for the audio reader
@@ -153,18 +152,19 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 self.initMerchantButton.isEnabled = false
                 self.merchInfoView.isHidden = false
                 self.merchEmailLabel.text = merchant!.emailAddress
-
+                
                 // Save currency to UserDefaults for further usage. This needs to be used to initialize
                 // the PPRetailInvoice for the payment later on. This app is using UserDefault but
                 // it could just as easily be passed through the segue.
                 let tokenDefault = UserDefaults.init()
                 tokenDefault.setValue(merchant!.currency, forKey: "MERCH_CURRENCY")
-
+                self.setCurrencyType()
+                
                 // Add the BN code for Partner tracking. To obtain this value, contact
                 // your PayPal account representative. Please do not change this value when
                 // using this sample app for testing.
                 merchant?.referrerCode = "PPHSDK_SampleApp_iOS"
-
+                
                 //Enable the connect card reader button here
                 self.connectCardReaderBtn.isHidden = false
             }
@@ -180,7 +180,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             initMerchCode.isHidden = false
             initMerchCode.text = "PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) -> Void in \n" +
                 "     <code to handle success/failure>\n" +
-                "})"
+            "})"
         } else {
             initMerchInfoBtn.setTitle("View Code", for: .normal)
             initMerchCode.isHidden = true
@@ -189,7 +189,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             }
             
         }
- 
+        
     }
     
     @IBAction func logout(_ sender: UIButton) {
@@ -209,7 +209,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         envSelector.isEnabled = true
         connectCardReaderBtn.isHidden = true
     }
-
+    
     
     @IBAction func goToDeviceDiscovery(_ sender: Any) {
         performSegue(withIdentifier: "showDeviceDiscovery", sender: sender)
@@ -224,7 +224,25 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         envSelector.isEnabled = true
         
     }
+    
+    func setCurrencyType(){
+        let userDefaults = UserDefaults.init()
+        guard let merchantCurrency: String = userDefaults.value(forKey: "MERCH_CURRENCY") as? String else { return }
+        print("Merchant Currency is: ", merchantCurrency)
+        
+        if merchantCurrency == Currency.GBP.rawValue {
+            userDefaults.set("￡", forKey: "CURRENCY_SYMBOL")
+        } else {
+            userDefaults.set("$", forKey: "CURRENCY_SYMBOL")
+        }
+    }
+    
+    
+}
 
-
+enum Currency: String {
+    case USD = "USD"
+    case GBP = "GBP"
+    case AUD = "AUD"
 }
 

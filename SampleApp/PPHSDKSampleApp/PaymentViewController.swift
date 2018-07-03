@@ -33,6 +33,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var formFactorArray: [PPRetailFormFactor] = []
     var offlineModeController: OfflineModeViewController!
     var transactionOptionsViewController: TransactionOptionsViewController!
+    var currencySymbol: String!
     var offlineMode: Bool = false
     
     override func viewDidLoad() {
@@ -64,6 +65,13 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         invAmount.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.init()
+        currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as! String
+        invAmount.placeholder = "\(currencySymbol!) 0.00"
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,7 +106,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
-        let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "$", with: "")) as! NSDecimalNumber
+        let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "\(currencySymbol!)", with: "")) as! NSDecimalNumber
         
         mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
         
@@ -109,7 +117,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         mInvoice.number = "sdk2test\(arc4random_uniform(99999))"
         
         guard mInvoice.itemCount > 0, mInvoice.total!.intValue >= 1 else {
-            let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than $1", preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than \(currencySymbol!)1", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 print("Error creating invoice")
@@ -286,7 +294,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     func getCurrentNavigationController() -> UINavigationController! {
         return self.navigationController
     }
-    
 }
 
 extension PaymentViewController: OfflineModeViewControllerDelegate, TransactionOptionsViewControllerDelegate {
@@ -318,4 +325,6 @@ extension PPRetailTransactionBeginOptions {
         return options
     }
 }
+
+
 

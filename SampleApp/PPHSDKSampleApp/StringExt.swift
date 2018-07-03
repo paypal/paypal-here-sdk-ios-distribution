@@ -14,10 +14,12 @@ extension String {
     // Formatting for invoice amount text field
     func currencyInputFormatting() -> String {
         
+        let userDefaults = UserDefaults.init()
+        
         var number: NSDecimalNumber!
         let formatter = NumberFormatter()
         formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "$"
+        formatter.currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as! String
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         
