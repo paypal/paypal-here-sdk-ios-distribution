@@ -45,5 +45,18 @@ When you submit your app, if you are using the [Chip Card Reader](https://www.pa
 Be sure to include the following into your app store review notes:
 * This iOS application uses the Bluetooth protocol "com.paypal.here.reader": PPID# 126754-0002 & PPID# 126754-0026
 
+
+Keep the app connected to the reader when the app goes to background
+====================================================================
+
+Here’s what will make the Bluetooth readers stay connected to a sample/partner app when the app is backgrounded (till the OS decides to kill the app)
+
+Project -> Capabilities -> Background Modes -> ON 
+
+Enable/Check
+* External accessory communication
+* Uses Bluetooth LE accessories
+* Act as a Bluetooth LE accessory
+
 [License](LICENSE.md)
 =======
