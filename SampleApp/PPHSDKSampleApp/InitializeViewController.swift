@@ -142,7 +142,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 // The token did not work, so clear the saved token so we can go back to the login page
                 let tokenDefault = UserDefaults.init()
                 tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
-                //self.performLogin()
             } else {
                 print("Merchant Success!")
                 // Start watching for the audio reader

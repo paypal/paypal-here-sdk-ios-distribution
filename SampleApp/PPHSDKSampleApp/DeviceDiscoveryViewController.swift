@@ -69,7 +69,6 @@ class DeviceDiscoveryViewController: UIViewController {
             if(paymentDevice?.isConnected())! {
                 self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
                 self.checkForReaderUpdate(reader:paymentDevice)
-                //    self.goToPmtPageBtn.isHidden = false
             }
         })
         
@@ -89,7 +88,6 @@ class DeviceDiscoveryViewController: UIViewController {
             if(paymentDevice?.isConnected())! {
                 self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
                 self.checkForReaderUpdate(reader:paymentDevice)
-                //    self.goToPmtPageBtn.isHidden = false
             }
         })
     }
