@@ -15,9 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *captureAuthBtn;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 @property (weak, nonatomic) IBOutlet UILabel *enterAmountLbl;
-@property  NSString *captureTransactionNumber;
-@property  NSDecimalNumber *capturedAmount;
-@property  NSDecimalNumber *gratuityAmt;
+@property NSString *captureTransactionNumber;
+@property NSDecimalNumber *capturedAmount;
+@property NSDecimalNumber *gratuityAmt;
+@property NSString *currencySymbol;
 @end
 
 @implementation CaptureAuthViewController
@@ -49,6 +50,13 @@
     [self.captureAmount becomeFirstResponder];
 }
 
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
+    self.currencySymbol = [userDefaults stringForKey:@"CURRENCY_SYMBOL"];
+    [self.captureAmount setPlaceholder:[NSString stringWithFormat:@"%@ 0.00",self.currencySymbol]];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -68,7 +76,7 @@
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.generatesDecimalNumbers = YES;
-    NSDecimalNumber *inputtedAmount = (NSDecimalNumber*)[formatter numberFromString: [self.captureAmount.text stringByReplacingOccurrencesOfString:@"$" withString:@""]];
+    NSDecimalNumber *inputtedAmount = (NSDecimalNumber*)[formatter numberFromString: [self.captureAmount.text stringByReplacingOccurrencesOfString:self.currencySymbol withString:@""]];
     
         if(self.isTip) {
             amountToCapture = [self.invoice.total decimalNumberByAdding:inputtedAmount];

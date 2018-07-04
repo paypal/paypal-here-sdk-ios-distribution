@@ -12,10 +12,11 @@
 
 -(NSString *)currencyInputFormatting {
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDecimalNumber * number = [NSDecimalNumber alloc];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle =  NSNumberFormatterCurrencyAccountingStyle;
-    formatter.currencySymbol = @"$";
+    formatter.currencySymbol = [userDefaults stringForKey:@"CURRENCY_SYMBOL"];
     formatter.maximumFractionDigits = 2;
     formatter.minimumFractionDigits = 2;
     NSString *amountWithPrefix = self;

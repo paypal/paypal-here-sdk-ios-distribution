@@ -25,11 +25,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *acceptTxnCodeView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *pmtTypeSelector;
-// Set up the transactionContext and invoice params.
 @property PPRetailTransactionContext *tc;
 @property PPRetailInvoice *invoice;
 @property NSString *transactionNumber;
 @property PPRetailInvoicePaymentMethod paymentMethod;
+@property NSString *currencySymbol;
 @end
 
 @implementation PaymentViewController
@@ -54,6 +54,13 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     [self.invAmount becomeFirstResponder];
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
+    self.currencySymbol = [userDefaults stringForKey:@"CURRENCY_SYMBOL"];
+    [self.invAmount setPlaceholder:[NSString stringWithFormat:@"%@ 0.00",self.currencySymbol]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,9 +88,9 @@
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.generatesDecimalNumbers = YES;
-    NSDecimalNumber *price = (NSDecimalNumber*)[formatter numberFromString: [self.invAmount.text stringByReplacingOccurrencesOfString:@"$" withString:@""]];
+    NSDecimalNumber *price = (NSDecimalNumber*)[formatter numberFromString: [self.invAmount.text stringByReplacingOccurrencesOfString:self.currencySymbol withString:@""]];
     NSDecimalNumber *quantity = (NSDecimalNumber*)[formatter numberFromString: @"1"];
-    [mInvoice addItem:@"My Order" quantity:quantity unitPrice:price itemId:123 detailId:nil];
+    //[mInvoice addItem:@"My Order" quantity:quantity unitPrice:price itemId:123 detailId:nil];
     
     
     // The invoice Number is used for duplicate payment checking.  It should be unique for every
@@ -100,7 +107,7 @@
         [self.createInvoiceBtn setImage:btnImage forState: UIControlStateDisabled];
         self.createTxnBtn.enabled = YES;
     } else {
-        [self invokeAlert:@"Error" andMessage:@"Either there are no line items or the total amount is less than $1"];
+        [self invokeAlert:@"Error" andMessage:[NSString stringWithFormat:@"Either there are no line items or the total amount is less than %@1",self.currencySymbol]];
         return;
     }
 }
