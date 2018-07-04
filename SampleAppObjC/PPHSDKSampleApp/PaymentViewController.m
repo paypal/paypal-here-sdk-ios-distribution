@@ -90,7 +90,7 @@
     formatter.generatesDecimalNumbers = YES;
     NSDecimalNumber *price = (NSDecimalNumber*)[formatter numberFromString: [self.invAmount.text stringByReplacingOccurrencesOfString:self.currencySymbol withString:@""]];
     NSDecimalNumber *quantity = (NSDecimalNumber*)[formatter numberFromString: @"1"];
-    //[mInvoice addItem:@"My Order" quantity:quantity unitPrice:price itemId:123 detailId:nil];
+    [mInvoice addItem:@"My Order" quantity:quantity unitPrice:price itemId:123 detailId:nil];
     
     
     // The invoice Number is used for duplicate payment checking.  It should be unique for every
