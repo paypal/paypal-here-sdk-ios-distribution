@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *connectLastKnownCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *connectLastKnownCodeView;
 @property (weak, nonatomic) IBOutlet UILabel *activeReaderLbl;
+@property (weak, nonatomic) IBOutlet UIButton *autoConnectReader;
+@property (weak, nonatomic) IBOutlet UIButton *autoConnectReaderCodeBtn;
+@property (weak, nonatomic) IBOutlet UITextView *autoConnectReaderCodeView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *autoConnectActivityIndicator;
 @property PPRetailDeviceManager *deviceManager;
 @end
 
@@ -29,7 +33,8 @@
     // Setting up initial aesthetics
     self.findAndConnectCodeView.hidden = YES;
     self.connectLastKnownCodeView.hidden = YES;
-    self.goToPmtPageBtn.hidden = YES;
+    self.autoConnectReaderCodeView.hidden = YES;
+    self.goToPmtPageBtn.enabled = NO;
     self.activeReaderLbl.text = @"";
     
     // Watch for audio readers.
@@ -62,7 +67,7 @@
         if([cardReader isConnected]) {
             self.activeReaderLbl.text =[NSString stringWithFormat:@"Connected: %@ ",cardReader.id];
             [self checkForReaderUpdate:cardReader];
-            self.goToPmtPageBtn.hidden = NO;
+            self.goToPmtPageBtn.enabled = YES;
         }
     }];
 }
@@ -81,11 +86,35 @@
         if(cardReader != nil && [cardReader isConnected]) {
             self.activeReaderLbl.text = [NSString stringWithFormat:@"Connected: %@ ",cardReader.id];
             [self checkForReaderUpdate:cardReader];
-            self.goToPmtPageBtn.hidden = NO;
+            self.goToPmtPageBtn.enabled = YES;
         }
     }];
 }
 
+/// Auto Connect to the last known reader. It will check for that reader in the
+/// background and connect to it automatically if it is available.
+- (IBAction)autoConnectReader:(id)sender {
+    [self.autoConnectActivityIndicator startAnimating];
+    NSString *lastActiveReader = [self.deviceManager getLastActiveBluetoothReader];
+    if([lastActiveReader isEqualToString:@""]) {
+        [self.autoConnectActivityIndicator stopAnimating];
+        self.activeReaderLbl.text = [NSString stringWithFormat:@"No last known reader. Please Connect first"];
+        return;
+    }
+    [self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {
+        [self.autoConnectActivityIndicator stopAnimating];
+        if(error != nil) {
+            NSLog(@"Error in connecting with bluetooth reader via Auto Connect: %@", error.developerMessage);
+            self.activeReaderLbl.text = [NSString stringWithFormat:@"Error: %@ ",error.message];
+        } else if(cardReader != nil && [cardReader isConnected]) {
+                self.activeReaderLbl.text = [NSString stringWithFormat:@"Connected: %@ ",cardReader.id];
+                [self checkForReaderUpdate:cardReader];
+                NSLog(@"Connected automatically with device.");
+                self.goToPmtPageBtn.enabled = YES;
+                self.autoConnectReader.enabled = NO;
+            }
+    }];
+}
 
 // Code that checks if there's a software update available for the connected
 // reader and initiates the process if there's one available.
@@ -126,6 +155,16 @@
             } else {
                 [self.connectLastKnownCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
                 self.connectLastKnownCodeView.hidden = YES;
+            }
+            break;
+    case 2:
+            if(self.autoConnectReaderCodeView.hidden) {
+                [self.autoConnectReaderCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
+                self.autoConnectReaderCodeView.hidden = NO;
+                self.autoConnectReaderCodeView.text = @"[self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
+            } else {
+                [self.autoConnectReaderCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
+                self.autoConnectReaderCodeView.hidden = YES;
             }
             break;
     default:
