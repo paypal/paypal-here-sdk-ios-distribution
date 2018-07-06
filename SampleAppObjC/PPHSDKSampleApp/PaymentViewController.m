@@ -11,8 +11,11 @@
 #import "NSString+Common.h"
 #import "PaymentCompletedViewController.h"
 #import "AuthCompletedViewController.h"
+#import "PPRetailTransactionBeginOptions+SET_DEFAULT.h"
+#import "TransactionOptionsViewController.h"
+#import "TransactionOptionsViewControllerDelegate.h"
 
-@interface PaymentViewController () <PPHRetailSDKAppDelegate>
+@interface PaymentViewController () <PPHRetailSDKAppDelegate,TransactionOptionsViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *demoAppLbl;
 @property (weak, nonatomic) IBOutlet UITextField *invAmount;
 @property (weak, nonatomic) IBOutlet UIButton *createInvoiceBtn;
@@ -24,12 +27,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnBtn;
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *acceptTxnCodeView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *pmtTypeSelector;
 @property PPRetailTransactionContext *tc;
 @property PPRetailInvoice *invoice;
 @property NSString *transactionNumber;
 @property PPRetailInvoicePaymentMethod paymentMethod;
 @property NSString *currencySymbol;
+@property NSMutableArray *formFactorArray;
+@property PPRetailTransactionBeginOptions *options;
+@property TransactionOptionsViewController *transactionOptionsViewController;
+
 @end
 
 @implementation PaymentViewController
@@ -50,6 +56,15 @@
     // Setting up initial aesthetics.
     self.invAmount.layer.borderColor =  [UIColor colorWithRed:0.0f/255.0f green:159.0f/255.0f blue:228.0f/255.0f alpha:1.0f].CGColor;
     [self.invAmount addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
+    // Set default options for transactions
+    self.options = [PPRetailTransactionBeginOptions defaultOptions];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.transactionOptionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"transactionOptionsViewController"];
+    self.transactionOptionsViewController.delegate = self;
+    
+    // Initialize preferred form factor array
+    self.formFactorArray = [[NSMutableArray alloc] init];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -125,6 +140,14 @@
     }];
 }
 
+- (IBAction)paymentOptions:(id)sender {
+    self.transactionOptionsViewController.formFactorArray = self.formFactorArray;
+    self.transactionOptionsViewController.transactionOptions = self.options;
+    [self presentViewController:self.transactionOptionsViewController animated:true completion:nil];
+}
+
+
+
 // This function will activate the reader by calling the begin method of TransactionContext.  This will
 // activate the reader and have it show the payment methods available for payment.  The listeners are
 // set in this function as well to allow for the listening of the user either inserting, swiping, or tapping
@@ -149,23 +172,13 @@
         weakSelf.transactionNumber = record.transactionNumber;
         weakSelf.paymentMethod =  record.paymentMethod;
         
-        if([[weakSelf.pmtTypeSelector titleForSegmentAtIndex:weakSelf.pmtTypeSelector.selectedSegmentIndex] isEqualToString:@"auth"]) {
+        if(weakSelf.options.isAuthCapture) {
             [weakSelf goToAuthCompletedViewController];
-        } else  {
+        } else {
             [weakSelf goToPaymentCompletedViewController];
         }
     }];
-
-    // Setting up the options for the transaction
-    PPRetailTransactionBeginOptions *options = [[PPRetailTransactionBeginOptions alloc] init];
-    options.showPromptInCardReader = YES;
-    options.showPromptInApp = YES;
-    options.preferredFormFactors = [NSArray new];
-    options.tippingOnReaderEnabled = NO;
-    options.amountBasedTipping = NO;
-    NSLog(@"%d", [[self.pmtTypeSelector titleForSegmentAtIndex:self.pmtTypeSelector.selectedSegmentIndex] isEqualToString:@"auth"]);
-    options.isAuthCapture = [[self.pmtTypeSelector titleForSegmentAtIndex:self.pmtTypeSelector.selectedSegmentIndex] isEqualToString:@"auth"];
-    [self.tc beginPayment:options];
+    [self.tc beginPayment:self.options];
 }
 
 - (IBAction)showCode:(id)sender {
@@ -281,7 +294,10 @@
         authCompletedViewController.paymentMethod = self.paymentMethod;
      }
  }
- 
+
+- (void)transactionOptions:(TransactionOptionsViewController*)controller :(PPRetailTransactionBeginOptions*)options {
+    self.options = options;
+}
 
 
 @end

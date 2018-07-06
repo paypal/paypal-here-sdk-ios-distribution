@@ -15,6 +15,8 @@
 		EA3C33A0205C7F25000E20CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3C339E205C7F25000E20CD /* LaunchScreen.storyboard */; };
 		EA3C33A3205C7F25000E20CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C33A2205C7F25000E20CD /* main.m */; };
 		EA3C33AB205C7F3F000E20CD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C33AA205C7F3F000E20CD /* WelcomeViewController.m */; };
+		EA4DE84220EE710A00B2CD10 /* TransactionOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */; };
+		EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */; };
 		EADDCBC0205FF83D00037A7D /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADDCBBF205FF83D00037A7D /* SafariServices.framework */; };
 		EADDCBC42060348700037A7D /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC32060348700037A7D /* URLParser.m */; };
 		EADDCBC720603A8700037A7D /* DeviceDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC620603A8700037A7D /* DeviceDiscoveryViewController.m */; };
@@ -41,6 +43,11 @@
 		EA3C33A2205C7F25000E20CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA3C33A9205C7F3F000E20CD /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		EA3C33AA205C7F3F000E20CD /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		EA4DE84020EE710A00B2CD10 /* TransactionOptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionOptionsViewController.h; sourceTree = "<group>"; };
+		EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionOptionsViewController.m; sourceTree = "<group>"; };
+		EA4DE84320EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPRetailTransactionBeginOptions+SET_DEFAULT.h"; sourceTree = "<group>"; };
+		EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PPRetailTransactionBeginOptions+SET_DEFAULT.m"; sourceTree = "<group>"; };
+		EA4DE84720EE915500B2CD10 /* TransactionOptionsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionOptionsViewControllerDelegate.h; sourceTree = "<group>"; };
 		EADDCBBF205FF83D00037A7D /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		EADDCBC22060348700037A7D /* URLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLParser.h; sourceTree = "<group>"; };
 		EADDCBC32060348700037A7D /* URLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
@@ -101,6 +108,7 @@
 		EA3C3392205C7F25000E20CD /* PPHSDKSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				EA4DE84620EE75CB00B2CD10 /* category */,
 				EADDCBC12060345600037A7D /* utility */,
 				EA3C3393205C7F25000E20CD /* AppDelegate.h */,
 				EA3C3394205C7F25000E20CD /* AppDelegate.m */,
@@ -118,6 +126,9 @@
 				EADDCBD32061DEDD00037A7D /* AuthCompletedViewController.m */,
 				EADDCBD52061FF1300037A7D /* CaptureAuthViewController.h */,
 				EADDCBD62061FF1300037A7D /* CaptureAuthViewController.m */,
+				EA4DE84020EE710A00B2CD10 /* TransactionOptionsViewController.h */,
+				EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */,
+				EA4DE84720EE915500B2CD10 /* TransactionOptionsViewControllerDelegate.h */,
 				EA3C3399205C7F25000E20CD /* Main.storyboard */,
 				EA3C339C205C7F25000E20CD /* Assets.xcassets */,
 				EA3C339E205C7F25000E20CD /* LaunchScreen.storyboard */,
@@ -125,6 +136,15 @@
 				EA3C33A2205C7F25000E20CD /* main.m */,
 			);
 			path = PPHSDKSampleApp;
+			sourceTree = "<group>";
+		};
+		EA4DE84620EE75CB00B2CD10 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				EA4DE84320EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.h */,
+				EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */,
+			);
+			path = category;
 			sourceTree = "<group>";
 		};
 		EADDCBC12060345600037A7D /* utility */ = {
@@ -269,6 +289,7 @@
 			files = (
 				EADDCBCE20615F4800037A7D /* NSString+Common.m in Sources */,
 				EADDCBC42060348700037A7D /* URLParser.m in Sources */,
+				EA4DE84220EE710A00B2CD10 /* TransactionOptionsViewController.m in Sources */,
 				EADDCBC720603A8700037A7D /* DeviceDiscoveryViewController.m in Sources */,
 				EA3C33A3205C7F25000E20CD /* main.m in Sources */,
 				EA3C3395205C7F25000E20CD /* AppDelegate.m in Sources */,
@@ -278,6 +299,7 @@
 				EA3C33AB205C7F3F000E20CD /* WelcomeViewController.m in Sources */,
 				EADDCBD120619B9400037A7D /* PaymentCompletedViewController.m in Sources */,
 				EADDCBD72061FF1300037A7D /* CaptureAuthViewController.m in Sources */,
+				EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
