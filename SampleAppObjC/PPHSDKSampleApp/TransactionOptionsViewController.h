@@ -10,8 +10,8 @@
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
 
 @interface TransactionOptionsViewController : UIViewController
-/// Sets up the parameters for taking in Options from Payment View Controller
-@property (weak, nonatomic) id delegate;
-@property (weak, nonatomic) PPRetailTransactionBeginOptions *transactionOptions;
-@property (weak, nonatomic) NSMutableArray *formFactorArray;
+// Sets up the parameters for taking in Options from Payment View Controller
+@property (nonatomic,weak) id delegate;
+@property (nonatomic,assign) PPRetailTransactionBeginOptions *transactionOptions;
+@property (nonatomic,assign) NSMutableArray *formFactorArray;
 @end

@@ -42,9 +42,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/// The following 5 functions are triggered when a switch is pressed and it's value is changed.
-/// Depending on the if the switch is on or off, these functions will set the appropriate option to true or false.
-/// - Parameter sender: UISwitch assoicated with the options.
+// The following 5 functions are triggered when a switch is pressed and it's value is changed.
+// Depending on the if the switch is on or off, these functions will set the appropriate option to true or false.
+// - Parameter sender: UISwitch assoicated with the options.
 - (IBAction)authCaptureSwitchPressed:(id)sender {
     self.transactionOptions.isAuthCapture = self.authCaptureSwitch.isOn;
 }
@@ -75,10 +75,10 @@
 }
 
 
-/// This function will be triggred when one of the formFactor buttons is pressed. Whichever button triggers this
-/// function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
-/// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
-/// - Parameter sender: UIButton assoicated with the formFactor Buttons.
+// This function will be triggred when one of the formFactor buttons is pressed. Whichever button triggers this
+// function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
+// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
+// - Parameter sender: UIButton assoicated with the formFactor Buttons.
 - (IBAction)formFactorButtonsPressed:(id)sender {
     [sender setSelected:![sender isSelected]];
     NSNumber *formFactor;
@@ -112,10 +112,10 @@
     }
 }
 
-/// This function will pass the formFactorArray to the previous ViewController (PaymentViewController)
-/// and dismiss the transactionOptionsViewController. This event is
-/// triggered by the "runTransactionButton" at the bottom of the screen.
-/// - Parameter sender: The UIButton associated with the IBAction
+// This function will pass the formFactorArray to the previous ViewController (PaymentViewController)
+// and dismiss the transactionOptionsViewController. This event is
+// triggered by the "runTransactionButton" at the bottom of the screen.
+// - Parameter sender: The UIButton associated with the IBAction
 - (IBAction)dismissScreen:(id)sender {
     [self.delegate transactionOptions:self :self.transactionOptions];
     [self dismissViewControllerAnimated:true completion:nil];
@@ -145,9 +145,9 @@
     }
 }
 
-/// THIS FUNCTION IS ONLY FOR UI. This function will create a toolbar which will have a "Done" button
-/// to let us know that we have finished editing.
-/// - Parameter sender: UITextfield that we want to add the toolbar to
+// THIS FUNCTION IS ONLY FOR UI. This function will create a toolbar which will have a "Done" button
+// to let us know that we have finished editing.
+// - Parameter sender: UITextfield that we want to add the toolbar to
 -(void) setToolBarForTextField :(UITextField*) sender {
     UIToolbar *toolbar = [[UIToolbar alloc] init];
     toolbar.frame = CGRectMake(0, 0, self.view.frame.size.width, 30);
@@ -160,8 +160,8 @@
     sender.layer.borderColor = [UIColor colorWithRed:0.0f/255.0f green:159.0f/255.0f blue:228.0f/255.0f alpha:1.0f].CGColor;
 }
 
-/// THIS FUNCTION IS ONLY FOR UI. It will end keyboard editing and is the action for the done button in the
-/// UITextfield toolbar.
+// THIS FUNCTION IS ONLY FOR UI. It will end keyboard editing and is the action for the done button in the
+// UITextfield toolbar.
 -(void) dismissKeyboard {
     [self.view endEditing:true];
 }

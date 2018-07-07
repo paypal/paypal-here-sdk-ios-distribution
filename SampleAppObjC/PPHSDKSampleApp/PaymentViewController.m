@@ -14,8 +14,11 @@
 #import "PPRetailTransactionBeginOptions+SET_DEFAULT.h"
 #import "TransactionOptionsViewController.h"
 #import "TransactionOptionsViewControllerDelegate.h"
+#import "OfflineModeViewController.h"
+#import "OfflineModeViewControllerDelegate.h"
 
-@interface PaymentViewController () <PPHRetailSDKAppDelegate,TransactionOptionsViewControllerDelegate>
+
+@interface PaymentViewController () <PPHRetailSDKAppDelegate,TransactionOptionsViewControllerDelegate,OfflineModeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *demoAppLbl;
 @property (weak, nonatomic) IBOutlet UITextField *invAmount;
 @property (weak, nonatomic) IBOutlet UIButton *createInvoiceBtn;
@@ -35,6 +38,8 @@
 @property NSMutableArray *formFactorArray;
 @property PPRetailTransactionBeginOptions *options;
 @property TransactionOptionsViewController *transactionOptionsViewController;
+@property OfflineModeViewController *offlineModeViewController;
+@property BOOL offlineMode;
 
 @end
 
@@ -60,11 +65,17 @@
     self.options = [PPRetailTransactionBeginOptions defaultOptions];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.offlineModeViewController = [storyboard instantiateViewControllerWithIdentifier:@"offlineModeViewController"];
+    self.offlineModeViewController.delegate = self;
+    
     self.transactionOptionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"transactionOptionsViewController"];
     self.transactionOptionsViewController.delegate = self;
     
     // Initialize preferred form factor array
     self.formFactorArray = [[NSMutableArray alloc] init];
+    
+    // Set to online mode
+    self.offlineMode = NO;
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -146,6 +157,10 @@
     [self presentViewController:self.transactionOptionsViewController animated:true completion:nil];
 }
 
+- (IBAction)offlinePaymentMode:(id)sender {
+    self.offlineModeViewController.offlineMode = self.offlineMode;
+    [self presentViewController:self.offlineModeViewController animated:true completion:nil];
+}
 
 
 // This function will activate the reader by calling the begin method of TransactionContext.  This will
@@ -161,21 +176,25 @@
     [weakSelf.tc continueWithCard:card];
     }];
     [self.tc setCompletedHandler:^(PPRetailError *error, PPRetailTransactionRecord *record) {
-        if(error != nil) {
+        
+        if(error != nil && self.offlineMode) {
+            [weakSelf goToOfflinePaymentCompletedViewController];
+        } else if(error != nil) {
             NSLog(@"Error Code: %@", error.code);
             NSLog(@"Error Message: %@", error.message);
             NSLog(@"Debug ID: %@", error.debugId);
             return;
-        }
-        NSLog(@"Txn ID: %@", record.transactionNumber);
-        [weakSelf.navigationController popToViewController:weakSelf animated:false];
-        weakSelf.transactionNumber = record.transactionNumber;
-        weakSelf.paymentMethod =  record.paymentMethod;
-        
-        if(weakSelf.options.isAuthCapture) {
-            [weakSelf goToAuthCompletedViewController];
         } else {
-            [weakSelf goToPaymentCompletedViewController];
+            NSLog(@"Txn ID: %@", record.transactionNumber);
+            [weakSelf.navigationController popToViewController:weakSelf animated:false];
+            weakSelf.transactionNumber = record.transactionNumber;
+            weakSelf.paymentMethod =  record.paymentMethod;
+        
+            if(weakSelf.options.isAuthCapture) {
+                [weakSelf goToAuthCompletedViewController];
+            } else {
+                [weakSelf goToPaymentCompletedViewController];
+            }
         }
     }];
     [self.tc beginPayment:self.options];
@@ -295,9 +314,16 @@
      }
  }
 
+-(void) goToOfflinePaymentCompletedViewController {
+    [self performSegueWithIdentifier:@"offlinePaymentCompletedVC" sender:self];
+}
+
 - (void)transactionOptions:(TransactionOptionsViewController*)controller :(PPRetailTransactionBeginOptions*)options {
     self.options = options;
 }
 
+- (void)offlineMode:(OfflineModeViewController *)controller :(BOOL)isOffline {
+    self.offlineMode = isOffline;
+}
 
 @end

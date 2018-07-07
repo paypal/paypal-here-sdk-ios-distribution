@@ -17,6 +17,8 @@
 		EA3C33AB205C7F3F000E20CD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C33AA205C7F3F000E20CD /* WelcomeViewController.m */; };
 		EA4DE84220EE710A00B2CD10 /* TransactionOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */; };
 		EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */; };
+		EA4DE84A20EEF95300B2CD10 /* OfflineModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84920EEF95300B2CD10 /* OfflineModeViewController.m */; };
+		EA4DE84E20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84D20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m */; };
 		EADDCBC0205FF83D00037A7D /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADDCBBF205FF83D00037A7D /* SafariServices.framework */; };
 		EADDCBC42060348700037A7D /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC32060348700037A7D /* URLParser.m */; };
 		EADDCBC720603A8700037A7D /* DeviceDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC620603A8700037A7D /* DeviceDiscoveryViewController.m */; };
@@ -48,6 +50,11 @@
 		EA4DE84320EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPRetailTransactionBeginOptions+SET_DEFAULT.h"; sourceTree = "<group>"; };
 		EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PPRetailTransactionBeginOptions+SET_DEFAULT.m"; sourceTree = "<group>"; };
 		EA4DE84720EE915500B2CD10 /* TransactionOptionsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionOptionsViewControllerDelegate.h; sourceTree = "<group>"; };
+		EA4DE84820EEF95300B2CD10 /* OfflineModeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineModeViewController.h; sourceTree = "<group>"; };
+		EA4DE84920EEF95300B2CD10 /* OfflineModeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflineModeViewController.m; sourceTree = "<group>"; };
+		EA4DE84B20EEFC7C00B2CD10 /* OfflineModeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineModeViewControllerDelegate.h; sourceTree = "<group>"; };
+		EA4DE84C20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflinePaymentCompletedViewController.h; sourceTree = "<group>"; };
+		EA4DE84D20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflinePaymentCompletedViewController.m; sourceTree = "<group>"; };
 		EADDCBBF205FF83D00037A7D /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		EADDCBC22060348700037A7D /* URLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLParser.h; sourceTree = "<group>"; };
 		EADDCBC32060348700037A7D /* URLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
@@ -128,7 +135,12 @@
 				EADDCBD62061FF1300037A7D /* CaptureAuthViewController.m */,
 				EA4DE84020EE710A00B2CD10 /* TransactionOptionsViewController.h */,
 				EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */,
+				EA4DE84820EEF95300B2CD10 /* OfflineModeViewController.h */,
+				EA4DE84920EEF95300B2CD10 /* OfflineModeViewController.m */,
+				EA4DE84C20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.h */,
+				EA4DE84D20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m */,
 				EA4DE84720EE915500B2CD10 /* TransactionOptionsViewControllerDelegate.h */,
+				EA4DE84B20EEFC7C00B2CD10 /* OfflineModeViewControllerDelegate.h */,
 				EA3C3399205C7F25000E20CD /* Main.storyboard */,
 				EA3C339C205C7F25000E20CD /* Assets.xcassets */,
 				EA3C339E205C7F25000E20CD /* LaunchScreen.storyboard */,
@@ -290,6 +302,7 @@
 				EADDCBCE20615F4800037A7D /* NSString+Common.m in Sources */,
 				EADDCBC42060348700037A7D /* URLParser.m in Sources */,
 				EA4DE84220EE710A00B2CD10 /* TransactionOptionsViewController.m in Sources */,
+				EA4DE84A20EEF95300B2CD10 /* OfflineModeViewController.m in Sources */,
 				EADDCBC720603A8700037A7D /* DeviceDiscoveryViewController.m in Sources */,
 				EA3C33A3205C7F25000E20CD /* main.m in Sources */,
 				EA3C3395205C7F25000E20CD /* AppDelegate.m in Sources */,
@@ -299,6 +312,7 @@
 				EA3C33AB205C7F3F000E20CD /* WelcomeViewController.m in Sources */,
 				EADDCBD120619B9400037A7D /* PaymentCompletedViewController.m in Sources */,
 				EADDCBD72061FF1300037A7D /* CaptureAuthViewController.m in Sources */,
+				EA4DE84E20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m in Sources */,
 				EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
