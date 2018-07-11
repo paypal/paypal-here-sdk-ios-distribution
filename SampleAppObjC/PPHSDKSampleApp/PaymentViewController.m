@@ -11,8 +11,14 @@
 #import "NSString+Common.h"
 #import "PaymentCompletedViewController.h"
 #import "AuthCompletedViewController.h"
+#import "PPRetailTransactionBeginOptions+SET_DEFAULT.h"
+#import "TransactionOptionsViewController.h"
+#import "TransactionOptionsViewControllerDelegate.h"
+#import "OfflineModeViewController.h"
+#import "OfflineModeViewControllerDelegate.h"
 
-@interface PaymentViewController () <PPHRetailSDKAppDelegate>
+
+@interface PaymentViewController () <PPHRetailSDKAppDelegate,TransactionOptionsViewControllerDelegate,OfflineModeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *demoAppLbl;
 @property (weak, nonatomic) IBOutlet UITextField *invAmount;
 @property (weak, nonatomic) IBOutlet UIButton *createInvoiceBtn;
@@ -24,12 +30,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnBtn;
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *acceptTxnCodeView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *pmtTypeSelector;
-// Set up the transactionContext and invoice params.
 @property PPRetailTransactionContext *tc;
 @property PPRetailInvoice *invoice;
 @property NSString *transactionNumber;
 @property PPRetailInvoicePaymentMethod paymentMethod;
+@property NSString *currencySymbol;
+@property NSMutableArray *formFactorArray;
+@property PPRetailTransactionBeginOptions *options;
+@property TransactionOptionsViewController *transactionOptionsViewController;
+@property OfflineModeViewController *offlineModeViewController;
+@property BOOL offlineMode;
+
 @end
 
 @implementation PaymentViewController
@@ -50,10 +61,32 @@
     // Setting up initial aesthetics.
     self.invAmount.layer.borderColor =  [UIColor colorWithRed:0.0f/255.0f green:159.0f/255.0f blue:228.0f/255.0f alpha:1.0f].CGColor;
     [self.invAmount addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
+    // Set default options for transactions
+    self.options = [PPRetailTransactionBeginOptions defaultOptions];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.offlineModeViewController = [storyboard instantiateViewControllerWithIdentifier:@"offlineModeViewController"];
+    self.offlineModeViewController.delegate = self;
+    
+    self.transactionOptionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"transactionOptionsViewController"];
+    self.transactionOptionsViewController.delegate = self;
+    
+    // Initialize preferred form factor array
+    self.formFactorArray = [[NSMutableArray alloc] init];
+    
+    // Set to online mode
+    self.offlineMode = NO;
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [self.invAmount becomeFirstResponder];
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
+    self.currencySymbol = [userDefaults stringForKey:@"CURRENCY_SYMBOL"];
+    [self.invAmount setPlaceholder:[NSString stringWithFormat:@"%@ 0.00",self.currencySymbol]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +114,7 @@
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.generatesDecimalNumbers = YES;
-    NSDecimalNumber *price = (NSDecimalNumber*)[formatter numberFromString: [self.invAmount.text stringByReplacingOccurrencesOfString:@"$" withString:@""]];
+    NSDecimalNumber *price = (NSDecimalNumber*)[formatter numberFromString: [self.invAmount.text stringByReplacingOccurrencesOfString:self.currencySymbol withString:@""]];
     NSDecimalNumber *quantity = (NSDecimalNumber*)[formatter numberFromString: @"1"];
     [mInvoice addItem:@"My Order" quantity:quantity unitPrice:price itemId:123 detailId:nil];
     
@@ -100,7 +133,7 @@
         [self.createInvoiceBtn setImage:btnImage forState: UIControlStateDisabled];
         self.createTxnBtn.enabled = YES;
     } else {
-        [self invokeAlert:@"Error" andMessage:@"Either there are no line items or the total amount is less than $1"];
+        [self invokeAlert:@"Error" andMessage:[NSString stringWithFormat:@"Either there are no line items or the total amount is less than %@1",self.currencySymbol]];
         return;
     }
 }
@@ -118,6 +151,18 @@
     }];
 }
 
+- (IBAction)paymentOptions:(id)sender {
+    self.transactionOptionsViewController.formFactorArray = self.formFactorArray;
+    self.transactionOptionsViewController.transactionOptions = self.options;
+    [self presentViewController:self.transactionOptionsViewController animated:true completion:nil];
+}
+
+- (IBAction)offlinePaymentMode:(id)sender {
+    self.offlineModeViewController.offlineMode = self.offlineMode;
+    [self presentViewController:self.offlineModeViewController animated:true completion:nil];
+}
+
+
 // This function will activate the reader by calling the begin method of TransactionContext.  This will
 // activate the reader and have it show the payment methods available for payment.  The listeners are
 // set in this function as well to allow for the listening of the user either inserting, swiping, or tapping
@@ -131,34 +176,28 @@
     [weakSelf.tc continueWithCard:card];
     }];
     [self.tc setCompletedHandler:^(PPRetailError *error, PPRetailTransactionRecord *record) {
-        if(error != nil) {
+        
+        if(error != nil && self.offlineMode) {
+            [weakSelf goToOfflinePaymentCompletedViewController];
+        } else if(error != nil) {
             NSLog(@"Error Code: %@", error.code);
             NSLog(@"Error Message: %@", error.message);
             NSLog(@"Debug ID: %@", error.debugId);
             return;
-        }
-        NSLog(@"Txn ID: %@", record.transactionNumber);
-        [weakSelf.navigationController popToViewController:weakSelf animated:false];
-        weakSelf.transactionNumber = record.transactionNumber;
-        weakSelf.paymentMethod =  record.paymentMethod;
+        } else {
+            NSLog(@"Txn ID: %@", record.transactionNumber);
+            [weakSelf.navigationController popToViewController:weakSelf animated:false];
+            weakSelf.transactionNumber = record.transactionNumber;
+            weakSelf.paymentMethod =  record.paymentMethod;
         
-        if([[weakSelf.pmtTypeSelector titleForSegmentAtIndex:weakSelf.pmtTypeSelector.selectedSegmentIndex] isEqualToString:@"auth"]) {
-            [weakSelf goToAuthCompletedViewController];
-        } else  {
-            [weakSelf goToPaymentCompletedViewController];
+            if(weakSelf.options.isAuthCapture) {
+                [weakSelf goToAuthCompletedViewController];
+            } else {
+                [weakSelf goToPaymentCompletedViewController];
+            }
         }
     }];
-
-    // Setting up the options for the transaction
-    PPRetailTransactionBeginOptions *options = [[PPRetailTransactionBeginOptions alloc] init];
-    options.showPromptInCardReader = YES;
-    options.showPromptInApp = YES;
-    options.preferredFormFactors = [NSArray new];
-    options.tippingOnReaderEnabled = NO;
-    options.amountBasedTipping = NO;
-    NSLog(@"%d", [[self.pmtTypeSelector titleForSegmentAtIndex:self.pmtTypeSelector.selectedSegmentIndex] isEqualToString:@"auth"]);
-    options.isAuthCapture = [[self.pmtTypeSelector titleForSegmentAtIndex:self.pmtTypeSelector.selectedSegmentIndex] isEqualToString:@"auth"];
-    [self.tc beginPayment:options];
+    [self.tc beginPayment:self.options];
 }
 
 - (IBAction)showCode:(id)sender {
@@ -274,7 +313,17 @@
         authCompletedViewController.paymentMethod = self.paymentMethod;
      }
  }
- 
 
+-(void) goToOfflinePaymentCompletedViewController {
+    [self performSegueWithIdentifier:@"offlinePaymentCompletedVC" sender:self];
+}
+
+- (void)transactionOptions:(TransactionOptionsViewController*)controller :(PPRetailTransactionBeginOptions*)options {
+    self.options = options;
+}
+
+- (void)offlineMode:(OfflineModeViewController *)controller :(BOOL)isOffline {
+    self.offlineMode = isOffline;
+}
 
 @end

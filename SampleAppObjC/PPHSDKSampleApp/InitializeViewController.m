@@ -150,6 +150,7 @@
         // the PPRetailInvoice for the payment later on. This app is using UserDefault but
         // it could just as easily be passed through the segue.
         [tokenDefault setValue:merchant.currency forKey:@"MERCH_CURRENCY"];
+        [self setCurrencyType];
         // Add the BN code for Partner tracking. To obtain this value, contact
         // your PayPal account representative. Please do not change this value when
         // using this sample app for testing.
@@ -159,6 +160,17 @@
     }];
     
 }
+
+-(void) setCurrencyType {
+    NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
+    NSString *merchantCurrency =  [userDefaults stringForKey:@"MERCH_CURRENCY"];
+    if([merchantCurrency isEqualToString: @"GBP"]) {
+        [userDefaults setValue:@"￡" forKey:@"CURRENCY_SYMBOL"];
+    } else {
+        [userDefaults setValue:@"$" forKey:@"CURRENCY_SYMBOL"];
+    }
+}
+
 
 - (void) performLogin {
     // Set your URL for your backend server that handles OAuth.  This sample uses an instance of the
@@ -191,6 +203,5 @@
     self.initializeMerchantButton.enabled = YES;
     self.envSelector.enabled = YES;
 }
-
 
 @end

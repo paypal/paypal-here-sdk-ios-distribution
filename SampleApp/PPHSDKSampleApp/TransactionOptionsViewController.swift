@@ -10,7 +10,7 @@ import UIKit
 import PayPalRetailSDK
 
 protocol TransactionOptionsViewControllerDelegate: NSObjectProtocol {
-    func transactionOptions(controller: TransactionOptionsViewController, formFactorArray: [PPRetailFormFactor])
+    func transactionOptions(controller: TransactionOptionsViewController, options: PPRetailTransactionBeginOptions)
 }
 
 class TransactionOptionsViewController: UIViewController {
@@ -26,7 +26,7 @@ class TransactionOptionsViewController: UIViewController {
     /// Sets up the parameters for taking in Options from Payment View Controller
     weak var delegate: TransactionOptionsViewControllerDelegate?
     var transactionOptions: PPRetailTransactionBeginOptions!
-    var formFactorArray: [PPRetailFormFactor]!
+    var formFactorArray: [Any]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,27 +83,27 @@ class TransactionOptionsViewController: UIViewController {
     @IBAction func formFactorButtonPressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
-        var formFactor: PPRetailFormFactor!
+        var formFactor: Int!
         switch sender.tag {
         case 1:
-            formFactor = PPRetailFormFactor.magneticCardSwipe
+            formFactor = PPRetailFormFactor.magneticCardSwipe.rawValue
         case 2:
-            formFactor = PPRetailFormFactor.chip
+            formFactor = PPRetailFormFactor.chip.rawValue
         case 3:
-            formFactor = PPRetailFormFactor.emvCertifiedContactless
+            formFactor = PPRetailFormFactor.emvCertifiedContactless.rawValue
         case 4:
-            formFactor = PPRetailFormFactor.secureManualEntry
+            formFactor = PPRetailFormFactor.secureManualEntry.rawValue
         case 5:
-            formFactor = PPRetailFormFactor.manualCardEntry
+            formFactor = PPRetailFormFactor.manualCardEntry.rawValue
         default:
-            formFactor = PPRetailFormFactor.none
+            formFactor = PPRetailFormFactor.none.rawValue
         }
         
         if sender.isSelected {
             formFactorArray.append(formFactor)
             transactionOptions.preferredFormFactors = formFactorArray
         } else {
-            if let index = formFactorArray.index(of: formFactor){
+            if let index = formFactorArray.index(where: { $0 as? Int == formFactor }) {
                 formFactorArray.remove(at: index)
                 transactionOptions.preferredFormFactors = formFactorArray
             }
@@ -115,7 +115,7 @@ class TransactionOptionsViewController: UIViewController {
     /// triggered by the "runTransactionButton" at the bottom of the screen.
     /// - Parameter sender: The UIButton associated with the IBAction
     @IBAction func dismissScreen(_ sender: UIButton) {
-        self.delegate?.transactionOptions(controller: self,formFactorArray: self.formFactorArray)
+        self.delegate?.transactionOptions(controller: self, options: transactionOptions)
         dismiss(animated: true, completion: nil)
     }
     

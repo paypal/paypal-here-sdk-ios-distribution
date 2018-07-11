@@ -298,8 +298,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
 
 extension PaymentViewController: OfflineModeViewControllerDelegate, TransactionOptionsViewControllerDelegate {
     
-    func transactionOptions(controller: TransactionOptionsViewController, formFactorArray: [PPRetailFormFactor]) {
-        self.formFactorArray = formFactorArray
+    func transactionOptions(controller: TransactionOptionsViewController, options: PPRetailTransactionBeginOptions) {
+        self.options = options
     }
     
     
