@@ -96,9 +96,15 @@
 		
 		<option value="//api/name/continueWithCard:">- continueWithCard:</option>
 		
+		<option value="//api/name/continueWithCard:tag:">- continueWithCard:tag:</option>
+		
 		<option value="//api/name/continueWithCash">- continueWithCash</option>
 		
+		<option value="//api/name/continueWithCash:">- continueWithCash:</option>
+		
 		<option value="//api/name/continueWithCheck">- continueWithCheck</option>
+		
+		<option value="//api/name/continueWithCheck:">- continueWithCheck:</option>
 		
 		<option value="//api/name/deactivateFormFactors:callback:">- deactivateFormFactors:callback:</option>
 		
@@ -1003,6 +1009,52 @@ form factor accepts cancellation.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/continueWithCard:tag:" title="continueWithCard:tag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCard:tag:">&ndash;&nbsp;continueWithCard:tag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCard:(PPRetailCard *_Nullable)<em>card</em> tag:(NSString *_Nullable)<em>tag</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/continueWithCard:" title="continueWithCard:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/continueWithCard:">&ndash;&nbsp;continueWithCard:</a></code>
 </h3>
@@ -1197,6 +1249,52 @@ Use &lsquo;syncInvoiceOnce&rsquo; to do an on-demand push <a href="#//api/name/i
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/continueWithCash:" title="continueWithCash:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCash:">&ndash;&nbsp;continueWithCash:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCash:(NSString *_Nullable)<em>tag</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/continueWithCheck" title="continueWithCheck"></a>
 	<h3 class="method-title"><code><a href="#//api/name/continueWithCheck">&ndash;&nbsp;continueWithCheck</a></code>
 </h3>
@@ -1226,6 +1324,52 @@ Use &lsquo;syncInvoiceOnce&rsquo; to do an on-demand push <a href="#//api/name/i
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Continue processing a check transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithCheck:" title="continueWithCheck:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCheck:">&ndash;&nbsp;continueWithCheck:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCheck:(NSString *_Nullable)<em>tag</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
 			</div>
 			
 
@@ -2133,7 +2277,7 @@ you&rsquo;re done with it.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 PayPal. All rights reserved. Updated: 2018-06-26</p>
+						<p class="copyright">Copyright &copy; 2018 PayPal. All rights reserved. Updated: 2018-07-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
