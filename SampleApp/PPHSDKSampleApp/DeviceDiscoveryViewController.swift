@@ -97,11 +97,7 @@ class DeviceDiscoveryViewController: UIViewController {
     /// - Parameter sender: UI Button on the screen "Auto Connect"
     @IBAction func autoConnectReader(_ sender: UIButton) {
         autoConnectActivityIndicator.startAnimating()
-        guard let lastActiveReader = deviceManager?.getLastActiveBluetoothReader() else {
-            autoConnectActivityIndicator.stopAnimating()
-            activeReaderLbl.text = "No last known reader. Please Connect first."
-            return
-        }
+        let lastActiveReader = deviceManager?.getLastActiveBluetoothReader()
         deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in
             self.autoConnectActivityIndicator.stopAnimating()
             if error != nil {
