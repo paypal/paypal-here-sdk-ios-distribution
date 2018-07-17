@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PayPalHereSDK'
-  s.version          = '1.6.10'
+  s.version          = '1.6.11'
   s.summary          = 'SDK for interfacing with PayPal card readers and mobile payment processing APIs.'
   s.license          = 'COMMERCIAL'
   s.homepage         = 'https://developer.paypal.com/docs/integration/paypal-here'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
-    'OTHER_LDFLAGS' => '$(inherited) -lstdc++ -stdlib=libstdc++ -ObjC',
+    'OTHER_LDFLAGS' => '$(inherited) -lstdc++ -ObjC',
   }
 
   s.ios.libraries = 'sqlite3', 'z', 'xml2'
