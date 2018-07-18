@@ -38,11 +38,25 @@
     
     // Look for url scheme configured in the build settings and the one configured on the sample server, that would contain the secure token.
     if ([url.scheme isEqualToString:@"retailsdksampleapp"]) {
-        NSString *token = url.query;
-        [self.loginVC initializeSDKMerchantWithToken:token];
+        NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
+                                                    resolvingAgainstBaseURL:NO];
+        NSArray *queryItems = urlComponents.queryItems;
+        NSString *access_Token = [self valueForKey:@"access_token" fromQueryItems:queryItems];
+        NSString *refresh_Url = [self valueForKey:@"refresh_url" fromQueryItems:queryItems];
+        [self.loginVC initializeSDKMerchantWithCredentials:access_Token refreshUrl:refresh_Url];
     }
     
     return  YES;
+}
+
+- (NSString *)valueForKey:(NSString *)key
+           fromQueryItems:(NSArray *)queryItems
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
+    NSURLQueryItem *queryItem = [[queryItems
+                                  filteredArrayUsingPredicate:predicate]
+                                 firstObject];
+    return queryItem.value;
 }
 
 @end
