@@ -113,9 +113,20 @@
     -(void)offer:(PPRetailDeviceUpdateCompletedHandler _Nullable)callback;
 
     /**
+     * Display a prompt to the merchant offering the opportunity to upgrade the payment device, and optionally
+     * update the device. Call the callback with completion status when the upgrade is complete or cancelled.
+     */
+    -(void)offer:(NSString* _Nullable)tag callback:(PPRetailDeviceUpdateCompletedHandler _Nullable)callback;
+
+    /**
      * Begin the software update.
      */
     -(void)begin:(PPRetailDeviceUpdateCompletedHandler _Nullable)callback;
+
+    /**
+     * Begin the software update.
+     */
+    -(void)begin:(NSString* _Nullable)tag callback:(PPRetailDeviceUpdateCompletedHandler _Nullable)callback;
 
     /**
      * Check device-specific conditions for update such as battery level.
