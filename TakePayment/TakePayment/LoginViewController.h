@@ -10,6 +10,7 @@
 @interface LoginViewController : UIViewController
 
 - (void)initializeSDKMerchantWithToken:(NSString *)token;
+- (void)initializeSDKMerchantWithCredentials:(NSString *)access_token refreshUrl:(NSString *)refresh_url;
 - (void)forgetTokens;
 
 @end

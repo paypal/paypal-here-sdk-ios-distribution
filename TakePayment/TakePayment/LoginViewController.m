@@ -10,6 +10,8 @@
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 #define SAVED_TOKEN @"savedToken"
+#define SAVED_ACCESS_TOKEN @"savedAccessToken"
+#define SAVED_REFRESH_URL @"savedRefreshUrl"
 
 @interface LoginViewController ()
 
@@ -52,9 +54,11 @@
 }
 
 - (void)loginButtonPressed {
-    NSString *savedToken = [[NSUserDefaults standardUserDefaults] stringForKey:SAVED_TOKEN];
-    if (savedToken) {
-        [self initializeSDKMerchantWithToken:savedToken];
+    NSString *savedAccessToken = [[NSUserDefaults standardUserDefaults] stringForKey:SAVED_ACCESS_TOKEN];
+    NSString *savedRefreshUrl = [[NSUserDefaults standardUserDefaults] stringForKey:SAVED_REFRESH_URL];
+    
+    if (savedAccessToken && savedRefreshUrl) {
+        [self initializeSDKMerchantWithCredentials:savedAccessToken refreshUrl:savedRefreshUrl];
     } else {
         [self loginWithPayPal];
     }
@@ -62,6 +66,8 @@
 
 - (void)forgetTokens {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:SAVED_TOKEN];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SAVED_ACCESS_TOKEN];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SAVED_REFRESH_URL];
 }
 #pragma mark -
 #pragma PayPal & SDK related
@@ -84,11 +90,28 @@
 - (void)initializeSDKMerchantWithToken:(NSString *)token {
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:SAVED_TOKEN];
     [self setWaitingForServer:YES];
-
+    
     __weak typeof(self) weakSelf = self;
     // Initialize the SDK with the token.
     [PayPalHereSDK setupWithCompositeTokenString:token
                            thenCompletionHandler:^(PPHInitResultType status, PPHError *error, PPHMerchantInfo *info) {
+                               if (error) {
+                                   [weakSelf loginWithPayPal];
+                               } else {
+                                   [weakSelf gotoPaymentScreen];
+                               }
+                           }];
+}
+
+- (void)initializeSDKMerchantWithCredentials:(NSString *)access_token refreshUrl:(NSString *)refresh_url  {
+    [[NSUserDefaults standardUserDefaults] setObject:access_token forKey:SAVED_ACCESS_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setObject:refresh_url forKey:SAVED_REFRESH_URL];
+    [self setWaitingForServer:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    // Initialize the SDK with the token.
+    [PayPalHereSDK selectEnvironmentWithType:ePPHSDKServiceType_Live];
+    [PayPalHereSDK setupWithCredentials:access_token refreshUrl:refresh_url tokenExpiryOrNil:nil                            thenCompletionHandler:^(PPHInitResultType status, PPHError *error, PPHMerchantInfo *info) {
                                if (error) {
                                    [weakSelf loginWithPayPal];
                                } else {
