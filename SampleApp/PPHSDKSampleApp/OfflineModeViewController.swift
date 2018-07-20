@@ -162,7 +162,7 @@ class OfflineModeViewController: UIViewController {
             offlineModeLabel.text = "ENABLED"
             offlineModeLabel.textColor = .green
         } else {
-            offlineModeLabel.text = "DISABLED"
+            offlineModeLabel.text = ""
             offlineModeLabel.textColor = .red
         }
     }
