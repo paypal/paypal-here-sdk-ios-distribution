@@ -18,8 +18,18 @@ class WelcomeViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.tintColor = .darkGray
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "Close")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "Close")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
 

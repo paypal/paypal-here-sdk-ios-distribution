@@ -11,18 +11,15 @@ import PayPalRetailSDK
 
 class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
-    @IBOutlet weak var demoAppLbl: UILabel!
     @IBOutlet weak var invAmount: UITextField!
-    @IBOutlet weak var createInvoiceBtn: UIButton!
-    @IBOutlet weak var createInvCodeBtn: UIButton!
+    @IBOutlet weak var createInvoiceBtn: CustomButton!
     @IBOutlet weak var createInvCodeView: UITextView!
-    @IBOutlet weak var createTxnBtn: UIButton!
-    @IBOutlet weak var createTxnCodeBtn: UIButton!
+    @IBOutlet weak var createTxnBtn: CustomButton!
     @IBOutlet weak var createTxnCodeView: UITextView!
-    @IBOutlet weak var acceptTxnBtn: UIButton!
-    @IBOutlet weak var acceptTxnCodeBtn: UIButton!
+    @IBOutlet weak var acceptTxnBtn: CustomButton!
     @IBOutlet weak var acceptTxnCodeView: UITextView!
-    @IBOutlet weak var offlinePaymentBtn: UIButton!
+    @IBOutlet weak var offlinePaymentBtn: CustomButton!
+    @IBOutlet weak var offlineModeBtn: CustomButton!
     
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
@@ -31,36 +28,15 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var options = PPRetailTransactionBeginOptions.defaultOptions()
     var formFactorArray: [PPRetailFormFactor] = []
-    var offlineModeController: OfflineModeViewController!
-    var transactionOptionsViewController: TransactionOptionsViewController!
     var currencySymbol: String!
     var offlineMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpDefaultView()
+        
         PayPalRetailSDK.setRetailSDKAppDelegate(self)
-        
-        offlineModeController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "offlineModeViewController") as! OfflineModeViewController
-        offlineModeController.delegate = self
-        
-        transactionOptionsViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "transactionOptionsViewController") as! TransactionOptionsViewController
-        transactionOptionsViewController.delegate = self
-        
-        //init toolbar for keyboard
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
-        //create left side empty space so that done button set on right side
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CaptureAuthViewController.doneButtonAction))
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
-        toolbar.sizeToFit()
-        //setting toolbar as inputAccessoryView
-        self.invAmount.inputAccessoryView = toolbar
-        
-        // Setting up initial aesthetics.
-        invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
-        invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +58,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // from the input and utilizes a single item generic order.  For extra items or invoice settings,
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
+        
         
         // Invoice initialization takes in the currency code. However, if the currency used to init doesn't
         // match the active merchant's currency, then an error will happen at payment time. Simply using
@@ -133,29 +110,19 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         invAmount.isEnabled = false
         createInvoiceBtn.isEnabled = false
-        createInvoiceBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+        createInvoiceBtn.changeToButtonWasSelected(self.createInvoiceBtn)
         
         createTxnBtn.isEnabled = true
         
     }
     
-    @IBAction func paymentOptions(_ sender: UIButton) {
-        transactionOptionsViewController.formFactorArray = self.formFactorArray
-        transactionOptionsViewController.transactionOptions = self.options
-        present(transactionOptionsViewController, animated: true, completion: nil)
-        
-    }
-    @IBAction func offlinePaymentMode(_ sender: UIButton) {
-        offlineModeController.offlineMode = self.offlineMode
-        present(offlineModeController, animated: true, completion: nil)
-    }
     // This function does the createTransaction call to start the process with the current invoice.
-    @IBAction func createTransaction(_ sender: UIButton) {
+    @IBAction func createTransaction(_ sender: CustomButton) {
         
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
             self.tc = context
             
-            self.createTxnBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+            self.createTxnBtn.changeToButtonWasSelected(self.createTxnBtn)
             self.createTxnBtn.isEnabled = false
             self.acceptTxnBtn.isEnabled = true
         })
@@ -165,7 +132,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // activate the reader and have it show the payment methods available for payment.  The listeners are
     // set in this function as well to allow for the listening of the user either inserting, swiping, or tapping
     // their payment device.
-    @IBAction func acceptTransaction(_ sender: UIButton) {
+    @IBAction func acceptTransaction(_ sender: CustomButton) {
         
         // This card presented listener is optional as the SDK will automatically continue when the card is
         // presented even if this listener is not implemented.
@@ -202,6 +169,14 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         tc!.beginPayment(options)
     }
     
+    @IBAction func offlinePaymentMode(_ sender: CustomButton) {
+        performSegue(withIdentifier: "offlineModeVC", sender: self)
+    }
+    
+    @IBAction func paymentOptions(_ sender: CustomButton) {
+        performSegue(withIdentifier: "transactionOptionsVC", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToPmtCompletedView") {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
@@ -218,6 +193,17 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                 authCompletedViewController.paymentMethod = paymentMethod
             }
         }
+        
+        if let offlineController = segue.destination as? OfflineModeViewController {
+            offlineController.delegate = self
+            offlineController.offlineMode = self.offlineMode
+        }
+        
+        if let transactionOptionsController = segue.destination as? TransactionOptionsViewController {
+            transactionOptionsController.delegate = self
+            transactionOptionsController.formFactorArray = self.formFactorArray
+            transactionOptionsController.transactionOptions = self.options
+        }
     }
     
     func goToPaymentCompletedViewController() {
@@ -232,48 +218,42 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         performSegue(withIdentifier: "offlinePaymentCompletedVC", sender: self)
     }
     
-    @IBAction func showInfo(_ sender: UIButton){
+    private func setUpDefaultView(){
+        setUpTextFieldToolBar()
+        createInvCodeView.text = "mInvoice = PPRetailInvoice.init(currencyCode: \"USD\")"
+        createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
+            "  // Set the transactionContext or handle the error \n" +
+            "  self.tc = context \n" +
+        "}))"
+        offlineModeBtn.changeButtonTitle(offline: self.offlineMode, forButton: offlineModeBtn)
+        acceptTxnCodeView.text = "tc.beginPayment(options)"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    private func setUpTextFieldToolBar(){
+        //init toolbar for keyboard
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.bounds.size.width, height: 50))
+        //create left side empty space so that done button set on right side
+        let customDoneButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: toolbar.bounds.size.width, height: toolbar.bounds.size.height))
+        customDoneButton.setTitle("Done", for: .normal)
+        customDoneButton.setTitleColor(.white, for: .normal)
+        customDoneButton.backgroundColor = UIColor().hexStringToUIColor(hex: "0065B1")
+        customDoneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
+        let doneBtn = UIBarButtonItem(customView: customDoneButton)
+        toolbar.setItems([doneBtn], animated: false)
+        toolbar.sizeToFit()
+        //setting toolbar as inputAccessoryView
+        self.invAmount.inputAccessoryView = toolbar
+
         
-        switch sender.tag {
-        case 0:
-            if (createInvCodeView.isHidden) {
-                createInvCodeBtn.setTitle("Hide Code", for: .normal)
-                createInvCodeView.isHidden = false
-                createInvCodeView.text = "mInvoice = PPRetailInvoice.init(currencyCode: \"USD\")"
-            } else {
-                createInvCodeBtn.setTitle("View Code", for: .normal)
-                createInvCodeView.isHidden = true
-            }
-        case 1:
-            if (createTxnCodeView.isHidden) {
-                createTxnCodeBtn.setTitle("Hide Code", for: .normal)
-                createTxnCodeView.isHidden = false
-                createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
-                    "  // Set the transactionContext or handle the error \n" +
-                    "  self.tc = context \n" +
-                "}))"
-            } else {
-                createTxnCodeBtn.setTitle("View Code", for: .normal)
-                createTxnCodeView.isHidden = true
-            }
-        case 2:
-            if (acceptTxnCodeView.isHidden) {
-                acceptTxnCodeBtn.setTitle("Hide Code", for: .normal)
-                acceptTxnCodeView.isHidden = false
-                acceptTxnCodeView.text = "tc.beginPayment(options)"
-            } else {
-                acceptTxnCodeBtn.setTitle("View Code", for: .normal)
-                acceptTxnCodeView.isHidden = true
-            }
-        default:
-            print("No Button Tag Found")
-        }
-        
+        // Setting up initial aesthetics.
+        invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
+        invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
     }
     
     // Function to handle real-time changes in the invoice/payment amount text field.  The
     // create invoice button is disabled unless there is a value in the box.
-    func editingChanged(_ textField: UITextField) {
+    @objc func editingChanged(_ textField: UITextField) {
         
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
@@ -287,7 +267,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         createInvoiceBtn.isEnabled = true
     }
     
-    func doneButtonAction() {
+    @objc func doneButtonAction() {
         self.view.endEditing(true)
     }
     
@@ -302,9 +282,13 @@ extension PaymentViewController: OfflineModeViewControllerDelegate, TransactionO
         self.options = options
     }
     
+    func transactionOptionsFormFactors(controller: TransactionOptionsViewController, formFactors: [PPRetailFormFactor]!) {
+        self.formFactorArray = formFactors
+    }
     
     func offlineMode(controller: OfflineModeViewController, didChange isOffline: Bool) {
         self.offlineMode = isOffline
+        offlineModeBtn.changeButtonTitle(offline: self.offlineMode, forButton: offlineModeBtn)
     }
     
     
