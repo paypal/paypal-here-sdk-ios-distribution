@@ -28,17 +28,9 @@ class CaptureAuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        //init toolbar for keyboard
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
-        //create left side empty space so that done button set on right side
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CaptureAuthViewController.doneButtonAction))
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
-        toolbar.sizeToFit()
-        //setting toolbar as inputAccessoryView
-        self.captureAmount.inputAccessoryView = toolbar
-
-        captureAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        setUpTextFieldToolbar()
         captureAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
         if(isTip)! {
@@ -93,14 +85,14 @@ class CaptureAuthViewController: UIViewController {
         PayPalRetailSDK.transactionManager()?.captureAuthorization(authTransactionNumber, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: gratuityAmt, currency: invoice?.currency) { (error, captureId) in
 
             if let err = error {
-                print("Error Code: \(err.code)")
-                print("Error Message: \(err.message)")
-                print("Debug ID: \(err.debugId)")
+                print("Error Code: \(String(describing: err.code))")
+                print("Error Message: \(String(describing: err.message))")
+                print("Debug ID: \(String(describing: err.debugId))")
 
                 self.activitySpinner.stopAnimating()
                 return
             }
-            print("Capture ID: \(captureId)")
+            print("Capture ID: \(String(describing: captureId))")
             
             self.captureTransactionNumber = captureId
             self.capturedAmount = amountToCapture
@@ -131,7 +123,7 @@ class CaptureAuthViewController: UIViewController {
     
     // Function to handle real-time changes in the invoice/payment amount text field.  The
     // create invoice button is disabled unless there is a value in the box.
-    func editingChanged(_ textField: UITextField) {
+    @objc func editingChanged(_ textField: UITextField) {
         
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
@@ -143,7 +135,22 @@ class CaptureAuthViewController: UIViewController {
         return self.navigationController
     }
     
-    func doneButtonAction() {
+    private func setUpTextFieldToolbar(){
+        //init toolbar for keyboard
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 50))
+        let customDoneButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: toolbar.bounds.size.width, height: toolbar.bounds.size.height))
+        customDoneButton.setTitle("Done", for: .normal)
+        customDoneButton.setTitleColor(.white, for: .normal)
+        customDoneButton.backgroundColor = UIColor().hexStringToUIColor(hex: "0065B1")
+        customDoneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
+        let doneBtn = UIBarButtonItem(customView: customDoneButton)
+        toolbar.setItems([doneBtn], animated: false)
+        toolbar.sizeToFit()
+        //setting toolbar as inputAccessoryView
+        self.captureAmount.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonAction() {
         self.view.endEditing(true)
     }
 }

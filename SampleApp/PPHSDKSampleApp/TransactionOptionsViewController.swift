@@ -11,6 +11,7 @@ import PayPalRetailSDK
 
 protocol TransactionOptionsViewControllerDelegate: NSObjectProtocol {
     func transactionOptions(controller: TransactionOptionsViewController, options: PPRetailTransactionBeginOptions)
+    func transactionOptionsFormFactors(controller: TransactionOptionsViewController, formFactors: [PPRetailFormFactor]!)
 }
 
 class TransactionOptionsViewController: UIViewController {
@@ -21,18 +22,19 @@ class TransactionOptionsViewController: UIViewController {
     @IBOutlet weak var tippingOnReaderSwitch: UISwitch!
     @IBOutlet weak var amountBasedTippingSwitch: UISwitch!
     @IBOutlet weak var tagTextField: UITextField!
-    @IBOutlet var formFactorButtons: [UIButton]!
+    @IBOutlet var formFactorSwitches: [UISwitch]!
     
     /// Sets up the parameters for taking in Options from Payment View Controller
     weak var delegate: TransactionOptionsViewControllerDelegate?
     var transactionOptions: PPRetailTransactionBeginOptions!
-    var formFactorArray: [Any]!
+    var formFactorArray: [PPRetailFormFactor]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Sets the toolbar to the "tagTextField"
         setToolBarForTextField(tagTextField)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Turn the switch on/off depending on the value of the option fields.
         authCaptureSwitch.isOn = transactionOptions.isAuthCapture
@@ -42,7 +44,24 @@ class TransactionOptionsViewController: UIViewController {
         amountBasedTippingSwitch.isOn = transactionOptions.amountBasedTipping
         
         // Turn the formFactor button on/off depending on the formFactors selected.
-        toggleButtons()
+        toggleFormFactorSwitches()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        /// This will pass the formFactorArray to the previous ViewController (PaymentViewController)
+        /// and dismiss the transactionOptionsViewController.
+        self.delegate?.transactionOptions(controller: self, options: transactionOptions)
+        self.delegate?.transactionOptionsFormFactors(controller: self, formFactors: formFactorArray)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !(transactionOptions.tag?.isEmpty)! {
+            tagTextField.text = transactionOptions.tag
+        }
+        toggleFormFactorSwitches()
     }
     
     /// The following 5 functions are triggered when a switch is pressed and it's value is changed.
@@ -80,49 +99,40 @@ class TransactionOptionsViewController: UIViewController {
     /// function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
     /// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
     /// - Parameter sender: UIButton assoicated with the formFactor Buttons.
-    @IBAction func formFactorButtonPressed(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+    @IBAction func formFactorSwitchPressed(_ sender: UISwitch) {
+        sender.isOn = !sender.isOn
         
-        var formFactor: Int!
+        var formFactor: PPRetailFormFactor!
         switch sender.tag {
         case 1:
-            formFactor = PPRetailFormFactor.magneticCardSwipe.rawValue
+            formFactor = PPRetailFormFactor.magneticCardSwipe
         case 2:
-            formFactor = PPRetailFormFactor.chip.rawValue
+            formFactor = PPRetailFormFactor.chip
         case 3:
-            formFactor = PPRetailFormFactor.emvCertifiedContactless.rawValue
+            formFactor = PPRetailFormFactor.emvCertifiedContactless
         case 4:
-            formFactor = PPRetailFormFactor.secureManualEntry.rawValue
+            formFactor = PPRetailFormFactor.secureManualEntry
         case 5:
-            formFactor = PPRetailFormFactor.manualCardEntry.rawValue
+            formFactor = PPRetailFormFactor.manualCardEntry
         default:
-            formFactor = PPRetailFormFactor.none.rawValue
+            formFactor = PPRetailFormFactor.none
         }
         
-        if sender.isSelected {
+        if sender.isOn {
             formFactorArray.append(formFactor)
             transactionOptions.preferredFormFactors = formFactorArray
         } else {
-            if let index = formFactorArray.index(where: { $0 as? Int == formFactor }) {
+            if let index = formFactorArray.index(where: { $0 == formFactor }) {
                 formFactorArray.remove(at: index)
                 transactionOptions.preferredFormFactors = formFactorArray
             }
         }
     }
     
-    /// This function will pass the formFactorArray to the previous ViewController (PaymentViewController)
-    /// and dismiss the transactionOptionsViewController. This event is
-    /// triggered by the "runTransactionButton" at the bottom of the screen.
-    /// - Parameter sender: The UIButton associated with the IBAction
-    @IBAction func dismissScreen(_ sender: UIButton) {
-        self.delegate?.transactionOptions(controller: self, options: transactionOptions)
-        dismiss(animated: true, completion: nil)
-    }
-    
     /// THIS FUNCTION IS ONLY FOR UI. This will iterate through the formFactorArray and get the appropriate tag for the
     /// buttons depending on the formFactor that are in the array. Then it will go through UIButton Outlet Collection
     /// Array and set the isSelected State for the buttons associated with the form Factor.
-    private func toggleButtons(){
+    private func toggleFormFactorSwitches(){
         for factor in formFactorArray {
             var tag: Int!
             switch factor {
@@ -140,9 +150,9 @@ class TransactionOptionsViewController: UIViewController {
                 tag = 0
             }
             
-            for button in formFactorButtons {
-                if button.tag == tag {
-                    button.isSelected = true
+            for formFactorSwitch in formFactorSwitches {
+                if formFactorSwitch.tag == tag {
+                    formFactorSwitch.isOn = true
                 }
             }
         }
@@ -153,11 +163,14 @@ class TransactionOptionsViewController: UIViewController {
     /// - Parameter sender: UITextfield that we want to add the toolbar to
     private func setToolBarForTextField(_ sender: UITextField){
         //init toolbar for keyboard
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
-        //create left side empty space so that done button set on right side
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 50))
+        let customDoneButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: toolbar.bounds.size.width, height: toolbar.bounds.size.height))
+        customDoneButton.setTitle("Done", for: .normal)
+        customDoneButton.setTitleColor(.white, for: .normal)
+        customDoneButton.backgroundColor = UIColor().hexStringToUIColor(hex: "0065B1")
+        customDoneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
+        let doneBtn = UIBarButtonItem(customView: customDoneButton)
+        toolbar.setItems([doneBtn], animated: false)
         toolbar.sizeToFit()
         
         sender.inputAccessoryView = toolbar
@@ -166,7 +179,7 @@ class TransactionOptionsViewController: UIViewController {
     
     /// THIS FUNCTION IS ONLY FOR UI. It will end keyboard editing and is the action for the done button in the
     /// UITextfield toolbar.
-    @objc private func dismissKeyboard(){
+    @objc private func doneButtonAction(){
         view.endEditing(true)
     }
 }

@@ -15,35 +15,24 @@ let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotifica
 
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
     
-    
-    @IBOutlet weak var demoAppLbl: UILabel!
-    @IBOutlet weak var initSdkButton: UIButton!
-    @IBOutlet weak var initMerchantButton: UIButton!
+    @IBOutlet weak var initSdkButton: CustomButton!
+    @IBOutlet weak var initMerchantButton: CustomButton!
     @IBOutlet weak var merchAcctLabel: UILabel!
     @IBOutlet weak var merchEmailLabel: UILabel!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
-    @IBOutlet weak var logoutBtn: UIButton!
-    @IBOutlet weak var initSdkInfoBtn: UIButton!
-    @IBOutlet weak var initMerchInfoBtn: UIButton!
+    @IBOutlet weak var logoutBtn: CustomButton!
     @IBOutlet weak var envSelector: UISegmentedControl!
     @IBOutlet weak var initMerchCode: UITextView!
     @IBOutlet weak var initSdkCode: UITextView!
     @IBOutlet weak var merchInfoView: UIView!
-    @IBOutlet weak var connectCardReaderBtn: UIButton!
+    @IBOutlet weak var connectCardReaderBtn: CustomButton!
     
     var svc: SFSafariViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setting up initial aesthetics.
-        demoAppLbl.font = UIFont.boldSystemFont(ofSize: 16.0)
-        merchInfoView.isHidden = true
-        initSdkCode.isHidden = true
-        initMerchCode.isHidden = true
-        initMerchantButton.isEnabled = false
-        connectCardReaderBtn.isHidden = true
-        
+       setUpDefaultView()
         // Receive the notification that the token is being returned
         NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
         
@@ -58,28 +47,15 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
     
     
-    @IBAction func initSDK(_ sender: UIButton) {
+    @IBAction func initSDK(_ sender: CustomButton) {
         
         initMerchantButton.isEnabled = true
         
         // First things first, we need to initilize the SDK itself.
         PayPalRetailSDK.initializeSDK()
         
-        initSdkButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+        initSdkButton.changeToButtonWasSelected(initSdkButton)
         initSdkButton.isEnabled = false
-    }
-    
-    @IBAction func initSdkInfo(_ sender: UIButton) {
-        
-        if (initSdkCode.isHidden) {
-            initSdkInfoBtn.setTitle("Hide Code", for: .normal)
-            initSdkCode.isHidden = false
-            initSdkCode.text = "PayPalRetailSDK.initializeSDK()"
-        } else {
-            initSdkInfoBtn.setTitle("View Code", for: .normal)
-            initSdkCode.isHidden = true
-        }
-        
     }
     
     func performLogin() {
@@ -87,14 +63,14 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
         // set this to Live, simply change /sandbox to /live.  The returnTokenOnQueryString value tells
         // the sample server to return the actual token values instead of the compositeToken
-        let url = NSURL(string: "http://pph-retail-sdk-sample.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)! + "?returnTokenOnQueryString=true")
+        let url = NSURL(string: "http://pph-retail-sdk-sample.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() + "?returnTokenOnQueryString=true")
         
         // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
         // check that the saved token matches the environment.  Otherwise, kick open the
         // SFSafariViewController to expose the login and obtain another token.
         let tokenDefault = UserDefaults.init()
         
-        if((tokenDefault.string(forKey: "ACCESS_TOKEN") != nil) && (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)! == tokenDefault.string(forKey: "ENVIRONMENT"))) {
+        if((tokenDefault.string(forKey: "ACCESS_TOKEN") != nil) && (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() == tokenDefault.string(forKey: "ENVIRONMENT"))) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: tokenDefault.string(forKey: "ACCESS_TOKEN"))
         } else {
             // Present a SFSafariViewController to handle the login to get the merchant account to use.
@@ -105,17 +81,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
     
     
-    @IBAction func initMerchant(_ sender: UIButton) {
+    @IBAction func initMerchant(_ sender: CustomButton) {
         
         envSelector.isEnabled = false
         self.activitySpinner.color = UIColor.black
         activitySpinner.startAnimating()
-        
         performLogin()
         
     }
     
-    func setupMerchant(notification: NSNotification) {
+    @objc func setupMerchant(notification: NSNotification) {
+        
+        self.initMerchantButton.isHidden = true
         
         // Dismiss the SFSafariViewController when the notification of token has been received.
         self.presentedViewController?.dismiss(animated: true, completion: { 
@@ -135,9 +112,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 self.activitySpinner.color = UIColor.red
                 self.activitySpinner.hidesWhenStopped = false
                 self.activitySpinner.stopAnimating()
-                print("Debug ID: \(err.debugId)")
-                print("Error Message: \(err.message)")
-                print("Error Code: \(err.code)")
+                self.initMerchantButton.isHidden = false
+                print("Debug ID: \(String(describing: err.debugId))")
+                print("Error Message: \(String(describing: err.message))")
+                print("Error Code: \(String(describing: err.code))")
                 
                 // The token did not work, so clear the saved token so we can go back to the login page
                 let tokenDefault = UserDefaults.init()
@@ -148,7 +126,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 PayPalRetailSDK.startWatchingAudio()
                 self.activitySpinner.hidesWhenStopped = true
                 self.activitySpinner.stopAnimating()
-                self.initMerchantButton.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .disabled)
+                self.initMerchantButton.isHidden = false
+                self.initMerchantButton.changeToButtonWasSelected(self.initMerchantButton)
                 self.initMerchantButton.isEnabled = false
                 self.merchInfoView.isHidden = false
                 self.merchEmailLabel.text = merchant!.emailAddress
@@ -172,27 +151,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
     }
     
-    
-    @IBAction func initMerchInfo(_ sender: UIButton) {
-        
-        if (initMerchCode.isHidden) {
-            initMerchInfoBtn.setTitle("Hide Code", for: .normal)
-            initMerchCode.isHidden = false
-            initMerchCode.text = "PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) -> Void in \n" +
-                "     <code to handle success/failure>\n" +
-            "})"
-        } else {
-            initMerchInfoBtn.setTitle("View Code", for: .normal)
-            initMerchCode.isHidden = true
-            if((merchEmailLabel.text) != "") {
-                merchInfoView.isHidden = false
-            }
-            
-        }
-        
-    }
-    
-    @IBAction func logout(_ sender: UIButton) {
+    @IBAction func logout(_ sender: CustomButton) {
         
         // Clear out the UserDefaults and show the appropriate buttons/labels
         let tokenDefault = UserDefaults.init()
@@ -204,8 +163,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         
         merchEmailLabel.text = ""
         merchInfoView.isHidden = true
-        initMerchantButton.isEnabled = true
-        initMerchantButton.setImage(#imageLiteral(resourceName: "small-bluearrow"), for: .normal)
+        initMerchantButton.isEnabled = false
         envSelector.isEnabled = true
         connectCardReaderBtn.isHidden = true
     }
@@ -237,6 +195,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         }
     }
     
+    private func setUpDefaultView(){
+        // Setting up initial aesthetics.
+        merchInfoView.isHidden = true
+        initMerchantButton.isEnabled = false
+        connectCardReaderBtn.isHidden = true
+        
+        initMerchCode.text = "PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) -> Void in \n" +
+            "     <code to handle success/failure>\n" +
+        "})"
+        initSdkCode.text = "PayPalRetailSDK.initializeSDK()"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
     
 }
 

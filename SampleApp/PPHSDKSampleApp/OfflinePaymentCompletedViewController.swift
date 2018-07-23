@@ -14,6 +14,7 @@ class OfflinePaymentCompletedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     /// THIS FUNCTION IS ONLY FOR UI.
@@ -24,7 +25,7 @@ class OfflinePaymentCompletedViewController: UIViewController {
     /// viewController array has at index 0 : "WelcomeViewController", 1 : "InitializeViewController"
     /// 2 : "DeviceDiscoveryViewController", 3 : "PaymentViewController", 4 : "OfflinePaymentCompletedViewController"
     /// - Parameter sender: UIButton for No Sale
-    @IBAction func newSaleBtnPressed(_ sender: UIButton) {
+    @IBAction func newSaleBtnPressed(_ sender: CustomButton) {
         paymentViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
         var viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
         viewControllers.removeLast()
