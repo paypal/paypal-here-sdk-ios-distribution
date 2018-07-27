@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
-    'OTHER_LDFLAGS' => '/usr/lib/libstdc++.dylib -lstdc++ -ObjC',
+    'OTHER_LDFLAGS' => '$(inherited)',
   }
 
   s.ios.frameworks = 'AudioToolbox', 'MobileCoreServices', 'Security', 'CFNetwork', 'AVFoundation', 'ExternalAccessory', 'MediaPlayer', 'CoreTelephony', 'Foundation', 'CoreBluetooth', 'SystemConfiguration', 'JavaScriptCore', 'CoreBluetooth', 'UIKit', 'CoreLocation'
