@@ -14,8 +14,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target    = '8.1'
 
   s.xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
-    'OTHER_LDFLAGS' => '/usr/lib/libstdc++.dylib -lstdc++ -ObjC',
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited)'
   }
 
   s.ios.frameworks = 'AudioToolbox', 'MobileCoreServices', 'Security', 'CFNetwork', 'AVFoundation', 'ExternalAccessory', 'MediaPlayer', 'CoreTelephony', 'Foundation', 'CoreBluetooth', 'SystemConfiguration', 'JavaScriptCore', 'CoreBluetooth', 'UIKit', 'CoreLocation'
@@ -32,5 +31,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'SimpleKeychain', '~> 0.6.1'
   s.dependency 'LogglyLogger-CocoaLumberjack', '~> 3.0'
+  s.dependency 'PPRetailInstrumentInterface'
 
 end
