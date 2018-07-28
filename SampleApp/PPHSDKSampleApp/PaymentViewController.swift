@@ -29,7 +29,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var options = PPRetailTransactionBeginOptions.defaultOptions()
     var formFactorArray: [PPRetailFormFactor] = []
     var currencySymbol: String!
-    var offlineMode: Bool = false
+    var offlineMode: Bool = PayPalRetailSDK.transactionManager().getOfflinePaymentEnabled()
     
     override func viewDidLoad() {
         super.viewDidLoad()
