@@ -31,5 +31,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'SimpleKeychain', '~> 0.6.1'
   s.dependency 'LogglyLogger-CocoaLumberjack', '~> 3.0'
+  s.dependency 'PPRetailInstrumentInterface'
 
 end
