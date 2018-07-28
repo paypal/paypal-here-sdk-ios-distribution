@@ -29,6 +29,8 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var options = PPRetailTransactionBeginOptions.defaultOptions()
     var formFactorArray: [PPRetailFormFactor] = []
     var currencySymbol: String!
+    
+    // Get the online or offline state from the SDK by calling the "PayPalRetailSDK.transactionManager().getOfflinePaymentEnabled()"
     var offlineMode: Bool = PayPalRetailSDK.transactionManager().getOfflinePaymentEnabled()
     
     override func viewDidLoad() {
