@@ -53,6 +53,16 @@ typedef void (^PPRetailDeviceDiscoveredEvent)(PPRetailPaymentDevice* device);
  * Returned from addDeviceDiscoveredListener and used to unsubscribe from the event.
  */
 typedef id PPRetailDeviceDiscoveredSignal;
+
+/**
+ * A page has been viewed
+ */
+typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
+/**
+ * Returned from addUntrustedNetworkListener and used to unsubscribe from the event.
+ */
+typedef id PPRetailUntrustedNetworkSignal;
+
 typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *merchant);
 
 /**
@@ -135,6 +145,18 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  * Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener
  */
 + (void)removeDeviceDiscoveredListener:(PPRetailDeviceDiscoveredSignal)listenerToken;
+
+/**
+ * Add a listener for the untrustedNetwork event
+ * @returns PPRetailUntrustedNetworkEvent an object that can be used to remove the listener when
+ * you're done with it.
+ */
++ (PPRetailUntrustedNetworkSignal)addUntrustedNetworkListener:(PPRetailUntrustedNetworkEvent)listener;
+
+/**
+ * Remove a listener for the untrustedNetwork event given the signal object that was returned from addUntrustedNetworkListener
+ */
++ (void)removeUntrustedNetworkListener:(PPRetailUntrustedNetworkSignal)listenerToken;
 
 /**
  * Capture a authorized transaction by providing authorization ID and final amount to be captured

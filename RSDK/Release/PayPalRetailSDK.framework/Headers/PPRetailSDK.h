@@ -173,4 +173,17 @@
     -(void)removePageViewedListener:(PPRetailPageViewedSignal _Nullable)listenerToken;
 
 
+    /**
+     * Add a listener for the untrustedNetwork event
+     * @returns PPRetailUntrustedNetworkSignal an object that can be used to remove the listener when
+     * you're done with it.
+     */
+    -(PPRetailUntrustedNetworkSignal _Nullable)addUntrustedNetworkListener:(PPRetailUntrustedNetworkEvent _Nullable)listener;
+
+    /**
+     * Remove a listener for the untrustedNetwork event given the signal object that was returned from addUntrustedNetworkListener
+     */
+    -(void)removeUntrustedNetworkListener:(PPRetailUntrustedNetworkSignal _Nullable)listenerToken;
+
+
 @end

@@ -45,6 +45,7 @@
 @interface PPManticoreNativeInterface : NSObject <JSExport>
 
 @property (nonatomic,strong,readonly) JSValue *manticoreObject;
+@property (nonatomic) NSURLSession *urlSession;
 
 - (instancetype)initWithEngine:(PPManticoreEngine *)engine;
 

@@ -191,6 +191,11 @@
     -(void)discardPresentedCard:(PPRetailCard* _Nullable)card;
 
     /**
+     * Begin the flow to issue a refund on the current invoice.
+     */
+    -(void)continueWithCard:(PPRetailCard* _Nullable)card tag:(NSString* _Nullable)tag;
+
+    /**
      * Continue processing a transaction - the behavior of which depends on the presented card.
      * If it's a magnetic card or an NFC tap, payment will be attempted and money will move
      * (if successful). If it's an EMV card insertion, we will start the EMV flow which includes
@@ -216,9 +221,19 @@
     -(void)continueWithCash;
 
     /**
+     * Begin the flow to issue a refund on the current invoice.
+     */
+    -(void)continueWithCash:(NSString* _Nullable)tag;
+
+    /**
      * Continue processing a check transaction.
      */
     -(void)continueWithCheck;
+
+    /**
+     * Begin the flow to issue a refund on the current invoice.
+     */
+    -(void)continueWithCheck:(NSString* _Nullable)tag;
 
     /**
      * If you acquire signatures yourself, for example from a Topaz Pen Pad or with an external

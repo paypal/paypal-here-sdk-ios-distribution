@@ -114,6 +114,14 @@
     * Environment- live or sandbox
     */
     @property (nonatomic,strong,nullable) NSString* environment;
+    /**
+    * Device model
+    */
+    @property (nonatomic,strong,nullable) NSString* deviceModel;
+    /**
+    * Device manufacturer
+    */
+    @property (nonatomic,strong,nullable) NSString* deviceManufacturer;
 
 
 

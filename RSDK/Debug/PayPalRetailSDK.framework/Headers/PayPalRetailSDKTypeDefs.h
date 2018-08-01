@@ -563,6 +563,16 @@ typedef void (^PPRetailPageViewedEvent)(PPRetailError* error, PPRetailPage* page
  */
 typedef id PPRetailPageViewedSignal;
 
+
+/**
+ * A page has been viewed
+ */
+typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
+/**
+ * Returned from addUntrustedNetworkListener and used to unsubscribe from the event.
+ */
+typedef id PPRetailUntrustedNetworkSignal;
+
                                                                             
 /**
  * Contactless reader was de-activated and the transaction still remains active.
