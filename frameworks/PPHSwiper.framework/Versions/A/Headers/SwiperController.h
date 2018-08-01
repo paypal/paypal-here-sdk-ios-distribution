@@ -1,6 +1,6 @@
 //
 //  SwiperController.h
-//  SwiperAPI-4.6.3
+//  SwiperAPI-4.8.4
 //
 //  Created by TeresaWong on 8/6/10.
 //  Copyright 2011 BBPOS LTD. All rights reserved.
@@ -52,6 +52,7 @@ typedef enum {
                  partialTrack:(NSString *)partialTrack;
 - (NSString*)getSwiperAPIVersion;
 - (NSString*)getSwiperFirmwareVersion;
+- (NSString*)getSwiperBatteryVoltage;
 - (void)closeSwiper;
 
 @end
