@@ -144,12 +144,12 @@
     /**
      * Begin the flow to issue a refund on the current invoice.
      */
-    -(PPRetailTransactionContext* _Nullable)beginRefund:(BOOL)cardPresent amount:(NSDecimalNumber* _Nullable)amount;
+    -(PPRetailTransactionContext* _Nullable)beginRefund:(BOOL)promptForCardOptions amount:(NSDecimalNumber* _Nullable)amount;
 
     /**
      * Begin the flow to issue a refund on the current invoice.
      */
-    -(PPRetailTransactionContext* _Nullable)beginRefund:(BOOL)cardPresent amount:(NSDecimalNumber* _Nullable)amount refundTag:(NSString* _Nullable)refundTag;
+    -(PPRetailTransactionContext* _Nullable)beginRefund:(BOOL)promptForCardOptions amount:(NSDecimalNumber* _Nullable)amount refundTag:(NSString* _Nullable)refundTag;
 
     /**
      * Is the transaction a type of refund?
