@@ -70,14 +70,16 @@ class OfflineModeViewController: UIViewController {
                         print(error?.developerMessage ?? "There was a problem initializing offlinePayment.")
                     }
                 })
-                
-                // Check to see if OfflinePayment was enabled
-                if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled())! {
-                    self.toggleOfflineModeUI()
-                } else {
-                    self.offlineMode = false
-                    self.offlineModeSwitch.isOn = false
-                }
+            } else {
+                print("Merchant is not eligiable to take Offline Payments")
+            }
+            
+            // Check to see if OfflinePayment was enabled
+            if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled())! {
+                self.toggleOfflineModeUI()
+            } else {
+                self.offlineMode = false
+                self.offlineModeSwitch.isOn = false
             }
         } else {
             // Turn off offlineMode
