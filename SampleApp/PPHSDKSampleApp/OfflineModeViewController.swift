@@ -71,7 +71,7 @@ class OfflineModeViewController: UIViewController {
                     }
                 })
             } else {
-                print("Merchant is not eligiable to take Offline Payments")
+                print("Merchant is not eligible to take Offline Payments")
             }
             
             // Check to see if OfflinePayment was enabled
