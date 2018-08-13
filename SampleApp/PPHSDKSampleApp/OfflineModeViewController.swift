@@ -26,22 +26,8 @@ class OfflineModeViewController: UIViewController {
     @IBOutlet weak var replayTransactionResultsTextView: UITextView!
     @IBOutlet weak var offlineModeLabel: UILabel!
     
-    /// If offlineMode is set to true then we will start taking offline payments and if it is set to false
-    /// then we stop taking offline payments. To Start/Stop taking offline payments, we ned to make a call to
-    /// the SDK. If we start taking online payments then we MUST call the stopOfflinePayment() in order to start
-    /// taking live payments again.
-    var offlineMode: Bool! {
-        didSet{
-            if offlineMode {
-                PayPalRetailSDK.transactionManager().startOfflinePayment()
-                NotificationCenter.default.post(name: .offlineModeIsChanged, object: nil)
-                
-            } else {
-                PayPalRetailSDK.transactionManager().stopOfflinePayment()
-                NotificationCenter.default.post(name: .offlineModeIsChanged, object: nil)
-            }
-        }
-    }
+    // Local Flag for offline Mode
+    var offlineMode: Bool!
     
     weak var delegate: OfflineModeViewControllerDelegate?
     
@@ -51,10 +37,8 @@ class OfflineModeViewController: UIViewController {
         
         /// Set the offlineMode switch on/off according to the value passed from PaymentViewController. Originally false.
         offlineModeSwitch.isOn = offlineMode
-        
         // Stop Replay Button is only needed when we are replaying transactions. Otherwise it is disabled.
         stopReplayBtn.isEnabled = false
-        NotificationCenter.default.addObserver(self, selector:#selector(enableReplayTransactionButton), name: .offlineModeIsChanged , object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,12 +46,44 @@ class OfflineModeViewController: UIViewController {
         self.delegate?.offlineMode(controller: self, didChange: self.offlineMode)
     }
     
-    /// If the offlineModeSwitch is toggled. Set the value for the offlineMode Flag which will make the appropriate call
-    /// to the SDK.
+    /// If the offlineModeSwitch is toggled. Call the toggleOfflineMode() function.
     /// - Parameter sender: UISwitch for the offlineMode.
     @IBAction func offlineModeSwitchPressed(_ sender: UISwitch) {
-        offlineMode = offlineModeSwitch.isOn
-        changeOfflineModeLabel()
+        toggleOfflineMode()
+    }
+    
+    /// If offlineMode is set to true then we will start taking offline payments and if it is set to false
+    /// then we stop taking offline payments. To Start/Stop taking offline payments, we ned to make a call to
+    /// the SDK. If we start taking online payments then we MUST call the stopOfflinePayment() in order to start
+    /// taking live payments again.
+    /// FOR UI ONLY - Change the UI based on offlineMode flag.
+    private func toggleOfflineMode(){
+        offlineMode = !offlineMode
+        
+        if offlineMode {
+            // If the merchant is whitelisted to take offline Payments.
+            if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEligibility())! {
+                // This call with initalize offlinePayment. Any kind of failure will be returned to this callback.
+                // Along with the status of the transaction that were done during offline Mode.
+                PayPalRetailSDK.transactionManager()?.startOfflinePayment({ (error, offlinePaymentStatus) in
+                    if error != nil {
+                        print(error?.developerMessage ?? "There was a problem initializing offlinePayment.")
+                    }
+                })
+                
+                // Check to see if OfflinePayment was enabled
+                if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled())! {
+                    self.toggleOfflineModeUI()
+                } else {
+                    self.offlineMode = false
+                    self.offlineModeSwitch.isOn = false
+                }
+            }
+        } else {
+            // Turn off offlineMode
+            PayPalRetailSDK.transactionManager().stopOfflinePayment()
+            self.toggleOfflineModeUI()
+        }
     }
     
     /// The function will get the offline Status. It is a callback. It will give you an array of status which will
@@ -152,33 +168,19 @@ class OfflineModeViewController: UIViewController {
         replayOfflineTransactionCodeTxtView.text = "PayPalRetailSDK.transactionManager().startReplayOfflineTxns({ (error, statusList) in // Code })"
         stopReplayCodeTxtView.text = "PayPalRetailSDK.transactionManager().stopReplayOfflineTxns()"
         self.replayTransactionResultsTextView.text = "Completed: 0 \nFailed: 0 \nDeclined: 0"
-        changeOfflineModeLabel()
-        enableReplayTransactionButton()
+        toggleOfflineModeUI()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    private func changeOfflineModeLabel(){
+    private func toggleOfflineModeUI(){
         if offlineMode {
             offlineModeLabel.text = "ENABLED"
             offlineModeLabel.textColor = .green
+            replayOfflineTransactionBtn.isEnabled = false
         } else {
             offlineModeLabel.text = ""
             offlineModeLabel.textColor = .red
-        }
-    }
-    
-    /// THIS FUNCTION IS ONLY FOR UI. This function will enable/disable "Replay Transaction" Button
-    /// depending on if the offlineMode is on or off.
-    /// - Parameter isEnabled: A Bool to enable/disable the "Replay Transaction Button"
-    @objc private func enableReplayTransactionButton(){
-        if offlineMode {
-            replayOfflineTransactionBtn.isEnabled = false
-        } else {
             replayOfflineTransactionBtn.isEnabled = true
         }
     }
-}
-
-extension Notification.Name {
-    static let offlineModeIsChanged = Notification.Name("offlineModeIsChanged")
 }
