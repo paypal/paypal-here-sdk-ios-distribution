@@ -93,9 +93,21 @@
     -(void)createTransaction:(PPRetailInvoice* _Nullable)invoice callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
 
     /**
-     * Create a refund transaction. An existing transaction will be canceled
+     * Create a refund transaction. An existing transaction will be canceled.
+     * Note: Refunds can be performed using invoiceId alone using createRefundTransactionWithInvoiceId.
+     * And refunds can also be performed with transactionNumber alone using createRefundTransactionWithTransactionNumber.
      */
     -(void)createRefundTransaction:(NSString* _Nullable)invoiceId transactionNumber:(NSString* _Nullable)transactionNumber paymentMethod:(PPRetailInvoicePaymentMethod)paymentMethod callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
+
+    /**
+     * Simplified cash or check refund with invoiceId. An existing transaction will be canceled.
+     */
+    -(void)createCashOrCheckRefundTransaction:(NSString* _Nullable)invoiceId callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
+
+    /**
+     * Simplified card refund with invoiceId. An existing transaction will be canceled.
+     */
+    -(void)createCardRefundTransaction:(NSString* _Nullable)invoiceId callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
 
     /**
      * Retrieve the list of authorized transactions.

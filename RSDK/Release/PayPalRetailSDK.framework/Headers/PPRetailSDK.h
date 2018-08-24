@@ -130,6 +130,11 @@
     -(void)setLogLevel:(PPRetaillogLevel)level;
 
     /**
+     * Refresh the Loggly log level
+     */
+    -(void)refreshLogglyLogLevel;
+
+    /**
      * Provide an interceptor for all HTTP calls made by the SDK
      */
     -(void)setNetworkInterceptor:(PPRetailSDKInterceptHandler _Nullable)interceptor;

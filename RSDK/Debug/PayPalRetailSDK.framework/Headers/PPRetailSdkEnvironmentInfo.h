@@ -122,6 +122,10 @@
     * Device manufacturer
     */
     @property (nonatomic,strong,nullable) NSString* deviceManufacturer;
+    /**
+    * The retailSDK Version
+    */
+    @property (nonatomic,strong,nullable) NSString* retailSDKVersion;
 
 
 
