@@ -43,8 +43,18 @@
 // taking live payments again.
 -(void) setMode {
     if(self.offlineMode) {
-        [[PayPalRetailSDK transactionManager]  startOfflinePayment];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
+        if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEligibility]) {
+            [[PayPalRetailSDK transactionManager] startOfflinePayment:^(PPRetailError *error, NSArray *offlinePaymentStatus) {
+                if (error != nil){
+                    NSLog(@"%@", error.developerMessage);
+                }
+            }];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
+        } else {
+            NSLog(@"Merchant is not eligible to take Offline Payments");
+            self.offlineMode = NO;
+            [self.offlineModeSwitch setOn:NO animated:YES];
+        }
     } else {
         [[PayPalRetailSDK transactionManager] stopOfflinePayment];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
@@ -124,7 +134,11 @@
 // - Parameter sender: UIButton associated with "Stop Replay" Button
 - (IBAction)stopReplay:(id)sender {
     [self.replayTransactionIndicatorView stopAnimating];
-    [[PayPalRetailSDK transactionManager] stopReplayOfflineTxns];
+    [[PayPalRetailSDK transactionManager] stopReplayOfflineTxns:^(PPRetailError *error, NSArray *offlinePaymentStatus) {
+        if (error != nil) {
+            NSLog(@"Stopped replaying offline transactions");
+        }
+    }];
 }
 
 
