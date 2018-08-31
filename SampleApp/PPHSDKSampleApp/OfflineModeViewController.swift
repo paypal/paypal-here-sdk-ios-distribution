@@ -162,7 +162,11 @@ class OfflineModeViewController: UIViewController {
     @IBAction func stopReplay(_ sender: CustomButton) {
         replayTransactionIndicatorView.stopAnimating()
         replayOfflineTransactionBtn.isHidden = false
-        PayPalRetailSDK.transactionManager().stopReplayOfflineTxns()
+        PayPalRetailSDK.transactionManager()?.stopReplayOfflineTxns({ (error, offlinePaymentStatus) in
+            if error != nil {
+                print("Stopped replaying offline transactions")
+            }
+         })
     }
     
     private func setUpDefaultView(){

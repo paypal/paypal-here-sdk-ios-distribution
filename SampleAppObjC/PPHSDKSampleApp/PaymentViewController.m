@@ -75,7 +75,7 @@
     self.formFactorArray = [[NSMutableArray alloc] init];
     
     // Set to online mode
-    self.offlineMode = NO;
+    self.offlineMode = PayPalRetailSDK.transactionManager.getOfflinePaymentEnabled;
 }
 
 -(void) viewDidAppear:(BOOL)animated {
