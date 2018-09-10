@@ -10,5 +10,6 @@
 
 @interface CustomButton: UIView
 +(void)customizeButton:(UIButton *) button;
++(void)buttonWasSelected:(UIButton *) button;
 +(UIColor *)colorFromHexString:(NSString *)hexString;
 @end

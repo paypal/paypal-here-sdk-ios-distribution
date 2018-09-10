@@ -15,6 +15,15 @@
     button.layer.cornerRadius = button.frame.size.height/2;
 }
 
++(void)buttonWasSelected:(UIButton *)button{
+    button.layer.borderWidth = 0;
+    button.backgroundColor = UIColor.clearColor;
+    button.layer.cornerRadius = 0;
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, button.frame.size.width - 30, 0, 0);
+    [button setTitle:@"" forState:UIControlStateDisabled];
+    [button setImage:[UIImage imageNamed:@"Check"] forState:UIControlStateDisabled];
+}
+
 +(UIColor *)colorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];

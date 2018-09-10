@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpDefaultView];
+    [self setUpUI];
     
     [PayPalRetailSDK setRetailSDKAppDelegate:self];
     // Set default options for transactions
@@ -110,8 +111,7 @@
         self.invoice = mInvoice;
         self.invAmount.enabled = NO;
         self.createInvoiceBtn.enabled = NO;
-        UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-        [self.createInvoiceBtn setImage:btnImage forState: UIControlStateDisabled];
+        [CustomButton buttonWasSelected:self.createInvoiceBtn];
         self.createTxnBtn.enabled = YES;
     } else {
         [self invokeAlert:@"Error" andMessage:[NSString stringWithFormat:@"Either there are no line items or the total amount is less than %@1",self.currencySymbol]];
@@ -124,8 +124,7 @@
     
     [PayPalRetailSDK.transactionManager createTransaction:self.invoice callback:^(PPRetailError *error, PPRetailTransactionContext *context) {
         self.tc = context;
-        UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-        [self.createTxnBtn setImage:btnImage forState: UIControlStateDisabled];
+       [CustomButton buttonWasSelected:self.createTxnBtn];
         self.createTxnBtn.enabled = NO;
         self.acceptTxnBtn.enabled = YES;
         
@@ -203,7 +202,9 @@
     self.createInvCodeView.text = @"mInvoice = [[PPRetailInvoice init] initWithCurrencyCode: @\"USD\"];";
     self.createTxnCodeView.text = @"[[PayPalRetailSDK transactionManager] createTransaction:self.invoice callback:^(PPRetailError *error, PPRetailTransactionContext *context) {\n // Set the transactionContext or handle the error \n self.tc = context \n }];";
     self.acceptTxnCodeView.text = @"[self.tc beginPayment:options];";
-    
+}
+
+-(void)setUpUI{
     [CustomButton customizeButton:self.createInvoiceBtn];
     [CustomButton customizeButton:self.createTxnBtn];
     [CustomButton customizeButton:self.acceptTxnBtn];

@@ -70,9 +70,6 @@
                                                 <state key="normal" title="Initialize SDK">
                                                     <color key="titleColor" red="0.0" green="0.40784313729999999" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <state key="disabled" image="small-grayarrow">
-                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <real key="value" value="16"/>
@@ -227,9 +224,6 @@
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Initialize Merchant">
                                                     <color key="titleColor" red="0.0" green="0.40784313729999999" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="disabled">
-                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -667,10 +661,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utU-CY-PJ3">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="zjW-rV-m1c">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Payments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdx-PI-U1N">
                                                 <rect key="frame" x="16" y="16" width="129.33333333333334" height="20"/>
@@ -679,7 +673,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niy-BZ-Jja">
-                                                <rect key="frame" x="209" y="13.666666666666664" width="150" height="25"/>
+                                                <rect key="frame" x="209" y="13.666666666666671" width="150" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Tyz-A4-eT1"/>
                                                     <constraint firstAttribute="height" constant="25" id="UWK-3e-uKu"/>
@@ -1227,7 +1221,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="256-yM-gfj">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="big-greenarrow" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-ze-NoY">
                                         <rect key="frame" x="172.66666666666666" y="32" width="30" height="30"/>
@@ -1421,10 +1415,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8q-Tn-zeH">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="fGx-tS-Q7u">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trn-nW-2gV">
                                                 <rect key="frame" x="16" y="16" width="99" height="21"/>
@@ -1437,7 +1431,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENABLED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hA-Fu-jud">
-                                                <rect key="frame" x="229" y="18.333333333333336" width="64" height="16.333333333333336"/>
+                                                <rect key="frame" x="229" y="18.333333333333329" width="64" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="14"/>
                                                 <color key="textColor" red="0.062745098040000002" green="0.48627450979999998" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1469,7 +1463,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uiq-S1-LtJ">
-                                                <rect key="frame" x="237" y="67.666666666666671" width="122" height="28"/>
+                                                <rect key="frame" x="237" y="67.666666666666657" width="122" height="28"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="122" id="b0a-G2-Twf"/>
@@ -1532,14 +1526,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-4p-scS">
-                                                <rect key="frame" x="339" y="211.66666666666666" width="20" height="20"/>
+                                                <rect key="frame" x="339" y="211.66666666666669" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Bbw-2G-gnB"/>
                                                     <constraint firstAttribute="width" constant="20" id="GdW-gq-M4n"/>
                                                 </constraints>
                                             </activityIndicatorView>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVJ-1d-3Xc">
-                                                <rect key="frame" x="269" y="207.66666666666666" width="90" height="28"/>
+                                                <rect key="frame" x="269" y="207.66666666666669" width="90" height="28"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="en1-B1-DmQ"/>
@@ -1795,7 +1789,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQL-eh-6RK">
-                                <rect key="frame" x="0.0" y="44" width="375" height="676"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="632"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorization Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V8-b7-7Li">
                                         <rect key="frame" x="16" y="32" width="175" height="21"/>
@@ -1920,10 +1914,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STk-EC-UaU" userLabel="Payment Options View">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxz-FJ-rNN">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sale Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCg-VG-ft7">
                                                 <rect key="frame" x="10" y="10" width="103.66666666666667" height="25"/>
@@ -2497,7 +2491,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U20-g0-i0Y">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="big-greenarrow" translatesAutoresizingMaskIntoConstraints="NO" id="nvW-Dv-gvS">
                                         <rect key="frame" x="172.66666666666666" y="32" width="30" height="30"/>
@@ -2532,7 +2526,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-QJ-dfJ">
-                                        <rect key="frame" x="287" y="199.66666666666666" width="80" height="30"/>
+                                        <rect key="frame" x="287" y="199.66666666666669" width="80" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="NpQ-9e-lxz"/>
@@ -2632,7 +2626,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mw7-TR-WCZ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="big-greenarrow" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-LW-YL8">
                                         <rect key="frame" x="172.66666666666666" y="32" width="30" height="30"/>
@@ -2867,11 +2861,9 @@
         <image name="big-greenarrow" width="44" height="31"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
-        <image name="small-grayarrow" width="20" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bSJ-4h-8gH"/>
         <segue reference="l70-Vr-7Hs"/>
-        <segue reference="YTU-rL-U6B"/>
+        <segue reference="QBQ-NK-r20"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -45,37 +45,16 @@
     self.initializeMerchantButton.enabled = YES;
     // First things first, we need to initilize the SDK itself.
     [PayPalRetailSDK initializeSDK];
-    UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-    [self.initializeSdkButton setImage:btnImage forState: UIControlStateDisabled];
+   [CustomButton buttonWasSelected:self.initializeSdkButton];
     self.initializeSdkButton.enabled = NO;
 }
 
 - (IBAction)initMerchant:(id)sender {
     self.envSelector.enabled = NO;
     self.activitySpinner.color = [UIColor blackColor];
+    [self.initializeMerchantButton setHidden:YES];
     [self.activitySpinner startAnimating];
     [self performLogin];
-}
-
-- (IBAction)logout:(id)sender {
-    // Clear out the UserDefaults and show the appropriate buttons/labels
-    NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
-    [tokenDefault removeObjectForKey:@"ACCESS_TOKEN"];
-    [tokenDefault removeObjectForKey:@"REFRESH_URL"];
-    [tokenDefault removeObjectForKey:@"ENVIRONMENT"];
-    [tokenDefault removeObjectForKey:@"MERCH_CURRENCY"];
-    [tokenDefault synchronize];
-    self.merchEmailLabel.text = @"";
-    self.merchInfoView.hidden = YES;
-    self.initializeMerchantButton.enabled = YES;
-    UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-    [self.initializeMerchantButton setImage:btnImage forState: UIControlStateDisabled];
-    self.envSelector.enabled = YES;
-    self.connectCardReaderBtn.hidden = YES;
-}
-
-- (IBAction)goToDeviceDiscovery:(id)sender {
-    [self performSegueWithIdentifier:@"showDeviceDiscovery" sender:sender];
 }
 
 - (void)setupMerchant:(NSNotification *)notification {
@@ -94,6 +73,7 @@
           self.activitySpinner.color = [UIColor redColor];
           self.activitySpinner.hidesWhenStopped = NO;
           [self.activitySpinner stopAnimating];
+          [self.initializeMerchantButton setHidden:NO];
           NSLog(@"Debug ID: %@",error.debugId);
           NSLog(@"Error Message: %@",error.code);
           NSLog(@"Error Code: %@",error.message);
@@ -104,6 +84,7 @@
         // Start watching for the audio reader
         [PayPalRetailSDK startWatchingAudio];
         self.activitySpinner.hidesWhenStopped = YES;
+        [self.initializeMerchantButton setHidden:NO];
         [self.activitySpinner stopAnimating];
         UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
         [self.initializeMerchantButton setImage:btnImage forState: UIControlStateDisabled];
@@ -121,9 +102,30 @@
         merchant.referrerCode = @"PPHSDK_SampleApp_iOS";
         //Enable the connect card reader button here
         self.connectCardReaderBtn.hidden = NO;
+        [CustomButton buttonWasSelected:self.initializeMerchantButton];
     }];
     
 }
+
+- (IBAction)goToDeviceDiscovery:(id)sender {
+    [self performSegueWithIdentifier:@"showDeviceDiscovery" sender:sender];
+}
+
+- (IBAction)logout:(id)sender {
+    // Clear out the UserDefaults and show the appropriate buttons/labels
+    NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
+    [tokenDefault removeObjectForKey:@"ACCESS_TOKEN"];
+    [tokenDefault removeObjectForKey:@"REFRESH_URL"];
+    [tokenDefault removeObjectForKey:@"ENVIRONMENT"];
+    [tokenDefault removeObjectForKey:@"MERCH_CURRENCY"];
+    [tokenDefault synchronize];
+    self.merchEmailLabel.text = @"";
+    self.merchInfoView.hidden = YES;
+    self.initializeMerchantButton.enabled = YES;
+    self.envSelector.enabled = YES;
+    self.connectCardReaderBtn.hidden = YES;
+}
+
 
 -(void) setCurrencyType {
     NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
