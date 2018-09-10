@@ -15,8 +15,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *promptInCardReaderSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *tippingOnReaderSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *amountBasedTippingSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *enableQuickChipSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
-@property NSMutableArray *formFactoryButtons;
+@property (strong, nonatomic) IBOutletCollection(UISwitch) NSArray *formFactorySwitches;
 @end
 
 @implementation TransactionOptionsViewController
@@ -32,41 +33,46 @@
     [self.promptInCardReaderSwitch setOn: self.transactionOptions.showPromptInCardReader];
     [self.tippingOnReaderSwitch setOn: self.transactionOptions.tippingOnReaderEnabled];
     [self.amountBasedTippingSwitch setOn: self.transactionOptions.amountBasedTipping];
+    [self.enableQuickChipSwitch setOn: self.transactionOptions.enableQuickChip];
     
     // Turn the formFactor button on/off depending on the formFactors selected.
-    [self toggleButtons];
+    [self toggleSwitches];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [delegate transactionOptionsController:self options:self.transactionOptions];
 }
 
 // The following 5 functions are triggered when a switch is pressed and it's value is changed.
 // Depending on the if the switch is on or off, these functions will set the appropriate option to true or false.
 // - Parameter sender: UISwitch assoicated with the options.
-- (IBAction)authCaptureSwitchPressed:(id)sender {
+- (IBAction)authCaptureSwitchPressed:(UISwitch *)sender {
     self.transactionOptions.isAuthCapture = self.authCaptureSwitch.isOn;
 }
 
-- (IBAction)promptInAppSwitchPressed:(id)sender {
+- (IBAction)promptInAppSwitchPressed:(UISwitch *)sender {
     self.transactionOptions.showPromptInApp = self.promptInAppSwitch.isOn;
 }
 
-- (IBAction)promptInCardReaderSwitchPressed:(id)sender {
+- (IBAction)promptInCardReaderSwitchPressed:(UISwitch *)sender {
     self.transactionOptions.showPromptInCardReader = self.promptInCardReaderSwitch.isOn;
 }
 
-- (IBAction)tippingOnReaderSwitchPressed:(id)sender {
+- (IBAction)tippingOnReaderSwitchPressed:(UISwitch *)sender {
     self.transactionOptions.tippingOnReaderEnabled = self.tippingOnReaderSwitch.isOn;
 }
 
-- (IBAction)amountBasedTippingSwitchPressed:(id)sender {
+- (IBAction)amountBasedTippingSwitchPressed:(UISwitch *)sender {
     self.transactionOptions.amountBasedTipping = self.amountBasedTippingSwitch.isOn;
 }
 
+- (IBAction)enableQuickChipSwitchPressed:(UISwitch *)sender {
+    self.transactionOptions.enableQuickChip = self.enableQuickChipSwitch.isOn;
+}
 
-- (IBAction)tagTextFieldEndEditing:(UITextField*)sender {
+
+- (IBAction)tagTextFieldEndEditing:(UITextField *)sender {
     if(sender.text != nil) {
         self.transactionOptions.tag = sender.text;
     } else {
@@ -79,7 +85,7 @@
 // function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
 // the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
 // - Parameter sender: UIButton assoicated with the formFactor Buttons.
-- (IBAction)formFactorButtonsPressed:(id)sender {
+- (IBAction)formFactorSwitchesPressed:(UISwitch *)sender {
     [sender setSelected:![sender isSelected]];
     NSNumber *formFactor;
     switch(((UIView*)sender).tag){
@@ -103,7 +109,7 @@
             break;
     }
     
-    if([sender isSelected]) {
+    if([sender isOn]) {
         [self.formFactorArray addObject: formFactor];
         self.transactionOptions.preferredFormFactors = self.formFactorArray;
     } else {
@@ -112,16 +118,7 @@
     }
 }
 
-// This function will pass the formFactorArray to the previous ViewController (PaymentViewController)
-// and dismiss the transactionOptionsViewController. This event is
-// triggered by the "runTransactionButton" at the bottom of the screen.
-// - Parameter sender: The UIButton associated with the IBAction
-- (IBAction)dismissScreen:(id)sender {
-    [self.delegate transactionOptions:self :self.transactionOptions];
-    [self dismissViewControllerAnimated:true completion:nil];
-}
-
--(void) toggleButtons {
+-(void) toggleSwitches {
     for(NSNumber *factor in self.formFactorArray) {
         NSInteger tag;
         if(factor.integerValue == PPRetailFormFactorMagneticCardSwipe) {
@@ -137,12 +134,16 @@
         } else {
             tag = 0;
         }
-        for(UIButton *button in self.formFactoryButtons) {
-            if(button.tag == tag) {
-                [button setSelected: YES];
+        for(UISwitch *formFactorSwitch in self.formFactorySwitches) {
+            if(formFactorSwitch.tag == tag) {
+                [formFactorSwitch setOn:YES];
             }
         }
     }
+}
+
+-(void) setDelegate:(UIViewController *)delegateController {
+    delegate = delegateController;
 }
 
 // THIS FUNCTION IS ONLY FOR UI. This function will create a toolbar which will have a "Done" button
