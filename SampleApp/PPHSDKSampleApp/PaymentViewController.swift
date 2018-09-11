@@ -306,7 +306,7 @@ extension PPRetailTransactionBeginOptions {
         options.preferredFormFactors = []
         options.tippingOnReaderEnabled = false
         options.amountBasedTipping = false
-        options.enableQuickChip = false
+        options.quickChipEnabled = false
         options.isAuthCapture = false
         options.tag = ""
         return options

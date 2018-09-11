@@ -43,7 +43,7 @@ class TransactionOptionsViewController: UIViewController {
         promptInCardReaderSwitch.isOn = transactionOptions.showPromptInCardReader
         tippingOnReaderSwitch.isOn = transactionOptions.tippingOnReaderEnabled
         amountBasedTippingSwitch.isOn = transactionOptions.amountBasedTipping
-        enableQuickChipSwitch.isOn = transactionOptions.enableQuickChip
+        enableQuickChipSwitch.isOn = transactionOptions.quickChipEnabled
         
         // Turn the formFactor button on/off depending on the formFactors selected.
         toggleFormFactorSwitches()
@@ -90,7 +90,7 @@ class TransactionOptionsViewController: UIViewController {
     }
     
     @IBAction func quickChipSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.enableQuickChip = enableQuickChipSwitch.isOn
+        transactionOptions.quickChipEnabled = enableQuickChipSwitch.isOn
     }
     
     /// This function is triggered when the UITextField for Tag is doneEditing
