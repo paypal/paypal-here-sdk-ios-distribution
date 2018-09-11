@@ -33,7 +33,7 @@
     [self.promptInCardReaderSwitch setOn: self.transactionOptions.showPromptInCardReader];
     [self.tippingOnReaderSwitch setOn: self.transactionOptions.tippingOnReaderEnabled];
     [self.amountBasedTippingSwitch setOn: self.transactionOptions.amountBasedTipping];
-    [self.enableQuickChipSwitch setOn: self.transactionOptions.enableQuickChip];
+    [self.enableQuickChipSwitch setOn: self.transactionOptions.quickChipEnabled];
     
     // Turn the formFactor button on/off depending on the formFactors selected.
     [self toggleSwitches];
@@ -68,7 +68,7 @@
 }
 
 - (IBAction)enableQuickChipSwitchPressed:(UISwitch *)sender {
-    self.transactionOptions.enableQuickChip = self.enableQuickChipSwitch.isOn;
+    self.transactionOptions.quickChipEnabled = self.enableQuickChipSwitch.isOn;
 }
 
 
