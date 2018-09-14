@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6868279121405A8C004E14DB /* UIButton+CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6868279021405A8C004E14DB /* UIButton+CustomButton.m */; };
 		BAC22001B3AFD5AC2B43FA25 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3520AA969FCD88B4E85E147E /* Pods_PPHSDKSampleApp.framework */; };
 		EA16EF76205F504400BE2654 /* InitializeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16EF75205F504400BE2654 /* InitializeViewController.m */; };
 		EA3C3395205C7F25000E20CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C3394205C7F25000E20CD /* AppDelegate.m */; };
@@ -32,6 +33,9 @@
 /* Begin PBXFileReference section */
 		3520AA969FCD88B4E85E147E /* Pods_PPHSDKSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PPHSDKSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62476DD3E82B1F9F757B28E0 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		6868278F21405A8C004E14DB /* UIButton+CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomButton.h"; sourceTree = "<group>"; };
+		6868279021405A8C004E14DB /* UIButton+CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomButton.m"; sourceTree = "<group>"; };
+		6868279321406CF8004E14DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		DE98DCBF3C12B642582E7E4B /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EA16EF74205F504400BE2654 /* InitializeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitializeViewController.h; sourceTree = "<group>"; };
 		EA16EF75205F504400BE2654 /* InitializeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitializeViewController.m; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				EADDCBC32060348700037A7D /* URLParser.m */,
 				EADDCBCC20615F4800037A7D /* NSString+Common.h */,
 				EADDCBCD20615F4800037A7D /* NSString+Common.m */,
+				6868278F21405A8C004E14DB /* UIButton+CustomButton.h */,
+				6868279021405A8C004E14DB /* UIButton+CustomButton.m */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -255,19 +261,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/LogglyLogger-CocoaLumberjack/LogglyLogger_CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
 				"${BUILT_PRODUCTS_DIR}/PayPalRetailSDK/PayPalRetailSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LogglyLogger_CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRetailInstrumentInterface.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalRetailSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -313,6 +319,7 @@
 				EADDCBD120619B9400037A7D /* PaymentCompletedViewController.m in Sources */,
 				EADDCBD72061FF1300037A7D /* CaptureAuthViewController.m in Sources */,
 				EA4DE84E20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m in Sources */,
+				6868279121405A8C004E14DB /* UIButton+CustomButton.m in Sources */,
 				EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +331,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EA3C339A205C7F25000E20CD /* Base */,
+				6868279321406CF8004E14DB /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -449,7 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 468959AS5Q;
+				DEVELOPMENT_TEAM = 729JAJ944S;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -465,7 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 468959AS5Q;
+				DEVELOPMENT_TEAM = 729JAJ944S;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

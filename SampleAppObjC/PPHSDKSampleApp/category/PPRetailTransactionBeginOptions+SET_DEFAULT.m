@@ -18,6 +18,7 @@
     options.tippingOnReaderEnabled = NO;
     options.amountBasedTipping = NO;
     options.isAuthCapture = NO;
+    options.quickChipEnabled = NO;
     options.tag = @"";
     return options;
 }

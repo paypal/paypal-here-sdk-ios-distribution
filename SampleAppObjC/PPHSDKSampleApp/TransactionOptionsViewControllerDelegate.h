@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol TransactionOptionsViewControllerDelegate <NSObject>
--(void) transactionOptions :(TransactionOptionsViewController*)controller :(PPRetailTransactionBeginOptions*)options;
+@required
+-(void) transactionOptionsController :(TransactionOptionsViewController*)controller options:(PPRetailTransactionBeginOptions*)options;
 @end

@@ -8,18 +8,14 @@
 
 #import "AuthCompletedViewController.h"
 #import "CaptureAuthViewController.h"
+#import "UIButton+CustomButton.h"
 
 @interface AuthCompletedViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *successMsg;
 @property (weak, nonatomic) IBOutlet UIButton *voidAuthBtn;
-@property (weak, nonatomic) IBOutlet UIButton *voidCodeViewBtn;
 @property (weak, nonatomic) IBOutlet UITextView *voidCodeViewer;
 @property (weak, nonatomic) IBOutlet UIButton *captureAuthBtn;
-@property (weak, nonatomic) IBOutlet UIButton *captureAuthCodeViewBtn;
 @property (weak, nonatomic) IBOutlet UITextView *captureAuthCodeViewer;
-@property (weak, nonatomic) IBOutlet UIButton *startOverBtn;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
-@property (weak, nonatomic) IBOutlet UILabel *voidSuccessLbl;
 @property (nonatomic, assign) BOOL isTip;
 @end
 
@@ -27,36 +23,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.successMsg.text = [NSString stringWithFormat:@"Your authorization was successful: $%@", self.invoice.total];;
-    [self.successMsg sizeToFit];
-    self.activitySpinner.hidden = YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self setUpDefaultView];
 }
 
 - (IBAction)voidAuthorization:(id)sender {
-    self.activitySpinner.hidden = NO;
-    [self.activitySpinner startAnimating];
     [PayPalRetailSDK.transactionManager voidAuthorization:self.authTransactionNumber callback:^(PPRetailError *error) {
         if(error != nil) {
             NSLog(@"Error Code: %@", error.code);
             NSLog(@"Error Code: %@", error.message);
             NSLog(@"Error Code: %@", error.debugId);
-            [self.activitySpinner stopAnimating];
             return;
         }
-        [self.activitySpinner stopAnimating];
-        self.activitySpinner.hidden = YES;
-        UIImage *voidAuthImage = [UIImage imageNamed:@"small-greenarrow"];
-        [self.voidAuthBtn setImage:voidAuthImage forState: UIControlStateDisabled];
-        self.voidSuccessLbl.hidden = NO;
-        self.captureAuthBtn.enabled = NO;
-        UIImage *captureAuthImage = [UIImage imageNamed:@"small-grayarrow"];
-        [self.captureAuthBtn setImage:captureAuthImage forState: UIControlStateDisabled];
-        self.startOverBtn.hidden = NO;
+        UIAlertController *alert = [UIAlertController
+                                     alertControllerWithTitle:@"Void successful"
+                                     message:@"The Auth was successfully voided."
+                                     preferredStyle: UIAlertControllerStyleAlert];
+        UIAlertAction *okButton = [UIAlertAction
+                                   actionWithTitle:@"Ok"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * _Nonnull action) {
+                                       [self performSegueWithIdentifier:@"goToPaymentsView" sender:self];
+                                   }];
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:YES completion:nil];
     }];
 
 }
@@ -97,38 +86,15 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (IBAction)showInfo:(id)sender {
-    switch (((UIView*)sender).tag) {
-    case 0:
-        if (self.voidCodeViewer.hidden) {
-            [self.voidCodeViewBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-            self.voidCodeViewer.hidden = NO;
-            self.voidCodeViewer.text = @"[PayPalRetailSDK.transactionManager voidAuthorization:self.authTransactionNumber callback:^(PPRetailError *error) { \n <code to handle success/failure> \n }];";
-        } else {
-            [self.voidCodeViewBtn setTitle:@"View Code" forState:UIControlStateNormal];
-            self.voidCodeViewer.hidden = YES;
-        }
-        break;
-    case 1:
-        if (self.captureAuthCodeViewer.hidden) {
-            [self.captureAuthCodeViewBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-            self.captureAuthCodeViewer.hidden = NO;
-            self.captureAuthCodeViewer.text = @"[PayPalRetailSDK.transactionManager captureAuthorization:self.authTransactionNumber invoiceId:self.invoice.payPalId totalAmount:amountToCapture gratuityAmount:0 currency:self.invoice.currency callback:^(PPRetailError *error, NSString *captureId) { \n <code to handle success/failure> \n }];";
-        } else {
-            [self.captureAuthCodeViewBtn setTitle:@"View Code" forState:UIControlStateNormal];
-            self.captureAuthCodeViewer.hidden = YES;
-        }
-        break;
-    default:
-        NSLog(@"No Button Tag Found");
-        break;
-    }
+-(void)setUpDefaultView{
+    self.successMsg.text = [NSString stringWithFormat:@"Your authorization was successful: $%@", self.invoice.total];;
+    [self.successMsg sizeToFit];
+    self.voidCodeViewer.text = @"[PayPalRetailSDK.transactionManager voidAuthorization:self.authTransactionNumber callback:^(PPRetailError *error) { \n <code to handle success/failure> \n }];";
+     self.captureAuthCodeViewer.text = @"[PayPalRetailSDK.transactionManager captureAuthorization:self.authTransactionNumber invoiceId:self.invoice.payPalId totalAmount:amountToCapture gratuityAmount:0 currency:self.invoice.currency callback:^(PPRetailError *error, NSString *captureId) { \n <code to handle success/failure> \n }];";
+    
+    [CustomButton customizeButton:_voidAuthBtn];
+    [CustomButton customizeButton:_captureAuthBtn];
 }
-
-- (IBAction)startOver:(id)sender {
-     [self performSegueWithIdentifier:@"goToPaymentsView" sender:self];
-}
-
 - (UINavigationController *)getCurrentNavigationController {
     return self.navigationController;
 }

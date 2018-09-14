@@ -7,6 +7,7 @@
 //
 
 #import "PaymentViewController.h"
+#import "UIButton+CustomButton.h"
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
 #import "NSString+Common.h"
 #import "PaymentCompletedViewController.h"
@@ -19,16 +20,13 @@
 
 
 @interface PaymentViewController () <PPHRetailSDKAppDelegate,TransactionOptionsViewControllerDelegate,OfflineModeViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *demoAppLbl;
+@property (weak, nonatomic) IBOutlet UIButton *offlineModeButton;
 @property (weak, nonatomic) IBOutlet UITextField *invAmount;
 @property (weak, nonatomic) IBOutlet UIButton *createInvoiceBtn;
-@property (weak, nonatomic) IBOutlet UIButton *createInvCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *createInvCodeView;
 @property (weak, nonatomic) IBOutlet UIButton *createTxnBtn;
-@property (weak, nonatomic) IBOutlet UIButton *createTxnCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *createTxnCodeView;
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnBtn;
-@property (weak, nonatomic) IBOutlet UIButton *acceptTxnCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *acceptTxnCodeView;
 @property PPRetailTransactionContext *tc;
 @property PPRetailInvoice *invoice;
@@ -47,29 +45,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpDefaultView];
+    [self setUpUI];
+    
     [PayPalRetailSDK setRetailSDKAppDelegate:self];
-    // init toolbar for keyboard
-    UIToolbar *toolbar = [[UIToolbar alloc] init];
-    toolbar.frame = CGRectMake(0, 0, self.view.frame.size.width, 30);
-    //create left side empty space so that done button set on right side
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonAction)];
-    [toolbar setItems:@[flexSpace, doneBtn]];
-    [toolbar sizeToFit];
-    //setting toolbar as inputAccessoryView
-    self.invAmount.inputAccessoryView = toolbar;
-    // Setting up initial aesthetics.
-    self.invAmount.layer.borderColor =  [UIColor colorWithRed:0.0f/255.0f green:159.0f/255.0f blue:228.0f/255.0f alpha:1.0f].CGColor;
-    [self.invAmount addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
     // Set default options for transactions
     self.options = [PPRetailTransactionBeginOptions defaultOptions];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.offlineModeViewController = [storyboard instantiateViewControllerWithIdentifier:@"offlineModeViewController"];
-    self.offlineModeViewController.delegate = self;
-    
-    self.transactionOptionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"transactionOptionsViewController"];
-    self.transactionOptionsViewController.delegate = self;
     
     // Initialize preferred form factor array
     self.formFactorArray = [[NSMutableArray alloc] init];
@@ -84,6 +65,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setUpDefaultView];
     NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
     self.currencySymbol = [userDefaults stringForKey:@"CURRENCY_SYMBOL"];
     [self.invAmount setPlaceholder:[NSString stringWithFormat:@"%@ 0.00",self.currencySymbol]];
@@ -129,8 +111,7 @@
         self.invoice = mInvoice;
         self.invAmount.enabled = NO;
         self.createInvoiceBtn.enabled = NO;
-        UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-        [self.createInvoiceBtn setImage:btnImage forState: UIControlStateDisabled];
+        [CustomButton buttonWasSelected:self.createInvoiceBtn];
         self.createTxnBtn.enabled = YES;
     } else {
         [self invokeAlert:@"Error" andMessage:[NSString stringWithFormat:@"Either there are no line items or the total amount is less than %@1",self.currencySymbol]];
@@ -143,25 +124,12 @@
     
     [PayPalRetailSDK.transactionManager createTransaction:self.invoice callback:^(PPRetailError *error, PPRetailTransactionContext *context) {
         self.tc = context;
-        UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-        [self.createTxnBtn setImage:btnImage forState: UIControlStateDisabled];
+       [CustomButton buttonWasSelected:self.createTxnBtn];
         self.createTxnBtn.enabled = NO;
         self.acceptTxnBtn.enabled = YES;
         
     }];
 }
-
-- (IBAction)paymentOptions:(id)sender {
-    self.transactionOptionsViewController.formFactorArray = self.formFactorArray;
-    self.transactionOptionsViewController.transactionOptions = self.options;
-    [self presentViewController:self.transactionOptionsViewController animated:true completion:nil];
-}
-
-- (IBAction)offlinePaymentMode:(id)sender {
-    self.offlineModeViewController.offlineMode = self.offlineMode;
-    [self presentViewController:self.offlineModeViewController animated:true completion:nil];
-}
-
 
 // This function will activate the reader by calling the begin method of TransactionContext.  This will
 // activate the reader and have it show the payment methods available for payment.  The listeners are
@@ -200,41 +168,94 @@
     [self.tc beginPayment:self.options];
 }
 
-- (IBAction)showCode:(id)sender {
-    switch(((UIView*)sender).tag){
-    case 0:
-        if (self.createInvCodeView.hidden) {
-            [self.createInvCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-            self.createInvCodeView.hidden = NO;
-            self.createInvCodeView.text = @"mInvoice = [[PPRetailInvoice init] initWithCurrencyCode: @\"USD\"];";
-        } else {
-            [self.createInvCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
-            self.createInvCodeView.hidden = YES;
-        }
-        break;
-    case 1:
-        if (self.createTxnCodeView.hidden) {
-            [self.createTxnCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-            self.createTxnCodeView.hidden = NO;
-            self.createTxnCodeView.text = @"[[PayPalRetailSDK transactionManager] createTransaction:self.invoice callback:^(PPRetailError *error, PPRetailTransactionContext *context) {\n // Set the transactionContext or handle the error \n self.tc = context \n }];";
-        } else {
-            [self.createTxnCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
-            self.createTxnCodeView.hidden = YES;
-        }
-        break;
-    case 2:
-        if (self.acceptTxnCodeView.hidden) {
-            [self.acceptTxnCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-            self.acceptTxnCodeView.hidden = NO;
-            self.acceptTxnCodeView.text = @"[self.tc beginPayment:options];";
-        } else {
-            [self.acceptTxnCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
-            self.acceptTxnCodeView.hidden = YES;
-        }
-        break;
-    default:
-        NSLog(@"No Button Tag Found");
-        break;
+- (IBAction)offlinePaymentMode:(id)sender {
+    [self performSegueWithIdentifier:@"offlineModeVC" sender:self];
+}
+
+- (IBAction)paymentOptions:(id)sender {
+    [self performSegueWithIdentifier:@"transactionOptionsVC" sender:self];
+}
+
+-(void) goToAuthCompletedViewController {
+    [self performSegueWithIdentifier:@"goToAuthCompletedView" sender:self];
+}
+
+-(void) goToPaymentCompletedViewController {
+    [self performSegueWithIdentifier:@"goToPmtCompletedView" sender:self];
+}
+
+-(void) goToOfflinePaymentCompletedViewController {
+    [self performSegueWithIdentifier:@"offlinePaymentCompletedVC" sender:self];
+}
+
+-(void) transactionOptionsController:(TransactionOptionsViewController *)controller options:(PPRetailTransactionBeginOptions *)options {
+    self.options = options;
+}
+
+-(void)offlineModeController:(OfflineModeViewController *)controller offline:(BOOL)isOffline{
+     self.offlineMode = isOffline;
+}
+
+-(void)setUpDefaultView{
+    [self setUpTextFieldToolbar:_invAmount];
+    [self customizeOfflineButton:self.offlineModeButton offline:self.offlineMode];
+    self.createInvCodeView.text = @"mInvoice = [[PPRetailInvoice init] initWithCurrencyCode: @\"USD\"];";
+    self.createTxnCodeView.text = @"[[PayPalRetailSDK transactionManager] createTransaction:self.invoice callback:^(PPRetailError *error, PPRetailTransactionContext *context) {\n // Set the transactionContext or handle the error \n self.tc = context \n }];";
+    self.acceptTxnCodeView.text = @"[self.tc beginPayment:options];";
+}
+
+-(void)setUpUI{
+    [CustomButton customizeButton:self.createInvoiceBtn];
+    [CustomButton customizeButton:self.createTxnBtn];
+    [CustomButton customizeButton:self.acceptTxnBtn];
+}
+
+-(void)customizeOfflineButton:(UIButton *)button offline:(BOOL)offline{
+    if (offline){
+        [button setTitle:@"ENABLED" forState:UIControlStateNormal];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+        [button setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
+        [[button imageView] setImage:[UIImage imageNamed:@"Arrow Right"]];
+        [button setImageEdgeInsets:UIEdgeInsetsMake(0, button.frame.size.width - 10, 0, 0)];
+    } else {
+        [button setTitle:@"" forState:UIControlStateNormal];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+        [button setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+        [[button imageView] setImage:[UIImage imageNamed:@"Arrow Right"]];
+        [button setImageEdgeInsets:UIEdgeInsetsMake(0, button.frame.size.width - 10, 0, 0)];
+    }
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"goToPmtCompletedView"]) {
+        PaymentCompletedViewController *pmtCompletedViewController = (PaymentCompletedViewController *) segue.destinationViewController;
+        pmtCompletedViewController.isCapture = NO;
+        pmtCompletedViewController.transactionNumber = self.transactionNumber;
+        pmtCompletedViewController.invoice = self.invoice;
+        pmtCompletedViewController.paymentMethod = self.paymentMethod;
+    }
+    if([segue.identifier isEqualToString:@"goToAuthCompletedView"]) {
+        AuthCompletedViewController *authCompletedViewController = (AuthCompletedViewController *) segue.destinationViewController;
+        authCompletedViewController.authTransactionNumber = self.transactionNumber;
+        authCompletedViewController.invoice = self.invoice;
+        authCompletedViewController.paymentMethod = self.paymentMethod;
+    }
+    
+    if ([segue.identifier isEqualToString:@"offlineModeVC"]){
+        OfflineModeViewController *offlineModeViewController = (OfflineModeViewController *) segue.destinationViewController;
+        [offlineModeViewController setDelegate: self];
+        offlineModeViewController.offlineMode = self.offlineMode;
+    }
+    
+    if ([segue.identifier isEqualToString:@"transactionOptionsVC"]) {
+        TransactionOptionsViewController *transactionOptionsViewController = (TransactionOptionsViewController *) segue.destinationViewController;
+        [transactionOptionsViewController setDelegate: self];
+        transactionOptionsViewController.formFactorArray = self.formFactorArray;
+        transactionOptionsViewController.transactionOptions = self.options;
     }
 }
 
@@ -250,7 +271,7 @@
         return;
     }
     self.createInvoiceBtn.enabled = YES;
-
+    
 }
 
 -(void) doneButtonAction {
@@ -266,7 +287,7 @@
                                  alertControllerWithTitle:title
                                  message:message
                                  preferredStyle:UIAlertControllerStyleAlert];
-
+    
     UIAlertAction* yesButton = [UIAlertAction
                                 actionWithTitle:@"Yes"
                                 style:UIAlertActionStyleDefault
@@ -287,43 +308,20 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void) goToAuthCompletedViewController {
-    [self performSegueWithIdentifier:@"goToAuthCompletedView" sender:self];
-}
-
--(void) goToPaymentCompletedViewController {
-    [self performSegueWithIdentifier:@"goToPmtCompletedView" sender:self];
-}
-
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     if([segue.identifier isEqualToString:@"goToPmtCompletedView"]) {
-         PaymentCompletedViewController *pmtCompletedViewController = (PaymentCompletedViewController *) segue.destinationViewController;
-         pmtCompletedViewController.isCapture = NO;
-         pmtCompletedViewController.transactionNumber = self.transactionNumber;
-         pmtCompletedViewController.invoice = self.invoice;
-         pmtCompletedViewController.paymentMethod = self.paymentMethod;
-     }
-     if([segue.identifier isEqualToString:@"goToAuthCompletedView"]) {
-        AuthCompletedViewController *authCompletedViewController = (AuthCompletedViewController *) segue.destinationViewController;
-        authCompletedViewController.authTransactionNumber = self.transactionNumber;
-        authCompletedViewController.invoice = self.invoice;
-        authCompletedViewController.paymentMethod = self.paymentMethod;
-     }
- }
-
--(void) goToOfflinePaymentCompletedViewController {
-    [self performSegueWithIdentifier:@"offlinePaymentCompletedVC" sender:self];
-}
-
-- (void)transactionOptions:(TransactionOptionsViewController*)controller :(PPRetailTransactionBeginOptions*)options {
-    self.options = options;
-}
-
-- (void)offlineMode:(OfflineModeViewController *)controller :(BOOL)isOffline {
-    self.offlineMode = isOffline;
+-(void)setUpTextFieldToolbar:(UITextField *)textfield{
+    // init toolbar for keyboard
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.frame = CGRectMake(0, 0, self.view.frame.size.width, 30);
+    //create left side empty space so that done button set on right side
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonAction)];
+    [toolbar setItems:@[flexSpace, doneBtn]];
+    [toolbar sizeToFit];
+    //setting toolbar as inputAccessoryView
+    textfield.inputAccessoryView = toolbar;
+    // Setting up initial aesthetics.
+    textfield.layer.borderColor =  [UIColor colorWithRed:0.0f/255.0f green:159.0f/255.0f blue:228.0f/255.0f alpha:1.0f].CGColor;
+    [textfield addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
 @end

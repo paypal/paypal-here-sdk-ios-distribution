@@ -7,13 +7,14 @@
 //
 
 #import "PaymentCompletedViewController.h"
+#import "UIButton+CustomButton.h"
 
 
 @interface PaymentCompletedViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *provideRefundBtn;
 @property (weak, nonatomic) IBOutlet UILabel *successMsg;
-@property (weak, nonatomic) IBOutlet UIButton *viewRefundCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *refundCodeViewer;
+@property (weak, nonatomic) IBOutlet UIButton *skipRefund;
 @property NSDecimalNumber *refundAmount;
 @end
 
@@ -21,8 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.refundCodeViewer.hidden = YES;
+    [CustomButton customizeButton:_provideRefundBtn];
+    [CustomButton customizeButton:_skipRefund];
+    self.refundCodeViewer.text = @"[tc beginRefund:YES amount:self.refundAmount];";
     if(self.isCapture) {
         if(self.isTip) {
             self.successMsg.text = [NSString stringWithFormat:@"Your tip of $%1$@ was added for a capture total of $%2$@ ",self.gratuityAmt, self.capturedAmount];
@@ -59,27 +61,16 @@
             }
             NSLog(@"Refund ID: %@", record.transactionNumber);
             [self.navigationController popToViewController:self animated:false];
-            [self noThanksBtn:nil];
+            [self skipRefund:nil];
         }];
         
         [context beginRefund:YES amount:self.refundAmount];
     }];
 }
 
-- (IBAction)showRefundCode:(id)sender {
-    if (self.refundCodeViewer.hidden) {
-        [self.viewRefundCodeBtn setTitle:@"Hide Code" forState: UIControlStateNormal];
-        self.refundCodeViewer.hidden = NO;
-        self.refundCodeViewer.text = @"[tc beginRefund:YES amount:self.refundAmount];";
-    } else {
-        [self.viewRefundCodeBtn setTitle:@"View Code" forState: UIControlStateNormal];
-        self.refundCodeViewer.hidden = YES;
-    }
-}
-
 // If the 'No Thanks' button is selected, we direct back to the PaymentViewController
 // so that more transactions can be run.
-- (IBAction)noThanksBtn:(id)sender {
+- (IBAction)skipRefund:(id)sender {
     [self performSegueWithIdentifier:@"goToPaymentsView" sender:self];
 }
 

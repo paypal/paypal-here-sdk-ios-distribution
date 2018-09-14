@@ -7,22 +7,19 @@
 //
 
 #import "InitializeViewController.h"
+#import "UIButton+CustomButton.h"
 #import <SafariServices/SafariServices.h>
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
 
 @interface InitializeViewController () <SFSafariViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *demoAppLbl;
 @property (weak, nonatomic) IBOutlet UIButton *initializeSdkButton;
 @property (weak, nonatomic) IBOutlet UIButton *initializeMerchantButton;
 @property (weak, nonatomic) IBOutlet UILabel *merchEmailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *mercAcctLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
-@property (weak, nonatomic) IBOutlet UIButton *initializeSdkInfoBtn;
-@property (weak, nonatomic) IBOutlet UIButton *initializeMerchInfoBtn;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *envSelector;
-@property (weak, nonatomic) IBOutlet UITextView *initializeMerchCode;
 @property (weak, nonatomic) IBOutlet UITextView *initializeSdkCode;
+@property (weak, nonatomic) IBOutlet UITextView *initializeMerchCode;
 @property (weak, nonatomic) IBOutlet UIView *merchInfoView;
 @property (weak, nonatomic) IBOutlet UIButton *connectCardReaderBtn;
 @end
@@ -33,14 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Setting up initial aesthetics.
-    [self.demoAppLbl setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
-    self.merchInfoView.hidden = YES;
-    self.initializeSdkCode.hidden = YES;
-    self.initializeMerchCode.hidden = YES;
-    self.initializeMerchantButton.enabled = NO;
-    self.connectCardReaderBtn.hidden = YES;
+    [self setUpDefaultScreen];
     
     // Receive the notification that the token is being returned
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupMerchant:) name:@"kCloseSafariViewControllerNotification" object:nil];
@@ -55,63 +45,16 @@
     self.initializeMerchantButton.enabled = YES;
     // First things first, we need to initilize the SDK itself.
     [PayPalRetailSDK initializeSDK];
-    UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-    [self.initializeSdkButton setImage:btnImage forState: UIControlStateDisabled];
+   [CustomButton buttonWasSelected:self.initializeSdkButton];
     self.initializeSdkButton.enabled = NO;
 }
 
 - (IBAction)initMerchant:(id)sender {
     self.envSelector.enabled = NO;
     self.activitySpinner.color = [UIColor blackColor];
+    [self.initializeMerchantButton setHidden:YES];
     [self.activitySpinner startAnimating];
     [self performLogin];
-}
-
-- (IBAction)initSdkInfo:(id)sender {
-    if(self.initializeSdkCode.hidden) {
-        [self.initializeSdkInfoBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-        self.initializeSdkCode.hidden = NO;
-        [self.initializeSdkCode  setText:@"[PayPalRetailSDK initializeSDK];"];
-    } else {
-        [self.initializeSdkInfoBtn setTitle:@"View Code" forState:UIControlStateNormal];
-        self.initializeSdkCode.hidden = YES;
-    }
-}
-
-- (IBAction)initMerchantInfo:(id)sender {
-    
-    if(self.initializeMerchCode.hidden) {
-        [self.initializeMerchInfoBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-        self.initializeMerchCode.hidden = NO;
-        self.initializeMerchCode.text = @"[PayPalRetailSDK initializeMerchantWithCredentials:(SdkCredential *)sdkCreds completionHandler:^(PPRetailError *error, PPRetailMerchant *merchant) {\n <code to handle success/failure> \n}];";
-    } else {
-        [self.initializeMerchInfoBtn setTitle:@"View Code" forState:UIControlStateNormal];
-        self.initializeMerchCode.hidden = YES;
-        if(![self.merchEmailLabel.text isEqualToString:@""]) {
-            self.merchInfoView.hidden = NO;
-        }
-    }
-}
-
-- (IBAction)logout:(id)sender {
-    // Clear out the UserDefaults and show the appropriate buttons/labels
-    NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
-    [tokenDefault removeObjectForKey:@"ACCESS_TOKEN"];
-    [tokenDefault removeObjectForKey:@"REFRESH_URL"];
-    [tokenDefault removeObjectForKey:@"ENVIRONMENT"];
-    [tokenDefault removeObjectForKey:@"MERCH_CURRENCY"];
-    [tokenDefault synchronize];
-    self.merchEmailLabel.text = @"";
-    self.merchInfoView.hidden = YES;
-    self.initializeMerchantButton.enabled = YES;
-    UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
-    [self.initializeMerchantButton setImage:btnImage forState: UIControlStateDisabled];
-    self.envSelector.enabled = YES;
-    self.connectCardReaderBtn.hidden = YES;
-}
-
-- (IBAction)goToDeviceDiscovery:(id)sender {
-    [self performSegueWithIdentifier:@"showDeviceDiscovery" sender:sender];
 }
 
 - (void)setupMerchant:(NSNotification *)notification {
@@ -130,6 +73,7 @@
           self.activitySpinner.color = [UIColor redColor];
           self.activitySpinner.hidesWhenStopped = NO;
           [self.activitySpinner stopAnimating];
+          [self.initializeMerchantButton setHidden:NO];
           NSLog(@"Debug ID: %@",error.debugId);
           NSLog(@"Error Message: %@",error.code);
           NSLog(@"Error Code: %@",error.message);
@@ -140,6 +84,7 @@
         // Start watching for the audio reader
         [PayPalRetailSDK startWatchingAudio];
         self.activitySpinner.hidesWhenStopped = YES;
+        [self.initializeMerchantButton setHidden:NO];
         [self.activitySpinner stopAnimating];
         UIImage *btnImage = [UIImage imageNamed:@"small-greenarrow"];
         [self.initializeMerchantButton setImage:btnImage forState: UIControlStateDisabled];
@@ -157,9 +102,30 @@
         merchant.referrerCode = @"PPHSDK_SampleApp_iOS";
         //Enable the connect card reader button here
         self.connectCardReaderBtn.hidden = NO;
+        [CustomButton buttonWasSelected:self.initializeMerchantButton];
     }];
     
 }
+
+- (IBAction)goToDeviceDiscovery:(id)sender {
+    [self performSegueWithIdentifier:@"showDeviceDiscovery" sender:sender];
+}
+
+- (IBAction)logout:(id)sender {
+    // Clear out the UserDefaults and show the appropriate buttons/labels
+    NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
+    [tokenDefault removeObjectForKey:@"ACCESS_TOKEN"];
+    [tokenDefault removeObjectForKey:@"REFRESH_URL"];
+    [tokenDefault removeObjectForKey:@"ENVIRONMENT"];
+    [tokenDefault removeObjectForKey:@"MERCH_CURRENCY"];
+    [tokenDefault synchronize];
+    self.merchEmailLabel.text = @"";
+    self.merchInfoView.hidden = YES;
+    self.initializeMerchantButton.enabled = YES;
+    self.envSelector.enabled = YES;
+    self.connectCardReaderBtn.hidden = YES;
+}
+
 
 -(void) setCurrencyType {
     NSUserDefaults *userDefaults =  [NSUserDefaults standardUserDefaults];
@@ -178,7 +144,7 @@
     // set this to Live, simply change /sandbox to /live.  The returnTokenOnQueryString value tells
     // the sample server to return the actual token values instead of the compositeToken
     NSString *baseUrl = @"http://pph-retail-sdk-sample.herokuapp.com/toPayPal/";
-    NSString *env = [self.envSelector titleForSegmentAtIndex:self.envSelector.selectedSegmentIndex];
+    NSString *env = [[self.envSelector titleForSegmentAtIndex:self.envSelector.selectedSegmentIndex] lowercaseString];
     NSString *queryString = @"?returnTokenOnQueryString=true";
     NSURL *nsurl = [NSURL URLWithString:[[[NSArray alloc] initWithObjects:baseUrl, env, queryString,nil] componentsJoinedByString:@""]];
     
@@ -202,6 +168,17 @@
     [self.activitySpinner stopAnimating];
     self.initializeMerchantButton.enabled = YES;
     self.envSelector.enabled = YES;
+}
+
+-(void)setUpDefaultScreen{
+    // Setting up initial aesthetics.
+    self.merchInfoView.hidden = YES;
+    self.initializeMerchantButton.enabled = NO;
+    self.connectCardReaderBtn.hidden = YES;
+    self.initializeSdkCode.text = @"[PayPalRetailSDK initializeSDK];";
+    self.initializeMerchCode.text = @"[PayPalRetailSDK initializeMerchantWithCredentials:(SdkCredential *)sdkCreds completionHandler:^(PPRetailError *error, PPRetailMerchant *merchant) {\n <code to handle success/failure> \n}];";
+    [CustomButton customizeButton:_initializeSdkButton];
+    [CustomButton customizeButton:_initializeMerchantButton];
 }
 
 @end

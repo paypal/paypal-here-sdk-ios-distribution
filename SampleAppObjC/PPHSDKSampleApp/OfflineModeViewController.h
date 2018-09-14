@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
 
-@interface OfflineModeViewController : UIViewController
-@property (nonatomic,weak) id delegate;
+@interface OfflineModeViewController : UIViewController {
+ id delegate;
+}
 @property (nonatomic, assign) BOOL offlineMode;
+-(void)setDelegate:(UIViewController *) delegateController;
 @end

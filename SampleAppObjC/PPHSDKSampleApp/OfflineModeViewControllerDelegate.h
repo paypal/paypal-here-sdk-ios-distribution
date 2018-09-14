@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol OfflineModeViewControllerDelegate <NSObject>
--(void) offlineMode :(OfflineModeViewController*)controller :(BOOL)isOffline;
+@required
+-(void) offlineModeController :(OfflineModeViewController*)controller offline:(BOOL)isOffline;
 @end

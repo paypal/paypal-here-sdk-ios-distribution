@@ -8,22 +8,18 @@
 
 #import "OfflinePaymentCompletedViewController.h"
 #import "PaymentViewController.h"
+#import "UIButton+CustomButton.h"
 
 
 @interface OfflinePaymentCompletedViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *saleButton;
 @end
 
 @implementation OfflinePaymentCompletedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [CustomButton customizeButton:_saleButton];
 }
 
 // THIS FUNCTION IS ONLY FOR UI.

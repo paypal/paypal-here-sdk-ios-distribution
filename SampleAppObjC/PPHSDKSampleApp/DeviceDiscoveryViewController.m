@@ -7,21 +7,21 @@
 //
 
 #import "DeviceDiscoveryViewController.h"
+#import "UIButton+CustomButton.h"
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
 
 @interface DeviceDiscoveryViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *goToPmtPageBtn;
 @property (weak, nonatomic) IBOutlet UIButton *findAndConnect;
-@property (weak, nonatomic) IBOutlet UIButton *findAndConnectCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *findAndConnectCodeView;
 @property (weak, nonatomic) IBOutlet UIButton *connectLastKnown;
-@property (weak, nonatomic) IBOutlet UIButton *connectLastKnownCodeBtn;
 @property (weak, nonatomic) IBOutlet UITextView *connectLastKnownCodeView;
 @property (weak, nonatomic) IBOutlet UILabel *activeReaderLbl;
 @property (weak, nonatomic) IBOutlet UIButton *autoConnectReader;
-@property (weak, nonatomic) IBOutlet UIButton *autoConnectReaderCodeBtn;
+
 @property (weak, nonatomic) IBOutlet UITextView *autoConnectReaderCodeView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *autoConnectActivityIndicator;
+
 @property PPRetailDeviceManager *deviceManager;
 @end
 
@@ -29,13 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpDefaultView];
     self.deviceManager = [PayPalRetailSDK deviceManager];
-    // Setting up initial aesthetics
-    self.findAndConnectCodeView.hidden = YES;
-    self.connectLastKnownCodeView.hidden = YES;
-    self.autoConnectReaderCodeView.hidden = YES;
-    self.goToPmtPageBtn.enabled = NO;
-    self.activeReaderLbl.text = @"";
     
     // Watch for audio readers.
     // This will show a microphone connection permission prompt on the initial call (only once per app install)
@@ -44,11 +39,6 @@
     // The audio reader may not be available to some merchants based on their location or other criteria
     // This is required if the app would like to use audio readers
     [PayPalRetailSDK startWatchingAudio];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // Function to search for connected devices and show the UI to select which
@@ -135,46 +125,21 @@
     }
 }
 
-- (IBAction)showCode:(id)sender {
-    switch(((UIView*)sender).tag){
-    case 0:
-            if(self.findAndConnectCodeView.hidden) {
-                [self.findAndConnectCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-                self.findAndConnectCodeView.hidden = NO;
-                self.findAndConnectCodeView.text = @"[self.deviceManager searchAndConnect:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
-            } else {
-                [self.findAndConnectCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
-                 self.findAndConnectCodeView.hidden = YES;
-            }
-            break;
-    case 1:
-            if(self.connectLastKnownCodeView.hidden) {
-                [self.connectLastKnownCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-                self.connectLastKnownCodeView.hidden = NO;
-                self.connectLastKnownCodeView.text = @"[self.deviceManager connectToLastActiveReader:^(PPRetailError *error, PPRetailPaymentDevice *cardReader)  {\n <code to handle success/failure> \n}];";
-            } else {
-                [self.connectLastKnownCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
-                self.connectLastKnownCodeView.hidden = YES;
-            }
-            break;
-    case 2:
-            if(self.autoConnectReaderCodeView.hidden) {
-                [self.autoConnectReaderCodeBtn setTitle:@"Hide Code" forState:UIControlStateNormal];
-                self.autoConnectReaderCodeView.hidden = NO;
-                self.autoConnectReaderCodeView.text = @"[self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
-            } else {
-                [self.autoConnectReaderCodeBtn setTitle:@"View Code" forState:UIControlStateNormal];
-                self.autoConnectReaderCodeView.hidden = YES;
-            }
-            break;
-    default:
-            NSLog(@"No Button Tag Found");
-            break;
-    }
-}
-
 - (IBAction)goToPmtPage:(id)sender {
     [self performSegueWithIdentifier:@"goToPmtPage" sender:sender];
+}
+
+-(void)setUpDefaultView{
+    // Setting up initial aesthetics
+    self.goToPmtPageBtn.enabled = NO;
+    self.activeReaderLbl.text = @"";
+    self.findAndConnectCodeView.text = @"[self.deviceManager searchAndConnect:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
+    self.connectLastKnownCodeView.text = @"[self.deviceManager connectToLastActiveReader:^(PPRetailError *error, PPRetailPaymentDevice *cardReader)  {\n <code to handle success/failure> \n}];";
+     self.autoConnectReaderCodeView.text = @"[self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
+    
+    [CustomButton customizeButton:_findAndConnect];
+    [CustomButton customizeButton:_connectLastKnown];
+    [CustomButton customizeButton:_autoConnectReader];
 }
 
 
