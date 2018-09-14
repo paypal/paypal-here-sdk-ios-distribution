@@ -48,7 +48,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let userDefaults = UserDefaults.init()
-        currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as! String
+        currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as? String ?? "$"
         invAmount.placeholder = "\(currencySymbol!) 0.00"
     }
     
@@ -306,6 +306,7 @@ extension PPRetailTransactionBeginOptions {
         options.preferredFormFactors = []
         options.tippingOnReaderEnabled = false
         options.amountBasedTipping = false
+        options.quickChipEnabled = false
         options.isAuthCapture = false
         options.tag = ""
         return options
