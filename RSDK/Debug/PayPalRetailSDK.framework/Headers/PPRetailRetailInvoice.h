@@ -142,6 +142,10 @@
     * Check if the payment was declined by the api
     */
     @property (nonatomic,assign) BOOL isFailed;
+    /**
+    * the referrer code coming from sideloader calls
+    */
+    @property (nonatomic,strong,nullable) NSString* referrerCode;
 
 
     
