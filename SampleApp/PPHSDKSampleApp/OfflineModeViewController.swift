@@ -28,6 +28,7 @@ class OfflineModeViewController: UIViewController {
     
     // Local Flag for offline Mode
     var offlineMode: Bool!
+    var offlineSDK: Bool = false
     
     weak var delegate: OfflineModeViewControllerDelegate?
     
@@ -65,9 +66,11 @@ class OfflineModeViewController: UIViewController {
             if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEligibility())! {
                 // This call with initalize offlinePayment. Any kind of failure will be returned to this callback.
                 // Along with the status of the transaction that were done during offline Mode.
-                PayPalRetailSDK.transactionManager()?.startOfflinePayment({ (error, offlinePaymentStatus) in
+                PayPalRetailSDK.transactionManager()?.startOfflinePayment({ (error, statusList) in
                     if error != nil {
                         print(error?.developerMessage ?? "There was a problem initializing offlinePayment.")
+                    } else {
+                        self.offlineTransactionStatusList(statusList: statusList)
                     }
                 })
             } else {
@@ -83,7 +86,13 @@ class OfflineModeViewController: UIViewController {
             }
         } else {
             // Turn off offlineMode
-            PayPalRetailSDK.transactionManager().stopOfflinePayment()
+            PayPalRetailSDK.transactionManager()?.stopOfflinePayment({ (error, statusList) in
+                if error != nil {
+                    print("Error: \(error.debugDescription)")
+                } else {
+                    self.offlineTransactionStatusList(statusList: statusList)
+                }
+            })
             self.toggleOfflineModeUI()
         }
     }
@@ -94,28 +103,9 @@ class OfflineModeViewController: UIViewController {
     @IBAction func getOfflineStatus(_ sender: CustomButton) {
         PayPalRetailSDK.transactionManager().getOfflinePaymentStatus { (error, statusList) in
             if error  != nil {
-                print("Error: ", error?.debugDescription ?? "")
+                print("Error: \(error.debugDescription)")
             } else {
-                guard let statusArray: [PPRetailOfflinePaymentStatus] = statusList as? [PPRetailOfflinePaymentStatus] else {return}
-                var uncompleted: Int = 0
-                var completed: Int = 0
-                var failed: Int = 0
-                var declined: Int = 0
-                
-                for status in statusArray {
-                    if status.errNo == 0 {
-                        if status.retry > 0 {
-                            completed += 1
-                        } else {
-                            uncompleted += 1
-                        }
-                    } else if status.isDeclined {
-                        declined += 1
-                    } else {
-                        failed += 1
-                    }
-                }
-                self.replayTransactionResultsTextView.text = "Uncompleted: \(uncompleted) \nCompleted: \(completed) \nFailed: \(failed) \nDeclined: \(declined)"
+                self.offlineTransactionStatusList(statusList: statusList)
             }
         }
     }
@@ -135,26 +125,10 @@ class OfflineModeViewController: UIViewController {
             if error != nil {
                 print("Error is: ", error.debugDescription)
             } else {
-                guard let statusArray: [PPRetailOfflinePaymentStatus] = statusList as? [PPRetailOfflinePaymentStatus] else {return}
-                var completed: Int = 0
-                var failed: Int = 0
-                var declined: Int = 0
-                
-                for status in statusArray {
-                    if status.errNo == 0 {
-                        completed += 1
-                    } else if status.isDeclined {
-                        declined += 1
-                    } else {
-                        failed += 1
-                    }
-                }
-                self.replayTransactionResultsTextView.text = "Completed: \(completed) \nFailed: \(failed) \nDeclined: \(declined)"
-                self.stopReplayBtn.isEnabled = false
+                self.offlineTransactionStatusList(statusList: statusList)
             }
         }
     }
-    
     
     /// If we are replaying transactions and we want to stop replayingTransactions then we can call this function.
     /// For example: If you went offline when replaying transactions.
@@ -162,20 +136,54 @@ class OfflineModeViewController: UIViewController {
     @IBAction func stopReplay(_ sender: CustomButton) {
         replayTransactionIndicatorView.stopAnimating()
         replayOfflineTransactionBtn.isHidden = false
-        PayPalRetailSDK.transactionManager()?.stopReplayOfflineTxns({ (error, offlinePaymentStatus) in
+        PayPalRetailSDK.transactionManager()?.stopReplayOfflineTxns({ (error, statusList) in
             if error != nil {
                 print("Stopped replaying offline transactions")
+            } else {
+                self.offlineTransactionStatusList(statusList: statusList)
             }
-         })
+        })
+    }
+    
+    private func offlineTransactionStatusList(statusList: [Any]?){
+        guard let statusArray: [PPRetailOfflinePaymentStatus] = statusList as? [PPRetailOfflinePaymentStatus] else {return}
+        var uncompleted: Int = 0
+        var completed: Int = 0
+        var failed: Int = 0
+        var declined: Int = 0
+        
+        for status in statusArray {
+            if status.errNo == 0 {
+                if status.retry > 0 {
+                    completed += 1
+                } else {
+                    uncompleted += 1
+                }
+            } else if status.isDeclined {
+                declined += 1
+            } else {
+                failed += 1
+            }
+        }
+        self.replayTransactionResultsTextView.text = "Uncompleted: \(uncompleted) \nCompleted: \(completed) \nFailed: \(failed) \nDeclined: \(declined)"
+        self.stopReplayBtn.isEnabled = false
     }
     
     private func setUpDefaultView(){
         getOfflineStatusCodeTxtView.text = "PayPalRetailSDK.transactionManager().getOfflinePaymentStatus({ (error, statusList) in // Code })"
         replayOfflineTransactionCodeTxtView.text = "PayPalRetailSDK.transactionManager().startReplayOfflineTxns({ (error, statusList) in // Code })"
         stopReplayCodeTxtView.text = "PayPalRetailSDK.transactionManager().stopReplayOfflineTxns()"
-        self.replayTransactionResultsTextView.text = "Completed: 0 \nFailed: 0 \nDeclined: 0"
+        self.replayTransactionResultsTextView.text = "Uncompleted: 0 \nCompleted: 0 \nFailed: 0 \nDeclined: 0"
         toggleOfflineModeUI()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        offlineSDKInit()
+    }
+    
+    @objc private func offlineSDKInit(){
+        let tokenDefault = UserDefaults.init()
+        guard (tokenDefault.value(forKey: "offlineSDKInit") != nil) else { return }
+        self.offlineSDK = tokenDefault.bool(forKey: "offlineSDKInit")
+        self.offlineModeSwitch.isEnabled = false
     }
     
     private func toggleOfflineModeUI(){
@@ -183,6 +191,7 @@ class OfflineModeViewController: UIViewController {
             offlineModeLabel.text = "ENABLED"
             offlineModeLabel.textColor = .green
             replayOfflineTransactionBtn.isEnabled = false
+            stopReplayBtn.isEnabled = false
         } else {
             offlineModeLabel.text = ""
             offlineModeLabel.textColor = .red

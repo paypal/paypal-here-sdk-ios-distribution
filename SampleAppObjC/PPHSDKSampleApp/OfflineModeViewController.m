@@ -52,9 +52,11 @@
 -(void) setMode {
     if(self.offlineMode) {
         if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEligibility]) {
-            [[PayPalRetailSDK transactionManager] startOfflinePayment:^(PPRetailError *error, NSArray *offlinePaymentStatus) {
+            [[PayPalRetailSDK transactionManager] startOfflinePayment:^(PPRetailError *error, NSArray *status) {
                 if (error != nil){
                     NSLog(@"%@", error.developerMessage);
+                } else {
+                    [self offlineTransactionStatusList:status];
                 }
             }];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
@@ -64,7 +66,13 @@
             [self.offlineModeSwitch setOn:NO animated:YES];
         }
     } else {
-        [[PayPalRetailSDK transactionManager] stopOfflinePayment];
+        [[PayPalRetailSDK transactionManager] stopOfflinePayment:^(PPRetailError *error, NSArray *status) {
+            if (error != nil){
+                NSLog(@"Error: %@", error.debugDescription);
+            } else {
+                [self offlineTransactionStatusList:status];
+            }
+        }];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
     }
 }
@@ -77,24 +85,7 @@
         if(error != nil) {
             NSLog(@"Error: %@", error.description);
         } else {
-            int uncompleted = 0;
-            int completed = 0;
-            int failed = 0;
-            int declined = 0;
-            for (PPRetailOfflinePaymentStatus *s in status) {
-                if(s.errNo == 0) {
-                    if(s.retry > 0) {
-                        completed++;
-                    } else {
-                        uncompleted++;
-                    }
-                } else if(s.isDeclined) {
-                    declined++;
-                } else {
-                    failed++;
-                }
-            }
-            self.replayTransactionResultsTextView.text = [NSString stringWithFormat:@"Results:\n Uncompleted: %d \n Completed: %d \n Failed: %d \n Declined: %d",uncompleted,completed,failed,declined];
+            [self offlineTransactionStatusList:status];
         }
     }];
 }
@@ -111,20 +102,7 @@
         if(error != nil) {
             NSLog(@"Error: %@", error.description);
         } else {
-            int completed = 0;
-            int failed = 0;
-            int declined = 0;
-            for (PPRetailOfflinePaymentStatus *s in status) {
-                if(s.errNo == 0) {
-                    completed++;
-                } else if(s.isDeclined) {
-                    declined++;
-                } else {
-                    failed++;
-                }
-            }
-            self.replayTransactionResultsTextView.text = [NSString stringWithFormat:@"Results:\n Completed: %d \n Failed: %d |\n Declined: %d",completed,failed,declined];
-            self.stopReplayBtn.enabled = NO;
+            [self offlineTransactionStatusList:status];
         }
     }];
 }
@@ -134,11 +112,35 @@
 // - Parameter sender: UIButton associated with "Stop Replay" Button
 - (IBAction)stopReplay:(UIButton *)sender {
     [self.replayTransactionIndicatorView stopAnimating];
-    [[PayPalRetailSDK transactionManager] stopReplayOfflineTxns:^(PPRetailError *error, NSArray *offlinePaymentStatus) {
+    [[PayPalRetailSDK transactionManager] stopReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {
         if (error != nil) {
             NSLog(@"Stopped replaying offline transactions");
+        } else {
+            [self offlineTransactionStatusList:status];
         }
     }];
+}
+
+-(void) offlineTransactionStatusList:(NSArray *)status{
+    int uncompleted = 0;
+    int completed = 0;
+    int failed = 0;
+    int declined = 0;
+    for (PPRetailOfflinePaymentStatus *s in status) {
+        if(s.errNo == 0) {
+            if(s.retry > 0) {
+                completed++;
+            } else {
+                uncompleted++;
+            }
+        } else if(s.isDeclined) {
+            declined++;
+        } else {
+            failed++;
+        }
+    }
+    self.replayTransactionResultsTextView.text = [NSString stringWithFormat:@"Results:\n Uncompleted: %d \n Completed: %d \n Failed: %d \n Declined: %d",uncompleted,completed,failed,declined];
+    self.stopReplayBtn.enabled = NO;
 }
 
 -(void)setDelegate:(UIViewController *)delegateController{
@@ -156,10 +158,19 @@
     self.replayOfflineTransactionCodeTxtView.text = @"[[PayPalRetailSDK transactionManager]  startReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {\n <code to handle success/failure> \n}];";
     self.stopReplayCodeTxtView.text = @"[[PayPalRetailSDK transactionManager] stopReplayOfflineTxns];";
     self.replayTransactionResultsTextView.text = @"";
+    [self offlineSDKInit];
     
     [CustomButton customizeButton:_getOfflineStatusBtn];
     [CustomButton customizeButton:_replayOfflineTransactionBtn];
     [CustomButton customizeButton:_stopReplayBtn];
+}
+
+-(void) offlineSDKInit{
+   NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
+    BOOL offlineInit = [tokenDefault boolForKey:@"offlineSDKInit"];
+    if (offlineInit){
+        self.offlineModeSwitch.enabled = NO;
+    }
 }
 
 // THIS FUNCTION IS ONLY FOR UI. This function will enable/disable "Replay Transaction" Button
