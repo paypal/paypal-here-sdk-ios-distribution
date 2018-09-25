@@ -125,11 +125,20 @@ class OfflineModeViewController: UIViewController {
     /// The call back will give you the result whether those payments are completed, failed or were declined.
     /// - Parameter sender: CustomButton associated with "Replay Offline Transaction" button
     @IBAction func replayOfflineTransaction(_ sender: CustomButton) {
+        if offlineMode {
+            let title: String = "Replaying while in Offline Mode"
+            let message: String = "Replaying transaction in offlineMode will bring the SDK back into Online Mode"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
         replayTransactionIndicatorView.startAnimating()
         replayOfflineTransactionBtn.isHidden = true
         stopReplayBtn.isEnabled = true
         PayPalRetailSDK.transactionManager().startReplayOfflineTxns { [unowned self] (error, statusList) in
             self.replayTransactionIndicatorView.stopAnimating()
+            self.toggleOfflineModeUI()
             self.replayOfflineTransactionBtn.isHidden = false
             
             if error != nil {
@@ -179,14 +188,16 @@ class OfflineModeViewController: UIViewController {
     }
     
     private func toggleOfflineModeUI(){
-        if offlineMode {
+        if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled())! {
+            offlineMode = true
             offlineModeLabel.text = "ENABLED"
             offlineModeLabel.textColor = .green
-            replayOfflineTransactionBtn.isEnabled = false
+            offlineModeSwitch.isOn = true
         } else {
+            offlineMode = false
             offlineModeLabel.text = ""
             offlineModeLabel.textColor = .red
-            replayOfflineTransactionBtn.isEnabled = true
+            offlineModeSwitch.isOn = false
         }
     }
 }
