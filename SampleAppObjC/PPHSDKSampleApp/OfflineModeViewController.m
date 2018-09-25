@@ -26,10 +26,12 @@
 
 @implementation OfflineModeViewController
 
+BOOL offlineInit = NO;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpDefaultView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleOfflineModeUI) name:@"offlineModeIsChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOfflineModeUI) name:@"offlineModeIsChanged" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -95,16 +97,37 @@
 // The call back will give you the result whether those payments are completed, failed or were declined.
 // - Parameter sender: UIButton associated with "Replay Offline Transaction" button
 - (IBAction)replayOfflineTransaction:(UIButton *)sender {
-    [self.replayTransactionIndicatorView startAnimating];
-    self.stopReplayBtn.enabled = YES;
-    [[PayPalRetailSDK transactionManager] startReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {
-        [self.replayTransactionIndicatorView stopAnimating];
-        if(error != nil) {
-            NSLog(@"Error: %@", error.description);
-        } else {
-            [self offlineTransactionStatusList:status];
+    
+    
+    if (offlineInit){
+        NSString *title = @"Cannot Replay in Offline Init";
+        NSString *message = @"Replay is not allowed while the SDK is initialized in offline Mode.";
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        if (_offlineMode){
+            NSString *title = @"Replaying while in Offline Mode";
+            NSString *message = @"Replaying transaction in offlineMode will bring the SDK back into Online Mode";
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
-    }];
+        
+        [self.replayTransactionIndicatorView startAnimating];
+        self.stopReplayBtn.enabled = YES;
+        [[PayPalRetailSDK transactionManager] startReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {
+            [self updateOfflineModeUI];
+            [self.replayTransactionIndicatorView stopAnimating];
+            if(error != nil) {
+                NSLog(@"Error: %@", error.description);
+            } else {
+                [self offlineTransactionStatusList:status];
+            }
+        }];
+    }
 }
 
 // If we are replaying transactions and we want to stop replayingTransactions then we can call this function.
@@ -151,7 +174,7 @@
     [self setMode];
     // Set the offlineMode switch on/off according to the value passed from PaymentViewController. Originally false.
     [self.offlineModeSwitch setOn:self.offlineMode];
-    [self toggleOfflineModeUI];
+    [self updateOfflineModeUI];
     // Stop Replay Button is only needed when we are replaying transactions. Otherwise it is disabled.
     self.stopReplayBtn.enabled = NO;
     self.getOfflineStatusCodeTxtView.text = @"[[PayPalRetailSDK transactionManager]  getOfflinePaymentStatus:^(PPRetailError *error, NSArray *status) {\n <code to handle success/failure> \n}];";
@@ -166,8 +189,8 @@
 }
 
 -(void) offlineSDKInit{
-   NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
-    BOOL offlineInit = [tokenDefault boolForKey:@"offlineSDKInit"];
+    NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
+    offlineInit = [tokenDefault boolForKey:@"offlineSDKInit"];
     if (offlineInit){
         self.offlineModeSwitch.enabled = NO;
     }
@@ -175,15 +198,17 @@
 
 // THIS FUNCTION IS ONLY FOR UI. This function will enable/disable "Replay Transaction" Button
 // depending on if the offlineMode is on or off.
--(void)toggleOfflineModeUI{
-    if (self.offlineMode){
+-(void)updateOfflineModeUI{
+    if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEnabled]){
+        _offlineMode = YES;
         _offlineModeLabel.text = @"ENABLED";
         _offlineModeLabel.textColor = UIColor.greenColor;
-        [_replayOfflineTransactionBtn setEnabled:NO];
+        [_offlineModeSwitch setOn:YES];
     } else {
+        _offlineMode = NO;
         _offlineModeLabel.text = @"";
         _offlineModeLabel.textColor = UIColor.redColor;
-        [_replayOfflineTransactionBtn setEnabled:YES];
+        [_offlineModeSwitch setOn:NO];
     }
 }
 

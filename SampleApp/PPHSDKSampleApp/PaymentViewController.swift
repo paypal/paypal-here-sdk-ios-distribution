@@ -47,6 +47,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUpDefaultView()
         let userDefaults = UserDefaults.init()
         currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as? String ?? "$"
         invAmount.placeholder = "\(currencySymbol!) 0.00"
