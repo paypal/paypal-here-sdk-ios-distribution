@@ -125,6 +125,8 @@
 -(void)merchantSuccessfullyLoggedIn:(PPRetailMerchant *)merchant offline:(BOOL)offline {
     NSUserDefaults *tokenDefault = [NSUserDefaults standardUserDefaults];
     if (offline){
+        // Remeber to store whether you initialized in Offline Mode.
+        // For now, there is no way to query offlineInit state for Merchant on SDK.
         [tokenDefault setBool:YES forKey:@"offlineSDKInit"];
         self.initializeOfflineActivitySpinner.hidesWhenStopped = YES;
         [self.initializeOfflineActivitySpinner stopAnimating];

@@ -134,6 +134,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     func merchantSuccessfullyLoggedIn(offline: Bool, merchant: PPRetailMerchant){
         let tokenDefault = UserDefaults.init()
         if offline {
+            // Remeber to store whether you initialized in Offline Mode.
+            // For now, there is no way to query offlineInit state for Merchant on SDK.
             tokenDefault.setValue(true, forKey: "offlineSDKInit")
             self.initOfflineActivitySpinner.stopAnimating()
             self.initOfflineButton.isHidden = false
