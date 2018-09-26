@@ -122,6 +122,14 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (PPRetailError *)initializeMerchant:(NSString *)merchantToken repository:(NSString *)repository completionHandler:(PPRetailMerchantHandler)handler;
 
+
+/**
+ * If you are whitelisted for offline payments
+ * and you have initialized online once on the current device
+ * then you can initialize the merchant offline
+ */
++ (PPRetailError *)initializeMerchantOffline: (PPRetailMerchantHandler)handler;
+
 /**
  * Once you have SdkCredentials, call initializeMerchantWithCredentials
  * and wait for the completionHandler to be called before doing more SDK operations.
