@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
+#import "PaymentViewController.h"
 
-@interface TransactionOptionsViewController : UIViewController {
-    id delegate;
-}
+@interface TransactionOptionsViewController : UIViewController
+@property (nonatomic, weak, nullable) id<TransactionOptionsViewControllerDelegate> optionsDelegate;
 @property (nonatomic,assign) PPRetailTransactionBeginOptions *transactionOptions;
 @property (nonatomic,assign) NSMutableArray *formFactorArray;
 -(void)setDelegate:(UIViewController *) delegateController;

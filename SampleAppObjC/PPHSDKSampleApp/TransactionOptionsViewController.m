@@ -7,7 +7,6 @@
 //
 
 #import "TransactionOptionsViewController.h"
-#import "TransactionOptionsViewControllerDelegate.h"
 
 @interface TransactionOptionsViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *authCaptureSwitch;
@@ -41,7 +40,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [delegate transactionOptionsController:self options:self.transactionOptions];
+    [_optionsDelegate transactionOptionsController:self options:self.transactionOptions];
 }
 
 // The following 5 functions are triggered when a switch is pressed and it's value is changed.
@@ -143,7 +142,7 @@
 }
 
 -(void) setDelegate:(UIViewController *)delegateController {
-    delegate = delegateController;
+    _optionsDelegate = delegateController;
 }
 
 // THIS FUNCTION IS ONLY FOR UI. This function will create a toolbar which will have a "Done" button

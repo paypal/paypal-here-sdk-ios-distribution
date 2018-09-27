@@ -47,7 +47,11 @@ class AuthCompletedViewController: UIViewController {
             
             let alertController = UIAlertController(title: "Voided Successfully", message: "The payment was voided successfully. Start Over.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Start Over", style: .default, handler: { (action) in
-                 self.performSegue(withIdentifier: "goToPaymentsView", sender: sender)
+                let paymentViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
+                var viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+                viewControllers.removeLast()
+                viewControllers[3] = paymentViewController!
+                self.navigationController?.setViewControllers(viewControllers, animated: true)
             }))
             self.present(alertController, animated: true, completion: nil)
         }

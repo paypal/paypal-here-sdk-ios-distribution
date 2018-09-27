@@ -8,6 +8,7 @@
 
 #import "AuthCompletedViewController.h"
 #import "CaptureAuthViewController.h"
+#import "PaymentViewController.h"
 #import "UIButton+CustomButton.h"
 
 @interface AuthCompletedViewController ()
@@ -42,7 +43,12 @@
                                    actionWithTitle:@"Ok"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction * _Nonnull action) {
-                                       [self performSegueWithIdentifier:@"goToPaymentsView" sender:self];
+                                       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                       PaymentViewController *paymentViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+                                       NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];
+                                       [navigationArray removeLastObject];
+                                       [navigationArray setObject:paymentViewController atIndexedSubscript:3];
+                                       [[self navigationController] setViewControllers:navigationArray animated:YES];
                                    }];
         [alert addAction:okButton];
         [self presentViewController:alert animated:YES completion:nil];
