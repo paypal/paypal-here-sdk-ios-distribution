@@ -59,7 +59,6 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
-@class PPRetailOfflinePaymentStatus;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
@@ -110,41 +109,6 @@
      * Simplified card refund with invoiceId. An existing transaction will be canceled.
      */
     -(void)createCardRefundTransaction:(NSString* _Nullable)invoiceId callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
-
-    /**
-     * Enable the offline payment flag and start the offline payment process if needed
-     */
-    -(void)startOfflinePayment:(PPRetailTransactionManagerOfflinePaymentStatusHandler _Nullable)callback;
-
-    /**
-     * Get offline payment eligibility for the merchant
-     */
-    -(BOOL)getOfflinePaymentEligibility;
-
-    /**
-     * disable the offline payment flag
-     */
-    -(void)stopOfflinePayment:(PPRetailTransactionManagerOfflinePaymentStatusHandler _Nullable)callback;
-
-    /**
-     * start the replay of the offline txns saved
-     */
-    -(void)startReplayOfflineTxns:(PPRetailTransactionManagerOfflinePaymentStatusHandler _Nullable)callback;
-
-    /**
-     * stop the replay of the offline txns saved
-     */
-    -(void)stopReplayOfflineTxns:(PPRetailTransactionManagerOfflinePaymentStatusHandler _Nullable)callback;
-
-    /**
-     * get the status of offline payment txns
-     */
-    -(void)getOfflinePaymentStatus:(PPRetailTransactionManagerOfflinePaymentStatusHandler _Nullable)callback;
-
-    /**
-     * Enable the offline payment flag
-     */
-    -(BOOL)getOfflinePaymentEnabled;
 
     /**
      * Retrieve the list of authorized transactions.

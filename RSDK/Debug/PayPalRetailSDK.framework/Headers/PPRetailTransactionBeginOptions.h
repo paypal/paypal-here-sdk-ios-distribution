@@ -59,7 +59,6 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
-@class PPRetailOfflinePaymentStatus;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
@@ -104,10 +103,6 @@
     * Set the flag if the tipping on the reader is enabled
     */
     @property (nonatomic,assign) BOOL tippingOnReaderEnabled;
-    /**
-    * Set the flag if you want to enable quickChip option
-    */
-    @property (nonatomic,assign) BOOL quickChipEnabled;
     /**
     * Set the type of payment, default value is card
     */

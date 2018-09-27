@@ -59,7 +59,6 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
-@class PPRetailOfflinePaymentStatus;
 
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;

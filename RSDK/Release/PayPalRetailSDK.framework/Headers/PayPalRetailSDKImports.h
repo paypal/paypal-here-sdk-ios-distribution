@@ -48,7 +48,6 @@
 #import "PPRetailReceiptEmailEntryViewContent.h"
 #import "PPRetailReceiptSMSEntryViewContent.h"
 #import "PPRetailReceiptViewContent.h"
-#import "PPRetailOfflinePaymentStatus.h"
 #import "PPRetailCard.h"
 #import "PPRetailBatteryInfo.h"
 #import "PPRetailMagneticCard.h"

@@ -59,7 +59,6 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
-@class PPRetailOfflinePaymentStatus;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
@@ -108,6 +107,10 @@
     * Response JSON data chosen by the user
     */
     @property (nonatomic,strong,nullable) NSString* userResponseData;
+    /**
+    * Reserved for restricted use
+    */
+    @property (nonatomic,strong,nullable) NSString* tag;
 
 
     

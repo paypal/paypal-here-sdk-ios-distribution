@@ -46,7 +46,6 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
-@class PPRetailOfflinePaymentStatus;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
@@ -103,7 +102,6 @@
 @class PPRetailTransactionBeginOptions;
 @class PPRetailTransactionContext;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailOfflinePaymentStatus;
 @class PPRetailReceiptOptionsViewContent;
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
@@ -253,17 +251,6 @@ typedef NS_ENUM(NSInteger, PPRetailTippingState) {
 typedef NS_ENUM(NSInteger, PPRetailAuthStatus) {
   PPRetailAuthStatuspending = 0,
   PPRetailAuthStatuscanceled = 1
-};
-
-/**
- * Possible status of the Offline Transactions
- */
-typedef NS_ENUM(NSInteger, PPRetailOfflineTransactionState) {
-  PPRetailOfflineTransactionStateDeleted = 0,
-  PPRetailOfflineTransactionStateCompleted = 1,
-  PPRetailOfflineTransactionStateFailed = 2,
-  PPRetailOfflineTransactionStateActive = 3,
-  PPRetailOfflineTransactionStateDeclined = 4
 };
 
 /**
@@ -539,11 +526,6 @@ typedef void (^PPRetailTransactionManagerVoidAuthorizationHandler)(PPRetailError
 typedef void (^PPRetailTransactionManagerCaptureAuthorizedTransactionHandler)(PPRetailError* error, NSString* captureId);
 
 /**
- * The callback for replaying offline payment
- */
-typedef void (^PPRetailTransactionManagerOfflinePaymentStatusHandler)(PPRetailError* error, NSArray* status);
-
-/**
  * The callback invoked while connecting to the last active card reader
  */
 typedef void (^PPRetailDeviceManagerConnectionHandler)(PPRetailError* error, PPRetailPaymentDevice* cardReader);
@@ -693,7 +675,7 @@ typedef void (^PPRetailCancelledEvent)();
  */
 typedef id PPRetailCancelledSignal;
 
-                  
+                
 /**
  * The reader is now connected and ready.
  */
