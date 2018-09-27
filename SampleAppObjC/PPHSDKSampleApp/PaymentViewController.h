@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PayPalRetailSDK/PayPalRetailSDK.h>
 
-@interface PaymentViewController : UIViewController
+@protocol TransactionOptionsViewControllerDelegate <NSObject>
+@required
+-(void) transactionOptionsController :(UIViewController *)controller options:(PPRetailTransactionBeginOptions*)options;
+@end
+
+@protocol OfflineModeViewControllerDelegate <NSObject>
+@required
+-(void) offlineModeController :(UIViewController*)controller offline:(BOOL)isOffline;
+@end
+
+@interface PaymentViewController : UIViewController <TransactionOptionsViewControllerDelegate,OfflineModeViewControllerDelegate>
 
 @end

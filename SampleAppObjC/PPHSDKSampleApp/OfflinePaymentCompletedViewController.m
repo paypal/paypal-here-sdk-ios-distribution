@@ -36,7 +36,7 @@
     NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];
     [navigationArray removeLastObject];
     [navigationArray setObject:paymentViewController atIndexedSubscript:3];
-    self.navigationController.viewControllers = navigationArray;
+    [[self navigationController] setViewControllers:navigationArray animated:YES];
 }
 
 

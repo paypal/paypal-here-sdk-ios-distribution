@@ -7,6 +7,7 @@
 //
 
 #import "PaymentCompletedViewController.h"
+#import "PaymentViewController.h"
 #import "UIButton+CustomButton.h"
 
 
@@ -71,7 +72,16 @@
 // If the 'No Thanks' button is selected, we direct back to the PaymentViewController
 // so that more transactions can be run.
 - (IBAction)skipRefund:(id)sender {
-    [self performSegueWithIdentifier:@"goToPaymentsView" sender:self];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PaymentViewController *paymentViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+    NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];
+    if (_isCapture){
+        [navigationArray removeObjectAtIndex:4];
+        [navigationArray removeObjectAtIndex:5];
+    }
+    [navigationArray removeLastObject];
+    [navigationArray setObject:paymentViewController atIndexedSubscript:3];
+    [[self navigationController] setViewControllers:navigationArray animated:YES];
 }
 
 

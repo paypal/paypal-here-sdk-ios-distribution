@@ -14,10 +14,7 @@
 #import "AuthCompletedViewController.h"
 #import "PPRetailTransactionBeginOptions+SET_DEFAULT.h"
 #import "TransactionOptionsViewController.h"
-#import "TransactionOptionsViewControllerDelegate.h"
 #import "OfflineModeViewController.h"
-#import "OfflineModeViewControllerDelegate.h"
-
 
 @interface PaymentViewController () <PPHRetailSDKAppDelegate,TransactionOptionsViewControllerDelegate,OfflineModeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *offlineModeButton;
@@ -55,8 +52,8 @@
     // Initialize preferred form factor array
     self.formFactorArray = [[NSMutableArray alloc] init];
     
-    // Set to online mode
-    self.offlineMode = PayPalRetailSDK.transactionManager.getOfflinePaymentEnabled;
+    // Check if online mode is On or Off
+    self.offlineMode = [[PayPalRetailSDK transactionManager] getOfflinePaymentEnabled];
 }
 
 -(void) viewDidAppear:(BOOL)animated {

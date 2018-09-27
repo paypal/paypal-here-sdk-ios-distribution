@@ -86,7 +86,15 @@ class PaymentCompletedViewController: UIViewController {
     // If the 'skipRefund' button is selected, we direct back to the PaymentViewController
     // so that more transactions can be run.
     @IBAction func skipRefund(_ sender: UIButton?) {
-        performSegue(withIdentifier: "goToPaymentsView", sender: sender)
+        let paymentViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
+        var viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        if isCapture {
+            viewControllers.remove(at: 4)
+            viewControllers.remove(at: 5)
+        }
+        viewControllers.removeLast()
+        viewControllers[3] = paymentViewController!
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
     
 }

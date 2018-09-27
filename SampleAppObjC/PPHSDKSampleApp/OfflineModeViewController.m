@@ -8,8 +8,6 @@
 
 #import "OfflineModeViewController.h"
 #import "UIButton+CustomButton.h"
-#import "OfflineModeViewControllerDelegate.h"
-
 
 @interface OfflineModeViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *offlineModeSwitch;
@@ -31,41 +29,40 @@ BOOL offlineInit = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpDefaultView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOfflineModeUI) name:@"offlineModeIsChanged" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [delegate offlineModeController: self offline: self.offlineMode];
+    [_offlineDelegate offlineModeController: self offline: self.offlineMode];
 }
 
 // If the offlineModeSwitch is toggled. Set the value for the offlineMode Flag which will make the appropriate call
 // to the SDK.
 // - Parameter sender: UISwitch for the offlineMode.
 - (IBAction)offlineModeSwitchPressed:(UISwitch *)sender {
-    self.offlineMode = self.offlineModeSwitch.isOn;
-    [self setMode];
+    [self toggleOfflineMode];
 }
 
 // If offlineMode is set to true then we will start taking offline payments and if it is set to false
 // then we stop taking offline payments. To Start/Stop taking offline payments, we ned to make a call to
 // the SDK. If we start taking online payments then we MUST call the stopOfflinePayment() in order to start
 // taking live payments again.
--(void) setMode {
-    if(self.offlineMode) {
+-(void) toggleOfflineMode {
+    if(!self.offlineMode) {
         if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEligibility]) {
             [[PayPalRetailSDK transactionManager] startOfflinePayment:^(PPRetailError *error, NSArray *status) {
                 if (error != nil){
                     NSLog(@"%@", error.developerMessage);
                 } else {
+                    // Check to see if OfflinePayment is enabled
+                    if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEnabled]){
+                        [self updateOfflineModeUI];
+                    }
                     [self offlineTransactionStatusList:status];
                 }
             }];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
         } else {
             NSLog(@"Merchant is not eligible to take Offline Payments");
-            self.offlineMode = NO;
-            [self.offlineModeSwitch setOn:NO animated:YES];
         }
     } else {
         [[PayPalRetailSDK transactionManager] stopOfflinePayment:^(PPRetailError *error, NSArray *status) {
@@ -75,7 +72,7 @@ BOOL offlineInit = NO;
                 [self offlineTransactionStatusList:status];
             }
         }];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"offlineModeIsChanged" object:nil];
+        [self updateOfflineModeUI];
     }
 }
 
@@ -100,27 +97,16 @@ BOOL offlineInit = NO;
     
     
     if (offlineInit){
-        NSString *title = @"Cannot Replay in Offline Init";
-        NSString *message = @"Replay is not allowed while the SDK is initialized in offline Mode.";
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self showReplayTransactionAlertForOfflineInit:YES];
     } else {
         if (_offlineMode){
-            NSString *title = @"Replaying while in Offline Mode";
-            NSString *message = @"Replaying transaction in offlineMode will bring the SDK back into Online Mode";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:nil];
+           [self showReplayTransactionAlertForOfflineInit:NO];
         }
         
-        [self.replayTransactionIndicatorView startAnimating];
-        self.stopReplayBtn.enabled = YES;
+        [self replayTransactionAnimation:YES];
         [[PayPalRetailSDK transactionManager] startReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {
             [self updateOfflineModeUI];
-            [self.replayTransactionIndicatorView stopAnimating];
+            [self replayTransactionAnimation:YES];
             if(error != nil) {
                 NSLog(@"Error: %@", error.description);
             } else {
@@ -167,11 +153,10 @@ BOOL offlineInit = NO;
 }
 
 -(void)setDelegate:(UIViewController *)delegateController{
-    delegate = delegateController;
+    _offlineDelegate = delegateController;
 }
 
 -(void)setUpDefaultView{
-    [self setMode];
     // Set the offlineMode switch on/off according to the value passed from PaymentViewController. Originally false.
     [self.offlineModeSwitch setOn:self.offlineMode];
     [self updateOfflineModeUI];
@@ -182,6 +167,7 @@ BOOL offlineInit = NO;
     self.stopReplayCodeTxtView.text = @"[[PayPalRetailSDK transactionManager] stopReplayOfflineTxns];";
     self.replayTransactionResultsTextView.text = @"";
     [self offlineSDKInit];
+    [self updateOfflineModeUI];
     
     [CustomButton customizeButton:_getOfflineStatusBtn];
     [CustomButton customizeButton:_replayOfflineTransactionBtn];
@@ -210,6 +196,31 @@ BOOL offlineInit = NO;
         _offlineModeLabel.textColor = UIColor.redColor;
         [_offlineModeSwitch setOn:NO];
     }
+}
+
+-(void) replayTransactionAnimation:(BOOL) start {
+    if (start){
+        [self.replayTransactionIndicatorView startAnimating];
+        [self.replayOfflineTransactionBtn setHidden:YES];
+        self.stopReplayBtn.enabled = YES;
+    } else {
+        [self.replayTransactionIndicatorView stopAnimating];
+        [self.replayOfflineTransactionBtn setHidden:NO];
+        self.stopReplayBtn.enabled = NO;
+    }
+}
+
+-(void) showReplayTransactionAlertForOfflineInit:(BOOL) offlineInit {
+    NSString *title = @"Replaying while in Offline Mode";
+    NSString *message = @"Replaying transaction in offlineMode will bring the SDK back into Online Mode";
+    if (offlineInit){
+        title = @"Cannot Replay in Offline Init";
+        message = @"Replay is not allowed while the SDK is initialized in offline Mode.";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

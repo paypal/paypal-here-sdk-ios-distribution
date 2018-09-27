@@ -78,14 +78,14 @@
     formatter.generatesDecimalNumbers = YES;
     NSDecimalNumber *inputtedAmount = (NSDecimalNumber*)[formatter numberFromString: [self.captureAmount.text stringByReplacingOccurrencesOfString:self.currencySymbol withString:@""]];
     
-        if(self.isTip) {
-            amountToCapture = [self.invoice.total decimalNumberByAdding:inputtedAmount];
-            self.gratuityAmt = inputtedAmount;
-        } else {
-            amountToCapture = inputtedAmount;
-            self.gratuityAmt = 0;
-        }
-
+    if(self.isTip) {
+        amountToCapture = [self.invoice.total decimalNumberByAdding:inputtedAmount];
+        self.gratuityAmt = inputtedAmount;
+    } else {
+        amountToCapture = inputtedAmount;
+        self.gratuityAmt = 0;
+    }
+    
     [PayPalRetailSDK.transactionManager captureAuthorization:self.authTransactionNumber invoiceId:self.invoice.payPalId totalAmount:amountToCapture gratuityAmount:self.gratuityAmt currency:self.invoice.currency callback:^(PPRetailError *error, NSString *captureId) {
         if(error != nil) {
             NSLog(@"Error Code: %@",error.code);
@@ -106,9 +106,9 @@
 - (UINavigationController *)getCurrentNavigationController {
     return self.navigationController;
 }
-     
+
 -(void) goToPaymentCompletedViewController {
-     [self performSegueWithIdentifier:@"goToPmtCompletedView" sender:self];
+    [self performSegueWithIdentifier:@"goToPmtCompletedView" sender:self];
 }
 
 // Function to handle real-time changes in the invoice/payment amount text field.  The
@@ -154,18 +154,16 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     if([segue.identifier isEqualToString:@"goToPmtCompletedView"]) {
-        PaymentCompletedViewController *pmtCompletedViewController = (PaymentCompletedViewController *) segue.destinationViewController;
-         pmtCompletedViewController.isCapture = YES;
-         pmtCompletedViewController.capturedAmount = self.capturedAmount;
-         pmtCompletedViewController.paymentMethod = self.paymentMethod;
-         pmtCompletedViewController.invoice = self.invoice;
-        // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
-         pmtCompletedViewController.transactionNumber = self.captureTransactionNumber;
-         pmtCompletedViewController.isTip = self.isTip;
-         if(self.isTip) {
-             pmtCompletedViewController.gratuityAmt = self.gratuityAmt;
-         }
+    PaymentCompletedViewController *pmtCompletedViewController = (PaymentCompletedViewController *) segue.destinationViewController;
+    pmtCompletedViewController.isCapture = YES;
+    pmtCompletedViewController.capturedAmount = self.capturedAmount;
+    pmtCompletedViewController.paymentMethod = self.paymentMethod;
+    pmtCompletedViewController.invoice = self.invoice;
+    // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
+    pmtCompletedViewController.transactionNumber = self.captureTransactionNumber;
+    pmtCompletedViewController.isTip = self.isTip;
+    if(self.isTip) {
+        pmtCompletedViewController.gratuityAmt = self.gratuityAmt;
     }
 }
 

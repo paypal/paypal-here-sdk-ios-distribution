@@ -27,7 +27,7 @@ class CaptureAuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         setUpTextFieldToolbar()
@@ -50,7 +50,7 @@ class CaptureAuthViewController: UIViewController {
         currencySymbol = userDefaults.value(forKey: "CURRENCY_SYMBOL") as! String
         captureAmount.placeholder = "\(currencySymbol!) 0.00"
     }
-
+    
     @IBAction func captureAuthorization(_ sender: UIButton) {
         var amountToCapture: NSDecimalNumber = 0
         
@@ -83,12 +83,12 @@ class CaptureAuthViewController: UIViewController {
         }
         
         PayPalRetailSDK.transactionManager()?.captureAuthorization(authTransactionNumber, invoiceId: invoice?.payPalId, totalAmount: amountToCapture, gratuityAmount: gratuityAmt, currency: invoice?.currency) { (error, captureId) in
-
+            
             if let err = error {
                 print("Error Code: \(String(describing: err.code))")
                 print("Error Message: \(String(describing: err.message))")
                 print("Debug ID: \(String(describing: err.debugId))")
-
+                
                 self.activitySpinner.stopAnimating()
                 return
             }
@@ -102,17 +102,15 @@ class CaptureAuthViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "goToPmtCompletedView") {
-            if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
-                pmtCompletedViewController.isCapture = true
-                pmtCompletedViewController.capturedAmount = capturedAmount
-                pmtCompletedViewController.paymentMethod = paymentMethod
-                // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
-                pmtCompletedViewController.transactionNumber = captureTransactionNumber
-                pmtCompletedViewController.isTip = isTip
-                if(isTip)! {
-                    pmtCompletedViewController.gratuityAmt = gratuityAmt
-                }
+        if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
+            pmtCompletedViewController.isCapture = true
+            pmtCompletedViewController.capturedAmount = capturedAmount
+            pmtCompletedViewController.paymentMethod = paymentMethod
+            // For Auth-Capture, use the captureId returned by captureAuthorization as the transactionNumber for refunds
+            pmtCompletedViewController.transactionNumber = captureTransactionNumber
+            pmtCompletedViewController.isTip = isTip
+            if(isTip)! {
+                pmtCompletedViewController.gratuityAmt = gratuityAmt
             }
         }
     }
@@ -128,7 +126,7 @@ class CaptureAuthViewController: UIViewController {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
-
+        
     }
     
     func getCurrentNavigationController() -> UINavigationController! {
