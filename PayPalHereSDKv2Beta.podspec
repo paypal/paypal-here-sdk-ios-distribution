@@ -13,7 +13,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target    = '8.1'
 
   s.xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited)'
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
+    'OTHER_LDFLAGS' => '-lstdc++ -ObjC'
   }
 
   s.ios.frameworks = 'AudioToolbox', 'MobileCoreServices', 'Security', 'CFNetwork', 'AVFoundation', 'ExternalAccessory', 'MediaPlayer', 'CoreTelephony', 'Foundation', 'CoreBluetooth', 'SystemConfiguration', 'JavaScriptCore', 'CoreBluetooth', 'UIKit', 'CoreLocation'
