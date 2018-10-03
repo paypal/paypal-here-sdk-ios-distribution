@@ -173,11 +173,31 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     }
     
     @IBAction func offlinePaymentMode(_ sender: CustomButton) {
-        performSegue(withIdentifier: "offlineModeVC", sender: self)
+        if (self.tc != nil) {
+            let noOfflineAlert = UIAlertController(title: "Whoops!", message: "Cannot enable offline mode when a transaction context is already created.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Error - trying to enable offline mode when transaction context has already been created.")
+            }
+            
+            noOfflineAlert.addAction(okAction)
+            self.present(noOfflineAlert, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "offlineModeVC", sender: self)
+        }
     }
     
     @IBAction func paymentOptions(_ sender: CustomButton) {
-        performSegue(withIdentifier: "transactionOptionsVC", sender: self)
+        if(self.offlineMode) {
+            let noOptionAlert = UIAlertController(title: "Whoops!", message: "Transaction options are not available in offline mode.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                print("Error - transaction options aren't available in offline mode.")
+            }
+            
+            noOptionAlert.addAction(okAction)
+            self.present(noOptionAlert, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "transactionOptionsVC", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

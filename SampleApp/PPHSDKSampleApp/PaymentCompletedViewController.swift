@@ -28,16 +28,16 @@ class PaymentCompletedViewController: UIViewController {
         super.viewDidLoad()
         
         setUpDefaultView()
-        refundCodeViewer.isHidden = true
+
         if(isCapture) {
             if(isTip)! {
-                successMsg.text = "Your tip of $\(gratuityAmt ?? 0) was added for a capture total of $\(capturedAmount ?? 0)"
+                successMsg.text = "Your tip of $\(gratuityAmt ?? 0) was added for a capture total of $\(capturedAmount ?? 0)."
             } else {
-                successMsg.text = "Your capture of $\(capturedAmount ?? 0) was successful"
+                successMsg.text = "Your capture of $\(capturedAmount ?? 0) was successful."
             }
             refundAmount = capturedAmount
         } else {
-            successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful"
+            successMsg.text = "Your payment of $\(invoice?.total ?? 0) was successful."
             refundAmount = invoice?.total
         }
         successMsg.sizeToFit()
@@ -79,7 +79,7 @@ class PaymentCompletedViewController: UIViewController {
         
     
     private func setUpDefaultView(){
-         refundCodeViewer.text = "tc.beginRefund(true, amount: invoice.total)"
+        refundCodeViewer.text = "tc.beginRefund(true, amount: invoice.total)"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     

@@ -16,6 +16,7 @@ class AuthCompletedViewController: UIViewController {
     @IBOutlet weak var voidCodeViewer: UITextView!
     @IBOutlet weak var captureAuthBtn: CustomButton!
     @IBOutlet weak var captureAuthCodeViewer: UITextView!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     var invoice: PPRetailInvoice?
     var authTransactionNumber: String?
@@ -34,6 +35,9 @@ class AuthCompletedViewController: UIViewController {
     }
 
     @IBAction func voidAuthorization(_ sender: UIButton) {
+        voidAuthBtn.isHidden = true
+        activitySpinner.isHidden = false
+        activitySpinner.startAnimating()
         
         PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in
             if let err = error {
@@ -44,8 +48,10 @@ class AuthCompletedViewController: UIViewController {
             }
             
             print("Void Payment was successful.")
+            self.activitySpinner.stopAnimating()
+            self.activitySpinner.isHidden = true
             
-            let alertController = UIAlertController(title: "Voided Successfully", message: "The payment was voided successfully. Start Over.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Voided Successfully", message: "The payment was voided successfully.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Start Over", style: .default, handler: { (action) in
                 let paymentViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
                 var viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
