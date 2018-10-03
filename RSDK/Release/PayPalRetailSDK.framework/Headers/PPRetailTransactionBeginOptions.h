@@ -74,6 +74,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailSimulationOptions;
 
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -103,6 +104,14 @@
     */
     @property (nonatomic,assign) BOOL tippingOnReaderEnabled;
     /**
+    * Set the type of payment, default value is card
+    */
+    @property (nonatomic,assign) PPRetailTransactionBeginOptionsPaymentTypes paymentType;
+    /**
+    * manually entered card details
+    */
+    @property (nonatomic,strong,nullable) PPRetailCard* manualCard;
+    /**
     * Set the flag if the amount based tipping type used, otherwise, percentage based used
     */
     @property (nonatomic,assign) BOOL amountBasedTipping;
@@ -124,6 +133,18 @@
 
 
 
+
+    -(NSString* _Nullable)getAllTags;
+
+    /**
+     * Add a tag if not present to the list of tags
+     */
+    -(void)addTag:(NSString* _Nullable)newTag;
+
+    /**
+     * Remove tag from the list of tags
+     */
+    -(void)removeTag:(NSString* _Nullable)removeTag;
 
 
 

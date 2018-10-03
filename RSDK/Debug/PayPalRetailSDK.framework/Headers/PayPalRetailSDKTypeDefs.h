@@ -61,6 +61,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailSimulationOptions;
 @class PPRetailNetworkRequest;
 @class PPRetailInvoice;
 @class PPRetailSdkEnvironmentInfo;
@@ -207,6 +208,16 @@ typedef NS_ENUM(NSInteger, PPRetaillogLevel) {
 };
 
 /**
+ * Payment Methods enum for Transaction Begin Options
+ */
+typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsPaymentTypes) {
+  PPRetailTransactionBeginOptionsPaymentTypescard = 0,
+  PPRetailTransactionBeginOptionsPaymentTypeskeyIn = 1,
+  PPRetailTransactionBeginOptionsPaymentTypescash = 2,
+  PPRetailTransactionBeginOptionsPaymentTypescheck = 3
+};
+
+/**
  * List of possible receipt destination options, as selected by the user.
  */
 typedef NS_ENUM(NSInteger, PPRetailReceiptDestinationType) {
@@ -339,6 +350,25 @@ typedef NS_ENUM(NSInteger, PPRetailReaderModel) {
   PPRetailReaderModelM010 = 3,
   PPRetailReaderModelMoby3000 = 4,
   PPRetailReaderModelRP450 = 5
+};
+
+/**
+ * Device Simulator Types
+ */
+typedef NS_ENUM(NSInteger, PPRetailDeviceSimulatorType) {
+  PPRetailDeviceSimulatorTypeSwiper = 0,
+  PPRetailDeviceSimulatorTypeMiura = 1,
+  PPRetailDeviceSimulatorTypeIngenico = 2
+};
+
+/**
+ * Device Simulator Types
+ */
+typedef NS_ENUM(NSInteger, PPRetailSimulatorUseCase) {
+  PPRetailSimulatorUseCaseCHIP = 0,
+  PPRetailSimulatorUseCaseSWIPE = 1,
+  PPRetailSimulatorUseCaseFB_SWIPE = 2,
+  PPRetailSimulatorUseCaseCONTACTLESS = 3
 };
 
 
@@ -728,6 +758,16 @@ typedef void (^PPRetailCardPresentedEvent)(PPRetailCard* card);
  */
 typedef id PPRetailCardPresentedSignal;
 
+
+/**
+ * The reader is blacklisted.
+ */
+typedef void (^PPRetailBlacklistedEvent)();
+/**
+ * Returned from addBlacklistedListener and used to unsubscribe from the event.
+ */
+typedef id PPRetailBlacklistedSignal;
+
     
 /**
  * Payment device connected via USB needs to be unplugged and plugged back to the USB port for the software
@@ -785,4 +825,4 @@ typedef void (^PPRetailOnConnectionResultEvent)(PPRetailError* Error, PPRetailPa
  */
 typedef id PPRetailOnConnectionResultSignal;
 
- 
+   

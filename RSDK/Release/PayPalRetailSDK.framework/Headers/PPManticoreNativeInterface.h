@@ -1,5 +1,5 @@
 //
-//  PPManticoreNativeInterface.h
+//  PPNativeInterface.h
 //  PayPalRetailSDK
 //
 //  Created by Max Metral on 3/27/15.
@@ -45,7 +45,6 @@
 @interface PPManticoreNativeInterface : NSObject <JSExport>
 
 @property (nonatomic,strong,readonly) JSValue *manticoreObject;
-@property (nonatomic) NSURLSession *urlSession;
 
 - (instancetype)initWithEngine:(PPManticoreEngine *)engine;
 

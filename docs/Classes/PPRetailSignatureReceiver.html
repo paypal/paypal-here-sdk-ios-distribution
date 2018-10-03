@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 
-	<title></title>
+	<title>PPRetailSignatureReceiver Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
 </head>
 <body class="appledoc">
 	<header>
@@ -43,9 +43,41 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/context">context</option>
+		
+	</optgroup>
+	
 
 	
 
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/acquireSignature">- acquireSignature</option>
+		
+		<option value="//api/name/addCancelledListener:">- addCancelledListener:</option>
+		
+		<option value="//api/name/cancel">- cancel</option>
+		
+		<option value="//api/name/continueWithSignature:">- continueWithSignature:</option>
+		
+		<option value="//api/name/removeCancelledListener:">- removeCancelledListener:</option>
+		
+	</optgroup>
+	
 	
 </select>
 						</label>
@@ -59,22 +91,341 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title"></h1>
+					<h1 class="title">PPRetailSignatureReceiver Class Reference</h1>
 
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>PPRetailObject : NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>PPRetailSignatureReceiver.h</td>
+</tr>
+						</tbody></table></div>
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>When signature is collected by external code, it will be passed a SignatureReceiver object</p>
+					</div>
+					
+					
 
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/context" title="context"></a>
+	<h3 class="method-title"><code><a href="#//api/name/context">&nbsp;&nbsp;context</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>@readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailTransactionContext *context</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailSignatureReceiver.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithSignature:" title="continueWithSignature:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithSignature:">&ndash;&nbsp;continueWithSignature:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Continue processing the transaction with the supplied signature.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithSignature:(NSString *_Nullable)<em>base64SignatureJpeg</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Continue processing the transaction with the supplied signature.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailSignatureReceiver.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/acquireSignature" title="acquireSignature"></a>
+	<h3 class="method-title"><code><a href="#//api/name/acquireSignature">&ndash;&nbsp;acquireSignature</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Acquire signature using the normal PayPal Retail SDK mechanism (i.e. on screen signing)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)acquireSignature</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Acquire signature using the normal PayPal Retail SDK mechanism (i.e. on screen signing)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailSignatureReceiver.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Cancel the transaction because of a signature failure.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Cancel the transaction because of a signature failure.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailSignatureReceiver.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addCancelledListener:" title="addCancelledListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addCancelledListener:">&ndash;&nbsp;addCancelledListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the cancelled event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailCancelledSignal _Nullable)addCancelledListener:(PPRetailCancelledEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailCancelledSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the cancelled event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailSignatureReceiver.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeCancelledListener:" title="removeCancelledListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeCancelledListener:">&ndash;&nbsp;removeCancelledListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the cancelled event given the signal object that was returned from addCancelledListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeCancelledListener:(PPRetailCancelledSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the cancelled event given the signal object that was returned from addCancelledListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailSignatureReceiver.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
 					
 
                     
+                    
+          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 PayPal. All rights reserved. Updated: 2018-08-27</p>
+						<p class="copyright">Copyright &copy; 2018 PayPal. All rights reserved. Updated: 2018-10-03</p>
 						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>

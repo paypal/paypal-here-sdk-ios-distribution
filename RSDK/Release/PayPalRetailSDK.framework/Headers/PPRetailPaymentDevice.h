@@ -74,6 +74,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailSimulationOptions;
 
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -139,6 +140,10 @@
     * Indicates whether a card is inserted within the reader at this moment @readonly
     */
     @property (nonatomic,assign,readonly) BOOL cardInSlot;
+    /**
+    * Indicates whether a card reader is blacklisted or not @readonly
+    */
+    @property (nonatomic,assign,readonly) BOOL isBlacklisted;
 
 
     
@@ -300,6 +305,19 @@
      * Remove a listener for the cardPresented event given the signal object that was returned from addCardPresentedListener
      */
     -(void)removeCardPresentedListener:(PPRetailCardPresentedSignal _Nullable)listenerToken;
+
+
+    /**
+     * Add a listener for the blacklisted event
+     * @returns PPRetailBlacklistedSignal an object that can be used to remove the listener when
+     * you're done with it.
+     */
+    -(PPRetailBlacklistedSignal _Nullable)addBlacklistedListener:(PPRetailBlacklistedEvent _Nullable)listener;
+
+    /**
+     * Remove a listener for the blacklisted event given the signal object that was returned from addBlacklistedListener
+     */
+    -(void)removeBlacklistedListener:(PPRetailBlacklistedSignal _Nullable)listenerToken;
 
 
 @end
