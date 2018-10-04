@@ -73,7 +73,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
                 print("Offline Init Failed")
                 self.merchantFailedLogIn(offline: true, error: err)
             } else {
-                print("Offline Init Successfull")
+                print("Offline Init Successful")
                 self.merchantSuccessfullyLoggedIn(offline: true, merchant: merchant!)
                 
             }
@@ -141,17 +141,18 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.initOfflineButton.isHidden = false
             self.initOfflineButton.changeToButtonWasSelected(self.initOfflineButton)
             self.initOfflineButton.isEnabled = false
+            self.merchEmailLabel.text = "Initialized Offline"
         } else {
             tokenDefault.removeObject(forKey: "offlineSDKInit")
             self.initMerchantActivitySpinner.stopAnimating()
             self.initMerchantButton.isHidden = false
             self.initMerchantButton.changeToButtonWasSelected(self.initMerchantButton)
             self.initMerchantButton.isEnabled = false
+            self.merchEmailLabel.text = merchant.emailAddress
         }
         
         PayPalRetailSDK.startWatchingAudio()
         self.merchInfoView.isHidden = false
-        self.merchEmailLabel.text = merchant.emailAddress
         
         // Save currency to UserDefaults for further usage. This needs to be used to initialize
         // the PPRetailInvoice for the payment later on. This app is using UserDefault but
@@ -200,8 +201,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         merchEmailLabel.text = ""
         merchInfoView.isHidden = true
         initMerchantButton.isEnabled = true
+        initMerchantButton.borderWidth = 1.0
         initOfflineButton.isHidden = false
         initOfflineButton.isEnabled = true
+        initOfflineButton.borderWidth = 1.0
         envSelector.isEnabled = true
         connectCardReaderBtn.isHidden = true
     }

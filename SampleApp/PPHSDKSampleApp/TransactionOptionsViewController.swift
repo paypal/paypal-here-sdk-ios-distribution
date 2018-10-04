@@ -67,7 +67,7 @@ class TransactionOptionsViewController: UIViewController {
     }
     
     /// The following 5 functions are triggered when a switch is pressed and it's value is changed.
-    /// Depending on the if the switch is on or off, these functions will set the appropriate option to true or false.
+    /// Depending on if the switch is on or off, these functions will set the appropriate option to true or false.
     /// - Parameter sender: UISwitch assoicated with the options.
     @IBAction func authCaptureSwitchPressed(_ sender: UISwitch) {
         transactionOptions.isAuthCapture = authCaptureSwitch.isOn
@@ -101,7 +101,7 @@ class TransactionOptionsViewController: UIViewController {
         transactionOptions.tag = sender.text ?? ""
     }
     
-    /// This function will be triggred when one of the formFactor buttons is pressed. Whichever button triggers this
+    /// This function will be triggered when one of the formFactor buttons is pressed. Whichever button triggers this
     /// function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
     /// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
     /// - Parameter sender: UIButton assoicated with the formFactor Buttons.

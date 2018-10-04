@@ -58,7 +58,6 @@ class CustomButton: UIButton {
     func changeToButtonWasSelected(_ button: CustomButton){
         button.borderWidth = 0.0
         button.backgroundColor = .clear
-        button.cornerRadius = 0.0
         button.imageEdgeInsets.left = button.frame.width - 30
         button.setTitle("", for: .disabled)
         button.setImage(#imageLiteral(resourceName: "Check"), for: .disabled)
