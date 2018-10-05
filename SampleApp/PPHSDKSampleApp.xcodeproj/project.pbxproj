@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		789DA898CEB289EC794D82C1 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451620A05B8E7193182BE368 /* Pods_PPHSDKSampleApp.framework */; };
+		3FFB60F3FC00A57427E7AD81 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786B176BD563674C71BA931 /* Pods_PPHSDKSampleApp.framework */; };
+		685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */; };
+		68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */; };
+		68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */; };
+		68C1153320FFCE0F000DD8AE /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C1153220FFCE0F000DD8AE /* CustomUI.swift */; };
 		C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */; };
 		C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */; };
 		C662A296200547FF00CC44AB /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C662A295200547FF00CC44AB /* StringExt.swift */; };
@@ -21,13 +25,19 @@
 		C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */; };
 		C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF40031E7706B600109502 /* WelcomeViewController.swift */; };
 		C6EF40141E77173800109502 /* References in Resources */ = {isa = PBXBuildFile; fileRef = C6EF40131E77173800109502 /* References */; };
-		C6EF401A1E783EEE00109502 /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF40191E783EEE00109502 /* RoundLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		451620A05B8E7193182BE368 /* Pods_PPHSDKSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PPHSDKSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		87E2DCB27568F60B7133D086 /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		8E345C953E135D24A01797D1 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		485944B8031E93BF19858388 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		685B7E4620DB152100F57461 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		685B7E4720DB152100F57461 /* LogglyLogger_CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogglyLogger_CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		685B7E4820DB152100F57461 /* SimpleKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SimpleKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionOptionsViewController.swift; sourceTree = "<group>"; };
+		68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflinePaymentCompletedViewController.swift; sourceTree = "<group>"; };
+		68C1153220FFCE0F000DD8AE /* CustomUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
+		72CE82D0B850F3D33D928FED /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9786B176BD563674C71BA931 /* Pods_PPHSDKSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PPHSDKSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCompletedViewController.swift; sourceTree = "<group>"; };
 		C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureAuthViewController.swift; sourceTree = "<group>"; };
 		C662A295200547FF00CC44AB /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
@@ -44,7 +54,6 @@
 		C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C6EF40031E7706B600109502 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C6EF40131E77173800109502 /* References */ = {isa = PBXFileReference; lastKnownFileType = folder; path = References; sourceTree = "<group>"; };
-		C6EF40191E783EEE00109502 /* RoundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				789DA898CEB289EC794D82C1 /* Pods_PPHSDKSampleApp.framework in Frameworks */,
+				3FFB60F3FC00A57427E7AD81 /* Pods_PPHSDKSampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +71,11 @@
 		2359FFE7D6776F5A76927401 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				685B7E4620DB152100F57461 /* CocoaLumberjack.framework */,
+				685B7E4720DB152100F57461 /* LogglyLogger_CocoaLumberjack.framework */,
+				685B7E4820DB152100F57461 /* SimpleKeychain.framework */,
 				C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */,
-				451620A05B8E7193182BE368 /* Pods_PPHSDKSampleApp.framework */,
+				9786B176BD563674C71BA931 /* Pods_PPHSDKSampleApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -75,7 +87,7 @@
 				C6C793FD1DDD01E800F8DC8E /* Products */,
 				C6EF40131E77173800109502 /* References */,
 				2359FFE7D6776F5A76927401 /* Frameworks */,
-				F8E2CC30D8C9212F8647DC02 /* Pods */,
+				DCD9011486C77E7564B39C6B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,24 +107,27 @@
 				C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */,
 				C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */,
 				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
+				685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */,
+				68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */,
 				C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */,
+				68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */,
 				C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */,
 				C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */,
 				C6C794051DDD01E800F8DC8E /* Main.storyboard */,
 				C6C794081DDD01E800F8DC8E /* Assets.xcassets */,
 				C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */,
 				C6C7940D1DDD01E800F8DC8E /* Info.plist */,
-				C6EF40191E783EEE00109502 /* RoundLabel.swift */,
+				68C1153220FFCE0F000DD8AE /* CustomUI.swift */,
 				C662A295200547FF00CC44AB /* StringExt.swift */,
 			);
 			path = PPHSDKSampleApp;
 			sourceTree = "<group>";
 		};
-		F8E2CC30D8C9212F8647DC02 /* Pods */ = {
+		DCD9011486C77E7564B39C6B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				87E2DCB27568F60B7133D086 /* Pods-PPHSDKSampleApp.debug.xcconfig */,
-				8E345C953E135D24A01797D1 /* Pods-PPHSDKSampleApp.release.xcconfig */,
+				72CE82D0B850F3D33D928FED /* Pods-PPHSDKSampleApp.debug.xcconfig */,
+				485944B8031E93BF19858388 /* Pods-PPHSDKSampleApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -124,12 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C794101DDD01E800F8DC8E /* Build configuration list for PBXNativeTarget "PPHSDKSampleApp" */;
 			buildPhases = (
-				1741D21431E521AD2CA465AF /* [CP] Check Pods Manifest.lock */,
+				6313FB3EDAB0E94E93160C6F /* [CP] Check Pods Manifest.lock */,
 				C6C793F81DDD01E800F8DC8E /* Sources */,
 				C6C793F91DDD01E800F8DC8E /* Frameworks */,
 				C6C793FA1DDD01E800F8DC8E /* Resources */,
-				3AC54703116F1FD1C77F9569 /* [CP] Embed Pods Frameworks */,
-				4AB55ECD00511F6162EB617F /* [CP] Copy Pods Resources */,
+				B6B4BB66D042D3E6EC5431A1 /* [CP] Embed Pods Frameworks */,
+				09B8F053607DFE147E4AB386 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,7 +167,7 @@
 				TargetAttributes = {
 					C6C793FB1DDD01E800F8DC8E = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 729JAJ944S;
+						DevelopmentTeam = FBH8QE7YE9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -190,7 +205,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1741D21431E521AD2CA465AF /* [CP] Check Pods Manifest.lock */ = {
+		09B8F053607DFE147E4AB386 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6313FB3EDAB0E94E93160C6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,186 +238,30 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3AC54703116F1FD1C77F9569 /* [CP] Embed Pods Frameworks */ = {
+		B6B4BB66D042D3E6EC5431A1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/LogglyLogger-CocoaLumberjack/LogglyLogger_CocoaLumberjack.framework",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
+				"${PODS_ROOT}/PayPalHereSDKv2Beta/RSDK/Debug/PayPalRetailSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LogglyLogger_CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRetailInstrumentInterface.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalRetailSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4AB55ECD00511F6162EB617F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-resources.sh",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/check_icon_green.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/check_icon_green@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/chip_emv_chippin.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/chip_emv_chippin@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/chip_emv_chippin@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-AU.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-AU.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-AU.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-GB.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-GB.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-GB.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/es.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/es.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/es.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/fr.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/fr.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/fr.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_checkmark_lg.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_checkmark_lg@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_chipnswipe.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_chipnswipe@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_chipnswipe@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_chipntap_waves.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_chipntap_waves@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_chipntap_waves@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_closeX.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_closeX@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_closeX@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_critical.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_critical@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_edit_receipt.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_edit_receipt@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_edit_receipt_pressed.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_edit_receipt_pressed@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_email.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_email@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_info_orange.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_info_orange@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_info_orange@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_refresh.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_refresh@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_refresh@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_text.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_text@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_x_declined.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ic_x_declined@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/Info.plist",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja-JP.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja-JP.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja-JP.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ppCert",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/RemoveHeadphones_en.wav",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/RetailCountryPhoneFormats.plist",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_darkgrey@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_lightblue.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/sdk_clear_signature_lightblue@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/success_card_read.mp3",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/triangle_swiper.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/triangle_swiper@2x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/triangle_swiper@3x.png",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hans.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hans.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hans.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hant.lproj/Dynamic.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hant.lproj/InfoPlist.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hant.lproj/PPRSDK.strings",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-AU.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en-GB.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/en.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/es.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/fr.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja-JP.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/ja.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hans.lproj",
-				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework/Versions/A/Resources/PayPalRetailSDKResources.bundle/zh-Hant.lproj",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/check_icon_green.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/check_icon_green@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/chip_emv_chippin.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/chip_emv_chippin@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/chip_emv_chippin@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Dynamic.strings",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InfoPlist.strings",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PPRSDK.strings",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_checkmark_lg.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_checkmark_lg@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_chipnswipe.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_chipnswipe@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_chipnswipe@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_chipntap_waves.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_chipntap_waves@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_chipntap_waves@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_closeX.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_closeX@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_closeX@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_critical.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_critical@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_edit_receipt.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_edit_receipt@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_edit_receipt_pressed.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_edit_receipt_pressed@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_email.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_email@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_info_orange.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_info_orange@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_info_orange@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_refresh.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_refresh@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_refresh@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_text.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_text@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_x_declined.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_x_declined@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Info.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ppCert",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RemoveHeadphones_en.wav",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RetailCountryPhoneFormats.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sdk_clear_signature_darkgrey.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sdk_clear_signature_darkgrey@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sdk_clear_signature_lightblue.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sdk_clear_signature_lightblue@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/success_card_read.mp3",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/triangle_swiper.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/triangle_swiper@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/triangle_swiper@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PayPalRetailSDKResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en-AU.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en-GB.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ja-JP.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ja.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hant.lproj",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -397,14 +271,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C1153320FFCE0F000DD8AE /* CustomUI.swift in Sources */,
 				C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */,
 				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,
 				C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */,
-				C6EF401A1E783EEE00109502 /* RoundLabel.swift in Sources */,
+				685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */,
 				C662A296200547FF00CC44AB /* StringExt.swift in Sources */,
 				C6C794021DDD01E800F8DC8E /* InitializeViewController.swift in Sources */,
 				C698DE351FE9857100D005AE /* PaymentCompletedViewController.swift in Sources */,
 				C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */,
+				68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */,
+				68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */,
 				C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */,
 				C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */,
 			);
@@ -543,12 +420,12 @@
 		};
 		C6C794111DDD01E800F8DC8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87E2DCB27568F60B7133D086 /* Pods-PPHSDKSampleApp.debug.xcconfig */;
+			baseConfigurationReference = 72CE82D0B850F3D33D928FED /* Pods-PPHSDKSampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 729JAJ944S;
+				DEVELOPMENT_TEAM = FBH8QE7YE9;
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -569,19 +446,19 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Debug;
 		};
 		C6C794121DDD01E800F8DC8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E345C953E135D24A01797D1 /* Pods-PPHSDKSampleApp.release.xcconfig */;
+			baseConfigurationReference = 485944B8031E93BF19858388 /* Pods-PPHSDKSampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 729JAJ944S;
+				DEVELOPMENT_TEAM = FBH8QE7YE9;
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -601,7 +478,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Release;

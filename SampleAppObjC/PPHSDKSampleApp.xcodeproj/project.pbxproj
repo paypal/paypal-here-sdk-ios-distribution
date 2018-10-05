@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6868279121405A8C004E14DB /* UIButton+CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6868279021405A8C004E14DB /* UIButton+CustomButton.m */; };
+		BAC22001B3AFD5AC2B43FA25 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3520AA969FCD88B4E85E147E /* Pods_PPHSDKSampleApp.framework */; };
+		EA16EF76205F504400BE2654 /* InitializeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16EF75205F504400BE2654 /* InitializeViewController.m */; };
+		EA3C3395205C7F25000E20CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C3394205C7F25000E20CD /* AppDelegate.m */; };
+		EA3C339B205C7F25000E20CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3C3399205C7F25000E20CD /* Main.storyboard */; };
+		EA3C339D205C7F25000E20CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3C339C205C7F25000E20CD /* Assets.xcassets */; };
+		EA3C33A0205C7F25000E20CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3C339E205C7F25000E20CD /* LaunchScreen.storyboard */; };
+		EA3C33A3205C7F25000E20CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C33A2205C7F25000E20CD /* main.m */; };
+		EA3C33AB205C7F3F000E20CD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C33AA205C7F3F000E20CD /* WelcomeViewController.m */; };
+		EA4DE84220EE710A00B2CD10 /* TransactionOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */; };
+		EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */; };
+		EA4DE84A20EEF95300B2CD10 /* OfflineModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84920EEF95300B2CD10 /* OfflineModeViewController.m */; };
+		EA4DE84E20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DE84D20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m */; };
+		EADDCBC0205FF83D00037A7D /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADDCBBF205FF83D00037A7D /* SafariServices.framework */; };
+		EADDCBC42060348700037A7D /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC32060348700037A7D /* URLParser.m */; };
+		EADDCBC720603A8700037A7D /* DeviceDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC620603A8700037A7D /* DeviceDiscoveryViewController.m */; };
+		EADDCBCA206052BA00037A7D /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBC9206052BA00037A7D /* PaymentViewController.m */; };
+		EADDCBCE20615F4800037A7D /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBCD20615F4800037A7D /* NSString+Common.m */; };
+		EADDCBD120619B9400037A7D /* PaymentCompletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBD020619B9400037A7D /* PaymentCompletedViewController.m */; };
+		EADDCBD42061DEDD00037A7D /* AuthCompletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBD32061DEDD00037A7D /* AuthCompletedViewController.m */; };
+		EADDCBD72061FF1300037A7D /* CaptureAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EADDCBD62061FF1300037A7D /* CaptureAuthViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3520AA969FCD88B4E85E147E /* Pods_PPHSDKSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PPHSDKSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62476DD3E82B1F9F757B28E0 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		6868278F21405A8C004E14DB /* UIButton+CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomButton.h"; sourceTree = "<group>"; };
+		6868279021405A8C004E14DB /* UIButton+CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomButton.m"; sourceTree = "<group>"; };
+		6868279321406CF8004E14DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DE98DCBF3C12B642582E7E4B /* Pods-PPHSDKSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		EA16EF74205F504400BE2654 /* InitializeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitializeViewController.h; sourceTree = "<group>"; };
+		EA16EF75205F504400BE2654 /* InitializeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitializeViewController.m; sourceTree = "<group>"; };
+		EA3C3390205C7F25000E20CD /* PPHSDKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPHSDKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA3C3393205C7F25000E20CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EA3C3394205C7F25000E20CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EA3C339A205C7F25000E20CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA3C339C205C7F25000E20CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA3C339F205C7F25000E20CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EA3C33A1205C7F25000E20CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA3C33A2205C7F25000E20CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EA3C33A9205C7F3F000E20CD /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		EA3C33AA205C7F3F000E20CD /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		EA4DE84020EE710A00B2CD10 /* TransactionOptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionOptionsViewController.h; sourceTree = "<group>"; };
+		EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionOptionsViewController.m; sourceTree = "<group>"; };
+		EA4DE84320EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPRetailTransactionBeginOptions+SET_DEFAULT.h"; sourceTree = "<group>"; };
+		EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PPRetailTransactionBeginOptions+SET_DEFAULT.m"; sourceTree = "<group>"; };
+		EA4DE84820EEF95300B2CD10 /* OfflineModeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineModeViewController.h; sourceTree = "<group>"; };
+		EA4DE84920EEF95300B2CD10 /* OfflineModeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflineModeViewController.m; sourceTree = "<group>"; };
+		EA4DE84C20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflinePaymentCompletedViewController.h; sourceTree = "<group>"; };
+		EA4DE84D20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflinePaymentCompletedViewController.m; sourceTree = "<group>"; };
+		EADDCBBF205FF83D00037A7D /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		EADDCBC22060348700037A7D /* URLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLParser.h; sourceTree = "<group>"; };
+		EADDCBC32060348700037A7D /* URLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
+		EADDCBC520603A8700037A7D /* DeviceDiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDiscoveryViewController.h; sourceTree = "<group>"; };
+		EADDCBC620603A8700037A7D /* DeviceDiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDiscoveryViewController.m; sourceTree = "<group>"; };
+		EADDCBC8206052BA00037A7D /* PaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		EADDCBC9206052BA00037A7D /* PaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		EADDCBCC20615F4800037A7D /* NSString+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		EADDCBCD20615F4800037A7D /* NSString+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		EADDCBCF20619B9400037A7D /* PaymentCompletedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentCompletedViewController.h; sourceTree = "<group>"; };
+		EADDCBD020619B9400037A7D /* PaymentCompletedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentCompletedViewController.m; sourceTree = "<group>"; };
+		EADDCBD22061DEDD00037A7D /* AuthCompletedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthCompletedViewController.h; sourceTree = "<group>"; };
+		EADDCBD32061DEDD00037A7D /* AuthCompletedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthCompletedViewController.m; sourceTree = "<group>"; };
+		EADDCBD52061FF1300037A7D /* CaptureAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureAuthViewController.h; sourceTree = "<group>"; };
+		EADDCBD62061FF1300037A7D /* CaptureAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureAuthViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA3C338D205C7F25000E20CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EADDCBC0205FF83D00037A7D /* SafariServices.framework in Frameworks */,
+				BAC22001B3AFD5AC2B43FA25 /* Pods_PPHSDKSampleApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		337AB843264D3EB9BA285A89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE98DCBF3C12B642582E7E4B /* Pods-PPHSDKSampleApp.debug.xcconfig */,
+				62476DD3E82B1F9F757B28E0 /* Pods-PPHSDKSampleApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EA3C3387205C7F25000E20CD = {
+			isa = PBXGroup;
+			children = (
+				EA3C3392205C7F25000E20CD /* PPHSDKSampleApp */,
+				EA3C3391205C7F25000E20CD /* Products */,
+				337AB843264D3EB9BA285A89 /* Pods */,
+				FB204323BDA482DCC654AADB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EA3C3391205C7F25000E20CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA3C3390205C7F25000E20CD /* PPHSDKSampleApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA3C3392205C7F25000E20CD /* PPHSDKSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				EA4DE84620EE75CB00B2CD10 /* category */,
+				EADDCBC12060345600037A7D /* utility */,
+				EA3C3393205C7F25000E20CD /* AppDelegate.h */,
+				EA3C3394205C7F25000E20CD /* AppDelegate.m */,
+				EA3C33A9205C7F3F000E20CD /* WelcomeViewController.h */,
+				EA3C33AA205C7F3F000E20CD /* WelcomeViewController.m */,
+				EA16EF74205F504400BE2654 /* InitializeViewController.h */,
+				EA16EF75205F504400BE2654 /* InitializeViewController.m */,
+				EADDCBC520603A8700037A7D /* DeviceDiscoveryViewController.h */,
+				EADDCBC620603A8700037A7D /* DeviceDiscoveryViewController.m */,
+				EADDCBC8206052BA00037A7D /* PaymentViewController.h */,
+				EADDCBC9206052BA00037A7D /* PaymentViewController.m */,
+				EADDCBCF20619B9400037A7D /* PaymentCompletedViewController.h */,
+				EADDCBD020619B9400037A7D /* PaymentCompletedViewController.m */,
+				EADDCBD22061DEDD00037A7D /* AuthCompletedViewController.h */,
+				EADDCBD32061DEDD00037A7D /* AuthCompletedViewController.m */,
+				EADDCBD52061FF1300037A7D /* CaptureAuthViewController.h */,
+				EADDCBD62061FF1300037A7D /* CaptureAuthViewController.m */,
+				EA4DE84020EE710A00B2CD10 /* TransactionOptionsViewController.h */,
+				EA4DE84120EE710A00B2CD10 /* TransactionOptionsViewController.m */,
+				EA4DE84820EEF95300B2CD10 /* OfflineModeViewController.h */,
+				EA4DE84920EEF95300B2CD10 /* OfflineModeViewController.m */,
+				EA4DE84C20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.h */,
+				EA4DE84D20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m */,
+				EA3C3399205C7F25000E20CD /* Main.storyboard */,
+				EA3C339C205C7F25000E20CD /* Assets.xcassets */,
+				EA3C339E205C7F25000E20CD /* LaunchScreen.storyboard */,
+				EA3C33A1205C7F25000E20CD /* Info.plist */,
+				EA3C33A2205C7F25000E20CD /* main.m */,
+			);
+			path = PPHSDKSampleApp;
+			sourceTree = "<group>";
+		};
+		EA4DE84620EE75CB00B2CD10 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				EA4DE84320EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.h */,
+				EA4DE84420EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		EADDCBC12060345600037A7D /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				EADDCBC22060348700037A7D /* URLParser.h */,
+				EADDCBC32060348700037A7D /* URLParser.m */,
+				EADDCBCC20615F4800037A7D /* NSString+Common.h */,
+				EADDCBCD20615F4800037A7D /* NSString+Common.m */,
+				6868278F21405A8C004E14DB /* UIButton+CustomButton.h */,
+				6868279021405A8C004E14DB /* UIButton+CustomButton.m */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		FB204323BDA482DCC654AADB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EADDCBBF205FF83D00037A7D /* SafariServices.framework */,
+				3520AA969FCD88B4E85E147E /* Pods_PPHSDKSampleApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA3C338F205C7F25000E20CD /* PPHSDKSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA3C33A6205C7F25000E20CD /* Build configuration list for PBXNativeTarget "PPHSDKSampleApp" */;
+			buildPhases = (
+				2F082980047CDD1A8703E32B /* [CP] Check Pods Manifest.lock */,
+				EA3C338C205C7F25000E20CD /* Sources */,
+				EA3C338D205C7F25000E20CD /* Frameworks */,
+				EA3C338E205C7F25000E20CD /* Resources */,
+				068A28CBCF15986BCDDD9FCB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PPHSDKSampleApp;
+			productName = PPHSDKSampleApp;
+			productReference = EA3C3390205C7F25000E20CD /* PPHSDKSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA3C3388205C7F25000E20CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Patil, Mihir";
+				TargetAttributes = {
+					EA3C338F205C7F25000E20CD = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EA3C338B205C7F25000E20CD /* Build configuration list for PBXProject "PPHSDKSampleApp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA3C3387205C7F25000E20CD;
+			productRefGroup = EA3C3391205C7F25000E20CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA3C338F205C7F25000E20CD /* PPHSDKSampleApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA3C338E205C7F25000E20CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA3C33A0205C7F25000E20CD /* LaunchScreen.storyboard in Resources */,
+				EA3C339D205C7F25000E20CD /* Assets.xcassets in Resources */,
+				EA3C339B205C7F25000E20CD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		068A28CBCF15986BCDDD9FCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
+				"${PODS_ROOT}/PayPalHereSDKv2Beta/RSDK/Debug/PayPalRetailSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRetailInstrumentInterface.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalRetailSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F082980047CDD1A8703E32B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PPHSDKSampleApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA3C338C205C7F25000E20CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EADDCBCE20615F4800037A7D /* NSString+Common.m in Sources */,
+				EADDCBC42060348700037A7D /* URLParser.m in Sources */,
+				EA4DE84220EE710A00B2CD10 /* TransactionOptionsViewController.m in Sources */,
+				EA4DE84A20EEF95300B2CD10 /* OfflineModeViewController.m in Sources */,
+				EADDCBC720603A8700037A7D /* DeviceDiscoveryViewController.m in Sources */,
+				EA3C33A3205C7F25000E20CD /* main.m in Sources */,
+				EA3C3395205C7F25000E20CD /* AppDelegate.m in Sources */,
+				EA16EF76205F504400BE2654 /* InitializeViewController.m in Sources */,
+				EADDCBD42061DEDD00037A7D /* AuthCompletedViewController.m in Sources */,
+				EADDCBCA206052BA00037A7D /* PaymentViewController.m in Sources */,
+				EA3C33AB205C7F3F000E20CD /* WelcomeViewController.m in Sources */,
+				EADDCBD120619B9400037A7D /* PaymentCompletedViewController.m in Sources */,
+				EADDCBD72061FF1300037A7D /* CaptureAuthViewController.m in Sources */,
+				EA4DE84E20EFC8B700B2CD10 /* OfflinePaymentCompletedViewController.m in Sources */,
+				6868279121405A8C004E14DB /* UIButton+CustomButton.m in Sources */,
+				EA4DE84520EE75BF00B2CD10 /* PPRetailTransactionBeginOptions+SET_DEFAULT.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EA3C3399205C7F25000E20CD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA3C339A205C7F25000E20CD /* Base */,
+				6868279321406CF8004E14DB /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EA3C339E205C7F25000E20CD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA3C339F205C7F25000E20CD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA3C33A4205C7F25000E20CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EA3C33A5205C7F25000E20CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA3C33A7205C7F25000E20CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE98DCBF3C12B642582E7E4B /* Pods-PPHSDKSampleApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 729JAJ944S;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.heresdk.ios-obj-sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EA3C33A8205C7F25000E20CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62476DD3E82B1F9F757B28E0 /* Pods-PPHSDKSampleApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 729JAJ944S;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.heresdk.ios-obj-sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA3C338B205C7F25000E20CD /* Build configuration list for PBXProject "PPHSDKSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA3C33A4205C7F25000E20CD /* Debug */,
+				EA3C33A5205C7F25000E20CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA3C33A6205C7F25000E20CD /* Build configuration list for PBXNativeTarget "PPHSDKSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA3C33A7205C7F25000E20CD /* Debug */,
+				EA3C33A8205C7F25000E20CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA3C3388205C7F25000E20CD /* Project object */;
+}
