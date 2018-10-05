@@ -13,6 +13,7 @@
 @property (nonatomic, strong) PPHRetailMerchantStatus *status;
 @property (nonatomic, strong) PPHRetailMerchantUserInfo *userInfo;
 @property (nonatomic, copy) NSString *logglyAccessToken;
+@property (nonatomic, copy) NSString *pairingId;
 
 @end
 
