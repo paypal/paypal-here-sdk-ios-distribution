@@ -59,6 +59,7 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
+@class PPRetailOfflinePaymentStatus;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
@@ -114,7 +115,7 @@
 
 
     
-      - (instancetype _Nullable)initWithInvoice:(PPRetailInvoice* _Nullable)invoice merchant:(PPRetailMerchant* _Nullable)merchant;
+      - (instancetype _Nullable)initWithInvoice:(PPRetailInvoice* _Nullable)invoice merchant:(PPRetailMerchant* _Nullable)merchant offlinePaymentEnabled:(BOOL)offlinePaymentEnabled;
       
     - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
     + (instancetype _Null_unspecified)new NS_UNAVAILABLE;

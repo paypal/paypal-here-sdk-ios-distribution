@@ -23,4 +23,5 @@ extern NSString * _Nonnull const TRANSACTION_RECEIPT_OPTION_SELECTED;
 
 extern NSString * _Nonnull const RECEIPT_TYPE;
 
+
 @end
