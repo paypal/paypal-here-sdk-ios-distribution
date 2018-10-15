@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'SimpleKeychain', '~> 0.6.1'
   s.dependency 'PPRetailInstrumentInterface'
   s.dependency 'TrustKit', '~> 1.5.1'
-  s.dependency 'AFNetworking', '~> 2.5.4'
+  s.dependency 'AFNetworking', '~> 3.1.0'
   s.dependency 'AFNetworking/Reachability'
 
 end
