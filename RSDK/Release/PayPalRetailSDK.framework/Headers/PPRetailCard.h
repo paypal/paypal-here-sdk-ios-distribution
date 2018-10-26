@@ -106,6 +106,10 @@
     */
     @property (nonatomic,strong,nullable,readonly) NSString* lastFourDigits;
     /**
+    * First four digits of the presented card @readonly
+    */
+    @property (nonatomic,strong,nullable,readonly) NSString* firstFourDigits;
+    /**
     * Issuer of the card that was presented to the SDK @readonly
     */
     @property (nonatomic,assign,readonly) PPRetailCardIssuer cardIssuer;

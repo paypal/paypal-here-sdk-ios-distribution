@@ -200,8 +200,8 @@ typedef NS_ENUM(NSInteger, PPRetailInvoicePaymentTermPaymentTerms) {
  * The log level for the SDK
  */
 typedef NS_ENUM(NSInteger, PPRetaillogLevel) {
-  PPRetaillogLeveldebug = 1,
-  PPRetaillogLeveldeveloper = 2,
+  PPRetaillogLeveldeveloper = 1,
+  PPRetaillogLeveldebug = 2,
   PPRetaillogLevelinfo = 3,
   PPRetaillogLeveltrack = 4,
   PPRetaillogLevelwarn = 5,

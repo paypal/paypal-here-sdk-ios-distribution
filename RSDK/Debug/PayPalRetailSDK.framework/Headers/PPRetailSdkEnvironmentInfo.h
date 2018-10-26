@@ -109,6 +109,10 @@
     */
     @property (nonatomic,strong,nullable) NSString* appBuild;
     /**
+    * The MCC-MNC for the device
+    */
+    @property (nonatomic,strong,nullable) NSString* carrierCode;
+    /**
     * Currency for the Merchant
     */
     @property (nonatomic,strong,nullable) NSString* currency;
@@ -128,6 +132,18 @@
     * The retailSDK Version
     */
     @property (nonatomic,strong,nullable) NSString* retailSDKVersion;
+    /**
+    * Either android_advertising_id or ios_advertising_id
+    */
+    @property (nonatomic,strong,nullable) NSString* osAdId;
+    /**
+    * Either android_id or idfa
+    */
+    @property (nonatomic,strong,nullable) NSString* deviceId;
+    /**
+    * Device brand
+    */
+    @property (nonatomic,strong,nullable) NSString* brand;
 
 
 

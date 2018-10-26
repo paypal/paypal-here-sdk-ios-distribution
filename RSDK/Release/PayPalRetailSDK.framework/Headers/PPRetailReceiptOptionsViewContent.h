@@ -86,6 +86,7 @@
 
     @property (nonatomic,strong,nullable) NSString* title;
     @property (nonatomic,strong,nullable) NSString* message;
+    @property (nonatomic,strong,nullable) NSString* prompt;
     @property (nonatomic,strong,nullable) NSString* titleIconFilename;
     @property (nonatomic,strong,nullable) NSString* maskedEmail;
     @property (nonatomic,strong,nullable) NSString* maskedPhone;
