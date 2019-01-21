@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #ifdef RUA_MFI
-#import <LandiSDK_MFI/LDTmsFileVersionInfo.h>
+#import <PPHSDK_MFI/LDTmsFileVersionInfo.h>
 #else
 #import <PPHSDK_BLE/LDTmsFileVersionInfo.h>
 #endif
