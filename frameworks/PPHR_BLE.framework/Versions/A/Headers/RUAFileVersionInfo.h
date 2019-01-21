@@ -10,7 +10,7 @@
 #ifdef RUA_MFI
 #import <LandiSDK_MFI/LDTmsFileVersionInfo.h>
 #else
-#import <LandiSDK_BLE/LDTmsFileVersionInfo.h>
+#import <PPHSDK_BLE/LDTmsFileVersionInfo.h>
 #endif
 
 @interface RUAFileVersionInfo : NSObject
