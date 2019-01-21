@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "PayPalRetailSDKTypeDefs.h"
 #import "PayPalRetailSDKImports.h"
+#import "PPInstrumentationConstants.h"
 #import "PPHRetailMerchant.h"
 #import "PPRetailError.h"
 #import <PPRetailInstrumentInterface/PPRetailInstrumentationDelegate.h>
