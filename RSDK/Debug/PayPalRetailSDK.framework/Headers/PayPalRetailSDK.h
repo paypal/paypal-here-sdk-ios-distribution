@@ -212,6 +212,8 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 
 + (PPRetailTransactionManager *)transactionManager;
 
++ (PPRetailBraintreeManager *)braintreeManager;
+
 /*
  * Get the Braintree Login Url
  */

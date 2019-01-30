@@ -36,6 +36,7 @@
 #import "PPRetailSdkEnvironmentInfo.h"
 #import "PPRetailRetailInvoice.h"
 #import "PPRetailRetailInvoicePayment.h"
+#import "PPRetailBraintreeManager.h"
 #import "PPRetailCaptureHandler.h"
 #import "PPRetailTransactionContext.h"
 #import "PPRetailTransactionManager.h"

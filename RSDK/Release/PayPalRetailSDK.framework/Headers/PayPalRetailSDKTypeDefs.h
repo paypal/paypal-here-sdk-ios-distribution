@@ -34,6 +34,7 @@
 @class PPRetailSdkEnvironmentInfo;
 @class PPRetailRetailInvoice;
 @class PPRetailRetailInvoicePayment;
+@class PPRetailBraintreeManager;
 @class PPRetailCaptureHandler;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
@@ -656,7 +657,7 @@ typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
  */
 typedef id PPRetailUntrustedNetworkSignal;
 
-                                                                          
+                                                                            
 /**
  * Contactless reader was de-activated and the transaction still remains active.
  */

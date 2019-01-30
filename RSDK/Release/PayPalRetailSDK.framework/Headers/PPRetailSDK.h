@@ -47,6 +47,7 @@
 @class PPRetailSdkEnvironmentInfo;
 @class PPRetailRetailInvoice;
 @class PPRetailRetailInvoicePayment;
+@class PPRetailBraintreeManager;
 @class PPRetailCaptureHandler;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
@@ -178,14 +179,9 @@
     -(PPRetailTransactionManager* _Nullable)getTransactionManager;
 
     /**
-     * Returns the login URL for BrainTree account login
+     * Returns the Braintree Manager
      */
-    -(NSString* _Nullable)getBTLoginURL:(NSString* _Nullable)environment;
-
-    /**
-     * Checks if the returned URL contains the auth code and matches the state value in getBTLoginURL()
-     */
-    -(BOOL)isBtReturnUrlValid:(NSString* _Nullable)returnUrl;
+    -(PPRetailBraintreeManager* _Nullable)getBraintreeManager;
 
 
 

@@ -47,6 +47,7 @@
 @class PPRetailSdkEnvironmentInfo;
 @class PPRetailRetailInvoice;
 @class PPRetailRetailInvoicePayment;
+@class PPRetailBraintreeManager;
 @class PPRetailCaptureHandler;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
