@@ -154,6 +154,26 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (void)removeDeviceDiscoveredListener:(PPRetailDeviceDiscoveredSignal)listenerToken;
 
+#ifdef DEBUG
+/**
+ * @returns whether the device is being simulated or not
+ */
++(BOOL)isDeviceSimulated;
+
+
+/**
+ * Start Simulating Payment Device - This will allow you to mock the Payment Device
+ * and the server. This will only work in "DEBUG" mode
+ */
++(void)startSimulationWithOptions:(PPRetailSimulationOptions *) options;
+
+/*
+ * Mock the server. You can test normal payment flows with this without connecting to actual end points.
+ * Once fake server is enabled, the sdk has to be reinitialized in order to make actual payments.
+ */
++ (void) enableFakeResponse;
+#endif
+
 /**
  * Add a listener for the untrustedNetwork event
  * @returns PPRetailUntrustedNetworkEvent an object that can be used to remove the listener when
@@ -192,6 +212,19 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 
 + (PPRetailTransactionManager *)transactionManager;
 
++ (PPRetailBraintreeManager *)braintreeManager;
+
+/*
+ * Get the Braintree Login Url
+ */
++ (NSString *) getBtLoginUrl: (NSString *) env;
+
+/*
+ * Check if the redirect Url from Braintree login is correct
+ * If it is, you can close webkit and procced with the auth Code
+ */
++ (BOOL) isReturnUrlValid: (NSString *) returnUrl;
+
 + (void)logout;
 
 /*
@@ -207,4 +240,11 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  * IMPORTANT - Use this API with caution due to a potential deadlock issue.
  */
 + (void)logViaSDK:(NSString *)logLevel component:(NSString *)component message:(NSString *)message;
+
++ (void)setUITheme:(PPRetailUITheme)theme;
++ (PPRetailUITheme) getUITheme;
++ (void)setReceiptScreenOrientation:(PPRetailReceiptScreenOrientation)orientation;
++ (PPRetailReceiptScreenOrientation) getReceiptScreenOrientation;
++ (NSString *) getSdkVersion;
++ (BOOL)isLightTheme;
 @end

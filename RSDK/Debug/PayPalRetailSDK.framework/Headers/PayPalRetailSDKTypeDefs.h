@@ -34,7 +34,7 @@
 @class PPRetailSdkEnvironmentInfo;
 @class PPRetailRetailInvoice;
 @class PPRetailRetailInvoicePayment;
-@class PPRetailTokenExpirationHandler;
+@class PPRetailBraintreeManager;
 @class PPRetailCaptureHandler;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
@@ -47,6 +47,8 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflineTransactionRecord;
+@class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
@@ -57,6 +59,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
+@class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
@@ -93,7 +96,10 @@
 @class PPRetailInvoiceSearchRequest;
 @class PPRetailInvoiceTemplateSettings;
 @class PPRetailNetworkResponse;
+@class PPRetailRetailInvoice;
 @class PPRetailTransactionRecord;
+@class PPRetailVaultRecord;
+@class PPRetailOfflineTransactionRecord;
 @class PPRetailCard;
 @class PPRetailSignatureReceiver;
 @class PPRetailTokenExpirationHandler;
@@ -210,6 +216,23 @@ typedef NS_ENUM(NSInteger, PPRetaillogLevel) {
 };
 
 /**
+ * The UI theme for the SDK
+ */
+typedef NS_ENUM(NSInteger, PPRetailUITheme) {
+  PPRetailUIThemelight = 0,
+  PPRetailUIThemeblue = 1
+};
+
+/**
+ * The Receipt Screen orientation for the SDK
+ */
+typedef NS_ENUM(NSInteger, PPRetailReceiptScreenOrientation) {
+  PPRetailReceiptScreenOrientationSENSOR = 0,
+  PPRetailReceiptScreenOrientationPORTRAIT = 1,
+  PPRetailReceiptScreenOrientationLANDSCAPE = 2
+};
+
+/**
  * Payment Methods enum for Transaction Begin Options
  */
 typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsPaymentTypes) {
@@ -217,6 +240,22 @@ typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsPaymentTypes) {
   PPRetailTransactionBeginOptionsPaymentTypeskeyIn = 1,
   PPRetailTransactionBeginOptionsPaymentTypescash = 2,
   PPRetailTransactionBeginOptionsPaymentTypescheck = 3
+};
+
+/**
+ * Vault Type
+ */
+typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsVaultType) {
+  PPRetailTransactionBeginOptionsVaultTypePayOnly = 0,
+  PPRetailTransactionBeginOptionsVaultTypeVaultOnly = 1,
+  PPRetailTransactionBeginOptionsVaultTypePayAndVault = 2
+};
+
+/**
+ * Vault Provider
+ */
+typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsVaultProvider) {
+  PPRetailTransactionBeginOptionsVaultProviderBraintree = 0
 };
 
 /**
@@ -483,6 +522,18 @@ typedef void (^PPRetailMerchantReceiptForwardedHandler)(PPRetailError* error);
 typedef void (^PPRetailTransactionContextTransactionCompletedHandler)(PPRetailError* error, PPRetailTransactionRecord* record);
 
 /**
+ * Called when either vault completes or fails.
+     * Note that other events may be fired in the meantime.
+ */
+typedef void (^PPRetailTransactionContextVaultCompletedHandler)(PPRetailError* error, PPRetailVaultRecord* record);
+
+/**
+ * Called when either offline transaction addition completes or fails.
+     * Note that other events may be fired in the meantime.
+ */
+typedef void (^PPRetailTransactionContextOfflineTransactionAddedHandler)(PPRetailError* error, PPRetailOfflineTransactionRecord* record);
+
+/**
  * Indicates that the card data was read. Depending on your region and the buyer payment type, this can mean a magnetic
      * card was swiped, an EMV card was inserted, or an NFC card/device was tapped.
  */
@@ -693,7 +744,7 @@ typedef void (^PPRetailCancelledEvent)();
  */
 typedef id PPRetailCancelledSignal;
 
-                  
+                      
 /**
  * The reader is now connected and ready.
  */
@@ -797,7 +848,7 @@ typedef void (^PPRetailReconnectReaderEvent)(int waitTime);
  */
 typedef id PPRetailReconnectReaderSignal;
 
-                
+                  
 /**
  * A Card Reader has been discovered.
  */
