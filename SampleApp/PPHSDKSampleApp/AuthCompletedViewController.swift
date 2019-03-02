@@ -12,15 +12,11 @@ import PayPalRetailSDK
 class AuthCompletedViewController: UIViewController {
 
     @IBOutlet weak var successMsg: UILabel!
-    @IBOutlet weak var voidAuthBtn: UIButton!
-    @IBOutlet weak var voidCodeViewBtn: UIButton!
+    @IBOutlet weak var voidAuthBtn: CustomButton!
     @IBOutlet weak var voidCodeViewer: UITextView!
-    @IBOutlet weak var captureAuthBtn: UIButton!
-    @IBOutlet weak var captureAuthCodeViewBtn: UIButton!
+    @IBOutlet weak var captureAuthBtn: CustomButton!
     @IBOutlet weak var captureAuthCodeViewer: UITextView!
-    @IBOutlet weak var startOverBtn: UIButton!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
-    @IBOutlet weak var voidSuccessLbl: UILabel!
     
     var invoice: PPRetailInvoice?
     var authTransactionNumber: String?
@@ -29,10 +25,9 @@ class AuthCompletedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpDefaultView()
         successMsg.text = "Your authorization of $\(invoice?.total ?? 0) was successful"
         successMsg.sizeToFit()
-        activitySpinner.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,27 +35,31 @@ class AuthCompletedViewController: UIViewController {
     }
 
     @IBAction func voidAuthorization(_ sender: UIButton) {
+        voidAuthBtn.isHidden = true
         activitySpinner.isHidden = false
         activitySpinner.startAnimating()
         
         PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in
             if let err = error {
-                print("Error Code: \(err.code)")
-                print("Error Message: \(err.message)")
-                print("Debug ID: \(err.debugId)")
-                self.activitySpinner.stopAnimating()
+                print("Error Code: \(String(describing: err.code))")
+                print("Error Message: \(String(describing: err.message))")
+                print("Debug ID: \(String(describing: err.debugId))")
                 return
             }
-
+            
+            print("Void Payment was successful.")
             self.activitySpinner.stopAnimating()
             self.activitySpinner.isHidden = true
-            self.voidAuthBtn.setImage(#imageLiteral(resourceName: "small-greenarrow"), for: .normal)
-            self.voidSuccessLbl.isHidden = false
-
-            self.captureAuthBtn.isEnabled = false
-            self.captureAuthBtn.setImage(#imageLiteral(resourceName: "small-grayarrow"), for: .disabled)
-
-            self.startOverBtn.isHidden = false
+            
+            let alertController = UIAlertController(title: "Voided Successfully", message: "The payment was voided successfully.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Start Over", style: .default, handler: { (action) in
+                let paymentViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
+                var viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+                viewControllers.removeLast()
+                viewControllers[3] = paymentViewController!
+                self.navigationController?.setViewControllers(viewControllers, animated: true)
+            }))
+            self.present(alertController, animated: true, completion: nil)
         }
         
     }
@@ -97,41 +96,19 @@ class AuthCompletedViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    @IBAction func showInfo(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            if (voidCodeViewer.isHidden) {
-                voidCodeViewBtn.setTitle("Hide Code", for: .normal)
-                voidCodeViewer.isHidden = false
-                voidCodeViewer.text = "PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in\n" +
-                                      "   <code to handle success/failure>\n" +
-                                      "}"
-            } else {
-                voidCodeViewBtn.setTitle("View Code", for: .normal)
-                voidCodeViewer.isHidden = true
-            }
-        case 1:
-            if (captureAuthCodeViewer.isHidden) {
-                captureAuthCodeViewBtn.setTitle("Hide Code", for: .normal)
-                captureAuthCodeViewer.isHidden = false
-                captureAuthCodeViewer.text = "PayPalRetailSDK.captureAuthorizedTransaction(authTransactionNumber, invoiceId: invoice.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice.currency) { (error, captureId) in\n" +
-                                             "  <code to handle success/failure>\n" +
-                                             "}"
-            } else {
-                captureAuthCodeViewBtn.setTitle("View Code", for: .normal)
-                captureAuthCodeViewer.isHidden = true
-            }
-        default:
-            print("No Button Tag Found")
-        }
-    }
-    
-    @IBAction func startOver(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToPaymentsView", sender: sender)
-    }
-    
     func getCurrentNavigationController() -> UINavigationController! {
         return self.navigationController
+    }
+    
+    private func setUpDefaultView(){
+        
+        voidCodeViewer.text = "PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in\n" +
+            "   <code to handle success/failure>\n" +
+        "}"
+        captureAuthCodeViewer.text = "PayPalRetailSDK.captureAuthorizedTransaction(authTransactionNumber, invoiceId: invoice.payPalId, totalAmount: amountToCapture, gratuityAmount: 0, currency: invoice.currency) { (error, captureId) in\n" +
+            "  <code to handle success/failure>\n" +
+        "}"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
 }
