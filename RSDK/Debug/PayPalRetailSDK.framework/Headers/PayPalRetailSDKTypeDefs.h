@@ -35,6 +35,8 @@
 @class PPRetailRetailInvoice;
 @class PPRetailRetailInvoicePayment;
 @class PPRetailBraintreeManager;
+@class PPRetailSimulationManager;
+@class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
@@ -47,6 +49,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
@@ -58,12 +61,18 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
+@class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
+@class PPRetailBraintreeManager;
+@class PPRetailSimulationManager;
+@class PPRetailTransactionManager;
+@class PPRetailMerchantManager;
+@class PPRetailDeviceManager;
 @class PPRetailNetworkRequest;
 @class PPRetailInvoice;
 @class PPRetailSdkEnvironmentInfo;
@@ -94,7 +103,10 @@
 @class PPRetailInvoiceSearchRequest;
 @class PPRetailInvoiceTemplateSettings;
 @class PPRetailNetworkResponse;
+@class PPRetailRetailInvoice;
 @class PPRetailTransactionRecord;
+@class PPRetailVaultRecord;
+@class PPRetailOfflineTransactionRecord;
 @class PPRetailCard;
 @class PPRetailSignatureReceiver;
 @class PPRetailTokenExpirationHandler;
@@ -517,6 +529,18 @@ typedef void (^PPRetailMerchantReceiptForwardedHandler)(PPRetailError* error);
 typedef void (^PPRetailTransactionContextTransactionCompletedHandler)(PPRetailError* error, PPRetailTransactionRecord* record);
 
 /**
+ * Called when either vault completes or fails.
+     * Note that other events may be fired in the meantime.
+ */
+typedef void (^PPRetailTransactionContextVaultCompletedHandler)(PPRetailError* error, PPRetailVaultRecord* record);
+
+/**
+ * Called when either offline transaction addition completes or fails.
+     * Note that other events may be fired in the meantime.
+ */
+typedef void (^PPRetailTransactionContextOfflineTransactionAddedHandler)(PPRetailError* error, PPRetailOfflineTransactionRecord* record);
+
+/**
  * Indicates that the card data was read. Depending on your region and the buyer payment type, this can mean a magnetic
      * card was swiped, an EMV card was inserted, or an NFC card/device was tapped.
  */
@@ -657,7 +681,7 @@ typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
  */
 typedef id PPRetailUntrustedNetworkSignal;
 
-                                                                            
+                                                                                
 /**
  * Contactless reader was de-activated and the transaction still remains active.
  */
@@ -727,7 +751,7 @@ typedef void (^PPRetailCancelledEvent)();
  */
 typedef id PPRetailCancelledSignal;
 
-                    
+                      
 /**
  * The reader is now connected and ready.
  */
@@ -831,7 +855,7 @@ typedef void (^PPRetailReconnectReaderEvent)(int waitTime);
  */
 typedef id PPRetailReconnectReaderSignal;
 
-                
+                  
 /**
  * A Card Reader has been discovered.
  */

@@ -48,6 +48,8 @@
 @class PPRetailRetailInvoice;
 @class PPRetailRetailInvoicePayment;
 @class PPRetailBraintreeManager;
+@class PPRetailSimulationManager;
+@class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
@@ -60,6 +62,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
@@ -71,6 +74,7 @@
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
 @class PPRetailTransactionRecord;
+@class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
 @class PPRetailPage;
 @class PPRetailDiscoveredCardReader;

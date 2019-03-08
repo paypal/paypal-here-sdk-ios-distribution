@@ -122,6 +122,7 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (PPRetailError *)initializeMerchant:(NSString *)merchantToken repository:(NSString *)repository completionHandler:(PPRetailMerchantHandler)handler;
 
++ (PPRetailError *)initializeFakeMerchant:(PPRetailMerchantHandler)handler;
 
 /**
  * If you are whitelisted for offline payments
@@ -195,6 +196,8 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 
 + (void)initializePPHRetailMerchant:(PPHRetailMerchant *)merchant completionHandler:(PPRetailMerchantHandler)handler;
 
++ (void)initializeFakePPHRetailMerchant:(PPHRetailMerchant *)merchant completionHandler:(PPRetailMerchantHandler)handler;
+
 + (void)connectToLastActiveReader;
 
 /**
@@ -213,17 +216,6 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 + (PPRetailTransactionManager *)transactionManager;
 
 + (PPRetailBraintreeManager *)braintreeManager;
-
-/*
- * Get the Braintree Login Url
- */
-+ (NSString *) getBtLoginUrl: (NSString *) env;
-
-/*
- * Check if the redirect Url from Braintree login is correct
- * If it is, you can close webkit and procced with the auth Code
- */
-+ (BOOL) isReturnUrlValid: (NSString *) returnUrl;
 
 + (void)logout;
 
