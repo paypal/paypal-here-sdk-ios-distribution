@@ -106,7 +106,6 @@ class TransactionOptionsViewController: UIViewController {
     /// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
     /// - Parameter sender: UIButton assoicated with the formFactor Buttons.
     @IBAction func formFactorSwitchPressed(_ sender: UISwitch) {
-        sender.isOn = !sender.isOn
         
         var formFactor: PPRetailFormFactor!
         switch sender.tag {

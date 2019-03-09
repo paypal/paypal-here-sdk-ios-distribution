@@ -72,6 +72,8 @@ class OfflineModeViewController: UIViewController {
                 })
             } else {
                 print("Merchant is not eligible to take Offline Payments")
+                self.alertMerchantNotEligableForOfflinePayments()
+
             }
         } else {
             // Turn off offlineMode
@@ -224,5 +226,16 @@ class OfflineModeViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func alertMerchantNotEligableForOfflinePayments() {
+        let alertController = UIAlertController(title: "Whoops!", message: "Merchant is not eligible to take Offline Payments", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.offlineModeSwitch.setOn(false, animated: true)
+        }
+        
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

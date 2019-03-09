@@ -148,7 +148,7 @@ class DeviceDiscoveryViewController: UIViewController {
     }
     
     @IBAction func goToPmtPage(_ sender: Any) {
-        performSegue(withIdentifier: "goToPmtPage", sender: sender)
+        performSegue(withIdentifier: "goToPmtTypeSelect", sender: sender)
     }
     
 }
