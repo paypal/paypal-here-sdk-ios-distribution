@@ -25,6 +25,15 @@
 		C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */; };
 		C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF40031E7706B600109502 /* WelcomeViewController.swift */; };
 		C6EF40141E77173800109502 /* References in Resources */ = {isa = PBXBuildFile; fileRef = C6EF40131E77173800109502 /* References */; };
+		EC62D20C2219F65A009C91BD /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D20B2219F65A009C91BD /* WebKitViewController.swift */; };
+		EC62D213221A0FF7009C91BD /* VaultPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D20F221A0FF6009C91BD /* VaultPaymentViewController.swift */; };
+		EC62D214221A0FF7009C91BD /* VaultOnlyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D210221A0FF6009C91BD /* VaultOnlyFlow.swift */; };
+		EC62D216221A1204009C91BD /* VaultTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D215221A1204009C91BD /* VaultTransactionModel.swift */; };
+		EC62D218221CC477009C91BD /* ErrorMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D217221CC477009C91BD /* ErrorMsg.swift */; };
+		EC62D21C221DEA5F009C91BD /* PayAndVaultFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D21B221DEA5F009C91BD /* PayAndVaultFlow.swift */; };
+		EC9B00BD2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9B00BC2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift */; };
+		EC9B00C02213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9B00BF2213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift */; };
+		ECA5E3942215EB61001D83E5 /* VaultPaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA5E3932215EB60001D83E5 /* VaultPaymentCompletedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +63,15 @@
 		C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C6EF40031E7706B600109502 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C6EF40131E77173800109502 /* References */ = {isa = PBXFileReference; lastKnownFileType = folder; path = References; sourceTree = "<group>"; };
+		EC62D20B2219F65A009C91BD /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
+		EC62D20F221A0FF6009C91BD /* VaultPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaultPaymentViewController.swift; sourceTree = "<group>"; };
+		EC62D210221A0FF6009C91BD /* VaultOnlyFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaultOnlyFlow.swift; sourceTree = "<group>"; };
+		EC62D215221A1204009C91BD /* VaultTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTransactionModel.swift; sourceTree = "<group>"; };
+		EC62D217221CC477009C91BD /* ErrorMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMsg.swift; sourceTree = "<group>"; };
+		EC62D21B221DEA5F009C91BD /* PayAndVaultFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayAndVaultFlow.swift; sourceTree = "<group>"; };
+		EC9B00BC2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypeSelectionViewController.swift; sourceTree = "<group>"; };
+		EC9B00BF2213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTypeTableViewCell.swift; sourceTree = "<group>"; };
+		ECA5E3932215EB60001D83E5 /* VaultPaymentCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultPaymentCompletedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +120,12 @@
 		C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				EC62D20A2219F245009C91BD /* VaultFeature */,
 				C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */,
 				C6EF40031E7706B600109502 /* WelcomeViewController.swift */,
 				C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */,
 				C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */,
+				EC9B00BC2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift */,
 				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
 				685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */,
 				68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */,
@@ -119,6 +139,8 @@
 				C6C7940D1DDD01E800F8DC8E /* Info.plist */,
 				68C1153220FFCE0F000DD8AE /* CustomUI.swift */,
 				C662A295200547FF00CC44AB /* StringExt.swift */,
+				EC62D217221CC477009C91BD /* ErrorMsg.swift */,
+				EC9B00BE2213A4A400C3DBA0 /* Views */,
 			);
 			path = PPHSDKSampleApp;
 			sourceTree = "<group>";
@@ -130,6 +152,27 @@
 				485944B8031E93BF19858388 /* Pods-PPHSDKSampleApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC62D20A2219F245009C91BD /* VaultFeature */ = {
+			isa = PBXGroup;
+			children = (
+				EC62D210221A0FF6009C91BD /* VaultOnlyFlow.swift */,
+				EC62D21B221DEA5F009C91BD /* PayAndVaultFlow.swift */,
+				EC62D215221A1204009C91BD /* VaultTransactionModel.swift */,
+				EC62D20F221A0FF6009C91BD /* VaultPaymentViewController.swift */,
+				ECA5E3932215EB60001D83E5 /* VaultPaymentCompletedViewController.swift */,
+				EC62D20B2219F65A009C91BD /* WebKitViewController.swift */,
+			);
+			path = VaultFeature;
+			sourceTree = "<group>";
+		};
+		EC9B00BE2213A4A400C3DBA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EC9B00BF2213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +187,6 @@
 				C6C793F91DDD01E800F8DC8E /* Frameworks */,
 				C6C793FA1DDD01E800F8DC8E /* Resources */,
 				B6B4BB66D042D3E6EC5431A1 /* [CP] Embed Pods Frameworks */,
-				09B8F053607DFE147E4AB386 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,7 +209,7 @@
 				TargetAttributes = {
 					C6C793FB1DDD01E800F8DC8E = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = FBH8QE7YE9;
+						DevelopmentTeam = 729JAJ944S;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -205,21 +247,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09B8F053607DFE147E4AB386 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6313FB3EDAB0E94E93160C6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,7 +262,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B6B4BB66D042D3E6EC5431A1 /* [CP] Embed Pods Frameworks */ = {
@@ -244,10 +271,10 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
-				"${PODS_ROOT}/PayPalHereSDKv2Beta/RSDK/Debug/PayPalRetailSDK.framework",
+				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
 			);
@@ -261,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -271,18 +298,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC62D213221A0FF7009C91BD /* VaultPaymentViewController.swift in Sources */,
+				EC62D21C221DEA5F009C91BD /* PayAndVaultFlow.swift in Sources */,
+				EC62D214221A0FF7009C91BD /* VaultOnlyFlow.swift in Sources */,
 				68C1153320FFCE0F000DD8AE /* CustomUI.swift in Sources */,
 				C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */,
+				EC9B00BD2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift in Sources */,
 				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,
 				C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */,
 				685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */,
 				C662A296200547FF00CC44AB /* StringExt.swift in Sources */,
+				EC62D218221CC477009C91BD /* ErrorMsg.swift in Sources */,
 				C6C794021DDD01E800F8DC8E /* InitializeViewController.swift in Sources */,
+				EC62D20C2219F65A009C91BD /* WebKitViewController.swift in Sources */,
 				C698DE351FE9857100D005AE /* PaymentCompletedViewController.swift in Sources */,
 				C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */,
+				EC9B00C02213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift in Sources */,
 				68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */,
 				68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */,
+				ECA5E3942215EB61001D83E5 /* VaultPaymentCompletedViewController.swift in Sources */,
 				C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */,
+				EC62D216221A1204009C91BD /* VaultTransactionModel.swift in Sources */,
 				C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FBH8QE7YE9;
+				DEVELOPMENT_TEAM = 729JAJ944S;
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -458,7 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FBH8QE7YE9;
+				DEVELOPMENT_TEAM = 729JAJ944S;
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

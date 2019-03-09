@@ -62,7 +62,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     // simply modify/add them here so they are set.
     @IBAction func createInvoice(_ sender: UIButton) {
         
-        
         // Invoice initialization takes in the currency code. However, if the currency used to init doesn't
         // match the active merchant's currency, then an error will happen at payment time. Simply using
         // userDefaults to store the merchant's currency after successful initializeMerchant, and then use
@@ -255,22 +254,15 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     private func setUpTextFieldToolBar(){
         //init toolbar for keyboard
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.bounds.size.width, height: 50))
-        //create left side empty space so that done button set on right side
-        let customDoneButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: toolbar.bounds.size.width, height: toolbar.bounds.size.height))
-        customDoneButton.setTitle("Done", for: .normal)
-        customDoneButton.setTitleColor(.white, for: .normal)
-        customDoneButton.backgroundColor = UIColor().hexStringToUIColor(hex: "0065B1")
-        customDoneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
-        let doneBtn = UIBarButtonItem(customView: customDoneButton)
-        toolbar.setItems([doneBtn], animated: false)
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonAction))
+        toolbar.setItems([flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
         //setting toolbar as inputAccessoryView
         self.invAmount.inputAccessoryView = toolbar
 
-        
-        // Setting up initial aesthetics.
-        invAmount.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
+        // Add target to receive text change
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
     }
     
