@@ -124,10 +124,14 @@
     @property (nonatomic,assign) BOOL isCertificationMode;
     /**
     * The Partner Attribution Id code that is used for analytics
+    */
+    @property (nonatomic,strong,nullable) NSString* referrerCode;
+    /**
+    * The soft descriptor that will be shown on the receipt,  provided by the partner
  * PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve
  * a signature for the transaction. MODIFY THIS SETTING AT YOUR OWN RISK!
     */
-    @property (nonatomic,strong,nullable) NSString* referrerCode;
+    @property (nonatomic,strong,nullable) NSString* softDescriptor;
 
 
     

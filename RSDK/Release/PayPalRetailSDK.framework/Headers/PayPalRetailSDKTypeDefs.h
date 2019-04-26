@@ -673,7 +673,7 @@ typedef id PPRetailPageViewedSignal;
 
 
 /**
- * A page has been viewed
+ * Untrusted Network Event
  */
 typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
 /**
