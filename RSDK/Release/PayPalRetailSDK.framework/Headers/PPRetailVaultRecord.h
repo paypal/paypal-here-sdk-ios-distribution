@@ -97,10 +97,6 @@
     * The Vault id @readonly
     */
     @property (nonatomic,strong,nullable,readonly) NSString* vaultId;
-    /**
-    * The vault is valid until this value @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* validUntil;
 
 
     

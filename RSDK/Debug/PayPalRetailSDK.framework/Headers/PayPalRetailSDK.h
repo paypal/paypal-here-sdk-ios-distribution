@@ -194,7 +194,7 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 
 + (void)retrieveAuthorizedTransactions:(NSDate *_Nullable)startDateTime endDateTime:(NSDate *_Nullable)endDateTime pageSize:(int)pageSize status:(NSArray *_Nullable)status callback:(PPRetailTransactionManagerRetrieveAuthorizedTransactionsHandler _Nullable)callback;
 
-+ (void)initializePPHRetailMerchant:(PPHRetailMerchant *)merchant completionHandler:(PPRetailMerchantHandler)handler;
++ (void)initializePPHRetailMerchant:(PPHRetailMerchant *)merchant deviceId:(NSUUID *)deviceId completionHandler:(PPRetailMerchantHandler)handler;
 
 + (void)initializeFakePPHRetailMerchant:(PPHRetailMerchant *)merchant completionHandler:(PPRetailMerchantHandler)handler;
 
