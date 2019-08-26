@@ -10,6 +10,16 @@
 
 - (id)initWithAccessToken:(NSString *)aToken refreshUrl:(NSString *)rUrl environment:(NSString *)env;
 
+- (id)initWithEnvironment:(NSString *)env;
+
+-(SdkCredential *)setTokenRefreshUrl:(NSString *)refreshUrl;
+
+-(SdkCredential *)setRepo:(NSString *)repository;
+    
+-(SdkCredential *)setFirstPartyCredentials:(NSString *)clientId appSecret:(NSString *)appSecret;
+
+-(SdkCredential *)setThirdPartyCredentials:(NSString *)accessToken;
+
 @property (nonatomic, copy) NSString *accessToken;
 
 @property (nonatomic, copy) NSString *refreshUrl;
