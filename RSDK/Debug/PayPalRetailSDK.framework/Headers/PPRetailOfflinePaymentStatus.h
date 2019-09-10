@@ -114,6 +114,10 @@
     */
     @property (nonatomic,assign) int errNo;
     /**
+    * the error message of the offline txn after replaying if failed
+    */
+    @property (nonatomic,assign) int errMessage;
+    /**
     * the flag showing if the txn is declined during replay
     */
     @property (nonatomic,assign) BOOL isDeclined;
@@ -137,6 +141,18 @@
     * The transaction number of the offline tx
     */
     @property (nonatomic,strong,nullable) NSString* transactionNumber;
+    /**
+    * The latitude of the offline tx
+    */
+    @property (nonatomic,strong,nullable) NSString* latitude;
+    /**
+    * The longitude of the offline tx
+    */
+    @property (nonatomic,strong,nullable) NSString* longitude;
+    /**
+    * The invoice of the offline tx
+    */
+    @property (nonatomic,strong,nullable) PPRetailRetailInvoice* invoice;
 
 
     

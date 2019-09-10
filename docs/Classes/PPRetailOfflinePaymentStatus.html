@@ -62,17 +62,25 @@
 		
 		<option value="//api/name/createTime">createTime</option>
 		
+		<option value="//api/name/errMessage">errMessage</option>
+		
 		<option value="//api/name/errNo">errNo</option>
 		
 		<option value="//api/name/expiry">expiry</option>
 		
 		<option value="//api/name/id">id</option>
 		
+		<option value="//api/name/invoice">invoice</option>
+		
 		<option value="//api/name/invoiceId">invoiceId</option>
 		
 		<option value="//api/name/invoiceNumber">invoiceNumber</option>
 		
 		<option value="//api/name/isDeclined">isDeclined</option>
+		
+		<option value="//api/name/latitude">latitude</option>
+		
+		<option value="//api/name/longitude">longitude</option>
 		
 		<option value="//api/name/retry">retry</option>
 		
@@ -410,6 +418,52 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/errMessage" title="errMessage"></a>
+	<h3 class="method-title"><code><a href="#//api/name/errMessage">&nbsp;&nbsp;errMessage</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>the error message of the offline txn after replaying if failed</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int errMessage</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>the error message of the offline txn after replaying if failed</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentStatus.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isDeclined" title="isDeclined"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isDeclined">&nbsp;&nbsp;isDeclined</a></code>
 </h3>
@@ -559,7 +613,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The invoice number of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> number of the offline tx</p>
 			</div>
 			
 		    
@@ -576,7 +630,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The invoice number of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> number of the offline tx</p>
 			</div>
 			
 
@@ -605,7 +659,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The invoice <a href="#//api/name/id">id</a> of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> <a href="#//api/name/id">id</a> of the offline tx</p>
 			</div>
 			
 		    
@@ -622,7 +676,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The invoice <a href="#//api/name/id">id</a> of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> <a href="#//api/name/id">id</a> of the offline tx</p>
 			</div>
 			
 
@@ -685,6 +739,144 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/latitude" title="latitude"></a>
+	<h3 class="method-title"><code><a href="#//api/name/latitude">&nbsp;&nbsp;latitude</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The latitude of the offline tx</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *latitude</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The latitude of the offline tx</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentStatus.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/longitude" title="longitude"></a>
+	<h3 class="method-title"><code><a href="#//api/name/longitude">&nbsp;&nbsp;longitude</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The longitude of the offline tx</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *longitude</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The longitude of the offline tx</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentStatus.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/invoice" title="invoice"></a>
+	<h3 class="method-title"><code><a href="#//api/name/invoice">&nbsp;&nbsp;invoice</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The invoice of the offline tx</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) PPRetailRetailInvoice *invoice</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The invoice of the offline tx</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentStatus.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -700,7 +892,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 PayPal. All rights reserved. Updated: 2019-08-23</p>
+						<p class="copyright">Copyright &copy; 2019 PayPal. All rights reserved. Updated: 2019-09-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
