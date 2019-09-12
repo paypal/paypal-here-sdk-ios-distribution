@@ -144,12 +144,10 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         
         tc!.setCompletedHandler { (error, txnRecord) -> Void in
             
-            if error != nil && self.offlineMode {
-                self.goToOfflinePaymentCompletedViewController()
-            } else if error != nil {
-                print("Error Code: \(String(describing: error?.code))")
-                print("Error Message: \(String(describing: error?.message))")
-                print("Debug ID: \(String(describing: error?.debugId))")
+            if let err = error {
+                print("Error Code: \(String(describing: err.code))")
+                print("Error Message: \(String(describing: err.message))")
+                print("Debug ID: \(String(describing: err.debugId))")
                 
                 return
             } else {
@@ -166,6 +164,18 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                     self.goToPaymentCompletedViewController()
                 }
             }
+        }
+        
+        if(self.offlineMode) {
+            tc?.setOfflineTransactionAdditionHandler({ (error, offlineTxnRecord) in
+                if let err = error {
+                    print("Offline Save Error Code: \(String(describing: err.code))")
+                    print("Offline Save Error Message: \(String(describing: err.message))")
+                    print("Offline Save Debug ID: \(String(describing: err.debugId))")
+                } else {
+                    self.goToOfflinePaymentCompletedViewController()
+                }
+            })
         }
         
         tc!.beginPayment(options)
