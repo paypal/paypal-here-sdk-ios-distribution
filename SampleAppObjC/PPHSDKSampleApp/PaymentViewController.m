@@ -143,10 +143,10 @@
     
     [self.tc setCompletedHandler:^(PPRetailError *error, PPRetailTransactionRecord *record) {
         
-        if(error != nil) {
-            NSLog(@"Error Code: %@", error.code);
-            NSLog(@"Error Message: %@", error.message);
-            NSLog(@"Debug ID: %@", error.debugId);
+        if let err = error {
+            NSLog(@"Error Code: %@", err.code);
+            NSLog(@"Error Message: %@", err.message);
+            NSLog(@"Debug ID: %@", err.debugId);
             return;
         } else {
             NSLog(@"Txn ID: %@", record.transactionNumber);
@@ -164,10 +164,10 @@
     
     if(self.offlineMode) {
         [self.tc setOfflineTransactionAdditionHandler:^(PPRetailError *error, PPRetailOfflineTransactionRecord *record) {
-            if(error != nil) {
-                NSLog(@"Error Code: %@", error.code);
-                NSLog(@"Error Message: %@", error.message);
-                NSLog(@"Debug ID: %@", error.debugId);
+            if let err = error {
+                NSLog(@"Error Code: %@", err.code);
+                NSLog(@"Error Message: %@", err.message);
+                NSLog(@"Debug ID: %@", err.debugId);
                 return;
             } else {
                 [weakSelf goToOfflinePaymentCompletedViewController];
