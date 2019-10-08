@@ -151,7 +151,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.merchEmailLabel.text = merchant.emailAddress
         }
         
-        PayPalRetailSDK.startWatchingAudio()
         self.merchInfoView.isHidden = false
         
         // Save currency to UserDefaults for further usage. This needs to be used to initialize
