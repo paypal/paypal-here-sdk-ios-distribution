@@ -9,14 +9,13 @@
 import UIKit
 import PayPalRetailSDK
 
-class VaultPaymentViewController: UIViewController, PPHRetailSDKAppDelegate, WebKitViewControllerDelegate {
+class VaultPaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var customerIdTextField: UITextField!
     @IBOutlet weak var payButton: UIButton!
-    @IBOutlet weak var braintreeLoginButton: CustomButton!
     @IBOutlet weak var vaultSwitch: UISwitch!
     @IBOutlet weak var vaultSwitchLabel: UILabel!
     
@@ -59,10 +58,6 @@ class VaultPaymentViewController: UIViewController, PPHRetailSDKAppDelegate, Web
         setVaultSwitchLabelText()
     }
     
-    @IBAction func braintreeLoginButtonTapped(_ sender: CustomButton) {
-        initializeBraintreeLogin()
-    }
-    
     @IBAction func optionsButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "goToOptionsVC", sender: nil)
     }
@@ -82,32 +77,6 @@ class VaultPaymentViewController: UIViewController, PPHRetailSDKAppDelegate, Web
             // TODO: Do we expect other view related info to change?
         }
     }
-    
-    
-    // MARK: - Braintree Login
-    
-    func initializeBraintreeLogin(){
-        
-        guard let braintreeLoginUrl:URL = URL(string: PayPalRetailSDK.braintreeManager().getBtLoginUrl() ?? "") else {
-            alertWith(title: "Failed to get Braintree Login Url.", message: "")
-            return
-        }
-        
-        let webViewController = WebKitViewController()
-        webViewController.url = braintreeLoginUrl
-        webViewController.delegate = self
-        navigationController?.pushViewController(webViewController, animated: true)
-    }
-    
-    func returnURL(controller: WebKitViewController, returnUrl: String) {
-        if !returnUrl.isEmpty {
-            // If you need to do something about the Braintree redirect url, do it here
-            alertWith(title: "Braintree login successful", message: "")
-        } else {
-            alertWith(title: "Braintree login failed", message: "")
-        }
-    }
-    
     
     // MARK: - PPHRetailSDKAppDelegate Method
     

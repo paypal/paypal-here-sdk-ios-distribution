@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="38S-Kk-lKk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="38S-Kk-lKk">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2786,29 +2786,9 @@
                                                     <action selector="payButtonTapped:" destination="OMh-sG-0hE" eventType="touchUpInside" id="n6d-uL-uT3"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2r-fG-dJ7" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="370" width="311" height="50"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="11U-jx-AgE"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="18"/>
-                                                <state key="normal" title="Braintree Login">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="braintreeLoginButtonTapped:" destination="OMh-sG-0hE" eventType="touchUpInside" id="1ob-tT-XKX"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="i2r-fG-dJ7" firstAttribute="top" secondItem="jql-Vt-rv4" secondAttribute="bottom" constant="28" id="5a8-Sg-LWb"/>
                                             <constraint firstItem="1mX-kT-RBV" firstAttribute="top" secondItem="yZa-xq-q63" secondAttribute="top" id="E7w-6G-6f3"/>
                                             <constraint firstItem="b7R-bx-rZP" firstAttribute="trailing" secondItem="mjY-E4-pdl" secondAttribute="trailing" id="FUr-ZF-wAS"/>
                                             <constraint firstItem="1mX-kT-RBV" firstAttribute="leading" secondItem="yZa-xq-q63" secondAttribute="leading" constant="16" id="IMA-pa-Gbs"/>
@@ -2820,12 +2800,9 @@
                                             <constraint firstItem="jql-Vt-rv4" firstAttribute="trailing" secondItem="b7R-bx-rZP" secondAttribute="trailing" constant="-16" id="X8D-Ih-h0B"/>
                                             <constraint firstItem="Pbb-NR-i3R" firstAttribute="trailing" secondItem="1mX-kT-RBV" secondAttribute="trailing" id="Yh4-j9-glB"/>
                                             <constraint firstItem="bEH-K6-Duy" firstAttribute="width" secondItem="Q1g-p2-qx4" secondAttribute="width" id="gIj-tk-fws"/>
-                                            <constraint firstItem="i2r-fG-dJ7" firstAttribute="trailing" secondItem="jql-Vt-rv4" secondAttribute="trailing" id="gzO-O8-vQ8"/>
                                             <constraint firstItem="mjY-E4-pdl" firstAttribute="top" secondItem="Pbb-NR-i3R" secondAttribute="bottom" id="hAU-Dd-rDR"/>
-                                            <constraint firstItem="i2r-fG-dJ7" firstAttribute="leading" secondItem="jql-Vt-rv4" secondAttribute="leading" id="jiY-pM-Fxb"/>
                                             <constraint firstItem="b7R-bx-rZP" firstAttribute="leading" secondItem="mjY-E4-pdl" secondAttribute="leading" id="qAQ-dz-f3A"/>
                                             <constraint firstItem="b7R-bx-rZP" firstAttribute="top" secondItem="mjY-E4-pdl" secondAttribute="bottom" id="svz-qP-eT5"/>
-                                            <constraint firstItem="i2r-fG-dJ7" firstAttribute="width" secondItem="jql-Vt-rv4" secondAttribute="width" id="wBS-1l-3bd"/>
                                             <constraint firstItem="bEH-K6-Duy" firstAttribute="height" secondItem="Q1g-p2-qx4" secondAttribute="height" id="xxe-Kb-wYM"/>
                                             <constraint firstItem="mjY-E4-pdl" firstAttribute="leading" secondItem="Pbb-NR-i3R" secondAttribute="leading" id="yTg-yr-hhz"/>
                                             <constraint firstItem="mjY-E4-pdl" firstAttribute="trailing" secondItem="Pbb-NR-i3R" secondAttribute="trailing" id="zEN-Tn-obJ"/>
@@ -2854,7 +2831,6 @@
                     <connections>
                         <outlet property="amountTextField" destination="kp4-2Z-Xxf" id="cP4-ZC-c17"/>
                         <outlet property="amountView" destination="b7R-bx-rZP" id="DZr-39-a1X"/>
-                        <outlet property="braintreeLoginButton" destination="i2r-fG-dJ7" id="A08-nR-TZA"/>
                         <outlet property="customerIdTextField" destination="6hV-Qk-Dfj" id="eFR-Vd-vmI"/>
                         <outlet property="payButton" destination="jql-Vt-rv4" id="Pta-9v-KQX"/>
                         <outlet property="vaultSwitch" destination="Q1g-p2-qx4" id="YQC-RU-Jpk"/>
