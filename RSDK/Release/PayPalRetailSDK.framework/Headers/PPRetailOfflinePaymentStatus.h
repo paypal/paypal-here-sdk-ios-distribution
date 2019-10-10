@@ -150,6 +150,14 @@
     */
     @property (nonatomic,strong,nullable) NSString* longitude;
     /**
+    * of the offline tx
+    */
+    @property (nonatomic,assign) PPRetailTransactionBeginOptionsPaymentTypes paymentType;
+    /**
+    * card details of the card used for the offline tx
+    */
+    @property (nonatomic,strong,nullable) PPRetailCard* card;
+    /**
     * The invoice of the offline tx
     */
     @property (nonatomic,strong,nullable) PPRetailRetailInvoice* invoice;
