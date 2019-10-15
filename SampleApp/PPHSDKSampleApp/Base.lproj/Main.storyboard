@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="38S-Kk-lKk">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="38S-Kk-lKk">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +37,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="624"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dBG-hg-KVD">
-                                                <rect key="frame" x="16" y="16" width="343" height="29"/>
+                                                <rect key="frame" x="16" y="16" width="343" height="32"/>
                                                 <segments>
                                                     <segment title="Sandbox"/>
                                                     <segment title="Live"/>
@@ -47,7 +45,7 @@
                                                 <color key="tintColor" red="0.0" green="0.40784313725490196" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6c-ga-cI9">
-                                                <rect key="frame" x="16.000000000000004" y="69" width="46.333333333333343" height="32"/>
+                                                <rect key="frame" x="16" y="72" width="50" height="32"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -59,7 +57,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUH-EU-9C9" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="69" width="120" height="32"/>
+                                                <rect key="frame" x="239" y="72" width="120" height="32"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="hxk-fk-77D"/>
@@ -89,7 +87,7 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="Gtd-eV-qBE">
-                                                <rect key="frame" x="8" y="109" width="359" height="64"/>
+                                                <rect key="frame" x="8" y="112" width="359" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="iXX-8e-CPO"/>
                                                 </constraints>
@@ -103,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gch-C9-CRA" userLabel="Separator Label">
-                                                <rect key="frame" x="8" y="181" width="359" height="1"/>
+                                                <rect key="frame" x="8" y="184" width="359" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.8980392157" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="zpz-DB-End"/>
@@ -113,7 +111,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxT-Gn-zau">
-                                                <rect key="frame" x="15.999999999999996" y="198" width="60.666666666666657" height="36"/>
+                                                <rect key="frame" x="16" y="201" width="61" height="36"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -125,7 +123,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXG-Cv-5NQ" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                                <rect key="frame" x="199" y="200" width="160" height="32"/>
+                                                <rect key="frame" x="199" y="203" width="160" height="32"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="QaF-RE-Mkp"/>
@@ -155,14 +153,14 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3o9-ie-sxm">
-                                                <rect key="frame" x="334" y="203.66666666666669" width="25" height="25"/>
+                                                <rect key="frame" x="334" y="206.66666666666669" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Mhx-Zl-sRb"/>
                                                     <constraint firstAttribute="width" constant="25" id="PPJ-0t-s68"/>
                                                 </constraints>
                                             </activityIndicatorView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="xmL-58-j21">
-                                                <rect key="frame" x="8" y="242" width="359" height="100"/>
+                                                <rect key="frame" x="8" y="245" width="359" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="kHt-co-YAI"/>
                                                 </constraints>
@@ -176,7 +174,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgV-LZ-I03" userLabel="Separator Label">
-                                                <rect key="frame" x="8" y="358" width="359" height="1"/>
+                                                <rect key="frame" x="8" y="361" width="359" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.8980392157" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ysr-v3-g1h"/>
@@ -186,7 +184,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx4-bF-9DF">
-                                                <rect key="frame" x="16.000000000000004" y="375" width="59.333333333333343" height="36"/>
+                                                <rect key="frame" x="15.999999999999996" y="378" width="61.666666666666657" height="36"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -198,7 +196,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gq3-xf-34c" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                                <rect key="frame" x="219" y="377" width="140" height="32"/>
+                                                <rect key="frame" x="219" y="380" width="140" height="32"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="BH8-W1-XA9"/>
@@ -228,14 +226,14 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uvc-9G-vdc">
-                                                <rect key="frame" x="334" y="380.66666666666669" width="25" height="25"/>
+                                                <rect key="frame" x="334" y="383.66666666666669" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="1pt-CY-3kc"/>
                                                     <constraint firstAttribute="height" constant="25" id="qbJ-iw-NWg"/>
                                                 </constraints>
                                             </activityIndicatorView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="oNR-Cc-ZIR">
-                                                <rect key="frame" x="8" y="419" width="359" height="100"/>
+                                                <rect key="frame" x="8" y="422" width="359" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="1Ch-lx-2tR"/>
                                                 </constraints>
@@ -249,7 +247,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6K-Si-hnE" userLabel="Separator Label">
-                                                <rect key="frame" x="8" y="535" width="359" height="1"/>
+                                                <rect key="frame" x="8" y="538" width="359" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.8980392157" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="47r-Ju-X6M"/>
@@ -259,7 +257,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izk-hp-i9o">
-                                                <rect key="frame" x="8" y="552" width="359" height="80"/>
+                                                <rect key="frame" x="8" y="555" width="359" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Merchant Account:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4X4-Fd-US5">
                                                         <rect key="frame" x="0.0" y="16" width="152" height="16"/>
@@ -311,7 +309,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-c9-8NN" userLabel="Placeholder Label">
-                                                <rect key="frame" x="0.0" y="632" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="635" width="375" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="750" id="GtH-wO-Q0f"/>
                                                 </constraints>
@@ -483,7 +481,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="140" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Connect">
                                             <color key="titleColor" red="0.0" green="0.40784313729999999" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -543,7 +540,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="148" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Connect">
                                             <color key="titleColor" red="0.0" green="0.40784313729999999" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -751,14 +747,14 @@
             <objects>
                 <viewController storyboardIdentifier="PaymentViewController" title="Payments" modalTransitionStyle="flipHorizontal" id="8rJ-Kc-sve" customClass="PaymentViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzZ-dm-aBk">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="pGu-P3-YUw">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Payments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afc-bY-nQH">
                                                 <rect key="frame" x="16" y="15.999999999999998" width="132.66666666666666" height="21.333333333333329"/>
@@ -767,7 +763,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d7-EE-Mly" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                                <rect key="frame" x="209" y="14.333333333333329" width="150" height="25"/>
+                                                <rect key="frame" x="209" y="14.333333333333336" width="150" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="OZD-Zb-95Y"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="wHB-yZ-e4C"/>
@@ -783,7 +779,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OI-00-Zxq" userLabel="Separator Label">
-                                                <rect key="frame" x="16" y="53.333333333333343" width="343" height="1"/>
+                                                <rect key="frame" x="16" y="53.333333333333336" width="343" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.8980392157" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ZKF-65-69Z"/>
@@ -793,7 +789,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P42-ea-gui">
-                                                <rect key="frame" x="16" y="86.333333333333343" width="175" height="20"/>
+                                                <rect key="frame" x="16" y="86.333333333333329" width="175" height="20"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="U8Q-Tz-npD"/>
@@ -804,7 +800,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$   0.00" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ys3-Nc-omn">
-                                                <rect key="frame" x="16" y="114.33333333333334" width="351" height="30"/>
+                                                <rect key="frame" x="16" y="114.33333333333331" width="351" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="qD8-Aa-fYh"/>
                                                 </constraints>
@@ -850,7 +846,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kE-Vt-u1N">
-                                                <rect key="frame" x="16.000000000000004" y="169.33333333333331" width="49.333333333333343" height="22.666666666666657"/>
+                                                <rect key="frame" x="16.000000000000004" y="169.33333333333334" width="49.333333333333343" height="22.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="18"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1212,18 +1208,18 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK v2.x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERZ-rO-y3i">
-                                        <rect key="frame" x="155" y="352.66666666666669" width="65.333333333333314" height="21.333333333333314"/>
+                                        <rect key="frame" x="152.33333333333334" y="352.66666666666669" width="70.666666666666657" height="20"/>
                                         <fontDescription key="fontDescription" name="PayPalSansBig-Light" family="PayPal Sans Big" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgc-bR-1OB">
-                                        <rect key="frame" x="147.66666666666666" y="374" width="79.666666666666657" height="21.333333333333314"/>
+                                        <rect key="frame" x="147" y="372.66666666666669" width="81.333333333333314" height="20"/>
                                         <fontDescription key="fontDescription" name="PayPalSansBig-Light" family="PayPal Sans Big" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFz-gH-TrT" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="630.33333333333337" width="343" height="50"/>
+                                        <rect key="frame" x="16" y="627.66666666666663" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.396078431372549" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dkc-bI-wKe"/>
@@ -1240,7 +1236,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybd-fh-Jpd" userLabel="Placeholder Label">
-                                        <rect key="frame" x="0.0" y="696.33333333333337" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="693.66666666666663" width="375" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="IFj-1Z-LYg"/>
                                         </constraints>
@@ -1313,11 +1309,11 @@
             <objects>
                 <viewController storyboardIdentifier="PaymentCompletedViewController" title="Successful Payment" id="uuq-nL-b5Y" customClass="PaymentCompletedViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9I-ai-HqD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azQ-Gp-Bfg">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="big-greenarrow" translatesAutoresizingMaskIntoConstraints="NO" id="vF6-hs-77F">
                                         <rect key="frame" x="172.66666666666666" y="32" width="30" height="30"/>
@@ -1358,7 +1354,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="154-Pz-yF0" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="227" y="230.66666666666669" width="140" height="30"/>
+                                        <rect key="frame" x="227" y="230.66666666666666" width="140" height="29.999999999999972"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="LtI-wc-xmn"/>
@@ -1366,7 +1362,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="160" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Provide a Refund">
                                             <color key="titleColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1503,14 +1498,14 @@
             <objects>
                 <viewController storyboardIdentifier="offlineModeVC" title="Offline Payments" id="7mE-0c-TkG" customClass="OfflineModeViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F09-E0-GBy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL8-yz-ZM2">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="kcX-2x-Nwl">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCO-zM-3JT">
                                                 <rect key="frame" x="16" y="16" width="99" height="21"/>
@@ -1523,7 +1518,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENABLED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRG-gB-Rc5">
-                                                <rect key="frame" x="229" y="17.666666666666671" width="64" height="17.666666666666671"/>
+                                                <rect key="frame" x="229" y="17.666666666666664" width="64" height="17.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="14"/>
                                                 <color key="textColor" red="0.062745098040000002" green="0.48627450979999998" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1584,7 +1579,7 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="Mhc-Vk-5f5">
-                                                <rect key="frame" x="8" y="109.66666666666666" width="359" height="70"/>
+                                                <rect key="frame" x="8" y="109.66666666666669" width="359" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="0Jb-vO-BkZ"/>
                                                 </constraints>
@@ -1598,7 +1593,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2O3-2j-eRS" userLabel="Separator Label">
-                                                <rect key="frame" x="8" y="195.66666666666669" width="359" height="1"/>
+                                                <rect key="frame" x="8" y="195.66666666666666" width="359" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.8980392157" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Es9-Eq-up0"/>
@@ -1608,7 +1603,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replay Transaction" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsL-uR-rdc">
-                                                <rect key="frame" x="16" y="212.66666666666669" width="155" height="21"/>
+                                                <rect key="frame" x="16" y="212.66666666666666" width="155" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="155" id="3PQ-Pv-MF1"/>
                                                     <constraint firstAttribute="height" constant="21" id="Rbz-BO-KAc"/>
@@ -1618,21 +1613,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iZB-lW-pFX">
-                                                <rect key="frame" x="339" y="213.33333333333331" width="20" height="20"/>
+                                                <rect key="frame" x="339" y="213.33333333333334" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="5aS-Qj-RQX"/>
                                                     <constraint firstAttribute="width" constant="20" id="aSc-qn-lR0"/>
                                                 </constraints>
                                             </activityIndicatorView>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHs-bs-Mdx" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                                <rect key="frame" x="269" y="208.66666666666669" width="90" height="29"/>
+                                                <rect key="frame" x="269" y="208.66666666666666" width="90" height="29"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="46I-ej-dZk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="13"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="195" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Start Replay">
                                                     <color key="titleColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -1655,7 +1649,7 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="code-viewer" translatesAutoresizingMaskIntoConstraints="NO" id="fQS-ID-q6Y">
-                                                <rect key="frame" x="8" y="249.66666666666669" width="359" height="70"/>
+                                                <rect key="frame" x="8" y="249.66666666666663" width="359" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="Pf3-oy-NFg"/>
                                                 </constraints>
@@ -1732,7 +1726,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COI-2r-PNp" userLabel="Separator Label">
-                                                <rect key="frame" x="8" y="475.66666666666663" width="359" height="1"/>
+                                                <rect key="frame" x="8" y="475.66666666666669" width="359" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.8980392157" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="q4w-T1-Kpf"/>
@@ -1742,7 +1736,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7N-xk-QDZ">
-                                                <rect key="frame" x="16" y="492.66666666666663" width="193" height="21"/>
+                                                <rect key="frame" x="16" y="492.66666666666669" width="193" height="21.000000000000057"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="0Tm-Rz-XHB"/>
                                                     <constraint firstAttribute="width" constant="193" id="uXS-Ld-iR8"/>
@@ -1877,11 +1871,11 @@
             <objects>
                 <viewController storyboardIdentifier="CaptureAuthViewController" title="Capture Authorization" modalTransitionStyle="flipHorizontal" id="0Hd-NL-PxN" customClass="CaptureAuthViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nXd-sx-GQY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-2Y-dmK">
-                                <rect key="frame" x="0.0" y="88" width="375" height="632"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorization Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOi-jN-Z4Y">
                                         <rect key="frame" x="16" y="32" width="175" height="21"/>
@@ -1949,7 +1943,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iB-6b-D4W" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="720" width="343" height="50"/>
+                                <rect key="frame" x="16" y="666" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XA6-2s-6TN"/>
@@ -2001,14 +1995,14 @@
             <objects>
                 <viewController storyboardIdentifier="transactionOptionsVC" title="Payment Options" id="s5x-fC-VC3" customClass="TransactionOptionsViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YWf-PF-kr7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-dF-cMT" userLabel="Payment Options View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-8A-yXu">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sale Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2td-GC-qVP">
                                                 <rect key="frame" x="10" y="10" width="106.66666666666667" height="25"/>
@@ -3220,11 +3214,11 @@
             <objects>
                 <viewController storyboardIdentifier="OfflinePaymentCompletedViewController" title="Offline Successful Payment" id="nbN-lg-CSy" customClass="OfflinePaymentCompletedViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wbM-F4-4Mk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNL-Y8-BT1">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="big-greenarrow" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-bG-tza">
                                         <rect key="frame" x="172.66666666666666" y="32" width="30" height="30"/>
@@ -3259,7 +3253,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmR-Q9-JNc" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="287" y="200.66666666666669" width="80" height="30"/>
+                                        <rect key="frame" x="287" y="200.66666666666666" width="80" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="nbm-5G-S5Q"/>
@@ -3267,7 +3261,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="160" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="New Sale">
                                             <color key="titleColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -3352,11 +3345,11 @@
             <objects>
                 <viewController storyboardIdentifier="AuthCaptureViewController" title="Successful Payment" id="6GC-xu-uQQ" customClass="AuthCompletedViewController" customModule="PPHSDKSampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wSE-5P-c8N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LD-gQ-EeE">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="big-greenarrow" translatesAutoresizingMaskIntoConstraints="NO" id="y9g-r4-8yQ">
                                         <rect key="frame" x="172.66666666666666" y="32" width="30" height="30"/>
@@ -3397,7 +3390,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SM-iy-5FZ" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="227" y="230.66666666666669" width="140" height="30"/>
+                                        <rect key="frame" x="227" y="230.66666666666666" width="140" height="29.999999999999972"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="BGm-bQ-baE"/>
@@ -3405,7 +3398,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="160" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Void Authorization">
                                             <color key="titleColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -3496,7 +3488,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="160" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Capture Authorization">
                                             <color key="titleColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -3516,7 +3507,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sTk-eQ-UyD">
-                                        <rect key="frame" x="277" y="230.66666666666669" width="40" height="30"/>
+                                        <rect key="frame" x="277" y="230.66666666666666" width="40" height="29.999999999999972"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="C1Q-VI-4QU"/>
                                         </constraints>
@@ -3605,14 +3596,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentTypeCell" id="hDM-SD-4nw" customClass="PaymentTypeTableViewCell" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="29"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hDM-SD-4nw" id="8A5-LV-OcR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9n-BC-Lmn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="0.0" green="0.36470588240000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3709,7 +3700,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="160" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Provide a Refund">
                                             <color key="titleColor" red="0.0" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -3854,8 +3844,9 @@
         <image name="small-grayarrow" width="20" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8fc-DH-hCC"/>
-        <segue reference="fbT-Wf-9sx"/>
-        <segue reference="NMY-kW-zkk"/>
+        <segue reference="XD0-3K-FaM"/>
+        <segue reference="heE-FI-xpW"/>
+        <segue reference="UbX-On-qDn"/>
+        <segue reference="nZg-4R-zBI"/>
     </inferredMetricsTieBreakers>
 </document>
