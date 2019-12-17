@@ -98,6 +98,10 @@
     */
     @property (nonatomic,strong,nullable,readonly) NSString* id;
     /**
+    * The Offline Transaction amount @readonly
+    */
+    @property (nonatomic,assign,readonly) int amount;
+    /**
     * The offline transaction is valid until this value @readonly
     */
     @property (nonatomic,strong,nullable,readonly) NSString* validUntil;
