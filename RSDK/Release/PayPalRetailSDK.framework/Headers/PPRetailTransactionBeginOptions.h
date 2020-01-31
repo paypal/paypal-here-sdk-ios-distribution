@@ -62,6 +62,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;

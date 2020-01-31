@@ -62,6 +62,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
@@ -126,6 +127,10 @@
     * The Partner Attribution Id code that is used for analytics
     */
     @property (nonatomic,strong,nullable) NSString* referrerCode;
+    /**
+    * The storeId to pull the store location address
+    */
+    @property (nonatomic,strong,nullable) NSString* storeId;
     /**
     * The soft descriptor that will be shown on the receipt,  provided by the partner
  * PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve

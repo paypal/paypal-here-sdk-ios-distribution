@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>PPRetailSimulationManager Class Reference</title>
+	<title>PPRetailOfflinePaymentInfo Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,17 +54,17 @@
 
 	
 	
-
-	
-
-	
-	<optgroup label="Instance Methods">
+	<optgroup label="Properties">
 		
-		<option value="//api/name/enableFakeResponse">- enableFakeResponse</option>
+		<option value="//api/name/statusList">statusList</option>
 		
-		<option value="//api/name/simulateDevice:usecase:jsonResponseData:">- simulateDevice:usecase:jsonResponseData:</option>
+		<option value="//api/name/total">total</option>
 		
 	</optgroup>
+	
+
+	
+
 	
 	
 </select>
@@ -79,7 +79,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">PPRetailSimulationManager Class Reference</h1>
+					<h1 class="title">PPRetailOfflinePaymentInfo Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -88,7 +88,7 @@
 	<td>PPRetailObject : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>PPRetailSimulationManager.h</td>
+	<td>PPRetailOfflinePaymentInfo.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -98,7 +98,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>SimulationManager is a public facing facade to everything related to SDK simulation.</p>
+						<p>TransactionOptions provides the list of customizations for a given transaction</p>
 					</div>
 					
 					
@@ -114,8 +114,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/enableFakeResponse" title="enableFakeResponse"></a>
-	<h3 class="method-title"><code><a href="#//api/name/enableFakeResponse">&ndash;&nbsp;enableFakeResponse</a></code>
+	<a name="//api/name/total" title="total"></a>
+	<h3 class="method-title"><code><a href="#//api/name/total">&nbsp;&nbsp;total</a></code>
 </h3>
 
 	<div class="method-info">
@@ -125,12 +125,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Provide Fake Response for all HTTP calls made by the SDK</p>
+				<p>Shows total payment volume of all offline payments which are going to be replayed</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)enableFakeResponse</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSDecimalNumber *total</code></div>
 
 		    
 			
@@ -142,7 +142,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Provide Fake Response for all HTTP calls made by the SDK</p>
+				<p>Shows total payment volume of all offline payments which are going to be replayed</p>
 			</div>
 			
 
@@ -153,15 +153,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailSimulationManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentInfo.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/simulateDevice:usecase:jsonResponseData:" title="simulateDevice:usecase:jsonResponseData:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/simulateDevice:usecase:jsonResponseData:">&ndash;&nbsp;simulateDevice:usecase:jsonResponseData:</a></code>
+	<a name="//api/name/statusList" title="statusList"></a>
+	<h3 class="method-title"><code><a href="#//api/name/statusList">&nbsp;&nbsp;statusList</a></code>
 </h3>
 
 	<div class="method-info">
@@ -171,12 +171,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Provide fake devices. If fake is enable, no actual devices will work.</p>
+				<p>List of status infos after replaying the offline payment</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)simulateDevice:(PPRetailDeviceSimulatorType)<em>devices</em> usecase:(PPRetailSimulatorUseCase)<em>usecase</em> jsonResponseData:(NSString *_Nullable)<em>jsonResponseData</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSArray *statusList</code></div>
 
 		    
 			
@@ -188,7 +188,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Provide fake devices. If fake is enable, no actual devices will work.</p>
+				<p>List of status infos after replaying the offline payment</p>
 			</div>
 			
 
@@ -199,7 +199,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">PPRetailSimulationManager.h</code></p>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentInfo.h</code></p>
 			</div>
 			
 			

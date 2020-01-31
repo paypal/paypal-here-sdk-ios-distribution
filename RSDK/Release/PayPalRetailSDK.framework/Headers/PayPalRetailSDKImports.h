@@ -51,6 +51,7 @@
 #import "PPRetailReceiptSMSEntryViewContent.h"
 #import "PPRetailReceiptViewContent.h"
 #import "PPRetailOfflinePaymentStatus.h"
+#import "PPRetailOfflinePaymentInfo.h"
 #import "PPRetailOfflineTransactionRecord.h"
 #import "PPRetailTokenExpirationHandler.h"
 #import "PPRetailCard.h"
