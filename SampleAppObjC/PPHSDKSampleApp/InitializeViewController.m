@@ -109,6 +109,7 @@
     // Grab the token(s) from the notification and pass it into the merchant initialize call to set up
     // the merchant.  Upon successful initialization, the 'Connect Card Reader' button will be enabled for use.
     NSString *accessToken =  (NSString*) notification.object;
+
     NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
     SdkCredential *sdkCreds = [[SdkCredential alloc] initWithAccessToken:accessToken refreshUrl:[tokenDefault stringForKey:@"REFRESH_URL"]  environment:[tokenDefault stringForKey:@"ENVIRONMENT"]];
     [PayPalRetailSDK initializeMerchantWithCredentials:(SdkCredential *)sdkCreds completionHandler:^(PPRetailError *error, PPRetailMerchant *merchant) {
