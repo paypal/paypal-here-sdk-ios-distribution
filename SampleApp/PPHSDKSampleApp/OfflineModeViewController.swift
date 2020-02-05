@@ -59,7 +59,7 @@ class OfflineModeViewController: UIViewController {
             if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEligibility())! {
                 // This call with initalize offlinePayment. Any kind of failure will be returned to this callback.
                 // Along with the status of the transaction that were done during offline Mode.
-                PayPalRetailSDK.transactionManager()?.startOfflinePayment({ (error, statusList) in
+                PayPalRetailSDK.transactionManager()?.startOfflinePayment({ (error, info) in
                     if error != nil {
                         print(error?.developerMessage ?? "There was a problem initializing offlinePayment.")
                     } else {
@@ -67,7 +67,7 @@ class OfflineModeViewController: UIViewController {
                         if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled())! {
                             self.updateOfflineModeUI()
                         }
-                        self.offlineTransactionStatusList(statusList: statusList)
+                        self.offlineTransactionStatusList(statusList: info?.statusList)
                     }
                 })
             } else {
@@ -77,11 +77,11 @@ class OfflineModeViewController: UIViewController {
             }
         } else {
             // Turn off offlineMode
-            PayPalRetailSDK.transactionManager()?.stopOfflinePayment({ (error, statusList) in
+            PayPalRetailSDK.transactionManager()?.stopOfflinePayment({ (error, info) in
                 if error != nil {
                     print("Error: \(error.debugDescription)")
                 } else {
-                    self.offlineTransactionStatusList(statusList: statusList)
+                    self.offlineTransactionStatusList(statusList: info?.statusList)
                 }
             })
             self.updateOfflineModeUI()
@@ -92,11 +92,11 @@ class OfflineModeViewController: UIViewController {
     /// tell you about the status of the payment.
     /// - Parameter sender: CustomButton assoicated with the Get Offline Status button.
     @IBAction func getOfflineStatus(_ sender: CustomButton) {
-        PayPalRetailSDK.transactionManager().getOfflinePaymentStatus { (error, statusList) in
+        PayPalRetailSDK.transactionManager().getOfflinePaymentStatus { (error, info) in
             if error  != nil {
                 print("Error: \(error.debugDescription)")
             } else {
-                self.offlineTransactionStatusList(statusList: statusList)
+                self.offlineTransactionStatusList(statusList: info?.statusList)
             }
         }
     }
@@ -115,13 +115,13 @@ class OfflineModeViewController: UIViewController {
             }
             
             self.replayTransactionAnimation(true)
-            PayPalRetailSDK.transactionManager().startReplayOfflineTxns { [unowned self] (error, statusList) in
+            PayPalRetailSDK.transactionManager().startReplayOfflineTxns { [unowned self] (error, info) in
                 self.updateOfflineModeUI()
                 self.replayTransactionAnimation(false)
                 if error != nil {
                     print("Error is: ", error.debugDescription)
                 } else {
-                    self.offlineTransactionStatusList(statusList: statusList)
+                    self.offlineTransactionStatusList(statusList: info?.statusList)
                 }
             }
         }
@@ -133,11 +133,11 @@ class OfflineModeViewController: UIViewController {
     @IBAction func stopReplay(_ sender: CustomButton) {
         replayTransactionIndicatorView.stopAnimating()
         replayOfflineTransactionBtn.isHidden = false
-        PayPalRetailSDK.transactionManager()?.stopReplayOfflineTxns({ (error, statusList) in
+        PayPalRetailSDK.transactionManager()?.stopReplayOfflineTxns({ (error, info) in
             if error != nil {
                 print("Stopped replaying offline transactions")
             } else {
-                self.offlineTransactionStatusList(statusList: statusList)
+                self.offlineTransactionStatusList(statusList: info?.statusList)
             }
         })
     }
