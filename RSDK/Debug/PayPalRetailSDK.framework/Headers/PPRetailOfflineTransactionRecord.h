@@ -62,6 +62,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
@@ -97,6 +98,10 @@
     * The Offline Transaction id @readonly
     */
     @property (nonatomic,strong,nullable,readonly) NSString* id;
+    /**
+    * The Offline Transaction amount @readonly
+    */
+    @property (nonatomic,assign,readonly) int amount;
     /**
     * The offline transaction is valid until this value @readonly
     */

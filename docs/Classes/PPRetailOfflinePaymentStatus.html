@@ -58,6 +58,8 @@
 		
 		<option value="//api/name/amount">amount</option>
 		
+		<option value="//api/name/card">card</option>
+		
 		<option value="//api/name/cardIssuer">cardIssuer</option>
 		
 		<option value="//api/name/createTime">createTime</option>
@@ -81,6 +83,8 @@
 		<option value="//api/name/latitude">latitude</option>
 		
 		<option value="//api/name/longitude">longitude</option>
+		
+		<option value="//api/name/paymentType">paymentType</option>
 		
 		<option value="//api/name/retry">retry</option>
 		
@@ -153,12 +157,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the id of the offline txn</p>
+				<p>the id of the offline txn @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *id</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *id</code></div>
 
 		    
 			
@@ -170,7 +174,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the id of the offline txn</p>
+				<p>the id of the offline txn @readonly</p>
 			</div>
 			
 
@@ -199,12 +203,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Show the create time of the offline txn</p>
+				<p>Show the create time of the offline txn @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *createTime</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSDate *createTime</code></div>
 
 		    
 			
@@ -216,7 +220,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Show the create time of the offline txn</p>
+				<p>Show the create time of the offline txn @readonly</p>
 			</div>
 			
 
@@ -245,12 +249,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the total amount of the offline txn</p>
+				<p>the total amount of the offline txn @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSDecimalNumber *amount</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSDecimalNumber *amount</code></div>
 
 		    
 			
@@ -262,7 +266,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the total amount of the offline txn</p>
+				<p>the total amount of the offline txn @readonly</p>
 			</div>
 			
 
@@ -291,12 +295,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the card issuer of the card used for the txn</p>
+				<p>the <a href="#//api/name/card">card</a> issuer of the <a href="#//api/name/card">card</a> used for the txn @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSArray *cardIssuer</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSArray *cardIssuer</code></div>
 
 		    
 			
@@ -308,7 +312,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the card issuer of the card used for the txn</p>
+				<p>the <a href="#//api/name/card">card</a> issuer of the <a href="#//api/name/card">card</a> used for the txn @readonly</p>
 			</div>
 			
 
@@ -337,12 +341,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the retry counter of the offline txn</p>
+				<p>the retry counter of the offline txn @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int retry</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) int retry</code></div>
 
 		    
 			
@@ -354,7 +358,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the retry counter of the offline txn</p>
+				<p>the retry counter of the offline txn @readonly</p>
 			</div>
 			
 
@@ -383,12 +387,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the error no of the offline txn after replaying it</p>
+				<p>the error no of the offline txn after replaying it @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int errNo</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) int errNo</code></div>
 
 		    
 			
@@ -400,7 +404,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the error no of the offline txn after replaying it</p>
+				<p>the error no of the offline txn after replaying it @readonly</p>
 			</div>
 			
 
@@ -429,12 +433,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the error message of the offline txn after replaying if failed</p>
+				<p>the error message of the offline txn after replaying if failed @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int errMessage</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *errMessage</code></div>
 
 		    
 			
@@ -446,7 +450,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the error message of the offline txn after replaying if failed</p>
+				<p>the error message of the offline txn after replaying if failed @readonly</p>
 			</div>
 			
 
@@ -475,12 +479,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>the flag showing if the txn is declined during replay</p>
+				<p>the flag showing if the txn is declined during replay @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isDeclined</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isDeclined</code></div>
 
 		    
 			
@@ -492,7 +496,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>the flag showing if the txn is declined during replay</p>
+				<p>the flag showing if the txn is declined during replay @readonly</p>
 			</div>
 			
 
@@ -521,12 +525,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Show the expiry time of the offline txn</p>
+				<p>Show the expiry time of the offline txn @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *expiry</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *expiry</code></div>
 
 		    
 			
@@ -538,7 +542,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Show the expiry time of the offline txn</p>
+				<p>Show the expiry time of the offline txn @readonly</p>
 			</div>
 			
 
@@ -567,12 +571,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>of this transaction</p>
+				<p>of this transaction @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPRetailOfflineTransactionState state</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) PPRetailOfflineTransactionState state</code></div>
 
 		    
 			
@@ -584,7 +588,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>of this transaction</p>
+				<p>of this transaction @readonly</p>
 			</div>
 			
 
@@ -613,12 +617,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The <a href="#//api/name/invoice">invoice</a> number of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> number of the offline tx @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *invoiceNumber</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *invoiceNumber</code></div>
 
 		    
 			
@@ -630,7 +634,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The <a href="#//api/name/invoice">invoice</a> number of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> number of the offline tx @readonly</p>
 			</div>
 			
 
@@ -659,12 +663,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The <a href="#//api/name/invoice">invoice</a> <a href="#//api/name/id">id</a> of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> <a href="#//api/name/id">id</a> of the offline tx @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *invoiceId</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *invoiceId</code></div>
 
 		    
 			
@@ -676,7 +680,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The <a href="#//api/name/invoice">invoice</a> <a href="#//api/name/id">id</a> of the offline tx</p>
+				<p>The <a href="#//api/name/invoice">invoice</a> <a href="#//api/name/id">id</a> of the offline tx @readonly</p>
 			</div>
 			
 
@@ -705,12 +709,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The transaction number of the offline tx</p>
+				<p>The transaction number of the offline tx @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *transactionNumber</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *transactionNumber</code></div>
 
 		    
 			
@@ -722,7 +726,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The transaction number of the offline tx</p>
+				<p>The transaction number of the offline tx @readonly</p>
 			</div>
 			
 
@@ -751,12 +755,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The latitude of the offline tx</p>
+				<p>The latitude of the offline tx @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *latitude</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *latitude</code></div>
 
 		    
 			
@@ -768,7 +772,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The latitude of the offline tx</p>
+				<p>The latitude of the offline tx @readonly</p>
 			</div>
 			
 
@@ -797,12 +801,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The longitude of the offline tx</p>
+				<p>The longitude of the offline tx @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *longitude</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *longitude</code></div>
 
 		    
 			
@@ -814,7 +818,99 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The longitude of the offline tx</p>
+				<p>The longitude of the offline tx @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentStatus.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/paymentType" title="paymentType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/paymentType">&nbsp;&nbsp;paymentType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>of the offline tx @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) PPRetailTransactionBeginOptionsPaymentTypes paymentType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>of the offline tx @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailOfflinePaymentStatus.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/card" title="card"></a>
+	<h3 class="method-title"><code><a href="#//api/name/card">&nbsp;&nbsp;card</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>card details of the card used for the offline tx @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailCard *card</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>card details of the card used for the offline tx @readonly</p>
 			</div>
 			
 
@@ -843,12 +939,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The invoice of the offline tx</p>
+				<p>The invoice of the offline tx @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) PPRetailRetailInvoice *invoice</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailRetailInvoice *invoice</code></div>
 
 		    
 			
@@ -860,7 +956,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The invoice of the offline tx</p>
+				<p>The invoice of the offline tx @readonly</p>
 			</div>
 			
 
@@ -892,7 +988,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 PayPal. All rights reserved. Updated: 2019-09-03</p>
+						<p class="copyright">Copyright &copy; 2020 PayPal. All rights reserved. Updated: 2020-01-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

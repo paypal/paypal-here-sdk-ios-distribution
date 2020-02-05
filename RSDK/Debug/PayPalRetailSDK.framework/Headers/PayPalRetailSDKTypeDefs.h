@@ -49,6 +49,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
@@ -116,10 +117,11 @@
 @class PPRetailTransactionBeginOptions;
 @class PPRetailTransactionContext;
 @class PPRetailAuthorizedTransaction;
-@class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflinePaymentInfo;
 @class PPRetailReceiptOptionsViewContent;
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
+@class PPRetailOfflinePaymentStatus;
 @class PPRetailBatteryInfo;
 @class PPRetailDeviceUpdate;
 @class PPRetailObject;
@@ -600,7 +602,7 @@ typedef void (^PPRetailTransactionManagerCaptureAuthorizedTransactionHandler)(PP
 /**
  * The callback for replaying offline payment
  */
-typedef void (^PPRetailTransactionManagerOfflinePaymentStatusHandler)(PPRetailError* error, NSArray* status);
+typedef void (^PPRetailTransactionManagerOfflinePaymentStatusHandler)(PPRetailError* error, PPRetailOfflinePaymentInfo* info);
 
 /**
  * The callback invoked while connecting to the last active card reader
@@ -752,7 +754,7 @@ typedef void (^PPRetailCancelledEvent)();
  */
 typedef id PPRetailCancelledSignal;
 
-                      
+                        
 /**
  * The reader is now connected and ready.
  */

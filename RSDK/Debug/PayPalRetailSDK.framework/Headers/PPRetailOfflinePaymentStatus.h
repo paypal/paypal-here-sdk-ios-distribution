@@ -62,6 +62,7 @@
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailReceiptViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
@@ -90,69 +91,77 @@
 @interface PPRetailOfflinePaymentStatus : PPRetailObject
 
     /**
-    * the id of the offline txn
+    * the id of the offline txn @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* id;
+    @property (nonatomic,strong,nullable,readonly) NSString* id;
     /**
-    * Show the create time of the offline txn
+    * Show the create time of the offline txn @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* createTime;
+    @property (nonatomic,strong,nullable,readonly) NSDate* createTime;
     /**
-    * the total amount of the offline txn
+    * the total amount of the offline txn @readonly
     */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* amount;
+    @property (nonatomic,strong,nullable,readonly) NSDecimalNumber* amount;
     /**
-    * the card issuer of the card used for the txn
+    * the card issuer of the card used for the txn @readonly
     */
-    @property (nonatomic,strong,nullable) NSArray* cardIssuer;
+    @property (nonatomic,strong,nullable,readonly) NSArray* cardIssuer;
     /**
-    * the retry counter of the offline txn
+    * the retry counter of the offline txn @readonly
     */
-    @property (nonatomic,assign) int retry;
+    @property (nonatomic,assign,readonly) int retry;
     /**
-    * the error no of the offline txn after replaying it
+    * the error no of the offline txn after replaying it @readonly
     */
-    @property (nonatomic,assign) int errNo;
+    @property (nonatomic,assign,readonly) int errNo;
     /**
-    * the error message of the offline txn after replaying if failed
+    * the error message of the offline txn after replaying if failed @readonly
     */
-    @property (nonatomic,assign) int errMessage;
+    @property (nonatomic,strong,nullable,readonly) NSString* errMessage;
     /**
-    * the flag showing if the txn is declined during replay
+    * the flag showing if the txn is declined during replay @readonly
     */
-    @property (nonatomic,assign) BOOL isDeclined;
+    @property (nonatomic,assign,readonly) BOOL isDeclined;
     /**
-    * Show the expiry time of the offline txn
+    * Show the expiry time of the offline txn @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* expiry;
+    @property (nonatomic,strong,nullable,readonly) NSString* expiry;
     /**
-    * of this transaction
+    * of this transaction @readonly
     */
-    @property (nonatomic,assign) PPRetailOfflineTransactionState state;
+    @property (nonatomic,assign,readonly) PPRetailOfflineTransactionState state;
     /**
-    * The invoice number of the offline tx
+    * The invoice number of the offline tx @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* invoiceNumber;
+    @property (nonatomic,strong,nullable,readonly) NSString* invoiceNumber;
     /**
-    * The invoice id of the offline tx
+    * The invoice id of the offline tx @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* invoiceId;
+    @property (nonatomic,strong,nullable,readonly) NSString* invoiceId;
     /**
-    * The transaction number of the offline tx
+    * The transaction number of the offline tx @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* transactionNumber;
+    @property (nonatomic,strong,nullable,readonly) NSString* transactionNumber;
     /**
-    * The latitude of the offline tx
+    * The latitude of the offline tx @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* latitude;
+    @property (nonatomic,strong,nullable,readonly) NSString* latitude;
     /**
-    * The longitude of the offline tx
+    * The longitude of the offline tx @readonly
     */
-    @property (nonatomic,strong,nullable) NSString* longitude;
+    @property (nonatomic,strong,nullable,readonly) NSString* longitude;
     /**
-    * The invoice of the offline tx
+    * of the offline tx @readonly
     */
-    @property (nonatomic,strong,nullable) PPRetailRetailInvoice* invoice;
+    @property (nonatomic,assign,readonly) PPRetailTransactionBeginOptionsPaymentTypes paymentType;
+    /**
+    * card details of the card used for the offline tx @readonly
+    */
+    @property (nonatomic,strong,nullable,readonly) PPRetailCard* card;
+    /**
+    * The invoice of the offline tx @readonly
+    */
+    @property (nonatomic,strong,nullable,readonly) PPRetailRetailInvoice* invoice;
 
 
     
