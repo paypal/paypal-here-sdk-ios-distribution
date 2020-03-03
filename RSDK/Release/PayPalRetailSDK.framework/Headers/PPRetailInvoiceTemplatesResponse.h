@@ -83,21 +83,18 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
  */
 @interface PPRetailInvoiceTemplatesResponse : PPRetailObject
-
-    /**
-    * The default template
-    */
-    @property (nonatomic,strong,nullable) PPRetailInvoiceTemplate* defaultTemplate;
-    /**
-    * array of all the templates
-    */
-    @property (nonatomic,strong,nullable) NSArray* templates;
+/**
+ * The default template
+ */
+@property (nonatomic,strong,nullable) PPRetailInvoiceTemplate* defaultTemplate;/**
+ * array of all the templates
+ */
+@property (nonatomic,strong,nullable) NSArray* templates;
 
 
 

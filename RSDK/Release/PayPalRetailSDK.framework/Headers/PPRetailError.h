@@ -83,56 +83,47 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * A common base class for PayPal related errors which includes a debugId and code.
  * This id will be filled out if the error was generated from the PayPal servers.
  */
 @interface PPRetailError : PPRetailObject
-
-    /**
-    * The subsystem responsible for this error, in which the code
+/**
+ * The subsystem responsible for this error, in which the code
  * should uniquely identify the type of error that has occurred
-    */
-    @property (nonatomic,strong,nullable) NSString* domain;
-    /**
-    * A non-localized code for this error
-    */
-    @property (nonatomic,strong,nullable) NSString* code;
-    /**
-    * The explanation of the error
-    */
-    @property (nonatomic,strong,nullable) NSString* message;
-    /**
-    * A server-generated identifier used by PayPal to
+ */
+@property (nonatomic,strong,nullable) NSString* domain;/**
+ * A non-localized code for this error
+ */
+@property (nonatomic,strong,nullable) NSString* code;/**
+ * The explanation of the error
+ */
+@property (nonatomic,strong,nullable) NSString* message;/**
+ * A server-generated identifier used by PayPal to
  * help diagnose this error
-    */
-    @property (nonatomic,strong,nullable) NSString* debugId;
-    /**
-    * A developer friendly, user unfriendly
+ */
+@property (nonatomic,strong,nullable) NSString* debugId;/**
+ * A developer friendly, user unfriendly
  * message for log statements to give you as much info as possible.
-    */
-    @property (nonatomic,strong,nullable) NSString* developerMessage;
+ */
+@property (nonatomic,strong,nullable) NSString* developerMessage;
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
-    /**
-     * Decorate an error to include code, domain and a localized message
-     */
-    +(PPRetailError* _Nullable)makeError:(PPRetailError* _Nullable)error info:(PPRetailPayPalErrorInfo* _Nullable)info;
+/**
+ * Decorate an error to include code, domain and a localized message
+ */
++(PPRetailError* _Nullable)makeError:(PPRetailError* _Nullable)error info:(PPRetailPayPalErrorInfo* _Nullable)info;
 
 
 
-    /**
-     * Equality comparison
-     */
-    -(void)equals:(PPRetailError* _Nullable)paypalError;
+/**
+ * Equality comparison
+ */
+-(void)equals:(PPRetailError* _Nullable)paypalError;
 
 
 

@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * MerchantManager is a public facing facade to everything related to Merchant.
@@ -95,15 +94,15 @@
 
 
 
-    /**
-     * Get the fake merchant data
-     */
-    -(PPRetailObject* _Nullable)getFakeMerchantData;
+/**
+ * Get the fake merchant data
+ */
+-(PPRetailObject* _Nullable)getFakeMerchantData;
 
-    /**
-     * Get the active merchant
-     */
-    -(PPRetailMerchant* _Nullable)getMerchant;
+/**
+ * Get the active merchant
+ */
+-(PPRetailMerchant* _Nullable)getMerchant;
 
 
 

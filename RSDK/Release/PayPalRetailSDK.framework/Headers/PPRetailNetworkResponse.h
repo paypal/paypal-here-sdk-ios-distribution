@@ -83,34 +83,26 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * NetworkResponse class represents contains the response from HTTPRequest in a format that is compatible with the SDK
  */
 @interface PPRetailNetworkResponse : PPRetailObject
+/**
+ * Response status code
+ */
+@property (nonatomic,strong,nullable) NSString* statusCode;/**
+ * Format of the response body
+ */
+@property (nonatomic,strong,nullable) NSString* format;/**
+ * Response headers
+ */
+@property (nonatomic,strong,nullable) NSDictionary* headers;/**
+ * Response body
+ */
+@property (nonatomic,strong,nullable) NSString* body;
 
-    /**
-    * Response status code
-    */
-    @property (nonatomic,strong,nullable) NSString* statusCode;
-    /**
-    * Format of the response body
-    */
-    @property (nonatomic,strong,nullable) NSString* format;
-    /**
-    * Response headers
-    */
-    @property (nonatomic,strong,nullable) NSDictionary* headers;
-    /**
-    * Response body
-    */
-    @property (nonatomic,strong,nullable) NSString* body;
-
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 

@@ -83,40 +83,33 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Container for information about a refund on an invoice
  */
 @interface PPRetailInvoiceRefund : PPRetailObject
-
-    /**
-    * PayPal refund type indicating whether refund was
+/**
+ * PayPal refund type indicating whether refund was
  * done in invoicing flow via PayPal or externally. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* type;
-    /**
-    * date when the invoice was paid
-    */
-    @property (nonatomic,strong,nullable) NSDate* date;
-    /**
-    * optional note associated with the payment
-    */
-    @property (nonatomic,strong,nullable) NSString* note;
-    /**
-    * this is an amount object on the server which
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* type;/**
+ * date when the invoice was paid
+ */
+@property (nonatomic,strong,nullable) NSDate* date;/**
+ * optional note associated with the payment
+ */
+@property (nonatomic,strong,nullable) NSString* note;/**
+ * this is an amount object on the server which
  * has a string for currency, and value
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* amount;
-    /**
-    * used with the amount
-    */
-    @property (nonatomic,strong,nullable) NSString* currency;
-    /**
-    * PayPal refund transaction id. Mandatory
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* amount;/**
+ * used with the amount
+ */
+@property (nonatomic,strong,nullable) NSString* currency;/**
+ * PayPal refund transaction id. Mandatory
  * field in case the type value is PAYPAL. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* transactionID;
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* transactionID;
 
 
 

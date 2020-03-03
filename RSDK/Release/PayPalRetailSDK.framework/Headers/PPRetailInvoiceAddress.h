@@ -83,52 +83,44 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Container for addresses used on various invoice entities
  */
 @interface PPRetailInvoiceAddress : PPRetailObject
-
-    /**
-    * First line of the address @required
-    */
-    @property (nonatomic,strong,nullable) NSString* line1;
-    /**
-    * Second line of the address
-    */
-    @property (nonatomic,strong,nullable) NSString* line2;
-    /**
-    * City portion of the address
-    */
-    @property (nonatomic,strong,nullable) NSString* city;
-    /**
-    * State, if applicable
-    */
-    @property (nonatomic,strong,nullable) NSString* state;
-    /**
-    * Postal Code
-    */
-    @property (nonatomic,strong,nullable) NSString* postalCode;
-    /**
-    * ISO two letter country code @required
-    */
-    @property (nonatomic,strong,nullable) NSString* country;
-    /**
-    * Phone number in E.123 format.
-    */
-    @property (nonatomic,strong,nullable) NSString* phone;
-    @property (nonatomic,assign) BOOL isPrimary;
-    @property (nonatomic,strong,nullable) NSString* addressee;
+/**
+ * First line of the address @required
+ */
+@property (nonatomic,strong,nullable) NSString* line1;/**
+ * Second line of the address
+ */
+@property (nonatomic,strong,nullable) NSString* line2;/**
+ * City portion of the address
+ */
+@property (nonatomic,strong,nullable) NSString* city;/**
+ * State, if applicable
+ */
+@property (nonatomic,strong,nullable) NSString* state;/**
+ * Postal Code
+ */
+@property (nonatomic,strong,nullable) NSString* postalCode;/**
+ * ISO two letter country code @required
+ */
+@property (nonatomic,strong,nullable) NSString* country;/**
+ * Phone number in E.123 format.
+ */
+@property (nonatomic,strong,nullable) NSString* phone;
+@property (nonatomic,assign) BOOL isPrimary;
+@property (nonatomic,strong,nullable) NSString* addressee;
 
 
 
 
 
-    /**
-     * Check to see if this object has any value
-     */
-    -(BOOL)hasAnyValue;
+/**
+ * Check to see if this object has any value
+ */
+-(BOOL)hasAnyValue;
 
 
 

@@ -83,52 +83,42 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Container for information about the payment on an invoice
  */
 @interface PPRetailInvoicePayment : PPRetailObject
-
-    /**
-    * PayPal payment detail indicating whether
+/**
+ * PayPal payment detail indicating whether
  * payment was made in an invoicing flow via PayPal or externally. @readonly
-    */
-    @property (nonatomic,assign,readonly) PPRetailInvoicePaymentType type;
-    /**
-    * PayPal payment transaction id. Mandatory
+ */
+@property (nonatomic,assign,readonly) PPRetailInvoicePaymentType type;/**
+ * PayPal payment transaction id. Mandatory
  * field in case the type value is PAYPAL. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* transactionID;
-    /**
-    * type of the transaction @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* transactionType;
-    /**
-    * date when the invoice was paid
-    */
-    @property (nonatomic,strong,nullable) NSDate* date;
-    /**
-    * date, formatted in MMM, D YYYY format
-    */
-    @property (nonatomic,strong,nullable) NSString* formattedDate;
-    /**
-    * payment mode or method this is mandatory
-    */
-    @property (nonatomic,assign) PPRetailInvoicePaymentMethod method;
-    /**
-    * optional note associated with the payment
-    */
-    @property (nonatomic,strong,nullable) NSString* note;
-    /**
-    * this is an amount object on the server which
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* transactionID;/**
+ * type of the transaction @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* transactionType;/**
+ * date when the invoice was paid
+ */
+@property (nonatomic,strong,nullable) NSDate* date;/**
+ * date, formatted in MMM, D YYYY format
+ */
+@property (nonatomic,strong,nullable) NSString* formattedDate;/**
+ * payment mode or method this is mandatory
+ */
+@property (nonatomic,assign) PPRetailInvoicePaymentMethod method;/**
+ * optional note associated with the payment
+ */
+@property (nonatomic,strong,nullable) NSString* note;/**
+ * this is an amount object on the server which
  * has a string for currency, and value
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* amount;
-    /**
-    * used with the amount
-    */
-    @property (nonatomic,strong,nullable) NSString* currency;
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* amount;/**
+ * used with the amount
+ */
+@property (nonatomic,strong,nullable) NSString* currency;
 
 
 

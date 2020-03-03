@@ -83,32 +83,25 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Class to represent a Page object intended for page tracking observers
  */
 @interface PPRetailPage : PPRetailObject
+/**
+ * Full name for the page in delimited format @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* name;/**
+ * Most recent user action that was performed @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* action;/**
+ * Parent to the current page @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailPage* parent;
 
-    /**
-    * Full name for the page in delimited format @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* name;
-    /**
-    * Most recent user action that was performed @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* action;
-    /**
-    * Parent to the current page @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailPage* parent;
-
-
-    
-      - (instancetype _Nullable)initWithId:(NSString* _Nullable)id parent:(PPRetailPage* _Nullable)parent;
-      
-    - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
-    + (instancetype _Null_unspecified)new NS_UNAVAILABLE;
+- (instancetype _Nullable)initWithId:(NSString* _Nullable)id parent:(PPRetailPage* _Nullable)parent;
+    - (instancetype _Nullable)init NS_UNAVAILABLE;
++ (instancetype _Nullable)new NS_UNAVAILABLE;
 
 
 

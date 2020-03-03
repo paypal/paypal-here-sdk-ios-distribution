@@ -83,60 +83,48 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Container for information about the merchant requesting payment on an invoice
  */
 @interface PPRetailInvoiceMerchantInfo : PPRetailObject
-
-    /**
-    * The email address of the
+/**
+ * The email address of the
  * merchant @required @length(1,260) @format(email)
-    */
-    @property (nonatomic,strong,nullable) NSString* email;
-    /**
-    * The first name of the merchant @length(,30)
-    */
-    @property (nonatomic,strong,nullable) NSString* firstName;
-    /**
-    * The last name of the merchant @length(,30)
-    */
-    @property (nonatomic,strong,nullable) NSString* lastName;
-    /**
-    * The address of the merchant
-    */
-    @property (nonatomic,strong,nullable) PPRetailInvoiceAddress* address;
-    /**
-    * The business name of the merchant
-    */
-    @property (nonatomic,strong,nullable) NSString* businessName;
-    /**
-    * The phone number of the merchant
-    */
-    @property (nonatomic,strong,nullable) NSString* phone;
-    /**
-    * The fax number of the merchant
-    */
-    @property (nonatomic,strong,nullable) NSString* fax;
-    /**
-    * The URL of the merchant website @format{url}
-    */
-    @property (nonatomic,strong,nullable) NSString* website;
-    /**
-    * The tax identifier for the merchant
-    */
-    @property (nonatomic,strong,nullable) NSString* taxId;
-    /**
-    * Option to provide a label to the
+ */
+@property (nonatomic,strong,nullable) NSString* email;/**
+ * The first name of the merchant @length(,30)
+ */
+@property (nonatomic,strong,nullable) NSString* firstName;/**
+ * The last name of the merchant @length(,30)
+ */
+@property (nonatomic,strong,nullable) NSString* lastName;/**
+ * The address of the merchant
+ */
+@property (nonatomic,strong,nullable) PPRetailInvoiceAddress* address;/**
+ * The business name of the merchant
+ */
+@property (nonatomic,strong,nullable) NSString* businessName;/**
+ * The phone number of the merchant
+ */
+@property (nonatomic,strong,nullable) NSString* phone;/**
+ * The fax number of the merchant
+ */
+@property (nonatomic,strong,nullable) NSString* fax;/**
+ * The URL of the merchant website @format{url}
+ */
+@property (nonatomic,strong,nullable) NSString* website;/**
+ * The tax identifier for the merchant
+ */
+@property (nonatomic,strong,nullable) NSString* taxId;/**
+ * Option to provide a label to the
  * additional_info field. 40 characters max.
-    */
-    @property (nonatomic,strong,nullable) NSString* additionalInfoLabel;
-    /**
-    * Option to display additional information
+ */
+@property (nonatomic,strong,nullable) NSString* additionalInfoLabel;/**
+ * Option to display additional information
  * such as business hours. 40 characters max.
-    */
-    @property (nonatomic,strong,nullable) NSString* additionalInfo;
+ */
+@property (nonatomic,strong,nullable) NSString* additionalInfo;
 
 
 

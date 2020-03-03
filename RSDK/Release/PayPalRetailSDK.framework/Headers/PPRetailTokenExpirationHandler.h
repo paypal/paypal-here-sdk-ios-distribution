@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * When user session times-out during a transaction, it will emit the SessionTimeoutHandler handler
@@ -95,15 +94,15 @@
 
 
 
-    /**
-     * Quit the current activity
-     */
-    -(void)quit;
+/**
+ * Quit the current activity
+ */
+-(void)quit;
 
-    /**
-     * Restart the last action with a valid access token
-     */
-    -(void)continueWithNewToken:(NSString* _Nullable)accessToken;
+/**
+ * Restart the last action with a valid access token
+ */
+-(void)continueWithNewToken:(NSString* _Nullable)accessToken;
 
 
 

@@ -83,49 +83,39 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Information about a card presented to the PayPal Retail SDK
  */
 @interface PPRetailMagneticCard : PPRetailCard
-
-    /**
-    * The personal account number (usually masked)
-    */
-    @property (nonatomic,strong,nullable) NSString* pan;
-    /**
-    * The expiration date (YYMM)
-    */
-    @property (nonatomic,strong,nullable) NSString* expiration;
-    /**
-    * Encrypted track1 data if available
-    */
-    @property (nonatomic,strong,nullable) NSString* track1;
-    /**
-    * Encrypted track2 data if available
-    */
-    @property (nonatomic,strong,nullable) NSString* track2;
-    /**
-    * Encrypted track3 data if available
-    */
-    @property (nonatomic,strong,nullable) NSString* track3;
-    /**
-    * Cardholder first name
-    */
-    @property (nonatomic,strong,nullable) NSString* firstName;
-    /**
-    * Cardholder last name
-    */
-    @property (nonatomic,strong,nullable) NSString* lastName;
-    /**
-    * Cardholder middle name
-    */
-    @property (nonatomic,strong,nullable) NSString* middleInitial;
-    /**
-    * Key serial number of the reader used to interpret the track data
-    */
-    @property (nonatomic,strong,nullable) NSString* ksn;
+/**
+ * The personal account number (usually masked)
+ */
+@property (nonatomic,strong,nullable) NSString* pan;/**
+ * The expiration date (YYMM)
+ */
+@property (nonatomic,strong,nullable) NSString* expiration;/**
+ * Encrypted track1 data if available
+ */
+@property (nonatomic,strong,nullable) NSString* track1;/**
+ * Encrypted track2 data if available
+ */
+@property (nonatomic,strong,nullable) NSString* track2;/**
+ * Encrypted track3 data if available
+ */
+@property (nonatomic,strong,nullable) NSString* track3;/**
+ * Cardholder first name
+ */
+@property (nonatomic,strong,nullable) NSString* firstName;/**
+ * Cardholder last name
+ */
+@property (nonatomic,strong,nullable) NSString* lastName;/**
+ * Cardholder middle name
+ */
+@property (nonatomic,strong,nullable) NSString* middleInitial;/**
+ * Key serial number of the reader used to interpret the track data
+ */
+@property (nonatomic,strong,nullable) NSString* ksn;
 
 
 

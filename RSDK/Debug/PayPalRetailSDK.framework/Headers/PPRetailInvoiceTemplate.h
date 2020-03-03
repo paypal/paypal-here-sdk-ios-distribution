@@ -83,50 +83,41 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Invoice template
  */
 @interface PPRetailInvoiceTemplate : PPRetailInvoice
-
-    /**
-    * true if this is the default template
-    */
-    @property (nonatomic,assign) BOOL isDefault;
-    /**
-    * true if this is a custom template
-    */
-    @property (nonatomic,assign) BOOL isCustom;
-    /**
-    * name of the template
-    */
-    @property (nonatomic,strong,nullable) NSString* name;
-    /**
-    * unit of measure for the template,
+/**
+ * true if this is the default template
+ */
+@property (nonatomic,assign) BOOL isDefault;/**
+ * true if this is a custom template
+ */
+@property (nonatomic,assign) BOOL isCustom;/**
+ * name of the template
+ */
+@property (nonatomic,strong,nullable) NSString* name;/**
+ * unit of measure for the template,
  * known values: AMOUNT, QUANTITY, HOURS
-    */
-    @property (nonatomic,strong,nullable) NSString* unitOfMeasure;
-    /**
-    * list of which fields are enabled/disabled
-    */
-    @property (nonatomic,strong,nullable) PPRetailInvoiceTemplateSettings* settings;
+ */
+@property (nonatomic,strong,nullable) NSString* unitOfMeasure;/**
+ * list of which fields are enabled/disabled
+ */
+@property (nonatomic,strong,nullable) PPRetailInvoiceTemplateSettings* settings;
 
-
-    
-      - (instancetype _Nullable)initWithCurrencyCode:(NSString* _Nullable)currencyCode;
-      
-    - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
-    + (instancetype _Null_unspecified)new NS_UNAVAILABLE;
+- (instancetype _Nullable)initWithCurrencyCode:(NSString* _Nullable)currencyCode;
+    - (instancetype _Nullable)init NS_UNAVAILABLE;
++ (instancetype _Nullable)new NS_UNAVAILABLE;
 
 
 
 
-    /**
-     * Return an invoice with all the fields from the template but the invoice
-     * number and paypalID of another invoice
-     */
-    -(PPRetailInvoice* _Nullable)invoiceFromInvoice:(PPRetailInvoice* _Nullable)invoice;
+/**
+ * Return an invoice with all the fields from the template but the invoice
+ * number and paypalID of another invoice
+ */
+-(PPRetailInvoice* _Nullable)invoiceFromInvoice:(PPRetailInvoice* _Nullable)invoice;
 
 
 

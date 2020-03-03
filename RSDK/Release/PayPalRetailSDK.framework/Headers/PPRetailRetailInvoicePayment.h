@@ -83,22 +83,19 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * This class is only used to expose properties useful for retail invoice payments.
  */
 @interface PPRetailRetailInvoicePayment : PPRetailInvoicePayment
-
-    /**
-    * PayPal payment transaction id. (Same name hides super class' field, Also since
+/**
+ * PayPal payment transaction id. (Same name hides super class' field, Also since
  * super class' field is readonly, no setters are generated)
-    */
-    @property (nonatomic,strong,nullable) NSString* transactionID;
-    /**
-    * The payment method (cash, check etc.)
-    */
-    @property (nonatomic,assign) PPRetailInvoicePaymentMethod method;
+ */
+@property (nonatomic,strong,nullable) NSString* transactionID;/**
+ * The payment method (cash, check etc.)
+ */
+@property (nonatomic,assign) PPRetailInvoicePaymentMethod method;
 
 
 

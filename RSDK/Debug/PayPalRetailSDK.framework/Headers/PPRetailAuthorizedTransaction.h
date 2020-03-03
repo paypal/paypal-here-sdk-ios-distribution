@@ -83,62 +83,52 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Information about a completed capture
  */
 @interface PPRetailAuthorizedTransaction : PPRetailObject
+/**
+ * The PayPal transaction reference number for this authorization @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* authorizationId;/**
+ * The PayPal invoice id for this authorization @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* invoiceId;/**
+ * Time at which this authorization activity was created
+ */
+@property (nonatomic,strong,nullable) NSDate* timeCreated;/**
+ * Amount authorized for this transaction
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* authorizedAmount;/**
+ * Currency in which the net amount was authorized @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* currency;/**
+ * Status of the current authorization
+ */
+@property (nonatomic,strong,nullable) NSString* status;
 
-    /**
-    * The PayPal transaction reference number for this authorization @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* authorizationId;
-    /**
-    * The PayPal invoice id for this authorization @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* invoiceId;
-    /**
-    * Time at which this authorization activity was created
-    */
-    @property (nonatomic,strong,nullable) NSDate* timeCreated;
-    /**
-    * Amount authorized for this transaction
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* authorizedAmount;
-    /**
-    * Currency in which the net amount was authorized @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* currency;
-    /**
-    * Status of the current authorization
-    */
-    @property (nonatomic,strong,nullable) NSString* status;
-
-
-    
-      - (instancetype _Nullable)initWithAuthorizationId:(NSString* _Nullable)authorizationId invoiceId:(NSString* _Nullable)invoiceId currency:(NSString* _Nullable)currency;
-      
-    - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
-    + (instancetype _Null_unspecified)new NS_UNAVAILABLE;
+- (instancetype _Nullable)initWithAuthorizationId:(NSString* _Nullable)authorizationId invoiceId:(NSString* _Nullable)invoiceId currency:(NSString* _Nullable)currency;
+    - (instancetype _Nullable)init NS_UNAVAILABLE;
++ (instancetype _Nullable)new NS_UNAVAILABLE;
 
 
 
 
-    /**
-     * Void this authorized transaction
-     */
-    -(void)voidTransaction:(PPRetailAuthorizedTransactionVoidCompleteHandler _Nullable)callback;
+/**
+ * Void this authorized transaction
+ */
+-(void)voidTransaction:(PPRetailAuthorizedTransactionVoidCompleteHandler _Nullable)callback;
 
-    /**
-     * Capture this authorized transaction
-     */
-    -(void)captureTransaction:(NSDecimalNumber* _Nullable)totalAmount gratuityAmount:(NSDecimalNumber* _Nullable)gratuityAmount callback:(PPRetailAuthorizedTransactionCaptureCompleteHandler _Nullable)callback;
+/**
+ * Capture this authorized transaction
+ */
+-(void)captureTransaction:(NSDecimalNumber* _Nullable)totalAmount gratuityAmount:(NSDecimalNumber* _Nullable)gratuityAmount callback:(PPRetailAuthorizedTransactionCaptureCompleteHandler _Nullable)callback;
 
-    /**
-     * Capture this authorized transaction
-     */
-    -(void)captureTransaction:(NSDecimalNumber* _Nullable)totalAmount gratuityAmount:(NSDecimalNumber* _Nullable)gratuityAmount base64SignatureJpeg:(NSString* _Nullable)base64SignatureJpeg callback:(PPRetailAuthorizedTransactionCaptureCompleteHandler _Nullable)callback;
+/**
+ * Capture this authorized transaction
+ */
+-(void)captureTransaction:(NSDecimalNumber* _Nullable)totalAmount gratuityAmount:(NSDecimalNumber* _Nullable)gratuityAmount base64SignatureJpeg:(NSString* _Nullable)base64SignatureJpeg callback:(PPRetailAuthorizedTransactionCaptureCompleteHandler _Nullable)callback;
 
 
 

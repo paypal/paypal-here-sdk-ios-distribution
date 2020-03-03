@@ -83,36 +83,30 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * An Invoice notification
  */
 @interface PPRetailInvoiceNotification : PPRetailObject
-
-    /**
-    * Subject of the notification
-    */
-    @property (nonatomic,strong,nullable) NSString* subject;
-    /**
-    * Note to the payer
-    */
-    @property (nonatomic,strong,nullable) NSString* note;
-    /**
-    * A flag indicating whether a copy of the
+/**
+ * Subject of the notification
+ */
+@property (nonatomic,strong,nullable) NSString* subject;/**
+ * Note to the payer
+ */
+@property (nonatomic,strong,nullable) NSString* note;/**
+ * A flag indicating whether a copy of the
  * email has to be sent to the merchant
-    */
-    @property (nonatomic,assign) BOOL shouldSendToMerchant;
-    /**
-    * A flag indicating whether a copy of the email
+ */
+@property (nonatomic,assign) BOOL shouldSendToMerchant;/**
+ * A flag indicating whether a copy of the email
  * has to be sent to the payer
-    */
-    @property (nonatomic,assign) BOOL shouldSendToPayer;
-    /**
-    * If the invoice has CCs associated with it, this field
+ */
+@property (nonatomic,assign) BOOL shouldSendToPayer;/**
+ * If the invoice has CCs associated with it, this field
  * can be used to specify only certain set of CC emails for which notification is sent.
-    */
-    @property (nonatomic,strong,nullable) NSString* ccEmails;
+ */
+@property (nonatomic,strong,nullable) NSString* ccEmails;
 
 
 

@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
@@ -95,15 +94,15 @@
 
 
 
-    /**
-     * To capture the authorization
-     */
-    -(void)doCapture:(NSDecimalNumber* _Nullable)gratuityAmount signature:(NSString* _Nullable)signature;
+/**
+ * To capture the authorization
+ */
+-(void)doCapture:(NSDecimalNumber* _Nullable)gratuityAmount signature:(NSString* _Nullable)signature;
 
-    /**
-     * To void the authorization
-     */
-    -(void)doVoid;
+/**
+ * To void the authorization
+ */
+-(void)doVoid;
 
 
 

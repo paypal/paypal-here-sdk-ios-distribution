@@ -83,43 +83,37 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Container for information about the merchant requesting payment on an invoice
  */
 @interface PPRetailInvoiceShippingInfo : PPRetailObject
-
-    /**
-    * The email address of the
+/**
+ * The email address of the
  * merchant @required @length(1,260) @format(email)
-    */
-    @property (nonatomic,strong,nullable) NSString* email;
-    /**
-    * The first name of the merchant @length(,30)
-    */
-    @property (nonatomic,strong,nullable) NSString* firstName;
-    /**
-    * The last name of the merchant @length(,30)
-    */
-    @property (nonatomic,strong,nullable) NSString* lastName;
-    /**
-    * The address of the merchant
-    */
-    @property (nonatomic,strong,nullable) PPRetailInvoiceAddress* address;
-    /**
-    * The business name of the merchant
-    */
-    @property (nonatomic,strong,nullable) NSString* businessName;
+ */
+@property (nonatomic,strong,nullable) NSString* email;/**
+ * The first name of the merchant @length(,30)
+ */
+@property (nonatomic,strong,nullable) NSString* firstName;/**
+ * The last name of the merchant @length(,30)
+ */
+@property (nonatomic,strong,nullable) NSString* lastName;/**
+ * The address of the merchant
+ */
+@property (nonatomic,strong,nullable) PPRetailInvoiceAddress* address;/**
+ * The business name of the merchant
+ */
+@property (nonatomic,strong,nullable) NSString* businessName;
 
 
 
 
 
-    /**
-     * Check to see if this object has any value
-     */
-    -(BOOL)hasAnyValue;
+/**
+ * Check to see if this object has any value
+ */
+-(BOOL)hasAnyValue;
 
 
 

@@ -1,5 +1,5 @@
 //
-//  PPNativeInterface.h
+//  PPManticoreNativeInterface.h
 //  PayPalRetailSDK
 //
 //  Created by Max Metral on 3/27/15.
@@ -45,11 +45,16 @@
 @interface PPManticoreNativeInterface : NSObject <JSExport>
 
 @property (nonatomic,strong,readonly) JSValue *manticoreObject;
+@property (nonatomic) NSURLSession *urlSession;
+@property (nonatomic,strong,readonly) JSValue *globalObject;
 
 - (instancetype)initWithEngine:(PPManticoreEngine *)engine;
 
 -(void)log:(NSString*)level component:(NSString*)component message:(NSString*)message;
 -(JSValue*)http:(JSValue*)options callback:(JSValue*)callback;
 -(JSValue*)setTimeout:(void (^)())function after:(NSInteger)milliseconds;
+-(JSValue*)setInterval:(void (^)())function after:(NSInteger)milliseconds;
+-(void)clearInterval:(JSValue *)jsValue;
+-(void)clearTimeout:(JSValue *)jsValue;
 
 @end

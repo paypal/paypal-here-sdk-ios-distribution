@@ -83,30 +83,27 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Invoice attachment
  */
 @interface PPRetailInvoiceAttachment : PPRetailObject
-
-    /**
-    * name of the attachment
-    */
-    @property (nonatomic,strong,nullable) NSString* name;
-    /**
-    * url of the attachment
-    */
-    @property (nonatomic,strong,nullable) NSString* url;
+/**
+ * name of the attachment
+ */
+@property (nonatomic,strong,nullable) NSString* name;/**
+ * url of the attachment
+ */
+@property (nonatomic,strong,nullable) NSString* url;
 
 
 
 
 
-    /**
-     * workaround for known API issue, returns usable version of the URL
-     */
-    -(NSString* _Nullable)usableURL;
+/**
+ * workaround for known API issue, returns usable version of the URL
+ */
+-(NSString* _Nullable)usableURL;
 
 
 

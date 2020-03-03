@@ -83,33 +83,27 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Information about a completed offline transaction addition
  */
 @interface PPRetailOfflineTransactionRecord : PPRetailObject
-
-    /**
-    * card that was presented by the consumer for this transaction @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailCard* card;
-    /**
-    * The Offline Transaction id @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* id;
-    /**
-    * The Offline Transaction amount @readonly
-    */
-    @property (nonatomic,assign,readonly) int amount;
-    /**
-    * The offline transaction is valid until this value @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* validUntil;
-    /**
-    * The invoice number associated with this offline transaction record @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* invoiceNumber;
+/**
+ * card that was presented by the consumer for this transaction @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailCard* card;/**
+ * The Offline Transaction id @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* id;/**
+ * The Offline Transaction amount @readonly
+ */
+@property (nonatomic,assign,readonly) int amount;/**
+ * The offline transaction is valid until this value @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* validUntil;/**
+ * The invoice number associated with this offline transaction record @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* invoiceNumber;
 
 
 

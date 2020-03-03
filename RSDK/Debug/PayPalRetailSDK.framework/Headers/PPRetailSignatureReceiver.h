@@ -83,56 +83,51 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * When signature is collected by external code, it will be passed a SignatureReceiver object
  */
 @interface PPRetailSignatureReceiver : PPRetailObject
+/**
+ * @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailTransactionContext* context;
 
-    /**
-    * @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailTransactionContext* context;
-
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
 
 
-    /**
-     * Continue processing the transaction with the supplied signature.
-     */
-    -(void)continueWithSignature:(NSString* _Nullable)base64SignatureJpeg;
+/**
+ * Continue processing the transaction with the supplied signature.
+ */
+-(void)continueWithSignature:(NSString* _Nullable)base64SignatureJpeg;
 
-    /**
-     * Acquire signature using the normal PayPal Retail SDK mechanism (i.e. on screen signing)
-     */
-    -(void)acquireSignature;
+/**
+ * Acquire signature using the normal PayPal Retail SDK mechanism (i.e. on screen signing)
+ */
+-(void)acquireSignature;
 
-    /**
-     * Cancel the transaction because of a signature failure.
-     */
-    -(void)cancel;
-
-
+/**
+ * Cancel the transaction because of a signature failure.
+ */
+-(void)cancel;
 
 
-    /**
-     * Add a listener for the cancelled event
-     * @returns PPRetailCancelledSignal an object that can be used to remove the listener when
-     * you're done with it.
-     */
-    -(PPRetailCancelledSignal _Nullable)addCancelledListener:(PPRetailCancelledEvent _Nullable)listener;
 
-    /**
-     * Remove a listener for the cancelled event given the signal object that was returned from addCancelledListener
-     */
-    -(void)removeCancelledListener:(PPRetailCancelledSignal _Nullable)listenerToken;
+
+/**
+ * Add a listener for the cancelled event
+ * @returns PPRetailCancelledSignal an object that can be used to remove the listener when
+ * you're done with it.
+ */
+-(PPRetailCancelledSignal _Nullable)addCancelledListener:(PPRetailCancelledEvent _Nullable)listener;
+
+/**
+ * Remove a listener for the cancelled event given the signal object that was returned from addCancelledListener
+ */
+-(void)removeCancelledListener:(PPRetailCancelledSignal _Nullable)listenerToken;
 
 
 @end

@@ -83,65 +83,50 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Information about a completed transaction
  */
 @interface PPRetailTransactionRecord : PPRetailObject
-
-    /**
-    * The PayPal transaction reference number @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* transactionNumber;
-    /**
-    * The PayPal invoice id @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* invoiceId;
-    /**
-    * The payment method used for this payment
-    */
-    @property (nonatomic,assign) PPRetailInvoicePaymentMethod paymentMethod;
-    /**
-    * The PayPal authCode @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* authCode;
-    /**
-    * An identifier available throughout the EMV transaction flow
+/**
+ * The PayPal transaction reference number @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* transactionNumber;/**
+ * The PayPal invoice id @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* invoiceId;/**
+ * The payment method used for this payment
+ */
+@property (nonatomic,assign) PPRetailInvoicePaymentMethod paymentMethod;/**
+ * The PayPal authCode @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* authCode;/**
+ * An identifier available throughout the EMV transaction flow
  * (allocated before the transaction is complete, unlike transactionNumber) @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* transactionHandle;
-    /**
-    * The acquirer response code @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* responseCode;
-    /**
-    * Information about the payer, if available @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailPayer* payer;
-    /**
-    * The correlationId used for obtaining additional support
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* transactionHandle;/**
+ * The acquirer response code @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* responseCode;/**
+ * Information about the payer, if available @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailPayer* payer;/**
+ * The correlationId used for obtaining additional support
  * from PayPal for this transaction attempt @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* correlationId;
-    /**
-    * card that was presented by the consumer for this transaction @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailCard* card;
-    /**
-    * Indicates whether an email or a text
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* correlationId;/**
+ * card that was presented by the consumer for this transaction @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailCard* card;/**
+ * Indicates whether an email or a text
  * receipt was sent or not. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailReceiptDestination* receiptDestination;
-    /**
-    * The reference id for the captured authorization @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* captureId;
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailReceiptDestination* receiptDestination;/**
+ * The reference id for the captured authorization @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* captureId;
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 

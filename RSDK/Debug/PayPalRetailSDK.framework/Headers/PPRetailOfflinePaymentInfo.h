@@ -83,26 +83,20 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * TransactionOptions provides the list of customizations for a given transaction
  */
 @interface PPRetailOfflinePaymentInfo : PPRetailObject
+/**
+ * Shows total payment volume of all offline payments which are going to be replayed
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* total;/**
+ * List of status infos after replaying the offline payment
+ */
+@property (nonatomic,strong,nullable) NSArray* statusList;
 
-    /**
-    * Shows total payment volume of all offline payments which are going to be replayed
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* total;
-    /**
-    * List of status infos after replaying the offline payment
-    */
-    @property (nonatomic,strong,nullable) NSArray* statusList;
-
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 

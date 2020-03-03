@@ -83,17 +83,16 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * The content to be presented natively in the receipt email entry screen.
  */
 @interface PPRetailReceiptEmailEntryViewContent : PPRetailObject
 
-    @property (nonatomic,strong,nullable) NSString* title;
-    @property (nonatomic,strong,nullable) NSString* placeholder;
-    @property (nonatomic,strong,nullable) NSString* disclaimer;
-    @property (nonatomic,strong,nullable) NSString* sendButtonTitle;
+@property (nonatomic,strong,nullable) NSString* title;
+@property (nonatomic,strong,nullable) NSString* placeholder;
+@property (nonatomic,strong,nullable) NSString* disclaimer;
+@property (nonatomic,strong,nullable) NSString* sendButtonTitle;
 
 
 

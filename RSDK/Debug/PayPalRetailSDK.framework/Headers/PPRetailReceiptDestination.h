@@ -83,22 +83,19 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Contains information about the receipt status.
  */
 @interface PPRetailReceiptDestination : PPRetailObject
-
-    /**
-    * Indicates whether an email or a text
-    */
-    @property (nonatomic,assign) PPRetailReceiptDestinationType type;
-    /**
-    * email address of the receipt is sent @readonly
+/**
+ * Indicates whether an email or a text
+ */
+@property (nonatomic,assign) PPRetailReceiptDestinationType type;/**
+ * email address of the receipt is sent @readonly
  * receipt was sent or not. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* email;
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* email;
 
 
 

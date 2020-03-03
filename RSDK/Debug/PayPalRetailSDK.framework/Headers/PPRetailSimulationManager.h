@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * SimulationManager is a public facing facade to everything related to SDK simulation.
@@ -95,15 +94,20 @@
 
 
 
-    /**
-     * Provide Fake Response for all HTTP calls made by the SDK
-     */
-    -(void)enableFakeResponse;
+/**
+ * Provide Fake Response for all HTTP calls made by the SDK
+ */
+-(void)enableFakeResponse;
 
-    /**
-     * Provide fake devices. If fake is enable, no actual devices will work.
-     */
-    -(void)simulateDevice:(PPRetailDeviceSimulatorType)devices usecase:(PPRetailSimulatorUseCase)usecase jsonResponseData:(NSString* _Nullable)jsonResponseData;
+/**
+ * Switch off Fake Response for all HTTP calls
+ */
+-(void)disableFakeResponse;
+
+/**
+ * Provide fake devices. If fake is enable, no actual devices will work.
+ */
+-(void)simulateDevice:(PPRetailDeviceSimulatorType)devices usecase:(PPRetailSimulatorUseCase)usecase jsonResponseData:(NSString* _Nullable)jsonResponseData;
 
 
 

@@ -83,54 +83,43 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Invoice MetaData
  */
 @interface PPRetailInvoiceMetaData : PPRetailObject
-
-    /**
-    * Date when the resource was created. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSDate* createdDate;
-    /**
-    * Email address of the account that created the resource. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* createdBy;
-    /**
-    * Date when the resource was cancelled. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSDate* cancelledDate;
-    /**
-    * Actor who cancelled the resource. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* cancelledBy;
-    /**
-    * Date when the resource was last edited. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSDate* lastUpdatedDate;
-    /**
-    * Email address of the account that last
+/**
+ * Date when the resource was created. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSDate* createdDate;/**
+ * Email address of the account that created the resource. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* createdBy;/**
+ * Date when the resource was cancelled. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSDate* cancelledDate;/**
+ * Actor who cancelled the resource. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* cancelledBy;/**
+ * Date when the resource was last edited. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSDate* lastUpdatedDate;/**
+ * Email address of the account that last
  * edited the resource. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* lastUpdatedBy;
-    /**
-    * Date when the resource was first sent. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSDate* firstSentDate;
-    /**
-    * Date when the resource was last sent. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSDate* lastSentDate;
-    /**
-    * Email address of the account that last sent the resource. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* lastSentBy;
-    /**
-    * URL representing the payer's view of the invoice. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* payerViewURL;
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* lastUpdatedBy;/**
+ * Date when the resource was first sent. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSDate* firstSentDate;/**
+ * Date when the resource was last sent. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSDate* lastSentDate;/**
+ * Email address of the account that last sent the resource. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* lastSentBy;/**
+ * URL representing the payer's view of the invoice. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* payerViewURL;
 
 
 

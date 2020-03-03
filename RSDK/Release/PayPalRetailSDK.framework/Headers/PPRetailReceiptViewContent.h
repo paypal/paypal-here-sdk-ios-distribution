@@ -83,16 +83,15 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * All the content to be displayed in the native receipt flow
  */
 @interface PPRetailReceiptViewContent : PPRetailObject
 
-    @property (nonatomic,strong,nullable) PPRetailReceiptOptionsViewContent* receiptOptionsViewContent;
-    @property (nonatomic,strong,nullable) PPRetailReceiptEmailEntryViewContent* receiptEmailEntryViewContent;
-    @property (nonatomic,strong,nullable) PPRetailReceiptSMSEntryViewContent* receiptSMSEntryViewContent;
+@property (nonatomic,strong,nullable) PPRetailReceiptOptionsViewContent* receiptOptionsViewContent;
+@property (nonatomic,strong,nullable) PPRetailReceiptEmailEntryViewContent* receiptEmailEntryViewContent;
+@property (nonatomic,strong,nullable) PPRetailReceiptSMSEntryViewContent* receiptSMSEntryViewContent;
 
 
 

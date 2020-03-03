@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * The "Retail" Implementation of Invoice that is used by PPH only. Contains receiptDetails such as store ID,
@@ -91,75 +90,57 @@
  * This class is a specific version implementation of the Invoice.
  */
 @interface PPRetailRetailInvoice : PPRetailInvoice
-
-    /**
-    * Transaction type of the Invoice
-    */
-    @property (nonatomic,strong,nullable) NSString* name;
-    /**
-    * Total Invoice amount
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* total;
-    /**
-    * The transaction handle
-    */
-    @property (nonatomic,strong,nullable) NSString* txnHandle;
-    /**
-    * The country object that contains the country code and country name
-    */
-    @property (nonatomic,strong,nullable) NSString* countryCode;
-    /**
-    * The store id where the receipt was generated
-    */
-    @property (nonatomic,strong,nullable) NSString* storeId;
-    /**
-    * The terminal ID where the actual receipt was generated
-    */
-    @property (nonatomic,strong,nullable) NSString* terminalId;
-    /**
-    * The seller Id (Normally set to Primary users' full name)
-    */
-    @property (nonatomic,strong,nullable) NSString* sellerId;
-    /**
-    * The current status of the invoice
-    */
-    @property (nonatomic,assign) PPRetailInvoiceStatus status;
-    /**
-    * an array of payment objects
-    */
-    @property (nonatomic,strong,nullable) NSArray* payments;
-    /**
-    * The device name
-    */
-    @property (nonatomic,strong,nullable) NSString* deviceName;
-    /**
-    * The custom footer text
-    */
-    @property (nonatomic,strong,nullable) NSString* footer;
-    /**
-    * The id assigned by PayPal for an invoice. This is basically same the
+/**
+ * Transaction type of the Invoice
+ */
+@property (nonatomic,strong,nullable) NSString* name;/**
+ * Total Invoice amount
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* total;/**
+ * The transaction handle
+ */
+@property (nonatomic,strong,nullable) NSString* txnHandle;/**
+ * The country object that contains the country code and country name
+ */
+@property (nonatomic,strong,nullable) NSString* countryCode;/**
+ * The store id where the receipt was generated
+ */
+@property (nonatomic,strong,nullable) NSString* storeId;/**
+ * The terminal ID where the actual receipt was generated
+ */
+@property (nonatomic,strong,nullable) NSString* terminalId;/**
+ * The seller Id (Normally set to Primary users' full name)
+ */
+@property (nonatomic,strong,nullable) NSString* sellerId;/**
+ * The current status of the invoice
+ */
+@property (nonatomic,assign) PPRetailInvoiceStatus status;/**
+ * an array of payment objects
+ */
+@property (nonatomic,strong,nullable) NSArray* payments;/**
+ * The device name
+ */
+@property (nonatomic,strong,nullable) NSString* deviceName;/**
+ * The custom footer text
+ */
+@property (nonatomic,strong,nullable) NSString* footer;/**
+ * The id assigned by PayPal for an invoice. This is basically same the
  * super class' payPalId. This is added to open the setter on the native side.
-    */
-    @property (nonatomic,strong,nullable) NSString* payPalId;
-    /**
-    * Check if the transaction was cancelled by the user
-    */
-    @property (nonatomic,assign) BOOL isCancelled;
-    /**
-    * Check if the payment was declined by the api
-    */
-    @property (nonatomic,assign) BOOL isFailed;
-    /**
-    * the referrer code coming from sideloader calls
-    */
-    @property (nonatomic,strong,nullable) NSString* referrerCode;
+ */
+@property (nonatomic,strong,nullable) NSString* payPalId;/**
+ * Check if the transaction was cancelled by the user
+ */
+@property (nonatomic,assign) BOOL isCancelled;/**
+ * Check if the payment was declined by the api
+ */
+@property (nonatomic,assign) BOOL isFailed;/**
+ * the referrer code coming from sideloader calls
+ */
+@property (nonatomic,strong,nullable) NSString* referrerCode;
 
-
-    
-      - (instancetype _Nullable)initWithCurrencyCode:(NSString* _Nullable)currencyCode;
-      
-    - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
-    + (instancetype _Null_unspecified)new NS_UNAVAILABLE;
+- (instancetype _Nullable)initWithCurrencyCode:(NSString* _Nullable)currencyCode;
+    - (instancetype _Nullable)init NS_UNAVAILABLE;
++ (instancetype _Nullable)new NS_UNAVAILABLE;
 
 
 

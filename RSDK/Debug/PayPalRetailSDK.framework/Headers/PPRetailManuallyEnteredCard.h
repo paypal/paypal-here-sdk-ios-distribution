@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Certain regions support manual entry of credit card numbers. The retail SDK requires
@@ -94,54 +93,51 @@
 @interface PPRetailManuallyEnteredCard : PPRetailCard
 
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
 
 
-    /**
-     * cardNumber Number of the provided card
-     */
-    -(void)setCardNumber:(NSString* _Nullable)value;
+/**
+ * cardNumber Number of the provided card
+ */
+-(void)setCardNumber:(NSString* _Nullable)value;
 
-    /**
-     * cardNumber Number of the provided card
-     */
-    -(NSString* _Nullable)getCardNumber;
+/**
+ * cardNumber Number of the provided card
+ */
+-(NSString* _Nullable)getCardNumber;
 
-    /**
-     * The CVV on the card for payment. E.g. 131
-     */
-    -(void)setCVV:(NSString* _Nullable)value;
+/**
+ * The CVV on the card for payment. E.g. 131
+ */
+-(void)setCVV:(NSString* _Nullable)value;
 
-    /**
-     * The CVV on the card for payment. E.g. 131
-     */
-    -(NSString* _Nullable)getCVV;
+/**
+ * The CVV on the card for payment. E.g. 131
+ */
+-(NSString* _Nullable)getCVV;
 
-    /**
-     * Primary account holder's billing postal code
-     */
-    -(void)setPostalCode:(NSString* _Nullable)value;
+/**
+ * Primary account holder's billing postal code
+ */
+-(void)setPostalCode:(NSString* _Nullable)value;
 
-    /**
-     * Primary account holder's billing postal code
-     */
-    -(NSString* _Nullable)getPostalCode;
+/**
+ * Primary account holder's billing postal code
+ */
+-(NSString* _Nullable)getPostalCode;
 
-    /**
-     * Set the card expiration date in (MMYYYY) format. E.g. 092019 for Sep, 2019
-     */
-    -(void)setExpiration:(NSString* _Nullable)date;
+/**
+ * Set the card expiration date in (MMYYYY) format. E.g. 092019 for Sep, 2019
+ */
+-(void)setExpiration:(NSString* _Nullable)date;
 
-    /**
-     * Get the card expiration date in MMYYYY format
-     */
-    -(NSString* _Nullable)getExpiration;
+/**
+ * Get the card expiration date in MMYYYY format
+ */
+-(NSString* _Nullable)getExpiration;
 
 
 

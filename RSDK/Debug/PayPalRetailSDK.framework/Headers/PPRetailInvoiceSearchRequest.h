@@ -83,111 +83,91 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
  */
 @interface PPRetailInvoiceSearchRequest : PPRetailObject
-
-    /**
-    * Initial letters of the email address.
-    */
-    @property (nonatomic,strong,nullable) NSString* email;
-    /**
-    * Initial letters of the recipient's first name.
-    */
-    @property (nonatomic,strong,nullable) NSString* recipientFirstName;
-    /**
-    * Initial letters of the recipient's last name.
-    */
-    @property (nonatomic,strong,nullable) NSString* recipientLastName;
-    /**
-    * Initial letters of the recipient's business name.
-    */
-    @property (nonatomic,strong,nullable) NSString* recipientBusinessName;
-    /**
-    * The invoice number that appears on the invoice.
-    */
-    @property (nonatomic,strong,nullable) NSString* number;
-    /**
-    * Base object for all financial value
+/**
+ * Initial letters of the email address.
+ */
+@property (nonatomic,strong,nullable) NSString* email;/**
+ * Initial letters of the recipient's first name.
+ */
+@property (nonatomic,strong,nullable) NSString* recipientFirstName;/**
+ * Initial letters of the recipient's last name.
+ */
+@property (nonatomic,strong,nullable) NSString* recipientLastName;/**
+ * Initial letters of the recipient's business name.
+ */
+@property (nonatomic,strong,nullable) NSString* recipientBusinessName;/**
+ * The invoice number that appears on the invoice.
+ */
+@property (nonatomic,strong,nullable) NSString* number;/**
+ * Base object for all financial value
  * related fields (balance, payment due, etc.)
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* lowerTotalAmount;
-    /**
-    * Base object for all financial value
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* lowerTotalAmount;/**
+ * Base object for all financial value
  * related fields (balance, payment due, etc.)
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* upperTotalAmount;
-    /**
-    * Start invoice date.
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* upperTotalAmount;/**
+ * Start invoice date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* startInvoiceDate;
-    /**
-    * End invoice date.
+ */
+@property (nonatomic,strong,nullable) NSDate* startInvoiceDate;/**
+ * End invoice date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* endInvoiceDate;
-    /**
-    * Start invoice due date.
+ */
+@property (nonatomic,strong,nullable) NSDate* endInvoiceDate;/**
+ * Start invoice due date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* startDueDate;
-    /**
-    * End invoice due date.
+ */
+@property (nonatomic,strong,nullable) NSDate* startDueDate;/**
+ * End invoice due date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* endDueDate;
-    /**
-    * Start invoice payment date.
+ */
+@property (nonatomic,strong,nullable) NSDate* endDueDate;/**
+ * Start invoice payment date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* startPaymentDate;
-    /**
-    * End invoice payment date.
+ */
+@property (nonatomic,strong,nullable) NSDate* startPaymentDate;/**
+ * End invoice payment date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* endPaymentDate;
-    /**
-    * Start invoice creation date.
+ */
+@property (nonatomic,strong,nullable) NSDate* endPaymentDate;/**
+ * Start invoice creation date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* startCreationDate;
-    /**
-    * End invoice creation date.
+ */
+@property (nonatomic,strong,nullable) NSDate* startCreationDate;/**
+ * End invoice creation date.
  * Date format yyyy-MM-dd z, as defined in ISO8601.
-    */
-    @property (nonatomic,strong,nullable) NSDate* endCreationDate;
-    /**
-    * A zero-relative index of the merchant's list of invoices
-    */
-    @property (nonatomic,assign) int startIndex;
-    /**
-    * Page size of the search results.
-    */
-    @property (nonatomic,assign) int pageSize;
-    /**
-    * A flag indicating whether total
+ */
+@property (nonatomic,strong,nullable) NSDate* endCreationDate;/**
+ * A zero-relative index of the merchant's list of invoices
+ */
+@property (nonatomic,assign) int startIndex;/**
+ * Page size of the search results.
+ */
+@property (nonatomic,assign) int pageSize;/**
+ * A flag indicating whether total
  * count is required in the response.
-    */
-    @property (nonatomic,assign) BOOL totalCountRequired;
-    /**
-    * A flag indicating whether search is on invoices archived by
+ */
+@property (nonatomic,assign) BOOL totalCountRequired;/**
+ * A flag indicating whether search is on invoices archived by
  * merchant. true - returns archived / false returns unarchived / null returns all.
-    */
-    @property (nonatomic,assign) BOOL archived;
+ */
+@property (nonatomic,assign) BOOL archived;
 
 
 
 
 
-    /**
-     * Manticore doesn't support properties that are arrays of enum values, and it's complicated.
-     * So instead of a property for the status array, we have this method.
-     */
-    -(void)addStatus:(PPRetailInvoiceStatus)status;
+/**
+ * Manticore doesn't support properties that are arrays of enum values, and it's complicated.
+ * So instead of a property for the status array, we have this method.
+ */
+-(void)addStatus:(PPRetailInvoiceStatus)status;
 
 
 

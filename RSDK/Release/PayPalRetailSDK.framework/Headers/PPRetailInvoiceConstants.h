@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Class for getting constants relating to invoice business logic.
@@ -93,75 +92,75 @@
 
 
 
-    /**
-     * The number of numbers allowed after the decimal point for tax rates, including item & shipping.
-     */
-    +(NSDecimalNumber* _Nullable)taxRateDecimalPrecision;
+/**
+ * The number of numbers allowed after the decimal point for tax rates, including item & shipping.
+ */
++(NSDecimalNumber* _Nullable)taxRateDecimalPrecision;
 
-    /**
-     * The number of numbers allowed after the decimal point for discount rates.
-     */
-    +(NSDecimalNumber* _Nullable)discountPercentageDecimalPrecision;
+/**
+ * The number of numbers allowed after the decimal point for discount rates.
+ */
++(NSDecimalNumber* _Nullable)discountPercentageDecimalPrecision;
 
-    /**
-     * Character max for invoice number.
-     */
-    +(NSDecimalNumber* _Nullable)invoiceNumberMaxLength;
+/**
+ * Character max for invoice number.
+ */
++(NSDecimalNumber* _Nullable)invoiceNumberMaxLength;
 
-    /**
-     * Character max for invoice terms.
-     */
-    +(NSDecimalNumber* _Nullable)invoiceTermsMaxLength;
+/**
+ * Character max for invoice terms.
+ */
++(NSDecimalNumber* _Nullable)invoiceTermsMaxLength;
 
-    /**
-     * Character max for invoice note.
-     */
-    +(NSDecimalNumber* _Nullable)invoiceNoteMaxLength;
+/**
+ * Character max for invoice note.
+ */
++(NSDecimalNumber* _Nullable)invoiceNoteMaxLength;
 
-    /**
-     * Character max for invoice merchant memo.
-     */
-    +(NSDecimalNumber* _Nullable)invoiceMerchantMemoMaxLength;
+/**
+ * Character max for invoice merchant memo.
+ */
++(NSDecimalNumber* _Nullable)invoiceMerchantMemoMaxLength;
 
-    /**
-     * Character max for invoice reference field.
-     */
-    +(NSDecimalNumber* _Nullable)invoiceReferenceMaxLength;
+/**
+ * Character max for invoice reference field.
+ */
++(NSDecimalNumber* _Nullable)invoiceReferenceMaxLength;
 
-    /**
-     * The number of numbers allowed after the decimal point for item quantity.
-     */
-    +(NSDecimalNumber* _Nullable)itemQuantityDecimalPrecision;
+/**
+ * The number of numbers allowed after the decimal point for item quantity.
+ */
++(NSDecimalNumber* _Nullable)itemQuantityDecimalPrecision;
 
-    /**
-     * The maximum quantity allowed to specify on an invoice, inclusive.
-     */
-    +(NSDecimalNumber* _Nullable)itemQuantityMax;
+/**
+ * The maximum quantity allowed to specify on an invoice, inclusive.
+ */
++(NSDecimalNumber* _Nullable)itemQuantityMax;
 
-    /**
-     * The minimum quantity allowed to specify on an invoice, inclusive.
-     */
-    +(NSDecimalNumber* _Nullable)itemQuantityMin;
+/**
+ * The minimum quantity allowed to specify on an invoice, inclusive.
+ */
++(NSDecimalNumber* _Nullable)itemQuantityMin;
 
-    /**
-     * Character max for invoice item name.
-     */
-    +(NSDecimalNumber* _Nullable)itemNameMaxLength;
+/**
+ * Character max for invoice item name.
+ */
++(NSDecimalNumber* _Nullable)itemNameMaxLength;
 
-    /**
-     * Character max for invoice item description.
-     */
-    +(NSDecimalNumber* _Nullable)itemDescriptionMaxLength;
+/**
+ * Character max for invoice item description.
+ */
++(NSDecimalNumber* _Nullable)itemDescriptionMaxLength;
 
-    /**
-     * Max value for invoice item price.
-     */
-    +(NSDecimalNumber* _Nullable)itemPriceMax;
+/**
+ * Max value for invoice item price.
+ */
++(NSDecimalNumber* _Nullable)itemPriceMax;
 
-    /**
-     * Max value for tax
-     */
-    +(NSDecimalNumber* _Nullable)taxRateMaxValue;
+/**
+ * Max value for tax
+ */
++(NSDecimalNumber* _Nullable)taxRateMaxValue;
 
 
 

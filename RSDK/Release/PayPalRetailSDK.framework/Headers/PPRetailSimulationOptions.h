@@ -83,51 +83,40 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * SimulationOptions provides the list of customizations for a simulation mode
  */
 @interface PPRetailSimulationOptions : PPRetailObject
-
-    /**
-    * It enables to have a device simulator for the simulator.
+/**
+ * It enables to have a device simulator for the simulator.
  * The default value is true.
-    */
-    @property (nonatomic,assign) BOOL enableDeviceSimulator;
-    /**
-    * It enables to have a fake server.
+ */
+@property (nonatomic,assign) BOOL enableDeviceSimulator;/**
+ * It enables to have a fake server.
  * The default value is true.
-    */
-    @property (nonatomic,assign) BOOL enableServerSimulator;
-    /**
-    * It enables to initialize the SDK with a fake merchant.
+ */
+@property (nonatomic,assign) BOOL enableServerSimulator;/**
+ * It enables to initialize the SDK with a fake merchant.
  * The default value is true.
-    */
-    @property (nonatomic,assign) BOOL enableMerchantSimulator;
-    /**
-    * the type of the device simulator to be used in simulation mode.
+ */
+@property (nonatomic,assign) BOOL enableMerchantSimulator;/**
+ * the type of the device simulator to be used in simulation mode.
  * The default value is Miura
-    */
-    @property (nonatomic,assign) PPRetailDeviceSimulatorType deviceSimulatorType;
-    /**
-    * the use case for the simulator like chip, swipe, fallback swipe
+ */
+@property (nonatomic,assign) PPRetailDeviceSimulatorType deviceSimulatorType;/**
+ * the use case for the simulator like chip, swipe, fallback swipe
  * or contactless. The default value is swipe
-    */
-    @property (nonatomic,assign) PPRetailSimulatorUseCase simulatorUseCase;
-    /**
-    * Response JSON data chosen by the user
-    */
-    @property (nonatomic,strong,nullable) NSString* userResponseData;
-    /**
-    * Reserved for restricted use
-    */
-    @property (nonatomic,strong,nullable) NSString* tag;
+ */
+@property (nonatomic,assign) PPRetailSimulatorUseCase simulatorUseCase;/**
+ * Response JSON data chosen by the user
+ */
+@property (nonatomic,strong,nullable) NSString* userResponseData;/**
+ * Reserved for restricted use
+ */
+@property (nonatomic,strong,nullable) NSString* tag;
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 

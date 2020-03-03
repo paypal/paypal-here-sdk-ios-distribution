@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
@@ -95,11 +94,11 @@
 
 +(NSArray* _Nullable)countries;
 
-    /**
-     * Given a country code, returns the full name of the country.
-     * If there's no match, returns undefined.
-     */
-    +(NSString* _Nullable)countryForCountryCode:(NSString* _Nullable)countryCode;
+/**
+ * Given a country code, returns the full name of the country.
+ * If there's no match, returns undefined.
+ */
++(NSString* _Nullable)countryForCountryCode:(NSString* _Nullable)countryCode;
 
 
 

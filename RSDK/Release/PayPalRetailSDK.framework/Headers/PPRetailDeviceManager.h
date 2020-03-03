@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * DeviceManager is responsible for exposing APIs regarding the devices.
@@ -93,74 +92,71 @@
 @interface PPRetailDeviceManager : PPRetailObject
 
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
 
 
-    /**
-     * Show a list of connected credit card readers.
-     * If there is more than 1 devices. Select one of them to use it
-     * for transaction.
-     */
-    -(void)searchAndConnect:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+/**
+ * Show a list of connected credit card readers.
+ * If there is more than 1 devices. Select one of them to use it
+ * for transaction.
+ */
+-(void)searchAndConnect:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
-    /**
-     * Show a list of connected credit card readers.
-     * If there is more than 1 devices. Select one of them to use it
-     * for transaction.
-     */
-    -(void)searchAndConnectWithoutCallback;
+/**
+ * Show a list of connected credit card readers.
+ * If there is more than 1 devices. Select one of them to use it
+ * for transaction.
+ */
+-(void)searchAndConnectWithoutCallback;
 
-    /**
-     * Try connecting to the last active credit card reader
-     */
-    -(void)connectToLastActiveReader:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+/**
+ * Try connecting to the last active credit card reader
+ */
+-(void)connectToLastActiveReader:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
-    /**
-     * Tries to connect to the previously used/active Bluetooth reader
-     */
-    -(void)scanAndAutoConnectToBluetoothReader:(NSString* _Nullable)readerName callback:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
+/**
+ * Tries to connect to the previously used/active Bluetooth reader
+ */
+-(void)scanAndAutoConnectToBluetoothReader:(NSString* _Nullable)readerName callback:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
-    /**
-     * Sets the active reader
-     */
-    -(void)setActiveReader:(PPRetailPaymentDevice* _Nullable)pd;
+/**
+ * Sets the active reader
+ */
+-(void)setActiveReader:(PPRetailPaymentDevice* _Nullable)pd;
 
-    /**
-     * checks if any Miura devive is connected
-     */
-    -(BOOL)isConnectedToMiura;
+/**
+ * checks if any Miura devive is connected
+ */
+-(BOOL)isConnectedToMiura;
 
-    /**
-     * Returns the selected device
-     */
-    -(PPRetailPaymentDevice* _Nullable)getActiveReader;
+/**
+ * Returns the selected device
+ */
+-(PPRetailPaymentDevice* _Nullable)getActiveReader;
 
-    /**
-     * Get a list of paired/discovered devices
-     */
-    -(NSArray* _Nullable)getDiscoveredDevices;
+/**
+ * Get a list of paired/discovered devices
+ */
+-(NSArray* _Nullable)getDiscoveredDevices;
 
-    /**
-     * Get the name of last active reader
-     */
-    -(NSString* _Nullable)getLastActiveBluetoothReader;
+/**
+ * Get the name of last active reader
+ */
+-(NSString* _Nullable)getLastActiveBluetoothReader;
 
-    /**
-     * Get a list of paired devices
-     */
-    -(void)getPairedBluetoothDevices:(PPRetailDeviceManagerPairedBTDevicesHandler _Nullable)callback;
+/**
+ * Get a list of paired devices
+ */
+-(void)getPairedBluetoothDevices:(PPRetailDeviceManagerPairedBTDevicesHandler _Nullable)callback;
 
-    /**
-     * Stop scanning for Bluetooth devices
-     * Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}
-     */
-    -(void)stopScanningForBluetoothReaders;
+/**
+ * Stop scanning for Bluetooth devices
+ * Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}
+ */
+-(void)stopScanningForBluetoothReaders;
 
 
 

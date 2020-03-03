@@ -83,28 +83,24 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Contains information about the due date / payment terms of an invoice.
  */
 @interface PPRetailInvoicePaymentTerm : PPRetailObject
-
-    /**
-    * Describes when
+/**
+ * Describes when
  * payment is expected on the invoice. Setting this to something truthy will clear dueDate.
-    */
-    @property (nonatomic,assign) PPRetailInvoicePaymentTermPaymentTerms paymentTerms;
-    /**
-    * A specific date on which payment is due. Setting this
+ */
+@property (nonatomic,assign) PPRetailInvoicePaymentTermPaymentTerms paymentTerms;/**
+ * A specific date on which payment is due. Setting this
  * to something truthy will clear paymentTerms.
-    */
-    @property (nonatomic,strong,nullable) NSString* dueDate;
-    /**
-    * the number of days from the invoice start date
+ */
+@property (nonatomic,strong,nullable) NSString* dueDate;/**
+ * the number of days from the invoice start date
  * that this term is valid for
-    */
-    @property (nonatomic,assign) int daysForTerm;
+ */
+@property (nonatomic,assign) int daysForTerm;
 
 
 

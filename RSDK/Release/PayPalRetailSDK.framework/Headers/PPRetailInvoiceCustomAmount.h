@@ -83,22 +83,19 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Container for custom amounts on invoices
  */
 @interface PPRetailInvoiceCustomAmount : PPRetailObject
-
-    /**
-    * Custom amount label
-    */
-    @property (nonatomic,strong,nullable) NSString* label;
-    /**
-    * this is an amount object on the server
+/**
+ * Custom amount label
+ */
+@property (nonatomic,strong,nullable) NSString* label;/**
+ * this is an amount object on the server
  * which has a string for currency, and value
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* amount;
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* amount;
 
 
 

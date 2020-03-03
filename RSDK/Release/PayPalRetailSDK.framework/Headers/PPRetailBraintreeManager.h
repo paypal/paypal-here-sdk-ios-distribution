@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * DeviceManager is responsible for exposing APIs regarding the BrainTree interfaces
@@ -91,24 +90,21 @@
 @interface PPRetailBraintreeManager : PPRetailObject
 
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
 
 
-    /**
-     * Returns the login URL for BrainTree account login
-     */
-    -(NSString* _Nullable)getBtLoginUrl;
+/**
+ * Returns the login URL for BrainTree account login
+ */
+-(NSString* _Nullable)getBtLoginUrl;
 
-    /**
-     * Checks if the returned URL contains the auth code and matches the state value in getBTLoginURL()
-     */
-    -(BOOL)isBtReturnUrlValid:(NSString* _Nullable)returnUrl;
+/**
+ * Checks if the returned URL contains the auth code and matches the state value in getBTLoginURL()
+ */
+-(BOOL)isBtReturnUrlValid:(NSString* _Nullable)returnUrl;
 
 
 

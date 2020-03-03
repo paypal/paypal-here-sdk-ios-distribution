@@ -83,34 +83,26 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * DiscoveredCardReader class contains the device info discovered from DeviceScanner to be shown on the UI
  */
 @interface PPRetailDiscoveredCardReader : PPRetailObject
+/**
+ * Card reader name as it shows up in the bluetooth settings page
+ */
+@property (nonatomic,strong,nullable) NSString* readerId;/**
+ * Card reader description
+ */
+@property (nonatomic,strong,nullable) NSString* readerDescription;/**
+ * Image identifier
+ */
+@property (nonatomic,strong,nullable) NSString* readerImgId;/**
+ * status of the device
+ */
+@property (nonatomic,assign) BOOL isConnected;
 
-    /**
-    * Card reader name as it shows up in the bluetooth settings page
-    */
-    @property (nonatomic,strong,nullable) NSString* readerId;
-    /**
-    * Card reader description
-    */
-    @property (nonatomic,strong,nullable) NSString* readerDescription;
-    /**
-    * Image identifier
-    */
-    @property (nonatomic,strong,nullable) NSString* readerImgId;
-    /**
-    * status of the device
-    */
-    @property (nonatomic,assign) BOOL isConnected;
-
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 

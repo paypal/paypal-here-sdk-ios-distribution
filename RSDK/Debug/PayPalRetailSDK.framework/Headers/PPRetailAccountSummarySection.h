@@ -83,29 +83,24 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Account summary for current merchant
  */
 @interface PPRetailAccountSummarySection : PPRetailObject
-
-    /**
-    * total count of invoices for section
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* totalCount;
-    /**
-    * total amount for section
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* totalAmount;
-    /**
-    * paid amount for section
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* paidAmount;
-    /**
-    * refunded amount for section
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* refundedAmount;
+/**
+ * total count of invoices for section
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* totalCount;/**
+ * total amount for section
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* totalAmount;/**
+ * paid amount for section
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* paidAmount;/**
+ * refunded amount for section
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* refundedAmount;
 
 
 

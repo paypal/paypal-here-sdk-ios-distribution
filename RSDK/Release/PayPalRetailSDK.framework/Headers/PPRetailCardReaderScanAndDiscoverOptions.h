@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Card Reader Scan and Discover options to send it over to native side
@@ -95,56 +94,56 @@
 
 
 
-    /**
-     * Select to the card reader with this id
-     */
-    -(void)connectToCardReader:(NSString* _Nullable)id;
+/**
+ * Select to the card reader with this id
+ */
+-(void)connectToCardReader:(NSString* _Nullable)id;
 
-    /**
-     * let the DeviceScanner know after the observers added
-     */
-    -(void)onAddedObserver;
-
-
+/**
+ * let the DeviceScanner know after the observers added
+ */
+-(void)onAddedObserver;
 
 
-    /**
-     * Add a listener for the onCardReaderDiscovered event
-     * @returns PPRetailOnCardReaderDiscoveredSignal an object that can be used to remove the listener when
-     * you're done with it.
-     */
-    -(PPRetailOnCardReaderDiscoveredSignal _Nullable)addOnCardReaderDiscoveredListener:(PPRetailOnCardReaderDiscoveredEvent _Nullable)listener;
-
-    /**
-     * Remove a listener for the onCardReaderDiscovered event given the signal object that was returned from addOnCardReaderDiscoveredListener
-     */
-    -(void)removeOnCardReaderDiscoveredListener:(PPRetailOnCardReaderDiscoveredSignal _Nullable)listenerToken;
 
 
-    /**
-     * Add a listener for the onScanComplete event
-     * @returns PPRetailOnScanCompleteSignal an object that can be used to remove the listener when
-     * you're done with it.
-     */
-    -(PPRetailOnScanCompleteSignal _Nullable)addOnScanCompleteListener:(PPRetailOnScanCompleteEvent _Nullable)listener;
+/**
+ * Add a listener for the onCardReaderDiscovered event
+ * @returns PPRetailOnCardReaderDiscoveredSignal an object that can be used to remove the listener when
+ * you're done with it.
+ */
+-(PPRetailOnCardReaderDiscoveredSignal _Nullable)addOnCardReaderDiscoveredListener:(PPRetailOnCardReaderDiscoveredEvent _Nullable)listener;
 
-    /**
-     * Remove a listener for the onScanComplete event given the signal object that was returned from addOnScanCompleteListener
-     */
-    -(void)removeOnScanCompleteListener:(PPRetailOnScanCompleteSignal _Nullable)listenerToken;
+/**
+ * Remove a listener for the onCardReaderDiscovered event given the signal object that was returned from addOnCardReaderDiscoveredListener
+ */
+-(void)removeOnCardReaderDiscoveredListener:(PPRetailOnCardReaderDiscoveredSignal _Nullable)listenerToken;
 
 
-    /**
-     * Add a listener for the onConnectionStatus event
-     * @returns PPRetailOnConnectionStatusSignal an object that can be used to remove the listener when
-     * you're done with it.
-     */
-    -(PPRetailOnConnectionStatusSignal _Nullable)addOnConnectionStatusListener:(PPRetailOnConnectionStatusEvent _Nullable)listener;
+/**
+ * Add a listener for the onScanComplete event
+ * @returns PPRetailOnScanCompleteSignal an object that can be used to remove the listener when
+ * you're done with it.
+ */
+-(PPRetailOnScanCompleteSignal _Nullable)addOnScanCompleteListener:(PPRetailOnScanCompleteEvent _Nullable)listener;
 
-    /**
-     * Remove a listener for the onConnectionStatus event given the signal object that was returned from addOnConnectionStatusListener
-     */
-    -(void)removeOnConnectionStatusListener:(PPRetailOnConnectionStatusSignal _Nullable)listenerToken;
+/**
+ * Remove a listener for the onScanComplete event given the signal object that was returned from addOnScanCompleteListener
+ */
+-(void)removeOnScanCompleteListener:(PPRetailOnScanCompleteSignal _Nullable)listenerToken;
+
+
+/**
+ * Add a listener for the onConnectionStatus event
+ * @returns PPRetailOnConnectionStatusSignal an object that can be used to remove the listener when
+ * you're done with it.
+ */
+-(PPRetailOnConnectionStatusSignal _Nullable)addOnConnectionStatusListener:(PPRetailOnConnectionStatusEvent _Nullable)listener;
+
+/**
+ * Remove a listener for the onConnectionStatus event given the signal object that was returned from addOnConnectionStatusListener
+ */
+-(void)removeOnConnectionStatusListener:(PPRetailOnConnectionStatusSignal _Nullable)listenerToken;
 
 
 @end

@@ -83,24 +83,23 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * The content to be presented natively in the receipt options screen.
  */
 @interface PPRetailReceiptOptionsViewContent : PPRetailObject
 
-    @property (nonatomic,strong,nullable) NSString* title;
-    @property (nonatomic,strong,nullable) NSString* message;
-    @property (nonatomic,strong,nullable) NSString* prompt;
-    @property (nonatomic,strong,nullable) NSString* titleIconFilename;
-    @property (nonatomic,strong,nullable) NSString* maskedEmail;
-    @property (nonatomic,strong,nullable) NSString* maskedPhone;
-    @property (nonatomic,strong,nullable) NSString* disclaimer;
-    @property (nonatomic,strong,nullable) NSString* emailButtonTitle;
-    @property (nonatomic,strong,nullable) NSString* smsButtonTitle;
-    @property (nonatomic,strong,nullable) NSString* noThanksButtonTitle;
-    @property (nonatomic,strong,nullable) NSArray* additionalReceiptOptions;
+@property (nonatomic,strong,nullable) NSString* title;
+@property (nonatomic,strong,nullable) NSString* message;
+@property (nonatomic,strong,nullable) NSString* prompt;
+@property (nonatomic,strong,nullable) NSString* titleIconFilename;
+@property (nonatomic,strong,nullable) NSString* maskedEmail;
+@property (nonatomic,strong,nullable) NSString* maskedPhone;
+@property (nonatomic,strong,nullable) NSString* disclaimer;
+@property (nonatomic,strong,nullable) NSString* emailButtonTitle;
+@property (nonatomic,strong,nullable) NSString* smsButtonTitle;
+@property (nonatomic,strong,nullable) NSString* noThanksButtonTitle;
+@property (nonatomic,strong,nullable) NSArray* additionalReceiptOptions;
 
 
 

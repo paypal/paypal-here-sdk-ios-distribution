@@ -83,74 +83,59 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * The merchant represents the account that all calls to the PayPal services will affect. Essentially this is
  * where all collected money will go, which account locations and checkin operations will occur under, etc.
  */
 @interface PPRetailMerchant : PPRetailObject
-
-    /**
-    * The email address of the merchant. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* emailAddress;
-    /**
-    * The name of the business operated by the merchant. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* businessName;
-    /**
-    * The "home" currency of the merchant. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* currency;
-    /**
-    * The payer id of the merchant. @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* payerId;
-    /**
-    * The business address of the merchant @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailInvoiceAddress* address;
-    /**
-    * The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* environment;
-    /**
-    * The invoice total amount above which signature would be collected for swipe transactions.
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* signatureRequiredAbove;
-    /**
-    * Run in certification mode.
-    */
-    @property (nonatomic,assign) BOOL isCertificationMode;
-    /**
-    * The Partner Attribution Id code that is used for analytics
-    */
-    @property (nonatomic,strong,nullable) NSString* referrerCode;
-    /**
-    * The storeId to pull the store location address
-    */
-    @property (nonatomic,strong,nullable) NSString* storeId;
-    /**
-    * The soft descriptor that will be shown on the receipt,  provided by the partner
+/**
+ * The email address of the merchant. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* emailAddress;/**
+ * The name of the business operated by the merchant. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* businessName;/**
+ * The "home" currency of the merchant. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* currency;/**
+ * The payer id of the merchant. @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* payerId;/**
+ * The business address of the merchant @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailInvoiceAddress* address;/**
+ * The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* environment;/**
+ * The invoice total amount above which signature would be collected for swipe transactions.
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* signatureRequiredAbove;/**
+ * Run in certification mode.
+ */
+@property (nonatomic,assign) BOOL isCertificationMode;/**
+ * The Partner Attribution Id code that is used for analytics
+ */
+@property (nonatomic,strong,nullable) NSString* referrerCode;/**
+ * The storeId to pull the store location address
+ */
+@property (nonatomic,strong,nullable) NSString* storeId;/**
+ * The soft descriptor that will be shown on the receipt,  provided by the partner
  * PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve
  * a signature for the transaction. MODIFY THIS SETTING AT YOUR OWN RISK!
-    */
-    @property (nonatomic,strong,nullable) NSString* softDescriptor;
+ */
+@property (nonatomic,strong,nullable) NSString* softDescriptor;
 
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
 
 
-    /**
-     * Forward a receipt for an invoice.
-     */
-    -(void)forwardReceipt:(PPRetailInvoice* _Nullable)invoice emailOrSms:(NSString* _Nullable)emailOrSms txNumber:(NSString* _Nullable)txNumber txType:(NSString* _Nullable)txType customerId:(NSString* _Nullable)customerId receiptPreferenceToken:(NSString* _Nullable)receiptPreferenceToken callback:(PPRetailMerchantReceiptForwardedHandler _Nullable)callback;
+/**
+ * Forward a receipt for an invoice.
+ */
+-(void)forwardReceipt:(PPRetailInvoice* _Nullable)invoice emailOrSms:(NSString* _Nullable)emailOrSms txNumber:(NSString* _Nullable)txNumber txType:(NSString* _Nullable)txType customerId:(NSString* _Nullable)customerId receiptPreferenceToken:(NSString* _Nullable)receiptPreferenceToken callback:(PPRetailMerchantReceiptForwardedHandler _Nullable)callback;
 
 
 

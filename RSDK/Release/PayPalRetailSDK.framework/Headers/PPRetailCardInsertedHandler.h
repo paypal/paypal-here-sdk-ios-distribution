@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * When card insert is detected during a transaction, the registered listener with be invoked with this handler method
@@ -95,15 +94,15 @@
 
 
 
-    /**
-     * Continue to read EMV data from inserted card
-     */
-    -(void)continueWithCardDataRead;
+/**
+ * Continue to read EMV data from inserted card
+ */
+-(void)continueWithCardDataRead;
 
-    /**
-     * Dismiss any SDK UI Dialog that would be displayed at the time this handler is invoked
-     */
-    -(void)dismissSDKUIPrompt;
+/**
+ * Dismiss any SDK UI Dialog that would be displayed at the time this handler is invoked
+ */
+-(void)dismissSDKUIPrompt;
 
 
 

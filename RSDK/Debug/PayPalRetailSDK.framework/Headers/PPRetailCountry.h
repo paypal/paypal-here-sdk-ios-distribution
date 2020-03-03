@@ -83,28 +83,22 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
  */
 @interface PPRetailCountry : PPRetailObject
+/**
+ * The code for a country @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* code;/**
+ * The name of a country @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* name;
 
-    /**
-    * The code for a country @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* code;
-    /**
-    * The name of a country @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* name;
-
-
-    
-      - (instancetype _Nullable)initWithCountryCode:(NSString* _Nullable)countryCode countryName:(NSString* _Nullable)countryName;
-      
-    - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
-    + (instancetype _Null_unspecified)new NS_UNAVAILABLE;
+- (instancetype _Nullable)initWithCountryCode:(NSString* _Nullable)countryCode countryName:(NSString* _Nullable)countryName;
+    - (instancetype _Nullable)init NS_UNAVAILABLE;
++ (instancetype _Nullable)new NS_UNAVAILABLE;
 
 
 

@@ -130,7 +130,6 @@
 @class PPRetailDiscoveredCardReader;
 
 
-
 /**
  * Valid invoice statuses
  */
@@ -153,8 +152,8 @@ typedef NS_ENUM(NSInteger, PPRetailInvoiceStatus) {
 
 /**
  * PayPal payment detail indicating whether payment was made in an invoicing flow via PayPal
-     * or externally. In the case of the mark-as-paid API, payment type is EXTERNAL and this
-     * is what is now supported. The PAYPAL value is provided for backward compatibility.
+   * or externally. In the case of the mark-as-paid API, payment type is EXTERNAL and this
+   * is what is now supported. The PAYPAL value is provided for backward compatibility.
  */
 typedef NS_ENUM(NSInteger, PPRetailInvoicePaymentType) {
   PPRetailInvoicePaymentTypeNONE = 0,
@@ -361,7 +360,7 @@ typedef NS_ENUM(NSInteger, PPRetailCardIssuer) {
 
 /**
  * A payment form factor describes the process used by the consumer to
-     * communicate payment credentials to the merchant.
+   * communicate payment credentials to the merchant.
  */
 typedef NS_ENUM(NSInteger, PPRetailFormFactor) {
   PPRetailFormFactorNone = 0,
@@ -374,7 +373,7 @@ typedef NS_ENUM(NSInteger, PPRetailFormFactor) {
 
 /**
  * A transaction context is created for a certain operation - sale
-     * (meaning auth+capture), auth or refund.
+   * (meaning auth+capture), auth or refund.
  */
 typedef NS_ENUM(NSInteger, PPRetailTransactionType) {
   PPRetailTransactionTypeSale = 0,
@@ -436,7 +435,7 @@ typedef NS_ENUM(NSInteger, PPRetailSimulatorUseCase) {
 
 /**
  * This callback will be invoked every time the SDK wants to do a HTTP Request, the listener could intercept this call
-     * and provide
+   * and provide
  */
 typedef void (^PPRetailSDKInterceptHandler)(PPRetailNetworkRequest* request);
 
@@ -447,15 +446,15 @@ typedef void (^PPRetailInvoiceGotDetailsHandler)(PPRetailError* error);
 
 /**
  * After an attempt has been made to save your invoice to the PayPal servers,
-     * the completion handler will be called with the error (if any, or null if not)
-     * and the invoice object will be updated appropriately.
+   * the completion handler will be called with the error (if any, or null if not)
+   * and the invoice object will be updated appropriately.
  */
 typedef void (^PPRetailInvoiceSavedHandler)(PPRetailError* error);
 
 /**
  * After an attempt has been made to send your invoice, the completion handler
-     * will be called with the error (if any, or null if not) and the invoice object
-     * will be updated appropriately.
+   * will be called with the error (if any, or null if not) and the invoice object
+   * will be updated appropriately.
  */
 typedef void (^PPRetailInvoiceSentHandler)(PPRetailError* error);
 
@@ -521,31 +520,31 @@ typedef void (^PPRetailInvoicingServiceUploadFileHandler)(PPRetailError* error, 
 
 /**
  * After an attempt has been made to send your receipt to the PayPal servers,
-     * the completion handler will be called with the error (if any, or null if not)
+   * the completion handler will be called with the error (if any, or null if not)
  */
 typedef void (^PPRetailMerchantReceiptForwardedHandler)(PPRetailError* error);
 
 /**
  * Called when either payment completes or fails.
-     * Note that other events may be fired in the meantime.
+   * Note that other events may be fired in the meantime.
  */
 typedef void (^PPRetailTransactionContextTransactionCompletedHandler)(PPRetailError* error, PPRetailTransactionRecord* record);
 
 /**
  * Called when either vault completes or fails.
-     * Note that other events may be fired in the meantime.
+   * Note that other events may be fired in the meantime.
  */
 typedef void (^PPRetailTransactionContextVaultCompletedHandler)(PPRetailError* error, PPRetailVaultRecord* record);
 
 /**
  * Called when either offline transaction addition completes or fails.
-     * Note that other events may be fired in the meantime.
+   * Note that other events may be fired in the meantime.
  */
 typedef void (^PPRetailTransactionContextOfflineTransactionAddedHandler)(PPRetailError* error, PPRetailOfflineTransactionRecord* record);
 
 /**
  * Indicates that the card data was read. Depending on your region and the buyer payment type, this can mean a magnetic
-     * card was swiped, an EMV card was inserted, or an NFC card/device was tapped.
+   * card was swiped, an EMV card was inserted, or an NFC card/device was tapped.
  */
 typedef void (^PPRetailTransactionContextCardPresentedHandler)(PPRetailCard* card);
 
@@ -636,7 +635,7 @@ typedef void (^PPRetailPaymentDeviceDeviceLogsHandler)(PPRetailError* error);
 
 /**
  * Called when either the software update completed, failed, or was canceled. (To detect the user having chosen
-     * not to update, check that the error is null but deviceUpgraded is false.
+   * not to update, check that the error is null but deviceUpgraded is false.
  */
 typedef void (^PPRetailDeviceUpdateCompletedHandler)(PPRetailError* error, BOOL deviceUpgraded);
 
@@ -650,15 +649,15 @@ typedef void (^PPRetailAuthorizedTransactionVoidCompleteHandler)(PPRetailError* 
  */
 typedef void (^PPRetailAuthorizedTransactionCaptureCompleteHandler)(PPRetailError* error, NSString* captureId);
 
-
  
 /**
  * A PaymentDevice has been discovered. For further events, such as device readiness, removal or the
-     * need for a software upgrade, your application should subscribe to the relevant events on the device
-     * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
-     * we may know about the device independently of whether it's currently connected or available.
+   * need for a software upgrade, your application should subscribe to the relevant events on the device
+   * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
+   * we may know about the device independently of whether it's currently connected or available.
  */
 typedef void (^PPRetailDeviceDiscoveredEvent)(PPRetailPaymentDevice* device);
+
 /**
  * Returned from addDeviceDiscoveredListener and used to unsubscribe from the event.
  */
@@ -669,6 +668,7 @@ typedef id PPRetailDeviceDiscoveredSignal;
  * A page has been viewed
  */
 typedef void (^PPRetailPageViewedEvent)(PPRetailError* error, PPRetailPage* page);
+
 /**
  * Returned from addPageViewedListener and used to unsubscribe from the event.
  */
@@ -679,6 +679,7 @@ typedef id PPRetailPageViewedSignal;
  * Untrusted Network Event
  */
 typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
+
 /**
  * Returned from addUntrustedNetworkListener and used to unsubscribe from the event.
  */
@@ -689,6 +690,7 @@ typedef id PPRetailUntrustedNetworkSignal;
  * Contactless reader was de-activated and the transaction still remains active.
  */
 typedef void (^PPRetailContactlessReaderDeactivatedEvent)();
+
 /**
  * Returned from addContactlessReaderDeactivatedListener and used to unsubscribe from the event.
  */
@@ -699,6 +701,7 @@ typedef id PPRetailContactlessReaderDeactivatedSignal;
  * Contactless reader was activated and the transaction still remains active.
  */
 typedef void (^PPRetailContactlessReaderActivatedEvent)();
+
 /**
  * Returned from addContactlessReaderActivatedListener and used to unsubscribe from the event.
  */
@@ -709,6 +712,7 @@ typedef id PPRetailContactlessReaderActivatedSignal;
  * Called when PIN entry is in progress or complete
  */
 typedef void (^PPRetailPinEntryEvent)(BOOL complete, BOOL correct, int pinDigits, BOOL lastAttempt);
+
 /**
  * Returned from addPinEntryListener and used to unsubscribe from the event.
  */
@@ -719,6 +723,7 @@ typedef id PPRetailPinEntrySignal;
  * Called when the signature input interface will be displayed
  */
 typedef void (^PPRetailWillPresentSignatureEvent)();
+
 /**
  * Returned from addWillPresentSignatureListener and used to unsubscribe from the event.
  */
@@ -729,6 +734,7 @@ typedef id PPRetailWillPresentSignatureSignal;
  * Called when the tipping on reader flow has been completed
  */
 typedef void (^PPRetailReaderTippingCompletedEvent)(NSDecimalNumber* tipAmount);
+
 /**
  * Returned from addReaderTippingCompletedListener and used to unsubscribe from the event.
  */
@@ -739,6 +745,7 @@ typedef id PPRetailReaderTippingCompletedSignal;
  * Called when the signature entry is completed
  */
 typedef void (^PPRetailDidCompleteSignatureEvent)(PPRetailError* error);
+
 /**
  * Returned from addDidCompleteSignatureListener and used to unsubscribe from the event.
  */
@@ -749,6 +756,7 @@ typedef id PPRetailDidCompleteSignatureSignal;
  * Called when the transaction is cancelled while waiting to collect the signature
  */
 typedef void (^PPRetailCancelledEvent)();
+
 /**
  * Returned from addCancelledListener and used to unsubscribe from the event.
  */
@@ -759,6 +767,7 @@ typedef id PPRetailCancelledSignal;
  * The reader is now connected and ready.
  */
 typedef void (^PPRetailConnectedEvent)();
+
 /**
  * Returned from addConnectedListener and used to unsubscribe from the event.
  */
@@ -769,6 +778,7 @@ typedef id PPRetailConnectedSignal;
  * The reader is now selected and active to be used.
  */
 typedef void (^PPRetailSelectedEvent)();
+
 /**
  * Returned from addSelectedListener and used to unsubscribe from the event.
  */
@@ -779,6 +789,7 @@ typedef id PPRetailSelectedSignal;
  * The connection attempt with the reader failed
  */
 typedef void (^PPRetailConnectionErrorEvent)(PPRetailError* error);
+
 /**
  * Returned from addConnectionErrorListener and used to unsubscribe from the event.
  */
@@ -789,6 +800,7 @@ typedef id PPRetailConnectionErrorSignal;
  * The reader is now disconnected.
  */
 typedef void (^PPRetailDisconnectedEvent)(PPRetailError* error);
+
 /**
  * Returned from addDisconnectedListener and used to unsubscribe from the event.
  */
@@ -799,6 +811,7 @@ typedef id PPRetailDisconnectedSignal;
  * A software update is required for the reader.
  */
 typedef void (^PPRetailUpdateRequiredEvent)(PPRetailDeviceUpdate* update);
+
 /**
  * Returned from addUpdateRequiredListener and used to unsubscribe from the event.
  */
@@ -809,6 +822,7 @@ typedef id PPRetailUpdateRequiredSignal;
  * The battery status has been updated
  */
 typedef void (^PPRetailBatteryStatusUpdateEvent)(PPRetailBatteryInfo* batteryInfo);
+
 /**
  * Returned from addBatteryStatusUpdateListener and used to unsubscribe from the event.
  */
@@ -817,9 +831,10 @@ typedef id PPRetailBatteryStatusUpdateSignal;
 
 /**
  * A card has been removed (generally from an EMV reader, where the card
-     * stays in the reader for some time)
+   * stays in the reader for some time)
  */
 typedef void (^PPRetailCardRemovedEvent)();
+
 /**
  * Returned from addCardRemovedListener and used to unsubscribe from the event.
  */
@@ -828,10 +843,11 @@ typedef id PPRetailCardRemovedSignal;
 
 /**
  * Depending on your region and the buyer payment type, this can mean a magnetic card
-     * was swiped, an EMV card was
-     * inserted, or an NFC card/device was tapped.
+   * was swiped, an EMV card was
+   * inserted, or an NFC card/device was tapped.
  */
 typedef void (^PPRetailCardPresentedEvent)(PPRetailCard* card);
+
 /**
  * Returned from addCardPresentedListener and used to unsubscribe from the event.
  */
@@ -842,6 +858,7 @@ typedef id PPRetailCardPresentedSignal;
  * The reader is blacklisted.
  */
 typedef void (^PPRetailBlacklistedEvent)();
+
 /**
  * Returned from addBlacklistedListener and used to unsubscribe from the event.
  */
@@ -850,9 +867,10 @@ typedef id PPRetailBlacklistedSignal;
     
 /**
  * Payment device connected via USB needs to be unplugged and plugged back to the USB port for the software
-     * update to complete
+   * update to complete
  */
 typedef void (^PPRetailReconnectReaderEvent)(int waitTime);
+
 /**
  * Returned from addReconnectReaderListener and used to unsubscribe from the event.
  */
@@ -863,6 +881,7 @@ typedef id PPRetailReconnectReaderSignal;
  * A Card Reader has been discovered.
  */
 typedef void (^PPRetailOnCardReaderDiscoveredEvent)(PPRetailDiscoveredCardReader* device);
+
 /**
  * Returned from addOnCardReaderDiscoveredListener and used to unsubscribe from the event.
  */
@@ -873,6 +892,7 @@ typedef id PPRetailOnCardReaderDiscoveredSignal;
  * The procedure for scaning and discovering card readers is ended.
  */
 typedef void (^PPRetailOnScanCompleteEvent)(PPRetailError* error);
+
 /**
  * Returned from addOnScanCompleteListener and used to unsubscribe from the event.
  */
@@ -881,11 +901,12 @@ typedef id PPRetailOnScanCompleteSignal;
 
 /**
  * A PaymentDevice has been discovered. For further events, such as device readiness, removal or the
-     * need for a software upgrade, your application should subscribe to the relevant events on the device
-     * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
-     * we may know about the device independently of whether it's currently connected or available.
+   * need for a software upgrade, your application should subscribe to the relevant events on the device
+   * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
+   * we may know about the device independently of whether it's currently connected or available.
  */
 typedef void (^PPRetailOnConnectionStatusEvent)(PPRetailError* error, PPRetailDiscoveredCardReader* device);
+
 /**
  * Returned from addOnConnectionStatusListener and used to unsubscribe from the event.
  */
@@ -894,11 +915,12 @@ typedef id PPRetailOnConnectionStatusSignal;
   
 /**
  * A PaymentDevice has been discovered. For further events, such as device readiness, removal or the
-     * need for a software upgrade, your application should subscribe to the relevant events on the device
-     * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
-     * we may know about the device independently of whether it's currently connected or available.
+   * need for a software upgrade, your application should subscribe to the relevant events on the device
+   * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
+   * we may know about the device independently of whether it's currently connected or available.
  */
 typedef void (^PPRetailOnConnectionResultEvent)(PPRetailError* Error, PPRetailPaymentDevice* device);
+
 /**
  * Returned from addOnConnectionResultListener and used to unsubscribe from the event.
  */

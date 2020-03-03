@@ -83,36 +83,30 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * A template class for all the properties of the error object
  */
 @interface PPRetailPayPalErrorInfo : PPRetailObject
-
-    /**
-    * The error message
-    */
-    @property (nonatomic,strong,nullable) NSString* message;
-    /**
-    * The subsystem responsible for this error, in which the code
+/**
+ * The error message
+ */
+@property (nonatomic,strong,nullable) NSString* message;/**
+ * The subsystem responsible for this error, in which the code
  * should uniquely identify the type of error that has occurred
-    */
-    @property (nonatomic,strong,nullable) NSString* domain;
-    /**
-    * A non-localized code for this error
-    */
-    @property (nonatomic,strong,nullable) NSString* code;
-    /**
-    * A server-generated identifier used by PayPal to
+ */
+@property (nonatomic,strong,nullable) NSString* domain;/**
+ * A non-localized code for this error
+ */
+@property (nonatomic,strong,nullable) NSString* code;/**
+ * A server-generated identifier used by PayPal to
  * help diagnose this error
-    */
-    @property (nonatomic,strong,nullable) NSString* debugId;
-    /**
-    * A developer friendly, user unfriendly
+ */
+@property (nonatomic,strong,nullable) NSString* debugId;/**
+ * A developer friendly, user unfriendly
  * message for log statements to give you as much info as possible.
-    */
-    @property (nonatomic,strong,nullable) NSString* developerMessage;
+ */
+@property (nonatomic,strong,nullable) NSString* developerMessage;
 
 
 

@@ -83,7 +83,6 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
@@ -95,16 +94,16 @@
 
 +(void)getInvoices:(PPRetailInvoiceListRequest* _Nullable)params completionHandler:(PPRetailInvoicingServiceGetInvoicesHandler _Nullable)completionHandler;
 
-    /**
-     * Search for a specific invoice or invoices by passing a search object that
-     * specifies your * search criteria.
-     */
-    +(void)searchInvoices:(PPRetailInvoiceSearchRequest* _Nullable)params completionHandler:(PPRetailInvoicingServiceSearchInvoicesHandler _Nullable)completionHandler;
+/**
+ * Search for a specific invoice or invoices by passing a search object that
+ * specifies your * search criteria.
+ */
++(void)searchInvoices:(PPRetailInvoiceSearchRequest* _Nullable)params completionHandler:(PPRetailInvoicingServiceSearchInvoicesHandler _Nullable)completionHandler;
 
-    /**
-     * Load the details for a specific invoice given the invoice ID
-     */
-    +(void)getInvoice:(NSString* _Nullable)invoiceID completionHandler:(PPRetailInvoicingServiceGetInvoiceHandler _Nullable)completionHandler;
+/**
+ * Load the details for a specific invoice given the invoice ID
+ */
++(void)getInvoice:(NSString* _Nullable)invoiceID completionHandler:(PPRetailInvoicingServiceGetInvoiceHandler _Nullable)completionHandler;
 
 +(void)getNextInvoiceNumber:(PPRetailInvoicingServiceGetNextInvoiceNumberHandler _Nullable)completionHandler;
 

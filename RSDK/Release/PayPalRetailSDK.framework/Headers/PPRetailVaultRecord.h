@@ -83,26 +83,20 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Information about a completed vault
  */
 @interface PPRetailVaultRecord : PPRetailObject
+/**
+ * card that was presented by the consumer for this transaction @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailCard* card;/**
+ * The Vault id @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* vaultId;
 
-    /**
-    * card that was presented by the consumer for this transaction @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailCard* card;
-    /**
-    * The Vault id @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) NSString* vaultId;
-
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 

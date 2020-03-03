@@ -83,44 +83,35 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * The NetworkRequest class represents the HTTP Request object from the SDK
  */
 @interface PPRetailNetworkRequest : PPRetailObject
+/**
+ * Request Url
+ */
+@property (nonatomic,strong,nullable) NSString* url;/**
+ * HTTP Request method
+ */
+@property (nonatomic,strong,nullable) NSString* method;/**
+ * Format of the HTTP Request
+ */
+@property (nonatomic,strong,nullable) NSString* format;/**
+ * HTTP Request headers
+ */
+@property (nonatomic,strong,nullable) NSDictionary* headers;/**
+ * Request body
+ */
+@property (nonatomic,strong,nullable) NSString* body;
 
-    /**
-    * Request Url
-    */
-    @property (nonatomic,strong,nullable) NSString* url;
-    /**
-    * HTTP Request method
-    */
-    @property (nonatomic,strong,nullable) NSString* method;
-    /**
-    * Format of the HTTP Request
-    */
-    @property (nonatomic,strong,nullable) NSString* format;
-    /**
-    * HTTP Request headers
-    */
-    @property (nonatomic,strong,nullable) NSDictionary* headers;
-    /**
-    * Request body
-    */
-    @property (nonatomic,strong,nullable) NSString* body;
-
-
-    
-      - (instancetype _Null_unspecified)init;
-    
+- (instancetype _Nullable)init;
     
 
 
 
 
-    -(void)continueWithResponse:(PPRetailError* _Nullable)err didHandle:(BOOL)didHandle response:(PPRetailNetworkResponse* _Nullable)response;
+-(void)continueWithResponse:(PPRetailError* _Nullable)err didHandle:(BOOL)didHandle response:(PPRetailNetworkResponse* _Nullable)response;
 
 
 

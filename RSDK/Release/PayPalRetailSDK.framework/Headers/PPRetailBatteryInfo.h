@@ -83,45 +83,35 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * BatteryInfo class contains information about the health of the device battery
  * and the instant it was measured
  */
 @interface PPRetailBatteryInfo : PPRetailObject
+/**
+ * The level of battery in percentage
+ */
+@property (nonatomic,assign) int percentage;/**
+ * Indicates if the device battery is connected to power
+ */
+@property (nonatomic,assign) BOOL isCharging;/**
+ * Indicates that the device battery is at Critical or less and not charging
+ */
+@property (nonatomic,assign) BOOL isLevelCritical;/**
+ * Indicates that the device battery is at UpdateCritical or less and not charging
+ */
+@property (nonatomic,assign) BOOL isLevelUpdateCritical;/**
+ * The time the battery information was retrieved
+ */
+@property (nonatomic,strong,nullable) NSDate* measuredOn;/**
+ * Status of the battery
+ */
+@property (nonatomic,assign) PPRetailbatteryStatus status;
 
-    /**
-    * The level of battery in percentage
-    */
-    @property (nonatomic,assign) int percentage;
-    /**
-    * Indicates if the device battery is connected to power
-    */
-    @property (nonatomic,assign) BOOL isCharging;
-    /**
-    * Indicates that the device battery is at Critical or less and not charging
-    */
-    @property (nonatomic,assign) BOOL isLevelCritical;
-    /**
-    * Indicates that the device battery is at UpdateCritical or less and not charging
-    */
-    @property (nonatomic,assign) BOOL isLevelUpdateCritical;
-    /**
-    * The time the battery information was retrieved
-    */
-    @property (nonatomic,strong,nullable) NSDate* measuredOn;
-    /**
-    * Status of the battery
-    */
-    @property (nonatomic,assign) PPRetailbatteryStatus status;
-
-
-    
-      - (instancetype _Nullable)initWithPercentage:(int)percentage isCharging:(BOOL)isCharging measuredOn:(NSDate* _Nullable)measuredOn status:(PPRetailbatteryStatus)status;
-      
-    - (instancetype _Null_unspecified)init NS_UNAVAILABLE;
-    + (instancetype _Null_unspecified)new NS_UNAVAILABLE;
+- (instancetype _Nullable)initWithPercentage:(int)percentage isCharging:(BOOL)isCharging measuredOn:(NSDate* _Nullable)measuredOn status:(PPRetailbatteryStatus)status;
+    - (instancetype _Nullable)init NS_UNAVAILABLE;
++ (instancetype _Nullable)new NS_UNAVAILABLE;
 
 
 

@@ -83,21 +83,18 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Information about a card presented to the PayPal Retail SDK
  */
 @interface PPRetailDeviceStatus : PPRetailObject
-
-    /**
-    * true if the device is ready for transaction @readonly
-    */
-    @property (nonatomic,assign,readonly) BOOL isReady;
-    /**
-    * Reason (if any) for device unavailability  @readonly
-    */
-    @property (nonatomic,strong,nullable,readonly) PPRetailError* error;
+/**
+ * true if the device is ready for transaction @readonly
+ */
+@property (nonatomic,assign,readonly) BOOL isReady;/**
+ * Reason (if any) for device unavailability  @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailError* error;
 
 
 

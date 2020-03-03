@@ -83,25 +83,21 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
  */
 @interface PPRetailInvoiceListRequest : PPRetailObject
-
-    /**
-    * A zero-relative index of the merchant's list of invoices
-    */
-    @property (nonatomic,assign) int startIndex;
-    /**
-    * The number of invoices to retrieve, beginning with the specified page
-    */
-    @property (nonatomic,assign) int pageSize;
-    /**
-    * Determines if the total count is returned.
-    */
-    @property (nonatomic,assign) BOOL totalCountRequired;
+/**
+ * A zero-relative index of the merchant's list of invoices
+ */
+@property (nonatomic,assign) int startIndex;/**
+ * The number of invoices to retrieve, beginning with the specified page
+ */
+@property (nonatomic,assign) int pageSize;/**
+ * Determines if the total count is returned.
+ */
+@property (nonatomic,assign) BOOL totalCountRequired;
 
 
 

@@ -83,26 +83,22 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * 
  */
 @interface PPRetailInvoiceListResponse : PPRetailObject
-
-    /**
-    * All the invoices in the requested page of the invoice list
-    */
-    @property (nonatomic,strong,nullable) NSArray* invoices;
-    /**
-    * The total number of invoices in the invoice list.
+/**
+ * All the invoices in the requested page of the invoice list
+ */
+@property (nonatomic,strong,nullable) NSArray* invoices;/**
+ * The total number of invoices in the invoice list.
  * May be 0 if totalCountRequired wasn't specified.
-    */
-    @property (nonatomic,assign) int totalCount;
-    /**
-    * yes if this is not the last page of invoices
-    */
-    @property (nonatomic,assign) BOOL hasMore;
+ */
+@property (nonatomic,assign) int totalCount;/**
+ * yes if this is not the last page of invoices
+ */
+@property (nonatomic,assign) BOOL hasMore;
 
 
 

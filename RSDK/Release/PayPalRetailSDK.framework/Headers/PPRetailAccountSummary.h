@@ -83,37 +83,31 @@
 @class PPRetailDeviceConnectorOptions;
 @class PPRetailSimulationOptions;
 
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
  * Account summary for current merchant
  */
 @interface PPRetailAccountSummary : PPRetailObject
-
-    /**
-    * outstanding amount on account
-    */
-    @property (nonatomic,strong,nullable) NSDecimalNumber* outstandingAmount;
-    /**
-    * section summary
+/**
+ * outstanding amount on account
+ */
+@property (nonatomic,strong,nullable) NSDecimalNumber* outstandingAmount;/**
+ * section summary
  * containing past due invoice information
-    */
-    @property (nonatomic,strong,nullable) PPRetailAccountSummarySection* pastDueSection;
-    /**
-    * section
+ */
+@property (nonatomic,strong,nullable) PPRetailAccountSummarySection* pastDueSection;/**
+ * section
  * summary containing awaiting invoice information
-    */
-    @property (nonatomic,strong,nullable) PPRetailAccountSummarySection* awaitingPaymentSection;
-    /**
-    * section summary
+ */
+@property (nonatomic,strong,nullable) PPRetailAccountSummarySection* awaitingPaymentSection;/**
+ * section summary
  * containing draft invoice information
-    */
-    @property (nonatomic,strong,nullable) PPRetailAccountSummarySection* draftSection;
-    /**
-    * section summary
+ */
+@property (nonatomic,strong,nullable) PPRetailAccountSummarySection* draftSection;/**
+ * section summary
  * containing paid invoice information
-    */
-    @property (nonatomic,strong,nullable) PPRetailAccountSummarySection* paidSection;
+ */
+@property (nonatomic,strong,nullable) PPRetailAccountSummarySection* paidSection;
 
 
 
