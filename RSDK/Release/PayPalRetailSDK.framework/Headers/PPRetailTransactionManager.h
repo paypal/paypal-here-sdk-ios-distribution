@@ -157,6 +157,11 @@
 -(BOOL)getOfflinePaymentEnabled;
 
 /**
+ * Get the current transaction context
+ */
+-(PPRetailTransactionContext* _Nullable)getCurrentTransactionContext;
+
+/**
  * Retrieve the list of authorized transactions.
  */
 -(void)retrieveAuthorization:(NSDate* _Nullable)startDateTime endDateTime:(NSDate* _Nullable)endDateTime pageSize:(int)pageSize status:(NSArray* _Nullable)status callback:(PPRetailTransactionManagerRetrieveAuthorizedTransactionsHandler _Nullable)callback;

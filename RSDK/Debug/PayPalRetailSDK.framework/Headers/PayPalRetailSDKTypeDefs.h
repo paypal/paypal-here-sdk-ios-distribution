@@ -193,8 +193,7 @@ typedef NS_ENUM(NSInteger, PPRetailInvoiceAction) {
   PPRetailInvoiceActionMore = 10,
   PPRetailInvoiceActionShare = 11,
   PPRetailInvoiceActionViewHistory = 12,
-  PPRetailInvoiceActionViewInvoice = 13,
-  PPRetailInvoiceActionQRCode = 14
+  PPRetailInvoiceActionViewInvoice = 13
 };
 
 /**
@@ -293,6 +292,15 @@ typedef NS_ENUM(NSInteger, PPRetailTippingState) {
   PPRetailTippingStatenotStarted = 0,
   PPRetailTippingStateinProgress = 1,
   PPRetailTippingStatecomplete = 2
+};
+
+/**
+ * This enum represents the state of transaction end
+ */
+typedef NS_ENUM(NSInteger, PPRetailCompletionInvocationState) {
+  PPRetailCompletionInvocationStatenotInvoked = 0,
+  PPRetailCompletionInvocationStateinvoked = 1,
+  PPRetailCompletionInvocationStatecomplete = 2
 };
 
 /**
