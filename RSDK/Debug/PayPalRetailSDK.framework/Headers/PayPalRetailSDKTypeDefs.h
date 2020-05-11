@@ -193,7 +193,8 @@ typedef NS_ENUM(NSInteger, PPRetailInvoiceAction) {
   PPRetailInvoiceActionMore = 10,
   PPRetailInvoiceActionShare = 11,
   PPRetailInvoiceActionViewHistory = 12,
-  PPRetailInvoiceActionViewInvoice = 13
+  PPRetailInvoiceActionViewInvoice = 13,
+  PPRetailInvoiceActionQRCode = 14
 };
 
 /**
