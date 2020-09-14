@@ -81,6 +81,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailReaderConfiguration;
 @class PPRetailSimulationOptions;
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -113,16 +114,6 @@
 
 
 /**
- * Get the active merchant
- */
--(PPRetailMerchant* _Nullable)getMerchant;
-
-/**
- * Create a transaction context for an invoice
- */
--(PPRetailTransactionContext* _Nullable)createTransaction:(PPRetailInvoice* _Nullable)invoice;
-
-/**
  * Log a message via the Javascript logging framework (called by native to get all the side benefits of JS logging, like CAL)
  */
 -(void)logViaJs:(NSString* _Nullable)level component:(NSString* _Nullable)component message:(NSString* _Nullable)message extraData:(NSDictionary* _Nullable)extraData;
@@ -148,11 +139,6 @@
 -(NSString* _Nullable)getSdkVersion;
 
 /**
- * Register a PaymentDevice and notify listeners of the new device.
- */
--(void)discoveredPaymentDevice:(PPRetailPaymentDevice* _Nullable)pd;
-
-/**
  * Perform cleanup before shutting down the host application
  */
 -(void)logout;
@@ -168,34 +154,11 @@
 -(void)setNetworkInterceptor:(PPRetailSDKInterceptHandler _Nullable)interceptor;
 
 /**
- * Provide Fake Response for all HTTP calls made by the SDK
- */
--(void)enableFakeResponse;
-
-/**
- * Provide Fake Response for all HTTP calls made by the SDK
- */
--(void)disableFakeResponse;
-
-/**
  * Provide fake devices. If fake is enable, no actual devices will work.
  */
 -(void)simulateDevice:(PPRetailDeviceSimulatorType)devices usecase:(PPRetailSimulatorUseCase)usecase jsonResponseData:(NSString* _Nullable)jsonResponseData;
 
 
-
-
-/**
- * Add a listener for the deviceDiscovered event
- * @returns PPRetailDeviceDiscoveredSignal an object that can be used to remove the listener when
- * you're done with it.
- */
--(PPRetailDeviceDiscoveredSignal _Nullable)addDeviceDiscoveredListener:(PPRetailDeviceDiscoveredEvent _Nullable)listener;
-
-/**
- * Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener
- */
--(void)removeDeviceDiscoveredListener:(PPRetailDeviceDiscoveredSignal _Nullable)listenerToken;
 
 
 /**

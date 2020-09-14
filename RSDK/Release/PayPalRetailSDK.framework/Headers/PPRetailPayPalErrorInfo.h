@@ -81,6 +81,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailReaderConfiguration;
 @class PPRetailSimulationOptions;
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/

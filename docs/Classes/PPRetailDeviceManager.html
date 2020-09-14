@@ -60,6 +60,8 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/addDeviceDiscoveredListener:">- addDeviceDiscoveredListener:</option>
+		
 		<option value="//api/name/connectToLastActiveReader:">- connectToLastActiveReader:</option>
 		
 		<option value="//api/name/getActiveReader">- getActiveReader</option>
@@ -72,9 +74,13 @@
 		
 		<option value="//api/name/isConnectedToMiura">- isConnectedToMiura</option>
 		
+		<option value="//api/name/removeDeviceDiscoveredListener:">- removeDeviceDiscoveredListener:</option>
+		
 		<option value="//api/name/scanAndAutoConnectToBluetoothReader:callback:">- scanAndAutoConnectToBluetoothReader:callback:</option>
 		
 		<option value="//api/name/searchAndConnect:">- searchAndConnect:</option>
+		
+		<option value="//api/name/searchAndConnect:callback:">- searchAndConnect:callback:</option>
 		
 		<option value="//api/name/searchAndConnectWithoutCallback">- searchAndConnectWithoutCallback</option>
 		
@@ -134,6 +140,52 @@ or set/get the active device.</p>
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/searchAndConnect:callback:" title="searchAndConnect:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/searchAndConnect:callback:">&ndash;&nbsp;searchAndConnect:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Search for readers according to the passed reader configuration</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)searchAndConnect:(PPRetailReaderConfiguration *_Nullable)<em>readerConfig</em> callback:(PPRetailDeviceManagerConnectionHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Search for readers according to the passed reader configuration</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/searchAndConnect:" title="searchAndConnect:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/searchAndConnect:">&ndash;&nbsp;searchAndConnect:</a></code>
 </h3>
@@ -649,6 +701,104 @@ Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/addDeviceDiscoveredListener:" title="addDeviceDiscoveredListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addDeviceDiscoveredListener:">&ndash;&nbsp;addDeviceDiscoveredListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the deviceDiscovered event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailDeviceDiscoveredSignal _Nullable)addDeviceDiscoveredListener:(PPRetailDeviceDiscoveredEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailDeviceDiscoveredSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the deviceDiscovered event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeDeviceDiscoveredListener:" title="removeDeviceDiscoveredListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeDeviceDiscoveredListener:">&ndash;&nbsp;removeDeviceDiscoveredListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeDeviceDiscoveredListener:(PPRetailDeviceDiscoveredSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailDeviceManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -664,7 +814,7 @@ Use this API in conjunction with {@link #scanAndAutoConnectToBluetoothReader}</p
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 PayPal. All rights reserved. Updated: 2020-05-01</p>
+						<p class="copyright">Copyright &copy; 2020 PayPal. All rights reserved. Updated: 2020-09-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

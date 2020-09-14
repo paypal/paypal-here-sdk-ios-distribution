@@ -81,6 +81,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailReaderConfiguration;
 @class PPRetailSimulationOptions;
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -97,6 +98,11 @@
 
 
 
+
+/**
+ * Search for readers according to the passed reader configuration
+ */
+-(void)searchAndConnect:(PPRetailReaderConfiguration* _Nullable)readerConfig callback:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
 /**
  * Show a list of connected credit card readers.
@@ -159,6 +165,19 @@
 -(void)stopScanningForBluetoothReaders;
 
 
+
+
+/**
+ * Add a listener for the deviceDiscovered event
+ * @returns PPRetailDeviceDiscoveredSignal an object that can be used to remove the listener when
+ * you're done with it.
+ */
+-(PPRetailDeviceDiscoveredSignal _Nullable)addDeviceDiscoveredListener:(PPRetailDeviceDiscoveredEvent _Nullable)listener;
+
+/**
+ * Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener
+ */
+-(void)removeDeviceDiscoveredListener:(PPRetailDeviceDiscoveredSignal _Nullable)listenerToken;
 
 
 @end

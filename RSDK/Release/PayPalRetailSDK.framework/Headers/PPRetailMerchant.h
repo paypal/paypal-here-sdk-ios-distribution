@@ -81,6 +81,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailReaderConfiguration;
 @class PPRetailSimulationOptions;
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -131,6 +132,11 @@
 
 
 
+
+/**
+ * Provide a token expiration handler if you want to handle token expiration during a transaction
+ */
+-(void)setTokenExpiredHandler:(PPRetailMerchantTokenExpirationHandlerHandler _Nullable)expirationHandler;
 
 /**
  * Forward a receipt for an invoice.

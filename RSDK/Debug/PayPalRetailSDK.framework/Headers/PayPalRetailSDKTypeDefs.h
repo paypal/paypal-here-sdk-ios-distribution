@@ -68,6 +68,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailReaderConfiguration;
 @class PPRetailSimulationOptions;
 @class PPRetailBraintreeManager;
 @class PPRetailSimulationManager;
@@ -75,9 +76,7 @@
 @class PPRetailMerchantManager;
 @class PPRetailDeviceManager;
 @class PPRetailNetworkRequest;
-@class PPRetailInvoice;
 @class PPRetailSdkEnvironmentInfo;
-@class PPRetailPaymentDevice;
 @class PPRetailError;
 @class PPRetailPage;
 @class PPRetailError;
@@ -95,6 +94,7 @@
 @class PPRetailInvoiceCustomAmount;
 @class PPRetailInvoiceMetaData;
 @class PPRetailInvoiceAttachment;
+@class PPRetailInvoice;
 @class PPRetailInvoiceNotification;
 @class PPRetailInvoiceTemplate;
 @class PPRetailInvoiceListResponse;
@@ -103,6 +103,7 @@
 @class PPRetailInvoiceListRequest;
 @class PPRetailInvoiceSearchRequest;
 @class PPRetailInvoiceTemplateSettings;
+@class PPRetailTokenExpirationHandler;
 @class PPRetailNetworkResponse;
 @class PPRetailRetailInvoice;
 @class PPRetailTransactionRecord;
@@ -110,7 +111,6 @@
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailCard;
 @class PPRetailSignatureReceiver;
-@class PPRetailTokenExpirationHandler;
 @class PPRetailCardInsertedHandler;
 @class PPRetailCaptureHandler;
 @class PPRetailMerchant;
@@ -118,6 +118,8 @@
 @class PPRetailTransactionContext;
 @class PPRetailAuthorizedTransaction;
 @class PPRetailOfflinePaymentInfo;
+@class PPRetailPaymentDevice;
+@class PPRetailReaderConfiguration;
 @class PPRetailReceiptOptionsViewContent;
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
@@ -388,7 +390,8 @@ typedef NS_ENUM(NSInteger, PPRetailTransactionType) {
   PPRetailTransactionTypeSale = 0,
   PPRetailTransactionTypeAuth = 1,
   PPRetailTransactionTypeRefund = 2,
-  PPRetailTransactionTypePartialRefund = 3
+  PPRetailTransactionTypePartialRefund = 3,
+  PPRetailTransactionTypeVault = 4
 };
 
 /**
@@ -404,10 +407,12 @@ typedef NS_ENUM(NSInteger, PPRetailreaderType) {
  * Indicates the channel through which the reader is connected.
  */
 typedef NS_ENUM(NSInteger, PPRetailreaderConnectionType) {
-  PPRetailreaderConnectionTypeUnknown = 0,
-  PPRetailreaderConnectionTypeAudioJack = 1,
-  PPRetailreaderConnectionTypeBluetooth = 2,
-  PPRetailreaderConnectionTypeDockPort = 3
+  PPRetailreaderConnectionTypeunknown = 0,
+  PPRetailreaderConnectionTypeaudioJack = 1,
+  PPRetailreaderConnectionTypebluetooth = 2,
+  PPRetailreaderConnectionTypedockPort = 3,
+  PPRetailreaderConnectionTypeusb = 4,
+  PPRetailreaderConnectionTypenetwork = 5
 };
 
 /**
@@ -419,7 +424,21 @@ typedef NS_ENUM(NSInteger, PPRetailReaderModel) {
   PPRetailReaderModelM003 = 2,
   PPRetailReaderModelM010 = 3,
   PPRetailReaderModelMoby3000 = 4,
-  PPRetailReaderModelRP450 = 5
+  PPRetailReaderModelRP450 = 5,
+  PPRetailReaderModelE285 = 6,
+  PPRetailReaderModelP400 = 7,
+  PPRetailReaderModelVerifone = 8
+};
+
+/**
+ * The device manufacturers
+ */
+typedef NS_ENUM(NSInteger, PPRetaildeviceManufacturer) {
+  PPRetaildeviceManufacturermiura = 0,
+  PPRetaildeviceManufactureringenico = 1,
+  PPRetaildeviceManufacturerbbpos = 2,
+  PPRetaildeviceManufacturerroam = 3,
+  PPRetaildeviceManufacturerverifone = 4
 };
 
 /**
@@ -534,6 +553,11 @@ typedef void (^PPRetailInvoicingServiceUploadFileHandler)(PPRetailError* error, 
 typedef void (^PPRetailMerchantReceiptForwardedHandler)(PPRetailError* error);
 
 /**
+ * 
+ */
+typedef void (^PPRetailMerchantTokenExpirationHandlerHandler)(PPRetailTokenExpirationHandler* tokenExpirationHandler);
+
+/**
  * Called when either payment completes or fails.
    * Note that other events may be fired in the meantime.
  */
@@ -581,6 +605,11 @@ typedef void (^PPRetailTransactionContextOnAuthCompleteHandler)(PPRetailError* E
  * Called when one of the additional receipt option is selected.
  */
 typedef void (^PPRetailTransactionContextReceiptOptionHandlerHandler)(int index, NSString* name, PPRetailTransactionRecord* record);
+
+/**
+ * Called when requestPaymentCancellation is complete
+ */
+typedef void (^PPRetailTransactionContextCancellationHandlerHandler)(PPRetailError* error, NSString* message);
 
 /**
  * 
@@ -659,20 +688,6 @@ typedef void (^PPRetailAuthorizedTransactionVoidCompleteHandler)(PPRetailError* 
 typedef void (^PPRetailAuthorizedTransactionCaptureCompleteHandler)(PPRetailError* error, NSString* captureId);
 
  
-/**
- * A PaymentDevice has been discovered. For further events, such as device readiness, removal or the
-   * need for a software upgrade, your application should subscribe to the relevant events on the device
-   * parameter. Please note that this doesn't always mean the device is present. In certain cases (e.g. Bluetooth)
-   * we may know about the device independently of whether it's currently connected or available.
- */
-typedef void (^PPRetailDeviceDiscoveredEvent)(PPRetailPaymentDevice* device);
-
-/**
- * Returned from addDeviceDiscoveredListener and used to unsubscribe from the event.
- */
-typedef id PPRetailDeviceDiscoveredSignal;
-
-
 /**
  * A page has been viewed
  */
@@ -760,7 +775,21 @@ typedef void (^PPRetailDidCompleteSignatureEvent)(PPRetailError* error);
  */
 typedef id PPRetailDidCompleteSignatureSignal;
 
-          
+        
+/**
+ * A constructed PaymentDevice instance on which a connection will be attempted. For further events,
+   * such as device readiness, removal or the need for a software upgrade, your application should subscribe
+   * to the relevant events on the device parameter. Please note that this doesn't always mean the device is present.
+   * In certain cases (e.g. Bluetooth) we may know about the device independently of whether it's currently connected or available.
+ */
+typedef void (^PPRetailDeviceDiscoveredEvent)(PPRetailPaymentDevice* device);
+
+/**
+ * Returned from addDeviceDiscoveredListener and used to unsubscribe from the event.
+ */
+typedef id PPRetailDeviceDiscoveredSignal;
+
+  
 /**
  * Called when the transaction is cancelled while waiting to collect the signature
  */
@@ -935,4 +964,4 @@ typedef void (^PPRetailOnConnectionResultEvent)(PPRetailError* Error, PPRetailPa
  */
 typedef id PPRetailOnConnectionResultSignal;
 
-   
+     

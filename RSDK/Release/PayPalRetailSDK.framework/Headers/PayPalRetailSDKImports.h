@@ -70,5 +70,6 @@
 #import "PPRetailDiscoveredCardReader.h"
 #import "PPRetailCardReaderScanAndDiscoverOptions.h"
 #import "PPRetailDeviceConnectorOptions.h"
+#import "PPRetailReaderConfiguration.h"
 #import "PPRetailSimulationOptions.h"
 

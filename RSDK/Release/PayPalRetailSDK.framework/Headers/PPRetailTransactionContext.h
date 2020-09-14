@@ -81,6 +81,7 @@
 @class PPRetailDiscoveredCardReader;
 @class PPRetailCardReaderScanAndDiscoverOptions;
 @class PPRetailDeviceConnectorOptions;
+@class PPRetailReaderConfiguration;
 @class PPRetailSimulationOptions;
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -175,10 +176,9 @@
 -(BOOL)isPaymentInRetryOrProgress;
 
 /**
- * Request to cancel an ongoing payment. The request will only be accepted if card was presented and the presented
- * form factor accepts cancellation.
+ * Request to cancel a payment. The request will only be accepted if payment is not already in progress.
  */
--(BOOL)requestPaymentCancellation;
+-(void)requestPaymentCancellation:(PPRetailTransactionContextCancellationHandlerHandler _Nullable)Returns;
 
 /**
  * Remove all handlers

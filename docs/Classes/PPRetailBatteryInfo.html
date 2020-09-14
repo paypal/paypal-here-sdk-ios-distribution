@@ -134,12 +134,12 @@ and the instant it was measured</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The level of battery in percentage</p>
+				<p>The level of battery in percentage @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int percentage</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) int percentage</code></div>
 
 		    
 			
@@ -151,7 +151,7 @@ and the instant it was measured</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The level of battery in percentage</p>
+				<p>The level of battery in percentage @readonly</p>
 			</div>
 			
 
@@ -180,12 +180,12 @@ and the instant it was measured</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Indicates if the device battery is connected to power</p>
+				<p>Indicates that the device battery is charging or charged @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isCharging</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isCharging</code></div>
 
 		    
 			
@@ -197,7 +197,7 @@ and the instant it was measured</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Indicates if the device battery is connected to power</p>
+				<p>Indicates that the device battery is charging or charged @readonly</p>
 			</div>
 			
 
@@ -226,12 +226,12 @@ and the instant it was measured</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Indicates that the device battery is at Critical or less and not charging</p>
+				<p>Indicates that the device battery is at Critical or less and not charging @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isLevelCritical</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isLevelCritical</code></div>
 
 		    
 			
@@ -243,7 +243,7 @@ and the instant it was measured</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Indicates that the device battery is at Critical or less and not charging</p>
+				<p>Indicates that the device battery is at Critical or less and not charging @readonly</p>
 			</div>
 			
 
@@ -272,12 +272,12 @@ and the instant it was measured</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Indicates that the device battery is at UpdateCritical or less and not charging</p>
+				<p>Indicates that the device battery is at UpdateCritical or less and not charging @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isLevelUpdateCritical</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isLevelUpdateCritical</code></div>
 
 		    
 			
@@ -289,7 +289,7 @@ and the instant it was measured</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Indicates that the device battery is at UpdateCritical or less and not charging</p>
+				<p>Indicates that the device battery is at UpdateCritical or less and not charging @readonly</p>
 			</div>
 			
 
@@ -318,12 +318,12 @@ and the instant it was measured</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The time the battery information was retrieved</p>
+				<p>The time the battery information was retrieved @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSDate *measuredOn</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSDate *measuredOn</code></div>
 
 		    
 			
@@ -335,7 +335,7 @@ and the instant it was measured</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The time the battery information was retrieved</p>
+				<p>The time the battery information was retrieved @readonly</p>
 			</div>
 			
 
@@ -364,12 +364,12 @@ and the instant it was measured</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Status of the battery</p>
+				<p>Status of the battery @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPRetailbatteryStatus status</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) PPRetailbatteryStatus status</code></div>
 
 		    
 			
@@ -381,7 +381,7 @@ and the instant it was measured</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Status of the battery</p>
+				<p>Status of the battery @readonly</p>
 			</div>
 			
 
@@ -413,7 +413,7 @@ and the instant it was measured</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 PayPal. All rights reserved. Updated: 2020-05-01</p>
+						<p class="copyright">Copyright &copy; 2020 PayPal. All rights reserved. Updated: 2020-09-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
