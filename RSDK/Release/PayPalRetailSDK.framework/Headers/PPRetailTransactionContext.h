@@ -64,16 +64,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -106,6 +109,9 @@
  * is a signature required to secure payment? @readonly
  */
 @property (nonatomic,assign,readonly) BOOL isSignatureRequired;/**
+ * Digital Card information
+ */
+@property (nonatomic,strong,nullable) PPRetailDigitalCard* digitalCard;/**
  * While building your invoice, the running total
  * will be displayed on PaymentDevices capable of displaying messages. If you set
  * totalDisplayFooter, that will be displayed (centered) after the total
@@ -115,7 +121,7 @@
  */
 @property (nonatomic,strong,nullable) NSString* totalDisplayFooter;
 
-- (instancetype _Nullable)initWithInvoice:(PPRetailInvoice* _Nullable)invoice merchant:(PPRetailMerchant* _Nullable)merchant offlinePaymentEnabled:(BOOL)offlinePaymentEnabled;
+- (instancetype _Nullable)initWithInvoice:(PPRetailRetailInvoice* _Nullable)invoice merchant:(PPRetailMerchant* _Nullable)merchant offlinePaymentEnabled:(BOOL)offlinePaymentEnabled;
     - (instancetype _Nullable)init NS_UNAVAILABLE;
 + (instancetype _Nullable)new NS_UNAVAILABLE;
 
@@ -178,7 +184,13 @@
 /**
  * Request to cancel a payment. The request will only be accepted if payment is not already in progress.
  */
--(void)requestPaymentCancellation:(PPRetailTransactionContextCancellationHandlerHandler _Nullable)Returns;
+-(void)requestPaymentCancellation:(PPRetailTransactionContextCancellationHandlerHandler _Nullable)handler;
+
+/**
+ * Request to cancel an ongoing payment.
+ * The request will only be accepted if there is a partial digital card payment and payment is not in progress.
+ */
+-(void)requestDigitalCardCancellation:(PPRetailTransactionContextVoidCompletedHandler _Nullable)voidCompletedHandler;
 
 /**
  * Remove all handlers
@@ -194,6 +206,11 @@
  * Begin the flow to issue a refund on the current invoice.
  */
 -(void)continueWithCard:(PPRetailCard* _Nullable)card tag:(NSString* _Nullable)tag;
+
+/**
+ * Continue processing transaction with Digital Card/Code information
+ */
+-(void)continueWithDigitalCard:(PPRetailDigitalCard* _Nullable)digitalCard;
 
 /**
  * Continue processing a transaction - the behavior of which depends on the presented card.
@@ -219,6 +236,11 @@
  * Continue processing a cash transaction.
  */
 -(void)continueWithCash;
+
+/**
+ * Continue processing a QRC transaction.
+ */
+-(void)continueWithQRC;
 
 /**
  * Continue processing a check transaction.
@@ -251,6 +273,11 @@
  * TransactionContext.continueWithCard should be invoked to continue the payment
  */
 -(void)setCardPresentedHandler:(PPRetailTransactionContextCardPresentedHandler _Nullable)cardPresentedHandler;
+
+/**
+ * Provide a handler to get notifications for QRC Payment
+ */
+-(void)setQRCStatusHandler:(PPRetailTransactionContextOnQRCStatusHandler _Nullable)qrcStatusHandler;
 
 /**
  * Provide a handler to get notified once transaction is complete

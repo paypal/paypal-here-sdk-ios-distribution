@@ -64,16 +64,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -101,7 +104,7 @@
 @property (nonatomic,assign,readonly) int amount;/**
  * The offline transaction is valid until this value @readonly
  */
-@property (nonatomic,strong,nullable,readonly) NSString* validUntil;/**
+@property (nonatomic,strong,nullable,readonly) NSDate* validUntil;/**
  * The invoice number associated with this offline transaction record @readonly
  */
 @property (nonatomic,strong,nullable,readonly) NSString* invoiceNumber;

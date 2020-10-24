@@ -64,16 +64,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -115,6 +118,9 @@
  * manually entered card details
  */
 @property (nonatomic,strong,nullable) PPRetailCard* manualCard;/**
+ * Digital Card information
+ */
+@property (nonatomic,strong,nullable) PPRetailDigitalCard* digitalCard;/**
  * Set the flag if the amount based tipping type used, otherwise, percentage based used
  */
 @property (nonatomic,assign) BOOL amountBasedTipping;/**
@@ -136,7 +142,13 @@
 @property (nonatomic,strong,nullable) NSString* vaultCustomerId;/**
  * Reserved for restricted use
  */
-@property (nonatomic,strong,nullable) NSString* tag;
+@property (nonatomic,strong,nullable) NSString* tag;/**
+ * QRC payment service provider
+ */
+@property (nonatomic,strong,nullable) NSString* qrcProvider;/**
+ * Set the flag if you want to enable qrc payment with UIs for Paypal and Venmo providers
+ */
+@property (nonatomic,assign) BOOL qrcPromptEnabled;
 
 - (instancetype _Nullable)init;
     

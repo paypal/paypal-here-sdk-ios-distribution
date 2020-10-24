@@ -51,16 +51,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -104,11 +107,13 @@
 @class PPRetailInvoiceSearchRequest;
 @class PPRetailInvoiceTemplateSettings;
 @class PPRetailTokenExpirationHandler;
-@class PPRetailNetworkResponse;
 @class PPRetailRetailInvoice;
+@class PPRetailNetworkResponse;
+@class PPRetailDigitalCard;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailCard;
 @class PPRetailSignatureReceiver;
 @class PPRetailCardInsertedHandler;
@@ -124,10 +129,11 @@
 @class PPRetailReceiptEmailEntryViewContent;
 @class PPRetailReceiptSMSEntryViewContent;
 @class PPRetailOfflinePaymentStatus;
+@class PPRetailPayer;
 @class PPRetailBatteryInfo;
 @class PPRetailDeviceUpdate;
 @class PPRetailObject;
-@class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailReceiptDestination;
 @class PPRetailDiscoveredCardReader;
 
@@ -250,7 +256,9 @@ typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsPaymentTypes) {
   PPRetailTransactionBeginOptionsPaymentTypescard = 0,
   PPRetailTransactionBeginOptionsPaymentTypeskeyIn = 1,
   PPRetailTransactionBeginOptionsPaymentTypescash = 2,
-  PPRetailTransactionBeginOptionsPaymentTypescheck = 3
+  PPRetailTransactionBeginOptionsPaymentTypescheck = 3,
+  PPRetailTransactionBeginOptionsPaymentTypesdigitalCard = 4,
+  PPRetailTransactionBeginOptionsPaymentTypesqrc = 5
 };
 
 /**
@@ -267,6 +275,14 @@ typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsVaultType) {
  */
 typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsVaultProvider) {
   PPRetailTransactionBeginOptionsVaultProviderBraintree = 0
+};
+
+/**
+ * QRC Provider
+ */
+typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsQRCProvider) {
+  PPRetailTransactionBeginOptionsQRCProviderPaypal = 0,
+  PPRetailTransactionBeginOptionsQRCProviderVenmo = 1
 };
 
 /**
@@ -326,6 +342,32 @@ typedef NS_ENUM(NSInteger, PPRetailOfflineTransactionState) {
 };
 
 /**
+ * Vault Provider
+ */
+typedef NS_ENUM(NSInteger, PPRetailQRCContentType) {
+  PPRetailQRCContentTypeURL = 0,
+  PPRetailQRCContentTypeTEXT = 1
+};
+
+/**
+ * This enum represents the state of the qrc transaction
+ */
+typedef NS_ENUM(NSInteger, PPRetailQRCStatus) {
+  PPRetailQRCStatusdraft = 0,
+  PPRetailQRCStatusurl_created = 1,
+  PPRetailQRCStatussession_created = 2,
+  PPRetailQRCStatusscanned = 3,
+  PPRetailQRCStatusawaiting_user_input = 4,
+  PPRetailQRCStatusprocessing = 5,
+  PPRetailQRCStatussuccess = 6,
+  PPRetailQRCStatusfailed = 7,
+  PPRetailQRCStatuscancelled = 8,
+  PPRetailQRCStatusaborted = 9,
+  PPRetailQRCStatusdeclined = 10,
+  PPRetailQRCStatuscancelled_by_merchant = 11
+};
+
+/**
  * Battery status
  */
 typedef NS_ENUM(NSInteger, PPRetailbatteryStatus) {
@@ -379,7 +421,8 @@ typedef NS_ENUM(NSInteger, PPRetailFormFactor) {
   PPRetailFormFactorChip = 2,
   PPRetailFormFactorEmvCertifiedContactless = 3,
   PPRetailFormFactorSecureManualEntry = 4,
-  PPRetailFormFactorManualCardEntry = 5
+  PPRetailFormFactorManualCardEntry = 5,
+  PPRetailFormFactorDigitalCard = 6
 };
 
 /**
@@ -391,7 +434,8 @@ typedef NS_ENUM(NSInteger, PPRetailTransactionType) {
   PPRetailTransactionTypeAuth = 1,
   PPRetailTransactionTypeRefund = 2,
   PPRetailTransactionTypePartialRefund = 3,
-  PPRetailTransactionTypeVault = 4
+  PPRetailTransactionTypeVault = 4,
+  PPRetailTransactionTypeRedemption = 5
 };
 
 /**
@@ -576,6 +620,11 @@ typedef void (^PPRetailTransactionContextVaultCompletedHandler)(PPRetailError* e
 typedef void (^PPRetailTransactionContextOfflineTransactionAddedHandler)(PPRetailError* error, PPRetailOfflineTransactionRecord* record);
 
 /**
+ * Called to update the IA with QRC Status or error
+ */
+typedef void (^PPRetailTransactionContextOnQRCStatusHandler)(PPRetailError* error, PPRetailQRCRecord* qrcRecord);
+
+/**
  * Indicates that the card data was read. Depending on your region and the buyer payment type, this can mean a magnetic
    * card was swiped, an EMV card was inserted, or an NFC card/device was tapped.
  */
@@ -615,6 +664,12 @@ typedef void (^PPRetailTransactionContextCancellationHandlerHandler)(PPRetailErr
  * 
  */
 typedef void (^PPRetailTransactionContextCompleteHandler)(PPRetailError* error);
+
+/**
+ * Called when either void completes or fails.
+   * Note that other events may be fired in the meantime.
+ */
+typedef void (^PPRetailTransactionContextVoidCompletedHandler)(PPRetailError* error, PPRetailTransactionRecord* record);
 
 /**
  * The callback for creating a transaction
@@ -800,7 +855,7 @@ typedef void (^PPRetailCancelledEvent)();
  */
 typedef id PPRetailCancelledSignal;
 
-                        
+                            
 /**
  * The reader is now connected and ready.
  */
@@ -914,7 +969,7 @@ typedef void (^PPRetailReconnectReaderEvent)(int waitTime);
  */
 typedef id PPRetailReconnectReaderSignal;
 
-                  
+                    
 /**
  * A Card Reader has been discovered.
  */

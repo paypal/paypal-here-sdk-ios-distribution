@@ -64,16 +64,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -141,7 +144,7 @@
 /**
  * Forward a receipt for an invoice.
  */
--(void)forwardReceipt:(PPRetailInvoice* _Nullable)invoice emailOrSms:(NSString* _Nullable)emailOrSms txNumber:(NSString* _Nullable)txNumber txType:(NSString* _Nullable)txType customerId:(NSString* _Nullable)customerId receiptPreferenceToken:(NSString* _Nullable)receiptPreferenceToken callback:(PPRetailMerchantReceiptForwardedHandler _Nullable)callback;
+-(void)forwardReceipt:(PPRetailRetailInvoice* _Nullable)invoice emailOrSms:(NSString* _Nullable)emailOrSms txNumber:(NSString* _Nullable)txNumber txType:(NSString* _Nullable)txType customerId:(NSString* _Nullable)customerId receiptPreferenceToken:(NSString* _Nullable)receiptPreferenceToken callback:(PPRetailMerchantReceiptForwardedHandler _Nullable)callback;
 
 
 

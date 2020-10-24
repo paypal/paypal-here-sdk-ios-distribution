@@ -64,16 +64,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -102,6 +105,9 @@
  * The PayPal authCode @readonly
  */
 @property (nonatomic,strong,nullable,readonly) NSString* authCode;/**
+ * Payment Mode used for this transaction @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) NSString* paymentAction;/**
  * An identifier available throughout the EMV transaction flow
  * (allocated before the transaction is complete, unlike transactionNumber) @readonly
  */
@@ -109,6 +115,9 @@
  * The acquirer response code @readonly
  */
 @property (nonatomic,strong,nullable,readonly) NSString* responseCode;/**
+ * Holds Response information for a digital card payment @readonly
+ */
+@property (nonatomic,strong,nullable,readonly) PPRetailDigitalCardInfo* digitalCardInfo;/**
  * Information about the payer, if available @readonly
  */
 @property (nonatomic,strong,nullable,readonly) PPRetailPayer* payer;/**

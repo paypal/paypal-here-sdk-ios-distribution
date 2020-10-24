@@ -64,16 +64,19 @@
 @class PPRetailOfflinePaymentStatus;
 @class PPRetailOfflinePaymentInfo;
 @class PPRetailOfflineTransactionRecord;
+@class PPRetailQRCRecord;
 @class PPRetailTokenExpirationHandler;
 @class PPRetailCard;
 @class PPRetailBatteryInfo;
 @class PPRetailMagneticCard;
+@class PPRetailDigitalCard;
 @class PPRetailPaymentDevice;
 @class PPRetailManuallyEnteredCard;
 @class PPRetailDeviceUpdate;
 @class PPRetailCardInsertedHandler;
 @class PPRetailDeviceStatus;
 @class PPRetailPayer;
+@class PPRetailDigitalCardInfo;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailAuthorizedTransaction;
@@ -98,7 +101,7 @@
 /**
  * Create a transaction using the provided Invoice. An existing transaction will be canceled
  */
--(void)createTransaction:(PPRetailInvoice* _Nullable)invoice callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
+-(void)createTransaction:(PPRetailRetailInvoice* _Nullable)invoice callback:(PPRetailTransactionManagerTransactionHandler _Nullable)callback;
 
 /**
  * Create a vault.
@@ -133,6 +136,11 @@
 -(BOOL)getOfflinePaymentEligibility;
 
 /**
+ * Get QRC payment eligibility for the merchant
+ */
+-(BOOL)getQRCEligibility;
+
+/**
  * disable the offline payment flag
  */
 -(void)stopOfflinePayment:(PPRetailTransactionManagerOfflinePaymentStatusHandler _Nullable)callback;
@@ -156,6 +164,11 @@
  * Enable the offline payment flag
  */
 -(BOOL)getOfflinePaymentEnabled;
+
+/**
+ * Returns the list of supported QRC service providers
+ */
+-(NSArray* _Nullable)getSupportedQRCProviders;
 
 /**
  * Get the current transaction context
