@@ -23,7 +23,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     // Set up the transactionContext and invoice params.
     var tc: PPRetailTransactionContext?
-    var invoice: PPRetailInvoice?
+    var invoice: PPRetailRetailInvoice?
     var transactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var options = PPRetailTransactionBeginOptions.defaultOptions()
@@ -69,7 +69,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         let tokenDefault = UserDefaults.init()
         let merchCurrency = tokenDefault.string(forKey: "MERCH_CURRENCY")
         
-        guard let mInvoice = PPRetailInvoice.init(currencyCode: merchCurrency), invAmount.text != "" else {
+        guard let mInvoice = PPRetailRetailInvoice.init(currencyCode: merchCurrency), invAmount.text != "" else {
             
             let alertController = UIAlertController(title: "Whoops!", message: "Something happened during invoice initialization", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -252,7 +252,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
     private func setUpDefaultView(){
         setUpTextFieldToolBar()
-        createInvCodeView.text = "mInvoice = PPRetailInvoice.init(currencyCode: \"USD\")"
+        createInvCodeView.text = "mInvoice = PPRetailRetailInvoice.init(currencyCode: \"USD\")"
         createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
             "  // Set the transactionContext or handle the error \n" +
             "  self.tc = context \n" +
@@ -332,6 +332,7 @@ extension PPRetailTransactionBeginOptions {
         options.quickChipEnabled = false
         options.isAuthCapture = false
         options.tag = ""
+        options.qrcPromptEnabled = false;
         return options
     }
 }

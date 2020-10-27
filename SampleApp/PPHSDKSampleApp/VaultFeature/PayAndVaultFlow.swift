@@ -67,7 +67,7 @@ class PayAndVaultFlow: NSObject {
         let tokenDefault = UserDefaults()
         let merchCurrency = tokenDefault.string(forKey: "MERCH_CURRENCY")
         
-        guard let merchInvoice = PPRetailInvoice.init(currencyCode: merchCurrency) else {
+        guard let merchInvoice = PPRetailRetailInvoice.init(currencyCode: merchCurrency) else {
             invoiceCompletion(ErrorMsg(title: "Invoice initialization failed", message: "Something happened during invoice initialization"))
             return
         }
@@ -101,7 +101,7 @@ class PayAndVaultFlow: NSObject {
     
     
     // MARK: 2. Create transacrion context
-    fileprivate class func createTransactionContext(invoice: PPRetailInvoice, transactionCompetion: @escaping (ErrorMsg?, PPRetailTransactionContext?) -> Void) {
+    fileprivate class func createTransactionContext(invoice: PPRetailRetailInvoice, transactionCompetion: @escaping (ErrorMsg?, PPRetailTransactionContext?) -> Void) {
         PayPalRetailSDK.transactionManager()?.createTransaction(invoice, callback: { (error, context) in
             if error != nil {
                 transactionCompetion(ErrorMsg(title: "Transaction context failed", message: "Error initializing transaction context"), nil)
