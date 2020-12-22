@@ -40,6 +40,7 @@
 #import "PPRetailSimulationManager.h"
 #import "PPRetailMerchantManager.h"
 #import "PPRetailCaptureHandler.h"
+#import "PPRetailRecord.h"
 #import "PPRetailTransactionContext.h"
 #import "PPRetailTransactionManager.h"
 #import "PPRetailTransactionBeginOptions.h"

@@ -51,6 +51,7 @@
 @class PPRetailSimulationManager;
 @class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
+@class PPRetailRecord;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
@@ -148,7 +149,10 @@
 @property (nonatomic,strong,nullable) NSString* qrcProvider;/**
  * Set the flag if you want to enable qrc payment with UIs for Paypal and Venmo providers
  */
-@property (nonatomic,assign) BOOL qrcPromptEnabled;
+@property (nonatomic,assign) BOOL qrcPromptEnabled;/**
+ * Set the flag to take signature on eligible card readers
+ */
+@property (nonatomic,assign) BOOL signatureOnCardReader;
 
 - (instancetype _Nullable)init;
     

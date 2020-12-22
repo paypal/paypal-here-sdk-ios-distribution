@@ -38,6 +38,7 @@
 @class PPRetailSimulationManager;
 @class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
+@class PPRetailRecord;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
@@ -109,12 +110,12 @@
 @class PPRetailTokenExpirationHandler;
 @class PPRetailRetailInvoice;
 @class PPRetailNetworkResponse;
+@class PPRetailCard;
 @class PPRetailDigitalCard;
 @class PPRetailTransactionRecord;
 @class PPRetailVaultRecord;
 @class PPRetailOfflineTransactionRecord;
 @class PPRetailQRCRecord;
-@class PPRetailCard;
 @class PPRetailSignatureReceiver;
 @class PPRetailCardInsertedHandler;
 @class PPRetailCaptureHandler;
@@ -764,7 +765,7 @@ typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
  */
 typedef id PPRetailUntrustedNetworkSignal;
 
-                                                                                
+                                                                                  
 /**
  * Contactless reader was de-activated and the transaction still remains active.
  */

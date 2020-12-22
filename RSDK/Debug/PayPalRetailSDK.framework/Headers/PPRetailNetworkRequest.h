@@ -51,6 +51,7 @@
 @class PPRetailSimulationManager;
 @class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
+@class PPRetailRecord;
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;

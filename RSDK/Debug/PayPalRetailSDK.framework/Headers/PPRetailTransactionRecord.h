@@ -9,7 +9,7 @@
 
 #import "PayPalRetailSDKTypeDefs.h"
 #import "PPRetailObject.h"
-
+#import "PPRetailRecord.h"
 
 @class PPRetailSDK;
 @class PPRetailError;
@@ -51,6 +51,7 @@
 @class PPRetailSimulationManager;
 @class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
+
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
@@ -91,7 +92,7 @@
 /**
  * Information about a completed transaction
  */
-@interface PPRetailTransactionRecord : PPRetailObject
+@interface PPRetailTransactionRecord : PPRetailRecord
 /**
  * The PayPal transaction reference number @readonly
  */
@@ -125,9 +126,6 @@
  * from PayPal for this transaction attempt @readonly
  */
 @property (nonatomic,strong,nullable,readonly) NSString* correlationId;/**
- * card that was presented by the consumer for this transaction @readonly
- */
-@property (nonatomic,strong,nullable,readonly) PPRetailCard* card;/**
  * Indicates whether an email or a text
  * receipt was sent or not. @readonly
  */

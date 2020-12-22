@@ -9,7 +9,7 @@
 
 #import "PayPalRetailSDKTypeDefs.h"
 #import "PPRetailObject.h"
-
+#import "PPRetailRecord.h"
 
 @class PPRetailSDK;
 @class PPRetailError;
@@ -51,6 +51,7 @@
 @class PPRetailSimulationManager;
 @class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
+
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
@@ -91,11 +92,8 @@
 /**
  * Information about a completed offline transaction addition
  */
-@interface PPRetailOfflineTransactionRecord : PPRetailObject
+@interface PPRetailOfflineTransactionRecord : PPRetailRecord
 /**
- * card that was presented by the consumer for this transaction @readonly
- */
-@property (nonatomic,strong,nullable,readonly) PPRetailCard* card;/**
  * The Offline Transaction id @readonly
  */
 @property (nonatomic,strong,nullable,readonly) NSString* id;/**

@@ -9,7 +9,7 @@
 
 #import "PayPalRetailSDKTypeDefs.h"
 #import "PPRetailObject.h"
-
+#import "PPRetailRecord.h"
 
 @class PPRetailSDK;
 @class PPRetailError;
@@ -51,6 +51,7 @@
 @class PPRetailSimulationManager;
 @class PPRetailMerchantManager;
 @class PPRetailCaptureHandler;
+
 @class PPRetailTransactionContext;
 @class PPRetailTransactionManager;
 @class PPRetailTransactionBeginOptions;
@@ -91,7 +92,7 @@
 /**
  * Information about a completed transaction
  */
-@interface PPRetailQRCRecord : PPRetailObject
+@interface PPRetailQRCRecord : PPRetailRecord
 /**
  * The PayPal transaction reference number @readonly
  */
