@@ -113,6 +113,9 @@
  * Digital Card information
  */
 @property (nonatomic,strong,nullable) PPRetailDigitalCard* digitalCard;/**
+ * id of the PP order for payment
+ */
+@property (nonatomic,strong,nullable) NSString* orderId;/**
  * While building your invoice, the running total
  * will be displayed on PaymentDevices capable of displaying messages. If you set
  * totalDisplayFooter, that will be displayed (centered) after the total
