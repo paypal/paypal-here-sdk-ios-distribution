@@ -18,7 +18,7 @@ class AuthCompletedViewController: UIViewController {
     @IBOutlet weak var captureAuthCodeViewer: UITextView!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
-    var invoice: PPRetailInvoice?
+    var invoice: PPRetailRetailInvoice?
     var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var isTip: Bool = false

@@ -13,7 +13,7 @@ class VaultTransactionModel: NSObject {
     
     // MARK: - Transaction Properties
     var options = PPRetailTransactionBeginOptions.optionsForVaultPayment()
-    var invoice: PPRetailInvoice?
+    var invoice: PPRetailRetailInvoice?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var formFactorArray: [PPRetailFormFactor] = []
     var currencySymbol = UserDefaults().value(forKey: "CURRENCY_SYMBOL") as? String ?? "$"

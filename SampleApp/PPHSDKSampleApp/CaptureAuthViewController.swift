@@ -16,7 +16,7 @@ class CaptureAuthViewController: UIViewController {
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     @IBOutlet weak var enterAmountLbl: UILabel!
     
-    var invoice: PPRetailInvoice?
+    var invoice: PPRetailRetailInvoice?
     var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var captureTransactionNumber: String?

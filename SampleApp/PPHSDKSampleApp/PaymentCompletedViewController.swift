@@ -15,7 +15,7 @@ class PaymentCompletedViewController: UIViewController {
     @IBOutlet weak var successMsg: UILabel!
     @IBOutlet weak var refundCodeViewer: UITextView!
     
-    var invoice: PPRetailInvoice?
+    var invoice: PPRetailRetailInvoice?
     var isCapture: Bool = false
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var transactionNumber: String?
