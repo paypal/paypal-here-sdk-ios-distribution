@@ -50,7 +50,7 @@ BOOL offlineInit = NO;
 -(void) toggleOfflineMode {
     if(!self.offlineMode) {
         if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEligibility]) {
-            [[PayPalRetailSDK transactionManager] startOfflinePayment:^(PPRetailError *error, NSArray *status) {
+            [[PayPalRetailSDK transactionManager] startOfflinePayment:^(PPRetailError *error, PPRetailOfflinePaymentInfo *info) {
                 if (error != nil){
                     NSLog(@"%@", error.developerMessage);
                 } else {
@@ -58,18 +58,18 @@ BOOL offlineInit = NO;
                     if ([[PayPalRetailSDK transactionManager] getOfflinePaymentEnabled]){
                         [self updateOfflineModeUI];
                     }
-                    [self offlineTransactionStatusList:status];
+                    [self offlineTransactionStatusList:info.statusList];
                 }
             }];
         } else {
             NSLog(@"Merchant is not eligible to take Offline Payments");
         }
     } else {
-        [[PayPalRetailSDK transactionManager] stopOfflinePayment:^(PPRetailError *error, NSArray *status) {
+        [[PayPalRetailSDK transactionManager] stopOfflinePayment:^(PPRetailError *error, PPRetailOfflinePaymentInfo *info) {
             if (error != nil){
                 NSLog(@"Error: %@", error.debugDescription);
             } else {
-                [self offlineTransactionStatusList:status];
+                [self offlineTransactionStatusList:info.statusList];
             }
         }];
         [self updateOfflineModeUI];
@@ -80,11 +80,11 @@ BOOL offlineInit = NO;
 // tell you about the status of the payment.
 // - Parameter sender: UIButton assoicated with the Get Offline Status button.
 - (IBAction)getOfflineStatus:(UIButton *)sender {
-    [[PayPalRetailSDK transactionManager] getOfflinePaymentStatus:^(PPRetailError *error, NSArray *status) {
+    [[PayPalRetailSDK transactionManager] getOfflinePaymentStatus:^(PPRetailError *error, PPRetailOfflinePaymentInfo *info) {
         if(error != nil) {
             NSLog(@"Error: %@", error.description);
         } else {
-            [self offlineTransactionStatusList:status];
+            [self offlineTransactionStatusList:info.statusList];
         }
     }];
 }
@@ -104,13 +104,13 @@ BOOL offlineInit = NO;
         }
         
         [self replayTransactionAnimation:YES];
-        [[PayPalRetailSDK transactionManager] startReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {
+        [[PayPalRetailSDK transactionManager] startReplayOfflineTxns:^(PPRetailError *error, PPRetailOfflinePaymentInfo *info) {
             [self updateOfflineModeUI];
             [self replayTransactionAnimation:YES];
             if(error != nil) {
                 NSLog(@"Error: %@", error.description);
             } else {
-                [self offlineTransactionStatusList:status];
+                [self offlineTransactionStatusList:info.statusList];
             }
         }];
     }
@@ -121,11 +121,11 @@ BOOL offlineInit = NO;
 // - Parameter sender: UIButton associated with "Stop Replay" Button
 - (IBAction)stopReplay:(UIButton *)sender {
     [self.replayTransactionIndicatorView stopAnimating];
-    [[PayPalRetailSDK transactionManager] stopReplayOfflineTxns:^(PPRetailError *error, NSArray *status) {
+    [[PayPalRetailSDK transactionManager] stopReplayOfflineTxns:^(PPRetailError *error, PPRetailOfflinePaymentInfo *info) {
         if (error != nil) {
             NSLog(@"Stopped replaying offline transactions");
         } else {
-            [self offlineTransactionStatusList:status];
+            [self offlineTransactionStatusList:info.statusList];
         }
     }];
 }
