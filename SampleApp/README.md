@@ -23,6 +23,16 @@ The default installation is the Debug build but you can switch to the Release bu
 
 As a side note, please make sure you also add `com.paypal.here.reader` to the Supported External Accessory Protocols entry of your app's `.plist` file. If you're processing with the [Mobile Card Reader](https://www.paypal.com/us/webapps/mpp/credit-card-reader-how-to/mobile-card-reader), you'll also need to add a description for Microphone usage within your `.plist` file.
 
+Steps to build
+==============
+- `pod install`
+- Verify that pod install pulls the latest SDK. If older, then
+  - `pod repo update`
+  - `pod update`
+- Open PPHSDKSampleApp.xcworkspace in Xcode
+- Update the team in Signing and Capabilities
+- Build the workspace
+
 
 Housekeeping Items
 =====================
