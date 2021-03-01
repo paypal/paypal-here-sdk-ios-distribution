@@ -1,5 +1,5 @@
 //
-//  Theme.swift
+//  PPHTheme.swift
 //  PPHSDKSampleApp
 //
 //  Created by Pranav Bhandari on 2/23/21.
