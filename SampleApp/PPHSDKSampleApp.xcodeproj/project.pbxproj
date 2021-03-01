@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3FFB60F3FC00A57427E7AD81 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786B176BD563674C71BA931 /* Pods_PPHSDKSampleApp.framework */; };
+		65611A3225E5DFCF00782F13 /* PayPalSansBig-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A2D25E5DFCF00782F13 /* PayPalSansBig-Thin.otf */; };
+		65611A3325E5DFCF00782F13 /* PayPalSansBig-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A2E25E5DFCF00782F13 /* PayPalSansBig-Regular.otf */; };
+		65611A3425E5DFCF00782F13 /* PayPalSansBig-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A2F25E5DFCF00782F13 /* PayPalSansBig-Light.otf */; };
+		65611A3525E5DFCF00782F13 /* PayPalSansBig-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A3025E5DFCF00782F13 /* PayPalSansBig-Medium.otf */; };
+		65611A3625E5DFCF00782F13 /* PayPalSansBig-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A3125E5DFCF00782F13 /* PayPalSansBig-Bold.otf */; };
+		65611A3D25E5E20800782F13 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65611A3C25E5E20800782F13 /* Theme.swift */; };
+		65611A4325E5E3F000782F13 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */; };
+		6562E46E25ED5D01002A7013 /* PPHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6562E46D25ED5D01002A7013 /* PPHColor.swift */; };
 		685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */; };
 		68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */; };
 		68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */; };
@@ -37,6 +45,14 @@
 
 /* Begin PBXFileReference section */
 		485944B8031E93BF19858388 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		65611A2D25E5DFCF00782F13 /* PayPalSansBig-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Thin.otf"; sourceTree = "<group>"; };
+		65611A2E25E5DFCF00782F13 /* PayPalSansBig-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Regular.otf"; sourceTree = "<group>"; };
+		65611A2F25E5DFCF00782F13 /* PayPalSansBig-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Light.otf"; sourceTree = "<group>"; };
+		65611A3025E5DFCF00782F13 /* PayPalSansBig-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Medium.otf"; sourceTree = "<group>"; };
+		65611A3125E5DFCF00782F13 /* PayPalSansBig-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Bold.otf"; sourceTree = "<group>"; };
+		65611A3C25E5E20800782F13 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		6562E46D25ED5D01002A7013 /* PPHColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPHColor.swift; sourceTree = "<group>"; };
 		685B7E4620DB152100F57461 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4720DB152100F57461 /* LogglyLogger_CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogglyLogger_CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4820DB152100F57461 /* SimpleKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SimpleKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,10 +112,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		65611A3825E5E00200782F13 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65611A3125E5DFCF00782F13 /* PayPalSansBig-Bold.otf */,
+				65611A2F25E5DFCF00782F13 /* PayPalSansBig-Light.otf */,
+				65611A3025E5DFCF00782F13 /* PayPalSansBig-Medium.otf */,
+				65611A2E25E5DFCF00782F13 /* PayPalSansBig-Regular.otf */,
+				65611A2D25E5DFCF00782F13 /* PayPalSansBig-Thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		65611A3B25E5E1DB00782F13 /* UICatalog */ = {
+			isa = PBXGroup;
+			children = (
+				65611A3C25E5E20800782F13 /* Theme.swift */,
+				6562E46D25ED5D01002A7013 /* PPHColor.swift */,
+			);
+			path = UICatalog;
+			sourceTree = "<group>";
+		};
+		65611A4025E5E3AB00782F13 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C6C793F31DDD01E800F8DC8E = {
 			isa = PBXGroup;
 			children = (
 				C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */,
+				65611A3825E5E00200782F13 /* Fonts */,
 				C6C793FD1DDD01E800F8DC8E /* Products */,
 				C6EF40131E77173800109502 /* References */,
 				2359FFE7D6776F5A76927401 /* Frameworks */,
@@ -118,6 +164,8 @@
 		C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				65611A4025E5E3AB00782F13 /* Extensions */,
+				65611A3B25E5E1DB00782F13 /* UICatalog */,
 				EC62D20A2219F245009C91BD /* VaultFeature */,
 				C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */,
 				C6EF40031E7706B600109502 /* WelcomeViewController.swift */,
@@ -234,6 +282,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65611A3225E5DFCF00782F13 /* PayPalSansBig-Thin.otf in Resources */,
+				65611A3325E5DFCF00782F13 /* PayPalSansBig-Regular.otf in Resources */,
+				65611A3425E5DFCF00782F13 /* PayPalSansBig-Light.otf in Resources */,
+				65611A3525E5DFCF00782F13 /* PayPalSansBig-Medium.otf in Resources */,
+				65611A3625E5DFCF00782F13 /* PayPalSansBig-Bold.otf in Resources */,
 				C6EF40141E77173800109502 /* References in Resources */,
 				C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */,
 				C6C794091DDD01E800F8DC8E /* Assets.xcassets in Resources */,
@@ -295,8 +348,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6562E46E25ED5D01002A7013 /* PPHColor.swift in Sources */,
 				EC62D213221A0FF7009C91BD /* VaultPaymentViewController.swift in Sources */,
 				EC62D21C221DEA5F009C91BD /* PayAndVaultFlow.swift in Sources */,
+				65611A4325E5E3F000782F13 /* UILabel+Extensions.swift in Sources */,
 				EC62D214221A0FF7009C91BD /* VaultOnlyFlow.swift in Sources */,
 				68C1153320FFCE0F000DD8AE /* CustomUI.swift in Sources */,
 				C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */,
@@ -310,6 +365,7 @@
 				C698DE351FE9857100D005AE /* PaymentCompletedViewController.swift in Sources */,
 				C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */,
 				EC9B00C02213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift in Sources */,
+				65611A3D25E5E20800782F13 /* Theme.swift in Sources */,
 				68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */,
 				68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */,
 				ECA5E3942215EB61001D83E5 /* VaultPaymentCompletedViewController.swift in Sources */,
@@ -463,8 +519,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-weak_library",
-					"/usr/lib/libstdc++.dylib",
 					"-l\"stdc++\"",
 					"-framework",
 					"\"PayPalRetailSDK\"",
@@ -496,8 +550,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-weak_library",
-					"/usr/lib/libstdc++.dylib",
 					"-l\"stdc++\"",
 					"-framework",
 					"\"PayPalRetailSDK\"",
