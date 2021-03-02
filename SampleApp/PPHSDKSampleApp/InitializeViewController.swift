@@ -14,7 +14,6 @@ import PayPalRetailSDK
 let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotification"
 
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
-  
   @IBOutlet weak var envSelector: UISegmentedControl!
   @IBOutlet weak var initSdkButton: CustomButton!
   @IBOutlet weak var initSdkCode: UITextView!
@@ -42,7 +41,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   @IBAction func initSDK(_ sender: CustomButton) {
-    
     initMerchantButton.isEnabled = true
     initOfflineButton.isEnabled = true
     
@@ -54,7 +52,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   @IBAction func initMerchant(_ sender: CustomButton) {
-    
     envSelector.isEnabled = false
     self.initMerchantActivitySpinner.color = UIColor.black
     initMerchantActivitySpinner.startAnimating()
@@ -81,7 +78,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   func performLogin(offline: Bool) {
-    
     // Set your URL for your backend server that handles OAuth.  This sample uses an instance of the
     // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
     // set this to Live, simply change /sandbox to /live.  The returnTokenOnQueryString value tells
@@ -103,10 +99,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   @objc func setupMerchant(notification: NSNotification) {
-    
     self.initMerchantButton.isHidden = true
     self.initOfflineButton.isHidden = true
-    
     
     // Dismiss the SFSafariViewController when the notification of token has been received.
     self.presentedViewController?.dismiss(animated: true, completion: {
@@ -188,7 +182,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   @IBAction func logout(_ sender: CustomButton) {
-    
     // Clear out the UserDefaults and show the appropriate buttons/labels
     let tokenDefault = UserDefaults.init()
     tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
@@ -216,7 +209,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   
   // This function would be called if the user pressed the Done button inside the SFSafariViewController.
   func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-    
     initMerchantActivitySpinner.stopAnimating()
     initMerchantButton.isEnabled = true
     envSelector.isEnabled = true
