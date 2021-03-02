@@ -235,7 +235,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
   }
   
-  private func setUpDefaultView(){
+  private func setUpDefaultView() {
     // Setting up initial aesthetics.
     merchInfoView.isHidden = true
     initMerchantButton.isEnabled = false
