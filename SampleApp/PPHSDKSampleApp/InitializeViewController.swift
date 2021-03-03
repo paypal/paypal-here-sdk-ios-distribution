@@ -29,6 +29,17 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   @IBOutlet weak var merchInfoView: UIView!
   @IBOutlet weak var connectCardReaderBtn: CustomButton!
   
+  private var connectCardReaderButton: UIButton = {
+    let btn = UIButton()
+    btn.translatesAutoresizingMaskIntoConstraints = false
+    btn.setTitle("Connect card reader", for: .normal)
+    btn.titleLabel?.applyTheme(theme: .sansBigRegular)
+    btn.backgroundColor = PPHColor.azure
+    btn.setTitleColor(.white, for: .normal)
+    btn.layer.cornerRadius = 24
+    return btn
+  }()
+  
   var svc: SFSafariViewController?
   
   override func viewDidLoad() {
@@ -37,7 +48,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     setUpDefaultView()
     // Receive the notification that the token is being returned
     NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
-    
+    layoutConnectCardReaderButton()
   }
   
   @IBAction func initSDK(_ sender: CustomButton) {
@@ -72,7 +83,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
       } else {
         print("Offline Init Successful")
         self.merchantSuccessfullyLoggedIn(offline: true, merchant: merchant!)
-        
       }
     }
   }
@@ -159,7 +169,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     merchant.referrerCode = "PPHSDK_SampleApp_iOS"
     
     //Enable the connect card reader button here
-    self.connectCardReaderBtn.isHidden = false
+    self.connectCardReaderButton.isHidden = false
   }
   
   func merchantFailedLogIn(offline: Bool, error: PPRetailError){
@@ -198,11 +208,11 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     initOfflineButton.isEnabled = true
     initOfflineButton.borderWidth = 1.0
     envSelector.isEnabled = true
-    connectCardReaderBtn.isHidden = true
+    connectCardReaderButton.isHidden = true
   }
   
   
-  @IBAction func goToDeviceDiscovery(_ sender: Any) {
+  @objc func goToDeviceDiscovery(_ sender: Any) {
     performSegue(withIdentifier: "showDeviceDiscovery", sender: sender)
   }
   
@@ -232,7 +242,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     merchInfoView.isHidden = true
     initMerchantButton.isEnabled = false
     initOfflineButton.isEnabled = false
-    connectCardReaderBtn.isHidden = true
+    connectCardReaderButton.isHidden = true
     
     initSdkCode.text = "PayPalRetailSDK.initializeSDK()"
     initMerchCode.text = "PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in \n" +
@@ -244,6 +254,15 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
   }
   
+  private func layoutConnectCardReaderButton() {
+    connectCardReaderButton.addTarget(self, action: #selector(goToDeviceDiscovery(_:)), for: .touchUpInside)
+    view.addSubview(connectCardReaderButton)
+    
+    connectCardReaderButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+    connectCardReaderButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+    connectCardReaderButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24).isActive = true
+    connectCardReaderButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+  }
 }
 
 enum Currency: String {
