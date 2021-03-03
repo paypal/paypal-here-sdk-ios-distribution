@@ -15,6 +15,7 @@ let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotifica
 
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
   private let viewModel = InitializeViewModel()
+  private let userDefaults = UserDefaults.standard
   @IBOutlet weak var envSelector: UISegmentedControl!
   @IBOutlet weak var initSdkButton: CustomButton!
   @IBOutlet weak var initSdkCode: UITextView!
@@ -105,9 +106,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
     // check that the saved token matches the environment.  Otherwise, kick open the
     // SFSafariViewController to expose the login and obtain another token.
-    let tokenDefault = UserDefaults.init()
-    if((tokenDefault.string(forKey: "ACCESS_TOKEN") != nil) && (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() == tokenDefault.string(forKey: "ENVIRONMENT"))) {
-      NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: tokenDefault.string(forKey: "ACCESS_TOKEN"))
+    if((userDefaults.string(forKey: "ACCESS_TOKEN") != nil) && (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() == userDefaults.string(forKey: "ENVIRONMENT"))) {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification),
+                                      object: userDefaults.string(forKey: "ACCESS_TOKEN"))
     } else {
       // Present a SFSafariViewController to handle the login to get the merchant account to use.
       let svc = SFSafariViewController(url: url! as URL)
@@ -130,8 +131,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     // enabled for use.
     let accessToken = notification.object as! String
     
-    let tokenDefault = UserDefaults.init()
-    let sdkCreds = SdkCredential.init(accessToken: accessToken, refreshUrl: tokenDefault.string(forKey: "REFRESH_URL"), environment: tokenDefault.string(forKey: "ENVIRONMENT"))
+    let sdkCreds = SdkCredential.init(accessToken: accessToken,
+                                      refreshUrl: userDefaults.string(forKey: "REFRESH_URL"),
+                                      environment: userDefaults.string(forKey: "ENVIRONMENT"))
     
     PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in
       if let err = error {
@@ -144,18 +146,17 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   func merchantSuccessfullyLoggedIn(offline: Bool, merchant: PPRetailMerchant){
-    let tokenDefault = UserDefaults.init()
     if offline {
       // Remeber to store whether you initialized in Offline Mode.
       // For now, there is no way to query offlineInit state for Merchant on SDK.
-      tokenDefault.setValue(true, forKey: "offlineSDKInit")
+      userDefaults.setValue(true, forKey: "offlineSDKInit")
       self.initOfflineActivitySpinner.stopAnimating()
       self.initOfflineButton.isHidden = false
       self.initOfflineButton.changeToButtonWasSelected(self.initOfflineButton)
       self.initOfflineButton.isEnabled = false
       self.merchEmailLabel.text = "Initialized Offline"
     } else {
-      tokenDefault.removeObject(forKey: "offlineSDKInit")
+      userDefaults.removeObject(forKey: "offlineSDKInit")
       self.initMerchantActivitySpinner.stopAnimating()
       self.initMerchantButton.isHidden = false
       self.initMerchantButton.changeToButtonWasSelected(self.initMerchantButton)
@@ -168,7 +169,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     // Save currency to UserDefaults for further usage. This needs to be used to initialize
     // the PPRetailRetailInvoice for the payment later on. This app is using UserDefault but
     // it could just as easily be passed through the segue.
-    tokenDefault.setValue(merchant.currency, forKey: "MERCH_CURRENCY")
+    userDefaults.setValue(merchant.currency, forKey: "MERCH_CURRENCY")
     self.setCurrencyType()
     
     // Add the BN code for Partner tracking. To obtain this value, contact
@@ -195,18 +196,16 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     print("Error Code: \(String(describing: error.code))")
     
     // The token did not work, so clear the saved token so we can go back to the login page
-    let tokenDefault = UserDefaults.init()
-    tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
+    userDefaults.removeObject(forKey: "ACCESS_TOKEN")
   }
   
   @IBAction func logout(_ sender: CustomButton) {
     // Clear out the UserDefaults and show the appropriate buttons/labels
-    let tokenDefault = UserDefaults.init()
-    tokenDefault.removeObject(forKey: "ACCESS_TOKEN")
-    tokenDefault.removeObject(forKey: "REFRESH_URL")
-    tokenDefault.removeObject(forKey: "ENVIRONMENT")
-    tokenDefault.removeObject(forKey: "MERCH_CURRENCY")
-    tokenDefault.synchronize()
+    userDefaults.removeObject(forKey: "ACCESS_TOKEN")
+    userDefaults.removeObject(forKey: "REFRESH_URL")
+    userDefaults.removeObject(forKey: "ENVIRONMENT")
+    userDefaults.removeObject(forKey: "MERCH_CURRENCY")
+    userDefaults.synchronize()
     
     merchEmailLabel.text = ""
     merchInfoView.isHidden = true
@@ -234,7 +233,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   }
   
   func setCurrencyType(){
-    let userDefaults = UserDefaults.init()
     guard let merchantCurrency: String = userDefaults.value(forKey: "MERCH_CURRENCY") as? String else { return }
     print("Merchant Currency is: ", merchantCurrency)
     
