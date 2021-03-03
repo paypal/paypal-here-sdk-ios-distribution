@@ -27,7 +27,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   @IBOutlet weak var initOfflineActivitySpinner: UIActivityIndicatorView!
   @IBOutlet weak var logoutBtn: CustomButton!
   @IBOutlet weak var merchInfoView: UIView!
-  @IBOutlet weak var connectCardReaderBtn: CustomButton!
   
   private var connectCardReaderButton: UIButton = {
     let btn = UIButton()
