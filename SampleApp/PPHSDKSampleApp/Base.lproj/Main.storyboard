@@ -664,36 +664,17 @@
                                     <constraint firstAttribute="trailing" secondItem="1dt-te-YLa" secondAttribute="trailing" constant="30" id="uyp-55-Dy8"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfb-9Z-1fv" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                <rect key="frame" x="8" y="712" width="359" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.40784313729999999" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="FSC-0F-Pdj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="18"/>
-                                <state key="normal" title="Run transactions">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lK4-oc-bfn"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mfb-9Z-1fv" firstAttribute="centerX" secondItem="lK4-oc-bfn" secondAttribute="centerX" id="0NE-wz-KjC"/>
                             <constraint firstItem="Y7V-Ed-EMp" firstAttribute="leading" secondItem="lK4-oc-bfn" secondAttribute="leading" id="4D9-Ch-q8Y"/>
                             <constraint firstItem="Y7V-Ed-EMp" firstAttribute="top" secondItem="lK4-oc-bfn" secondAttribute="top" id="LHa-Ii-Vv6"/>
-                            <constraint firstItem="mfb-9Z-1fv" firstAttribute="width" secondItem="lK4-oc-bfn" secondAttribute="width" constant="-16" id="R2c-D5-HE3"/>
                             <constraint firstItem="Y7V-Ed-EMp" firstAttribute="width" secondItem="lK4-oc-bfn" secondAttribute="width" id="UWU-a9-jDu"/>
-                            <constraint firstItem="mfb-9Z-1fv" firstAttribute="top" secondItem="Y7V-Ed-EMp" secondAttribute="bottom" id="bL4-gx-FYf"/>
                             <constraint firstItem="lJk-W9-31N" firstAttribute="leading" secondItem="lK4-oc-bfn" secondAttribute="leading" constant="16" id="hn3-yR-8bO"/>
                             <constraint firstItem="Y7V-Ed-EMp" firstAttribute="trailing" secondItem="lK4-oc-bfn" secondAttribute="trailing" id="lGr-6L-TZJ"/>
                             <constraint firstItem="uR2-1U-K8z" firstAttribute="width" secondItem="d1V-OR-z9M" secondAttribute="width" id="tlx-q1-NWq"/>
-                            <constraint firstItem="lK4-oc-bfn" firstAttribute="bottom" secondItem="mfb-9Z-1fv" secondAttribute="bottom" constant="16" id="xJZ-a1-6bK"/>
+                            <constraint firstItem="lK4-oc-bfn" firstAttribute="bottom" secondItem="Y7V-Ed-EMp" secondAttribute="bottom" constant="66" id="z5r-w0-VlO"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3755,9 +3736,6 @@
         </designable>
         <designable name="jql-Vt-rv4">
             <size key="intrinsicContentSize" width="94" height="35"/>
-        </designable>
-        <designable name="mfb-9Z-1fv">
-            <size key="intrinsicContentSize" width="138" height="35"/>
         </designable>
         <designable name="oqx-Po-PJa">
             <size key="intrinsicContentSize" width="145" height="34"/>
