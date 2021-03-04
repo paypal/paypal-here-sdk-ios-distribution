@@ -101,17 +101,21 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
     // set this to Live, simply change /sandbox to /live.  The returnTokenOnQueryString value tells
     // the sample server to return the actual token values instead of the compositeToken
-    let url = NSURL(string: "http://pph-retail-sdk-sample.herokuapp.com/toPayPal/" + envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() + "?returnTokenOnQueryString=true")
+    guard let url = URL(string: "http://pph-retail-sdk-sample.herokuapp.com/toPayPal/" +
+                          (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)?.lowercased() ?? "") + "?returnTokenOnQueryString=true") else {
+      return
+    }
     
     // Check if there's a previous token saved in UserDefaults and, if so, use that.  This will also
     // check that the saved token matches the environment.  Otherwise, kick open the
     // SFSafariViewController to expose the login and obtain another token.
-    if((userDefaults.string(forKey: "ACCESS_TOKEN") != nil) && (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() == userDefaults.string(forKey: "ENVIRONMENT"))) {
+    if((userDefaults.string(forKey: "ACCESS_TOKEN") != nil) &&
+        (envSelector.titleForSegment(at: envSelector.selectedSegmentIndex)!.lowercased() == userDefaults.string(forKey: "ENVIRONMENT"))) {
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification),
                                       object: userDefaults.string(forKey: "ACCESS_TOKEN"))
     } else {
       // Present a SFSafariViewController to handle the login to get the merchant account to use.
-      let svc = SFSafariViewController(url: url! as URL)
+      let svc = SFSafariViewController(url: url)
       svc.delegate = self
       self.present(svc, animated: true, completion: nil)
     }
@@ -129,7 +133,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     // Grab the token(s) from the notification and pass it into the merchant initialize call to set up
     // the merchant.  Upon successful initialization, the 'Connect Card Reader' button will be
     // enabled for use.
-    let accessToken = notification.object as! String
+    guard let accessToken = notification.object as? String else {
+      return
+    }
     
     let sdkCreds = SdkCredential.init(accessToken: accessToken,
                                       refreshUrl: userDefaults.string(forKey: "REFRESH_URL"),
