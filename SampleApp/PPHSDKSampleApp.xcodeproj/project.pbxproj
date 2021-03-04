@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FFB60F3FC00A57427E7AD81 /* Pods_PPHSDKSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786B176BD563674C71BA931 /* Pods_PPHSDKSampleApp.framework */; };
+		6519A72625EF107A00592D1E /* InitializeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519A72525EF107A00592D1E /* InitializeViewModel.swift */; };
 		65611A3225E5DFCF00782F13 /* PayPalSansBig-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A2D25E5DFCF00782F13 /* PayPalSansBig-Thin.otf */; };
 		65611A3325E5DFCF00782F13 /* PayPalSansBig-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A2E25E5DFCF00782F13 /* PayPalSansBig-Regular.otf */; };
 		65611A3425E5DFCF00782F13 /* PayPalSansBig-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65611A2F25E5DFCF00782F13 /* PayPalSansBig-Light.otf */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		485944B8031E93BF19858388 /* Pods-PPHSDKSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPHSDKSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		6519A72525EF107A00592D1E /* InitializeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeViewModel.swift; sourceTree = "<group>"; };
 		65611A2D25E5DFCF00782F13 /* PayPalSansBig-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Thin.otf"; sourceTree = "<group>"; };
 		65611A2E25E5DFCF00782F13 /* PayPalSansBig-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Regular.otf"; sourceTree = "<group>"; };
 		65611A2F25E5DFCF00782F13 /* PayPalSansBig-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PayPalSansBig-Light.otf"; sourceTree = "<group>"; };
@@ -112,6 +114,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6519A72425EF106100592D1E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6519A72525EF107A00592D1E /* InitializeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6519A72925F072BE00592D1E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */,
+				EC9B00BC2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift */,
+				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
+				685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */,
+				68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */,
+				C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */,
+				68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */,
+				C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */,
+				C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */,
+				C6EF40031E7706B600109502 /* WelcomeViewController.swift */,
+				C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		65611A3825E5E00200782F13 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,20 +193,12 @@
 			isa = PBXGroup;
 			children = (
 				65611A4025E5E3AB00782F13 /* Extensions */,
-				65611A3B25E5E1DB00782F13 /* UICatalog */,
 				EC62D20A2219F245009C91BD /* VaultFeature */,
+				EC9B00BE2213A4A400C3DBA0 /* Views */,
+				6519A72925F072BE00592D1E /* ViewControllers */,
+				6519A72425EF106100592D1E /* ViewModels */,
+				65611A3B25E5E1DB00782F13 /* UICatalog */,
 				C6C793FF1DDD01E800F8DC8E /* AppDelegate.swift */,
-				C6EF40031E7706B600109502 /* WelcomeViewController.swift */,
-				C6C794011DDD01E800F8DC8E /* InitializeViewController.swift */,
-				C6A15D2E1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift */,
-				EC9B00BC2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift */,
-				C6C794031DDD01E800F8DC8E /* PaymentViewController.swift */,
-				685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */,
-				68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */,
-				C698DE341FE9857100D005AE /* PaymentCompletedViewController.swift */,
-				68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */,
-				C662A2912003F5C300CC44AB /* AuthCompletedViewController.swift */,
-				C662A293200537DF00CC44AB /* CaptureAuthViewController.swift */,
 				C6C794051DDD01E800F8DC8E /* Main.storyboard */,
 				C6C794081DDD01E800F8DC8E /* Assets.xcassets */,
 				C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */,
@@ -186,7 +206,6 @@
 				68C1153220FFCE0F000DD8AE /* CustomUI.swift */,
 				C662A295200547FF00CC44AB /* StringExt.swift */,
 				EC62D217221CC477009C91BD /* ErrorMsg.swift */,
-				EC9B00BE2213A4A400C3DBA0 /* Views */,
 			);
 			path = PPHSDKSampleApp;
 			sourceTree = "<group>";
@@ -354,6 +373,7 @@
 				65611A4325E5E3F000782F13 /* UILabel+Extensions.swift in Sources */,
 				EC62D214221A0FF7009C91BD /* VaultOnlyFlow.swift in Sources */,
 				68C1153320FFCE0F000DD8AE /* CustomUI.swift in Sources */,
+				6519A72625EF107A00592D1E /* InitializeViewModel.swift in Sources */,
 				C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */,
 				EC9B00BD2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift in Sources */,
 				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,

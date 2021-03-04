@@ -375,41 +375,18 @@
                                     <constraint firstAttribute="trailing" secondItem="6O0-0Z-1mZ" secondAttribute="trailing" id="ldm-MO-JSL"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvK-m9-1my" customClass="CustomButton" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                <rect key="frame" x="8" y="712" width="359" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.40784313729999999" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="U0B-7z-4dJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PayPalSansBig-Regular" family="PayPal Sans Big" pointSize="18"/>
-                                <state key="normal" title="Connect card reader">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="goToDeviceDiscovery:" destination="9pv-A4-QxB" eventType="touchUpInside" id="N6n-z1-N00"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="thj-7G-5MB"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YTA-vJ-KfL" firstAttribute="top" secondItem="thj-7G-5MB" secondAttribute="top" id="0a8-w6-Z8x"/>
-                            <constraint firstItem="rvK-m9-1my" firstAttribute="top" secondItem="YTA-vJ-KfL" secondAttribute="bottom" id="SsA-fq-2iU"/>
+                            <constraint firstItem="thj-7G-5MB" firstAttribute="bottom" secondItem="YTA-vJ-KfL" secondAttribute="bottom" constant="66" id="QYf-zx-EtZ"/>
                             <constraint firstItem="YTA-vJ-KfL" firstAttribute="trailing" secondItem="thj-7G-5MB" secondAttribute="trailing" id="Ugw-9S-EzW"/>
-                            <constraint firstItem="rvK-m9-1my" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" constant="-16" id="qMc-un-pFg"/>
-                            <constraint firstItem="thj-7G-5MB" firstAttribute="bottom" secondItem="rvK-m9-1my" secondAttribute="bottom" constant="16" id="uo9-qI-2eB"/>
                             <constraint firstItem="YTA-vJ-KfL" firstAttribute="leading" secondItem="thj-7G-5MB" secondAttribute="leading" id="vpD-Ar-xqH"/>
-                            <constraint firstItem="rvK-m9-1my" firstAttribute="centerX" secondItem="thj-7G-5MB" secondAttribute="centerX" id="yNC-lJ-9T0"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Initialize SDK &amp; Merchant" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="connectCardReaderBtn" destination="rvK-m9-1my" id="61R-7W-i9Z"/>
                         <outlet property="envSelector" destination="dBG-hg-KVD" id="ncn-Wq-6U9"/>
                         <outlet property="initMerchCode" destination="xmL-58-j21" id="14Q-bA-aSt"/>
                         <outlet property="initMerchantActivitySpinner" destination="3o9-ie-sxm" id="xmS-Jd-Wcc"/>
@@ -3495,14 +3472,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentTypeCell" id="hDM-SD-4nw" customClass="PaymentTypeTableViewCell" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="29.333333969116211"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="29"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hDM-SD-4nw" id="8A5-LV-OcR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29.333333969116211"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9n-BC-Lmn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="0.0" green="0.36470588240000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3797,9 +3774,6 @@
         </designable>
         <designable name="rUH-EU-9C9">
             <size key="intrinsicContentSize" width="103" height="34"/>
-        </designable>
-        <designable name="rvK-m9-1my">
-            <size key="intrinsicContentSize" width="164" height="35"/>
         </designable>
         <designable name="sVe-CY-sH3">
             <size key="intrinsicContentSize" width="119" height="31"/>
