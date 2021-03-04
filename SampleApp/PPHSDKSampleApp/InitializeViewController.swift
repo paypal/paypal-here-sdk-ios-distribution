@@ -137,9 +137,9 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
       return
     }
     
-    let sdkCreds = SdkCredential.init(accessToken: accessToken,
-                                      refreshUrl: userDefaults.string(forKey: "REFRESH_URL"),
-                                      environment: userDefaults.string(forKey: "ENVIRONMENT"))
+    let sdkCreds = SdkCredential(accessToken: accessToken,
+                                 refreshUrl: userDefaults.string(forKey: "REFRESH_URL"),
+                                 environment: userDefaults.string(forKey: "ENVIRONMENT"))
     
     PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in
       if let err = error {
