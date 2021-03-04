@@ -139,7 +139,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         // This card presented listener is optional as the SDK will automatically continue when the card is
         // presented even if this listener is not implemented.
         tc!.setCardPresentedHandler { (cardInfo) -> Void in
-          self.tc!.continue(with: cardInfo)
+            self.tc!.continue(with: cardInfo)
         }
         
         tc!.setCompletedHandler { (error, txnRecord) -> Void in
@@ -166,7 +166,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             }
         }
         
-
         if(self.offlineMode) {
             tc?.setOfflineTransactionAdditionHandler({ (error, offlineTxnRecord) in
                 if let err = error {
