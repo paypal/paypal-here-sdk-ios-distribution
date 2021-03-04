@@ -75,7 +75,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     envSelector.isEnabled = false
     self.initMerchantActivitySpinner.color = PPHColor.black
     initMerchantActivitySpinner.startAnimating()
-    performLogin(offline: false)
+    performLogin()
     
   }
   
@@ -96,7 +96,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     }
   }
   
-  func performLogin(offline: Bool) {
+  func performLogin() {
     // Set your URL for your backend server that handles OAuth.  This sample uses an instance of the
     // sample retail node server that's available at https://github.com/paypal/paypal-retail-node. To
     // set this to Live, simply change /sandbox to /live.  The returnTokenOnQueryString value tells
