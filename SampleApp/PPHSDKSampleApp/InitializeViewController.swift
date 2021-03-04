@@ -41,13 +41,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     return btn
   }()
   
-  private var tableView: UITableView = {
-    let tv = UITableView()
-    tv.translatesAutoresizingMaskIntoConstraints = false
-    tv.separatorStyle = .none
-    return tv
-  }()
-  
   var svc: SFSafariViewController?
   
   override func viewDidLoad() {
@@ -56,7 +49,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     setUpDefaultView()
     // Receive the notification that the token is being returned
     NotificationCenter.default.addObserver(self, selector: #selector(setupMerchant(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
-//    layoutTableView()
     layoutConnectCardReaderButton()
   }
   
@@ -260,15 +252,6 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     initMerchCode.text = viewModel.initMerchText
     initOfflineCode.text = viewModel.initOfflineText
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-  }
-  
-  private func layoutTableView() {
-    view.addSubview(tableView)
-    
-    tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    tableView.topAnchor.constraint(equalTo: envSelector.bottomAnchor, constant: 8).isActive = true
-    tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
   
   private func layoutConnectCardReaderButton() {
