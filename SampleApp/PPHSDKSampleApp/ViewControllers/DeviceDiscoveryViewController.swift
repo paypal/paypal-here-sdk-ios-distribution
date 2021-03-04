@@ -19,7 +19,17 @@ class DeviceDiscoveryViewController: UIViewController {
   @IBOutlet weak var autoConnectReader: CustomButton!
   @IBOutlet weak var autoConnectReaderCodeView: UITextView!
   @IBOutlet weak var autoConnectActivityIndicator: UIActivityIndicatorView!
-  @IBOutlet weak var goToPmtPageBtn: CustomButton!
+  
+  private var goToPaymentPageButton: UIButton = {
+    let btn = UIButton()
+    btn.translatesAutoresizingMaskIntoConstraints = false
+    btn.setTitle("Run Transactions", for: .normal)
+    btn.titleLabel?.applyTheme(theme: .sansBigRegular)
+    btn.backgroundColor = PPHColor.azure
+    btn.setTitleColor(.white, for: .normal)
+    btn.layer.cornerRadius = 24
+    return btn
+  }()
   
   let deviceManager = PayPalRetailSDK.deviceManager()
   
@@ -27,6 +37,7 @@ class DeviceDiscoveryViewController: UIViewController {
     super.viewDidLoad()
     
     setUpDefaultView()
+    layoutGoToPaymentPageButton()
     // Watch for audio readers.
     // This will show a microphone connection permission prompt on the initial call (only once per app install)
     // Time this call such that it does not interfere with any other alerts
@@ -130,12 +141,21 @@ class DeviceDiscoveryViewController: UIViewController {
       "})"
     autoConnectReaderCodeView.text = "deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in\n" +
       "<code to handle success/failure>\n}"
-    goToPmtPageBtn.isHidden = false
     activeReaderLbl.text = ""
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
   }
   
-  @IBAction func goToPmtPage(_ sender: Any) {
+  private func layoutGoToPaymentPageButton() {
+    goToPaymentPageButton.addTarget(self, action: #selector(goToPaymentPage(_:)), for: .touchUpInside)
+    view.addSubview(goToPaymentPageButton)
+    
+    goToPaymentPageButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+    goToPaymentPageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+    goToPaymentPageButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24).isActive = true
+    goToPaymentPageButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+  }
+  
+  @objc func goToPaymentPage(_ sender: Any) {
     performSegue(withIdentifier: "goToPmtTypeSelect", sender: sender)
   }
   

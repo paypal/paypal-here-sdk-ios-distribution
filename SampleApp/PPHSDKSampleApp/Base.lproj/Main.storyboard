@@ -679,9 +679,6 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="goToPmtPage:" destination="kug-iv-fJt" eventType="touchUpInside" id="qcZ-gx-rpg"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lK4-oc-bfn"/>
@@ -708,7 +705,6 @@
                         <outlet property="connectLastKnownCodeView" destination="Qmm-Ek-lTh" id="RNL-3M-6LM"/>
                         <outlet property="findAndConnect" destination="Lms-hu-sbr" id="Ian-5b-FdJ"/>
                         <outlet property="findAndConnectCodeView" destination="XlI-hE-wiM" id="FWb-Jh-1TD"/>
-                        <outlet property="goToPmtPageBtn" destination="mfb-9Z-1fv" id="geh-Ec-8re"/>
                         <segue destination="bno-L1-GDE" kind="show" identifier="goToPmtTypeSelect" id="Kfq-Ga-4dS"/>
                     </connections>
                 </viewController>
@@ -3472,14 +3468,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentTypeCell" id="hDM-SD-4nw" customClass="PaymentTypeTableViewCell" customModule="PPHSDKSampleApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="29"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="29.333333969116211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hDM-SD-4nw" id="8A5-LV-OcR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9n-BC-Lmn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="0.0" green="0.36470588240000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
