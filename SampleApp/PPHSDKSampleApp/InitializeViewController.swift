@@ -73,7 +73,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   
   @IBAction func initMerchant(_ sender: CustomButton) {
     envSelector.isEnabled = false
-    self.initMerchantActivitySpinner.color = UIColor.black
+    self.initMerchantActivitySpinner.color = PPHColor.black
     initMerchantActivitySpinner.startAnimating()
     performLogin(offline: false)
     
@@ -83,7 +83,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
   // When you Initialize offline, only offline transactions will be allowed and replay transactions will not be allowed.
   @IBAction func initOffline(_ sender: CustomButton) {
     envSelector.isEnabled = false
-    self.initOfflineActivitySpinner.color = UIColor.black
+    self.initOfflineActivitySpinner.color = PPHColor.black
     initOfflineActivitySpinner.startAnimating()
     PayPalRetailSDK.initializeMerchantOffline { (error, merchant) in
       if let err = error {
