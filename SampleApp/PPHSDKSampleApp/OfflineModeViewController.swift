@@ -188,7 +188,7 @@ class OfflineModeViewController: UIViewController {
     }
     
     private func updateOfflineModeUI(){
-        if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled())! {
+        if (PayPalRetailSDK.transactionManager()?.getOfflinePaymentEnabled() ?? false) {
             offlineMode = true
             offlineModeLabel.text = "ENABLED"
             offlineModeLabel.textColor = .green
