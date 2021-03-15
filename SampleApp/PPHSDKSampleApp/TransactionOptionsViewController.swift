@@ -16,37 +16,20 @@ protocol TransactionOptionsViewControllerDelegate: NSObjectProtocol {
 
 class TransactionOptionsViewController: UIViewController {
     
-    @IBOutlet weak var authCaptureSwitch: UISwitch!
-    @IBOutlet weak var promptInAppSwitch: UISwitch!
-    @IBOutlet weak var promptInCardReaderSwitch: UISwitch!
-    @IBOutlet weak var tippingOnReaderSwitch: UISwitch!
-    @IBOutlet weak var amountBasedTippingSwitch: UISwitch!
-    @IBOutlet weak var enableQuickChipSwitch: UISwitch!
-    @IBOutlet weak var tagTextField: UITextField!
-    @IBOutlet var formFactorSwitches: [UISwitch]!
+    @IBOutlet weak var transactionsTableView: UITableView!
     
     /// Sets up the parameters for taking in Options from Payment View Controller
     weak var delegate: TransactionOptionsViewControllerDelegate?
     var transactionOptions: PPRetailTransactionBeginOptions!
     var formFactorArray: [PPRetailFormFactor]!
+    var transactionOptionsArray = ["Sales Options", "Auth/Capture", "Prompt in App", "Prompt in Card Reader", "Tipping on Reader", "AmountBased Tipping", "Enable Quick Chip", "Enable QRC Prompt", "Tags", "Allowed Card Readers", "Magnetic Card Swipe", "Chip", "Contactless", "Secure Manual Entry", "Manual Card Entry"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Sets the toolbar to the "tagTextField"
-        setToolBarForTextField(tagTextField)
+       // setToolBarForTextField(tagTextField)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        // Turn the switch on/off depending on the value of the option fields.
-        authCaptureSwitch.isOn = transactionOptions.isAuthCapture
-        promptInAppSwitch.isOn = transactionOptions.showPromptInApp
-        promptInCardReaderSwitch.isOn = transactionOptions.showPromptInCardReader
-        tippingOnReaderSwitch.isOn = transactionOptions.tippingOnReaderEnabled
-        amountBasedTippingSwitch.isOn = transactionOptions.amountBasedTipping
-        enableQuickChipSwitch.isOn = transactionOptions.quickChipEnabled
-        
-        // Turn the formFactor button on/off depending on the formFactors selected.
-        toggleFormFactorSwitches()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,38 +43,31 @@ class TransactionOptionsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !(transactionOptions.tag?.isEmpty)! {
-            tagTextField.text = transactionOptions.tag
+    }
+    
+    @objc func switchHandler(_ sender: UISwitch) {
+        var formFactor: PPRetailFormFactor!
+        switch sender.tag {
+        case 1:
+            transactionOptions.isAuthCapture = sender.isOn
+        case 2:
+            transactionOptions.showPromptInApp = sender.isOn
+        case 3:
+            transactionOptions.showPromptInCardReader = sender.isOn
+        case 4:
+            transactionOptions.tippingOnReaderEnabled = sender.isOn
+        case 5:
+            transactionOptions.amountBasedTipping = sender.isOn
+        case 6:
+            transactionOptions.quickChipEnabled = sender.isOn
+        case 7:
+            transactionOptions.qrcPromptEnabled = sender.isOn
+        default:
+            formFactorSwitchPressed(sender)
         }
-        toggleFormFactorSwitches()
     }
     
-    /// The following 5 functions are triggered when a switch is pressed and it's value is changed.
-    /// Depending on if the switch is on or off, these functions will set the appropriate option to true or false.
-    /// - Parameter sender: UISwitch assoicated with the options.
-    @IBAction func authCaptureSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.isAuthCapture = authCaptureSwitch.isOn
-        
-    }
-    @IBAction func promptInAppSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.showPromptInApp = promptInAppSwitch.isOn
-    }
-    
-    @IBAction func promptInCardReaderSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.showPromptInCardReader = promptInCardReaderSwitch.isOn
-    }
-    
-    @IBAction func tippingOnReaderSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.tippingOnReaderEnabled = tippingOnReaderSwitch.isOn
-    }
-    
-    @IBAction func amountBasedTippingSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.amountBasedTipping = amountBasedTippingSwitch.isOn
-    }
-    
-    @IBAction func quickChipSwitchPressed(_ sender: UISwitch) {
-        transactionOptions.quickChipEnabled = enableQuickChipSwitch.isOn
-    }
+ 
     
     /// This function is triggered when the UITextField for Tag is doneEditing
     /// It will take the text in the UITextField and set it to the transactionOptions.tag field.
@@ -109,15 +85,15 @@ class TransactionOptionsViewController: UIViewController {
         
         var formFactor: PPRetailFormFactor!
         switch sender.tag {
-        case 1:
+        case 10:
             formFactor = PPRetailFormFactor.magneticCardSwipe
-        case 2:
+        case 11:
             formFactor = PPRetailFormFactor.chip
-        case 3:
+        case 12:
             formFactor = PPRetailFormFactor.emvCertifiedContactless
-        case 4:
+        case 13:
             formFactor = PPRetailFormFactor.secureManualEntry
-        case 5:
+        case 14:
             formFactor = PPRetailFormFactor.manualCardEntry
         default:
             formFactor = PPRetailFormFactor.none
@@ -137,7 +113,7 @@ class TransactionOptionsViewController: UIViewController {
     /// THIS FUNCTION IS ONLY FOR UI. This will iterate through the formFactorArray and get the appropriate tag for the
     /// buttons depending on the formFactor that are in the array. Then it will go through UIButton Outlet Collection
     /// Array and set the isSelected State for the buttons associated with the form Factor.
-    private func toggleFormFactorSwitches(){
+    private func toggleFormFactorSwitches() {
         for factor in formFactorArray {
             var tag: Int!
             switch factor {
@@ -153,12 +129,6 @@ class TransactionOptionsViewController: UIViewController {
                 tag = 5
             default:
                 tag = 0
-            }
-            
-            for formFactorSwitch in formFactorSwitches {
-                if formFactorSwitch.tag == tag {
-                    formFactorSwitch.isOn = true
-                }
             }
         }
     }
@@ -187,4 +157,121 @@ class TransactionOptionsViewController: UIViewController {
     @objc private func doneButtonAction(){
         view.endEditing(true)
     }
+}
+
+extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return transactionOptionsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 7 {
+            return 80
+        }
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 || indexPath.row == 9 {
+            if let cell: OptionsCell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell") as? OptionsCell {
+                cell.lblOp.text = transactionOptionsArray[indexPath.row]
+                return cell
+            }
+        } else if indexPath.row == 8 {
+            if let cell: TagsCell = tableView.dequeueReusableCell(withIdentifier: "TagsCell") as? TagsCell {
+                if !(transactionOptions.tag?.isEmpty)! {
+                    cell.txtTags.text = transactionOptions.tag
+                }
+                return cell
+            }
+        } else {
+            if let cell: TransactionOptionsCell = tableView.dequeueReusableCell(withIdentifier: "TransactionOptionsCell") as? TransactionOptionsCell {
+            cell.lblOption.text = transactionOptionsArray[indexPath.row]
+                cell.switchOption.tag = indexPath.row
+                cell.switchOption.addTarget(self, action: #selector(switchHandler(_:)), for: .valueChanged)
+                if indexPath.row > 9 {
+                    updateSwitchesForm(transactionCell: cell, indexPath: indexPath)
+                } else {
+                    updateSwitches(transactionCell: cell, indexPath: indexPath)
+                }
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func updateSwitches(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
+        switch indexPath.row {
+        case 1:
+            transactionCell.switchOption.isOn = transactionOptions.isAuthCapture
+        case 2:
+            transactionCell.switchOption.isOn = transactionOptions.showPromptInApp
+        case 3:
+            transactionCell.switchOption.isOn = transactionOptions.showPromptInCardReader
+        case 4:
+            transactionCell.switchOption.isOn = transactionOptions.tippingOnReaderEnabled
+        case 5:
+            transactionCell.switchOption.isOn = transactionOptions.amountBasedTipping
+        case 6:
+            transactionCell.switchOption.isOn = transactionOptions.quickChipEnabled
+        case 7:
+            transactionCell.switchOption.isOn = transactionOptions.qrcPromptEnabled
+        default:
+            print("Nothing")
+        }
+    }
+    
+    func updateSwitchesForm(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
+        if let formFactorArray = transactionOptions.preferredFormFactors {
+            for factor in formFactorArray {
+                var tag: Int!
+                switch factor {
+                case PPRetailFormFactor.magneticCardSwipe :
+                    tag = 10
+                case PPRetailFormFactor.chip:
+                    tag = 11
+                case PPRetailFormFactor.emvCertifiedContactless:
+                    tag = 12
+                case PPRetailFormFactor.secureManualEntry:
+                    tag = 13
+                case PPRetailFormFactor.manualCardEntry:
+                    tag = 14
+                default:
+                    print("Nothing")
+                }
+                if transactionCell.switchOption.tag == tag {
+                    transactionCell.switchOption.isOn = true
+                }
+            }
+           
+    }
+}
+}
+
+extension TransactionOptionsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let merchantStoreId = textField.text {
+            if merchantStoreId.count > 1 {
+                UserDefaults.standard.set(merchantStoreId, forKey: "merchantStoreId")
+            let merchant = PPRetailMerchant()
+                merchant?.storeId = merchantStoreId
+            }
+        }
+        return true
+    }
+    
+}
+
+class TransactionOptionsCell: UITableViewCell {
+    @IBOutlet weak var lblOption: UILabel!
+    @IBOutlet weak var switchOption: UISwitch!
+}
+
+class TagsCell: UITableViewCell {
+    @IBOutlet weak var txtTags: UITextField!
+}
+
+class OptionsCell: UITableViewCell {
+    @IBOutlet weak var lblOp: UILabel!
 }
