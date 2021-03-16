@@ -28,7 +28,7 @@ class TransactionOptionsViewController: UIViewController {
         super.viewDidLoad()
         
         // Sets the toolbar to the "tagTextField"
-       // setToolBarForTextField(tagTextField)
+        // setToolBarForTextField(tagTextField)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
@@ -67,7 +67,7 @@ class TransactionOptionsViewController: UIViewController {
         }
     }
     
- 
+    
     
     /// This function is triggered when the UITextField for Tag is doneEditing
     /// It will take the text in the UITextField and set it to the transactionOptions.tag field.
@@ -174,29 +174,30 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 || indexPath.row == 9 {
-            if let cell: OptionsCell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell") as? OptionsCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell") as? OptionsCell {
                 cell.lblOp.text = transactionOptionsArray[indexPath.row]
                 return cell
             }
         } else if indexPath.row == 8 {
-            if let cell: TagsCell = tableView.dequeueReusableCell(withIdentifier: "TagsCell") as? TagsCell {
-                if !(transactionOptions.tag?.isEmpty)! {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TagsCell") as? TagsCell else {return UITableViewCell()}
+            if let tag = transactionOptions.tag {
+                if !tag.isEmpty {
                     cell.txtTags.text = transactionOptions.tag
                 }
-                return cell
             }
+            return cell
+            
         } else {
-            if let cell: TransactionOptionsCell = tableView.dequeueReusableCell(withIdentifier: "TransactionOptionsCell") as? TransactionOptionsCell {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionOptionsCell") as? TransactionOptionsCell else {return UITableViewCell()}
             cell.lblOption.text = transactionOptionsArray[indexPath.row]
-                cell.switchOption.tag = indexPath.row
-                cell.switchOption.addTarget(self, action: #selector(switchHandler(_:)), for: .valueChanged)
-                if indexPath.row > 9 {
-                    updateSwitchesForm(transactionCell: cell, indexPath: indexPath)
-                } else {
-                    updateSwitches(transactionCell: cell, indexPath: indexPath)
-                }
-                return cell
+            cell.switchOption.tag = indexPath.row
+            cell.switchOption.addTarget(self, action: #selector(switchHandler(_:)), for: .valueChanged)
+            if indexPath.row > 9 {
+                updateSwitchesForm(transactionCell: cell, indexPath: indexPath)
+            } else {
+                updateSwitches(transactionCell: cell, indexPath: indexPath)
             }
+            return cell
         }
         return UITableViewCell()
     }
@@ -225,9 +226,9 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
     func updateSwitchesForm(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
         if let formFactorArray = transactionOptions.preferredFormFactors {
             for factor in formFactorArray {
-                var tag: Int!
+                var tag: Int?
                 switch factor {
-                case PPRetailFormFactor.magneticCardSwipe :
+                case PPRetailFormFactor.magneticCardSwipe:
                     tag = 10
                 case PPRetailFormFactor.chip:
                     tag = 11
@@ -240,13 +241,16 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
                 default:
                     print("Nothing")
                 }
-                if transactionCell.switchOption.tag == tag {
-                    transactionCell.switchOption.isOn = true
+                if let tag = tag {
+                    if transactionCell.switchOption.tag == tag {
+                        transactionCell.switchOption.isOn = true
+                    }
                 }
+                
             }
-           
+            
+        }
     }
-}
 }
 
 extension TransactionOptionsViewController: UITextFieldDelegate {
@@ -254,7 +258,7 @@ extension TransactionOptionsViewController: UITextFieldDelegate {
         if let merchantStoreId = textField.text {
             if merchantStoreId.count > 1 {
                 UserDefaults.standard.set(merchantStoreId, forKey: "merchantStoreId")
-            let merchant = PPRetailMerchant()
+                let merchant = PPRetailMerchant()
                 merchant?.storeId = merchantStoreId
             }
         }

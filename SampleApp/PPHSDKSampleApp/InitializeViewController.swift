@@ -153,10 +153,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.initMerchantButton.changeToButtonWasSelected(self.initMerchantButton)
             self.initMerchantButton.isEnabled = false
             self.merchEmailLabel.text = merchant.emailAddress
-            DispatchQueue.main.async {
-                self.btnMerchantSettings.backgroundColor = UIColor(red: 0/255.0, green: 104.0/255.0, blue: 174.0/255.0, alpha: 1)
-                self.btnMerchantSettings.isUserInteractionEnabled = true
-            }
+            self.btnMerchantSettings.backgroundColor = UIColor(red: 0/255.0, green: 104.0/255.0, blue: 174.0/255.0, alpha: 1)
+            self.btnMerchantSettings.isUserInteractionEnabled = true
         }
         
         self.merchInfoView.isHidden = false
@@ -266,7 +264,9 @@ extension InitializeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MerchantSettingsSegue" {
             if segue.destination.isKind(of: MerchantSettingsController.self) {
-                let merchantVC = segue.destination as! MerchantSettingsController
+                guard let merchantVC = segue.destination as? MerchantSettingsController else {
+                    return
+                }
                 merchantVC.merchant = storeMerchant
             }
         }

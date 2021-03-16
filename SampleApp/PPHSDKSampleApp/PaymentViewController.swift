@@ -171,9 +171,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             if let error = error {
                 print(error)
             } else {
-                print(qrcRecord as Any)
-                guard let qrcRecord = qrcRecord else { return }
-                if let qrcPromptEnabled = self.options?.qrcPromptEnabled {
+                if let qrcPromptEnabled = self.options?.qrcPromptEnabled, let qrcRecord = qrcRecord {
                     if qrcPromptEnabled == true {
                         switch  qrcRecord.qrcStatus {
                         case .statussuccess:
@@ -201,8 +199,6 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
                         case .statuscancelled_by_merchant:
                             self.view.makeToast("QRC TX Cancelled By Merchant")
                         }
-                    } else {
-                        // do nothing
                     }
                 }
                 
