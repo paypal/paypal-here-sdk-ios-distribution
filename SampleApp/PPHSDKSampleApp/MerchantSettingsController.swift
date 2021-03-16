@@ -20,7 +20,19 @@ class MerchantSettingsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Merchant Settings"
-        
+        showMerchantDetails()
+    }
+    
+    func showMerchantDetails() {
+        if let softDescriptor = merchant.softDescriptor {
+            txtsoftDescriptor.text = softDescriptor
+        }
+        if let storeID = merchant.storeId {
+            txtStoreId.text = storeID
+        }
+        if let referrerCode = merchant.referrerCode {
+            txtreferrerCode.text = referrerCode
+        }
     }
     
     @IBAction func updateMerchantHandler() {
