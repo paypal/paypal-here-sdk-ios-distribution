@@ -39,14 +39,18 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     var options = PPRetailTransactionBeginOptions.defaultOptions()
     var formFactorArray: [PPRetailFormFactor] = []
     var currencySymbol: String!
-    var paymentType: PaymentTypes?
     let manuallyEnteredCard = PPRetailManuallyEnteredCard()
-    var manuallyEnteredCardPresent: Bool = false
+    var manuallyEnteredCardPresent = false
     
     // Get the online or offline state from the SDK by calling the "PayPalRetailSDK.transactionManager().getOfflinePaymentEnabled()"
     var offlineMode: Bool = PayPalRetailSDK.transactionManager().getOfflinePaymentEnabled()
     
-    let paymentTypes: [String] = [AppStrings.PaymentOptions.paymentTypeCardReader, AppStrings.PaymentOptions.paymentTypeDigitalCard, AppStrings.PaymentOptions.paymentTypeCash, AppStrings.PaymentOptions.paymentTypeKeyIn, AppStrings.PaymentOptions.paymentTypeCheck, AppStrings.PaymentOptions.paymentTypeQRC]
+    let paymentTypes: [String] = [AppStrings.PaymentOptions.paymentTypeCardReader,
+                                  AppStrings.PaymentOptions.paymentTypeDigitalCard,
+                                  AppStrings.PaymentOptions.paymentTypeCash,
+                                  AppStrings.PaymentOptions.paymentTypeKeyIn,
+                                  AppStrings.PaymentOptions.paymentTypeCheck,
+                                  AppStrings.PaymentOptions.paymentTypeQRC]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,29 +97,29 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     }
 
     controller.addAction(UIAlertAction(title: AppStrings.AlertActionButtonTitles.alertActionTitleDone, style: .default, handler: { (action) in
-        let cardNumberTextField = controller.textFields![0]
-        let cardNumberExpiryTextField = controller.textFields![1]
-        let cardCVVTextField = controller.textFields![2]
-        let cardPostalCodeTextField = controller.textFields![3]
+        if  let cardNumberTextField = controller.textFields?[0], let cardNumberExpiryTextField = controller.textFields?[1], let cardCVVTextField = controller.textFields?[2], let cardPostalCodeTextField = controller.textFields?[3] {
+            
+            let cardNumberString = cardNumberTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
+            let cardNumberExpiryString = cardNumberExpiryTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).replacingOccurrences(of: "/", with: "") ?? ""
+            let cardCVVString = cardCVVTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
+            let cardPostalCodeString = cardPostalCodeTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
 
-        let cardNumberString = cardNumberTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
-        let cardNumberExpiryString = cardNumberExpiryTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).replacingOccurrences(of: "/", with: "") ?? ""
-        let cardCVVString = cardCVVTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
-        let cardPostalCodeString = cardPostalCodeTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
-
-        if cardNumberString.count > 0 && cardNumberExpiryString.count > 0 && cardCVVString.count > 0 && cardPostalCodeString.count > 0 {
-            self.manuallyEnteredCard?.setCardNumber(cardNumberString)
-            self.manuallyEnteredCard?.setExpiration(cardNumberExpiryString)
-            self.manuallyEnteredCard?.setCVV(cardCVVString)
-            self.manuallyEnteredCard?.setPostalCode(cardPostalCodeString)
+            if cardNumberString.count > 0 && cardNumberExpiryString.count > 0 && cardCVVString.count > 0 && cardPostalCodeString.count > 0 {
+                self.manuallyEnteredCard?.setCardNumber(cardNumberString)
+                self.manuallyEnteredCard?.setExpiration(cardNumberExpiryString)
+                self.manuallyEnteredCard?.setCVV(cardCVVString)
+                self.manuallyEnteredCard?.setPostalCode(cardPostalCodeString)
+            } else {
+                // Stage Card Info, Transaction Will Fail in anything but Stage
+                self.manuallyEnteredCard?.setCardNumber(AppStrings.StageEnvironment.cardDetails.stageCardNumber)
+                self.manuallyEnteredCard?.setCVV(AppStrings.StageEnvironment.cardDetails.stageCardCVV)
+                self.manuallyEnteredCard?.setExpiration(AppStrings.StageEnvironment.cardDetails.stageCardExpiration)
+                self.manuallyEnteredCard?.setPostalCode(AppStrings.StageEnvironment.cardDetails.stageCardPostalCode)
+            }
+            self.manuallyEnteredCardPresent = true
         } else {
-            // Stage Card Info, Transaction Will Fail in anything but Stage
-            self.manuallyEnteredCard?.setCardNumber(AppStrings.StageEnvironment.cardDetails.stageCardNumber)
-            self.manuallyEnteredCard?.setCVV(AppStrings.StageEnvironment.cardDetails.stageCardCVV)
-            self.manuallyEnteredCard?.setExpiration(AppStrings.StageEnvironment.cardDetails.stageCardExpiration)
-            self.manuallyEnteredCard?.setPostalCode(AppStrings.StageEnvironment.cardDetails.stageCardPostalCode)
+            print ("popup")
         }
-        self.manuallyEnteredCardPresent = true
     }))
 
     self.present(controller, animated: true, completion: nil)
@@ -124,43 +128,43 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     //MARK:- Button Handlers
     
     @IBAction func paymentTypeHandler(_ sender: UIButton) {
-       
         let actionSheetController = UIAlertController(title: AppStrings.ActionSheetTitles.alertControllerTitlePaymentType, message: nil, preferredStyle: .actionSheet)
+        var paymentTypeSelected: PaymentTypes?
         for (index, paymentType) in paymentTypes.enumerated() {
             let alertAction = UIAlertAction(title: paymentType, style: .default) { [self] (action) in
-                if index == 0 {
+                paymentTypeSelected = PaymentTypes(rawValue: index)
+                switch paymentTypeSelected {
+                case .paymentTypeCardReader:
                     // self.paymentTypeCardReader()
-                    self.paymentType = PaymentTypes.paymentTypeCardReader
-                } else if index == 1 {
+                    paymentTypeSelected = PaymentTypes.paymentTypeCardReader
+                case .paymentTypeDigitalCard:
                     // self.getDigitalCardCode()
-                    self.paymentType = PaymentTypes.paymentTypeDigitalCard
-                } else if index == 2 {
+                    paymentTypeSelected = PaymentTypes.paymentTypeDigitalCard
+                case .paymentTypeCash:
                     // self.getManualCashAmount()
-                    self.paymentType = PaymentTypes.paymentTypeCash
-                } else if index == 3 {
-                    self.getManualCard()
+                    paymentTypeSelected = PaymentTypes.paymentTypeCash
+                case .paymentTypeKeyIn:
+                    getManualCard()
                     if let pType = PPRetailTransactionBeginOptionsPaymentTypes(rawValue: PaymentTypes.paymentTypeKeyIn.rawValue) {
-                        self.options?.paymentType = pType
+                        options?.paymentType = pType
                     }
-                    self.options?.manualCard = self.manuallyEnteredCard
-                } else if index == 4 {
+                case .paymentTypeCheck:
                     // self.getManualCheckAmount()
-                    self.paymentType = PaymentTypes.paymentTypeCheck
-                } else if index == 5 {
+                    paymentTypeSelected = PaymentTypes.paymentTypeCheck
+                case .paymentTypeQRC:
                     // self.paymentTypeQRC()
-                    self.paymentType = PaymentTypes.paymentTypeQRC
-
-                self.btnPaymentType.setTitle(paymentType, for: .normal)
+                    paymentTypeSelected = PaymentTypes.paymentTypeQRC
+                  
+                default:
+                    print("do nothing")
                 }
+                self.btnPaymentType.setTitle(paymentType, for: .normal)
             }
+            alertAction.isEnabled = index == 3 ? true : false
             
-            if index == 3 {
-                alertAction.isEnabled = true
-            } else {
-                alertAction.isEnabled = false
-            }
             actionSheetController.addAction(alertAction)
         }
+        
         if let popoverController = actionSheetController.popoverPresentationController {
            popoverController.sourceView = self.view //to set the source of your alert
            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) // you can set this as per your requirement.
@@ -318,12 +322,12 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             noOptionAlert.addAction(okAction)
             self.present(noOptionAlert, animated: true, completion: nil)
         } else {
-            performSegue(withIdentifier: "transactionOptionsVC", sender: self)
+            performSegue(withIdentifier: AppStrings.segueNames.transactionOptionsVC, sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "goToPmtCompletedView") {
+        if (segue.identifier == AppStrings.segueNames.goToPmtCompletedView) {
             if let pmtCompletedViewController = segue.destination as? PaymentCompletedViewController {
                 pmtCompletedViewController.transactionNumber = transactionNumber
                 pmtCompletedViewController.invoice = invoice
@@ -331,7 +335,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             }
         }
         
-        if (segue.identifier == "goToAuthCompletedView") {
+        if (segue.identifier == AppStrings.segueNames.goToAuthCompletedView) {
             if let authCompletedViewController = segue.destination as? AuthCompletedViewController {
                 authCompletedViewController.authTransactionNumber = transactionNumber
                 authCompletedViewController.invoice = invoice
@@ -356,11 +360,11 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     }
     
     func goToAuthCompletedViewController() {
-        performSegue(withIdentifier: "goToAuthCompletedView", sender: Any?.self)
+        performSegue(withIdentifier: AppStrings.segueNames.goToAuthCompletedView, sender: Any?.self)
     }
     
     func goToOfflinePaymentCompletedViewController(){
-        performSegue(withIdentifier: "offlinePaymentCompletedVC", sender: self)
+        performSegue(withIdentifier: AppStrings.segueNames.offlinePaymentCompletedVC, sender: self)
     }
     
     private func setUpDefaultView(){

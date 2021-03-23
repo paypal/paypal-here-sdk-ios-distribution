@@ -33,6 +33,10 @@ struct AppStrings {
     
     struct segueNames {
         static let paymentCompletedController = "goToPmtCompletedView"
+        static let transactionOptionsVC = "transactionOptionsVC"
+        static let goToPmtCompletedView = "goToPmtCompletedView"
+        static let goToAuthCompletedView = "goToAuthCompletedView"
+        static let offlinePaymentCompletedVC = "offlinePaymentCompletedVC"
     }
     
     struct StageEnvironment {
