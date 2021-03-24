@@ -266,16 +266,3 @@ extension TransactionOptionsViewController: UITextFieldDelegate {
     }
     
 }
-
-class TransactionOptionsCell: UITableViewCell {
-    @IBOutlet weak var lblOption: UILabel!
-    @IBOutlet weak var switchOption: UISwitch!
-}
-
-class TagsCell: UITableViewCell {
-    @IBOutlet weak var txtTags: UITextField!
-}
-
-class OptionsCell: UITableViewCell {
-    @IBOutlet weak var lblOp: UILabel!
-}
