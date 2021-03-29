@@ -15,6 +15,7 @@ let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotifica
 
 class InitializeViewController: UIViewController, SFSafariViewControllerDelegate {
     
+    @IBOutlet weak var btnMerchantSettings: UIButton!
     @IBOutlet weak var envSelector: UISegmentedControl!
     @IBOutlet weak var initSdkButton: CustomButton!
     @IBOutlet weak var initSdkCode: UITextView!
@@ -31,9 +32,10 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
     @IBOutlet weak var connectCardReaderBtn: CustomButton!
     
     var svc: SFSafariViewController?
-    
+    var storeMerchant: PPRetailMerchant?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnMerchantSettings.isUserInteractionEnabled = false
         
         setUpDefaultView()
         // Receive the notification that the token is being returned
@@ -68,13 +70,14 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         envSelector.isEnabled = false
         self.initOfflineActivitySpinner.color = UIColor.black
         initOfflineActivitySpinner.startAnimating()
-        PayPalRetailSDK.initializeMerchantOffline { (error, merchant) in
+        PayPalRetailSDK.initializeMerchantOffline { [weak self] (error, merchant) in
             if let err = error {
                 print("Offline Init Failed")
-                self.merchantFailedLogIn(offline: true, error: err)
+                self?.merchantFailedLogIn(offline: true, error: err)
             } else {
+                self?.storeMerchant = merchant
                 print("Offline Init Successful")
-                self.merchantSuccessfullyLoggedIn(offline: true, merchant: merchant!)
+                self?.merchantSuccessfullyLoggedIn(offline: true, merchant: merchant!)
                 
             }
         }
@@ -121,12 +124,13 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         let tokenDefault = UserDefaults.init()
         let sdkCreds = SdkCredential.init(accessToken: accessToken, refreshUrl: tokenDefault.string(forKey: "REFRESH_URL"), environment: tokenDefault.string(forKey: "ENVIRONMENT"))
         
-        PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) in
+        PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { [weak self] (error, merchant) in
             if let err = error {
-                self.merchantFailedLogIn(offline: false, error: err)
+                self?.merchantFailedLogIn(offline: false, error: err)
             } else {
                 print("Merchant Success!")
-                self.merchantSuccessfullyLoggedIn(offline: false, merchant: merchant!)
+                self?.storeMerchant = merchant
+                self?.merchantSuccessfullyLoggedIn(offline: false, merchant: merchant!)
             }
         }
     }
@@ -149,6 +153,8 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
             self.initMerchantButton.changeToButtonWasSelected(self.initMerchantButton)
             self.initMerchantButton.isEnabled = false
             self.merchEmailLabel.text = merchant.emailAddress
+            self.btnMerchantSettings.backgroundColor = UIColor(red: 0/255.0, green: 104.0/255.0, blue: 174.0/255.0, alpha: 1)
+            self.btnMerchantSettings.isUserInteractionEnabled = true
         }
         
         self.merchInfoView.isHidden = false
@@ -162,7 +168,7 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         // Add the BN code for Partner tracking. To obtain this value, contact
         // your PayPal account representative. Please do not change this value when
         // using this sample app for testing.
-        merchant.referrerCode = "PPHSDK_SampleApp_iOS"
+        //        merchant.referrerCode = "PPHSDK_SampleApp_iOS"
         
         //Enable the connect card reader button here
         self.connectCardReaderBtn.isHidden = false
@@ -245,13 +251,26 @@ class InitializeViewController: UIViewController, SFSafariViewControllerDelegate
         initSdkCode.text = "PayPalRetailSDK.initializeSDK()"
         initMerchCode.text = "PayPalRetailSDK.initializeMerchant(withCredentials: sdkCreds) { (error, merchant) -> Void in \n" +
             "     <code to handle success/failure>\n" +
-        "})"
+            "})"
         initOfflineCode.text = "PayPalRetailSDK.initializeMerchantOffline { (error, merchant) -> Void in \n" +
             "     <code to handle success/failure>\n" +
-        "})"
+            "})"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
+}
+
+extension InitializeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MerchantSettingsSegue" {
+            if segue.destination.isKind(of: MerchantSettingsController.self) {
+                guard let merchantVC = segue.destination as? MerchantSettingsController else {
+                    return
+                }
+                merchantVC.merchant = storeMerchant
+            }
+        }
+    }
 }
 
 enum Currency: String {

@@ -8,6 +8,7 @@
 
 import UIKit
 import PayPalRetailSDK
+import Toast_Swift
 
 class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
     
@@ -166,6 +167,44 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
             }
         }
         
+        tc?.setQRCStatusHandler({ (error, qrcRecord) in
+            if let error = error {
+                print(error)
+            } else {
+                if let qrcPromptEnabled = self.options?.qrcPromptEnabled, let qrcRecord = qrcRecord {
+                    if qrcPromptEnabled == true {
+                        switch  qrcRecord.qrcStatus {
+                        case .statussuccess:
+                            self.view.makeToast("QRC Payment Completed with id: \(String(describing: qrcRecord.invoiceId))")
+                        case .statussession_created:
+                            self.view.makeToast("QRC Payment Created with session_id: \(String(describing: qrcRecord.sessionId))")
+                        case .statusurl_created:
+                            self.view.makeToast("QRC URL with: \(String(describing: qrcRecord.content))")
+                        case .statusaborted:
+                            self.view.makeToast("QRC Payment aborted with debugId: \(String(describing: qrcRecord.correlationId))")
+                        case .statusdraft:
+                            self.view.makeToast("status draft")
+                        case .statusscanned:
+                            self.view.makeToast("QRC Scanned")
+                        case .statusawaiting_user_input:
+                            self.view.makeToast("Awaiting User Input")
+                        case .statusprocessing:
+                            self.view.makeToast("Processing")
+                        case .statusfailed:
+                            self.view.makeToast("QRC TX Failed")
+                        case .statuscancelled:
+                            self.view.makeToast("QRC TX Cancelled")
+                        case .statusdeclined:
+                            self.view.makeToast("QRC TX Declined")
+                        case .statuscancelled_by_merchant:
+                            self.view.makeToast("QRC TX Cancelled By Merchant")
+                        }
+                    }
+                }
+                
+            }
+        })
+        
         if(self.offlineMode) {
             tc?.setOfflineTransactionAdditionHandler({ (error, offlineTxnRecord) in
                 if let err = error {
@@ -256,7 +295,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         createTxnCodeView.text = "PayPalRetailSDK.transactionManager().createTransaction(invoice, callback: { (error, context) in \n" +
             "  // Set the transactionContext or handle the error \n" +
             "  self.tc = context \n" +
-        "}))"
+            "}))"
         offlineModeBtn.changeButtonTitle(offline: self.offlineMode, forButton: offlineModeBtn)
         acceptTxnCodeView.text = "tc.beginPayment(options)"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -271,7 +310,7 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         toolbar.sizeToFit()
         //setting toolbar as inputAccessoryView
         self.invAmount.inputAccessoryView = toolbar
-
+        
         // Add target to receive text change
         invAmount.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
     }
