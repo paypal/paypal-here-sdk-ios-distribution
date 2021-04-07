@@ -9,7 +9,7 @@
 import Foundation
 
 struct AppStrings {
-    
+
     struct PaymentOptions {
         static let paymentTypeCardReader: String = "Card Reader"
         static let paymentTypeDigitalCard: String = "Digital Card"
@@ -18,29 +18,29 @@ struct AppStrings {
         static let paymentTypeCheck: String = "Check"
         static let paymentTypeQRC: String = "QRC"
     }
-    
+
     struct ActionSheetTitles {
         static let alertControllerTitlePaymentType: String = "Choose payment type"
     }
-    
+
     struct AlertActionTitles {
         static let alertControllerTitleCardInfo: String = "Enter Card Info"
     }
-    
+
     struct AlertActionButtonTitles {
         static let alertActionTitleDone: String = "Done"
     }
-    
-    struct segueNames {
+
+    struct SegueNames {
         static let paymentCompletedController = "goToPmtCompletedView"
         static let transactionOptionsVC = "transactionOptionsVC"
         static let goToPmtCompletedView = "goToPmtCompletedView"
         static let goToAuthCompletedView = "goToAuthCompletedView"
         static let offlinePaymentCompletedVC = "offlinePaymentCompletedVC"
     }
-    
+
     struct StageEnvironment {
-        struct cardDetails {
+        struct CardDetails {
             static let stageCardNumber: String = "4111111111111111"
             static let stageCardCVV: String = "123"
             static let stageCardExpiration: String = "122030"

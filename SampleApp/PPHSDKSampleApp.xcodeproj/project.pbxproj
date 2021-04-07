@@ -16,6 +16,11 @@
 		65611A3D25E5E20800782F13 /* PPHTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65611A3C25E5E20800782F13 /* PPHTheme.swift */; };
 		65611A4325E5E3F000782F13 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */; };
 		6562E46E25ED5D01002A7013 /* PPHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6562E46D25ED5D01002A7013 /* PPHColor.swift */; };
+		65878593261E7748008C3301 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878592261E7748008C3301 /* AppStrings.swift */; };
+		65878599261E7774008C3301 /* TagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878595261E7773008C3301 /* TagsCell.swift */; };
+		6587859A261E7774008C3301 /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878596261E7773008C3301 /* OptionsCell.swift */; };
+		6587859B261E7774008C3301 /* MerchantSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878597261E7773008C3301 /* MerchantSettingsController.swift */; };
+		6587859C261E7774008C3301 /* TransactionOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878598261E7773008C3301 /* TransactionOptionsCell.swift */; };
 		685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */; };
 		68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */; };
 		68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */; };
@@ -32,7 +37,6 @@
 		C6C794091DDD01E800F8DC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C794081DDD01E800F8DC8E /* Assets.xcassets */; };
 		C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C7940A1DDD01E800F8DC8E /* LaunchScreen.storyboard */; };
 		C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF40031E7706B600109502 /* WelcomeViewController.swift */; };
-		C6EF40141E77173800109502 /* References in Resources */ = {isa = PBXBuildFile; fileRef = C6EF40131E77173800109502 /* References */; };
 		EC62D213221A0FF7009C91BD /* VaultPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D20F221A0FF6009C91BD /* VaultPaymentViewController.swift */; };
 		EC62D214221A0FF7009C91BD /* VaultOnlyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D210221A0FF6009C91BD /* VaultOnlyFlow.swift */; };
 		EC62D216221A1204009C91BD /* VaultTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D215221A1204009C91BD /* VaultTransactionModel.swift */; };
@@ -53,6 +57,11 @@
 		65611A3C25E5E20800782F13 /* PPHTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPHTheme.swift; sourceTree = "<group>"; };
 		65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		6562E46D25ED5D01002A7013 /* PPHColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPHColor.swift; sourceTree = "<group>"; };
+		65878592261E7748008C3301 /* AppStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		65878595261E7773008C3301 /* TagsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCell.swift; sourceTree = "<group>"; };
+		65878596261E7773008C3301 /* OptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
+		65878597261E7773008C3301 /* MerchantSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSettingsController.swift; sourceTree = "<group>"; };
+		65878598261E7773008C3301 /* TransactionOptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOptionsCell.swift; sourceTree = "<group>"; };
 		685B7E4620DB152100F57461 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4720DB152100F57461 /* LogglyLogger_CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogglyLogger_CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4820DB152100F57461 /* SimpleKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SimpleKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +86,6 @@
 		C6C7940D1DDD01E800F8DC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6ED26B71E64D29200BE902D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C6EF40031E7706B600109502 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		C6EF40131E77173800109502 /* References */ = {isa = PBXFileReference; lastKnownFileType = folder; path = References; sourceTree = "<group>"; };
 		EC62D20F221A0FF6009C91BD /* VaultPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaultPaymentViewController.swift; sourceTree = "<group>"; };
 		EC62D210221A0FF6009C91BD /* VaultOnlyFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaultOnlyFlow.swift; sourceTree = "<group>"; };
 		EC62D215221A1204009C91BD /* VaultTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTransactionModel.swift; sourceTree = "<group>"; };
@@ -147,7 +155,6 @@
 				C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */,
 				65611A3825E5E00200782F13 /* Fonts */,
 				C6C793FD1DDD01E800F8DC8E /* Products */,
-				C6EF40131E77173800109502 /* References */,
 				2359FFE7D6776F5A76927401 /* Frameworks */,
 				DCD9011486C77E7564B39C6B /* Pods */,
 			);
@@ -164,6 +171,11 @@
 		C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				65878597261E7773008C3301 /* MerchantSettingsController.swift */,
+				65878596261E7773008C3301 /* OptionsCell.swift */,
+				65878595261E7773008C3301 /* TagsCell.swift */,
+				65878598261E7773008C3301 /* TransactionOptionsCell.swift */,
+				65878592261E7748008C3301 /* AppStrings.swift */,
 				65611A4025E5E3AB00782F13 /* Extensions */,
 				65611A3B25E5E1DB00782F13 /* UICatalog */,
 				EC62D20A2219F245009C91BD /* VaultFeature */,
@@ -289,7 +301,6 @@
 				65611A3425E5DFCF00782F13 /* PayPalSansBig-Light.otf in Resources */,
 				65611A3525E5DFCF00782F13 /* PayPalSansBig-Medium.otf in Resources */,
 				65611A3625E5DFCF00782F13 /* PayPalSansBig-Bold.otf in Resources */,
-				C6EF40141E77173800109502 /* References in Resources */,
 				C6C7940C1DDD01E800F8DC8E /* LaunchScreen.storyboard in Resources */,
 				C6C794091DDD01E800F8DC8E /* Assets.xcassets in Resources */,
 				C6C794071DDD01E800F8DC8E /* Main.storyboard in Resources */,
@@ -344,6 +355,7 @@
 				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
 				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -351,6 +363,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRetailInstrumentInterface.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalRetailSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6587859B261E7774008C3301 /* MerchantSettingsController.swift in Sources */,
 				6562E46E25ED5D01002A7013 /* PPHColor.swift in Sources */,
 				EC62D213221A0FF7009C91BD /* VaultPaymentViewController.swift in Sources */,
 				EC62D21C221DEA5F009C91BD /* PayAndVaultFlow.swift in Sources */,
@@ -373,6 +387,8 @@
 				68C1153320FFCE0F000DD8AE /* CustomUI.swift in Sources */,
 				C6C794041DDD01E800F8DC8E /* PaymentViewController.swift in Sources */,
 				EC9B00BD2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift in Sources */,
+				6587859C261E7774008C3301 /* TransactionOptionsCell.swift in Sources */,
+				6587859A261E7774008C3301 /* OptionsCell.swift in Sources */,
 				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,
 				C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */,
 				685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */,
@@ -383,9 +399,11 @@
 				C662A2922003F5C300CC44AB /* AuthCompletedViewController.swift in Sources */,
 				EC9B00C02213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift in Sources */,
 				65611A3D25E5E20800782F13 /* PPHTheme.swift in Sources */,
+				65878593261E7748008C3301 /* AppStrings.swift in Sources */,
 				68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */,
 				68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */,
 				ECA5E3942215EB61001D83E5 /* VaultPaymentCompletedViewController.swift in Sources */,
+				65878599261E7774008C3301 /* TagsCell.swift in Sources */,
 				C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */,
 				EC62D216221A1204009C91BD /* VaultTransactionModel.swift in Sources */,
 				C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */,

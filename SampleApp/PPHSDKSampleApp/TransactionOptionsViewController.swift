@@ -15,15 +15,15 @@ protocol TransactionOptionsViewControllerDelegate: NSObjectProtocol {
 }
 
 class TransactionOptionsViewController: UIViewController {
-    
+
     @IBOutlet weak var transactionsTableView: UITableView!
-    
+
     /// Sets up the parameters for taking in Options from Payment View Controller
     weak var delegate: TransactionOptionsViewControllerDelegate?
     var transactionOptions: PPRetailTransactionBeginOptions!
     var formFactorArray: [PPRetailFormFactor]!
     var transactionOptionsArray = ["Sales Options", "Auth/Capture", "Prompt in App", "Prompt in Card Reader", "Tipping on Reader", "AmountBased Tipping", "Enable Quick Chip", "Enable QRC Prompt", "Tags", "Allowed Card Readers", "Magnetic Card Swipe", "Chip", "Contactless", "Secure Manual Entry", "Manual Card Entry"]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +44,7 @@ class TransactionOptionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     @objc func switchHandler(_ sender: UISwitch) {
         var formFactor: PPRetailFormFactor!
         switch sender.tag {
@@ -66,9 +66,7 @@ class TransactionOptionsViewController: UIViewController {
             formFactorSwitchPressed(sender)
         }
     }
-    
-    
-    
+
     /// This function is triggered when the UITextField for Tag is doneEditing
     /// It will take the text in the UITextField and set it to the transactionOptions.tag field.
     /// If nothing is typed in the field then it will pass an empty value to the field.
@@ -160,18 +158,18 @@ class TransactionOptionsViewController: UIViewController {
 }
 
 extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionOptionsArray.count
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 7 {
             return 80
         }
         return 60
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 || indexPath.row == 9 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell") as? OptionsCell {
@@ -186,7 +184,7 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
                 }
             }
             return cell
-            
+
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionOptionsCell") as? TransactionOptionsCell else {return UITableViewCell()}
             cell.lblOption.text = transactionOptionsArray[indexPath.row]
@@ -201,7 +199,7 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
         }
         return UITableViewCell()
     }
-    
+
     func updateSwitches(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
@@ -222,7 +220,7 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
             print("Nothing")
         }
     }
-    
+
     func updateSwitchesForm(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
         if let formFactorArray = transactionOptions.preferredFormFactors {
             for factor in formFactorArray {
@@ -246,9 +244,9 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
                         transactionCell.switchOption.isOn = true
                     }
                 }
-                
+
             }
-            
+
         }
     }
 }
@@ -264,5 +262,5 @@ extension TransactionOptionsViewController: UITextFieldDelegate {
         }
         return true
     }
-    
+
 }
