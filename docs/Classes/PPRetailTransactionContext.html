@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 
-	<title></title>
+	<title>PPRetailTransactionContext Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
 </head>
 <body class="appledoc">
 	<header>
@@ -43,9 +43,127 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/digitalCard">digitalCard</option>
+		
+		<option value="//api/name/invoice">invoice</option>
+		
+		<option value="//api/name/isSignatureRequired">isSignatureRequired</option>
+		
+		<option value="//api/name/orderId">orderId</option>
+		
+		<option value="//api/name/totalDisplayFooter">totalDisplayFooter</option>
+		
+		<option value="//api/name/type">type</option>
+		
+	</optgroup>
+	
 
 	
 
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/addContactlessReaderActivatedListener:">- addContactlessReaderActivatedListener:</option>
+		
+		<option value="//api/name/addContactlessReaderDeactivatedListener:">- addContactlessReaderDeactivatedListener:</option>
+		
+		<option value="//api/name/addDidCompleteSignatureListener:">- addDidCompleteSignatureListener:</option>
+		
+		<option value="//api/name/addPinEntryListener:">- addPinEntryListener:</option>
+		
+		<option value="//api/name/addReaderTippingCompletedListener:">- addReaderTippingCompletedListener:</option>
+		
+		<option value="//api/name/addWillPresentSignatureListener:">- addWillPresentSignatureListener:</option>
+		
+		<option value="//api/name/beginPayment:">- beginPayment:</option>
+		
+		<option value="//api/name/beginRefund:amount:">- beginRefund:amount:</option>
+		
+		<option value="//api/name/beginRefund:amount:refundTag:">- beginRefund:amount:refundTag:</option>
+		
+		<option value="//api/name/clear:">- clear:</option>
+		
+		<option value="//api/name/clearOnReaderTip">- clearOnReaderTip</option>
+		
+		<option value="//api/name/continueWithCard:">- continueWithCard:</option>
+		
+		<option value="//api/name/continueWithCard:tag:">- continueWithCard:tag:</option>
+		
+		<option value="//api/name/continueWithCash">- continueWithCash</option>
+		
+		<option value="//api/name/continueWithCheck">- continueWithCheck</option>
+		
+		<option value="//api/name/continueWithDigitalCard:">- continueWithDigitalCard:</option>
+		
+		<option value="//api/name/continueWithQRC">- continueWithQRC</option>
+		
+		<option value="//api/name/deactivateFormFactors:callback:">- deactivateFormFactors:callback:</option>
+		
+		<option value="//api/name/discardPresentedCard:">- discardPresentedCard:</option>
+		
+		<option value="//api/name/dropHandlers">- dropHandlers</option>
+		
+		<option value="//api/name/getPaymentState">- getPaymentState</option>
+		
+		<option value="//api/name/getTippingState">- getTippingState</option>
+		
+		<option value="//api/name/isPaymentInRetryOrProgress">- isPaymentInRetryOrProgress</option>
+		
+		<option value="//api/name/isRefund">- isRefund</option>
+		
+		<option value="//api/name/removeContactlessReaderActivatedListener:">- removeContactlessReaderActivatedListener:</option>
+		
+		<option value="//api/name/removeContactlessReaderDeactivatedListener:">- removeContactlessReaderDeactivatedListener:</option>
+		
+		<option value="//api/name/removeDidCompleteSignatureListener:">- removeDidCompleteSignatureListener:</option>
+		
+		<option value="//api/name/removePinEntryListener:">- removePinEntryListener:</option>
+		
+		<option value="//api/name/removeReaderTippingCompletedListener:">- removeReaderTippingCompletedListener:</option>
+		
+		<option value="//api/name/removeWillPresentSignatureListener:">- removeWillPresentSignatureListener:</option>
+		
+		<option value="//api/name/requestDigitalCardCancellation:">- requestDigitalCardCancellation:</option>
+		
+		<option value="//api/name/requestPaymentCancellation:">- requestPaymentCancellation:</option>
+		
+		<option value="//api/name/setAdditionalReceiptOptions:receiptHandler:">- setAdditionalReceiptOptions:receiptHandler:</option>
+		
+		<option value="//api/name/setCardInsertedHandler:">- setCardInsertedHandler:</option>
+		
+		<option value="//api/name/setCardPresentedHandler:">- setCardPresentedHandler:</option>
+		
+		<option value="//api/name/setCompletedHandler:">- setCompletedHandler:</option>
+		
+		<option value="//api/name/setOfflineTransactionAdditionHandler:">- setOfflineTransactionAdditionHandler:</option>
+		
+		<option value="//api/name/setQRCStatusHandler:">- setQRCStatusHandler:</option>
+		
+		<option value="//api/name/setSignatureCollector:">- setSignatureCollector:</option>
+		
+		<option value="//api/name/setTokenExpiredHandler:">- setTokenExpiredHandler:</option>
+		
+		<option value="//api/name/setVaultCompletedHandler:">- setVaultCompletedHandler:</option>
+		
+		<option value="//api/name/startInvoiceSync">- startInvoiceSync</option>
+		
+		<option value="//api/name/syncInvoiceOnce">- syncInvoiceOnce</option>
+		
+	</optgroup>
+	
 	
 </select>
 						</label>
@@ -59,22 +177,2398 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title"></h1>
+					<h1 class="title">PPRetailTransactionContext Class Reference</h1>
 
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>PPRetailObject : NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>PPRetailTransactionContext.h</td>
+</tr>
+						</tbody></table></div>
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The TransactionContext class is returned by RetailSDK.getTransactionManager().createTransaction and allows
+you to control many aspects of the payment or refund flow and observe events that
+occur during the flows. Simply creating a TransactionContext will not kick off any behaviors,
+so that you have a chance to configure the transaction context as you wish (enable on-reader tipping
+, specify transaction options, etc). When you&rsquo;re ready to proceed with the payment flow,
+call beginPayment()</p>
+					</div>
+					
+					
 
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/invoice" title="invoice"></a>
+	<h3 class="method-title"><code><a href="#//api/name/invoice">&nbsp;&nbsp;invoice</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The invoice being processed for this transaction @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailRetailInvoice *invoice</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The invoice being processed for this transaction @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="method-title"><code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The type of transaction being attempted
+(defaults to Sale if the <a href="#//api/name/invoice">invoice</a> is not already paid, Refund if it is already paid)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PPRetailTransactionType type</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The type of transaction being attempted
+(defaults to Sale if the <a href="#//api/name/invoice">invoice</a> is not already paid, Refund if it is already paid)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isSignatureRequired" title="isSignatureRequired"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isSignatureRequired">&nbsp;&nbsp;isSignatureRequired</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Given the current state of the <a href="#//api/name/invoice">invoice</a> and transaction,
+is a signature required to secure payment? @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isSignatureRequired</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Given the current state of the <a href="#//api/name/invoice">invoice</a> and transaction,
+is a signature required to secure payment? @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/digitalCard" title="digitalCard"></a>
+	<h3 class="method-title"><code><a href="#//api/name/digitalCard">&nbsp;&nbsp;digitalCard</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Digital Card information</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) PPRetailDigitalCard *digitalCard</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Digital Card information</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/orderId" title="orderId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/orderId">&nbsp;&nbsp;orderId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>id of the PP order for payment</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *orderId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>id of the PP order for payment</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/totalDisplayFooter" title="totalDisplayFooter"></a>
+	<h3 class="method-title"><code><a href="#//api/name/totalDisplayFooter">&nbsp;&nbsp;totalDisplayFooter</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>While building your <a href="#//api/name/invoice">invoice</a>, the running total
+will be displayed on PaymentDevices capable of displaying messages. If you set
+totalDisplayFooter, that will be displayed (centered) after the total
+amount. Note that once the payment flow starts, EMV certification requires that the display
+just show the total and iconography corresponding to expected payment types. Your message
+will not be on that screen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *totalDisplayFooter</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>While building your <a href="#//api/name/invoice">invoice</a>, the running total
+will be displayed on PaymentDevices capable of displaying messages. If you set
+totalDisplayFooter, that will be displayed (centered) after the total
+amount. Note that once the payment flow starts, EMV certification requires that the display
+just show the total and iconography corresponding to expected payment types. Your message
+will not be on that screen.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getPaymentState" title="getPaymentState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getPaymentState">&ndash;&nbsp;getPaymentState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the current state of payment</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailPaymentState)getPaymentState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the current state of payment</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getTippingState" title="getTippingState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getTippingState">&ndash;&nbsp;getTippingState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the current state of tipping</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailTippingState)getTippingState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the current state of tipping</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clearOnReaderTip" title="clearOnReaderTip"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clearOnReaderTip">&ndash;&nbsp;clearOnReaderTip</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Clear the on-reader tip that was acquired for this transaction</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)clearOnReaderTip</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Clear the on-reader tip that was acquired for this transaction</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginPayment:" title="beginPayment:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginPayment:">&ndash;&nbsp;beginPayment:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the payment flow (activate payment devices, listen for relevant events from devices)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailTransactionContext *_Nullable)beginPayment:(PPRetailTransactionBeginOptions *_Nullable)<em>paymentOptions</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the payment flow (activate payment devices, listen for relevant events from devices)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginRefund:amount:" title="beginRefund:amount:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginRefund:amount:">&ndash;&nbsp;beginRefund:amount:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailTransactionContext *_Nullable)beginRefund:(BOOL)<em>promptForCardOptions</em> amount:(NSDecimalNumber *_Nullable)<em>amount</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/beginRefund:amount:refundTag:" title="beginRefund:amount:refundTag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/beginRefund:amount:refundTag:">&ndash;&nbsp;beginRefund:amount:refundTag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailTransactionContext *_Nullable)beginRefund:(BOOL)<em>promptForCardOptions</em> amount:(NSDecimalNumber *_Nullable)<em>amount</em> refundTag:(NSString *_Nullable)<em>refundTag</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isRefund" title="isRefund"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isRefund">&ndash;&nbsp;isRefund</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Is the transaction a <a href="#//api/name/type">type</a> of refund?</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isRefund</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Is the transaction a <a href="#//api/name/type">type</a> of refund?</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deactivateFormFactors:callback:" title="deactivateFormFactors:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deactivateFormFactors:callback:">&ndash;&nbsp;deactivateFormFactors:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Deactivate form factors without ending the transaction. Once deactivated, you should re-begin the transaction to
+start taking payments</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deactivateFormFactors:(NSArray *_Nullable)<em>formFactors</em> callback:(PPRetailTransactionContextCompleteHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Deactivate form factors without ending the transaction. Once deactivated, you should re-begin the transaction to
+start taking payments</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clear:" title="clear:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clear:">&ndash;&nbsp;clear:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Abort an idle transaction abandoning activated readers and all event listeners. The completed event
+will NOT be fired for this TransactionContext given that you have explicitly abandoned it</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)clear:(PPRetailTransactionContextCompleteHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Abort an idle transaction abandoning activated readers and all event listeners. The completed event
+will NOT be fired for this TransactionContext given that you have explicitly abandoned it</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isPaymentInRetryOrProgress" title="isPaymentInRetryOrProgress"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isPaymentInRetryOrProgress">&ndash;&nbsp;isPaymentInRetryOrProgress</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check to see if payment is in &lsquo;retry&rsquo; state. This check helps with
+disconnection/connection logic when the app goes in the background.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isPaymentInRetryOrProgress</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check to see if payment is in &lsquo;retry&rsquo; state. This check helps with
+disconnection/connection logic when the app goes in the background.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestPaymentCancellation:" title="requestPaymentCancellation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestPaymentCancellation:">&ndash;&nbsp;requestPaymentCancellation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Request to cancel a payment. The request will only be accepted if payment is not already in progress.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestPaymentCancellation:(PPRetailTransactionContextCancellationHandlerHandler _Nullable)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Request to cancel a payment. The request will only be accepted if payment is not already in progress.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestDigitalCardCancellation:" title="requestDigitalCardCancellation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestDigitalCardCancellation:">&ndash;&nbsp;requestDigitalCardCancellation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Request to cancel an ongoing payment.
+The request will only be accepted if there is a partial digital card payment and payment is not in progress.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestDigitalCardCancellation:(PPRetailTransactionContextVoidCompletedHandler _Nullable)<em>voidCompletedHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Request to cancel an ongoing payment.
+The request will only be accepted if there is a partial digital card payment and payment is not in progress.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dropHandlers" title="dropHandlers"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dropHandlers">&ndash;&nbsp;dropHandlers</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove all handlers</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)dropHandlers</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove all handlers</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/discardPresentedCard:" title="discardPresentedCard:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/discardPresentedCard:">&ndash;&nbsp;discardPresentedCard:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Discard the presented card for non-EMV transactions only</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)discardPresentedCard:(PPRetailCard *_Nullable)<em>card</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Discard the presented card for non-EMV transactions only</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithCard:tag:" title="continueWithCard:tag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCard:tag:">&ndash;&nbsp;continueWithCard:tag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCard:(PPRetailCard *_Nullable)<em>card</em> tag:(NSString *_Nullable)<em>tag</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Begin the flow to issue a refund on the current <a href="#//api/name/invoice">invoice</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithDigitalCard:" title="continueWithDigitalCard:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithDigitalCard:">&ndash;&nbsp;continueWithDigitalCard:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Continue processing transaction with Digital Card/Code information</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithDigitalCard:(PPRetailDigitalCard *_Nullable)<em>digitalCard</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Continue processing transaction with Digital Card/Code information</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithCard:" title="continueWithCard:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCard:">&ndash;&nbsp;continueWithCard:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Continue processing a transaction - the behavior of which depends on the presented card.
+If it&rsquo;s a magnetic card or an NFC tap, payment will be attempted and money will move
+(if successful). If it&rsquo;s an EMV card insertion, we will start the EMV flow which includes
+a few calls to the server, potentially asking the user to enter a PIN, etc.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCard:(PPRetailCard *_Nullable)<em>card</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Continue processing a transaction - the behavior of which depends on the presented card.
+If it&rsquo;s a magnetic card or an NFC tap, payment will be attempted and money will move
+(if successful). If it&rsquo;s an EMV card insertion, we will start the EMV flow which includes
+a few calls to the server, potentially asking the user to enter a PIN, etc.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startInvoiceSync" title="startInvoiceSync"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startInvoiceSync">&ndash;&nbsp;startInvoiceSync</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sync the Invoice total to the reader display. Use this function to sync
+<a href="#//api/name/invoice">invoice</a> amount on the app to the reader. This automatic <a href="#//api/name/invoice">invoice</a> syncing will stop based on the transaction state.
+Use &lsquo;syncInvoiceOnce&rsquo; to do an on-demand push <a href="#//api/name/invoice">invoice</a> total to the card reader display</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startInvoiceSync</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Sync the Invoice total to the reader display. Use this function to sync
+<a href="#//api/name/invoice">invoice</a> amount on the app to the reader. This automatic <a href="#//api/name/invoice">invoice</a> syncing will stop based on the transaction state.
+Use &lsquo;syncInvoiceOnce&rsquo; to do an on-demand push <a href="#//api/name/invoice">invoice</a> total to the card reader display</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncInvoiceOnce" title="syncInvoiceOnce"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncInvoiceOnce">&ndash;&nbsp;syncInvoiceOnce</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Do a one time sync of <a href="#//api/name/invoice">invoice</a> total to card reader</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)syncInvoiceOnce</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Do a one time sync of <a href="#//api/name/invoice">invoice</a> total to card reader</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithCash" title="continueWithCash"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCash">&ndash;&nbsp;continueWithCash</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Continue processing a cash transaction.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCash</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Continue processing a cash transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithQRC" title="continueWithQRC"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithQRC">&ndash;&nbsp;continueWithQRC</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Continue processing a QRC transaction.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithQRC</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Continue processing a QRC transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/continueWithCheck" title="continueWithCheck"></a>
+	<h3 class="method-title"><code><a href="#//api/name/continueWithCheck">&ndash;&nbsp;continueWithCheck</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Continue processing a check transaction.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)continueWithCheck</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Continue processing a check transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setSignatureCollector:" title="setSignatureCollector:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setSignatureCollector:">&ndash;&nbsp;setSignatureCollector:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If you acquire signatures yourself, for example from a Topaz Pen Pad or with an external
+camera, set this property to a handler that will be invoked when signature should be
+collected. Once you&rsquo;ve collected the signature, call the supplied signatureReceiver
+with a base64 encoded JPG of the signature. Try to keep it under 100k.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setSignatureCollector:(PPRetailTransactionContextSignatureCollectorHandler _Nullable)<em>collector</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you acquire signatures yourself, for example from a Topaz Pen Pad or with an external
+camera, set this property to a handler that will be invoked when signature should be
+collected. Once you&rsquo;ve collected the signature, call the supplied signatureReceiver
+with a base64 encoded JPG of the signature. Try to keep it under 100k.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTokenExpiredHandler:" title="setTokenExpiredHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTokenExpiredHandler:">&ndash;&nbsp;setTokenExpiredHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a token expiration handler if you want to handle token expirations during a transaction</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTokenExpiredHandler:(PPRetailTransactionContextTokenExpirationHandlerHandler _Nullable)<em>expirationHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a token expiration handler if you want to handle token expirations during a transaction</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCardInsertedHandler:" title="setCardInsertedHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCardInsertedHandler:">&ndash;&nbsp;setCardInsertedHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a handler to get notified after chip card insert is detected but before EMV data is read.
+cardInsertedHandler.continueWithCardDataRead must be invoked to continue with transaction</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setCardInsertedHandler:(PPRetailTransactionContextCardInsertedHandlerHandler _Nullable)<em>cardInsertedHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a handler to get notified after chip card insert is detected but before EMV data is read.
+cardInsertedHandler.continueWithCardDataRead must be invoked to continue with transaction</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCardPresentedHandler:" title="setCardPresentedHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCardPresentedHandler:">&ndash;&nbsp;setCardPresentedHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a handler to get notified when card was presented and emv/magstripe data was read.
+TransactionContext.continueWithCard should be invoked to continue the payment</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setCardPresentedHandler:(PPRetailTransactionContextCardPresentedHandler _Nullable)<em>cardPresentedHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a handler to get notified when card was presented and emv/magstripe data was read.
+TransactionContext.continueWithCard should be invoked to continue the payment</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setQRCStatusHandler:" title="setQRCStatusHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setQRCStatusHandler:">&ndash;&nbsp;setQRCStatusHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a handler to get notifications for QRC Payment</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setQRCStatusHandler:(PPRetailTransactionContextOnQRCStatusHandler _Nullable)<em>qrcStatusHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a handler to get notifications for QRC Payment</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCompletedHandler:" title="setCompletedHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCompletedHandler:">&ndash;&nbsp;setCompletedHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a handler to get notified once transaction is complete</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setCompletedHandler:(PPRetailTransactionContextTransactionCompletedHandler _Nullable)<em>completedHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a handler to get notified once transaction is complete</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setVaultCompletedHandler:" title="setVaultCompletedHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setVaultCompletedHandler:">&ndash;&nbsp;setVaultCompletedHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a handler to get notified once vault is complete</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setVaultCompletedHandler:(PPRetailTransactionContextVaultCompletedHandler _Nullable)<em>completedHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a handler to get notified once vault is complete</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setOfflineTransactionAdditionHandler:" title="setOfflineTransactionAdditionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setOfflineTransactionAdditionHandler:">&ndash;&nbsp;setOfflineTransactionAdditionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a handler to get offline transaction addition notification</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setOfflineTransactionAdditionHandler:(PPRetailTransactionContextOfflineTransactionAddedHandler _Nullable)<em>addedHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a handler to get offline transaction addition notification</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setAdditionalReceiptOptions:receiptHandler:" title="setAdditionalReceiptOptions:receiptHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAdditionalReceiptOptions:receiptHandler:">&ndash;&nbsp;setAdditionalReceiptOptions:receiptHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If you would like to display additional receipt options such as print, etc., you can provide them here. These
+options would be presented on the receipt screen below the Email and Text options.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setAdditionalReceiptOptions:(NSArray *_Nullable)<em>additionalReceiptOptions</em> receiptHandler:(PPRetailTransactionContextReceiptOptionHandlerHandler _Nullable)<em>receiptHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you would like to display additional receipt options such as print, etc., you can provide them here. These
+options would be presented on the receipt screen below the Email and Text options.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addContactlessReaderDeactivatedListener:" title="addContactlessReaderDeactivatedListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addContactlessReaderDeactivatedListener:">&ndash;&nbsp;addContactlessReaderDeactivatedListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the contactlessReaderDeactivated event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailContactlessReaderDeactivatedSignal _Nullable)addContactlessReaderDeactivatedListener:(PPRetailContactlessReaderDeactivatedEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailContactlessReaderDeactivatedSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the contactlessReaderDeactivated event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeContactlessReaderDeactivatedListener:" title="removeContactlessReaderDeactivatedListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeContactlessReaderDeactivatedListener:">&ndash;&nbsp;removeContactlessReaderDeactivatedListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the contactlessReaderDeactivated event given the signal object that was returned from addContactlessReaderDeactivatedListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeContactlessReaderDeactivatedListener:(PPRetailContactlessReaderDeactivatedSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the contactlessReaderDeactivated event given the signal object that was returned from addContactlessReaderDeactivatedListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addContactlessReaderActivatedListener:" title="addContactlessReaderActivatedListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addContactlessReaderActivatedListener:">&ndash;&nbsp;addContactlessReaderActivatedListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the contactlessReaderActivated event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailContactlessReaderActivatedSignal _Nullable)addContactlessReaderActivatedListener:(PPRetailContactlessReaderActivatedEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailContactlessReaderActivatedSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the contactlessReaderActivated event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeContactlessReaderActivatedListener:" title="removeContactlessReaderActivatedListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeContactlessReaderActivatedListener:">&ndash;&nbsp;removeContactlessReaderActivatedListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the contactlessReaderActivated event given the signal object that was returned from addContactlessReaderActivatedListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeContactlessReaderActivatedListener:(PPRetailContactlessReaderActivatedSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the contactlessReaderActivated event given the signal object that was returned from addContactlessReaderActivatedListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addPinEntryListener:" title="addPinEntryListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addPinEntryListener:">&ndash;&nbsp;addPinEntryListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the pinEntry event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailPinEntrySignal _Nullable)addPinEntryListener:(PPRetailPinEntryEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailPinEntrySignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the pinEntry event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removePinEntryListener:" title="removePinEntryListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removePinEntryListener:">&ndash;&nbsp;removePinEntryListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the pinEntry event given the signal object that was returned from addPinEntryListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removePinEntryListener:(PPRetailPinEntrySignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the pinEntry event given the signal object that was returned from addPinEntryListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addWillPresentSignatureListener:" title="addWillPresentSignatureListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addWillPresentSignatureListener:">&ndash;&nbsp;addWillPresentSignatureListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the willPresentSignature event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailWillPresentSignatureSignal _Nullable)addWillPresentSignatureListener:(PPRetailWillPresentSignatureEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailWillPresentSignatureSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the willPresentSignature event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeWillPresentSignatureListener:" title="removeWillPresentSignatureListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeWillPresentSignatureListener:">&ndash;&nbsp;removeWillPresentSignatureListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the willPresentSignature event given the signal object that was returned from addWillPresentSignatureListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeWillPresentSignatureListener:(PPRetailWillPresentSignatureSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the willPresentSignature event given the signal object that was returned from addWillPresentSignatureListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addReaderTippingCompletedListener:" title="addReaderTippingCompletedListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addReaderTippingCompletedListener:">&ndash;&nbsp;addReaderTippingCompletedListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the readerTippingCompleted event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailReaderTippingCompletedSignal _Nullable)addReaderTippingCompletedListener:(PPRetailReaderTippingCompletedEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailReaderTippingCompletedSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the readerTippingCompleted event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeReaderTippingCompletedListener:" title="removeReaderTippingCompletedListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeReaderTippingCompletedListener:">&ndash;&nbsp;removeReaderTippingCompletedListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the readerTippingCompleted event given the signal object that was returned from addReaderTippingCompletedListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeReaderTippingCompletedListener:(PPRetailReaderTippingCompletedSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the readerTippingCompleted event given the signal object that was returned from addReaderTippingCompletedListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addDidCompleteSignatureListener:" title="addDidCompleteSignatureListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addDidCompleteSignatureListener:">&ndash;&nbsp;addDidCompleteSignatureListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the didCompleteSignature event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (PPRetailDidCompleteSignatureSignal _Nullable)addDidCompleteSignatureListener:(PPRetailDidCompleteSignatureEvent _Nullable)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailDidCompleteSignatureSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the didCompleteSignature event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeDidCompleteSignatureListener:" title="removeDidCompleteSignatureListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeDidCompleteSignatureListener:">&ndash;&nbsp;removeDidCompleteSignatureListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the didCompleteSignature event given the signal object that was returned from addDidCompleteSignatureListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeDidCompleteSignatureListener:(PPRetailDidCompleteSignatureSignal _Nullable)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the didCompleteSignature event given the signal object that was returned from addDidCompleteSignatureListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailTransactionContext.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
 					
 
                     
+                    
+          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-01-27</p>
+						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-04-07</p>
 						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>
