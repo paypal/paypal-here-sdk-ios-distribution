@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 
-	<title></title>
+	<title>PayPalRetailSDK Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
 </head>
 <body class="appledoc">
 	<header>
@@ -43,9 +43,57 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
-
+	<option value="overview">Overview</option>
 	
 
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/addDeviceDiscoveredListener:">+ addDeviceDiscoveredListener:</option>
+		
+		<option value="//api/name/addLoggingService:">+ addLoggingService:</option>
+		
+		<option value="//api/name/addUntrustedNetworkListener:">+ addUntrustedNetworkListener:</option>
+		
+		<option value="//api/name/captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:">+ captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:</option>
+		
+		<option value="//api/name/checkIfSwiperIsEligibleForMerchant">+ checkIfSwiperIsEligibleForMerchant</option>
+		
+		<option value="//api/name/createTransaction:">+ createTransaction:</option>
+		
+		<option value="//api/name/initializeMerchant:repository:completionHandler:">+ initializeMerchant:repository:completionHandler:</option>
+		
+		<option value="//api/name/initializeMerchantOffline:">+ initializeMerchantOffline:</option>
+		
+		<option value="//api/name/initializeMerchantWithCredentials:completionHandler:">+ initializeMerchantWithCredentials:completionHandler:</option>
+		
+		<option value="//api/name/initializeSDK">+ initializeSDK</option>
+		
+		<option value="//api/name/isDeviceSimulated">+ isDeviceSimulated</option>
+		
+		<option value="//api/name/removeDeviceDiscoveredListener:">+ removeDeviceDiscoveredListener:</option>
+		
+		<option value="//api/name/removeUntrustedNetworkListener:">+ removeUntrustedNetworkListener:</option>
+		
+		<option value="//api/name/shutdownSDK">+ shutdownSDK</option>
+		
+		<option value="//api/name/startSimulationWithOptions:">+ startSimulationWithOptions:</option>
+		
+		<option value="//api/name/startWatchingAudio">+ startWatchingAudio</option>
+		
+	</optgroup>
+	
+
+	
 	
 </select>
 						</label>
@@ -59,22 +107,825 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title"></h1>
+					<h1 class="title">PayPalRetailSDK Class Reference</h1>
 
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>PayPalRetailSDK.h</td>
+</tr>
+						</tbody></table></div>
 					
 
                     
+					
+					
 
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/addLoggingService:" title="addLoggingService:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addLoggingService:">+&nbsp;addLoggingService:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Used for Instrumentaion using the Instrumentation-SDK to log for various loggers.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addLoggingService:(id&lt;PPRetailInstrumentationDelegate&gt;)<em>logingService</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Used for Instrumentaion using the Instrumentation-SDK to log for various loggers.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeSDK" title="initializeSDK"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeSDK">+&nbsp;initializeSDK</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This is the first call you should make to the PayPal Retail SDK (typically in application:didFinishLaunchingWithOptions:,
+but if you are using the SDK only in certain cases or for certain customers, then at the appropriate time)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailError *)initializeSDK</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This is the first call you should make to the PayPal Retail SDK (typically in application:didFinishLaunchingWithOptions:,
+but if you are using the SDK only in certain cases or for certain customers, then at the appropriate time)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/checkIfSwiperIsEligibleForMerchant" title="checkIfSwiperIsEligibleForMerchant"></a>
+	<h3 class="method-title"><code><a href="#//api/name/checkIfSwiperIsEligibleForMerchant">+&nbsp;checkIfSwiperIsEligibleForMerchant</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Use this call to determine whether the current merchant is elegible to use a swiper</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)checkIfSwiperIsEligibleForMerchant</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Use this call to determine whether the current merchant is elegible to use a swiper</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shutdownSDK" title="shutdownSDK"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shutdownSDK">+&nbsp;shutdownSDK</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call shutdownSDK. You will need to
+call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)shutdownSDK</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call shutdownSDK. You will need to
+call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeMerchant:repository:completionHandler:" title="initializeMerchant:repository:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeMerchant:repository:completionHandler:">+&nbsp;initializeMerchant:repository:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Once you have retrieved a token for your merchant (typically from a backend server), call initializeMerchant
+and wait for the completionHandler to be called before doing more SDK operations.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailError *)initializeMerchant:(NSString *)<em>merchantToken</em> repository:(NSString *)<em>repository</em> completionHandler:(PPRetailMerchantHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Once you have retrieved a token for your merchant (typically from a backend server), call initializeMerchant
+and wait for the completionHandler to be called before doing more SDK operations.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeMerchantOffline:" title="initializeMerchantOffline:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeMerchantOffline:">+&nbsp;initializeMerchantOffline:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If you are whitelisted for offline payments
+and you have initialized online once on the current device
+then you can initialize the merchant offline</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailError *)initializeMerchantOffline:(PPRetailMerchantHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you are whitelisted for offline payments
+and you have initialized online once on the current device
+then you can initialize the merchant offline</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeMerchantWithCredentials:completionHandler:" title="initializeMerchantWithCredentials:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeMerchantWithCredentials:completionHandler:">+&nbsp;initializeMerchantWithCredentials:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Once you have SdkCredentials, call initializeMerchantWithCredentials
+and wait for the completionHandler to be called before doing more SDK operations.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)initializeMerchantWithCredentials:(SdkCredential *)<em>credentials</em> completionHandler:(PPRetailMerchantHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Once you have SdkCredentials, call initializeMerchantWithCredentials
+and wait for the completionHandler to be called before doing more SDK operations.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createTransaction:" title="createTransaction:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createTransaction:">+&nbsp;createTransaction:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This is the primary starting point for taking a payment. First, create an invoice, then create a transaction, then
+begin the transaction to have the SDK listen for events and go through the relevant flows for a payment type.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailTransactionContext *)createTransaction:(PPRetailInvoice *)<em>invoice</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This is the primary starting point for taking a payment. First, create an invoice, then create a transaction, then
+begin the transaction to have the SDK listen for events and go through the relevant flows for a payment type.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addDeviceDiscoveredListener:" title="addDeviceDiscoveredListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addDeviceDiscoveredListener:">+&nbsp;addDeviceDiscoveredListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the deviceDiscovered event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailDeviceDiscoveredSignal)addDeviceDiscoveredListener:(PPRetailDeviceDiscoveredEvent)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>PPRetailDeviceDiscoveredSignal an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the deviceDiscovered event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeDeviceDiscoveredListener:" title="removeDeviceDiscoveredListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeDeviceDiscoveredListener:">+&nbsp;removeDeviceDiscoveredListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)removeDeviceDiscoveredListener:(PPRetailDeviceDiscoveredSignal)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the deviceDiscovered event given the signal object that was returned from addDeviceDiscoveredListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isDeviceSimulated" title="isDeviceSimulated"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isDeviceSimulated">+&nbsp;isDeviceSimulated</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>whether the device is being simulated or not</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isDeviceSimulated</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>whether the device is being simulated or not</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startSimulationWithOptions:" title="startSimulationWithOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startSimulationWithOptions:">+&nbsp;startSimulationWithOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Start Simulating Payment <a href="../Classes/Device.html">Device</a> - This will allow you to mock the Payment <a href="../Classes/Device.html">Device</a>
+and the server. This will only work in &ldquo;DEBUG&rdquo; mode</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)startSimulationWithOptions:(PPRetailSimulationOptions *)<em>options</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Start Simulating Payment <a href="../Classes/Device.html">Device</a> - This will allow you to mock the Payment <a href="../Classes/Device.html">Device</a>
+and the server. This will only work in &ldquo;DEBUG&rdquo; mode</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addUntrustedNetworkListener:" title="addUntrustedNetworkListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addUntrustedNetworkListener:">+&nbsp;addUntrustedNetworkListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a listener for the untrustedNetwork event</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailUntrustedNetworkSignal)addUntrustedNetworkListener:(PPRetailUntrustedNetworkEvent)<em>listener</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><a href="../Blocks/PPRetailUntrustedNetworkEvent.html">PPRetailUntrustedNetworkEvent</a> an object that can be used to remove the listener when
+you&rsquo;re done with it.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add a listener for the untrustedNetwork event</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeUntrustedNetworkListener:" title="removeUntrustedNetworkListener:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeUntrustedNetworkListener:">+&nbsp;removeUntrustedNetworkListener:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove a listener for the untrustedNetwork event given the signal object that was returned from addUntrustedNetworkListener</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)removeUntrustedNetworkListener:(PPRetailUntrustedNetworkSignal)<em>listenerToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove a listener for the untrustedNetwork event given the signal object that was returned from addUntrustedNetworkListener</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:" title="captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:">+&nbsp;captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Capture a authorized transaction by providing authorization ID and final amount to be captured</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)captureAuthorizedTransaction:(NSString *_Nullable)<em>authorizationId</em> invoiceId:(NSString *_Nullable)<em>invoiceId</em> totalAmount:(NSDecimalNumber *_Nullable)<em>totalAmount</em> gratuityAmount:(NSDecimalNumber *_Nullable)<em>gratuityAmount</em> currency:(NSString *_Nullable)<em>currency</em> callback:(PPRetailTransactionManagerCaptureAuthorizedTransactionHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Capture a authorized transaction by providing authorization ID and final amount to be captured</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startWatchingAudio" title="startWatchingAudio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startWatchingAudio">+&nbsp;startWatchingAudio</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Watch for audio readers.
+This will show a microphone connection permission prompt on the initial call
+Time this call such that it does not interfere with any other alerts
+Requires a merchant, so start watching after a successful initializeMerchant
+The audio reader may not be available to some merchants based on their location or other criteria</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)startWatchingAudio</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Watch for audio readers.
+This will show a microphone connection permission prompt on the initial call
+Time this call such that it does not interfere with any other alerts
+Requires a merchant, so start watching after a successful initializeMerchant
+The audio reader may not be available to some merchants based on their location or other criteria</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
 					
 
                     
+                    
+          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-01-27</p>
+						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-04-07</p>
 						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>
