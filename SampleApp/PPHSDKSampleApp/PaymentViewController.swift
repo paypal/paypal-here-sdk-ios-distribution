@@ -213,7 +213,9 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         mInvoice.number = "sdk2test\(arc4random_uniform(99999))"
 
       guard mInvoice.itemCount > 0, mInvoice.total?.intValue ?? 0 >= 1 else {
-            let alertController = UIAlertController(title: "Whoops!", message: "Either there are no line items or the total amount is less than \(currencySymbol)1", preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "Whoops!",
+                                                    message: "Either there are no line items or the total amount is less than \(currencySymbol)1",
+                                                    preferredStyle: UIAlertControllerStyle.alert)
 
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (_: UIAlertAction) -> Void in
                 print("Error creating invoice")
