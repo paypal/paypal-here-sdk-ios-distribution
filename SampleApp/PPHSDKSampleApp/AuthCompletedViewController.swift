@@ -17,12 +17,12 @@ class AuthCompletedViewController: UIViewController {
     @IBOutlet weak var captureAuthBtn: CustomButton!
     @IBOutlet weak var captureAuthCodeViewer: UITextView!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
-    
+
     var invoice: PPRetailRetailInvoice?
     var authTransactionNumber: String?
     var paymentMethod: PPRetailInvoicePaymentMethod?
     var isTip: Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDefaultView()
@@ -38,7 +38,7 @@ class AuthCompletedViewController: UIViewController {
         voidAuthBtn.isHidden = true
         activitySpinner.isHidden = false
         activitySpinner.startAnimating()
-        
+
         PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in
             if let err = error {
                 print("Error Code: \(String(describing: err.code))")
@@ -46,26 +46,31 @@ class AuthCompletedViewController: UIViewController {
                 print("Debug ID: \(String(describing: err.debugId))")
                 return
             }
-            
+
             print("Void Payment was successful.")
             self.activitySpinner.stopAnimating()
             self.activitySpinner.isHidden = true
-            
-            let alertController = UIAlertController(title: "Voided Successfully", message: "The payment was voided successfully.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Start Over", style: .default, handler: { (action) in
-                let paymentViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
-                var viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+
+            let alertController = UIAlertController(title: "Voided Successfully",
+                                                    message: "The payment was voided successfully.",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Start Over", style: .default, handler: { (_) in
+                guard let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController,
+                      var viewControllers = self.navigationController?.viewControllers else {
+                  return
+                }
+
                 viewControllers.removeLast()
-                viewControllers[3] = paymentViewController!
+              viewControllers[3] = paymentViewController
                 self.navigationController?.setViewControllers(viewControllers, animated: true)
             }))
             self.present(alertController, animated: true, completion: nil)
         }
-        
+
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "goToCaptureAuthView") {
+        if segue.identifier == "goToCaptureAuthView" {
             if let captureAuthViewController = segue.destination as? CaptureAuthViewController {
                 captureAuthViewController.authTransactionNumber = authTransactionNumber
                 captureAuthViewController.invoice = invoice
@@ -74,34 +79,36 @@ class AuthCompletedViewController: UIViewController {
             }
         }
     }
-    
+
     @IBAction func captureAuthorization(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Adding a tip?", message: "Are you trying to do a regular capture or add a tip to a previous transaction?", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Capture", style: .default, handler: {action in
+        let alert = UIAlertController(title: "Adding a tip?",
+                                      message: "Are you trying to do a regular capture or add a tip to a previous transaction?",
+                                      preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Capture", style: .default, handler: {_ in
             self.isTip = false
             self.performSegue(withIdentifier: "goToCaptureAuthView", sender: sender)
         }))
-        alert.addAction(UIAlertAction(title: "Add Tip", style: .default, handler: {action in
+        alert.addAction(UIAlertAction(title: "Add Tip", style: .default, handler: {_ in
             self.isTip = true
             self.performSegue(withIdentifier: "goToCaptureAuthView", sender: sender)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = captureAuthBtn
             popoverController.sourceRect = captureAuthBtn.bounds
         }
-        
+
         self.present(alert, animated: true)
     }
-    
+
     func getCurrentNavigationController() -> UINavigationController! {
         return self.navigationController
     }
-    
-    private func setUpDefaultView(){
-        
+
+    private func setUpDefaultView() {
+
         voidCodeViewer.text = "PayPalRetailSDK.transactionManager().voidAuthorization(authTransactionNumber) { (error) in\n" +
             "   <code to handle success/failure>\n" +
         "}"

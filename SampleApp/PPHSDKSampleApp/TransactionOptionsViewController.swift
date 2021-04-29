@@ -15,36 +15,36 @@ protocol TransactionOptionsViewControllerDelegate: NSObjectProtocol {
 }
 
 class TransactionOptionsViewController: UIViewController {
-    
+
     @IBOutlet weak var transactionsTableView: UITableView!
-    
+
     /// Sets up the parameters for taking in Options from Payment View Controller
     weak var delegate: TransactionOptionsViewControllerDelegate?
     var transactionOptions: PPRetailTransactionBeginOptions!
     var formFactorArray: [PPRetailFormFactor]!
     var transactionOptionsArray = ["Sales Options", "Auth/Capture", "Prompt in App", "Prompt in Card Reader", "Tipping on Reader", "AmountBased Tipping", "Enable Quick Chip", "Enable QRC Prompt", "Tags", "Allowed Card Readers", "Magnetic Card Swipe", "Chip", "Contactless", "Secure Manual Entry", "Manual Card Entry"]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Sets the toolbar to the "tagTextField"
         // setToolBarForTextField(tagTextField)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         /// This will pass the formFactorArray to the previous ViewController (PaymentViewController)
         /// and dismiss the transactionOptionsViewController.
         self.delegate?.transactionOptions(controller: self, options: transactionOptions)
         self.delegate?.transactionOptionsFormFactors(controller: self, formFactors: formFactorArray)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     @objc func switchHandler(_ sender: UISwitch) {
         var formFactor: PPRetailFormFactor!
         switch sender.tag {
@@ -66,9 +66,7 @@ class TransactionOptionsViewController: UIViewController {
             formFactorSwitchPressed(sender)
         }
     }
-    
-    
-    
+
     /// This function is triggered when the UITextField for Tag is doneEditing
     /// It will take the text in the UITextField and set it to the transactionOptions.tag field.
     /// If nothing is typed in the field then it will pass an empty value to the field.
@@ -76,13 +74,13 @@ class TransactionOptionsViewController: UIViewController {
     @IBAction func tagTextFieldEndEditing(_ sender: UITextField) {
         transactionOptions.tag = sender.text ?? ""
     }
-    
+
     /// This function will be triggered when one of the formFactor buttons is pressed. Whichever button triggers this
     /// function, this function will get the associated formFactor and append the formFactor to the formFactorArray if
     /// the formFactor isSelected and remove the formFactor from the array if the formFactor was removed(clicked on again).
     /// - Parameter sender: UIButton assoicated with the formFactor Buttons.
     @IBAction func formFactorSwitchPressed(_ sender: UISwitch) {
-        
+
         var formFactor: PPRetailFormFactor!
         switch sender.tag {
         case 10:
@@ -98,7 +96,7 @@ class TransactionOptionsViewController: UIViewController {
         default:
             formFactor = PPRetailFormFactor.none
         }
-        
+
         if sender.isOn {
             formFactorArray.append(formFactor)
             transactionOptions.preferredFormFactors = formFactorArray
@@ -109,7 +107,7 @@ class TransactionOptionsViewController: UIViewController {
             }
         }
     }
-    
+
     /// THIS FUNCTION IS ONLY FOR UI. This will iterate through the formFactorArray and get the appropriate tag for the
     /// buttons depending on the formFactor that are in the array. Then it will go through UIButton Outlet Collection
     /// Array and set the isSelected State for the buttons associated with the form Factor.
@@ -132,13 +130,13 @@ class TransactionOptionsViewController: UIViewController {
             }
         }
     }
-    
+
     /// THIS FUNCTION IS ONLY FOR UI. This function will create a toolbar which will have a "Done" button
     /// to let us know that we have finished editing.
     /// - Parameter sender: UITextfield that we want to add the toolbar to
-    private func setToolBarForTextField(_ sender: UITextField){
-        //init toolbar for keyboard
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 50))
+    private func setToolBarForTextField(_ sender: UITextField) {
+        // init toolbar for keyboard
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
         let customDoneButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: toolbar.bounds.size.width, height: toolbar.bounds.size.height))
         customDoneButton.setTitle("Done", for: .normal)
         customDoneButton.setTitleColor(.white, for: .normal)
@@ -147,31 +145,31 @@ class TransactionOptionsViewController: UIViewController {
         let doneBtn = UIBarButtonItem(customView: customDoneButton)
         toolbar.setItems([doneBtn], animated: false)
         toolbar.sizeToFit()
-        
+
         sender.inputAccessoryView = toolbar
         sender.layer.borderColor = (UIColor(red: 0/255, green: 159/255, blue: 228/255, alpha: 1)).cgColor
     }
-    
+
     /// THIS FUNCTION IS ONLY FOR UI. It will end keyboard editing and is the action for the done button in the
     /// UITextfield toolbar.
-    @objc private func doneButtonAction(){
+    @objc private func doneButtonAction() {
         view.endEditing(true)
     }
 }
 
 extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactionOptionsArray.count
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 7 {
             return 80
         }
         return 60
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 || indexPath.row == 9 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell") as? OptionsCell {
@@ -186,7 +184,7 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
                 }
             }
             return cell
-            
+
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionOptionsCell") as? TransactionOptionsCell else {return UITableViewCell()}
             cell.lblOption.text = transactionOptionsArray[indexPath.row]
@@ -201,7 +199,7 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
         }
         return UITableViewCell()
     }
-    
+
     func updateSwitches(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
@@ -222,7 +220,7 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
             print("Nothing")
         }
     }
-    
+
     func updateSwitchesForm(transactionCell: TransactionOptionsCell, indexPath: IndexPath) {
         if let formFactorArray = transactionOptions.preferredFormFactors {
             for factor in formFactorArray {
@@ -246,9 +244,9 @@ extension TransactionOptionsViewController: UITableViewDataSource, UITableViewDe
                         transactionCell.switchOption.isOn = true
                     }
                 }
-                
+
             }
-            
+
         }
     }
 }
@@ -264,5 +262,5 @@ extension TransactionOptionsViewController: UITextFieldDelegate {
         }
         return true
     }
-    
+
 }

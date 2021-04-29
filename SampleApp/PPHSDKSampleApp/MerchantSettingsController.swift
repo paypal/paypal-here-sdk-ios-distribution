@@ -9,20 +9,19 @@
 import UIKit
 import PayPalRetailSDK
 
-
 class MerchantSettingsController: UIViewController {
     var merchant: PPRetailMerchant!
-    
+
     @IBOutlet weak var txtsoftDescriptor: UITextField!
     @IBOutlet weak var txtStoreId: UITextField!
     @IBOutlet weak var txtreferrerCode: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Merchant Settings"
         showMerchantDetails()
     }
-    
+
     func showMerchantDetails() {
         if let softDescriptor = merchant.softDescriptor {
             txtsoftDescriptor.text = softDescriptor
@@ -34,7 +33,7 @@ class MerchantSettingsController: UIViewController {
             txtreferrerCode.text = referrerCode
         }
     }
-    
+
     @IBAction func updateMerchantHandler() {
         if let merchant = self.merchant {
             if let softDescriptor = txtsoftDescriptor.text {
@@ -46,7 +45,7 @@ class MerchantSettingsController: UIViewController {
             if let referrerCode = txtreferrerCode.text {
                 merchant.referrerCode = referrerCode
             }
-            
+
             let alertController = UIAlertController(title: "Success", message: "Merchant Details have been updated", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default) { (_) in
                 self.navigationController?.popViewController(animated: true)
@@ -54,10 +53,7 @@ class MerchantSettingsController: UIViewController {
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)
         }
-        
+
     }
-    
-    
-    
-    
+
 }
