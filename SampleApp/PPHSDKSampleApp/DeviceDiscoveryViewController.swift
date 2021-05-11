@@ -10,7 +10,7 @@ import UIKit
 import PayPalRetailSDK
 
 class DeviceDiscoveryViewController: UIViewController {
-
+    
     @IBOutlet weak var findAndConnect: CustomButton!
     @IBOutlet weak var findAndConnectCodeView: UITextView!
     @IBOutlet weak var connectLastKnown: CustomButton!
@@ -20,12 +20,12 @@ class DeviceDiscoveryViewController: UIViewController {
     @IBOutlet weak var autoConnectReaderCodeView: UITextView!
     @IBOutlet weak var autoConnectActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var goToPmtPageBtn: CustomButton!
-
+    
     let deviceManager = PayPalRetailSDK.deviceManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpDefaultView()
         // Watch for audio readers.
         // This will show a microphone connection permission prompt on the initial call (only once per app install)
@@ -35,15 +35,15 @@ class DeviceDiscoveryViewController: UIViewController {
         // This is required if the app would like to use audio readers
         PayPalRetailSDK.startWatchingAudio()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // Function to search for connected devices and show the UI to select which
     // device to use. As part of this function, we also need to include the process
     // of reader updates for our BT readers.
@@ -53,18 +53,18 @@ class DeviceDiscoveryViewController: UIViewController {
                 print("Search Device Error: \(String(describing: err.debugId))")
                 print("Search Device Error: \(String(describing: err.code))")
                 print("Search Device Error: \(String(describing: err.message))")
-
+                
                 return
             }
-
-            if paymentDevice?.isConnected() ?? false {
-              self.activeReaderLbl.text = "Connected: \((paymentDevice?.id) ?? "")"
-                self.checkForReaderUpdate(reader: paymentDevice)
+            
+            if(paymentDevice?.isConnected())! {
+                self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+                self.checkForReaderUpdate(reader:paymentDevice)
             }
         })
-
+        
     }
-
+    
     // Function to connect to the last known reader device used and check for any
     // reader updates.
     @IBAction func connectToLastReader(_ sender: Any) {
@@ -76,13 +76,13 @@ class DeviceDiscoveryViewController: UIViewController {
                 self.activeReaderLbl.text = "Error: \(err.message ?? "Unknown")"
                 return
             }
-            if paymentDevice?.isConnected() ?? false {
-                self.activeReaderLbl.text = "Connected: \(paymentDevice?.id ?? "")"
-                self.checkForReaderUpdate(reader: paymentDevice)
+            if(paymentDevice?.isConnected())! {
+                self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
+                self.checkForReaderUpdate(reader:paymentDevice)
             }
         })
     }
-
+    
     /// Auto Connect to the last known reader. It will check for that reader in the
     /// background and connect to it automatically if it is available.
     /// - Parameter sender: UI Button on the screen "Auto Connect"
@@ -94,26 +94,26 @@ class DeviceDiscoveryViewController: UIViewController {
             self.autoConnectActivityIndicator.stopAnimating()
             self.autoConnectReader.isHidden = false
             if error != nil {
-                print("Error in connecting with bluetooth reader via Auto Connect: " + (error?.developerMessage ?? ""))
+                print("Error in connecting with bluetooth reader via Auto Connect: " + (error?.developerMessage)!)
                 self.activeReaderLbl.text = "Error: \(error?.message ?? "No Last Reader")"
             } else {
-                if paymentDevice?.isConnected() ?? false {
-                  self.activeReaderLbl.text = "Connected: \((paymentDevice?.id) ?? "")"
+                if (paymentDevice?.isConnected())! {
+                    self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
                     self.checkForReaderUpdate(reader: paymentDevice)
                     print("Connected automatically with device.")
                 }
             }
         })
-
+        
     }
-
+    
     // Code that checks if there's a software update available for the connected
     // reader and initiates the process if there's one available.
-    func checkForReaderUpdate(reader: PPRetailPaymentDevice?) {
-
-        if reader != nil && reader?.pendingUpdate != nil && (reader?.pendingUpdate?.isRequired ?? false) {
+    func checkForReaderUpdate(reader:PPRetailPaymentDevice?) {
+        
+        if(reader != nil && reader?.pendingUpdate != nil && (reader?.pendingUpdate?.isRequired)!) {
             reader?.pendingUpdate?.offer({ (error, updateComplete) in
-                if updateComplete {
+                if(updateComplete) {
                     print("Reader update complete.")
                 } else {
                     print("Error in offer step: \(String(describing: error?.debugId))")
@@ -124,12 +124,12 @@ class DeviceDiscoveryViewController: UIViewController {
         } else {
             print("Reader update not required at this time.")
         }
-
+        
     }
-
-    private func setUpDefaultView() {
+    
+    private func setUpDefaultView(){
         // Setting up initial aesthetics
-
+        
         findAndConnectCodeView.text = "deviceManager.searchAndConnect({ (error, paymentDevice) in\n" +
             "   <code to handle success/failure>\n" +
         "})"
@@ -142,13 +142,13 @@ class DeviceDiscoveryViewController: UIViewController {
         activeReaderLbl.text = ""
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-
-    @objc private func popViewController() {
+    
+    @objc private func popViewController(){
         navigationController?.popViewController(animated: true)
     }
-
+    
     @IBAction func goToPmtPage(_ sender: Any) {
         performSegue(withIdentifier: "goToPmtTypeSelect", sender: sender)
     }
-
+    
 }
