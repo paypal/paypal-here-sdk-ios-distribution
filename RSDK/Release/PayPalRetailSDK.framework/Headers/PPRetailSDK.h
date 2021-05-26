@@ -162,6 +162,16 @@
  */
 -(void)simulateDevice:(PPRetailDeviceSimulatorType)devices usecase:(PPRetailSimulatorUseCase)usecase jsonResponseData:(NSString* _Nullable)jsonResponseData;
 
+/**
+ * Method to transform DeviceError code to PayPalError
+ */
+-(PPRetailError* _Nullable)getDeviceError:(PPRetailDeviceError)code;
+
+/**
+ * Method to transform SdkError code to PayPalError
+ */
+-(PPRetailError* _Nullable)getSdkError:(PPRetailSdkError)code;
+
 
 
 

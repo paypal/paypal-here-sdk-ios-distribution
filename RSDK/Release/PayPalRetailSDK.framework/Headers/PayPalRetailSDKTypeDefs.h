@@ -182,7 +182,10 @@ typedef NS_ENUM(NSInteger, PPRetailInvoicePaymentMethod) {
   PPRetailInvoicePaymentMethodDEBIT_CARD = 5,
   PPRetailInvoicePaymentMethodPAYPAL = 6,
   PPRetailInvoicePaymentMethodWIRE_TRANSFER = 7,
-  PPRetailInvoicePaymentMethodOTHER = 8
+  PPRetailInvoicePaymentMethodOTHER = 8,
+  PPRetailInvoicePaymentMethodDIGITAL_CARD = 9,
+  PPRetailInvoicePaymentMethodKEY_IN = 10,
+  PPRetailInvoicePaymentMethodQRC = 11
 };
 
 /**
@@ -254,12 +257,12 @@ typedef NS_ENUM(NSInteger, PPRetailReceiptScreenOrientation) {
  * Payment Methods enum for Transaction Begin Options
  */
 typedef NS_ENUM(NSInteger, PPRetailTransactionBeginOptionsPaymentTypes) {
-  PPRetailTransactionBeginOptionsPaymentTypescard = 0,
-  PPRetailTransactionBeginOptionsPaymentTypeskeyIn = 1,
+  PPRetailTransactionBeginOptionsPaymentTypescard = 4,
+  PPRetailTransactionBeginOptionsPaymentTypeskeyIn = 10,
   PPRetailTransactionBeginOptionsPaymentTypescash = 2,
   PPRetailTransactionBeginOptionsPaymentTypescheck = 3,
-  PPRetailTransactionBeginOptionsPaymentTypesdigitalCard = 4,
-  PPRetailTransactionBeginOptionsPaymentTypesqrc = 5
+  PPRetailTransactionBeginOptionsPaymentTypesdigitalCard = 9,
+  PPRetailTransactionBeginOptionsPaymentTypesqrc = 11
 };
 
 /**
@@ -484,6 +487,76 @@ typedef NS_ENUM(NSInteger, PPRetaildeviceManufacturer) {
   PPRetaildeviceManufacturerbbpos = 2,
   PPRetaildeviceManufacturerroam = 3,
   PPRetaildeviceManufacturerverifone = 4
+};
+
+/**
+ * Device Error name to code
+ */
+typedef NS_ENUM(NSInteger, PPRetailDeviceError) {
+  PPRetailDeviceErrorgeneric = 0,
+  PPRetailDeviceErrornfcTimeout = 1,
+  PPRetailDeviceErrornfcNotAllowed = 2,
+  PPRetailDeviceErrortryDifferentCard = 3,
+  PPRetailDeviceErrormustInsertCard = 4,
+  PPRetailDeviceErrormustSwipeCard = 5,
+  PPRetailDeviceErrorhardwareError = 6,
+  PPRetailDeviceErrorcardBlocked = 7,
+  PPRetailDeviceErrorcontactIssuer = 8,
+  PPRetailDeviceErrorinvalidChip = 9,
+  PPRetailDeviceErrorcannotSwipeChipCard = 10,
+  PPRetailDeviceErrorsmartCardNotInSlot = 11,
+  PPRetailDeviceErrorpaymentCancelled = 12,
+  PPRetailDeviceErrorcontactlessPaymentAbortedByCardInsert = 13,
+  PPRetailDeviceErrorcontactlessPaymentAbortedByCardSwipe = 14,
+  PPRetailDeviceErrorbadEmvData = 15,
+  PPRetailDeviceErrordeviceNotConnected = 16,
+  PPRetailDeviceErrorcannotAcceptMessage = 17,
+  PPRetailDeviceErroractionCancelled = 18,
+  PPRetailDeviceErrorsecureEntryFailed = 19,
+  PPRetailDeviceErrornumericEntryFailed = 20,
+  PPRetailDeviceErrordataValidationError = 21,
+  PPRetailDeviceErrorunexpectedResponse = 22,
+  PPRetailDeviceErrorfailureResponse = 23,
+  PPRetailDeviceErrordataRetrievalFailed = 24,
+  PPRetailDeviceErrorlowOnBattery = 25,
+  PPRetailDeviceErrorfileNotFound = 26,
+  PPRetailDeviceErrorfileImportFailed = 27,
+  PPRetailDeviceErrorinitializationFailed = 28,
+  PPRetailDeviceErrortipEntryFailed = 29,
+  PPRetailDeviceErrorswUpdateFailed = 30,
+  PPRetailDeviceErrornotFunctional = 31,
+  PPRetailDeviceErrorswUpdatePending = 32,
+  PPRetailDeviceErrorcancelReadCardData = 33,
+  PPRetailDeviceErrorcardReaderNotAvailable = 34,
+  PPRetailDeviceErrorcorruptFirmware = 35,
+  PPRetailDeviceErrorunexpectedRequest = 36,
+  PPRetailDeviceErroractionCannotBeCompleted = 37,
+  PPRetailDeviceErrorlastActiveReaderNotFound = 38,
+  PPRetailDeviceErrorblacklisted = 39,
+  PPRetailDeviceErrorbadSwipeData = 40,
+  PPRetailDeviceErrorsignatureCancelled = 41,
+  PPRetailDeviceErroruserCancelled = 42,
+  PPRetailDeviceErrornoSignature = 43,
+  PPRetailDeviceErrorwriteFailure = 44,
+  PPRetailDeviceErrorsocketClosed = 45,
+  PPRetailDeviceErrorinvalidCardData = 46,
+  PPRetailDeviceErrorunableToConnect = 47
+};
+
+/**
+ * Sdk Error name to code
+ */
+typedef NS_ENUM(NSInteger, PPRetailSdkError) {
+  PPRetailSdkErroruserCancelled = 1,
+  PPRetailSdkErrorfileNotFound = 2,
+  PPRetailSdkErrorvalidationError = 3,
+  PPRetailSdkErrorcardReaderScannerNotInitialized = 4,
+  PPRetailSdkErrornoReaderFound = 5,
+  PPRetailSdkErrorbluetoothDisabled = 6,
+  PPRetailSdkErrorlogout = 7,
+  PPRetailSdkErrorselectedReaderUnavailable = 8,
+  PPRetailSdkErrormultipleReaders = 9,
+  PPRetailSdkErrorselectionInProgress = 10
 };
 
 /**

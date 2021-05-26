@@ -65,10 +65,10 @@ typedef id PPRetailUntrustedNetworkSignal;
 
 typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *merchant);
 
-/**
- * Don't use floats or doubles when money is involved. (http://bit.ly/1FlDUtl)
- * This macro makes your life a bit easier when using string based amounts.
- * For example, PAYPALNUM(@"1.25") will be an exact decimal 1.25
+/*
+  Don't use floats or doubles when money is involved. (http://bit.ly/1FlDUtl)
+  This macro makes your life a bit easier when using string based amounts.
+  For example, PAYPALNUM(@"1.25") will be an exact decimal 1.25
  */
 #define PAYPALNUM(x) ([NSDecimalNumber decimalNumberWithString: x])
 
