@@ -153,7 +153,7 @@
     self.merchEmailLabel.text = merchant.emailAddress;
     
     // Save currency to UserDefaults for further usage. This needs to be used to initialize
-    // the PPRetailInvoice for the payment later on. This app is using UserDefault but
+    // the PPRetailRetailInvoice for the payment later on. This app is using UserDefault but
     // it could just as easily be passed through the segue.
     [tokenDefault setValue:merchant.currency forKey:@"MERCH_CURRENCY"];
     [self setCurrencyType];

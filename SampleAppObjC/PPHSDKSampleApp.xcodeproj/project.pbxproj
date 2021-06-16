@@ -256,8 +256,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PPRetailInstrumentInterface/PPRetailInstrumentInterface.framework",
 				"${PODS_ROOT}/PayPalHereSDKv2/RSDK/Debug/PayPalRetailSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
@@ -265,7 +264,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRetailInstrumentInterface.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalRetailSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
@@ -273,7 +271,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PPHSDKSampleApp/Pods-PPHSDKSampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2F082980047CDD1A8703E32B /* [CP] Check Pods Manifest.lock */ = {

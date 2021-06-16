@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnBtn;
 @property (weak, nonatomic) IBOutlet UITextView *acceptTxnCodeView;
 @property PPRetailTransactionContext *tc;
-@property PPRetailInvoice *invoice;
+@property PPRetailRetailInvoice *invoice;
 @property NSString *transactionNumber;
 @property PPRetailInvoicePaymentMethod paymentMethod;
 @property NSString *currencySymbol;
@@ -83,9 +83,9 @@
     // it when initializing the invoice.
     NSUserDefaults *tokenDefault =  [NSUserDefaults standardUserDefaults];
     NSString *merchCurrency = [tokenDefault stringForKey:@"MERCH_CURRENCY"];
-    PPRetailInvoice *mInvoice;
+    PPRetailRetailInvoice *mInvoice;
     if(![self.invAmount.text  isEqualToString:@""]) {
-       mInvoice =  [[PPRetailInvoice alloc] initWithCurrencyCode: merchCurrency];
+       mInvoice =  [[PPRetailRetailInvoice alloc] initWithCurrencyCode: merchCurrency];
     } else {
         [self invokeAlert:@"Error" andMessage:@"Something happened during invoice initialization"];
         return;
@@ -208,7 +208,7 @@
 -(void)setUpDefaultView{
     [self setUpTextFieldToolbar:_invAmount];
     [self customizeOfflineButton:self.offlineModeButton offline:self.offlineMode];
-    self.createInvCodeView.text = @"mInvoice = [[PPRetailInvoice init] initWithCurrencyCode: @\"USD\"];";
+    self.createInvCodeView.text = @"mInvoice = [[PPRetailRetailInvoice init] initWithCurrencyCode: @\"USD\"];";
     self.createTxnCodeView.text = @"[[PayPalRetailSDK transactionManager] createTransaction:self.invoice callback:^(PPRetailError *error, PPRetailTransactionContext *context) {\n // Set the transactionContext or handle the error \n self.tc = context \n }];";
     self.acceptTxnCodeView.text = @"[self.tc beginPayment:options];";
 }
