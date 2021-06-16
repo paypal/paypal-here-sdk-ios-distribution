@@ -28,6 +28,11 @@ Pod::Spec.new do |s|
     sp.vendored_frameworks      = 'RSDK/Release/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
   end
 
+  s.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  
   s.dependency 'SimpleKeychain', '~> 0.11.1'
   s.dependency 'PPRetailInstrumentInterface'
   s.dependency 'TrustKit', '~> 1.6.5'
