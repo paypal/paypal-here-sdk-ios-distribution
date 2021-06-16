@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *tippingOnReaderSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *amountBasedTippingSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *enableQuickChipSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *enableQRCPromptSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (strong, nonatomic) IBOutletCollection(UISwitch) NSArray *formFactorySwitches;
 @end
@@ -33,6 +34,7 @@
     [self.tippingOnReaderSwitch setOn: self.transactionOptions.tippingOnReaderEnabled];
     [self.amountBasedTippingSwitch setOn: self.transactionOptions.amountBasedTipping];
     [self.enableQuickChipSwitch setOn: self.transactionOptions.quickChipEnabled];
+    [self.enableQRCPromptSwitch setOn: self.transactionOptions.qrcPromptEnabled];
     
     // Turn the formFactor button on/off depending on the formFactors selected.
     [self toggleSwitches];
@@ -68,6 +70,10 @@
 
 - (IBAction)enableQuickChipSwitchPressed:(UISwitch *)sender {
     self.transactionOptions.quickChipEnabled = self.enableQuickChipSwitch.isOn;
+}
+
+- (IBAction)enableQRCPromptSwitchPressed:(UISwitch *)sender {
+    self.transactionOptions.qrcPromptEnabled = self.enableQRCPromptSwitch.isOn;
 }
 
 
