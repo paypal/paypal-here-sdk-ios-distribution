@@ -65,10 +65,10 @@ typedef id PPRetailUntrustedNetworkSignal;
 
 typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *merchant);
 
-/**
- * Don't use floats or doubles when money is involved. (http://bit.ly/1FlDUtl)
- * This macro makes your life a bit easier when using string based amounts.
- * For example, PAYPALNUM(@"1.25") will be an exact decimal 1.25
+/*
+  Don't use floats or doubles when money is involved. (http://bit.ly/1FlDUtl)
+  This macro makes your life a bit easier when using string based amounts.
+  For example, PAYPALNUM(@"1.25") will be an exact decimal 1.25
  */
 #define PAYPALNUM(x) ([NSDecimalNumber decimalNumberWithString: x])
 
@@ -136,12 +136,6 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  * and wait for the completionHandler to be called before doing more SDK operations.
  */
 + (void)initializeMerchantWithCredentials:(SdkCredential *)credentials completionHandler:(PPRetailMerchantHandler)handler;
-
-/**
- * This is the primary starting point for taking a payment. First, create an invoice, then create a transaction, then
- * begin the transaction to have the SDK listen for events and go through the relevant flows for a payment type.
- */
-+ (PPRetailTransactionContext *)createTransaction:(PPRetailInvoice *)invoice __attribute__((deprecated("Deprecated since v2.0.0. Use transactionManager")));
 
 /**
  * Add a listener for the deviceDiscovered event
