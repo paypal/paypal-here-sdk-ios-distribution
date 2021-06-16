@@ -4,8 +4,9 @@ what is new in this release.
 
 2.3.0021161010
   What's new:
+  - feat(DeviceManager): shouldStopScanning utility method to check if search and connect APIs should be invoked again if an error is returned on previous invocation
   - Docs(iOS): PPRetailRetailInvoice documentation
-  - Fix: audio swiper plugin behavior
+  - Fix: Audio swiper plugin behavior
   - Fix: Stop ongoing reader search when UI search is initiated
   - Fix(iOS): Remove endCardReaderDiscovery functionality, receipt screen refactor
   - Fix: Show payment retry alerts after reader deactivation
@@ -16,7 +17,7 @@ what is new in this release.
   - Fix: Connect to last reader
   - Fix(OfflinePayment): Failing offline payments due to bad request body
   - Fix(DeviceManager): Connect to another reader after declining reader update
-  - Fix(Miura): Error handling during firmware update
+  - Fix(Chip and pin): Error handling during firmware update
   - Refactor: QRC prompts off by default
   - Fix(DeviceManager): Auto connect API retries with intervals
   - Fix: Card reader battery status and connection
@@ -26,13 +27,12 @@ what is new in this release.
   - Fix: ApplePay unknown card issuer
   - feat: unableToConnect error on connection failure
   - (iOS) SwiftLint Integration
-  - fix(ingenico): invalid card data error behaviour
-  - fix(m010, ingenico): forceDisconnect on native initiated disconnects
+  - fix(Chip and tap/sig): invalid card data error behaviour
+  - fix(Chip and tap/sig/pin): forceDisconnect on native initiated disconnects
   - feat(web): Pre Check UI for mediator app
   - refactor: method to determine GC payment type in InvoicePayment
   - Fix(iOS, UI): Alert dialog improvements
   - Fix(iOS): Crash logging
-  - undefined
 
 2.2.0021027020
   What's new:
