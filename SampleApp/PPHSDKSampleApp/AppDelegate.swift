@@ -1,3 +1,4 @@
+
 //  AppDelegate.swift
 //  PPHSDKSampleApp
 //
@@ -7,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -14,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
+        
         return true
     }
 
@@ -41,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-
+        
         // Gather the SdkCredential info from the sample server.
         let accessToken = url.valueOf("access_token")
         let refreshUrl = url.valueOf("refresh_url")
@@ -52,15 +54,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tokenDefault.set(accessToken, forKey: "ACCESS_TOKEN")
         tokenDefault.set(refreshUrl, forKey: "REFRESH_URL")
         tokenDefault.set(environment, forKey: "ENVIRONMENT")
-
+        
         // Use the notification service to send the token to the InitializeViewController
-        if sourceApplication == "com.apple.SafariViewService" {
+        if (sourceApplication == "com.apple.SafariViewService") {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: accessToken)
             return true
         }
-
+        
         return true
-
+        
     }
 
 }

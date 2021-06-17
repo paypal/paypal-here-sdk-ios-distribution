@@ -21,11 +21,6 @@
 		65611A3D25E5E20800782F13 /* PPHTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65611A3C25E5E20800782F13 /* PPHTheme.swift */; };
 		65611A4325E5E3F000782F13 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */; };
 		6562E46E25ED5D01002A7013 /* PPHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6562E46D25ED5D01002A7013 /* PPHColor.swift */; };
-		65878593261E7748008C3301 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878592261E7748008C3301 /* AppStrings.swift */; };
-		65878599261E7774008C3301 /* TagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878595261E7773008C3301 /* TagsCell.swift */; };
-		6587859A261E7774008C3301 /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878596261E7773008C3301 /* OptionsCell.swift */; };
-		6587859B261E7774008C3301 /* MerchantSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878597261E7773008C3301 /* MerchantSettingsController.swift */; };
-		6587859C261E7774008C3301 /* TransactionOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65878598261E7773008C3301 /* TransactionOptionsCell.swift */; };
 		685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B7E4B20DB506D00F57461 /* TransactionOptionsViewController.swift */; };
 		68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878BA120DDB0E100A7C571 /* OfflineModeViewController.swift */; };
 		68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADF08B20E165A80092977A /* OfflinePaymentCompletedViewController.swift */; };
@@ -67,11 +62,6 @@
 		65611A3C25E5E20800782F13 /* PPHTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPHTheme.swift; sourceTree = "<group>"; };
 		65611A4225E5E3F000782F13 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		6562E46D25ED5D01002A7013 /* PPHColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPHColor.swift; sourceTree = "<group>"; };
-		65878592261E7748008C3301 /* AppStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
-		65878595261E7773008C3301 /* TagsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCell.swift; sourceTree = "<group>"; };
-		65878596261E7773008C3301 /* OptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
-		65878597261E7773008C3301 /* MerchantSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSettingsController.swift; sourceTree = "<group>"; };
-		65878598261E7773008C3301 /* TransactionOptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOptionsCell.swift; sourceTree = "<group>"; };
 		685B7E4620DB152100F57461 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4720DB152100F57461 /* LogglyLogger_CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogglyLogger_CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B7E4820DB152100F57461 /* SimpleKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SimpleKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,11 +171,6 @@
 		C6C793FE1DDD01E800F8DC8E /* PPHSDKSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				65878597261E7773008C3301 /* MerchantSettingsController.swift */,
-				65878596261E7773008C3301 /* OptionsCell.swift */,
-				65878595261E7773008C3301 /* TagsCell.swift */,
-				65878598261E7773008C3301 /* TransactionOptionsCell.swift */,
-				65878592261E7748008C3301 /* AppStrings.swift */,
 				65611A4025E5E3AB00782F13 /* Extensions */,
 				65611A3B25E5E1DB00782F13 /* UICatalog */,
 				EC62D20A2219F245009C91BD /* VaultFeature */,
@@ -255,7 +240,6 @@
 			buildConfigurationList = C6C794101DDD01E800F8DC8E /* Build configuration list for PBXNativeTarget "PPHSDKSampleApp" */;
 			buildPhases = (
 				6313FB3EDAB0E94E93160C6F /* [CP] Check Pods Manifest.lock */,
-				653828DE25F69BFD00BF11B5 /* ShellScript */,
 				C6C793F81DDD01E800F8DC8E /* Sources */,
 				C6C793F91DDD01E800F8DC8E /* Frameworks */,
 				C6C793FA1DDD01E800F8DC8E /* Resources */,
@@ -282,7 +266,6 @@
 				TargetAttributes = {
 					C6C793FB1DDD01E800F8DC8E = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 727K56WV67;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -343,23 +326,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		653828DE25F69BFD00BF11B5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
 		B6B4BB66D042D3E6EC5431A1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6587859B261E7774008C3301 /* MerchantSettingsController.swift in Sources */,
 				6562E46E25ED5D01002A7013 /* PPHColor.swift in Sources */,
 				EC62D213221A0FF7009C91BD /* VaultPaymentViewController.swift in Sources */,
 				EC62D21C221DEA5F009C91BD /* PayAndVaultFlow.swift in Sources */,
@@ -405,8 +370,6 @@
 				12BC22CA2630084E006A68C7 /* TagsCell.swift in Sources */,
 				12BC22CE2630084E006A68C7 /* TransactionOptionsCell.swift in Sources */,
 				EC9B00BD2213A47700C3DBA0 /* PaymentTypeSelectionViewController.swift in Sources */,
-				6587859C261E7774008C3301 /* TransactionOptionsCell.swift in Sources */,
-				6587859A261E7774008C3301 /* OptionsCell.swift in Sources */,
 				C6EF40041E7706B600109502 /* WelcomeViewController.swift in Sources */,
 				C6C794001DDD01E800F8DC8E /* AppDelegate.swift in Sources */,
 				685B7E4C20DB506D00F57461 /* TransactionOptionsViewController.swift in Sources */,
@@ -418,12 +381,10 @@
 				12BC22CD2630084E006A68C7 /* AppStrings.swift in Sources */,
 				EC9B00C02213A4D500C3DBA0 /* PaymentTypeTableViewCell.swift in Sources */,
 				65611A3D25E5E20800782F13 /* PPHTheme.swift in Sources */,
-				65878593261E7748008C3301 /* AppStrings.swift in Sources */,
 				68ADF08C20E165A80092977A /* OfflinePaymentCompletedViewController.swift in Sources */,
 				12BC22CB2630084E006A68C7 /* OptionsCell.swift in Sources */,
 				68878BA220DDB0E100A7C571 /* OfflineModeViewController.swift in Sources */,
 				ECA5E3942215EB61001D83E5 /* VaultPaymentCompletedViewController.swift in Sources */,
-				65878599261E7774008C3301 /* TagsCell.swift in Sources */,
 				C6A15D2F1FDB3E3700D1170A /* DeviceDiscoveryViewController.swift in Sources */,
 				EC62D216221A1204009C91BD /* VaultTransactionModel.swift in Sources */,
 				C662A294200537DF00CC44AB /* CaptureAuthViewController.swift in Sources */,
@@ -568,7 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 727K56WV67;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -599,7 +560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 727K56WV67;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PPHSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
