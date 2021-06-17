@@ -743,11 +743,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeA-gL-oLZ">
+                                <rect key="frame" x="10" y="5" width="138" height="30"/>
+                                <state key="normal" title="Paymemt Type:"/>
+                                <connections>
+                                    <action selector="paymentTypeHandler:" destination="KFL-lT-Ub8" eventType="touchUpInside" id="omm-aS-cA3"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utU-CY-PJ3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="684"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="zjW-rV-m1c">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="684"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Payments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdx-PI-U1N">
                                                 <rect key="frame" x="16" y="16" width="129.33333333333334" height="20"/>
@@ -1153,11 +1160,13 @@
                         <viewLayoutGuide key="safeArea" id="wfd-kc-Hlg"/>
                         <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="utU-CY-PJ3" firstAttribute="height" secondItem="wfd-kc-Hlg" secondAttribute="height" id="HpD-Ge-VOA"/>
+                            <constraint firstItem="IeA-gL-oLZ" firstAttribute="top" secondItem="wfd-kc-Hlg" secondAttribute="top" constant="5" id="4bg-1q-RCB"/>
+                            <constraint firstItem="wfd-kc-Hlg" firstAttribute="trailing" secondItem="IeA-gL-oLZ" secondAttribute="trailing" constant="227" id="Avw-ai-W3r"/>
+                            <constraint firstItem="utU-CY-PJ3" firstAttribute="top" secondItem="IeA-gL-oLZ" secondAttribute="bottom" constant="5" id="TiA-we-ZDL"/>
                             <constraint firstItem="wfd-kc-Hlg" firstAttribute="bottom" secondItem="utU-CY-PJ3" secondAttribute="bottom" id="X2s-l4-Ihc"/>
                             <constraint firstItem="utU-CY-PJ3" firstAttribute="trailing" secondItem="wfd-kc-Hlg" secondAttribute="trailing" id="YOj-qw-b8N"/>
                             <constraint firstItem="utU-CY-PJ3" firstAttribute="width" secondItem="wfd-kc-Hlg" secondAttribute="width" id="Z72-ja-LMe"/>
-                            <constraint firstItem="utU-CY-PJ3" firstAttribute="top" secondItem="wfd-kc-Hlg" secondAttribute="top" id="nVj-pq-VjU"/>
+                            <constraint firstItem="IeA-gL-oLZ" firstAttribute="leading" secondItem="wfd-kc-Hlg" secondAttribute="leading" constant="10" id="aFe-qD-fOS"/>
                             <constraint firstItem="utU-CY-PJ3" firstAttribute="leading" secondItem="wfd-kc-Hlg" secondAttribute="leading" id="uDf-Sh-i9B"/>
                         </constraints>
                     </view>
@@ -1165,6 +1174,7 @@
                     <connections>
                         <outlet property="acceptTxnBtn" destination="kdo-1q-UXp" id="qSJ-eO-nbz"/>
                         <outlet property="acceptTxnCodeView" destination="8xB-xn-IDo" id="GqK-Wq-1Yj"/>
+                        <outlet property="btnPaymentType" destination="IeA-gL-oLZ" id="68U-SX-Yu9"/>
                         <outlet property="createInvCodeView" destination="jUt-jy-zIC" id="zQW-He-SD3"/>
                         <outlet property="createInvoiceBtn" destination="6Sa-Cv-Tqm" id="ODE-fD-8ER"/>
                         <outlet property="createTxnBtn" destination="CXK-SK-gfz" id="5Ae-wH-vmc"/>
@@ -2972,6 +2982,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="bSJ-4h-8gH"/>
         <segue reference="l70-Vr-7Hs"/>
         <segue reference="YTU-rL-U6B"/>
     </inferredMetricsTieBreakers>

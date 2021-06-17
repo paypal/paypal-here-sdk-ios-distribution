@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createTxnBtn;
 @property (weak, nonatomic) IBOutlet UITextView *createTxnCodeView;
 @property (weak, nonatomic) IBOutlet UIButton *acceptTxnBtn;
+@property (weak, nonatomic) IBOutlet UIButton *btnPaymentType;
 @property (weak, nonatomic) IBOutlet UITextView *acceptTxnCodeView;
 @property PPRetailTransactionContext *tc;
 @property PPRetailRetailInvoice *invoice;
@@ -34,6 +35,7 @@
 @property PPRetailTransactionBeginOptions *options;
 @property TransactionOptionsViewController *transactionOptionsViewController;
 @property OfflineModeViewController *offlineModeViewController;
+@property PPRetailManuallyEnteredCard *manuallyEnteredCard;
 @property BOOL offlineMode;
 
 @end
@@ -54,6 +56,7 @@
     
     // Check if online mode is On or Off
     self.offlineMode = [[PayPalRetailSDK transactionManager] getOfflinePaymentEnabled];
+    self.manuallyEnteredCard = [[PPRetailManuallyEnteredCard alloc] init];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -285,6 +288,98 @@
 
 -(void) doneButtonAction {
     [self.view endEditing:true];
+}
+
+-(IBAction)paymentTypeHandler:(id)sender {
+    [self showPaymentOptions];
+}
+
+-(void) showPaymentOptions {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Choose Payment Type" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *cardAction = [UIAlertAction actionWithTitle:@"TypeCardReader" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [cardAction setEnabled:NO];
+    [controller addAction:cardAction];
+    
+    UIAlertAction *digitalCardAction = [UIAlertAction actionWithTitle:@"DigitalCard" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [digitalCardAction setEnabled:NO];
+    [controller addAction:digitalCardAction];
+    
+    
+    UIAlertAction *cashAction = [UIAlertAction actionWithTitle:@"Cash" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [cashAction setEnabled:NO];
+    [controller addAction:cashAction];
+    
+    UIAlertAction *keyInAction = [UIAlertAction actionWithTitle:@"KeyIn" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.options.paymentType = 3;
+        [self.btnPaymentType setTitle:@"KeyIn" forState:UIControlStateNormal];
+        [self getManualCard];
+    }];
+    [controller addAction:keyInAction];
+    
+    UIAlertAction *checkAction = [UIAlertAction actionWithTitle:@"Check" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [checkAction setEnabled:NO];
+    [controller addAction:checkAction];
+    
+    UIAlertAction *qrcAction = [UIAlertAction actionWithTitle:@"QRC" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [qrcAction setEnabled:NO];
+    [controller addAction:qrcAction];
+   
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+-(void) getManualCard {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Enter Card Info" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull cardNumbertextField) {
+        cardNumbertextField.keyboardType = UIKeyboardTypeNumberPad;
+        cardNumbertextField.placeholder = @"Enter Valid Card Number";
+    }];
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull cardNumberExpiryTextField) {
+        cardNumberExpiryTextField.keyboardType = UIKeyboardTypeNumberPad;
+        cardNumberExpiryTextField.placeholder = @"Enter Expiry Date in MMYYYY format";
+    }];
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull cardCVVTextField) {
+        cardCVVTextField.keyboardType = UIKeyboardTypeNumberPad;
+        cardCVVTextField.secureTextEntry = YES;
+        cardCVVTextField.placeholder = @"Enter valid Card CVV number";
+    }];
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull cardPostalCodeTextField) {
+        cardPostalCodeTextField.keyboardType = UIKeyboardTypeNumberPad;
+        cardPostalCodeTextField.placeholder = @"Enter Postal Code";
+    }];
+    
+    UIAlertAction *doneAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (controller.textFields[0] != nil && controller.textFields[1] != nil && controller.textFields[2] != nil && controller.textFields[3] != nil) {
+            NSString *cardNumberString = [controller.textFields[0].text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSString *cardNumberExpiryString = [controller.textFields[1].text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSString *cardCVVString = [controller.textFields[2].text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSString *cardPostalCodeString = [controller.textFields[3].text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            
+            if (cardNumberString.length > 0 && cardNumberExpiryString.length > 0 && cardCVVString.length > 0 && cardPostalCodeString.length > 0) {
+                [self.manuallyEnteredCard setCardNumber:cardNumberString];
+                [self.manuallyEnteredCard setExpiration:cardNumberExpiryString];
+                [self.manuallyEnteredCard setCVV:cardCVVString];
+                [self.manuallyEnteredCard setPostalCode:cardPostalCodeString];
+                
+                
+            } else {
+                [self.manuallyEnteredCard setCardNumber: @"4111111111111111"];
+                [self.manuallyEnteredCard setExpiration: @"122030"];
+                [self.manuallyEnteredCard setCVV: @"123"];
+                [self.manuallyEnteredCard setPostalCode: @"12345"];
+            }
+        }
+        
+    }];
+    
+    [controller addAction:doneAction];
+    [self presentViewController:controller animated: YES completion: nil];
 }
 
 - (UINavigationController *)getCurrentNavigationController {
