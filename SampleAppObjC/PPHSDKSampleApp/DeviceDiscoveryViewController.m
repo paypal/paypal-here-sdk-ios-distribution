@@ -17,8 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *connectLastKnown;
 @property (weak, nonatomic) IBOutlet UITextView *connectLastKnownCodeView;
 @property (weak, nonatomic) IBOutlet UILabel *activeReaderLbl;
-@property (weak, nonatomic) IBOutlet UIButton *autoConnectReader;
-
+@property (weak, nonatomic) IBOutlet UISwitch *autoConnectReader;
 @property (weak, nonatomic) IBOutlet UITextView *autoConnectReaderCodeView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *autoConnectActivityIndicator;
 
@@ -83,7 +82,15 @@
 
 /// Auto Connect to the last known reader. It will check for that reader in the
 /// background and connect to it automatically if it is available.
-- (IBAction)autoConnectReader:(id)sender {
+- (IBAction)autoConnectReader:(UISwitch *)sender {
+    if ([(UISwitch *)sender isOn] == YES) {
+        [self autoConnectCallback:(UISwitch *)sender];
+    } else {
+        [self.deviceManager stopScanningForBluetoothReaders];
+    }
+}
+
+-(void) autoConnectCallback:(UISwitch *) sender {
     [self.autoConnectActivityIndicator startAnimating];
     NSString *lastActiveReader = [self.deviceManager getLastActiveBluetoothReader];
     if([lastActiveReader isEqualToString:@""]) {
@@ -94,15 +101,14 @@
     [self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {
         [self.autoConnectActivityIndicator stopAnimating];
         if(error != nil) {
-            NSLog(@"Error in connecting with bluetooth reader via Auto Connect: %@", error.developerMessage);
-            self.activeReaderLbl.text = [NSString stringWithFormat:@"Error: %@ ",error.message];
-        } else if(cardReader != nil && [cardReader isConnected]) {
-                self.activeReaderLbl.text = [NSString stringWithFormat:@"Connected: %@ ",cardReader.id];
-                [self checkForReaderUpdate:cardReader];
-                NSLog(@"Connected automatically with device.");
-                self.goToPmtPageBtn.enabled = YES;
-                self.autoConnectReader.enabled = NO;
+            if ([self.deviceManager shouldStopScanning:error]) {
+                [self.deviceManager stopScanningForBluetoothReaders];
+                self.activeReaderLbl.text = [NSString stringWithFormat:@"Stopping auto connect: %@", error.description];
+                NSLog(@"Stopping auto connect: %@", error.debugDescription);
+                return;
             }
+            [self autoConnectReader:(UISwitch *)sender];
+        }
     }];
 }
 
@@ -139,7 +145,7 @@
     
     [CustomButton customizeButton:_findAndConnect];
     [CustomButton customizeButton:_connectLastKnown];
-    [CustomButton customizeButton:_autoConnectReader];
+   // [CustomButton customizeButton:_autoConnectReader];
 }
 
 
