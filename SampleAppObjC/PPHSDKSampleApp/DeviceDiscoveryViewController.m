@@ -108,6 +108,8 @@
                 return;
             }
             [self autoConnectReader:(UISwitch *)sender];
+        } else {
+            self.activeReaderLbl.text = [NSString stringWithFormat:@"Connected to: %@", cardReader.id];
         }
     }];
 }
@@ -139,6 +141,7 @@
     // Setting up initial aesthetics
     self.goToPmtPageBtn.enabled = NO;
     self.activeReaderLbl.text = @"";
+    [self.activeReaderLbl setTextColor:[UIColor blackColor]];
     self.findAndConnectCodeView.text = @"[self.deviceManager searchAndConnect:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
     self.connectLastKnownCodeView.text = @"[self.deviceManager connectToLastActiveReader:^(PPRetailError *error, PPRetailPaymentDevice *cardReader)  {\n <code to handle success/failure> \n}];";
      self.autoConnectReaderCodeView.text = @"[self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
