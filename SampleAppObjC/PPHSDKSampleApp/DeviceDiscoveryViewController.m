@@ -110,6 +110,7 @@
             [self autoConnectReader:(UISwitch *)sender];
         } else {
             self.activeReaderLbl.text = [NSString stringWithFormat:@"Connected to: %@", cardReader.id];
+            self.goToPmtPageBtn.enabled = YES;
         }
     }];
 }
