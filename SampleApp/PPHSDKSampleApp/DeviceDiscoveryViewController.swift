@@ -16,7 +16,7 @@ class DeviceDiscoveryViewController: UIViewController {
     @IBOutlet weak var connectLastKnown: CustomButton!
     @IBOutlet weak var connectLastKnownCodeView: UITextView!
     @IBOutlet weak var activeReaderLbl: UILabel!
-    @IBOutlet weak var autoConnectReader: CustomButton!
+    @IBOutlet weak var autoConnectReader: UISwitch!
     @IBOutlet weak var autoConnectReaderCodeView: UITextView!
     @IBOutlet weak var autoConnectActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var goToPmtPageBtn: CustomButton!
@@ -85,26 +85,43 @@ class DeviceDiscoveryViewController: UIViewController {
     
     /// Auto Connect to the last known reader. It will check for that reader in the
     /// background and connect to it automatically if it is available.
-    /// - Parameter sender: UI Button on the screen "Auto Connect"
-    @IBAction func autoConnectReader(_ sender: UIButton) {
+    /// - Parameter sender: UI Switch on the screen "Auto Connect"
+    @IBAction func autoConnectReader(_ sender: UISwitch) {
+        if sender.isOn {
+            self.autoConnectCallback(sender: sender)
+        } else {
+            self.deviceManager?.stopScanningForBluetoothReaders()
+        }
+    }
+    
+    func autoConnectCallback(sender: UISwitch) {
         autoConnectActivityIndicator.startAnimating()
-        autoConnectReader.isHidden = true
         let lastActiveReader = deviceManager?.getLastActiveBluetoothReader()
+        if lastActiveReader == "" {
+            autoConnectActivityIndicator.stopAnimating()
+            self.activeReaderLbl.text = "No last known reader. Please Connect first"
+            return
+        }
+        
         deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in
             self.autoConnectActivityIndicator.stopAnimating()
-            self.autoConnectReader.isHidden = false
-            if error != nil {
-                print("Error in connecting with bluetooth reader via Auto Connect: " + (error?.developerMessage)!)
-                self.activeReaderLbl.text = "Error: \(error?.message ?? "No Last Reader")"
-            } else {
-                if (paymentDevice?.isConnected())! {
-                    self.activeReaderLbl.text = "Connected: \((paymentDevice?.id)!)"
-                    self.checkForReaderUpdate(reader: paymentDevice)
-                    print("Connected automatically with device.")
+            if let error = error {
+                if let shouldStopScanning = self.deviceManager?.shouldStopScanning(error) {
+                    if shouldStopScanning == true {
+                        self.deviceManager?.stopScanningForBluetoothReaders()
+                        self.activeReaderLbl.text = "Stopping auto connect: \(error.description)"
+                        print("Stopping auto connect: \(error.description)")
+                        return
+                    } else {
+                        self.autoConnectReader(sender)
+                    }
+                }
+            }  else {
+                if let deviceAddress = paymentDevice?.address {
+                    self.activeReaderLbl.text = "Connected to \(deviceAddress)"
                 }
             }
         })
-        
     }
     
     // Code that checks if there's a software update available for the connected
@@ -132,12 +149,12 @@ class DeviceDiscoveryViewController: UIViewController {
         
         findAndConnectCodeView.text = "deviceManager.searchAndConnect({ (error, paymentDevice) in\n" +
             "   <code to handle success/failure>\n" +
-        "})"
+            "})"
         connectLastKnownCodeView.text = "deviceManager.connect(toLastActiveReader: { (error, paymentDevice) in\n" +
             "    <code to handle success/failure>\n" +
-        "})"
+            "})"
         autoConnectReaderCodeView.text = "deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in\n" +
-        "<code to handle success/failure>\n}"
+            "<code to handle success/failure>\n}"
         goToPmtPageBtn.isHidden = false
         activeReaderLbl.text = ""
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
