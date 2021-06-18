@@ -104,6 +104,12 @@
 
 
 /**
+ * Utility method to check if search and connect APIs should be invoked again if an error is returned on previous
+ * invocation.
+ */
+-(BOOL)shouldStopScanning:(PPRetailError* _Nullable)error;
+
+/**
  * Search for readers according to the passed reader configuration
  */
 -(void)searchAndConnect:(PPRetailReaderConfiguration* _Nullable)readerConfig callback:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
@@ -128,7 +134,9 @@
 -(void)connectToLastActiveReader:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
 /**
- * Tries to connect to the previously used/active Bluetooth reader
+ * Tries to connect to the Bluetooth reader with the specified name.
+ * To check if this API should be invoked again on receiving an error use {@link #shouldStopScanning}
+ * To stop an ongoing scan use {@link #stopScanningForBluetoothReaders}
  */
 -(void)scanAndAutoConnectToBluetoothReader:(NSString* _Nullable)readerName callback:(PPRetailDeviceManagerConnectionHandler _Nullable)callback;
 
@@ -138,7 +146,7 @@
 -(void)setActiveReader:(PPRetailPaymentDevice* _Nullable)pd;
 
 /**
- * checks if any Miura devive is connected
+ * checks if any Miura device is connected
  */
 -(BOOL)isConnectedToMiura;
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "PayPalHereSDKv2"
-  s.version          = "2.2.0021027020"
+  s.version          = "2.3.0021161010"
   s.homepage         = 'https://developer.paypal.com/docs/integration/paypal-here/'
   s.source           = { :git => 'https://github.com/paypal/paypal-here-sdk-ios-distribution.git', :tag => "sdk_v#{s.version}" }
   s.summary          = 'SDK for interfacing with PayPal card readers and mobile payment processing APIs.'
@@ -28,6 +28,11 @@ Pod::Spec.new do |s|
     sp.vendored_frameworks      = 'RSDK/Release/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
   end
 
+  s.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  
   s.dependency 'SimpleKeychain', '~> 0.11.1'
   s.dependency 'PPRetailInstrumentInterface'
   s.dependency 'TrustKit', '~> 1.6.5'

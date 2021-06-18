@@ -112,6 +112,11 @@
 
 
 
+/**
+ * Method to set auto-connect
+ */
+-(PPRetailReaderConfiguration* _Nullable)setAutoConnect:(BOOL)value;
+
 
 
 
