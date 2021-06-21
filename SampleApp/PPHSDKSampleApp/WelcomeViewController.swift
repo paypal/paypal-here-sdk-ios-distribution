@@ -48,10 +48,10 @@ class WelcomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    layoutImgView()
-    layoutSDKVersionLabel()
-    layoutDemoAppLabel()
-    layoutGetStartedButton()
+//    layoutImgView()
+//    layoutSDKVersionLabel()
+//    layoutDemoAppLabel()
+//    layoutGetStartedButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {

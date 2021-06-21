@@ -102,12 +102,12 @@
         [self.autoConnectActivityIndicator stopAnimating];
         if(error != nil) {
             if ([self.deviceManager shouldStopScanning:error]) {
-                [self.deviceManager stopScanningForBluetoothReaders];
-                self.activeReaderLbl.text = [NSString stringWithFormat:@"Stopping auto connect: %@", error.description];
-                NSLog(@"Stopping auto connect: %@", error.debugDescription);
-                return;
+                self.activeReaderLbl.text = [NSString stringWithFormat:@"Stopping auto connect: Domain: %@\nCode: %@\nMessage: %@", error.domain, error.code, error.message];
+                NSLog(@"Stopping auto connect: %@ %@ %@", error.domain, error.code, error.message);
             }
-            [self autoConnectReader:(UISwitch *)sender];
+            dispatch_after(1, dispatch_get_main_queue(), ^(void) {
+                [self autoConnectReader:(UISwitch *)sender];
+            });
         } else {
             self.activeReaderLbl.text = [NSString stringWithFormat:@"Connected to: %@", cardReader.id];
             self.goToPmtPageBtn.enabled = YES;
@@ -145,11 +145,11 @@
     [self.activeReaderLbl setTextColor:[UIColor blackColor]];
     self.findAndConnectCodeView.text = @"[self.deviceManager searchAndConnect:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
     self.connectLastKnownCodeView.text = @"[self.deviceManager connectToLastActiveReader:^(PPRetailError *error, PPRetailPaymentDevice *cardReader)  {\n <code to handle success/failure> \n}];";
-     self.autoConnectReaderCodeView.text = @"[self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
+    self.autoConnectReaderCodeView.text = @"[self.deviceManager scanAndAutoConnectToBluetoothReader:lastActiveReader callback:^(PPRetailError *error, PPRetailPaymentDevice *cardReader) {\n <code to handle success/failure> \n}];";
     
     [CustomButton customizeButton:_findAndConnect];
     [CustomButton customizeButton:_connectLastKnown];
-   // [CustomButton customizeButton:_autoConnectReader];
+    // [CustomButton customizeButton:_autoConnectReader];
 }
 
 

@@ -106,19 +106,18 @@ class DeviceDiscoveryViewController: UIViewController {
         deviceManager?.scanAndAutoConnect(toBluetoothReader: lastActiveReader, callback: { (error, paymentDevice) in
             self.autoConnectActivityIndicator.stopAnimating()
             if let error = error {
-                if let shouldStopScanning = self.deviceManager?.shouldStopScanning(error) {
-                    if shouldStopScanning == true {
-                        self.deviceManager?.stopScanningForBluetoothReaders()
-                        self.activeReaderLbl.text = "Stopping auto connect: \(error.description)"
-                        print("Stopping auto connect: \(error.description)")
-                        return
-                    } else {
-                        self.autoConnectReader(sender)
+                if let shouldStopScanning = self.deviceManager?.shouldStopScanning(error), shouldStopScanning == true {
+                    if let domain = error.domain, let code = error.code, let message = error.message {
+                        self.activeReaderLbl.text = "ErrorDomain:\(domain)\nCode: \(code)\nMessage: \(message)"
+                        print("Stopping auto connect. ErrorDomain: \(String(describing: error.domain)), Code: \(String(describing: error.code)), Message: \(String(describing: error.message))")
                     }
+
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.autoConnectReader(sender) }
                 }
-            }  else {
-                if let deviceAddress = paymentDevice?.address {
-                    self.activeReaderLbl.text = "Connected to \(deviceAddress)"
+            } else {
+                if let deviceId = paymentDevice?.id {
+                    self.activeReaderLbl.text = "Connected to \(deviceId)"
                 }
             }
         })
