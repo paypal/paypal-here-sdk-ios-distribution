@@ -10,7 +10,7 @@
 #import <PayPalRetailSDK/PayPalRetailSDK.h>
 
 @interface PaymentCompletedViewController : UIViewController
-@property (nonatomic, assign) PPRetailInvoice *invoice;
+@property (nonatomic, assign) PPRetailRetailInvoice *invoice;
 @property (nonatomic, assign) BOOL isCapture;
 @property (nonatomic, assign) PPRetailInvoicePaymentMethod paymentMethod;
 @property (nonatomic, assign) NSString *transactionNumber;

@@ -11,7 +11,7 @@
 
 @interface AuthCompletedViewController : UIViewController
 
-@property (nonatomic, assign) PPRetailInvoice *invoice;
+@property (nonatomic, assign) PPRetailRetailInvoice *invoice;
 @property (nonatomic, assign) NSString *authTransactionNumber;
 @property (nonatomic, assign) PPRetailInvoicePaymentMethod paymentMethod;
 @end
