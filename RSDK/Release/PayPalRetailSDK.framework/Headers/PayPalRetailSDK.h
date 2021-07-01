@@ -55,7 +55,7 @@ typedef void (^PPRetailDeviceDiscoveredEvent)(PPRetailPaymentDevice* device);
 typedef id PPRetailDeviceDiscoveredSignal;
 
 /**
- * A page has been viewed
+ * UntrustedNetwork event
  */
 typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
 /**
@@ -63,6 +63,9 @@ typedef void (^PPRetailUntrustedNetworkEvent)(PPRetailError* error);
  */
 typedef id PPRetailUntrustedNetworkSignal;
 
+/**
+ * Handler for initialize merchant.
+ */
 typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *merchant);
 
 /*
@@ -72,13 +75,26 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 #define PAYPALNUM(x) ([NSDecimalNumber decimalNumberWithString: x])
 
+/**
+ * Use PPHRetailSDKAppDelegate if you use UINavigationController in your app
+ * This lets you provide the app's navigationController for the SDK to use for its UIs.
+ */
 @protocol PPHRetailSDKAppDelegate <NSObject>
 
 @required
+/**
+ * Provide the app's navigationController
+ */
 - (UINavigationController *)getCurrentNavigationController;
 
 @optional
+/**
+ * Reader connection UI was dismissed
+ */
 - (void)readerConnectionViewDismissed;
+/**
+ * connectToLastActiveReader connected to the last reader
+ */
 - (void)lastActiveReaderConnected;
 
 @end
@@ -90,6 +106,10 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 
 + (UINavigationController *)getCurrentNavigationController;
 
+/**
+ * Use PPHRetailSDKAppDelegate if you use UINavigationController in your app.
+ * This lets you provide the app's navigationController for the SDK to use for its UIs.
+ */
 + (void)setRetailSDKAppDelegate:(id<PPHRetailSDKAppDelegate>)delegate;
 
 /**
@@ -113,6 +133,7 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
 /**
  * If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call shutdownSDK. You will need to
  * call initializeSDK and initializeMerchant again to start using the SDK afterwards.
+ * Same as logout.
  */
 + (void)shutdownSDK;
 
@@ -122,6 +143,9 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (PPRetailError *)initializeMerchant:(NSString *)merchantToken repository:(NSString *)repository completionHandler:(PPRetailMerchantHandler)handler;
 
+/**
+ * Initialize fake merchant for testing
+ */
 + (PPRetailError *)initializeFakeMerchant:(PPRetailMerchantHandler)handler;
 
 /**
@@ -186,12 +210,24 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (void)captureAuthorizedTransaction:(NSString *_Nullable)authorizationId invoiceId:(NSString *_Nullable)invoiceId totalAmount:(NSDecimalNumber *_Nullable)totalAmount gratuityAmount:(NSDecimalNumber *_Nullable)gratuityAmount currency:(NSString *_Nullable)currency callback:(PPRetailTransactionManagerCaptureAuthorizedTransactionHandler _Nullable)callback;
 
+/**
+ * Capture a list of authorized transactions
+ */
 + (void)retrieveAuthorizedTransactions:(NSDate *_Nullable)startDateTime endDateTime:(NSDate *_Nullable)endDateTime pageSize:(int)pageSize status:(NSArray *_Nullable)status callback:(PPRetailTransactionManagerRetrieveAuthorizedTransactionsHandler _Nullable)callback;
-
+/**
+ * Initialize merchant for PayPal Here app use only
+ */
 + (void)initializePPHRetailMerchant:(PPHRetailMerchant *)merchant deviceId:(NSUUID *)deviceId completionHandler:(PPRetailMerchantHandler)handler;
-
+/**
+ * Initialize fake merchant for testing
+ */
 + (void)initializeFakePPHRetailMerchant:(PPHRetailMerchant *)merchant completionHandler:(PPRetailMerchantHandler)handler;
 
+/**
+ * Connect to the last active reader.
+ * PPHRetailSDKAppDelegate's lastActiveReaderConnected is called when the reader connects.
+ * It internally invokes DeviceManager's connectToLastActiveReader
+ */
 + (void)connectToLastActiveReader;
 
 /**
@@ -203,14 +239,33 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (void)startWatchingAudio;
 
-+ (void)endCardReaderDiscovery;
+/**
+ * DEPRECATED since 2.3.0021161010: endCardReaderDiscovery is no longer needed.
+ */
++ (void)endCardReaderDiscovery __deprecated_msg("Starting with sdk v2.3.0021161010, endCardReaderDiscovery is a no-op.");
 
+/**
+ * DeviceManager is responsible for exposing APIs regarding the devices.
+ * Currently, you can use DeviceManager to prompt the List to select the device
+ * or set/get the active device.
+ */
 + (PPRetailDeviceManager *)deviceManager;
 
+/**
+ * TransactionManager is a public facing facade to everything related to a Transaction.
+ */
 + (PPRetailTransactionManager *)transactionManager;
 
+/**
+ * BraintreeManager is responsible for exposing APIs regarding the BrainTree interfaces
+ */
 + (PPRetailBraintreeManager *)braintreeManager;
 
+/**
+ * If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call logout. You will need to
+ * call initializeSDK and initializeMerchant again to start using the SDK afterwards.
+ * Same as shutdownSDK.
+ */
 + (void)logout;
 
 /*
@@ -218,8 +273,9 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (NSString *)getMerchantCountryCode;
 
-+ (NSString *)localizedStringNamed:(NSString *)name withDefault:(NSString *)defaultValue forTable:(NSString *)table;
-
+/**
+ * Send receipt using the sdk's receipt UI
+ */
 + (void)sendReceiptWithUI:(UINavigationController *)navigationController invoice:(PPRetailRetailInvoice *)invoice isEmail:(BOOL)isEmail callback:(void(^)(PPRetailError *error, NSDictionary *receiptDestination))callback;
 
 /* Log via SDK.
@@ -227,10 +283,40 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 + (void)logViaSDK:(NSString *)logLevel component:(NSString *)component message:(NSString *)message;
 
+/**
+ * Set the sdk's UI theme
+ */
 + (void)setUITheme:(PPRetailUITheme)theme;
+
+/**
+ * Get the current UI theme of the sdk
+ */
 + (PPRetailUITheme) getUITheme;
+
+/**
+ * Set the receipt screen orientation.
+ * Use this to force the orientation to a specific value or based on the device's orientation.
+ */
 + (void)setReceiptScreenOrientation:(PPRetailReceiptScreenOrientation)orientation;
+
+/**
+ * Get the orientation of the receipt screeen
+ */
 + (PPRetailReceiptScreenOrientation) getReceiptScreenOrientation;
+
+/**
+ * Get the version of the PPH sdk.
+ */
 + (NSString *) getSdkVersion;
+
+/**
+ * Check whether the sdk UI theme is set to light
+ */
 + (BOOL)isLightTheme;
+
+/**
+ * Used by the Paypal Here app to get localized strings
+ */
++ (NSString *)localizedStringNamed:(NSString *)name withDefault:(NSString *)defaultValue forTable:(NSString *)table;
+
 @end

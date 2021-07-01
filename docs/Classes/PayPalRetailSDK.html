@@ -64,9 +64,27 @@
 		
 		<option value="//api/name/addUntrustedNetworkListener:">+ addUntrustedNetworkListener:</option>
 		
+		<option value="//api/name/braintreeManager">+ braintreeManager</option>
+		
 		<option value="//api/name/captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:">+ captureAuthorizedTransaction:invoiceId:totalAmount:gratuityAmount:currency:callback:</option>
 		
 		<option value="//api/name/checkIfSwiperIsEligibleForMerchant">+ checkIfSwiperIsEligibleForMerchant</option>
+		
+		<option value="//api/name/connectToLastActiveReader">+ connectToLastActiveReader</option>
+		
+		<option value="//api/name/deviceManager">+ deviceManager</option>
+		
+		<option value="//api/name/endCardReaderDiscovery">+ endCardReaderDiscovery</option>
+		
+		<option value="//api/name/getReceiptScreenOrientation">+ getReceiptScreenOrientation</option>
+		
+		<option value="//api/name/getSdkVersion">+ getSdkVersion</option>
+		
+		<option value="//api/name/getUITheme">+ getUITheme</option>
+		
+		<option value="//api/name/initializeFakeMerchant:">+ initializeFakeMerchant:</option>
+		
+		<option value="//api/name/initializeFakePPHRetailMerchant:completionHandler:">+ initializeFakePPHRetailMerchant:completionHandler:</option>
 		
 		<option value="//api/name/initializeMerchant:repository:completionHandler:">+ initializeMerchant:repository:completionHandler:</option>
 		
@@ -74,19 +92,39 @@
 		
 		<option value="//api/name/initializeMerchantWithCredentials:completionHandler:">+ initializeMerchantWithCredentials:completionHandler:</option>
 		
+		<option value="//api/name/initializePPHRetailMerchant:deviceId:completionHandler:">+ initializePPHRetailMerchant:deviceId:completionHandler:</option>
+		
 		<option value="//api/name/initializeSDK">+ initializeSDK</option>
 		
 		<option value="//api/name/isDeviceSimulated">+ isDeviceSimulated</option>
 		
+		<option value="//api/name/isLightTheme">+ isLightTheme</option>
+		
+		<option value="//api/name/localizedStringNamed:withDefault:forTable:">+ localizedStringNamed:withDefault:forTable:</option>
+		
+		<option value="//api/name/logout">+ logout</option>
+		
 		<option value="//api/name/removeDeviceDiscoveredListener:">+ removeDeviceDiscoveredListener:</option>
 		
 		<option value="//api/name/removeUntrustedNetworkListener:">+ removeUntrustedNetworkListener:</option>
+		
+		<option value="//api/name/retrieveAuthorizedTransactions:endDateTime:pageSize:status:callback:">+ retrieveAuthorizedTransactions:endDateTime:pageSize:status:callback:</option>
+		
+		<option value="//api/name/sendReceiptWithUI:invoice:isEmail:callback:">+ sendReceiptWithUI:invoice:isEmail:callback:</option>
+		
+		<option value="//api/name/setReceiptScreenOrientation:">+ setReceiptScreenOrientation:</option>
+		
+		<option value="//api/name/setRetailSDKAppDelegate:">+ setRetailSDKAppDelegate:</option>
+		
+		<option value="//api/name/setUITheme:">+ setUITheme:</option>
 		
 		<option value="//api/name/shutdownSDK">+ shutdownSDK</option>
 		
 		<option value="//api/name/startSimulationWithOptions:">+ startSimulationWithOptions:</option>
 		
 		<option value="//api/name/startWatchingAudio">+ startWatchingAudio</option>
+		
+		<option value="//api/name/transactionManager">+ transactionManager</option>
 		
 	</optgroup>
 	
@@ -134,6 +172,54 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/setRetailSDKAppDelegate:" title="setRetailSDKAppDelegate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setRetailSDKAppDelegate:">+&nbsp;setRetailSDKAppDelegate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Use <a href="../Protocols/PPHRetailSDKAppDelegate.html">PPHRetailSDKAppDelegate</a> if you use UINavigationController in your app.
+This lets you provide the app&rsquo;s navigationController for the SDK to use for its UIs.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setRetailSDKAppDelegate:(id&lt;PPHRetailSDKAppDelegate&gt;)<em>delegate</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Use <a href="../Protocols/PPHRetailSDKAppDelegate.html">PPHRetailSDKAppDelegate</a> if you use UINavigationController in your app.
+This lets you provide the app&rsquo;s navigationController for the SDK to use for its UIs.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/addLoggingService:" title="addLoggingService:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/addLoggingService:">+&nbsp;addLoggingService:</a></code>
 </h3>
@@ -286,7 +372,8 @@ but if you are using the SDK only in certain cases or for certain customers, the
 			
 			<div class="method-subsection brief-description">
 				<p>If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call shutdownSDK. You will need to
-call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.</p>
+call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.
+Same as <a href="#//api/name/logout">logout</a>.</p>
 			</div>
 			
 		    
@@ -304,7 +391,8 @@ call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchan
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call shutdownSDK. You will need to
-call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.</p>
+call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.
+Same as <a href="#//api/name/logout">logout</a>.</p>
 			</div>
 			
 
@@ -353,6 +441,52 @@ and wait for the completionHandler to be called before doing more SDK operations
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Once you have retrieved a token for your merchant (typically from a backend server), call initializeMerchant
 and wait for the completionHandler to be called before doing more SDK operations.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeFakeMerchant:" title="initializeFakeMerchant:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeFakeMerchant:">+&nbsp;initializeFakeMerchant:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize fake merchant for testing</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailError *)initializeFakeMerchant:(PPRetailMerchantHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialize fake merchant for testing</p>
 			</div>
 			
 
@@ -623,7 +757,7 @@ you&rsquo;re done with it.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Start Simulating Payment Device - This will allow you to mock the Payment Device
+				<p>Start Simulating Payment <a href="../Classes/Device.html">Device</a> - This will allow you to mock the Payment <a href="../Classes/Device.html">Device</a>
 and the server. This will only work in &ldquo;DEBUG&rdquo; mode</p>
 			</div>
 			
@@ -641,7 +775,7 @@ and the server. This will only work in &ldquo;DEBUG&rdquo; mode</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Start Simulating Payment Device - This will allow you to mock the Payment Device
+				<p>Start Simulating Payment <a href="../Classes/Device.html">Device</a> - This will allow you to mock the Payment <a href="../Classes/Device.html">Device</a>
 and the server. This will only work in &ldquo;DEBUG&rdquo; mode</p>
 			</div>
 			
@@ -804,6 +938,194 @@ you&rsquo;re done with it.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/retrieveAuthorizedTransactions:endDateTime:pageSize:status:callback:" title="retrieveAuthorizedTransactions:endDateTime:pageSize:status:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/retrieveAuthorizedTransactions:endDateTime:pageSize:status:callback:">+&nbsp;retrieveAuthorizedTransactions:endDateTime:pageSize:status:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Capture a list of authorized transactions</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)retrieveAuthorizedTransactions:(NSDate *_Nullable)<em>startDateTime</em> endDateTime:(NSDate *_Nullable)<em>endDateTime</em> pageSize:(int)<em>pageSize</em> status:(NSArray *_Nullable)<em>status</em> callback:(PPRetailTransactionManagerRetrieveAuthorizedTransactionsHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Capture a list of authorized transactions</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializePPHRetailMerchant:deviceId:completionHandler:" title="initializePPHRetailMerchant:deviceId:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializePPHRetailMerchant:deviceId:completionHandler:">+&nbsp;initializePPHRetailMerchant:deviceId:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize merchant for PayPal Here app use only</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)initializePPHRetailMerchant:(PPHRetailMerchant *)<em>merchant</em> deviceId:(NSUUID *)<em>deviceId</em> completionHandler:(PPRetailMerchantHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialize merchant for PayPal Here app use only</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeFakePPHRetailMerchant:completionHandler:" title="initializeFakePPHRetailMerchant:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeFakePPHRetailMerchant:completionHandler:">+&nbsp;initializeFakePPHRetailMerchant:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize fake merchant for testing</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)initializeFakePPHRetailMerchant:(PPHRetailMerchant *)<em>merchant</em> completionHandler:(PPRetailMerchantHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialize fake merchant for testing</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/connectToLastActiveReader" title="connectToLastActiveReader"></a>
+	<h3 class="method-title"><code><a href="#//api/name/connectToLastActiveReader">+&nbsp;connectToLastActiveReader</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Connect to the last active reader.
+PPHRetailSDKAppDelegate&rsquo;s lastActiveReaderConnected is called when the reader connects.
+It internally invokes DeviceManager&rsquo;s connectToLastActiveReader</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)connectToLastActiveReader</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Connect to the last active reader.
+PPHRetailSDKAppDelegate&rsquo;s lastActiveReaderConnected is called when the reader connects.
+It internally invokes DeviceManager&rsquo;s connectToLastActiveReader</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/startWatchingAudio" title="startWatchingAudio"></a>
 	<h3 class="method-title"><code><a href="#//api/name/startWatchingAudio">+&nbsp;startWatchingAudio</a></code>
 </h3>
@@ -857,6 +1179,614 @@ The audio reader may not be available to some merchants based on their location 
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/endCardReaderDiscovery" title="endCardReaderDiscovery"></a>
+	<h3 class="method-title"><code><a href="#//api/name/endCardReaderDiscovery">+&nbsp;endCardReaderDiscovery</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>DEPRECATED since 2.3.0021161010: endCardReaderDiscovery is no longer needed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)endCardReaderDiscovery</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>DEPRECATED since 2.3.0021161010: endCardReaderDiscovery is no longer needed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deviceManager" title="deviceManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deviceManager">+&nbsp;deviceManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>DeviceManager is responsible for exposing APIs regarding the devices.
+Currently, you can use DeviceManager to prompt the List to select the device
+or set/get the active device.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailDeviceManager *)deviceManager</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>DeviceManager is responsible for exposing APIs regarding the devices.
+Currently, you can use DeviceManager to prompt the List to select the device
+or set/get the active device.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/transactionManager" title="transactionManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/transactionManager">+&nbsp;transactionManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>TransactionManager is a public facing facade to everything related to a Transaction.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailTransactionManager *)transactionManager</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>TransactionManager is a public facing facade to everything related to a Transaction.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/braintreeManager" title="braintreeManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/braintreeManager">+&nbsp;braintreeManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>BraintreeManager is responsible for exposing APIs regarding the BrainTree interfaces</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailBraintreeManager *)braintreeManager</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>BraintreeManager is responsible for exposing APIs regarding the BrainTree interfaces</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logout" title="logout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logout">+&nbsp;logout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call logout. You will need to
+call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.
+Same as <a href="#//api/name/shutdownSDK">shutdownSDK</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)logout</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If for some reason you want to shutdown all SDK activity and uninitialize the SDK, call logout. You will need to
+call <a href="#//api/name/initializeSDK">initializeSDK</a> and initializeMerchant again to start using the SDK afterwards.
+Same as <a href="#//api/name/shutdownSDK">shutdownSDK</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendReceiptWithUI:invoice:isEmail:callback:" title="sendReceiptWithUI:invoice:isEmail:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendReceiptWithUI:invoice:isEmail:callback:">+&nbsp;sendReceiptWithUI:invoice:isEmail:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send receipt using the sdk&rsquo;s receipt UI</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendReceiptWithUI:(UINavigationController *)<em>navigationController</em> invoice:(PPRetailRetailInvoice *)<em>invoice</em> isEmail:(BOOL)<em>isEmail</em> callback:(void ( ^ ) ( PPRetailError *error , NSDictionary *receiptDestination ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Send receipt using the sdk&rsquo;s receipt UI</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setUITheme:" title="setUITheme:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUITheme:">+&nbsp;setUITheme:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the sdk&rsquo;s UI theme</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setUITheme:(PPRetailUITheme)<em>theme</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set the sdk&rsquo;s UI theme</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getUITheme" title="getUITheme"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getUITheme">+&nbsp;getUITheme</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the current UI theme of the <a href="#//api/name/sdk">sdk</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailUITheme)getUITheme</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get the current UI theme of the <a href="#//api/name/sdk">sdk</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setReceiptScreenOrientation:" title="setReceiptScreenOrientation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setReceiptScreenOrientation:">+&nbsp;setReceiptScreenOrientation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the receipt screen orientation.
+Use this to force the orientation to a specific value or based on the device&rsquo;s orientation.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setReceiptScreenOrientation:(PPRetailReceiptScreenOrientation)<em>orientation</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set the receipt screen orientation.
+Use this to force the orientation to a specific value or based on the device&rsquo;s orientation.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getReceiptScreenOrientation" title="getReceiptScreenOrientation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getReceiptScreenOrientation">+&nbsp;getReceiptScreenOrientation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the orientation of the receipt screeen</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (PPRetailReceiptScreenOrientation)getReceiptScreenOrientation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get the orientation of the receipt screeen</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSdkVersion" title="getSdkVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSdkVersion">+&nbsp;getSdkVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the version of the PPH <a href="#//api/name/sdk">sdk</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)getSdkVersion</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get the version of the PPH <a href="#//api/name/sdk">sdk</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isLightTheme" title="isLightTheme"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isLightTheme">+&nbsp;isLightTheme</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check whether the <a href="#//api/name/sdk">sdk</a> UI theme is set to light</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isLightTheme</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check whether the <a href="#//api/name/sdk">sdk</a> UI theme is set to light</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/localizedStringNamed:withDefault:forTable:" title="localizedStringNamed:withDefault:forTable:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/localizedStringNamed:withDefault:forTable:">+&nbsp;localizedStringNamed:withDefault:forTable:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Used by the Paypal Here app to get localized strings</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)localizedStringNamed:(NSString *)<em>name</em> withDefault:(NSString *)<em>defaultValue</em> forTable:(NSString *)<em>table</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Used by the Paypal Here app to get localized strings</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PayPalRetailSDK.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -872,7 +1802,7 @@ The audio reader may not be available to some merchants based on their location 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-06-10</p>
+						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-07-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

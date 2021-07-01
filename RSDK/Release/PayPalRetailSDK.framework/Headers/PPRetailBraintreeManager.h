@@ -90,7 +90,7 @@
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 /**
- * DeviceManager is responsible for exposing APIs regarding the BrainTree interfaces
+ * BraintreeManager is responsible for exposing APIs regarding the BrainTree interfaces
  */
 @interface PPRetailBraintreeManager : PPRetailObject
 
