@@ -21,16 +21,15 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Debug'
 
   s.subspec 'Debug' do |sp|
-    sp.vendored_frameworks      = 'RSDK/Debug/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
+    sp.vendored_frameworks = 'RSDK/Debug/PayPalRetailSDK.xcframework', 'frameworks/PPHSwiper.xcframework', 'frameworks/PPHR_BLE.xcframework', 'frameworks/PPHSDK_BLE.xcframework'
   end
 
   s.subspec 'Release' do |sp|
-    sp.vendored_frameworks      = 'RSDK/Release/PayPalRetailSDK.framework', 'frameworks/G4XSwiper.framework', 'frameworks/RUA_BLE.framework', 'frameworks/LandiSDK_BLE.framework'
+    sp.vendored_frameworks = 'RSDK/Release/PayPalRetailSDK.xcframework', 'frameworks/PPHSwiper.xcframework', 'frameworks/PPHR_BLE.xcframework', 'frameworks/PPHSDK_BLE.xcframework'
   end
 
-  s.pod_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  }
+
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   
   s.dependency 'SimpleKeychain', '~> 0.11.1'
