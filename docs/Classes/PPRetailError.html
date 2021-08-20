@@ -82,6 +82,14 @@
 		
 		<option value="//api/name/equals:">- equals:</option>
 		
+		<option value="//api/name/getValue:defaultBool:">- getValue:defaultBool:</option>
+		
+		<option value="//api/name/getValue:defaultDecimal:">- getValue:defaultDecimal:</option>
+		
+		<option value="//api/name/getValue:defaultInt:">- getValue:defaultInt:</option>
+		
+		<option value="//api/name/getValue:defaultString:">- getValue:defaultString:</option>
+		
 	</optgroup>
 	
 	
@@ -284,8 +292,7 @@ should uniquely identify the type of error that has occurred</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>A server-generated identifier used by PayPal to
-help diagnose this error</p>
+				<p>A server-generated identifier used by PayPal to help diagnose the error</p>
 			</div>
 			
 		    
@@ -302,8 +309,7 @@ help diagnose this error</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>A server-generated identifier used by PayPal to
-help diagnose this error</p>
+				<p>A server-generated identifier used by PayPal to help diagnose the error</p>
 			</div>
 			
 
@@ -332,8 +338,7 @@ help diagnose this error</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>A developer friendly, user unfriendly
-<a href="#//api/name/message">message</a> for log statements to give you as much info as possible.</p>
+				<p>A developer &amp; user unfriendly <a href="#//api/name/message">message</a> giving details about the error</p>
 			</div>
 			
 		    
@@ -350,8 +355,7 @@ help diagnose this error</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>A developer friendly, user unfriendly
-<a href="#//api/name/message">message</a> for log statements to give you as much info as possible.</p>
+				<p>A developer &amp; user unfriendly <a href="#//api/name/message">message</a> giving details about the error</p>
 			</div>
 			
 
@@ -431,7 +435,7 @@ help diagnose this error</p>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)equals:(PPRetailError *_Nullable)<em>paypalError</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)equals:(PPRetailError *_Nullable)<em>paypalError</em></code></div>
 
 		    
 			
@@ -444,6 +448,190 @@ help diagnose this error</p>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Equality comparison</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailError.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getValue:defaultBool:" title="getValue:defaultBool:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getValue:defaultBool:">&ndash;&nbsp;getValue:defaultBool:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get boolean value or default boolean value</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)getValue:(NSString *_Nullable)<em>key</em> defaultBool:(BOOL)<em>defaultBool</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get boolean value or default boolean value</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailError.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getValue:defaultString:" title="getValue:defaultString:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getValue:defaultString:">&ndash;&nbsp;getValue:defaultString:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get string value or default string value</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *_Nullable)getValue:(NSString *_Nullable)<em>key</em> defaultString:(NSString *_Nullable)<em>defaultString</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get string value or default string value</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailError.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getValue:defaultInt:" title="getValue:defaultInt:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getValue:defaultInt:">&ndash;&nbsp;getValue:defaultInt:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get int value or default int value</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)getValue:(NSString *_Nullable)<em>key</em> defaultInt:(int)<em>defaultInt</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get int value or default int value</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailError.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getValue:defaultDecimal:" title="getValue:defaultDecimal:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getValue:defaultDecimal:">&ndash;&nbsp;getValue:defaultDecimal:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get decimal value or default decimal value</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSDecimalNumber *_Nullable)getValue:(NSString *_Nullable)<em>key</em> defaultDecimal:(NSDecimalNumber *_Nullable)<em>defaultDecimal</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get decimal value or default decimal value</p>
 			</div>
 			
 
@@ -475,7 +663,7 @@ help diagnose this error</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-07-01</p>
+						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-08-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

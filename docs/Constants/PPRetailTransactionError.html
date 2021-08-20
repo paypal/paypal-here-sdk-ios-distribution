@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>PPRetailTransactionError Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">PayPalHereSdkv2 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">PayPal</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">PPRetailTransactionError Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>PayPalRetailSDKTypeDefs.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">PPRetailTransactionError</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Transaction Error name to code</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, PPRetailTransactionError ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcustomerCancel</a> = 1,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorgenericCancel</a> = 2,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcardCantContinue</a> = 3,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrornoFunctionalDevices</a> = 4,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorinvoiceStatusMismatch</a> = 5,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErroramountTooLow</a> = 6,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErroramountTooHigh</a> = 7,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorfailedToCollectSignature</a> = 8,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcannotSwipeChipCard</a> = 9,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormustSwipeCard</a> = 10,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorrefundCardMismatch</a> = 11,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcardTypeMismatch</a> = 12,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorlocationError</a> = 13,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormissingInvoiceId</a> = 14,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormissingTransactionNumberOrInvoiceId</a> = 15,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcannotDiscardCard</a> = 16,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormultipleContactlessCardsDetected</a> = 17,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrortryDifferentInterface</a> = 18,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcannotClearActiveTransaction</a> = 19,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorauthorizationFailed</a> = 20,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcaptureFailed</a> = 21,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorinvalidAuthorization</a> = 22,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorretrieveAuthListFailed</a> = 23,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorvoidFailed</a> = 24,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrornotSupported</a> = 25,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcaptureValidationFailed</a> = 26,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorauthRetrieveValidationFailed</a> = 27,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorinvalidInvoiceItem</a> = 28,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorofflinePaymentEnabled</a> = 29,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorofflineTxnLimit</a> = 30,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorofflineTotalLimit</a> = 31,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrornoAudioReaderWhenOffline</a> = 32,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrornfcContactlessLimitReached</a> = 33,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorofflinePaymentStopped</a> = 34,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorofflinePaymentKeyinNotAllowed</a> = 35,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorpayAndVaultFailed</a> = 36,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorvaultFailed</a> = 37,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorinvoiceLoadFailed</a> = 38,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormissingTransactionNumber</a> = 39,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorfailedDueToOutage</a> = 40,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorqrcSessionTimeOut</a> = 41,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorqrcPollingFailed</a> = 42,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcannotCancelActiveQrcTransaction</a> = 43,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorfailedQRCServiceProvider</a> = 44,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorfailedQRCUrlGeneration</a> = 45,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorfailedQRC</a> = 46,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrordeclinedQRC</a> = 47,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorfailedQRCReferrerCode</a> = 48,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormerchantCancel</a> = 49,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrorcancellationFailure</a> = 50,<br>
+                            
+                            &nbsp;&nbsp; <a href="">PPRetailTransactionErrormissingDigitalCardRedemption</a> = 51,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcustomerCancel"></a><code>PPRetailTransactionErrorcustomerCancel</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorgenericCancel"></a><code>PPRetailTransactionErrorgenericCancel</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcardCantContinue"></a><code>PPRetailTransactionErrorcardCantContinue</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrornoFunctionalDevices"></a><code>PPRetailTransactionErrornoFunctionalDevices</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorinvoiceStatusMismatch"></a><code>PPRetailTransactionErrorinvoiceStatusMismatch</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErroramountTooLow"></a><code>PPRetailTransactionErroramountTooLow</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErroramountTooHigh"></a><code>PPRetailTransactionErroramountTooHigh</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorfailedToCollectSignature"></a><code>PPRetailTransactionErrorfailedToCollectSignature</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcannotSwipeChipCard"></a><code>PPRetailTransactionErrorcannotSwipeChipCard</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormustSwipeCard"></a><code>PPRetailTransactionErrormustSwipeCard</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorrefundCardMismatch"></a><code>PPRetailTransactionErrorrefundCardMismatch</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcardTypeMismatch"></a><code>PPRetailTransactionErrorcardTypeMismatch</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorlocationError"></a><code>PPRetailTransactionErrorlocationError</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormissingInvoiceId"></a><code>PPRetailTransactionErrormissingInvoiceId</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormissingTransactionNumberOrInvoiceId"></a><code>PPRetailTransactionErrormissingTransactionNumberOrInvoiceId</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcannotDiscardCard"></a><code>PPRetailTransactionErrorcannotDiscardCard</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormultipleContactlessCardsDetected"></a><code>PPRetailTransactionErrormultipleContactlessCardsDetected</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrortryDifferentInterface"></a><code>PPRetailTransactionErrortryDifferentInterface</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcannotClearActiveTransaction"></a><code>PPRetailTransactionErrorcannotClearActiveTransaction</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorauthorizationFailed"></a><code>PPRetailTransactionErrorauthorizationFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcaptureFailed"></a><code>PPRetailTransactionErrorcaptureFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorinvalidAuthorization"></a><code>PPRetailTransactionErrorinvalidAuthorization</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorretrieveAuthListFailed"></a><code>PPRetailTransactionErrorretrieveAuthListFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorvoidFailed"></a><code>PPRetailTransactionErrorvoidFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrornotSupported"></a><code>PPRetailTransactionErrornotSupported</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcaptureValidationFailed"></a><code>PPRetailTransactionErrorcaptureValidationFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorauthRetrieveValidationFailed"></a><code>PPRetailTransactionErrorauthRetrieveValidationFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorinvalidInvoiceItem"></a><code>PPRetailTransactionErrorinvalidInvoiceItem</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorofflinePaymentEnabled"></a><code>PPRetailTransactionErrorofflinePaymentEnabled</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorofflineTxnLimit"></a><code>PPRetailTransactionErrorofflineTxnLimit</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorofflineTotalLimit"></a><code>PPRetailTransactionErrorofflineTotalLimit</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrornoAudioReaderWhenOffline"></a><code>PPRetailTransactionErrornoAudioReaderWhenOffline</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrornfcContactlessLimitReached"></a><code>PPRetailTransactionErrornfcContactlessLimitReached</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorofflinePaymentStopped"></a><code>PPRetailTransactionErrorofflinePaymentStopped</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorofflinePaymentKeyinNotAllowed"></a><code>PPRetailTransactionErrorofflinePaymentKeyinNotAllowed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorpayAndVaultFailed"></a><code>PPRetailTransactionErrorpayAndVaultFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorvaultFailed"></a><code>PPRetailTransactionErrorvaultFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorinvoiceLoadFailed"></a><code>PPRetailTransactionErrorinvoiceLoadFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormissingTransactionNumber"></a><code>PPRetailTransactionErrormissingTransactionNumber</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorfailedDueToOutage"></a><code>PPRetailTransactionErrorfailedDueToOutage</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorqrcSessionTimeOut"></a><code>PPRetailTransactionErrorqrcSessionTimeOut</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorqrcPollingFailed"></a><code>PPRetailTransactionErrorqrcPollingFailed</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcannotCancelActiveQrcTransaction"></a><code>PPRetailTransactionErrorcannotCancelActiveQrcTransaction</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorfailedQRCServiceProvider"></a><code>PPRetailTransactionErrorfailedQRCServiceProvider</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorfailedQRCUrlGeneration"></a><code>PPRetailTransactionErrorfailedQRCUrlGeneration</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorfailedQRC"></a><code>PPRetailTransactionErrorfailedQRC</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrordeclinedQRC"></a><code>PPRetailTransactionErrordeclinedQRC</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorfailedQRCReferrerCode"></a><code>PPRetailTransactionErrorfailedQRCReferrerCode</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormerchantCancel"></a><code>PPRetailTransactionErrormerchantCancel</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrorcancellationFailure"></a><code>PPRetailTransactionErrorcancellationFailure</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="PPRetailTransactionErrormissingDigitalCardRedemption"></a><code>PPRetailTransactionErrormissingDigitalCardRedemption</code></dt>
+<dd>
+
+
+<p>Transaction Error name to code</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">PayPalRetailSDKTypeDefs.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-08-12</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
