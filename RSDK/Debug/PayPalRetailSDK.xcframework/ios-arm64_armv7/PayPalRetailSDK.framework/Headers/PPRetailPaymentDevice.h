@@ -140,7 +140,7 @@
  */
 @property (nonatomic,assign,readonly) BOOL isBlacklisted;
 
-- (instancetype _Nullable)initWithUniqueId:(NSString* _Nullable)uniqueId native:(PPRetailObject* _Nullable)native app:(PPRetailObject* _Nullable)app connectionType:(PPRetailreaderConnectionType)connectionType hardwareAddress:(NSString* _Nullable)hardwareAddress;
+- (instancetype _Nullable)initWithUniqueId:(NSString* _Nullable)uniqueId native:(PPRetailObject* _Nullable)native app:(PPRetailObject* _Nullable)app connectionType:(PPRetailreaderConnectionType)connectionType hardwareAddress:(NSString* _Nullable)hardwareAddress requestTimeout:(int)requestTimeout;
     - (instancetype _Nullable)init NS_UNAVAILABLE;
 + (instancetype _Nullable)new NS_UNAVAILABLE;
 

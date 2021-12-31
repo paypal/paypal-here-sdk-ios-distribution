@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>SdkCredential Class Reference</title>
+	<title>PPRetailMerchant Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,19 +56,27 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/accessToken">accessToken</option>
+		<option value="//api/name/address">address</option>
 		
-		<option value="//api/name/appSecret">appSecret</option>
+		<option value="//api/name/businessName">businessName</option>
 		
-		<option value="//api/name/clientId">clientId</option>
+		<option value="//api/name/currency">currency</option>
+		
+		<option value="//api/name/emailAddress">emailAddress</option>
 		
 		<option value="//api/name/environment">environment</option>
 		
-		<option value="//api/name/refreshToken">refreshToken</option>
+		<option value="//api/name/isCertificationMode">isCertificationMode</option>
 		
-		<option value="//api/name/refreshUrl">refreshUrl</option>
+		<option value="//api/name/payerId">payerId</option>
 		
-		<option value="//api/name/repository">repository</option>
+		<option value="//api/name/referrerCode">referrerCode</option>
+		
+		<option value="//api/name/signatureRequiredAbove">signatureRequiredAbove</option>
+		
+		<option value="//api/name/softDescriptor">softDescriptor</option>
+		
+		<option value="//api/name/storeId">storeId</option>
 		
 	</optgroup>
 	
@@ -78,17 +86,9 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithAccessToken:refreshUrl:environment:">- initWithAccessToken:refreshUrl:environment:</option>
+		<option value="//api/name/forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:">- forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:</option>
 		
-		<option value="//api/name/initWithEnvironment:">- initWithEnvironment:</option>
-		
-		<option value="//api/name/setFirstPartyCredentials:appSecret:">- setFirstPartyCredentials:appSecret:</option>
-		
-		<option value="//api/name/setRepo:">- setRepo:</option>
-		
-		<option value="//api/name/setThirdPartyCredentials:">- setThirdPartyCredentials:</option>
-		
-		<option value="//api/name/setTokenRefreshUrl:">- setTokenRefreshUrl:</option>
+		<option value="//api/name/setTokenExpiredHandler:">- setTokenExpiredHandler:</option>
 		
 	</optgroup>
 	
@@ -105,16 +105,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">SdkCredential Class Reference</h1>
+					<h1 class="title">PPRetailMerchant Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>NSObject</td>
+	<td>PPRetailObject : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>SdkCredential.h</td>
+	<td>PPRetailMerchant.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -124,7 +124,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>For use with initializeMerchantWithCredentials</p>
+						<p>The merchant represents the account that all calls to the PayPal services will affect. Essentially this is
+where all collected money will go, which account locations and checkin operations will occur under, etc.</p>
 					</div>
 					
 					
@@ -140,8 +141,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/initWithAccessToken:refreshUrl:environment:" title="initWithAccessToken:refreshUrl:environment:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithAccessToken:refreshUrl:environment:">&ndash;&nbsp;initWithAccessToken:refreshUrl:environment:</a></code>
+	<a name="//api/name/emailAddress" title="emailAddress"></a>
+	<h3 class="method-title"><code><a href="#//api/name/emailAddress">&nbsp;&nbsp;emailAddress</a></code>
 </h3>
 
 	<div class="method-info">
@@ -151,12 +152,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initialize with access token, token refresh url and <a href="#//api/name/environment">environment</a></p>
+				<p>The email <a href="#//api/name/address">address</a> of the merchant. @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id)initWithAccessToken:(NSString *)<em>aToken</em> refreshUrl:(NSString *)<em>rUrl</em> environment:(NSString *)<em>env</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *emailAddress</code></div>
 
 		    
 			
@@ -168,7 +169,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initialize with access token, token refresh url and <a href="#//api/name/environment">environment</a></p>
+				<p>The email <a href="#//api/name/address">address</a> of the merchant. @readonly</p>
 			</div>
 			
 
@@ -179,15 +180,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/initWithEnvironment:" title="initWithEnvironment:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithEnvironment:">&ndash;&nbsp;initWithEnvironment:</a></code>
+	<a name="//api/name/businessName" title="businessName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/businessName">&nbsp;&nbsp;businessName</a></code>
 </h3>
 
 	<div class="method-info">
@@ -197,12 +198,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initialize with <a href="#//api/name/environment">environment</a>, set other properties later</p>
+				<p>The name of the business operated by the merchant. @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id)initWithEnvironment:(NSString *)<em>env</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *businessName</code></div>
 
 		    
 			
@@ -214,7 +215,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initialize with <a href="#//api/name/environment">environment</a>, set other properties later</p>
+				<p>The name of the business operated by the merchant. @readonly</p>
 			</div>
 			
 
@@ -225,15 +226,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/setTokenRefreshUrl:" title="setTokenRefreshUrl:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setTokenRefreshUrl:">&ndash;&nbsp;setTokenRefreshUrl:</a></code>
+	<a name="//api/name/currency" title="currency"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currency">&nbsp;&nbsp;currency</a></code>
 </h3>
 
 	<div class="method-info">
@@ -243,12 +244,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Set the token refresh url</p>
+				<p>The &ldquo;home&rdquo; currency of the merchant. @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (SdkCredential *)setTokenRefreshUrl:(NSString *)<em>refreshUrl</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *currency</code></div>
 
 		    
 			
@@ -260,7 +261,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Set the token refresh url</p>
+				<p>The &ldquo;home&rdquo; currency of the merchant. @readonly</p>
 			</div>
 			
 
@@ -271,15 +272,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/setRepo:" title="setRepo:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setRepo:">&ndash;&nbsp;setRepo:</a></code>
+	<a name="//api/name/payerId" title="payerId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/payerId">&nbsp;&nbsp;payerId</a></code>
 </h3>
 
 	<div class="method-info">
@@ -289,12 +290,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Set the firmware update repo</p>
+				<p>The payer id of the merchant. @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (SdkCredential *)setRepo:(NSString *)<em>repository</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *payerId</code></div>
 
 		    
 			
@@ -306,7 +307,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Set the firmware update repo</p>
+				<p>The payer id of the merchant. @readonly</p>
 			</div>
 			
 
@@ -317,15 +318,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/setFirstPartyCredentials:appSecret:" title="setFirstPartyCredentials:appSecret:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setFirstPartyCredentials:appSecret:">&ndash;&nbsp;setFirstPartyCredentials:appSecret:</a></code>
+	<a name="//api/name/address" title="address"></a>
+	<h3 class="method-title"><code><a href="#//api/name/address">&nbsp;&nbsp;address</a></code>
 </h3>
 
 	<div class="method-info">
@@ -335,12 +336,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Set first party credentials: <a href="#//api/name/clientId">clientId</a> and <a href="#//api/name/appSecret">appSecret</a></p>
+				<p>The business address of the merchant @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (SdkCredential *)setFirstPartyCredentials:(NSString *)<em>clientId</em> appSecret:(NSString *)<em>appSecret</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailInvoiceAddress *address</code></div>
 
 		    
 			
@@ -352,7 +353,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Set first party credentials: <a href="#//api/name/clientId">clientId</a> and <a href="#//api/name/appSecret">appSecret</a></p>
+				<p>The business address of the merchant @readonly</p>
 			</div>
 			
 
@@ -363,283 +364,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/setThirdPartyCredentials:" title="setThirdPartyCredentials:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setThirdPartyCredentials:">&ndash;&nbsp;setThirdPartyCredentials:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Set third party credentials: <a href="#//api/name/accessToken">accessToken</a></p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (SdkCredential *)setThirdPartyCredentials:(NSString *)<em>accessToken</em></code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Set third party credentials: <a href="#//api/name/accessToken">accessToken</a></p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/accessToken" title="accessToken"></a>
-	<h3 class="method-title"><code><a href="#//api/name/accessToken">&nbsp;&nbsp;accessToken</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Access token</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *accessToken</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Access token</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/refreshUrl" title="refreshUrl"></a>
-	<h3 class="method-title"><code><a href="#//api/name/refreshUrl">&nbsp;&nbsp;refreshUrl</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Refresh url</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *refreshUrl</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Refresh url</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/refreshToken" title="refreshToken"></a>
-	<h3 class="method-title"><code><a href="#//api/name/refreshToken">&nbsp;&nbsp;refreshToken</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Refresh token</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *refreshToken</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Refresh token</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/clientId" title="clientId"></a>
-	<h3 class="method-title"><code><a href="#//api/name/clientId">&nbsp;&nbsp;clientId</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Client id</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *clientId</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Client id</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/appSecret" title="appSecret"></a>
-	<h3 class="method-title"><code><a href="#//api/name/appSecret">&nbsp;&nbsp;appSecret</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>App secret</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *appSecret</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>App secret</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
@@ -657,12 +382,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Environment</p>
+				<p>The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *environment</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *environment</code></div>
 
 		    
 			
@@ -674,7 +399,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Environment</p>
+				<p>The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly</p>
 			</div>
 			
 
@@ -685,15 +410,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/repository" title="repository"></a>
-	<h3 class="method-title"><code><a href="#//api/name/repository">&nbsp;&nbsp;repository</a></code>
+	<a name="//api/name/signatureRequiredAbove" title="signatureRequiredAbove"></a>
+	<h3 class="method-title"><code><a href="#//api/name/signatureRequiredAbove">&nbsp;&nbsp;signatureRequiredAbove</a></code>
 </h3>
 
 	<div class="method-info">
@@ -703,12 +428,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Firmware update repo</p>
+				<p>The invoice total amount above which signature would be collected for swipe transactions.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *repository</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSDecimalNumber *signatureRequiredAbove</code></div>
 
 		    
 			
@@ -720,7 +445,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Firmware update repo</p>
+				<p>The invoice total amount above which signature would be collected for swipe transactions.</p>
 			</div>
 			
 
@@ -731,7 +456,287 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SdkCredential.h</code></p>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCertificationMode" title="isCertificationMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCertificationMode">&nbsp;&nbsp;isCertificationMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Run in certification mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isCertificationMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Run in certification mode.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/referrerCode" title="referrerCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/referrerCode">&nbsp;&nbsp;referrerCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The Partner Attribution Id code that is used for analytics</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *referrerCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The Partner Attribution Id code that is used for analytics</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/storeId" title="storeId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/storeId">&nbsp;&nbsp;storeId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The storeId to pull the store location <a href="#//api/name/address">address</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *storeId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The storeId to pull the store location <a href="#//api/name/address">address</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/softDescriptor" title="softDescriptor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/softDescriptor">&nbsp;&nbsp;softDescriptor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The soft descriptor that will be shown on the receipt,  provided by the partner
+PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve
+a signature for the transaction. MODIFY THIS SETTING AT YOUR OWN RISK!</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *softDescriptor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The soft descriptor that will be shown on the receipt,  provided by the partner
+PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve
+a signature for the transaction. MODIFY THIS SETTING AT YOUR OWN RISK!</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTokenExpiredHandler:" title="setTokenExpiredHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTokenExpiredHandler:">&ndash;&nbsp;setTokenExpiredHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a token expiration handler if you want to handle token expiration during a transaction</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTokenExpiredHandler:(PPRetailMerchantTokenExpirationHandlerHandler _Nullable)<em>expirationHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a token expiration handler if you want to handle token expiration during a transaction</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:" title="forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:">&ndash;&nbsp;forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Forward a receipt for an invoice.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)forwardReceipt:(PPRetailRetailInvoice *_Nullable)<em>invoice</em> emailOrSms:(NSString *_Nullable)<em>emailOrSms</em> txNumber:(NSString *_Nullable)<em>txNumber</em> txType:(NSString *_Nullable)<em>txType</em> customerId:(NSString *_Nullable)<em>customerId</em> receiptPreferenceToken:(NSString *_Nullable)<em>receiptPreferenceToken</em> callback:(PPRetailMerchantReceiptForwardedHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Forward a receipt for an invoice.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
 			</div>
 			
 			
