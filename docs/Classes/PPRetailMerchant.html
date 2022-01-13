@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>PPRetailMerchant Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">PayPalHereSdkv2 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">PayPal</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/address">address</option>
+		
+		<option value="//api/name/businessName">businessName</option>
+		
+		<option value="//api/name/currency">currency</option>
+		
+		<option value="//api/name/emailAddress">emailAddress</option>
+		
+		<option value="//api/name/environment">environment</option>
+		
+		<option value="//api/name/isCertificationMode">isCertificationMode</option>
+		
+		<option value="//api/name/payerId">payerId</option>
+		
+		<option value="//api/name/referrerCode">referrerCode</option>
+		
+		<option value="//api/name/signatureRequiredAbove">signatureRequiredAbove</option>
+		
+		<option value="//api/name/softDescriptor">softDescriptor</option>
+		
+		<option value="//api/name/storeId">storeId</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:">- forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:</option>
+		
+		<option value="//api/name/setTokenExpiredHandler:">- setTokenExpiredHandler:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">PPRetailMerchant Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>PPRetailObject : NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>PPRetailMerchant.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The merchant represents the account that all calls to the PayPal services will affect. Essentially this is
+where all collected money will go, which account locations and checkin operations will occur under, etc.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/emailAddress" title="emailAddress"></a>
+	<h3 class="method-title"><code><a href="#//api/name/emailAddress">&nbsp;&nbsp;emailAddress</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The email <a href="#//api/name/address">address</a> of the merchant. @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *emailAddress</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The email <a href="#//api/name/address">address</a> of the merchant. @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/businessName" title="businessName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/businessName">&nbsp;&nbsp;businessName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The name of the business operated by the merchant. @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *businessName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The name of the business operated by the merchant. @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/currency" title="currency"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currency">&nbsp;&nbsp;currency</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The &ldquo;home&rdquo; currency of the merchant. @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *currency</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The &ldquo;home&rdquo; currency of the merchant. @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/payerId" title="payerId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/payerId">&nbsp;&nbsp;payerId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The payer id of the merchant. @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *payerId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The payer id of the merchant. @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/address" title="address"></a>
+	<h3 class="method-title"><code><a href="#//api/name/address">&nbsp;&nbsp;address</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The business address of the merchant @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) PPRetailInvoiceAddress *address</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The business address of the merchant @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/environment" title="environment"></a>
+	<h3 class="method-title"><code><a href="#//api/name/environment">&nbsp;&nbsp;environment</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable, readonly) NSString *environment</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The PayPal environment this merchant exists in - live or sandbox. Sandbox means the money is not real! @readonly</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/signatureRequiredAbove" title="signatureRequiredAbove"></a>
+	<h3 class="method-title"><code><a href="#//api/name/signatureRequiredAbove">&nbsp;&nbsp;signatureRequiredAbove</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The invoice total amount above which signature would be collected for swipe transactions.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSDecimalNumber *signatureRequiredAbove</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The invoice total amount above which signature would be collected for swipe transactions.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCertificationMode" title="isCertificationMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCertificationMode">&nbsp;&nbsp;isCertificationMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Run in certification mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isCertificationMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Run in certification mode.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/referrerCode" title="referrerCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/referrerCode">&nbsp;&nbsp;referrerCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The Partner Attribution Id code that is used for analytics</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *referrerCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The Partner Attribution Id code that is used for analytics</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/storeId" title="storeId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/storeId">&nbsp;&nbsp;storeId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The storeId to pull the store location <a href="#//api/name/address">address</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *storeId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The storeId to pull the store location <a href="#//api/name/address">address</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/softDescriptor" title="softDescriptor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/softDescriptor">&nbsp;&nbsp;softDescriptor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The soft descriptor that will be shown on the receipt,  provided by the partner
+PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve
+a signature for the transaction. MODIFY THIS SETTING AT YOUR OWN RISK!</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) NSString *softDescriptor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The soft descriptor that will be shown on the receipt,  provided by the partner
+PLEASE NOTE: manipulating this setting (especially upwards) may cause you to be liable for chargebacks in the event we cannot retrieve
+a signature for the transaction. MODIFY THIS SETTING AT YOUR OWN RISK!</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTokenExpiredHandler:" title="setTokenExpiredHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTokenExpiredHandler:">&ndash;&nbsp;setTokenExpiredHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Provide a token expiration handler if you want to handle token expiration during a transaction</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTokenExpiredHandler:(PPRetailMerchantTokenExpirationHandlerHandler _Nullable)<em>expirationHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Provide a token expiration handler if you want to handle token expiration during a transaction</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:" title="forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:">&ndash;&nbsp;forwardReceipt:emailOrSms:txNumber:txType:customerId:receiptPreferenceToken:callback:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Forward a receipt for an invoice.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)forwardReceipt:(PPRetailRetailInvoice *_Nullable)<em>invoice</em> emailOrSms:(NSString *_Nullable)<em>emailOrSms</em> txNumber:(NSString *_Nullable)<em>txNumber</em> txType:(NSString *_Nullable)<em>txType</em> customerId:(NSString *_Nullable)<em>customerId</em> receiptPreferenceToken:(NSString *_Nullable)<em>receiptPreferenceToken</em> callback:(PPRetailMerchantReceiptForwardedHandler _Nullable)<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Forward a receipt for an invoice.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PPRetailMerchant.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2021 PayPal. All rights reserved. Updated: 2021-12-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
