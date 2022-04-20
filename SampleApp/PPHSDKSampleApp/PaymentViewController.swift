@@ -204,6 +204,19 @@ class PaymentViewController: UIViewController, PPHRetailSDKAppDelegate {
         formatter.generatesDecimalNumbers = true
         let price = formatter.number(from: invAmount.text!.replacingOccurrences(of: "\(currencySymbol!)", with: "")) as! NSDecimalNumber
         
+        // SDK v2.4.0022105000+ has a new feature to simulate device errors
+        // The following demo code enables device error 53 (timeout) simulation
+        // The simulation is enabled when the amount is set to $53
+        // The simulation is disabled for all other amounts
+        // startDeviceErrorSimulation returns a true if the requested error is supported
+        // The return value checks for error simulation support only, not the environment
+        // Simulation only works in the sandbox environment, not in live
+        if price == 53 {
+            PayPalRetailSDK.startDeviceErrorSimulation(.errortimeout)
+        } else {
+            PayPalRetailSDK.stopDeviceErrorSimulation()
+        }
+        
         mInvoice.addItem("My Order", quantity: 1, unitPrice: price, itemId: 123, detailId: nil)
         
         // The invoice Number is used for duplicate payment checking.  It should be unique for every
