@@ -93,7 +93,10 @@
  * SimulationManager is a public facing facade to everything related to SDK simulation.
  */
 @interface PPRetailSimulationManager : PPRetailObject
-
+/**
+ * Error to be simulated
+ */
+@property (nonatomic,strong,nullable) PPRetailError* errorToSimulate;
 
 
 
@@ -103,6 +106,11 @@
  * Provide Fake Response for all HTTP calls made by the SDK
  */
 -(void)enableFakeResponse;
+
+/**
+ * Simulate the requested error, if supported
+ */
+-(BOOL)simulateError:(PPRetailError* _Nullable)deviceError;
 
 /**
  * Switch off Fake Response for all HTTP calls

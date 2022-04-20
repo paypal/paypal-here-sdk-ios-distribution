@@ -543,7 +543,11 @@ typedef NS_ENUM(NSInteger, PPRetailDeviceError) {
   PPRetailDeviceErrorunableToConnect = 47,
   PPRetailDeviceErrorseePhone = 48,
   PPRetailDeviceErrorswUpdateInProgress = 49,
-  PPRetailDeviceErroractiveTransaction = 50
+  PPRetailDeviceErroractiveTransaction = 50,
+  PPRetailDeviceErrorswUpdateCanceled = 51,
+  PPRetailDeviceErrorswChecksumMismatch = 52,
+  PPRetailDeviceErrortimeout = 53,
+  PPRetailDeviceErrorbatteryInfoNotSupported = 54
 };
 
 /**

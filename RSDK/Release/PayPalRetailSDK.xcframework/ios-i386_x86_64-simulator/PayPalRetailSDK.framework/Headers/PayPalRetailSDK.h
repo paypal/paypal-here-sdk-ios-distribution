@@ -103,6 +103,18 @@ typedef void (^PPRetailMerchantHandler)(PPRetailError *error, PPRetailMerchant *
  */
 @interface PayPalRetailSDK : NSObject
 
+/**
+ * Start simulation of the device error in the sandbox environment.
+ * @param deviceErrorCode error code of the error to be simulated
+ * @return True if the simulation is supported
+ */
++ (BOOL) startDeviceErrorSimulation: (PPRetailDeviceError) deviceErrorCode;
+
+/**
+ * Stop simulation of the device error set by startDeviceErrorSimulation
+ */
++ (void) stopDeviceErrorSimulation;
+
 + (UINavigationController *)getCurrentNavigationController;
 
 /**
